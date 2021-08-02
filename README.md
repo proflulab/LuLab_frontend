@@ -1,4 +1,4 @@
-# lulab
+# study02
 
 A new Flutter project.
 
