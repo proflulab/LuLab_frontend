@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottom_bar_demo.dart';
+import 'manage.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,9 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "BottomBar",
+      debugShowCheckedModeBanner: false,
+      title: "Lu-Lab",
       theme: ThemeData.light(),
-      home: BotomeMenumBarPage(),
+      home: Home(),
     );
   }
 }
