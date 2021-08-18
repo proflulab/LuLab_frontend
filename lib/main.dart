@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'manage.dart';
+//import 'manage.dart';
+import 'pages/Tabs.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "LuLab",
       theme: ThemeData.light(),
-      home: Home(),
+      home: Tabs(),
     );
   }
 }
