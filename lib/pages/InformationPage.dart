@@ -10,8 +10,13 @@ class InformationPage extends StatefulWidget {
 class _InformationPageState extends State<InformationPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("我是InformationPage"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("资讯"),
+      ),
+      body: Container(
+        child: Text("我是InformationPage"),
+      ),
     );
   }
 }

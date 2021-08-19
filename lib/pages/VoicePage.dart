@@ -10,8 +10,13 @@ class VoicePage extends StatefulWidget {
 class _VoicePageState extends State<VoicePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("我是VoicePage"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("课程"),
+      ),
+      body: Container(
+        child: Text("我是VoicePage"),
+      ),
     );
   }
 }
