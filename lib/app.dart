@@ -4,9 +4,6 @@ import 'pages/coursePage.dart';
 import 'pages/personPage.dart';
 import 'pages/voicePage.dart';
 import 'pages/informationPage.dart';
-// import 'appbar_page/AppBar_course.dart';
-// import 'appbar_page/AppBar_home.dart';
-// import 'appbar_page/AppBar_information.dart';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
