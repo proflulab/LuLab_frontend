@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: LoadingPage(),
       //initialRoute: ,
       routes: <String, WidgetBuilder>{
-        '/App': (context) => App(),
+        '/app': (context) => App(),
         '/search': (context) => SearchPage(),
         '/history': (context) => History(),
         '/download': (context) => Download(),

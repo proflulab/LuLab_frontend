@@ -32,6 +32,6 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _app() {
-    Navigator.of(context).pushReplacementNamed('/App');
+    Navigator.of(context).pushReplacementNamed('/app');
   }
 }
