@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'gather.dart';
 import 'exploit.dart';
 import 'train.dart';
+import 'feats.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -119,7 +120,7 @@ class _HomePageListState extends State<HomePageList> {
     return TabBarView(
       children: [
         Center(child: Gather()),
-        Center(child: Exploit()),
+        Center(child: FeatsPage()),
         Center(child: Train())
       ],
     );
