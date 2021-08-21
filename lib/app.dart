@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/home/homePage.dart';
 import 'pages/coursePage.dart';
-import 'pages/userPage.dart';
+import 'pages/user/userPage.dart';
 import 'pages/voicePage.dart';
 import 'pages/informationPage.dart';
 
