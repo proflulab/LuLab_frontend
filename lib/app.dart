@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home/homePage.dart';
-import 'pages/coursePage.dart';
+import 'pages/learn/learnPage.dart';
 import 'pages/user/userPage.dart';
 import 'pages/voicePage.dart';
 import 'pages/informationPage.dart';
@@ -16,7 +16,7 @@ class _AppState extends State<App> {
 
   List _pageList = [
     HomePage(),
-    CoursePage(),
+    LearnPage(),
     VoicePage(),
     InformationPage(),
     UserPage(),
