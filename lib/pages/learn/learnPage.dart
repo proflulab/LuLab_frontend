@@ -9,7 +9,7 @@ class LearnPage extends StatefulWidget {
 
 class _LearnPageState extends State<LearnPage> {
   int _selectIndex = 0;
-  List _learnList = [1, 2, 3, 4];
+  //List _learnList = [1, 2, 3, 4];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
