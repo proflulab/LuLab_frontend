@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'routers/router.dart';
+import 'routers/router.dart';
 
 /*
 启动页面
@@ -14,23 +14,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "LuLab",
-      //theme: ThemeData.light(),
-      theme: mDefaultTheme,
-      initialRoute: '/',
-      //onGenerateRoute: onGenerateRoute
-      //home: LoadingPage(),
-      //路由管理(放弃该方法/2021.08.21)
-      // routes: <String, WidgetBuilder>{
-      //   '/app': (context) => App(),
-      //   '/search': (context) => SearchPage(),
-      //   '/history': (context) => History(),
-      //   '/download': (context) => Download(),
-      //   '/customer': (context) => Customer(),
-      //   '/message': (context) => Message(),
-      // },
-    );
+        debugShowCheckedModeBanner: false,
+        title: "LuLab",
+        //theme: ThemeData.light(),
+        theme: mDefaultTheme,
+        initialRoute: '/',
+        onGenerateRoute: onGenerateRoute
+        //home: LoadingPage(),
+        //路由管理(放弃该方法/2021.08.21)
+        // routes: <String, WidgetBuilder>{
+        //   '/app': (context) => App(),
+        //   '/search': (context) => SearchPage(),
+        //   '/history': (context) => History(),
+        //   '/download': (context) => Download(),
+        //   '/customer': (context) => Customer(),
+        //   '/message': (context) => Message(),
+        // },
+        );
   }
 }
 
