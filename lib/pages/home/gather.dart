@@ -36,7 +36,7 @@ class _GatherState extends State<Gather> {
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(15),
-              width: 200.0,
+              width: 400.0,
               height: 200.0,
               //   child: AspectRatio(
               // aspectRatio: 16 / 9,

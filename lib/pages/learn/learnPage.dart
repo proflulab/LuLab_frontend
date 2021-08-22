@@ -86,7 +86,7 @@ class _LearnPageState extends State<LearnPage> {
                       child: Container(
                         width: double.infinity,
                         height: 60,
-                        child: Text("${index}", textAlign: TextAlign.center),
+                        child: Text("$index", textAlign: TextAlign.center),
                         color:
                             _selectIndex == index ? Colors.blue : Colors.white,
                       ),
@@ -110,35 +110,91 @@ class _LearnPageState extends State<LearnPage> {
           Expanded(
             flex: 1,
             child: Container(
-                padding: EdgeInsets.all(5),
+                //Padding提供设置内边距的组件
+                padding: EdgeInsets.only(left: 5, right: 5, top: 5),
                 height: double.infinity,
                 color: Color.fromRGBO(240, 246, 246, 0.9),
-                child: GridView.builder(
-                  //纵轴⼦元素的数量。此属性值确定后⼦元素在纵轴的⻓度就确定了
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1,
-                      //⼦元素在纵轴⻓度和主轴⻓度的⽐例。由于crossAxisCount指定后⼦元素纵轴⻓度就确定了，然后通过此参数值就可以确定⼦元素在主轴的⻓度。
-                      //childAspectRatio: 0.9,
-                      crossAxisSpacing: 1,
-                      mainAxisSpacing: 20),
+                child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Container(
-                      // padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: <Widget>[
-                          AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: Image.network(
-                                "https://upload-images.jianshu.io/upload_images/10847113-884a22519c2c5151.jpg",
-                                fit: BoxFit.cover),
+                    return Row(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 290,
+                          //width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            //border: Border.all(color: Colors.black54),
                           ),
-                          Container(
-                            height: 40,
-                            child: Text("课程"),
-                          )
-                        ],
-                      ),
+                          margin: EdgeInsets.only(bottom: 10),
+                          child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                top: 10,
+                                left: 10,
+                                child: Container(
+                                  height: 100,
+                                  width: 100,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    child: Image.network(
+                                      'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 10,
+                                left: 130,
+                                child: Container(
+                                  height: 20,
+                                  child: Text(
+                                    '颠覆式创新',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 35,
+                                left: 130,
+                                child: Container(
+                                  height: 40,
+                                  width: 200,
+                                  child: Text(
+                                    '陆向谦',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 80,
+                                left: 130,
+                                child: Container(
+                                  height: 20,
+                                  width: 80,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                  ),
+                                  child: Text(
+                                    '已学2节/共5节',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     );
                   },
                 )),

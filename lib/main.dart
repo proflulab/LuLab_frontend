@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "LuLab",
+        title: "陆向谦Lab",
         //theme: ThemeData.light(),
         theme: mDefaultTheme,
         initialRoute: '/',

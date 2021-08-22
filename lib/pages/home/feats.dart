@@ -15,7 +15,7 @@ class _FeatsPageState extends State<FeatsPage> {
     var widgetwidth = screenwidth - 10 * 2;
     return Container(
       height: screenheight,
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.black12,
       ),
