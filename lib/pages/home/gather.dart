@@ -78,14 +78,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -105,14 +107,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -132,14 +136,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -159,14 +165,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -186,14 +194,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -213,14 +223,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
@@ -240,14 +252,16 @@ class _GatherState extends State<Gather> {
                           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
                       title: Text('案例课直播  学理论不如学案例'),
                       subtitle: Text('介绍：'),
-                      trailing: FlatButton(
-                        color: Colors.blue,
-                        highlightColor: Colors.blue[700],
-                        colorBrightness: Brightness.dark,
-                        splashColor: Colors.grey,
-                        child: Text("预约"),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                      trailing: TextButton(
+                        autofocus: true,
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all(StadiumBorder())),
+                        child: Text(
+                          "预约",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         onPressed: () {},
                       ),
                     ),
