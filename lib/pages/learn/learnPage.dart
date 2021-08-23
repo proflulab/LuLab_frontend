@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../services/screenAdapter.dart';
+
 class LearnPage extends StatefulWidget {
   LearnPage({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class LearnPage extends StatefulWidget {
 
 class _LearnPageState extends State<LearnPage> {
   int _selectIndex = 0;
-  //List _learnList = [1, 2, 3, 4];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,8 +122,8 @@ class _LearnPageState extends State<LearnPage> {
                     return Row(
                       children: [
                         Container(
-                          height: 120,
-                          width: 290,
+                          height: ScreenAdapter.height(280),
+                          width: ScreenAdapter.width(300),
                           //width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.white,
