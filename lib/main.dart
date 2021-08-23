@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         onGenerateRoute: onGenerateRoute
 
-        //home: LoadingPage(),
+        // home: LoadingPage(),
         //路由管理(放弃该方法/2021.08.21)
         // routes: <String, WidgetBuilder>{
         //   '/app': (context) => App(),
