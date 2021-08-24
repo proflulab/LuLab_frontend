@@ -23,6 +23,7 @@ class _FeatsPageState extends State<FeatsPage> {
         itemBuilder: (contxt, index) {
           return Row(
             children: [
+              //SizedBox(height: 150),
               Container(
                 height: 120,
                 width: widgetwidth,
@@ -31,7 +32,7 @@ class _FeatsPageState extends State<FeatsPage> {
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
                   //border: Border.all(color: Colors.black54),
                 ),
-                margin: EdgeInsets.only(bottom: 10),
+                margin: EdgeInsets.only(top: 10),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
