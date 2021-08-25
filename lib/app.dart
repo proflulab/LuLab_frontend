@@ -19,7 +19,7 @@ class _AppState extends State<App> {
     LearnPage(),
     VoicePage(),
     InformationPage(),
-    UserPage(),
+    UsersPage(),
   ];
   @override
   Widget build(BuildContext context) {
