@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'menu_item.dart';
 import 'contact_item.dart';
+import 'settings.dart';
+import 'support.dart';
+import 'create.dart';
+import 'like.dart';
+import 'favorites.dart';
 
-class UserPage extends StatefulWidget {
-  UserPage({Key? key}) : super(key: key);
+class UsersPage extends StatefulWidget {
+  UsersPage({Key? key}) : super(key: key);
 
   @override
-  _UserPageState createState() => _UserPageState();
+  _UsersPageState createState() => _UsersPageState();
 }
 
-class _UserPageState extends State<UserPage> {
+class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,64 +51,67 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // ignore: todo
     // TODO: implement build
-    return new Scaffold(
-      backgroundColor: new Color.fromARGB(255, 242, 242, 245),
-      body: new CustomScrollView(
+    //获取屏幕宽度
+    //double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 242, 242, 245),
+      body: CustomScrollView(
         slivers: <Widget>[
-          new SliverAppBar(
+          SliverAppBar(
             expandedHeight: _appBarHeight,
-            flexibleSpace: new FlexibleSpaceBar(
+            flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.parallax,
-              background: new Stack(
+              background: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
                   const DecoratedBox(
                     decoration: const BoxDecoration(color: Colors.white),
                   ),
-                  new Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      new Expanded(
+                      Expanded(
                         flex: 1,
-                        child: new Padding(
+                        child: Padding(
                           padding: const EdgeInsets.only(
                             top: 20.0,
                             left: 20.0,
                           ),
-                          child: new CircleAvatar(
+                          child: CircleAvatar(
                             radius: 40.0,
-                            backgroundImage: new NetworkImage(
+                            backgroundImage: NetworkImage(
                                 'https://huyaimg.msstatic.com/avatar/1083/5c/c50b386acc89c3b58dcf6225c4af0e_180_135.jpg'),
                           ),
                         ),
                       ),
-                      new Expanded(
+                      Expanded(
                         flex: 3,
-                        child: new Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            new Padding(
+                            Padding(
                               padding: const EdgeInsets.only(
                                 top: 30.0,
                                 left: 20.0,
                                 bottom: 10.0,
                               ),
-                              child: new Text(
+                              child: Text(
                                 '杨仕明',
-                                style: new TextStyle(
+                                style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25.0),
                               ),
                             ),
-                            new Padding(
+                            Padding(
                               padding: const EdgeInsets.only(
                                 left: 20.0,
                               ),
-                              child: new Text(
+                              child: Text(
                                 '功勋学员/会员',
-                                style: new TextStyle(
+                                style: TextStyle(
                                     color: Colors.black, fontSize: 12.0),
                               ),
                             ),
@@ -116,35 +124,35 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          new SliverList(
-            delegate: new SliverChildListDelegate(
+          SliverList(
+            delegate: SliverChildListDelegate(
               <Widget>[
-                new Container(
+                Container(
                   color: Colors.white,
-                  child: new Padding(
+                  child: Padding(
                     padding: const EdgeInsets.only(
                       top: 10.0,
                       bottom: 10.0,
                     ),
-                    child: new Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        new ContactItem(
+                        ContactItem(
                           count: '999',
                           title: '动态',
                           onPressed: () {},
                         ),
-                        new ContactItem(
+                        ContactItem(
                           count: '999',
                           title: '关注',
                           onPressed: () {},
                         ),
-                        new ContactItem(
+                        ContactItem(
                           count: '999',
                           title: '粉丝',
                           onPressed: () {},
                         ),
-                        new ContactItem(
+                        ContactItem(
                           count: '999分钟',
                           title: '今日学习',
                           onPressed: () {},
@@ -153,80 +161,100 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                new Container(
+                Container(
                   color: Colors.white,
                   margin: const EdgeInsets.only(top: 2.0),
                   child: Column(
                     children: <Widget>[
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.face,
                         title: '我的收藏',
                         onPressed: () {
-                          print("我的收藏  ----   >");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FavoritesPage(),
+                              ));
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.face,
                         title: '我的创作',
                         onPressed: () {
-                          print("我的创作  ----   >");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreatePage(),
+                              ));
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.face,
                         title: '我赞过的',
                         onPressed: () {
-                          print("我赞过的  ----   >");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LikePage(),
+                              ));
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.message,
                         title: '我的消息',
                         onPressed: () {
-                          print("我的消息  ----   >");
+                          print(screenheight);
                         },
                       ),
                     ],
                   ),
                 ),
-                new Container(
+                Container(
                   color: Colors.white,
                   margin: const EdgeInsets.only(top: 15.0),
                   child: Column(
                     children: <Widget>[
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.face,
                         title: '我的钱包',
                         onPressed: () {
                           print("我的钱包  ----   >");
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.print,
                         title: '我的订单',
                         onPressed: () {
                           print("我的订单  ----   >");
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.archive,
                         title: '我的评价',
                         onPressed: () {
                           print("我的评价  ----  >");
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.archive,
                         title: '帮助与反馈',
                         onPressed: () {
-                          print("帮助与反馈  ----  >");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SupportPage(),
+                              ));
                         },
                       ),
-                      new MenuItem(
+                      MenuItem(
                         icon: Icons.archive,
                         title: '设置',
                         onPressed: () {
-                          print("设置  ----  >");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingsPage(),
+                              ));
                         },
                       ),
                     ],
