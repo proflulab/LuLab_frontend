@@ -16,7 +16,8 @@ class _LearnPageState extends State<LearnPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        //由主题统一配色，不在这里重新设定颜色
+        //backgroundColor: Color.fromRGBO(255, 255, 255, 1),
         title: InkWell(
           //onTap是点击事件回调
           onTap: () {
