@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'routers/router.dart';
 
 /*
 启动页面
-
 */
 
 void main() => runApp(MyApp());
@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "陆向谦Lab",
@@ -32,6 +33,16 @@ class MyApp extends StatelessWidget {
         //   '/message': (context) => Message(),
         // },
         );
+=======
+    return ScreenUtilInit(
+        designSize: Size(750, 1334), //配置设计稿的宽度高度
+        builder: () => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: "陆向谦Lab",
+            theme: mDefaultTheme,
+            initialRoute: '/',
+            onGenerateRoute: onGenerateRoute));
+>>>>>>> develop
   }
 }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../services/screenAdapter.dart';
+
 class LearnPage extends StatefulWidget {
   LearnPage({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class LearnPage extends StatefulWidget {
 
 class _LearnPageState extends State<LearnPage> {
   int _selectIndex = 0;
-  //List _learnList = [1, 2, 3, 4];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,21 +110,16 @@ class _LearnPageState extends State<LearnPage> {
             ),
           ),
           Expanded(
-            flex: 1,
-            child: Container(
-                //Padding提供设置内边距的组件
-                padding: EdgeInsets.only(left: 5, right: 5, top: 5),
-                height: double.infinity,
-                color: Color.fromRGBO(240, 246, 246, 0.9),
+              flex: 1,
+              child: Container(
+                padding: EdgeInsets.only(left: 10, right: 12),
                 child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Row(
+                    return Column(
                       children: [
                         Container(
-                          height: 120,
-                          width: 290,
-                          //width: double.infinity,
+                          height: ScreenAdapter.height(170),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
@@ -197,8 +194,8 @@ class _LearnPageState extends State<LearnPage> {
                       ],
                     );
                   },
-                )),
-          )
+                ),
+              ))
         ],
       ),
     );

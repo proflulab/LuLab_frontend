@@ -10,13 +10,24 @@ class VoicePage extends StatefulWidget {
 class _VoicePageState extends State<VoicePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("课程"),
+    return AlertDialog(
+      title: Text(
+        '请说话',
       ),
-      body: Container(
-        child: Text("我是VoicePage"),
-      ),
+      content: Text('颠覆式创新'),
+      backgroundColor: Colors.lightBlueAccent,
+      elevation: 24,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+      actions: <Widget>[
+        TextButton(
+          child: Text('113'),
+          onPressed: () {},
+        ),
+        TextButton(
+          child: Text('1312'),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }
