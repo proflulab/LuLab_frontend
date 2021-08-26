@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../services/screenadapter.dart';
+//import '../../services/screenadapter.dart';
 
 class SupportPage extends StatefulWidget {
   @override

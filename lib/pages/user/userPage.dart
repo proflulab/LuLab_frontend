@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // ignore: todo
     // TODO: implement build
     //获取屏幕宽度
-    double screenwidth = MediaQuery.of(context).size.width;
+    //double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 242, 242, 245),

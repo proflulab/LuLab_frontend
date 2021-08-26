@@ -28,7 +28,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         backgroundColor: Colors.white,
         centerTitle: true,
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text(
               '新建',
               style: TextStyle(
