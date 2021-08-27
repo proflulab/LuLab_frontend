@@ -6,6 +6,7 @@ import 'support.dart';
 import 'create.dart';
 import 'like.dart';
 import 'favorites.dart';
+import 'login/login.dart';
 
 class UsersPage extends StatefulWidget {
   UsersPage({Key? key}) : super(key: key);
@@ -255,6 +256,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               MaterialPageRoute(
                                 builder: (context) => SettingsPage(),
                               ));
+                        },
+                      ),
+                      new MenuItem(
+                        icon: Icons.archive,
+                        title: '登录',
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Login1()));
                         },
                       ),
                     ],
