@@ -40,7 +40,16 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  assets:
+   - images/微信.png
+   - images/2.0x/微信.png
+   - images/3.0x/微信.png
+   - images/微博.png
+   - images/2.0x/微博.png
+   - images/3.0x/微博.png
+   - images/QQ.png
+   - images/2.0x/QQ.png
+   - images/3.0x/QQ.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
+import 'user_agreement.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class PhoneLogin1 extends StatelessWidget {
+  const PhoneLogin1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +68,14 @@ class BackLineWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          margin: EdgeInsets.only(left: 30, top: 20),
-          child: Icon(Icons.arrow_back_ios),
-        ),
+            margin: EdgeInsets.only(left: 30, top: 20),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Login1()));
+              },
+            )),
         Container(
           margin: EdgeInsets.only(top: 30, right: 20),
           child: Text(txt.toString()),
@@ -228,16 +235,40 @@ class ProtocolButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 350,
-        height: 40,
-        // 上边距
-        margin: EdgeInsets.only(top: 50),
-        child: Text(
-          "同意用户协议与隐私政策",
+      width: 350,
+      height: 40,
+      // 上边距
+      margin: EdgeInsets.only(top: 50),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text(
+          "同意",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Color(0xffadadad),
           ),
-        ));
+        ),
+        TextButton(
+          child: Text(
+            '用户协议',
+            style: TextStyle(
+              color: Colors.deepPurple,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => UserAgreement()));
+          },
+        ),
+        Text(
+          "与隐私政策",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xffadadad),
+          ),
+        )
+      ]),
+    );
   }
 }
