@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lulab/app.dart';
-import 'package:lulab/loading.dart';
-import '../search.dart';
+import '../../pages/loading.dart';
+import '../../pages/search.dart';
 import 'package:lulab/pages/other/customer.dart';
 import 'package:lulab/pages/other/download.dart';
 import 'package:lulab/pages/other/history.dart';
