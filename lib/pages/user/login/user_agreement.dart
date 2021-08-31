@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'phone_login.dart';
 
 class UserAgreement extends StatefulWidget {
   UserAgreement({Key? key}) : super(key: key);
