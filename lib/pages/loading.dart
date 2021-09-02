@@ -11,7 +11,7 @@ class _LoadingPageState extends State<LoadingPage> {
     return Container(
       color: Colors.white,
       child: Image.network(
-        'https://upload-images.jianshu.io/upload_images/10847113-fd49786e5f26f7a3.jpg?',
+        'https://upload-images.jianshu.io/upload_images/10847113-5c48e0e604f00dd5.png?',
         fit: BoxFit.cover,
       ),
     );
