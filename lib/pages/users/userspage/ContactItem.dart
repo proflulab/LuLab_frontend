@@ -12,18 +12,17 @@ class ContactItem extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
+    return GestureDetector(
       onTap: onPressed,
-      child: new Column(
+      child: Column(
         children: [
-          new Padding(
+          Padding(
             padding: const EdgeInsets.only(
               bottom: 4.0,
             ),
-            child: new Text(count, style: new TextStyle(fontSize: 18.0)),
+            child: Text(count, style: TextStyle(fontSize: 18.0)),
           ),
-          new Text(title,
-              style: new TextStyle(color: Colors.black54, fontSize: 14.0)),
+          Text(title, style: TextStyle(color: Colors.black54, fontSize: 14.0)),
         ],
       ),
     );
