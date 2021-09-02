@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AboutLuPage extends StatefulWidget {
+class WatchHistory extends StatefulWidget {
   @override
-  _AboutLuPageState createState() => _AboutLuPageState();
+  _WatchHistoryState createState() => _WatchHistoryState();
 }
 
-class _AboutLuPageState extends State<AboutLuPage> {
+class _WatchHistoryState extends State<WatchHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '关于陆小创',
+          '观看历史',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
@@ -23,6 +23,12 @@ class _AboutLuPageState extends State<AboutLuPage> {
             Navigator.pop(context);
           },
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {},
+          ),
+        ],
         backgroundColor: Colors.white,
         centerTitle: true,
       ),

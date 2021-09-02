@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'acchange.dart';
+import 'PasswordChange.dart';
 
-class AcManagePage extends StatefulWidget {
+class AccountSetPage extends StatefulWidget {
   @override
-  _AcManagePageState createState() => _AcManagePageState();
+  _AccountSetPageState createState() => _AccountSetPageState();
 }
 
-class _AcManagePageState extends State<AcManagePage> {
+class _AccountSetPageState extends State<AccountSetPage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度
@@ -14,7 +14,7 @@ class _AcManagePageState extends State<AcManagePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '账号管理',
+          '账号设置',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
@@ -29,74 +29,112 @@ class _AcManagePageState extends State<AcManagePage> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Container(
-        width: screenwidth,
-        height: 600,
-        decoration: BoxDecoration(
-          color: Colors.black12,
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              child: Container(
-                height: 50,
-                width: screenwidth,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 1,
-                      color: Colors.black26,
-                    ),
-                  ),
-                ),
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AcChangePage(),
-                        ));
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned(
-                        left: 3,
-                        top: 12,
-                        child: Container(
-                          height: 35,
-                          width: 240,
-                          child: Text(
-                            '修改账号密码',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 3,
-                        top: 12,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 20,
+            child: Container(
+              height: 30,
+              width: 80,
+              padding: EdgeInsets.fromLTRB(3, 7, 0, 0),
+              child: Text(
+                '密码设置',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
                 ),
               ),
             ),
-            Positioned(
-              top: 70,
+          ),
+          Positioned(
+            top: 35,
+            left: 0,
+            child: Container(
+              height: 50,
+              width: screenwidth,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                  bottom: BorderSide(
+                    width: 1,
+                    color: Colors.black26,
+                  ),
+                  top: BorderSide(
+                    width: 1,
+                    color: Colors.black26,
+                  ),
+                ),
+              ),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PasswordChangePage(),
+                      ));
+                },
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 14,
+                      top: 5,
+                      child: Container(
+                        height: 35,
+                        width: 240,
+                        child: Text(
+                          '修改密码',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 3,
+                      top: 7,
+                      child: Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 85,
+            left: 20,
+            child: Container(
+              height: 30,
+              width: 80,
+              padding: EdgeInsets.fromLTRB(3, 7, 0, 0),
+              child: Text(
+                '账户绑定',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 120,
+            left: 0,
+            child: Container(
+              height: 200,
+              width: screenwidth,
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
               child: Column(
                 children: [
                   Container(
-                    height: 60,
+                    height: 50,
                     width: screenwidth,
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -108,55 +146,20 @@ class _AcManagePageState extends State<AcManagePage> {
                         ),
                       ),
                     ),
-                    child: OutlinedButton(
+                    child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: <Widget>[
+                        children: [
                           Positioned(
-                            left: 3,
-                            top: 12,
+                            left: 14,
+                            top: 5,
                             child: Container(
                               height: 35,
                               width: 240,
                               child: Text(
-                                '社交账号',
+                                '手机号',
                                 style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: screenwidth,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ),
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                            left: 3,
-                            top: 12,
-                            child: Container(
-                              height: 35,
-                              width: 240,
-                              child: Text(
-                                'QQ',
-                                style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   color: Colors.black,
                                 ),
                               ),
@@ -164,7 +167,7 @@ class _AcManagePageState extends State<AcManagePage> {
                           ),
                           Positioned(
                             right: 33,
-                            top: 13,
+                            top: 7,
                             child: Text(
                               '未绑定',
                               style: TextStyle(
@@ -175,7 +178,7 @@ class _AcManagePageState extends State<AcManagePage> {
                           ),
                           Positioned(
                             right: 3,
-                            top: 12,
+                            top: 7,
                             child: Icon(
                               Icons.keyboard_arrow_right,
                               color: Colors.black,
@@ -189,7 +192,6 @@ class _AcManagePageState extends State<AcManagePage> {
                     height: 50,
                     width: screenwidth,
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -197,20 +199,73 @@ class _AcManagePageState extends State<AcManagePage> {
                         ),
                       ),
                     ),
-                    child: OutlinedButton(
+                    child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: <Widget>[
+                        children: [
                           Positioned(
-                            left: 3,
-                            top: 12,
+                            left: 14,
+                            top: 5,
+                            child: Container(
+                              height: 35,
+                              width: 240,
+                              child: Text(
+                                'QQ',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 33,
+                            top: 7,
+                            child: Text(
+                              '未绑定',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 3,
+                            top: 7,
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 50,
+                    width: screenwidth,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          width: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 14,
+                            top: 5,
                             child: Container(
                               height: 35,
                               width: 240,
                               child: Text(
                                 '新浪微博',
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   color: Colors.black,
                                 ),
                               ),
@@ -218,18 +273,18 @@ class _AcManagePageState extends State<AcManagePage> {
                           ),
                           Positioned(
                             right: 33,
-                            top: 13,
+                            top: 7,
                             child: Text(
                               '未绑定',
                               style: TextStyle(
                                 fontSize: 15,
-                                color: Colors.black45,
+                                color: Colors.black54,
                               ),
                             ),
                           ),
                           Positioned(
                             right: 3,
-                            top: 12,
+                            top: 7,
                             child: Icon(
                               Icons.keyboard_arrow_right,
                               color: Colors.black,
@@ -243,7 +298,6 @@ class _AcManagePageState extends State<AcManagePage> {
                     height: 50,
                     width: screenwidth,
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -251,20 +305,20 @@ class _AcManagePageState extends State<AcManagePage> {
                         ),
                       ),
                     ),
-                    child: OutlinedButton(
+                    child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: <Widget>[
+                        children: [
                           Positioned(
-                            left: 3,
-                            top: 12,
+                            left: 14,
+                            top: 5,
                             child: Container(
                               height: 35,
                               width: 240,
                               child: Text(
                                 '微信',
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   color: Colors.black,
                                 ),
                               ),
@@ -272,18 +326,18 @@ class _AcManagePageState extends State<AcManagePage> {
                           ),
                           Positioned(
                             right: 33,
-                            top: 13,
+                            top: 7,
                             child: Text(
                               '未绑定',
                               style: TextStyle(
                                 fontSize: 15,
-                                color: Colors.black38,
+                                color: Colors.black54,
                               ),
                             ),
                           ),
                           Positioned(
                             right: 3,
-                            top: 12,
+                            top: 7,
                             child: Icon(
                               Icons.keyboard_arrow_right,
                               color: Colors.black,
@@ -296,8 +350,8 @@ class _AcManagePageState extends State<AcManagePage> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
