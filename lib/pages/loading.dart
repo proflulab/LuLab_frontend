@@ -6,6 +6,8 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  var _judge = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +30,16 @@ class _LoadingPageState extends State<LoadingPage> {
   void countDown() {
     var _duration = Duration(seconds: 3);
     print("LuLab程序启动....");
-    Future.delayed(_duration, _app);
+    //判断是否是第一次启动app
+    if (_judge == 0) {
+      Future.delayed(_duration, _firstguide);
+    } else {
+      Future.delayed(_duration, _app);
+    }
+  }
+
+  void _firstguide() {
+    Navigator.of(context).pushReplacementNamed('/firstguide');
   }
 
   void _app() {

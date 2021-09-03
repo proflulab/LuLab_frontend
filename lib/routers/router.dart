@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:lulab/app.dart';
-import '../../pages/loading.dart';
+import '../../app.dart';
+import '../pages/loading.dart';
 import '../../pages/search.dart';
-import 'package:lulab/pages/other/customer.dart';
-import 'package:lulab/pages/other/download.dart';
-import 'package:lulab/pages/other/history.dart';
-import 'package:lulab/pages/other/message.dart';
+import '../../pages/other/customer.dart';
+import '../../pages/other/download.dart';
+import '../../pages/other/history.dart';
+import '../../pages/other/message.dart';
+import '../../pages/first_guide.dart';
 
 //配置路由
 final Map<String, Function> routes = {
   '/': (context) => LoadingPage(),
+  '/firstguide': (context) => FirstGuidePage(),
   '/app': (context) => App(),
   '/search': (context) => SearchPage(),
   '/history': (context) => History(),
