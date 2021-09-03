@@ -17,8 +17,27 @@ class _UsersPageState extends State<UsersPage> {
     //获取屏幕宽度、高度
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
+
+    //Widget _wi() {}
+
     return Scaffold(
       appBar: null,
+      //   AppBar(
+      // //backgroundColor: Color.fromRGBO(14, 14, 31, 1),
+      // // backgroundColor: Colors.transparent,
+      // // elevation: 0,
+      // actions: [
+      //   IconButton(
+      //       onPressed: () {
+      //         print("跳转到设置");
+      //         //Navigator.pushNamed(context, '/history');
+      //       },
+      //       icon: Icon(
+      //         Icons.settings,
+      //         //color: Color.fromRGBO(117, 117, 117, 1),
+      //       ))
+      // ],
+      // ),
       body: Container(
         height: screenheight,
         width: screenwidth,
@@ -136,9 +155,10 @@ class _UsersPageState extends State<UsersPage> {
             Positioned(
               top: 120,
               left: 10,
+              right: 10,
               child: Container(
                 height: 60,
-                width: 340,
+                width: screenwidth,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -170,9 +190,10 @@ class _UsersPageState extends State<UsersPage> {
             Positioned(
               top: 180,
               left: 10,
+              right: 10,
               child: Container(
                 height: 50,
-                width: 340,
+                width: screenwidth,
                 decoration: BoxDecoration(
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -192,9 +213,10 @@ class _UsersPageState extends State<UsersPage> {
             Positioned(
               top: 240,
               left: 10,
+              right: 10,
               child: Container(
                 height: 170,
-                width: 340,
+                width: screenwidth,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -441,8 +463,9 @@ class _UsersPageState extends State<UsersPage> {
             Positioned(
               top: 420,
               left: 10,
+              right: 10,
               child: Container(
-                width: 340,
+                width: screenwidth,
                 height: 100,
                 decoration: BoxDecoration(
                   color: Colors.white,

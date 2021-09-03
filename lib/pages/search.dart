@@ -10,6 +10,8 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   //var _keywords;
+
+  //List _historyListData = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

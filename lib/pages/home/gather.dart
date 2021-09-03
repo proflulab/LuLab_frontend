@@ -6,6 +6,7 @@ import '../../services/screenAdapter.dart';
 class Gather extends StatefulWidget {
   Gather({Key? key}) : super(key: key);
 
+  @override
   _GatherState createState() => _GatherState();
 }
 
