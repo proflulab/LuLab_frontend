@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PasswordChangePage extends StatefulWidget {
+class ReceiveVeriCodePage extends StatefulWidget {
   @override
-  _PasswordChangePageState createState() => _PasswordChangePageState();
+  _ReceiveVeriCodePageState createState() => _ReceiveVeriCodePageState();
 }
 
-class _PasswordChangePageState extends State<PasswordChangePage> {
+class _ReceiveVeriCodePageState extends State<ReceiveVeriCodePage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度

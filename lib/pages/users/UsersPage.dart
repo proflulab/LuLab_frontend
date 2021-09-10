@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../services/screenAdapter.dart';
+import '../widgets/ContactItem.dart';
 
 import './favorites/MyFavorites.dart';
 import './settings/settings.dart';
 import './history/history.dart';
-import './userspage/ContactItem.dart';
+
 import './advice_online/AdviceOnline.dart';
 import './feedback/Feedback.dart';
 

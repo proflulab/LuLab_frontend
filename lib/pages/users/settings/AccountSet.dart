@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'PasswordChange.dart';
+import 'ReceiveVeriCode.dart';
+import 'SetNewPassword.dart';
 
 class AccountSetPage extends StatefulWidget {
   @override
@@ -71,7 +72,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PasswordChangePage(),
+                        builder: (context) => SetNewPassPage(),
                       ));
                 },
                 child: Stack(
