@@ -56,13 +56,9 @@ class _UsersPageState extends State<UsersPage> {
                         alignment: Alignment.centerRight,
                         height: ScreenAdapter.height(220),
                         width: ScreenAdapter.width(180),
-                        child: Container(
-                          height: ScreenAdapter.width(120),
-                          width: ScreenAdapter.width(120),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(150),
-                            color: Colors.orange,
-                          ),
+                        child: CircleAvatar(
+                          radius: ScreenAdapter.width(60),
+                          backgroundColor: Colors.orange,
                         ),
                       ),
                     ),
@@ -126,16 +122,16 @@ class _UsersPageState extends State<UsersPage> {
                         onPressed: () {},
                         child: Container(
                           height: ScreenAdapter.height(60),
-                          width: ScreenAdapter.width(200),
+                          width: ScreenAdapter.width(180),
                           child: Flex(
                             direction: Axis.horizontal,
                             children: <Widget>[
                               Expanded(
-                                flex: 3,
+                                flex: 2,
                                 child: Text(
                                   '个人主页',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),

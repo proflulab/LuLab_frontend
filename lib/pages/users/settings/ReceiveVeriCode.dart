@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulab/pages/users/settings/SetNewPassword.dart';
 
 class ReceiveVeriCodePage extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _ReceiveVeriCodePageState extends State<ReceiveVeriCodePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '修改账号密码',
+          '忘记密码',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
@@ -29,96 +30,41 @@ class _ReceiveVeriCodePageState extends State<ReceiveVeriCodePage> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          Positioned(
-            top: 70,
-            child: Column(
-              children: [
-                Container(
-                  height: 50,
-                  width: screenwidth,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        width: 1,
-                        color: Colors.black26,
-                      ),
-                      top: BorderSide(
-                        width: 1,
-                        color: Colors.black26,
-                      ),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 20,
-                        top: 10,
-                        child: Text(
-                          '原始密码',
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  width: screenwidth,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        width: 1,
-                        color: Colors.black26,
-                      ),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 20,
-                        top: 10,
-                        child: Text(
-                          '新密码',
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      body: SafeArea(
+        minimum: EdgeInsets.all(30),
+        child: ListView(
+          children: [
+            Text(
+              '为了安全，我们会向你的手机发送验证码',
             ),
-          ),
-          Positioned(
-            top: 200,
-            left: widgetwidth,
-            child: Container(
-              height: 60,
-              width: 240,
-              decoration: BoxDecoration(
-                color: Colors.black26,
-                borderRadius: BorderRadius.all(Radius.circular(12.0)),
-              ),
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  '确定',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black87,
-                  ),
-                ),
+            Padding(
+              padding: EdgeInsets.all(10),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: '请输入手机号',
+                hintText: '请输入手机号',
               ),
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.all(10),
+            ),
+            RaisedButton(
+              color: Colors.grey,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text('下一步', style: TextStyle(color: Colors.white)),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SetNewPassPage(),
+                    ));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
