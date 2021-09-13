@@ -90,7 +90,7 @@ class _CourseDetailState extends State<CourseDetail> {
         children: [
           ListTile(
             leading: CircleAvatar(
-              backgroundImage: AssetImage('images/1.jpg'),
+              backgroundImage: AssetImage('images/a.png'),
             ),
             title: Text(
               '陆向谦',
