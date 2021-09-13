@@ -114,7 +114,7 @@ class _CommentState extends State<Comment> {
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 3),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage('images/1.jpg'),
+          backgroundImage: AssetImage('images/a.png'),
         ),
         title: Column(
           children: [

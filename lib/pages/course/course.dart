@@ -42,7 +42,7 @@ class CourseDetail extends StatelessWidget {
       width: double.infinity,
       height: 240,
       child: Image(
-        image: AssetImage('images/1.jpg'),
+        image: AssetImage('images/a.png'),
         fit: BoxFit.fill,
       ),
     );
