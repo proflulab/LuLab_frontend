@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingPage extends StatefulWidget {
   @override
@@ -6,12 +7,19 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  Future<int> readData() async {
+    var prefs = await SharedPreferences.getInstance();
+    var result = prefs.getInt('Key_Int');
+
+    return result ?? 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Image.network(
-        'https://upload-images.jianshu.io/upload_images/10847113-fd49786e5f26f7a3.jpg?',
+        'https://upload-images.jianshu.io/upload_images/10847113-5c48e0e604f00dd5.png?',
         fit: BoxFit.cover,
       ),
     );
@@ -27,8 +35,22 @@ class _LoadingPageState extends State<LoadingPage> {
 
   void countDown() {
     var _duration = Duration(seconds: 3);
+
     print("LuLab程序启动....");
-    Future.delayed(_duration, _app);
+    Future<int> result = readData();
+    result.then((guide) {
+      print(guide);
+      //判断是否是第一次启动app
+      if (guide == 0) {
+        Future.delayed(_duration, _firstguide);
+      } else {
+        Future.delayed(_duration, _app);
+      }
+    });
+  }
+
+  void _firstguide() {
+    Navigator.of(context).pushReplacementNamed('/firstguide');
   }
 
   void _app() {

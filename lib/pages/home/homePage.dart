@@ -19,9 +19,10 @@ class _HomePageState extends State<HomePage> {
         body: HomePageList(),
         appBar: PreferredSize(
             //设置appBar高度
-            preferredSize: Size.fromHeight(90),
+            preferredSize: Size.fromHeight(110),
             child: AppBar(
-              backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              //由主题统一配色，不在这里重新设定颜色
+              //backgroundColor: Color.fromRGBO(255, 255, 255, 1),
               bottom: TabBar(
                   tabs: [
                     Tab(

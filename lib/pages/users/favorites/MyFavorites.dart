@@ -27,17 +27,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        actions: <Widget>[
-          TextButton(
-            child: Text(
-              '新建',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Container(
         width: screenwidth,

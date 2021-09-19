@@ -17,8 +17,9 @@ class _FeatsPageState extends State<FeatsPage> {
       height: screenheight,
       padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
-        color: Colors.black12,
-      ),
+          //背景颜色在主题处统一设定
+          //color: Colors.black12,
+          ),
       child: ListView.builder(
         itemBuilder: (contxt, index) {
           return Row(

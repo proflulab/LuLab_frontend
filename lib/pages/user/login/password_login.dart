@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'phone_login.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class VerifyCodeLogin1 extends StatelessWidget {
+  const VerifyCodeLogin1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class Home extends StatelessWidget {
 }
 
 class VerifyCodeLogin extends StatelessWidget {
+  const VerifyCodeLogin({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
