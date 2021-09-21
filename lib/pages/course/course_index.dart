@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lagou_flutter/test.dart';
+//import 'package:lagou_flutter/test.dart';
 import 'course_detail.dart';
 
 class Home extends StatelessWidget {

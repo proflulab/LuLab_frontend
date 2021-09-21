@@ -9,7 +9,7 @@ class _AdviceOnlinePageState extends State<AdviceOnlinePage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度
-    double screenwidth = MediaQuery.of(context).size.width;
+    //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ReceiveVeriCode.dart';
-import 'SetNewPassword.dart';
-import 'ReceiveVeriCode.dart';
+//import 'SetNewPassword.dart';
+//import 'ReceiveVeriCode.dart';
 
 class AccountSetPage extends StatefulWidget {
   @override

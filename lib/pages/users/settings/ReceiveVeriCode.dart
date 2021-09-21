@@ -49,11 +49,7 @@ class _ReceiveVeriCodePageState extends State<ReceiveVeriCodePage> {
             Padding(
               padding: EdgeInsets.all(10),
             ),
-            RaisedButton(
-              color: Colors.grey,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
+            ElevatedButton(
               child: Text('下一步', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 Navigator.push(
