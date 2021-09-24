@@ -32,6 +32,8 @@ dependencies:
   flutter_swiper_null_safety: ^1.0.2
   dio: ^4.0.0
   shared_preferences: ^2.0.7
+  graphql_flutter: ^5.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +59,11 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  fonts:
+    - family: MyIcons
+      fonts:
+        - asset: lib/assets/icons/iconfont.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
