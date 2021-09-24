@@ -92,19 +92,19 @@ class _FirstGuideState extends State<FirstGuide> {
         },
         children: [
           Image.network(
-            'https://news.wjdaily.com/attaches/image/320598/20171219/151365265686382.jpg',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页1.jpg',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
           Image.network(
-            'http://n4-q.mafengwo.net/s5/M00/DC/7E/wKgB3FGLd6yAOv6fAAFa2fIseJI42.jpeg?imageMogr2%2Fthumbnail%2F%21690x370r%2Fgravity%2FCenter%2Fcrop%2F%21690x370%2Fquality%2F100',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页2.jpg',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
           Image.network(
-            'https://dimg06.c-ctrip.com/images/350f0r000000hbtusABBD_C_500_280_Q60.jpg',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页3.jpg',
             width: width,
             height: height,
             fit: BoxFit.fill,
