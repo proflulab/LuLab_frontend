@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../services/screenAdapter.dart';
 
+import '../../other/payclass.dart';
+
 class LearnPage extends StatefulWidget {
   LearnPage({Key? key}) : super(key: key);
 
@@ -119,79 +121,89 @@ class _LearnPageState extends State<LearnPage> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        Container(
-                          height: ScreenAdapter.height(170),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            //border: Border.all(color: Colors.black54),
-                          ),
-                          margin: EdgeInsets.only(bottom: 10),
-                          child: Stack(
-                            children: <Widget>[
-                              Positioned(
-                                top: 10,
-                                left: 10,
-                                child: Container(
-                                  height: 100,
-                                  width: 100,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.network(
-                                      'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                        RaisedButton(
+                          child: Container(
+                            height: ScreenAdapter.height(200),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              //border: Border.all(color: Colors.black54),
+                            ),
+                            margin: EdgeInsets.only(bottom: 10),
+                            child: Stack(
+                              children: <Widget>[
+                                Positioned(
+                                  top: 10,
+                                  left: 10,
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.network(
+                                        'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                top: 10,
-                                left: 130,
-                                child: Container(
-                                  height: 20,
-                                  child: Text(
-                                    '颠覆式创新',
-                                    style: TextStyle(
-                                      fontSize: 14,
+                                Positioned(
+                                  top: 10,
+                                  left: 130,
+                                  child: Container(
+                                    height: 20,
+                                    child: Text(
+                                      '颠覆式创新',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                top: 35,
-                                left: 130,
-                                child: Container(
-                                  height: 40,
-                                  width: 200,
-                                  child: Text(
-                                    '陆向谦',
-                                    style: TextStyle(
-                                      fontSize: 13,
+                                Positioned(
+                                  top: 35,
+                                  left: 130,
+                                  child: Container(
+                                    height: 40,
+                                    width: 200,
+                                    child: Text(
+                                      '陆向谦',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                top: 80,
-                                left: 130,
-                                child: Container(
-                                  height: 20,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                  ),
-                                  child: Text(
-                                    '已学2节/共5节',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
+                                Positioned(
+                                  top: 80,
+                                  left: 130,
+                                  child: Container(
+                                    height: 20,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey,
+                                    ),
+                                    child: Text(
+                                      '已学2节/共5节',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
+                              ],
+                            ),
+                          ), //child：可以放入容器，图标，文字。让你构建多彩的按钮。
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) =>
+                                        new SecondScreen()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
+                                );
+                          },
+                        )
                       ],
                     );
                   },
@@ -200,5 +212,12 @@ class _LearnPageState extends State<LearnPage> {
         ],
       ),
     );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: AppBar(title: Text('支付课程费用')), body: FirstScreen());
   }
 }
