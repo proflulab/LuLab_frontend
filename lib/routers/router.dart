@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulab/pages/NewsContent.dart';
 import '../../app.dart';
 import '../pages/loading.dart';
 import '../../pages/search.dart';
@@ -18,6 +19,7 @@ final Map<String, Function> routes = {
   '/download': (context) => Download(),
   '/customer': (context) => Customer(),
   '/message': (context) => Message(),
+  '/newscontent': (context, {arguments}) => NewsContent(arguments: arguments),
 };
 
 //固定写法

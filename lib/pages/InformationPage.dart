@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'dart:convert';
+import 'package:dio/dio.dart';
+
 class InformationPage extends StatefulWidget {
   InformationPage({Key? key}) : super(key: key);
 
@@ -8,398 +11,194 @@ class InformationPage extends StatefulWidget {
 }
 
 class _InformationPageState extends State<InformationPage> {
+  List _list = [];
+  int _page = 1;
+  bool hasMore = true; //判断有没有数据
+  ScrollController _scrollController = new ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    this._getData();
+
+    //监听滚动条事件
+    _scrollController.addListener(() {
+      print(_scrollController.position.pixels); //获取滚动条下拉的距离
+
+      print(_scrollController.position.maxScrollExtent); //获取整个页面的高度
+
+      if (_scrollController.position.pixels >
+          _scrollController.position.maxScrollExtent - 40) {
+        this._getData();
+      }
+    });
+  }
+
+  void _getData() async {
+    if (this.hasMore) {
+      var apiUrl =
+          "http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=${_page}";
+
+      var response = await Dio().get(apiUrl);
+      var res = json.decode(response.data)["result"];
+      setState(() {
+        this._list.addAll(res); //拼接
+        this._page++;
+      });
+      //判断是否是最后一页
+      if (res.length < 20) {
+        setState(() {
+          this.hasMore = false;
+        });
+      }
+    }
+  }
+
+  //下拉刷新
+  Future<void> _onRefresh() async {
+    await Future.delayed(Duration(milliseconds: 2000), () {
+      print('请求数据完成');
+      _getData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: Container(
-          color: Colors.blue,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[Text('咨讯')],
+        appBar: new AppBar(
+          title: Container(
+            color: Colors.blue,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[Text('咨讯')],
+            ),
           ),
+
+          // 左侧返回按钮，可以有按钮，可以有文字
+
+          backgroundColor: Colors.blue, //导航栏和状态栏的的颜色
+          centerTitle: true, //标题是否居中，默认为false
+          toolbarOpacity: 1, //整个导航栏的不透明度
         ),
-
-        // 左侧返回按钮，可以有按钮，可以有文字
-
-        backgroundColor: Colors.blue, //导航栏和状态栏的的颜色
-        centerTitle: true, //标题是否居中，默认为false
-        toolbarOpacity: 1, //整个导航栏的不透明度
-      ),
-      body: new ListView(children: <Widget>[
-        //开始添加页面内容
-//           Container(
-//             width: 500.0, //容器的相关参数
-//             height: 280.0,
-//             color: Colors.lightBlue,
-//             //child在容器的位置
-//             child: new IconButton(
-//                 icon: const Icon(
-//                   IconData(0xe813, fontFamily: 'MyIcons'),
-//                   size: 100.0,
-//                 ),
-//                 tooltip: '点击进入每日晨报',
-//                 onPressed: () {
-//                   print('');
-//                 }),
-
-// //容器内的文字，大小，颜色等参数
-//           ),
-        Container(
-            width: 500.0, //容器的相关参数
-            height: 280.0,
-            child: new ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  new Container(
-                      width: 415.0,
-                      child: RaisedButton(
-                        child: new Image.network(
-                            'https://img.36krcdn.com/20210922/v2_fdaa1ae1bafa4fcc9f5e14038ec673f3_img_jpg',
-                            fit: BoxFit.fill), //child：可以放入容器，图标，文字。让你构建多彩的按钮。
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              new MaterialPageRoute(
-                                  builder: (context) =>
-                                      new SecondScreen()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
-                              );
-                        },
-                      )),
-                  new Container(
-                      width: 415.0,
-                      child: new Image.network(
-                          'https://img.36krcdn.com/20210923/v2_e9d54d58e2a94eca9357b41306862951_img_000',
-                          fit: BoxFit.fill)),
-                  new Container(
-                      width: 415.0,
-                      child: new Image.network(
-                          'https://img.36krcdn.com/20210922/v2_b25cf9f0b37d42b09403ded0460bcd28_img_000',
-                          fit: BoxFit.fill)),
-                  new Container(
-                      width: 415.0,
-                      child: new Image.network(
-                          'https://img.36krcdn.com/20210923/v2_edbf3e6567a244f9b230199894b9ea00_img_000',
-                          fit: BoxFit.fill)),
-                ])),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 130.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 12,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 85,
-                    right: 130,
-                    child: Container(
-                        width: 100,
-                        height: 22,
+        body: new ListView(children: <Widget>[
+          Container(
+              width: 500.0, //容器的相关参数
+              height: 200.0,
+              child: new ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    new Container(
+                        width: 415.0,
                         child: RaisedButton(
-                          child: new Text('查看详情',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Colors.blue,
-                              )), //child：可以放入容器，图标，文字。让你构建多彩的按钮。
+                          child: new Image.network(
+                              'https://img.36krcdn.com/20210922/v2_fdaa1ae1bafa4fcc9f5e14038ec673f3_img_jpg',
+                              fit: BoxFit.fill), //child：可以放入容器，图标，文字。让你构建多彩的按钮。
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 new MaterialPageRoute(
                                     builder: (context) =>
-                                        new SecondScreen()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
+                                        SecondScreen()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
                                 );
                           },
-                        ))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
+                        )),
+                    new Container(
+                        width: 415.0,
+                        child: new Image.network(
+                            'https://img.36krcdn.com/20210923/v2_e9d54d58e2a94eca9357b41306862951_img_000',
+                            fit: BoxFit.fill)),
+                    new Container(
+                        width: 415.0,
+                        child: new Image.network(
+                            'https://img.36krcdn.com/20210922/v2_b25cf9f0b37d42b09403ded0460bcd28_img_000',
+                            fit: BoxFit.fill)),
+                    new Container(
+                        width: 415.0,
+                        child: new Image.network(
+                            'https://img.36krcdn.com/20210923/v2_edbf3e6567a244f9b230199894b9ea00_img_000',
+                            fit: BoxFit.fill)),
+                  ])),
+          Container(
             width: 375.0, //容器的相关参数
-            height: 130.0,
+            height: 500.0,
             color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 12,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 130.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 12,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 130.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 12,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 130.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 12,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 130.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 18,
-                    left: 15,
-                    right: 135,
-                    child: new Text('关于虚拟的“数字人类”，你需要了解这些事情',
-                        maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 20,
-                    right: 15,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 93,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png'))),
-                new Positioned(
-                    top: 88,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-        Container(
-            width: 375.0, //容器的相关参数
-            height: 190.0,
-            color: Colors.white,
-            child: Stack(
-              children: [
-                new Positioned(
-                    top: 0,
-                    left: 15,
-                    child: new Text('亚马逊推Amazon Pay，欲挑战Apple Pay',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ))),
-                new Positioned(
-                    top: 80,
-                    left: 15,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 80,
-                    right: 15,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 80,
-                    right: 147,
-                    child: Container(
-                        width: 110,
-                        height: 90,
-                        child: new Image.network(
-                            'https://x0.ifengimg.com/ucms/2021_28/F4273B6EA57CB05FF7E27D69BC7CB443CF86F93A_size61_w800_h533.jpg'))),
-                new Positioned(
-                    top: 51,
-                    left: 15,
-                    child: Container(
-                        width: 18,
-                        height: 13,
-                        child: new Image.asset('assets/image/眼睛.png',
-                            fit: BoxFit.fill))),
-                new Positioned(
-                    top: 46,
-                    left: 37,
-                    child: new Text('11235人浏览过',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey,
-                        ))),
-              ],
-            )),
-      ]),
-    );
+            child: this._list.length > 0
+                ? RefreshIndicator(
+                    onRefresh: _onRefresh,
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: this._list.length, //20
+                      itemBuilder: (context, index) {
+                        //19
+                        if (index == this._list.length - 1) {
+                          //列表渲染到最后一条的时候加一个圈圈
+                          //拉到底
+                          return Column(
+                            children: <Widget>[
+                              ListTile(
+                                title: Text("${this._list[index]["title"]}",
+                                    maxLines: 1),
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/newscontent',
+                                      arguments: {
+                                        "aid": this._list[index]["aid"]
+                                      });
+                                },
+                              ),
+                              Divider(),
+                              _getMoreWidget()
+                            ],
+                          );
+                        } else {
+                          return Column(
+                            children: <Widget>[
+                              ListTile(
+                                title: Text("${this._list[index]["title"]}",
+                                    maxLines: 1),
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/newscontent',
+                                      arguments: {
+                                        "aid": this._list[index]["aid"]
+                                      });
+                                },
+                              ),
+                              Divider()
+                            ],
+                          );
+                        }
+                      },
+                    ))
+                : _getMoreWidget(),
+          ),
+        ]));
+  }
+
+  //加载中的圈圈
+  Widget _getMoreWidget() {
+    if (hasMore) {
+      return Center(
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '加载中...',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              CircularProgressIndicator(
+                strokeWidth: 1.0,
+              )
+            ],
+          ),
+        ),
+      );
+    } else {
+      return Center(
+        child: Text("--我是有底线的--"),
+      );
+    }
   }
 }
 
