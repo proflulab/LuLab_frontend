@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../services/screenAdapter.dart';
+import '../widgets/ContactItem.dart';
 
 import './favorites/MyFavorites.dart';
 import './settings/settings.dart';
 import './history/history.dart';
-import './userspage/ContactItem.dart';
+
 import './advice_online/AdviceOnline.dart';
+import './feedback/Feedback.dart';
 
 class UsersPage extends StatefulWidget {
   @override
@@ -15,29 +18,10 @@ class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度、高度
-    double screenwidth = MediaQuery.of(context).size.width;
-    double screenheight = MediaQuery.of(context).size.height;
-
-    //Widget _wi() {}
-
+    double screenwidth = ScreenAdapter.getScreenWidth();
+    double screenheight = ScreenAdapter.getScreenHeight();
     return Scaffold(
       appBar: null,
-      //   AppBar(
-      // //backgroundColor: Color.fromRGBO(14, 14, 31, 1),
-      // // backgroundColor: Colors.transparent,
-      // // elevation: 0,
-      // actions: [
-      //   IconButton(
-      //       onPressed: () {
-      //         print("跳转到设置");
-      //         //Navigator.pushNamed(context, '/history');
-      //       },
-      //       icon: Icon(
-      //         Icons.settings,
-      //         //color: Color.fromRGBO(117, 117, 117, 1),
-      //       ))
-      // ],
-      // ),
       body: Container(
         height: screenheight,
         width: screenwidth,
@@ -57,44 +41,110 @@ class _UsersPageState extends State<UsersPage> {
         ),
         child: Stack(
           children: [
-            //此positioned用于存放头像及标识（姓名、身份）
             Positioned(
-              top: 0,
+              top: ScreenAdapter.height(40),
               left: 0,
               child: Container(
-                height: 120,
-                width: 200,
+                height: ScreenAdapter.height(220),
+                width: screenwidth,
                 child: Stack(
                   children: [
-                    //头像
                     Positioned(
-                      top: 40,
-                      left: 30,
-                      child: CircleAvatar(
-                        radius: 30.0,
-                        backgroundImage: NetworkImage(
-                            'https://huyaimg.msstatic.com/avatar/1083/5c/c50b386acc89c3b58dcf6225c4af0e_180_135.jpg'),
-                      ),
-                    ),
-                    //姓名
-                    Positioned(
-                      top: 50,
-                      left: 100,
-                      child: Text(
-                        '杨仕明',
-                        style: TextStyle(
-                          fontSize: 16,
+                      left: 0,
+                      top: 0,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        height: ScreenAdapter.height(220),
+                        width: ScreenAdapter.width(180),
+                        child: CircleAvatar(
+                          radius: ScreenAdapter.width(60),
+                          backgroundColor: Colors.orange,
                         ),
                       ),
                     ),
-                    //身份
                     Positioned(
-                      top: 70,
-                      left: 100,
-                      child: Text(
-                        '功勋学员/会员',
-                        style: TextStyle(
-                          fontSize: 14,
+                      top: 0,
+                      left: ScreenAdapter.width(200),
+                      child: Container(
+                        height: ScreenAdapter.height(220),
+                        width: ScreenAdapter.width(360),
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          height: ScreenAdapter.height(100),
+                          width: ScreenAdapter.width(160),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: ScreenAdapter.height(50),
+                                width: ScreenAdapter.width(360),
+                                child: Text(
+                                  '杨仕明',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: ScreenAdapter.height(50),
+                                width: ScreenAdapter.width(360),
+                                child: Text(
+                                  '功勋学员/会员',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: ScreenAdapter.height(20),
+                      right: ScreenAdapter.width(40),
+                      child: IconButton(
+                        icon: Icon(Icons.settings),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingsPage(),
+                              ));
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      top: ScreenAdapter.height(120),
+                      right: ScreenAdapter.width(40),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          height: ScreenAdapter.height(60),
+                          width: ScreenAdapter.width(180),
+                          child: Flex(
+                            direction: Axis.horizontal,
+                            children: <Widget>[
+                              Expanded(
+                                flex: 2,
+                                child: Text(
+                                  '个人主页',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -102,98 +152,51 @@ class _UsersPageState extends State<UsersPage> {
                 ),
               ),
             ),
-            //此positioned用于存放“设置”图标
             Positioned(
-              top: 20,
-              right: 20,
-              child: IconButton(
-                icon: Icon(Icons.settings),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SettingsPage(),
-                      ));
-                },
-              ),
-            ),
-            //此positioned用于存放“个人主页”按钮
-            Positioned(
-              top: 70,
-              right: 10,
-              //用Container嵌套TextButton的意义在于可以更好地控制宽高布局（Container可以设置宽高）
+              top: ScreenAdapter.height(260),
+              left: 0,
               child: Container(
-                height: 40,
-                width: 120,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 18,
-                        child: Text(
-                          '个人主页',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
+                height: ScreenAdapter.height(140),
+                width: screenwidth,
+                child: Center(
+                  child: Container(
+                    height: ScreenAdapter.height(140),
+                    width: ScreenAdapter.width(720),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ContactItem(
+                          count: '56',
+                          title: '动态',
+                          onPressed: () {},
                         ),
-                      ),
-                      Positioned(
-                        right: 5,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.black,
+                        ContactItem(
+                          count: '78',
+                          title: '关注',
+                          onPressed: () {},
                         ),
-                      ),
-                    ],
+                        ContactItem(
+                          count: '90',
+                          title: '粉丝',
+                          onPressed: () {},
+                        ),
+                        ContactItem(
+                          count: '12',
+                          title: '累计学习',
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-            //此处用于存放动态、粉丝、关注、累计学习栏目
             Positioned(
-              top: 120,
-              left: 10,
-              right: 10,
+              top: ScreenAdapter.height(400),
+              left: ScreenAdapter.width(25),
               child: Container(
-                height: 60,
-                width: screenwidth,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ContactItem(
-                      count: '56',
-                      title: '动态',
-                      onPressed: () {},
-                    ),
-                    ContactItem(
-                      count: '78',
-                      title: '关注',
-                      onPressed: () {},
-                    ),
-                    ContactItem(
-                      count: '90',
-                      title: '粉丝',
-                      onPressed: () {},
-                    ),
-                    ContactItem(
-                      count: '12',
-                      title: '累计学习',
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            //此positioned用于存放广告位
-            Positioned(
-              top: 180,
-              left: 10,
-              right: 10,
-              child: Container(
-                height: 50,
-                width: screenwidth,
+                height: ScreenAdapter.height(120),
+                width: ScreenAdapter.width(700),
                 decoration: BoxDecoration(
                   color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -209,248 +212,177 @@ class _UsersPageState extends State<UsersPage> {
                 ),
               ),
             ),
-            //此positioned用于存放任务图标（购买记录、离线课程等）
             Positioned(
-              top: 240,
-              left: 10,
-              right: 10,
+              top: ScreenAdapter.height(540),
+              left: ScreenAdapter.width(25),
               child: Container(
-                height: 170,
-                width: screenwidth,
+                height: ScreenAdapter.height(280),
+                width: ScreenAdapter.width(700),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
                 ),
-                child: Stack(
+                child: Wrap(
                   children: [
-                    //“购买记录”图标
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Container(
-                        width: 85,
-                        height: 85,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 9,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(150),
-                                  ),
-                                  child: Icon(
-                                    Icons.assignment,
-                                    size: 36,
-                                    color: Colors.black,
-                                  ),
+                    Container(
+                      height: ScreenAdapter.height(140),
+                      width: ScreenAdapter.width(175),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          height: ScreenAdapter.height(140),
+                          width: ScreenAdapter.width(175),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.assignment,
+                                  size: 27,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              Positioned(
-                                top: 50,
-                                left: 7,
-                                child: Text(
+                                Text(
                                   '购买记录',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    //“离线缓存”图标
-                    Positioned(
-                      top: 0,
-                      left: 85,
-                      child: Container(
-                        width: 85,
-                        height: 85,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 9,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(150),
-                                  ),
-                                  child: Icon(
-                                    Icons.assignment_returned_outlined,
-                                    size: 36,
-                                    color: Colors.black,
-                                  ),
+                    Container(
+                      height: ScreenAdapter.height(140),
+                      width: ScreenAdapter.width(175),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          height: ScreenAdapter.height(140),
+                          width: ScreenAdapter.width(175),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.assignment_returned_outlined,
+                                  size: 27,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              Positioned(
-                                top: 50,
-                                left: 7,
-                                child: Text(
+                                Text(
                                   '离线缓存',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    //“我的收藏”图标
-                    Positioned(
-                      top: 0,
-                      left: 170,
-                      child: Container(
-                        width: 85,
-                        height: 85,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => FavoritesPage(),
-                                ));
-                          },
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 9,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(150),
-                                  ),
-                                  child: Icon(
-                                    Icons.star_border,
-                                    size: 36,
-                                    color: Colors.black,
-                                  ),
+                    Container(
+                      height: ScreenAdapter.height(140),
+                      width: ScreenAdapter.width(175),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FavoritesPage(),
+                              ));
+                        },
+                        child: Container(
+                          height: ScreenAdapter.height(140),
+                          width: ScreenAdapter.width(175),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.star_border,
+                                  size: 27,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              Positioned(
-                                top: 50,
-                                left: 7,
-                                child: Text(
+                                Text(
                                   '我的收藏',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    //“观看历史”图标
-                    Positioned(
-                      top: 0,
-                      left: 255,
-                      child: Container(
-                        width: 85,
-                        height: 85,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => WatchHistory(),
-                                ));
-                          },
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 9,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(150),
-                                  ),
-                                  child: Icon(
-                                    Icons.query_builder,
-                                    size: 36,
-                                    color: Colors.black,
-                                  ),
+                    Container(
+                      height: ScreenAdapter.height(140),
+                      width: ScreenAdapter.width(175),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WatchHistory(),
+                              ));
+                        },
+                        child: Container(
+                          height: ScreenAdapter.height(140),
+                          width: ScreenAdapter.width(175),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.query_builder,
+                                  size: 27,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              Positioned(
-                                top: 50,
-                                left: 7,
-                                child: Text(
+                                Text(
                                   '观看历史',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    //“意见反馈”图标
-                    Positioned(
-                      top: 85,
-                      left: 0,
-                      child: Container(
-                        width: 85,
-                        height: 85,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 0,
-                                left: 9,
-                                child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12,
-                                    borderRadius: BorderRadius.circular(150),
-                                  ),
-                                  child: Icon(
-                                    Icons.announcement,
-                                    size: 36,
-                                    color: Colors.black,
-                                  ),
+                    Container(
+                      height: ScreenAdapter.height(140),
+                      width: ScreenAdapter.width(175),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FeedbackPage(),
+                              ));
+                        },
+                        child: Container(
+                          height: ScreenAdapter.height(140),
+                          width: ScreenAdapter.width(175),
+                          child: Center(
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.announcement,
+                                  size: 27,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              Positioned(
-                                top: 50,
-                                left: 7,
-                                child: Text(
+                                Text(
                                   '意见反馈',
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     color: Colors.black,
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -459,25 +391,24 @@ class _UsersPageState extends State<UsersPage> {
                 ),
               ),
             ),
-            //此positioned用于存放任务栏（在线咨询、电话咨询）
             Positioned(
-              top: 420,
-              left: 10,
-              right: 10,
+              top: ScreenAdapter.height(840),
+              left: ScreenAdapter.width(25),
               child: Container(
-                width: screenwidth,
-                height: 100,
+                height: ScreenAdapter.height(300),
+                width: ScreenAdapter.width(700),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
                 ),
                 child: Column(
                   children: [
-                    //“在线咨询”任务栏
                     Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      height: 45,
-                      width: 320,
+                      margin: EdgeInsets.fromLTRB(ScreenAdapter.width(50), 0,
+                          ScreenAdapter.width(50), 0),
+                      padding: EdgeInsets.only(top: ScreenAdapter.height(10)),
+                      height: ScreenAdapter.height(100),
+                      width: ScreenAdapter.width(600),
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
@@ -494,29 +425,28 @@ class _UsersPageState extends State<UsersPage> {
                                 builder: (context) => AdviceOnlinePage(),
                               ));
                         },
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              top: 5,
-                              left: 0,
+                        child: Flex(
+                          direction: Axis.horizontal,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
                               child: Icon(
                                 Icons.headset,
                                 color: Colors.black,
                               ),
                             ),
-                            Positioned(
-                                top: 3,
-                                left: 33,
-                                child: Text(
-                                  '在线咨询',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ),
-                                )),
-                            Positioned(
-                              top: 7,
-                              right: 3,
+                            Expanded(
+                              flex: 7,
+                              child: Text(
+                                '在线咨询',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
                               child: Icon(
                                 Icons.keyboard_arrow_right,
                                 color: Colors.black,
@@ -526,11 +456,12 @@ class _UsersPageState extends State<UsersPage> {
                         ),
                       ),
                     ),
-                    //“电话咨询”任务栏
                     Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      height: 45,
-                      width: 320,
+                      margin: EdgeInsets.fromLTRB(ScreenAdapter.width(50), 0,
+                          ScreenAdapter.width(50), 0),
+                      padding: EdgeInsets.only(top: ScreenAdapter.height(10)),
+                      height: ScreenAdapter.height(100),
+                      width: ScreenAdapter.width(600),
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
@@ -541,29 +472,28 @@ class _UsersPageState extends State<UsersPage> {
                       ),
                       child: TextButton(
                         onPressed: () {},
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              top: 5,
-                              left: 0,
+                        child: Flex(
+                          direction: Axis.horizontal,
+                          children: <Widget>[
+                            Expanded(
+                              flex: 1,
                               child: Icon(
                                 Icons.phone_in_talk,
                                 color: Colors.black,
                               ),
                             ),
-                            Positioned(
-                                top: 5,
-                                left: 33,
-                                child: Text(
-                                  '电话咨询',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  ),
-                                )),
-                            Positioned(
-                              top: 7,
-                              right: 3,
+                            Expanded(
+                              flex: 7,
+                              child: Text(
+                                '电话咨询',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
                               child: Icon(
                                 Icons.keyboard_arrow_right,
                                 color: Colors.black,

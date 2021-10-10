@@ -88,21 +88,10 @@ class _CourseCommentState extends State<CourseComment> {
               Container(
                 padding: EdgeInsets.only(top: 30),
                 height: 500,
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                    buildEachCourseComment(),
-                  ],
-                ),
+                child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) =>
+                        buildEachCourseComment()),
               ),
             ],
           ),

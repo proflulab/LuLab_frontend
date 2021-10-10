@@ -33,17 +33,6 @@ class CourseDesc extends StatelessWidget {
     );
   }
 
-  // Container buildVideo() {
-  //   return Container(
-  //     width: double.infinity,
-  //     height: 240,
-  //     child: Image(
-  //       image: AssetImage('images/1.jpg'),
-  //       fit: BoxFit.fill,
-  //     ),
-  //   );
-  // }
-
   Container buildDesc(context) {
     return Container(
       child: Column(
@@ -108,31 +97,13 @@ class CourseDesc extends StatelessWidget {
           ],
         ),
         Container(
-          height: 200,
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            children: [
-              ListTile(
+            height: 200,
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) => ListTile(
                 title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
               ),
-              ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-              ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-              ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-              ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-              ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-            ],
-          ),
-        ),
+            )),
       ],
     );
   }
