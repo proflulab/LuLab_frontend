@@ -38,7 +38,7 @@ class FirstScreen extends StatelessWidget {
               new Positioned(
                   top: 10,
                   right: 21,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     child: Text('更换账号',
                         style: TextStyle(
                           fontSize: 13.0,
