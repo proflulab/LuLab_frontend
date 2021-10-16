@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+/// 底部弹起的课程详情
+
+class CourseDetailPage extends StatelessWidget {
+  const CourseDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +48,14 @@ class _CourseDetailState extends State<CourseDetail> {
             // 详情主体
             buildDetailBody(),
             // 课程介绍
-            buildCourseDesc()
+            buildCourseDetail()
           ],
         ),
       ),
     );
   }
 
-  Column buildCourseDesc() {
+  Column buildCourseDetail() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [

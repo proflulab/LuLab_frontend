@@ -117,82 +117,87 @@ class _LearnPageState extends State<LearnPage> {
                 child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Container(
-                          height: ScreenAdapter.height(170),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            //border: Border.all(color: Colors.black54),
-                          ),
-                          margin: EdgeInsets.only(bottom: 10),
-                          child: Stack(
-                            children: <Widget>[
-                              Positioned(
-                                top: 10,
-                                left: 10,
-                                child: Container(
-                                  height: 100,
-                                  width: 100,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: Image.network(
-                                      'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 10,
-                                left: 130,
-                                child: Container(
-                                  height: 20,
-                                  child: Text(
-                                    '颠覆式创新',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 35,
-                                left: 130,
-                                child: Container(
-                                  height: 40,
-                                  width: 200,
-                                  child: Text(
-                                    '陆向谦',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 80,
-                                left: 130,
-                                child: Container(
-                                  height: 20,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                  ),
-                                  child: Text(
-                                    '已学2节/共5节',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                    return InkWell(
+                      onTap: () {
+                        print(1);
+                        Navigator.of(context).pushReplacementNamed('/course');
+                      },
+                      child: Container(
+                        height: ScreenAdapter.height(170),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          //border: Border.all(color: Colors.black54),
                         ),
-                      ],
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Stack(
+                          children: <Widget>[
+                            // 课程封面
+                            Positioned(
+                              top: 10,
+                              left: 10,
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: Image.network(
+                                    'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // 课程标题
+                            Positioned(
+                              top: 10,
+                              left: 130,
+                              child: Container(
+                                height: 20,
+                                child: Text(
+                                  '颠覆式创新',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // 作者
+                            Positioned(
+                              top: 35,
+                              left: 130,
+                              child: Container(
+                                height: 40,
+                                width: 200,
+                                child: Text(
+                                  '陆向谦',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            // 课程学习进度
+                            Positioned(
+                              top: 80,
+                              left: 130,
+                              child: Container(
+                                height: 20,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                ),
+                                child: Text(
+                                  '已学2节/共5节',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),

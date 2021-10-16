@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+/// 第三栏的推荐页面
+
+class CourseRecomPage extends StatelessWidget {
+  const CourseRecomPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("CourseRecomPage"),
-      ),
-      body: CourseRecomPage(),
+      body: CourseRecom(),
     );
   }
 }
 
-class CourseRecomPage extends StatefulWidget {
-  CourseRecomPage({Key? key}) : super(key: key);
+class CourseRecom extends StatefulWidget {
+  CourseRecom({Key? key}) : super(key: key);
 
   @override
-  _CourseRecomPageState createState() => _CourseRecomPageState();
+  _CourseRecomState createState() => _CourseRecomState();
 }
 
-class _CourseRecomPageState extends State<CourseRecomPage> {
+class _CourseRecomState extends State<CourseRecom> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Column(
+        child: Wrap(
           // 课程列表
           children: [
             Container(

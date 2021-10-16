@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+/// 课程评论页面
+
+class CourseCommentPage extends StatelessWidget {
+  const CourseCommentPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Comment(),
+      body: CourseComment(),
     );
   }
 }
 
-class Comment extends StatefulWidget {
-  Comment({Key? key}) : super(key: key);
+class CourseComment extends StatefulWidget {
+  CourseComment({Key? key}) : super(key: key);
 
   @override
-  _CommentState createState() => _CommentState();
+  _CourseCommentState createState() => _CourseCommentState();
 }
 
-class _CommentState extends State<Comment> {
+class _CourseCommentState extends State<CourseComment> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Wrap(
         children: [
           //  评价顶部
           Container(
@@ -86,21 +88,10 @@ class _CommentState extends State<Comment> {
               Container(
                 padding: EdgeInsets.only(top: 30),
                 height: 500,
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                    buildEachComment(),
-                  ],
-                ),
+                child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) =>
+                        buildEachCourseComment()),
               ),
             ],
           ),
@@ -109,7 +100,7 @@ class _CommentState extends State<Comment> {
     );
   }
 
-  Container buildEachComment() {
+  Container buildEachCourseComment() {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 3),
       child: ListTile(
@@ -123,7 +114,7 @@ class _CommentState extends State<Comment> {
             // 评分
             buildScore(),
             // 评论
-            buildComment(),
+            buildCourseComment(),
             // 时间
             buildData()
           ],
@@ -200,7 +191,7 @@ class _CommentState extends State<Comment> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Icon(
-                Icons.mode_comment,
+                Icons.mode_comment_outlined,
                 color: Color(0xffaaaaaa),
                 size: 16,
               ),
@@ -224,7 +215,7 @@ class _CommentState extends State<Comment> {
     );
   }
 
-  Row buildComment() {
+  Row buildCourseComment() {
     return Row(
       children: [
         Expanded(

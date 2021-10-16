@@ -7,6 +7,7 @@ import '../../pages/other/download.dart';
 import '../../pages/other/history.dart';
 import '../../pages/other/message.dart';
 import '../../pages/first_guide.dart';
+import '../pages/course/course_index.dart';
 
 //配置路由
 final Map<String, Function> routes = {
@@ -18,6 +19,7 @@ final Map<String, Function> routes = {
   '/download': (context) => Download(),
   '/customer': (context) => Customer(),
   '/message': (context) => Message(),
+  '/course': (context) => CourseIndexPage(),
 };
 
 //固定写法
