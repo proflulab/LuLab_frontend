@@ -10,8 +10,8 @@ class _ReceiveVeriCodePageState extends State<ReceiveVeriCodePage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度
-    double screenwidth = MediaQuery.of(context).size.width;
-    var widgetwidth = screenwidth / 2 - 120;
+    //double screenwidth = MediaQuery.of(context).size.width;
+    //var widgetwidth = screenwidth / 2 - 120;
     return Scaffold(
       appBar: AppBar(
         title: Text(

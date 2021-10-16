@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:lagou_flutter/test.dart';
-import 'course_detail.dart';
+//import 'course_detail.dart';
 import 'package:lulab/pages/widgets/video_view.dart';
 import 'course_desc.dart';
 import 'course_comment.dart';
 import 'course_recom.dart';
 import 'package:lulab/pages/widgets/hi_tab.dart';
->>>>>>> feature/gaojie
 
 /// 课程视频播放页面
 

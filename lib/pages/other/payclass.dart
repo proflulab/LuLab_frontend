@@ -50,7 +50,7 @@ class FirstScreen extends StatelessWidget {
                   new Positioned(
                       top: 10,
                       right: 21,
-                      child: RaisedButton(
+                      child: ElevatedButton(
                         child: Text('更换账号',
                             style: TextStyle(
                               fontSize: 13.0,
@@ -282,7 +282,7 @@ class FirstScreen extends StatelessWidget {
                 new Positioned(
                     top: 8.0,
                     left: 70.0,
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: new Text(
                         '《陆向谦创新创业实验室用户服务协议》',
                         style: TextStyle(fontSize: 13.0, color: Colors.blue),
@@ -303,7 +303,7 @@ class FirstScreen extends StatelessWidget {
               height: 40.0,
               color: Colors.lightBlue,
               alignment: Alignment.center, //child在容器的位置
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: new Text(
                   '确认付款',
                   style: TextStyle(fontSize: 13.0),
@@ -329,7 +329,7 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: Text('技术胖商品详情页')),
         body: Center(
-            child: RaisedButton(
+            child: ElevatedButton(
           child: Text('返回'),
           onPressed: () {
             Navigator.pop(context); //返回到上一个页面

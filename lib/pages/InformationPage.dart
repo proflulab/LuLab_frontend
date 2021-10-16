@@ -89,7 +89,7 @@ class _InformationPageState extends State<InformationPage> {
                   children: <Widget>[
                     new Container(
                         width: 415.0,
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           child: new Image.network(
                               'https://img.36krcdn.com/20210922/v2_fdaa1ae1bafa4fcc9f5e14038ec673f3_img_jpg',
                               fit: BoxFit.fill), //child：可以放入容器，图标，文字。让你构建多彩的按钮。
