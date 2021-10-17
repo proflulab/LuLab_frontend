@@ -61,6 +61,7 @@ flutter:
    - images/孙艺珍.jpeg
    - assets/image/眼睛.png
    - assets/image/logo白文.jpg
+   - images/1.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
