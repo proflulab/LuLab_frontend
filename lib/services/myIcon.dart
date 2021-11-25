@@ -10,4 +10,8 @@ class MyIcon {
   static const IconData icon_yuyin = IconData(0xe606, fontFamily: _family);
   static const IconData icon_dyvmsyuyinfuwu =
       IconData(0xe6e8, fontFamily: _family);
+  static const IconData nav_icon_home_selected =
+      IconData(0xe607, fontFamily: _family);
+  static const IconData nav_icon_home_default =
+      IconData(0xe608, fontFamily: _family);
 }

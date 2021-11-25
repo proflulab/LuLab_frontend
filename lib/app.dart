@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulab/services/myIcon.dart';
 import 'pages/home/homePage.dart';
 import 'pages/learn/learnPage.dart';
 import 'pages/users/UsersPage.dart';
@@ -64,21 +65,21 @@ class _AppState extends State<App> {
             //背景颜色
             //backgroundColor: Colors.black,
             //设置文字大小
-            selectedFontSize: 12,
-            unselectedFontSize: 12,
-            selectedItemColor: Colors.black,
+            // selectedFontSize: 12,
+            // unselectedFontSize: 12,
+            // selectedItemColor: Colors.black,
             // 未选中颜色
-            unselectedItemColor: Color.fromRGBO(117, 117, 117, 1),
+            //unselectedItemColor: Color.fromRGBO(117, 117, 117, 1),
             // 选中图标主题
             selectedIconTheme: IconThemeData(
               // 图标颜色
-              color: Colors.black,
+              color: Colors.blue,
               // 图标大小
-              size: 30,
+              size: 28,
               // 图标透明度
               opacity: 1.0,
             ),
-            // 未选中图标主题
+            //未选中图标主题
             unselectedIconTheme: IconThemeData(
               color: Color.fromRGBO(117, 117, 117, 1),
               size: 24,
@@ -88,7 +89,8 @@ class _AppState extends State<App> {
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: Icon(MyIcon.nav_icon_home_default),
+                  activeIcon: Icon(MyIcon.nav_icon_home_selected),
                   label: ('首页'),
                   //去掉长按提示语
                   tooltip: ''),

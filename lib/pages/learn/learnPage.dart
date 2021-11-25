@@ -115,7 +115,7 @@ class _LearnPageState extends State<LearnPage> {
               child: Container(
                 padding: EdgeInsets.only(left: 10, right: 12),
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [

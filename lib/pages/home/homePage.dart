@@ -25,23 +25,19 @@ class _HomePageState extends State<HomePage> {
               //backgroundColor: Color.fromRGBO(255, 255, 255, 1),
               bottom: TabBar(
                   tabs: [
-                    Tab(
-                      text: "推荐区",
-                    ),
-                    Tab(
-                      text: "功勋园",
-                    ),
-                    Tab(
-                      text: "训练营",
-                    ),
+                    Tab(text: "推荐区"),
+                    Tab(text: "功勋园"),
+                    Tab(text: "训练营"),
                   ],
                   //文字选中颜色
                   labelColor: Colors.black,
                   //文字未选中颜色
                   unselectedLabelColor: Color.fromRGBO(89, 89, 89, 1),
                   //文字选中样式
-                  labelStyle:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'MyFontStyle',
+                      fontSize: 20),
                   //文字未选中样式
                   unselectedLabelStyle:
                       TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
