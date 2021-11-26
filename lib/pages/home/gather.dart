@@ -124,15 +124,108 @@ class _GatherState extends State<Gather> {
       children: <Widget>[
         _swiperWidget(),
         SizedBox(height: ScreenAdapter.height(20)),
-        _titleWidget("猜你喜欢"),
+        _titleWidget("课程预约"),
         SizedBox(height: ScreenAdapter.height(20)),
         _hotProductListWidget(),
         SizedBox(height: ScreenAdapter.height(20)),
-        _titleWidget("课程推荐"),
-        Container(
-          padding: EdgeInsets.all(10),
-        )
+        _titleWidget("免费体验"),
+        _buildFreeCourse(),
+        SizedBox(height: ScreenAdapter.height(20)),
+        _titleWidget("精彩课程"),
+        buildWonderCourse(),
       ],
+    );
+  }
+
+// 免费体验课程
+  SingleChildScrollView _buildFreeCourse() {
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+          _buildEachFreeCourse(),
+        ],
+      ),
+    );
+  }
+
+// 每个免费课程
+  Container _buildEachFreeCourse() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          Container(
+            // 课程图片
+            width: 100,
+            height: 150,
+            child: Image.asset('assets/images/a.png'),
+          ),
+          Container(
+            // 课程标题
+            child: Text(
+              'AI时代——造就...',
+              style: TextStyle(color: Color(0xff404040)),
+            ),
+          ),
+          Container(
+            // 课程描述
+            child: Text(
+              '播放量130万',
+              style: TextStyle(
+                color: Color(0xffffcd92),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+// 精彩课程
+  SingleChildScrollView buildWonderCourse() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          buildEachCourse(),
+          buildEachCourse(),
+          buildEachCourse(),
+          buildEachCourse(),
+        ],
+      ),
+    );
+  }
+
+// 每个课程
+  Container buildEachCourse() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: ListTile(
+        leading: Container(
+          width: 100,
+          child: Image.asset('assets/images/a.png'),
+          decoration: BoxDecoration(
+            border: Border.all(color: Color(0xffc3c3c3)),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+          ),
+        ),
+        title: Text("颠覆式创新"),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text("陆向谦  实验室创始人"), Text("介绍。。。")],
+        ),
+      ),
     );
   }
 }

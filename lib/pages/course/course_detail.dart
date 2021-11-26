@@ -24,7 +24,7 @@ class _CourseDetailState extends State<CourseDetail> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 800,
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

@@ -81,9 +81,9 @@ class _AppState extends State<App> {
             ),
             //未选中图标主题
             unselectedIconTheme: IconThemeData(
-              color: Color.fromRGBO(117, 117, 117, 1),
-              size: 24,
-              opacity: 0.6,
+              color: Colors.black,
+              size: 26,
+              opacity: 1,
             ),
 
             type: BottomNavigationBarType.fixed,
@@ -95,15 +95,22 @@ class _AppState extends State<App> {
                   //去掉长按提示语
                   tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.class__outlined),
+                  icon: Icon(MyIcon.nav_icon_course_default),
+                  activeIcon: Icon(MyIcon.nav_icon_course_selected),
                   label: ('课程'),
                   tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.access_alarm), label: (''), tooltip: ''),
+                  icon: Icon(Icons.sms), label: (''), tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.sms), label: ('资讯'), tooltip: ''),
+                  icon: Icon(MyIcon.nav_icon_find_default),
+                  activeIcon: Icon(MyIcon.nav_icon_find_selected),
+                  label: ('资讯'),
+                  tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle), label: ('我的'), tooltip: '')
+                  icon: Icon(MyIcon.nav_icon_user_default),
+                  activeIcon: Icon(MyIcon.nav_icon_user_selected),
+                  label: ('我的'),
+                  tooltip: '')
             ],
           ),
         ));

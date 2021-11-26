@@ -92,7 +92,7 @@ class _FirstGuideState extends State<FirstGuide> {
         },
         children: [
           Image.network(
-            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页a.png',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页1.jpg',
             width: width,
             height: height,
             fit: BoxFit.fill,

@@ -66,11 +66,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     child: Container(
                       height: 105,
                       width: 105,
-                      child: ClipRRect(
-                        child: Image.network(
-                          'https://www.itying.com/images/flutter/hota.png',
-                        ),
-                      ),
+                      child:
+                          ClipRRect(child: Image.asset('assets/images/a.png')),
                     ),
                   ),
                   Positioned(

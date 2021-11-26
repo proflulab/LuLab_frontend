@@ -5,6 +5,9 @@ import 'course_comment.dart';
 import 'course_recom.dart';
 import '../../widget/hi_tab.dart';
 
+import 'package:graphql_flutter/graphql_flutter.dart';
+import '../../graphql/CourseData.dart';
+
 /// 课程视频播放页面
 
 class CourseIndexPage extends StatefulWidget {
@@ -18,6 +21,12 @@ class _CourseIndexPageState extends State<CourseIndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(""),
+        toolbarHeight: 0,
+        toolbarOpacity: 0,
+        backgroundColor: (Colors.black),
+      ),
       body: CourseIndex(),
     );
   }
@@ -29,6 +38,8 @@ class CourseIndex extends StatefulWidget {
   @override
   _CourseIndexState createState() => _CourseIndexState();
 }
+
+final HttpLink httpLink = HttpLink('http://8.140.177.49/graphql');
 
 class _CourseIndexState extends State<CourseIndex>
     with TickerProviderStateMixin {
@@ -54,7 +65,8 @@ class _CourseIndexState extends State<CourseIndex>
       child: Column(
         children: [
           VideoView(
-            'http://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4',
+            'https://media.w3.org/2010/05/sintel/trailer.mp4',
+            //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
             cover: 'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
           ),
           // tab栏
@@ -86,7 +98,7 @@ class _CourseIndexState extends State<CourseIndex>
       child: Container(
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 20),
-        height: 39,
+        height: 40,
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

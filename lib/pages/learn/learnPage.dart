@@ -119,8 +119,9 @@ class _LearnPageState extends State<LearnPage> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        print(1);
-                        Navigator.of(context).pushReplacementNamed('/course');
+                        print('到课程详情');
+                        //Navigator.of(context).pushReplacementNamed('/course');
+                        Navigator.pushNamed(context, '/course');
                       },
                       child: Container(
                         height: ScreenAdapter.height(170),

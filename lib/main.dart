@@ -31,7 +31,6 @@ final ThemeData mDefaultTheme = new ThemeData(
   scaffoldBackgroundColor: Color.fromRGBO(241, 243, 245, 1),
   //卡⽚颜⾊
   cardColor: Color(0xF13975EE),
-
   //次级⾊，决定⼤多数Widget的颜⾊，如进度条、开关等。
-  accentColor: Color(0xFF3976EE),
+  //accentColor: Color(0xFF3976EE),
 );
