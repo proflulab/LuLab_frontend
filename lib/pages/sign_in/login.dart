@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 import 'password_login.dart';
 import 'phone_login.dart';
-import 'register.dart';
+import '../sign_up/register.dart';
 
 class Login1 extends StatelessWidget {
   const Login1({Key? key}) : super(key: key);
@@ -151,7 +151,7 @@ class Login extends StatelessWidget {
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             TextButton(
               child: Image.asset(
-                'images/微信.png',
+                'assets/images/微信.png',
                 height: 24,
                 width: 24,
               ),
@@ -170,7 +170,7 @@ class Login extends StatelessWidget {
             ),
             TextButton(
               child: Image.asset(
-                'images/QQ.png',
+                'assets/images/QQ.png',
                 height: 24,
                 width: 24,
               ),
@@ -189,7 +189,7 @@ class Login extends StatelessWidget {
             ),
             TextButton(
               child: Image.asset(
-                'images/微博.png',
+                'assets/images/微博.png',
                 height: 24,
                 width: 24,
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lulab/services/myIcon.dart';
 import 'pages/home/homePage.dart';
-import 'pages/learn/learnPage.dart';
+import 'pages/course/CoursePage.dart';
 import 'pages/users/UsersPage.dart';
 import 'pages/voicePage.dart';
 import 'pages/informationPage.dart';
@@ -17,7 +17,7 @@ class _AppState extends State<App> {
 
   List _pageList = [
     HomePage(),
-    LearnPage(),
+    CoursePage(),
     VoicePage(),
     InformationPage(),
     UsersPage(),

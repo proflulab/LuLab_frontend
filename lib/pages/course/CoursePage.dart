@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../services/screenAdapter.dart';
 
-class LearnPage extends StatefulWidget {
-  LearnPage({Key? key}) : super(key: key);
+class CoursePage extends StatefulWidget {
+  CoursePage({Key? key}) : super(key: key);
 
   @override
-  _LearnPageState createState() => _LearnPageState();
+  _CoursePageState createState() => _CoursePageState();
 }
 
-class _LearnPageState extends State<LearnPage> {
+class _CoursePageState extends State<CoursePage> {
   int _selectIndex = 0;
 
   @override

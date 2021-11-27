@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import 'user_agreement.dart';
+import '../agreement/user_agreement.dart';
 
 //二级见面手机一键登录
 class LoginPage extends StatefulWidget {
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               TextButton(
                 child: Image.asset(
-                  'images/微信.png',
+                  'assets/images/微信.png',
                   height: 24,
                   width: 24,
                 ),
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextButton(
                 child: Image.asset(
-                  'images/QQ.png',
+                  'assets/images/QQ.png',
                   height: 24,
                   width: 24,
                 ),
@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextButton(
                 child: Image.asset(
-                  'images/微博.png',
+                  'assets/images/微博.png',
                   height: 24,
                   width: 24,
                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'phone_login.dart';
+import '../sign_in/phone_login.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

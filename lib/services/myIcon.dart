@@ -27,7 +27,7 @@ class MyIcon {
       IconData(0xe60d, fontFamily: _family);
 
   static const IconData nav_icon_user_selected =
-      IconData(0xe609, fontFamily: _family);
+      IconData(0xe60e, fontFamily: _family);
   static const IconData nav_icon_user_default =
       IconData(0xe60a, fontFamily: _family);
 }

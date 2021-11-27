@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import 'user_agreement.dart';
+import '../agreement/user_agreement.dart';
 
 class PhoneLogin1 extends StatelessWidget {
   const PhoneLogin1({Key? key}) : super(key: key);
