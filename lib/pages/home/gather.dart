@@ -1,7 +1,7 @@
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:flutter/material.dart';
 
-import '../../services/screenAdapter.dart';
+import '../../values/screenAdapter.dart';
 
 class Gather extends StatefulWidget {
   Gather({Key? key}) : super(key: key);

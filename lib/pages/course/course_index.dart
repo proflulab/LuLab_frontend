@@ -5,8 +5,8 @@ import 'course_comment.dart';
 import 'course_recom.dart';
 import '../../widget/hi_tab.dart';
 
-import 'package:graphql_flutter/graphql_flutter.dart';
-import '../../graphql/CourseData.dart';
+import 'package:graphql/client.dart';
+//import '../../entitys/CourseData.dart';
 
 /// 课程视频播放页面
 
@@ -38,8 +38,6 @@ class CourseIndex extends StatefulWidget {
   @override
   _CourseIndexState createState() => _CourseIndexState();
 }
-
-final HttpLink httpLink = HttpLink('http://8.140.177.49/graphql');
 
 class _CourseIndexState extends State<CourseIndex>
     with TickerProviderStateMixin {

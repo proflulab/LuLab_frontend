@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../services/screenAdapter.dart';
+import '../../values/screenAdapter.dart';
 
 class CoursePage extends StatefulWidget {
   CoursePage({Key? key}) : super(key: key);

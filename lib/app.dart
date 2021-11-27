@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lulab/services/myIcon.dart';
+import 'package:lulab/values/myIcon.dart';
 import 'pages/home/homePage.dart';
 import 'pages/course/CoursePage.dart';
 import 'pages/users/UsersPage.dart';
