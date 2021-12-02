@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widgets/widgets.dart';
+import '../../widget/widgets.dart';
 import 'course_desc.dart';
 import 'course_comment.dart';
 import 'course_recom.dart';
@@ -21,10 +21,6 @@ class CourseIndexPage extends StatefulWidget {
 class _CourseIndexPageState extends State<CourseIndexPage> {
   @override
   Widget build(BuildContext context) {
-    print("========================================================");
-
-    print("构建");
-    print("================================================================");
     return Scaffold(
       appBar: AppBar(
         title: Text(""),

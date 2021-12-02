@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:lulab/routers/app_pages.dart';
 import 'routers/router.dart';
+import 'package:get/get.dart';
 
 /*
 启动页面
@@ -15,11 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
         designSize: Size(750, 1334), //配置设计稿的宽度高度
-        builder: () => MaterialApp(
+        builder: () => GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: "陆向谦Lab",
             theme: mDefaultTheme,
             initialRoute: '/',
+            //getPages: AppPages.routes,
             onGenerateRoute: onGenerateRoute));
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'course_detail.dart';
-import '../../widgets/widgets.dart';
+import '../../widget/widgets.dart';
 
 class CourseDescPage extends StatelessWidget {
   const CourseDescPage({Key? key}) : super(key: key);

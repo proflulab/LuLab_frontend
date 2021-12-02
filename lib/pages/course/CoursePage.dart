@@ -5,6 +5,8 @@ import '../../values/screenAdapter.dart';
 import '../../api/apis.dart';
 import '../../entitys/CourseData.dart';
 
+//import 'package:get/get.dart';
+
 class CoursePage extends StatefulWidget {
   CoursePage({Key? key}) : super(key: key);
 
@@ -143,10 +145,14 @@ class _CoursePageState extends State<CoursePage> {
                     itemCount: _focusData.length,
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: () {
+                        onTap: () async {
                           print('到课程详情');
+                          // var result = await Get.toNamed("/home/course",
+                          //     arguments: _focusData[index]);
+                          // Get.snackbar("返回值",
+                          //     "success -> " + result["success"].toString());
                           //Navigator.of(context).pushReplacementNamed('/course');
-                          Navigator.pushNamed(context, '/course');
+                          //Navigator.pushNamed(context, '/course');
                         },
                         child: Container(
                           height: ScreenAdapter.height(170),
