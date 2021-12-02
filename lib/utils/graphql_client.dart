@@ -23,13 +23,16 @@ class GraphqlClientUtil {
 
   // 查询
   static Future query({
-    required BuildContext context,
+    required BuildContext? context,
     required String schema,
-    required Map<String, dynamic> variables,
+    required Map<String, dynamic> nRepositories,
+    //int nRepositories = 50,
   }) async {
     QueryOptions options = QueryOptions(
       document: gql(schema),
-      variables: variables,
+      variables: <String, dynamic>{
+        'nRepositories': nRepositories,
+      },
     );
 
     QueryResult result = await client().query(options);

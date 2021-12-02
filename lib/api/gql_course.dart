@@ -6,15 +6,25 @@ import '../graphql/graphql.dart';
 
 /// 课程
 class GqlCourseAPI {
-  static Future<List<LatestCourse>> newsPageList({
+  static Future<PostsData> indexPageInfo({
     required BuildContext context,
-    required Map<String, dynamic> params,
+    required String schema,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-        context: context, schema: GQL_COURSE_LIST, variables: {});
+        schema: GQL_COURSE_LIST, context: context, nRepositories: {});
 
-    return response.data!['newsContents']
-        .map<LatestCourse>((item) => LatestCourse.fromJson(item))
-        .toList();
+    return PostsData.fromJson(response.data!);
   }
+
+  // static Future<List<LatestCourse>> newsPageList({
+  //   required BuildContext context,
+  //   required Map<String, dynamic> params,
+  // }) async {
+  //   QueryResult response = await GraphqlClientUtil.query(
+  //       context: context, schema: GQL_COURSE_LIST, variables: {});
+
+  //   return response.data!['latestCourse']
+  //       .map<LatestCourse>((item) => LatestCourse.fromJson(item))
+  //       .toList();
+  // }
 }
