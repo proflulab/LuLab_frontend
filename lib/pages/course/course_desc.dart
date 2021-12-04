@@ -97,11 +97,11 @@ class CourseDesc extends StatelessWidget {
           ],
         ),
         Container(
-            height: 200,
+            height: 500,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: 30,
               itemBuilder: (BuildContext context, int index) => ListTile(
-                title: Text('第一节：大公司被颠覆的底层原因\n25分钟'),
+                title: Text('第${index + 1}节：大公司被颠覆的底层原因\n25分钟'),
               ),
             )),
       ],

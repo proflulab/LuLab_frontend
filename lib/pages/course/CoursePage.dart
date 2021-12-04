@@ -4,6 +4,7 @@ import '../../values/screenAdapter.dart';
 
 import '../../api/apis.dart';
 import '../../entitys/CourseData.dart';
+import 'course_index.dart';
 
 //import 'package:get/get.dart';
 
@@ -147,6 +148,13 @@ class _CoursePageState extends State<CoursePage> {
                       return InkWell(
                         onTap: () async {
                           print('到课程详情');
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => new CourseIndexPage(
+                                      product: _focusData[index])));
+
                           // var result = await Get.toNamed("/home/course",
                           //     arguments: _focusData[index]);
                           // Get.snackbar("返回值",

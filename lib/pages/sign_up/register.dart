@@ -26,23 +26,29 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
       padding: EdgeInsets.all(20),
       child: Column(
         children: [
-          BackLineWidget(),
+          SizedBox(
+            height: 180,
+          ),
           PhoneWidget(),
           SizedBox(
-            height: 50,
+            height: 40,
           ),
           PasswordWidget(),
           SizedBox(
-            height: 50,
+            height: 40,
           ),
-          RegisterWidget()
+          PasswordWidget(),
+          SizedBox(
+            height: 40,
+          ),
+          _button()
         ],
       ),
     );
   }
 }
 
-// 手机号
+// 账号
 class PhoneWidget extends StatelessWidget {
   const PhoneWidget({
     Key? key,
@@ -50,18 +56,33 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      autofocus: true,
-      keyboardType: TextInputType.phone,
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.phone),
-        hintText: "请输入手机号",
-      ),
-    );
+    return Container(
+        height: 50,
+        width: 300,
+        child: TextField(
+          textAlign: TextAlign.center,
+          autofocus: true,
+          style: TextStyle(
+            color: Color(0x9CFF0000),
+          ),
+          keyboardType: TextInputType.phone,
+          decoration: InputDecoration(
+            fillColor: Color(0xBEB8B8B8),
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0x00FF0000)),
+                borderRadius: BorderRadius.all(Radius.circular(100))),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0x00FF0000)),
+                borderRadius: BorderRadius.all(Radius.circular(100))),
+            hintText: "账号",
+            //hintStyle:,
+          ),
+        ));
   }
 }
 
-// 密码框
+// 密码
 class PasswordWidget extends StatelessWidget {
   const PasswordWidget({
     Key? key,
@@ -81,27 +102,44 @@ class PasswordWidget extends StatelessWidget {
 }
 
 // 注册
-class RegisterWidget extends StatelessWidget {
-  const RegisterWidget({
-    Key? key,
-  }) : super(key: key);
+// Widget _buildRegister() {
+//   return Container(
+//     width: 200,
+//     height: 50,
+//     child: ElevatedButton(
+//       onPressed: () {},
+//       child: Text(
+//         "注册",
+//         textAlign: TextAlign.center,
+//         style: TextStyle(
+//           fontSize: 20,
+//           textBaseline: TextBaseline.alphabetic,
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          "注册",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            textBaseline: TextBaseline.alphabetic,
-          ),
-        ),
+Widget _button() {
+  return Container(
+    width: 200,
+    height: 40,
+    child: RawMaterialButton(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30))),
+      elevation: 5,
+      highlightElevation: 0,
+      fillColor: Colors.blue,
+      splashColor: Colors.orange,
+      textStyle: TextStyle(
+        fontSize: 20,
+        textBaseline: TextBaseline.alphabetic,
       ),
-    );
-  }
+      onLongPress: () {
+        print('onLongPress');
+      },
+      child: Text("注册"),
+      onPressed: () => print('onPressed'),
+    ),
+  );
 }

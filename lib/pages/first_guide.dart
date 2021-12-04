@@ -72,7 +72,7 @@ class _FirstGuideState extends State<FirstGuide> {
             child: Text('立即体验'),
             onPressed: () {
               _guideData();
-              Navigator.of(context).pushReplacementNamed('/app');
+              Navigator.of(context).pushReplacementNamed('/login');
             } // 去首页路由
             ,
           ),

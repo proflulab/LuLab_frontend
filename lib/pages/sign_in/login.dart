@@ -4,6 +4,7 @@ import 'password_login.dart';
 import 'phone_login.dart';
 import '../sign_up/register.dart';
 
+//微信登录，手机一键登录
 class Login1 extends StatelessWidget {
   const Login1({Key? key}) : super(key: key);
 
@@ -28,11 +29,11 @@ class Login extends StatelessWidget {
             height: 100,
             width: 100,
             // 上边距
-            margin: EdgeInsetsDirectional.only(top: 30),
+            margin: EdgeInsetsDirectional.only(top: 100),
             child: Center(
               // logo 文本
               child: Text(
-                "lulab",
+                "陆向谦实验室",
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -49,7 +50,7 @@ class Login extends StatelessWidget {
             width: 350,
             height: 40,
             // 上边距
-            margin: EdgeInsets.only(top: 100),
+            margin: EdgeInsets.only(top: 200),
             child: ElevatedButton(
               style: ButtonStyle(
                   // 微信登录边框
@@ -110,8 +111,8 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  child: Text("手机验证登录",
-                      style: TextStyle(color: Color(0xff8a8a8a))),
+                  child:
+                      Text("验证码登录", style: TextStyle(color: Color(0xff8a8a8a))),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => PhoneLogin1()));
@@ -129,7 +130,7 @@ class Login extends StatelessWidget {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => TextFieldDemo1()));
                     },
-                    child: Text('还没注册？点我注册',
+                    child: Text('点我注册',
                         style: TextStyle(color: Color(0xff8a8a8a))))
               ],
             ),
@@ -149,25 +150,25 @@ class Login extends StatelessWidget {
             ),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            TextButton(
-              child: Image.asset(
-                'assets/images/微信.png',
-                height: 24,
-                width: 24,
-              ),
-              autofocus: true,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(StadiumBorder()),
-                minimumSize: MaterialStateProperty.all(Size(36, 36)),
-                side: MaterialStateProperty.all(
-                    BorderSide(color: Colors.grey, width: 1)),
-              ),
-              onPressed: () {},
-            ),
-            const SizedBox(
-              width: 40.0,
-            ),
+            // TextButton(
+            //   child: Image.asset(
+            //     'assets/images/微信.png',
+            //     height: 24,
+            //     width: 24,
+            //   ),
+            //   autofocus: true,
+            //   style: ButtonStyle(
+            //     backgroundColor: MaterialStateProperty.all(Colors.white),
+            //     shape: MaterialStateProperty.all(StadiumBorder()),
+            //     minimumSize: MaterialStateProperty.all(Size(36, 36)),
+            //     side: MaterialStateProperty.all(
+            //         BorderSide(color: Colors.grey, width: 1)),
+            //   ),
+            //   onPressed: () {},
+            // ),
+            // const SizedBox(
+            //   width: 40.0,
+            // ),
             TextButton(
               child: Image.asset(
                 'assets/images/QQ.png',

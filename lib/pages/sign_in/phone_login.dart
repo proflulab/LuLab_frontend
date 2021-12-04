@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import '../agreement/user_agreement.dart';
 
+//手机验证码登录
 class PhoneLogin1 extends StatelessWidget {
   const PhoneLogin1({Key? key}) : super(key: key);
 

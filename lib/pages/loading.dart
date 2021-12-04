@@ -27,7 +27,6 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   void initState() {
-    // ignore: todo
     // TODO: implement initState
     super.initState();
     countDown();
@@ -54,6 +53,6 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _app() {
-    Navigator.of(context).pushReplacementNamed('/app');
+    Navigator.of(context).pushReplacementNamed('/login');
   }
 }

@@ -4,15 +4,17 @@ import 'course_desc.dart';
 import 'course_comment.dart';
 import 'course_recom.dart';
 
+//import '../../entitys/CourseData.dart';
+
 // import '../../api/apis.dart';
-// import 'package:lulab/entitys/CourseData.dart';
 
 //import 'package:get/get.dart';
 
 /// 课程视频播放页面
 
 class CourseIndexPage extends StatefulWidget {
-  CourseIndexPage({Key? key}) : super(key: key);
+  CourseIndexPage({Key? key, required this.product}) : super(key: key);
+  late final product;
 
   @override
   _CourseIndexPageState createState() => _CourseIndexPageState();
@@ -21,7 +23,7 @@ class CourseIndexPage extends StatefulWidget {
 class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
   //var _focusDataw = Get.arguments;
-
+  late final course = widget.product;
   // 声明tabcontroller和tab标题
   late TabController _tabController;
   List tabs = ["简介", "评价", "推荐"];
@@ -50,8 +52,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
         child: Column(
           children: [
             VideoView(
-              //_focusDataw.videoUrl,
-              'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+              widget.product.videoUrl,
+              //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
               cover:
                   'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
             ),
@@ -80,12 +82,12 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   _buildTabNavigation() {
     //使用Material实现阴影效果
     return Material(
-      elevation: 5,
+      elevation: 10,
       shadowColor: Colors.grey[100],
       child: Container(
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 20),
-        height: 40,
+        height: 50,
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
