@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulab/values/colors.dart';
 
 /// 透明背景 AppBar
 Widget transparentAppBar({
@@ -16,12 +17,12 @@ Widget transparentAppBar({
   );
 }
 
-// /// 10像素 Divider
-// Widget divider10Px({Color bgColor = AppColors.secondaryElement}) {
-//   return Container(
-//     height: 10,
-//     decoration: BoxDecoration(
-//       color: bgColor,
-//     ),
-//   );
-// }
+/// 10像素 Divider
+Widget divider10Px({Color bgColor = AppColors.secondaryElement}) {
+  return Container(
+    height: 10,
+    decoration: BoxDecoration(
+      color: bgColor,
+    ),
+  );
+}

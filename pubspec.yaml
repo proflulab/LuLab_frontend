@@ -36,6 +36,8 @@ dependencies:
   video_player: ^2.2.7
   get: ^4.5.1
 
+  fluttertoast: ^8.0.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -6,7 +6,7 @@ import '../graphql/graphql.dart';
 
 /// 新闻
 class GqlUserAPI {
-  /// 登录
+  // 登录
   // static Future<GqlUserLoginResponseEntity> login({
   //   @required BuildContext context,
   //   @required GqlUserLoginRequestEntity variables,
@@ -22,7 +22,7 @@ class GqlUserAPI {
   // 注册
   static Future<Registered> register({
     required BuildContext context,
-    required Registered variables,
+    required Registeredrequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
         context: context,

@@ -44,3 +44,35 @@ class UserRigister {
         "status": status,
       };
 }
+
+// 用户登录 - request
+Registeredrequest registeredrequestFromJson(String str) =>
+    Registeredrequest.fromJson(json.decode(str));
+
+String registeredrequestToJson(Registeredrequest data) =>
+    json.encode(data.toJson());
+
+class Registeredrequest {
+  Registeredrequest({
+    required this.name,
+    required this.password,
+    required this.ensurePassword,
+  });
+
+  final String name;
+  final String password;
+  final String ensurePassword;
+
+  factory Registeredrequest.fromJson(Map<String, dynamic> json) =>
+      Registeredrequest(
+        name: json["name"],
+        password: json["password"],
+        ensurePassword: json["ensurePassword"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "password": password,
+        "ensurePassword": ensurePassword,
+      };
+}

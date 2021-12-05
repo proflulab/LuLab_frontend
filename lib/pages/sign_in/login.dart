@@ -128,7 +128,7 @@ class Login extends StatelessWidget {
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => TextFieldDemo1()));
+                          builder: (context) => SignUpPage()));
                     },
                     child: Text('点我注册',
                         style: TextStyle(color: Color(0xff8a8a8a))))

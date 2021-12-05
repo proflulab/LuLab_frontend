@@ -1,145 +1,254 @@
 import 'package:flutter/material.dart';
-import '../sign_in/phone_login.dart';
+import '../../widget/widgets.dart';
+import '../../utils/utils.dart';
+import '../../values/values.dart';
+import '../../api/apis.dart';
+import '../../utils/screen.dart';
+import '../../entitys/entitys.dart';
 
-class TextFieldDemo1 extends StatelessWidget {
-  const TextFieldDemo1({Key? key}) : super(key: key);
+class SignUpPage extends StatefulWidget {
+  SignUpPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: TextFieldDemo(),
+  _SignUpPageState createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  // fullName email password 的控制器
+  final TextEditingController _fullnameController =
+      TextEditingController(text: "news");
+  final TextEditingController _emailController =
+      TextEditingController(text: "12345678");
+  final TextEditingController _passController =
+      TextEditingController(text: "12345678");
+
+  // 返回上一页
+  _handleNavPop() {
+    Navigator.pop(context);
+  }
+
+  // 执行注册操作
+  _handleSignUp() async {
+    if (!duCheckStringLength(_fullnameController.value.text, 3)) {
+      toastInfo(msg: '用户名不能小于3位');
+      return;
+    }
+    if (!duCheckStringLength(_emailController.value.text, 6)) {
+      toastInfo(msg: '密码不能小于6位');
+      return;
+    }
+    if (!duCheckStringLength(_passController.value.text, 6)) {
+      toastInfo(msg: '密码不能小于6位');
+      return;
+    }
+
+    Registeredrequest variables = Registeredrequest(
+      name: _fullnameController.value.text,
+      password: _emailController.value.text,
+      ensurePassword: _passController.value.text,
+      // password: duSHA256(_passController.value.text),
+    );
+
+    try {
+      // GqlUserRegisterResponseEntity userProfile =
+      await GqlUserAPI.register(
+        context: context,
+        variables: variables,
+      );
+      toastInfo(msg: '注册成功，返回登录页!');
+    } catch (e) {
+      return toastInfo(msg: '注册失败，请正确输入账号、邮箱!');
+    }
+
+    Navigator.pop(context);
+  }
+
+  // logo
+  Widget _buildLogo() {
+    return Container(
+      margin: EdgeInsets.only(top: duSetHeight(50)),
+      child: Text(
+        "Sign up",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: AppColors.primaryText,
+          fontFamily: "Montserrat",
+          fontWeight: FontWeight.w600,
+          fontSize: duSetFontSize(24),
+          height: 1,
+        ),
+      ),
     );
   }
-}
 
-class TextFieldDemo extends StatefulWidget {
-  TextFieldDemo({Key? key}) : super(key: key);
-
-  @override
-  _TextFieldDemoState createState() => _TextFieldDemoState();
-}
-
-class _TextFieldDemoState extends State<TextFieldDemo> {
-  @override
-  Widget build(BuildContext context) {
+  // 注册表单
+  Widget _buildInputForm() {
     return Container(
-      padding: EdgeInsets.all(20),
+      width: duSetWidth(400),
+      // height: 204,
+      margin: EdgeInsets.only(top: duSetHeight(49)),
       child: Column(
         children: [
-          SizedBox(
-            height: 180,
+          // fullName input
+          inputTextEdit(
+            controller: _fullnameController,
+            keyboardType: TextInputType.text,
+            hintText: "Full name",
+            marginTop: 0,
           ),
-          PhoneWidget(),
-          SizedBox(
-            height: 40,
+          // email input
+          inputTextEdit(
+            controller: _emailController,
+            keyboardType: TextInputType.emailAddress,
+            hintText: "Email",
           ),
-          PasswordWidget(),
-          SizedBox(
-            height: 40,
+          // password input
+          inputTextEdit(
+            controller: _passController,
+            keyboardType: TextInputType.visiblePassword,
+            hintText: "Password",
+            isPassword: true,
           ),
-          PasswordWidget(),
-          SizedBox(
-            height: 40,
+
+          // 创建
+          Container(
+            height: duSetHeight(44),
+            margin: EdgeInsets.only(top: duSetHeight(15)),
+            child: btnFlatButtonWidget(
+              onPressed: _handleSignUp,
+              width: 295,
+              fontWeight: FontWeight.w600,
+              title: "Create an account",
+            ),
           ),
-          _button()
+          // Spacer(),
+
+          // Fogot password
+          Container(
+            height: duSetHeight(22),
+            margin: EdgeInsets.only(top: duSetHeight(20)),
+            child: TextButton(
+              onPressed: _handleSignUp,
+              child: Text(
+                "Fogot password?",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.secondaryElementText,
+                  fontFamily: "Avenir",
+                  fontWeight: FontWeight.w400,
+                  fontSize: duSetFontSize(16),
+                  height: 1, // 设置下行高，否则字体下沉
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
-}
 
-// 账号
-class PhoneWidget extends StatelessWidget {
-  const PhoneWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  // 第三方
+  Widget _buildThirdPartyLogin() {
     return Container(
-        height: 50,
-        width: 300,
-        child: TextField(
-          textAlign: TextAlign.center,
-          autofocus: true,
-          style: TextStyle(
-            color: Color(0x9CFF0000),
+      width: duSetWidth(295),
+      margin: EdgeInsets.only(bottom: duSetHeight(40)),
+      child: Column(
+        children: <Widget>[
+          // title
+          Text(
+            "Or sign in with social networks",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: AppColors.primaryText,
+              fontFamily: "Avenir",
+              fontWeight: FontWeight.w400,
+              fontSize: duSetFontSize(16),
+            ),
           ),
-          keyboardType: TextInputType.phone,
-          decoration: InputDecoration(
-            fillColor: Color(0xBEB8B8B8),
-            filled: true,
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0x00FF0000)),
-                borderRadius: BorderRadius.all(Radius.circular(100))),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0x00FF0000)),
-                borderRadius: BorderRadius.all(Radius.circular(100))),
-            hintText: "账号",
-            //hintStyle:,
+          // 按钮
+          Padding(
+            padding: EdgeInsets.only(top: duSetHeight(20)),
+            child: Row(
+              children: <Widget>[
+                btnFlatButtonBorderOnlyWidget(
+                  onPressed: () {},
+                  width: 88,
+                  iconFileName: "a",
+                ),
+                Spacer(),
+                btnFlatButtonBorderOnlyWidget(
+                  onPressed: () {},
+                  width: 88,
+                  iconFileName: "a",
+                ),
+                Spacer(),
+                btnFlatButtonBorderOnlyWidget(
+                  onPressed: () {},
+                  width: 88,
+                  iconFileName: "a",
+                ),
+              ],
+            ),
           ),
-        ));
-  }
-}
-
-// 密码
-class PasswordWidget extends StatelessWidget {
-  const PasswordWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      obscureText: true,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-        prefixIcon: Icon(Icons.password_sharp),
-        hintText: "请输入密码",
+        ],
       ),
     );
   }
-}
 
-// 注册
-// Widget _buildRegister() {
-//   return Container(
-//     width: 200,
-//     height: 50,
-//     child: ElevatedButton(
-//       onPressed: () {},
-//       child: Text(
-//         "注册",
-//         textAlign: TextAlign.center,
-//         style: TextStyle(
-//           fontSize: 20,
-//           textBaseline: TextBaseline.alphabetic,
-//         ),
-//       ),
-//     ),
-//   );
-// }
-
-Widget _button() {
-  return Container(
-    width: 200,
-    height: 40,
-    child: RawMaterialButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30))),
-      elevation: 5,
-      highlightElevation: 0,
-      fillColor: Colors.blue,
-      splashColor: Colors.orange,
-      textStyle: TextStyle(
-        fontSize: 20,
-        textBaseline: TextBaseline.alphabetic,
+  // 有账号
+  Widget _buildHaveAccountButton() {
+    return Container(
+      margin: EdgeInsets.only(bottom: duSetHeight(20)),
+      child: btnFlatButtonWidget(
+        onPressed: _handleNavPop,
+        width: 294,
+        gbColor: AppColors.secondaryElement,
+        fontColor: AppColors.primaryText,
+        title: "我已经有账号",
+        fontWeight: FontWeight.w500,
+        fontSize: 30,
       ),
-      onLongPress: () {
-        print('onLongPress');
-      },
-      child: Text("注册"),
-      onPressed: () => print('onPressed'),
-    ),
-  );
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: AppColors.primaryText,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.info_outline,
+              color: AppColors.primaryText,
+            ),
+            onPressed: () {
+              toastInfo(msg: '这是注册界面');
+            },
+          )
+        ],
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Divider(height: 1),
+            _buildLogo(),
+            _buildInputForm(),
+            Spacer(),
+            _buildThirdPartyLogin(),
+            _buildHaveAccountButton(),
+          ],
+        ),
+      ),
+    );
+  }
 }
