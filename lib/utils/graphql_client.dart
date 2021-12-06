@@ -25,14 +25,12 @@ class GraphqlClientUtil {
   static Future query({
     required BuildContext? context,
     required String schema,
-    required Map<String, dynamic> nRepositories,
+    required Map<String, dynamic> variables,
     //int nRepositories = 50,
   }) async {
     QueryOptions options = QueryOptions(
       document: gql(schema),
-      variables: <String, dynamic>{
-        'nRepositories': nRepositories,
-      },
+      variables: variables,
     );
 
     QueryResult result = await client().query(options);

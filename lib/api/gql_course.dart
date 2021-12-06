@@ -11,7 +11,7 @@ class GqlCourseAPI {
     required String schema,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-        schema: GQL_COURSE_LIST, context: context, nRepositories: {});
+        schema: GQL_COURSE_LIST, context: context, variables: {});
 
     return PostsData.fromJson(response.data!);
   }

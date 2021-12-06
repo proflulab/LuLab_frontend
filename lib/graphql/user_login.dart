@@ -1,29 +1,19 @@
 // 参数
 
 // {
-//   "identifier": "dbuser",
-//   "password": "12345678"
+//   "name": "da",
+//   "password": "1"
 // }
 
 const String GQL_USER_LOGIN = r'''
 
-mutation UserLogin($identifier: String!, $password: String!) {
-  login(input: { identifier: $identifier, password: $password }) {
-    jwt
-    user {
-      id
-      username
-      email
-      role {
-        id
-        name
-        description
-        type
-      }
-      blocked
-      confirmed
-    }
+query UserLogin($name: String!, $password: String!){
+  userLogin(userInput: {name: $name, password: $password}){
+    status
+    msg
+    data
   }
 }
+
 
 ''';

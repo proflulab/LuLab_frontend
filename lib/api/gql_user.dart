@@ -7,16 +7,16 @@ import '../graphql/graphql.dart';
 /// 新闻
 class GqlUserAPI {
   // 登录
-  // static Future<GqlUserLoginResponseEntity> login({
-  //   @required BuildContext context,
-  //   @required GqlUserLoginRequestEntity variables,
-  // }) async {
-  //   QueryResult response = await GraphqlClientUtil.mutate(
-  //       context: context,
-  //       schema: GQL_USER_LOGIN,
-  //       variables: variables.toJson());
-  //   return GqlUserLoginResponseEntity.fromJson(response.data["login"]);
-  // }
+  static Future<UserLogin> login({
+    required BuildContext context,
+    required Loginrequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.mutate(
+        context: context,
+        schema: GQL_USER_LOGIN,
+        variables: variables.toJson());
+    return UserLogin.fromJson(response.data!["userLogin"]);
+  }
 
   // 注册
 

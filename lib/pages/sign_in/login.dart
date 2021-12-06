@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'LoginPage.dart';
-import 'password_login.dart';
+//import 'password_login.dart';
 import 'phone_login.dart';
 import '../sign_up/register.dart';
+import 'sign_in.dart';
 
 //微信登录，手机一键登录
 class Login1 extends StatelessWidget {
@@ -122,8 +123,10 @@ class Login extends StatelessWidget {
                     child: Text("账号密码登录",
                         style: TextStyle(color: Color(0xff8a8a8a))),
                     onPressed: () {
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => VerifyCodeLogin1()));
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => VerifyCodeLogin1()));
+                          builder: (context) => SignInPage()));
                     }),
                 TextButton(
                     onPressed: () {
