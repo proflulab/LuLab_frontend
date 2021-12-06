@@ -15,12 +15,12 @@ class GqlUserAPI {
   //       context: context,
   //       schema: GQL_USER_LOGIN,
   //       variables: variables.toJson());
-
   //   return GqlUserLoginResponseEntity.fromJson(response.data["login"]);
   // }
 
   // 注册
-  static Future<Registered> register({
+
+  static Future<UserRigister> register({
     required BuildContext context,
     required Registeredrequest variables,
   }) async {
@@ -29,6 +29,6 @@ class GqlUserAPI {
         schema: GQL_USER_REGISTER,
         variables: variables.toJson());
 
-    return Registered.fromJson(response.data!["register"]);
+    return UserRigister.fromJson(response.data!["userRigister"]);
   }
 }

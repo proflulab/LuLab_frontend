@@ -16,7 +16,7 @@ Widget inputTextEdit({
     height: 50,
     margin: EdgeInsets.only(top: duSetHeight(marginTop)),
     decoration: BoxDecoration(
-      color: Colors.blue,
+      color: Colors.white,
       borderRadius: Radii.k6pxRadius,
     ),
     child: TextField(

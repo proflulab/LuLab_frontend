@@ -1,9 +1,6 @@
-// To parse this JSON data, do
-//
-//     final registered = registeredFromJson(jsonString);
-
 import 'dart:convert';
 
+// 注册新用户 - response
 Registered registeredFromJson(String str) =>
     Registered.fromJson(json.decode(str));
 

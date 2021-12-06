@@ -17,7 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   // fullName email password 的控制器
   final TextEditingController _fullnameController =
       TextEditingController(text: "news");
-  final TextEditingController _emailController =
+  final TextEditingController _passController1 =
       TextEditingController(text: "12345678");
   final TextEditingController _passController =
       TextEditingController(text: "12345678");
@@ -33,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
       toastInfo(msg: '用户名不能小于3位');
       return;
     }
-    if (!duCheckStringLength(_emailController.value.text, 6)) {
+    if (!duCheckStringLength(_passController1.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
     }
@@ -41,23 +41,30 @@ class _SignUpPageState extends State<SignUpPage> {
       toastInfo(msg: '密码不能小于6位');
       return;
     }
-
+    if ('${_passController1.value.text}' != '${_passController.value.text}') {
+      toastInfo(msg: '两次密码不一样');
+      return;
+    }
     Registeredrequest variables = Registeredrequest(
       name: _fullnameController.value.text,
-      password: _emailController.value.text,
+      password: _passController1.value.text,
       ensurePassword: _passController.value.text,
       // password: duSHA256(_passController.value.text),
     );
 
+    //print(variables.name);
     try {
-      // GqlUserRegisterResponseEntity userProfile =
+      //GqlUserRegisterResponseEntity userProfile =
       await GqlUserAPI.register(
         context: context,
         variables: variables,
       );
+
       toastInfo(msg: '注册成功，返回登录页!');
     } catch (e) {
-      return toastInfo(msg: '注册失败，请正确输入账号、邮箱!');
+      print("打印错误信息");
+      print(e);
+      return toastInfo(msg: '注册失败，请正确输入账号、密码!');
     }
 
     Navigator.pop(context);
@@ -68,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Container(
       margin: EdgeInsets.only(top: duSetHeight(50)),
       child: Text(
-        "Sign up",
+        "注册",
         textAlign: TextAlign.center,
         style: TextStyle(
           color: AppColors.primaryText,
@@ -93,20 +100,21 @@ class _SignUpPageState extends State<SignUpPage> {
           inputTextEdit(
             controller: _fullnameController,
             keyboardType: TextInputType.text,
-            hintText: "Full name",
+            hintText: "账号",
             marginTop: 0,
           ),
-          // email input
+          // password input
           inputTextEdit(
-            controller: _emailController,
+            controller: _passController1,
             keyboardType: TextInputType.emailAddress,
-            hintText: "Email",
+            hintText: "输入密码",
+            isPassword: true,
           ),
           // password input
           inputTextEdit(
             controller: _passController,
             keyboardType: TextInputType.visiblePassword,
-            hintText: "Password",
+            hintText: "确认密码",
             isPassword: true,
           ),
 
@@ -118,7 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
               onPressed: _handleSignUp,
               width: 295,
               fontWeight: FontWeight.w600,
-              title: "Create an account",
+              title: "创建新账户",
             ),
           ),
           // Spacer(),
@@ -130,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
             child: TextButton(
               onPressed: _handleSignUp,
               child: Text(
-                "Fogot password?",
+                "忘记密码?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: AppColors.secondaryElementText,

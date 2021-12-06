@@ -52,13 +52,12 @@ class GraphqlClientUtil {
     required String schema,
     required Map<String, dynamic> variables,
   }) async {
-    QueryOptions options = QueryOptions(
+    MutationOptions options = MutationOptions(
       document: gql(schema),
       variables: variables,
     );
 
     QueryResult result = await client().mutate(options);
-
     if (result.hasException) {
       print(result.exception.toString());
       //toastInfo(msg: result.exception.toString());

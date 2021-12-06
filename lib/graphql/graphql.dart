@@ -1,4 +1,4 @@
 library schema;
 
-export 'Course_content.dart';
+export 'course_content.dart';
 export 'user_register.dart';
