@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         designSize: Size(750, 1334), //配置设计稿的宽度高度
         builder: () => GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            title: "陆向谦Lab",
+            title: "陆向谦实验室",
             theme: mDefaultTheme,
             initialRoute: '/',
             //getPages: AppPages.routes,

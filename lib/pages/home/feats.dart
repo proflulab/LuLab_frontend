@@ -21,27 +21,33 @@ class _FeatsPageState extends State<FeatsPage> {
           //color: Colors.black12,
           ),
       child: ListView.builder(
+        itemCount: 10,
         itemBuilder: (contxt, index) {
-          return Row(
+          return Column(
             children: [
-              //SizedBox(height: 150),
               Container(
-                height: 120,
+                height: 170,
                 width: widgetwidth,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                  //border: Border.all(color: Colors.black54),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(0),
+                  ),
+                  border: Border.all(color: Colors.black54),
                 ),
                 margin: EdgeInsets.only(top: 10),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
                       top: 10,
-                      left: 10,
+                      right: 10,
                       child: Container(
-                        height: 100,
-                        width: 100,
+                        height: 150,
+                        width: 140,
+                        color: Colors.red,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12.0),
                           child: Image.network(
@@ -51,7 +57,7 @@ class _FeatsPageState extends State<FeatsPage> {
                     ),
                     Positioned(
                       top: 10,
-                      left: 130,
+                      left: 10,
                       child: Container(
                         height: 20,
                         child: Text(
@@ -64,7 +70,7 @@ class _FeatsPageState extends State<FeatsPage> {
                     ),
                     Positioned(
                       top: 35,
-                      left: 130,
+                      left: 10,
                       child: Container(
                         height: 40,
                         width: 200,
@@ -76,31 +82,86 @@ class _FeatsPageState extends State<FeatsPage> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 80,
-                      left: 130,
-                      child: Container(
-                        height: 20,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                        ),
-                        child: Text(
-                          '213次观看',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Positioned(
+                    //   top: 80,
+                    //   left: 10,
+                    //   child: Container(
+                    //     height: 20,
+                    //     width: 60,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.grey,
+                    //     ),
+                    //     child: Text(
+                    //       '213次观看',
+                    //       style: TextStyle(
+                    //         fontSize: 12,
+                    //         color: Colors.white,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
+              Container(
+                  height: 80,
+                  width: widgetwidth,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(0),
+                      topRight: Radius.circular(0),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100,
+                          height: 40,
+                          color: Colors.green,
+                          child: InkWell(
+                            onTap: () {
+                              print("进入主页");
+                            },
+                            child: Text("他的主页"),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 0,
+                        child: Container(
+                          height: 70,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  left: BorderSide(
+                            color: Colors.grey,
+                            width: 5,
+                          ))),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100,
+                          height: 40,
+                          color: Colors.green,
+                          child: InkWell(
+                            onTap: () {
+                              print("关注他");
+                            },
+                            child: Text("关注他"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ))
             ],
           );
         },
-        itemCount: 10,
       ),
     );
   }

@@ -40,7 +40,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -64,7 +64,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -88,7 +88,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -112,7 +112,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -136,7 +136,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -160,7 +160,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -184,7 +184,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -208,7 +208,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -232,7 +232,7 @@ class _CourseRecomState extends State<CourseRecom> {
               child: ListTile(
                 leading: Container(
                   width: 100,
-                  child: Image.asset('assets/images/a.png'),
+                  child: Image.asset('assets/images/logo.png'),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffc3c3c3)),
                     borderRadius: BorderRadius.all(Radius.circular(5)),

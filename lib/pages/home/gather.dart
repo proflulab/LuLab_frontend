@@ -167,7 +167,7 @@ class _GatherState extends State<Gather> {
             // 课程图片
             width: 100,
             height: 150,
-            child: Image.asset('assets/images/a.png'),
+            child: Image.asset('assets/images/logo.png'),
           ),
           Container(
             // 课程标题
@@ -214,7 +214,7 @@ class _GatherState extends State<Gather> {
       child: ListTile(
         leading: Container(
           width: 100,
-          child: Image.asset('assets/images/a.png'),
+          child: Image.asset('assets/images/logo.png'),
           decoration: BoxDecoration(
             border: Border.all(color: Color(0xffc3c3c3)),
             borderRadius: BorderRadius.all(Radius.circular(5)),

@@ -66,8 +66,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     child: Container(
                       height: 105,
                       width: 105,
-                      child:
-                          ClipRRect(child: Image.asset('assets/images/a.png')),
+                      child: ClipRRect(
+                          child: Image.asset('assets/images/logo.png')),
                     ),
                   ),
                   Positioned(

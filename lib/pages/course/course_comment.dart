@@ -105,7 +105,7 @@ class _CourseCommentState extends State<CourseComment> {
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 3),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage('assets/images/a.png'),
+          backgroundImage: AssetImage('assets/images/logo.png'),
         ),
         title: Column(
           children: [
