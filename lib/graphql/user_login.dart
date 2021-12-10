@@ -7,11 +7,17 @@
 
 const String GQL_USER_LOGIN = r'''
 
-query UserLogin($name: String!, $password: String!){
-  userLogin(userInput: {name: $name, password: $password}){
+query UserLogin($name: String!, $password: String!) {
+  userLogin(userInput: {name: $name, password: $password}) {
     status
     msg
-    data
+    data {
+      name
+      password
+      img
+      wechat
+      phone
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import 'course_recom.dart';
 //import 'package:graphql/client.dart';
 //import '../../entitys/CourseData.dart';
 import '../../api/apis.dart';
-import 'package:lulab/entitys/CourseData.dart';
+import 'package:lulab/entitys/course_data.dart';
 
 /// 课程视频播放页面
 

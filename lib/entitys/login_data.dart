@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 // 用户登录 - response
+
 Loginresponse loginresponseFromJson(String str) =>
     Loginresponse.fromJson(json.decode(str));
 
@@ -31,18 +32,50 @@ class UserLogin {
 
   final String status;
   final String msg;
-  final String data;
+  final Data data;
 
   factory UserLogin.fromJson(Map<String, dynamic> json) => UserLogin(
         status: json["status"],
         msg: json["msg"],
-        data: json["data"],
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "msg": msg,
-        "data": data,
+        "data": data.toJson(),
+      };
+}
+
+class Data {
+  Data({
+    required this.name,
+    required this.password,
+    required this.img,
+    required this.wechat,
+    required this.phone,
+  });
+
+  final String name;
+  final String password;
+  final dynamic img;
+  final dynamic wechat;
+  final dynamic phone;
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        name: json["name"],
+        password: json["password"],
+        img: json["img"],
+        wechat: json["wechat"],
+        phone: json["phone"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "password": password,
+        "img": img,
+        "wechat": wechat,
+        "phone": phone,
       };
 }
 

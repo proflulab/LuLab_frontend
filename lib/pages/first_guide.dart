@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../utils/utils.dart';
 
 class FirstGuidePage extends StatelessWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
@@ -21,11 +22,6 @@ class FirstGuide extends StatefulWidget {
 
 class _FirstGuideState extends State<FirstGuide> {
   int _currIndex = 0;
-
-  _guideData() async {
-    var prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Key_Int', 1);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +67,7 @@ class _FirstGuideState extends State<FirstGuide> {
           child: ElevatedButton(
             child: Text('立即体验'),
             onPressed: () {
-              _guideData();
+              Storage.setInt('Key_Int', 1);
               Navigator.of(context).pushReplacementNamed('/login');
             } // 去首页路由
             ,

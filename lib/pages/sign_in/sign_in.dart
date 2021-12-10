@@ -6,6 +6,7 @@ import '../../api/apis.dart';
 import '../../utils/screen.dart';
 import '../../entitys/entitys.dart';
 import '../../app.dart';
+import '../../global.dart';
 
 class SignInPage extends StatefulWidget {
   SignInPage({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _SignInPageState extends State<SignInPage> {
     //   toastInfo(msg: '请正确输入邮件');
     //   return;
     // }
+
     if (!duCheckStringLength(_passController.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
@@ -49,8 +51,13 @@ class _SignInPageState extends State<SignInPage> {
         context: context,
         variables: variables,
       );
-      //Global.saveProfile(userProfile);
+      Global.saveProfile(userProfile);
+
+      Storage.getString(STORAGE_USER_PROFILE_KEY).then((guide) {
+        print(guide);
+      });
     } catch (e) {
+      print("===========登录报错===============");
       print(e);
       return toastInfo(msg: '请正确输入账号、密码！');
     }

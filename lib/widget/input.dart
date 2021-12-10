@@ -12,11 +12,11 @@ Widget inputTextEdit({
   bool autofocus = false,
 }) {
   return Container(
-    width: 300,
+    width: 400,
     height: 50,
     margin: EdgeInsets.only(top: duSetHeight(marginTop)),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: Colors.grey,
       borderRadius: Radii.k6pxRadius,
     ),
     child: TextField(
@@ -32,7 +32,7 @@ Widget inputTextEdit({
         color: AppColors.primaryText,
         fontFamily: "Avenir",
         fontWeight: FontWeight.w400,
-        fontSize: duSetFontSize(18),
+        fontSize: duSetFontSize(35),
       ),
       maxLines: 1,
       autocorrect: false, // 自动纠正

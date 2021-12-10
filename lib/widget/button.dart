@@ -19,10 +19,9 @@ Widget btnFlatButtonWidget({
     height: duSetHeight(height),
     child: TextButton(
       onPressed: onPressed,
-      // color: gbColor,
-      // shape: RoundedRectangleBorder(
-      //   borderRadius: Radii.k6pxRadius,
-      // ),
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.grey,
+      ),
       child: Text(
         title,
         textAlign: TextAlign.center,

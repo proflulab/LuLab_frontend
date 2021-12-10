@@ -9,7 +9,6 @@ Widget combotton({
   return GestureDetector(
       onTap: onPressed,
       child: Container(
-          //color: Colors.redAccent,
           child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

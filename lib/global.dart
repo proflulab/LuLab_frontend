@@ -1,23 +1,31 @@
-import 'dart:io';
+//import 'dart:io';
 
-// //import 'package:device_info/device_info.dart';
+//import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
-// import '../../entitys/entitys.dart';
-// //import '../../provider/provider.dart';
-// import '../../utils/utils.dart';
-// import '../../values/values.dart';
-// //import 'package:package_info/package_info.dart';
+import '../../entitys/entitys.dart';
+//import '../../provider/provider.dart';
+import '../../utils/utils.dart';
+import '../../values/values.dart';
+//import 'package:package_info/package_info.dart';
 
 /// 全局配置
 class Global {
   /// 用户配置
-  //static GqlUserLoginResponseEntity profile = GqlUserLoginResponseEntity();
+  static UserLogin profile = UserLogin(
+      msg: '',
+      status: '',
+      data: Data(
+          name: 'name',
+          password: 'password',
+          img: "img",
+          wechat: "wechat",
+          phone: 'phone'));
 
   /// 发布渠道
-  static String channel = "xiaomi";
+  // static String channel = "xiaomi";
 
-  /// 是否 ios
-  static bool isIOS = Platform.isIOS;
+  // /// 是否 ios
+  // static bool isIOS = Platform.isIOS;
 
   /// android 设备信息
   //static AndroidDeviceInfo androidDeviceInfo;
@@ -29,16 +37,16 @@ class Global {
   //static PackageInfo packageInfo;
 
   /// 是否第一次打开
-  static bool isFirstOpen = false;
+  // static bool isFirstOpen = false;
 
   /// 是否离线登录
-  static bool isOfflineLogin = false;
+  // static bool isOfflineLogin = false;
 
   /// 应用状态,
   //static AppState appState = AppState();
 
   /// 是否 release
-  static bool get isRelease => bool.fromEnvironment("dart.vm.product");
+  // static bool get isRelease => bool.fromEnvironment("dart.vm.product");
 
   /// init
   static Future init() async {
@@ -82,9 +90,8 @@ class Global {
   }
 
   // 持久化 用户信息
-  // static Future<bool> saveProfile(GqlUserLoginResponseEntity userResponse) {
-  //   profile = userResponse;
-  //   return StorageUtil()
-  //       .setJSON(STORAGE_USER_PROFILE_KEY, userResponse.toJson());
-  // }
+  static Future<bool?> saveProfile(UserLogin userResponse) {
+    profile = userResponse;
+    return Storage.setJson(STORAGE_USER_PROFILE_KEY, userResponse.toJson());
+  }
 }

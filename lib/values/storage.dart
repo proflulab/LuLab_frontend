@@ -1,24 +1,8 @@
-import 'package:shared_preferences/shared_preferences.dart';
+/// 用户 - 配置信息
+const String STORAGE_USER_PROFILE_KEY = 'user_profile';
 
-class Storage {
-  static Future<void> setString(key, value) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.setString(key, value);
-  }
+/// 设备是否第一次打开
+const String STORAGE_DEVICE_ALREADY_OPEN_KEY = 'device_already_open';
 
-  //新版shared_preferences增加了可空类型 ，返回类型需要定义成 Future<String?> 的可空类型
-  static Future<String?> getString(key) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    return sp.getString(key);
-  }
-
-  static Future<void> remove(key) async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.remove(key);
-  }
-
-  static Future<void> clear() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.clear();
-  }
-}
+// /// 首页新闻cacheKey
+// const String STORAGE_INDEX_NEWS_CACHE_KEY = 'cache_index_news';

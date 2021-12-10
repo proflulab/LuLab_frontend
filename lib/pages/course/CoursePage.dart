@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../values/screenAdapter.dart';
 
 import '../../api/apis.dart';
-import '../../entitys/CourseData.dart';
+import '../../entitys/course_data.dart';
 import 'course_index.dart';
 
 //import 'package:get/get.dart';

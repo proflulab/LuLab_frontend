@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
         textAlign: TextAlign.center,
         style: TextStyle(
           color: AppColors.primaryText,
-          fontFamily: "Montserrat",
+          //fontFamily: "Montserrat",
           fontWeight: FontWeight.w600,
           fontSize: duSetFontSize(24),
           height: 1,
@@ -106,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
           // password input
           inputTextEdit(
             controller: _passController1,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.visiblePassword,
             hintText: "输入密码",
             isPassword: true,
           ),
@@ -131,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           // Spacer(),
 
-          // Fogot password
+          // 忘记密码
           Container(
             height: duSetHeight(22),
             margin: EdgeInsets.only(top: duSetHeight(20)),
