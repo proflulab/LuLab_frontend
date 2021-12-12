@@ -49,10 +49,6 @@ Widget btnFlatButtonBorderOnlyWidget({
     height: duSetHeight(height),
     child: TextButton(
       onPressed: onPressed,
-      // shape: RoundedRectangleBorder(
-      //   side: Borders.primaryBorder,
-      //   borderRadius: Radii.k6pxRadius,
-      // ),
       child: Image.asset(
         "assets/images/$iconFileName.png",
       ),

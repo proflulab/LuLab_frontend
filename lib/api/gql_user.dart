@@ -4,7 +4,6 @@ import '../utils/utils.dart';
 import '../entitys/entitys.dart';
 import '../graphql/graphql.dart';
 
-/// 新闻
 class GqlUserAPI {
   // 登录
   static Future<UserLogin> login({
@@ -19,7 +18,6 @@ class GqlUserAPI {
   }
 
   // 注册
-
   static Future<UserRigister> register({
     required BuildContext context,
     required Registeredrequest variables,
@@ -30,5 +28,18 @@ class GqlUserAPI {
         variables: variables.toJson());
 
     return UserRigister.fromJson(response.data!["userRigister"]);
+  }
+
+  // 个人信息更新
+  static Future<UserUpdateresponse> userup({
+    required BuildContext context,
+    required UserUpdaterequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.mutate(
+        context: context,
+        schema: GQL_USER_UPDATE,
+        variables: variables.toJson());
+
+    return UserUpdateresponse.fromJson(response.data!);
   }
 }

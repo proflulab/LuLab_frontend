@@ -54,13 +54,17 @@ class Data {
     required this.img,
     required this.wechat,
     required this.phone,
+    required this.sex,
+    required this.description,
   });
 
   final String name;
   final String password;
-  final dynamic img;
-  final dynamic wechat;
-  final dynamic phone;
+  final String img;
+  final String wechat;
+  final String phone;
+  final String sex;
+  final dynamic description;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         name: json["name"],
@@ -68,6 +72,8 @@ class Data {
         img: json["img"],
         wechat: json["wechat"],
         phone: json["phone"],
+        sex: json["sex"],
+        description: json["description"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,6 +82,8 @@ class Data {
         "img": img,
         "wechat": wechat,
         "phone": phone,
+        "sex": sex,
+        "description": description,
       };
 }
 

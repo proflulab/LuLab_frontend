@@ -11,6 +11,7 @@ class MyIcon {
   static const IconData icon_dyvmsyuyinfuwu =
       IconData(0xe6e8, fontFamily: _family);
 
+  //导航栏图标
   static const IconData nav_icon_home_selected =
       IconData(0xe603, fontFamily: _family);
   static const IconData nav_icon_home_default =
@@ -30,4 +31,22 @@ class MyIcon {
       IconData(0xe60e, fontFamily: _family);
   static const IconData nav_icon_user_default =
       IconData(0xe60a, fontFamily: _family);
+
+  //我的页面图标
+
+  static const IconData user_scan = IconData(0xe829, fontFamily: _family);
+  static const IconData user_setting = IconData(0xe829, fontFamily: _family);
+
+  static const IconData user_buy = IconData(0xe61b, fontFamily: _family);
+  static const IconData user_download = IconData(0xe61a, fontFamily: _family);
+  static const IconData user_collect = IconData(0xe829, fontFamily: _family);
+  static const IconData user_history = IconData(0xe61c, fontFamily: _family);
+  static const IconData user_vip = IconData(0xe61e, fontFamily: _family);
+
+  static const IconData user_right = IconData(0xe61d, fontFamily: _family);
+  static const IconData user_phone = IconData(0xe62a, fontFamily: _family);
+  static const IconData user_online = IconData(0xe622, fontFamily: _family);
+  static const IconData user_help = IconData(0xe629, fontFamily: _family);
+  static const IconData user_cooperation =
+      IconData(0xe61f, fontFamily: _family);
 }

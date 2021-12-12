@@ -53,9 +53,10 @@ class _SignInPageState extends State<SignInPage> {
       );
       Global.saveProfile(userProfile);
 
-      Storage.getString(STORAGE_USER_PROFILE_KEY).then((guide) {
-        print(guide);
-      });
+      // Storage.getString(STORAGE_USER_PROFILE_KEY).then((guide) {
+      //   print(guide);
+      // });
+
     } catch (e) {
       print("===========登录报错===============");
       print(e);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lulab/values/myIcon.dart';
 import 'pages/home/homePage.dart';
-import 'pages/course/CoursePage.dart';
-import 'pages/users/UsersPage.dart';
+import 'pages/course/coursePage.dart';
+import 'pages/users/userspage.dart';
 import 'pages/voicePage.dart';
 import 'pages/informationPage.dart';
 

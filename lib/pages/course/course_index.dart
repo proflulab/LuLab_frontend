@@ -4,12 +4,6 @@ import 'course_desc.dart';
 import 'course_comment.dart';
 import 'course_recom.dart';
 
-//import '../../entitys/CourseData.dart';
-
-// import '../../api/apis.dart';
-
-//import 'package:get/get.dart';
-
 /// 课程视频播放页面
 
 class CourseIndexPage extends StatefulWidget {
@@ -22,7 +16,6 @@ class CourseIndexPage extends StatefulWidget {
 
 class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
-  //var _focusDataw = Get.arguments;
   late final course = widget.product;
   // 声明tabcontroller和tab标题
   late TabController _tabController;
@@ -61,7 +54,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
             _buildTabNavigation(),
             Flexible(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 0),
                 child: TabBarView(
                   controller: _tabController,
                   children: [

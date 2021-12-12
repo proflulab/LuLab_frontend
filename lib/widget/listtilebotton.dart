@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lulab/values/myIcon.dart';
 
 Widget listtilebotton({
   required BuildContext context,
@@ -8,13 +9,12 @@ Widget listtilebotton({
 }) {
   return Container(
     margin: EdgeInsets.only(left: 20, right: 20),
-    //color: Colors.red,
+    color: Colors.white,
     child: ListTile(
       leading: icon,
-      //selected:,
       title: Text(bottomname),
       contentPadding: EdgeInsets.all(0),
-      trailing: Icon(Icons.arrow_right_alt_sharp),
+      trailing: Icon(MyIcon.user_right),
       onTap: onPressed,
     ),
   );

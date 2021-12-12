@@ -17,6 +17,8 @@ query UserLogin($name: String!, $password: String!) {
       img
       wechat
       phone
+      sex
+      description
     }
   }
 }

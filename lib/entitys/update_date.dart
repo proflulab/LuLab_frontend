@@ -58,6 +58,8 @@ class UserUpdaterequest {
     required this.sex,
     required this.img,
     required this.description,
+    required this.wechat,
+    required this.phone,
   });
 
   final String name;
@@ -65,6 +67,8 @@ class UserUpdaterequest {
   final String sex;
   final String img;
   final String description;
+  final String wechat;
+  final String phone;
 
   factory UserUpdaterequest.fromJson(Map<String, dynamic> json) =>
       UserUpdaterequest(
@@ -73,6 +77,8 @@ class UserUpdaterequest {
         sex: json["sex"],
         img: json["img"],
         description: json["description"],
+        wechat: json["wechat"],
+        phone: json["phone"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -81,5 +87,7 @@ class UserUpdaterequest {
         "sex": sex,
         "img": img,
         "description": description,
+        "wechat": wechat,
+        "phone": phone,
       };
 }
