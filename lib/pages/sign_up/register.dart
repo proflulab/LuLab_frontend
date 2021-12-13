@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widget/widgets.dart';
 import '../../utils/utils.dart';
-import '../../values/values.dart';
+//import '../../values/values.dart';
 import '../../api/apis.dart';
 import '../../utils/screen.dart';
 import '../../entitys/entitys.dart';
@@ -22,10 +22,10 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passController =
       TextEditingController(text: "12345678");
 
-  // 返回上一页
-  _handleNavPop() {
-    Navigator.pop(context);
-  }
+  // // 返回上一页
+  // _handleNavPop() {
+  //   Navigator.pop(context);
+  // }
 
   // 执行注册操作
   _handleSignUp() async {
@@ -54,7 +54,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
     //print(variables.name);
     try {
-      //GqlUserRegisterResponseEntity userProfile =
       await GqlUserAPI.register(
         context: context,
         variables: variables,
@@ -70,151 +69,56 @@ class _SignUpPageState extends State<SignUpPage> {
     Navigator.pop(context);
   }
 
-  // logo
-  Widget _buildLogo() {
-    return Container(
-      margin: EdgeInsets.only(top: duSetHeight(50)),
-      child: Text(
-        "注册",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: AppColors.primaryText,
-          //fontFamily: "Montserrat",
-          fontWeight: FontWeight.w600,
-          fontSize: duSetFontSize(24),
-          height: 1,
-        ),
-      ),
-    );
-  }
-
   // 注册表单
   Widget _buildInputForm() {
     return Container(
-      width: duSetWidth(400),
+      //width: 622,
       // height: 204,
-      margin: EdgeInsets.only(top: duSetHeight(49)),
+      margin: EdgeInsets.only(top: fitHeight(100)),
       child: Column(
         children: [
-          // fullName input
+          // 用户名
           inputTextEdit(
             controller: _fullnameController,
             keyboardType: TextInputType.text,
             hintText: "账号",
             marginTop: 0,
+            width: 622,
+            height: 112,
           ),
-          // password input
+          // 输入密码
           inputTextEdit(
             controller: _passController1,
             keyboardType: TextInputType.visiblePassword,
             hintText: "输入密码",
             isPassword: true,
+            marginTop: 48,
+            width: 622,
+            height: 112,
           ),
-          // password input
+          // 确认密码
           inputTextEdit(
             controller: _passController,
             keyboardType: TextInputType.visiblePassword,
             hintText: "确认密码",
             isPassword: true,
+            marginTop: 48,
+            width: 622,
+            height: 112,
           ),
 
-          // 创建
+          // 注册
           Container(
-            height: duSetHeight(44),
-            margin: EdgeInsets.only(top: duSetHeight(15)),
+            margin: EdgeInsets.only(top: fitHeight(15)),
             child: btnFlatButtonWidget(
               onPressed: _handleSignUp,
-              width: 295,
+              width: 622,
+              height: 112,
               fontWeight: FontWeight.w600,
-              title: "创建新账户",
-            ),
-          ),
-          // Spacer(),
-
-          // 忘记密码
-          Container(
-            height: duSetHeight(22),
-            margin: EdgeInsets.only(top: duSetHeight(20)),
-            child: TextButton(
-              onPressed: _handleSignUp,
-              child: Text(
-                "忘记密码?",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.secondaryElementText,
-                  fontFamily: "Avenir",
-                  fontWeight: FontWeight.w400,
-                  fontSize: duSetFontSize(16),
-                  height: 1, // 设置下行高，否则字体下沉
-                ),
-              ),
+              title: "注册",
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  // 第三方
-  Widget _buildThirdPartyLogin() {
-    return Container(
-      width: duSetWidth(295),
-      margin: EdgeInsets.only(bottom: duSetHeight(40)),
-      child: Column(
-        children: <Widget>[
-          // title
-          Text(
-            "Or sign in with social networks",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontFamily: "Avenir",
-              fontWeight: FontWeight.w400,
-              fontSize: duSetFontSize(16),
-            ),
-          ),
-          // 按钮
-          Padding(
-            padding: EdgeInsets.only(top: duSetHeight(20)),
-            child: Row(
-              children: <Widget>[
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "a",
-                ),
-                Spacer(),
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "a",
-                ),
-                Spacer(),
-                btnFlatButtonBorderOnlyWidget(
-                  onPressed: () {},
-                  width: 88,
-                  iconFileName: "a",
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // 有账号
-  Widget _buildHaveAccountButton() {
-    return Container(
-      margin: EdgeInsets.only(bottom: duSetHeight(20)),
-      child: btnFlatButtonWidget(
-        onPressed: _handleNavPop,
-        width: 294,
-        gbColor: AppColors.secondaryElement,
-        fontColor: AppColors.primaryText,
-        title: "我已经有账号",
-        fontWeight: FontWeight.w500,
-        fontSize: 30,
       ),
     );
   }
@@ -222,38 +126,12 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: AppColors.primaryText,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.info_outline,
-              color: AppColors.primaryText,
-            ),
-            onPressed: () {
-              toastInfo(msg: '这是注册界面');
-            },
-          )
-        ],
-      ),
       body: Center(
         child: Column(
           children: <Widget>[
-            Divider(height: 1),
-            _buildLogo(),
+            Divider(height: 100.h),
             _buildInputForm(),
             Spacer(),
-            _buildThirdPartyLogin(),
-            _buildHaveAccountButton(),
           ],
         ),
       ),

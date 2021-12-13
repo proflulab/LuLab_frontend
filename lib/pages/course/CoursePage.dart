@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../values/screenAdapter.dart';
+import 'package:lulab/utils/screen.dart';
 
 import '../../api/apis.dart';
 import '../../entitys/course_data.dart';
@@ -163,7 +162,7 @@ class _CoursePageState extends State<CoursePage> {
                           //Navigator.pushNamed(context, '/course');
                         },
                         child: Container(
-                          height: ScreenAdapter.height(170),
+                          height: fitScreenHeight(170),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:

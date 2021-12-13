@@ -11,7 +11,7 @@ class MyIcon {
   static const IconData icon_dyvmsyuyinfuwu =
       IconData(0xe6e8, fontFamily: _family);
 
-  //导航栏图标
+  //导航栏icon
   static const IconData nav_icon_home_selected =
       IconData(0xe603, fontFamily: _family);
   static const IconData nav_icon_home_default =
@@ -32,7 +32,7 @@ class MyIcon {
   static const IconData nav_icon_user_default =
       IconData(0xe60a, fontFamily: _family);
 
-  //我的页面图标
+  //我的页面icon
 
   static const IconData user_scan = IconData(0xe829, fontFamily: _family);
   static const IconData user_setting = IconData(0xe829, fontFamily: _family);

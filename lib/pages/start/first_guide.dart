@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/utils.dart';
+import '../../utils/utils.dart';
 
 class FirstGuidePage extends StatelessWidget {
   const FirstGuidePage({Key? key}) : super(key: key);

@@ -1,7 +1,6 @@
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:flutter/material.dart';
-
-import '../../values/screenAdapter.dart';
+import 'package:lulab/utils/utils.dart';
 
 class Gather extends StatefulWidget {
   Gather({Key? key}) : super(key: key);
@@ -72,14 +71,14 @@ class _GatherState extends State<Gather> {
 
   Widget _titleWidget(value) {
     return Container(
-      height: ScreenAdapter.height(32),
-      margin: EdgeInsets.only(left: ScreenAdapter.width(20)),
-      padding: EdgeInsets.only(left: ScreenAdapter.width(20)),
+      height: fitHeight(32),
+      margin: EdgeInsets.only(left: fitWidth(20)),
+      padding: EdgeInsets.only(left: fitWidth(20)),
       decoration: BoxDecoration(
           border: Border(
               left: BorderSide(
         color: Colors.blue,
-        width: ScreenAdapter.width(20),
+        width: fitWidth(20),
       ))),
       child: Text(
         value,
@@ -123,14 +122,14 @@ class _GatherState extends State<Gather> {
     return ListView(
       children: <Widget>[
         _swiperWidget(),
-        SizedBox(height: ScreenAdapter.height(20)),
+        SizedBox(height: fitHeight(20)),
         _titleWidget("课程预约"),
-        SizedBox(height: ScreenAdapter.height(20)),
+        SizedBox(height: fitHeight(20)),
         _hotProductListWidget(),
-        SizedBox(height: ScreenAdapter.height(20)),
+        SizedBox(height: fitHeight(20)),
         _titleWidget("免费体验"),
         _buildFreeCourse(),
-        SizedBox(height: ScreenAdapter.height(20)),
+        SizedBox(height: fitHeight(20)),
         _titleWidget("精彩课程"),
         buildWonderCourse(),
       ],

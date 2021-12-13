@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import '../agreement/user_agreement.dart';
+import '../agreement/agreement_use.dart';
 
 //二级见面手机一键登录
 class LoginPage extends StatefulWidget {

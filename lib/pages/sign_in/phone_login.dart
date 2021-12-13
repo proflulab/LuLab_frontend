@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import '../agreement/user_agreement.dart';
+import '../agreement/agreement_use.dart';
 
 //手机验证码登录
 class PhoneLogin1 extends StatelessWidget {

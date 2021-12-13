@@ -166,7 +166,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.0.0+2"
+    version: "5.0.1"
   flutter_swiper_null_safety:
     dependency: "direct main"
     description:

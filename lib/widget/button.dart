@@ -5,22 +5,22 @@ import '../utils/utils.dart';
 /// 扁平圆角按钮
 Widget btnFlatButtonWidget({
   required VoidCallback onPressed,
-  double width = 140,
+  double width = 100,
   double height = 44,
   Color gbColor = AppColors.primaryElement,
   String title = "button",
   Color fontColor = AppColors.primaryElementText,
-  double fontSize = 18,
+  double fontSize = 40,
   String fontName = "Montserrat",
   FontWeight fontWeight = FontWeight.w400,
 }) {
   return Container(
-    width: duSetWidth(width),
-    height: duSetHeight(height),
+    width: width.w,
+    height: height.h,
     child: TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromRGBO(81, 207, 108, 1),
       ),
       child: Text(
         title,
@@ -29,7 +29,7 @@ Widget btnFlatButtonWidget({
           color: fontColor,
           fontFamily: fontName,
           fontWeight: fontWeight,
-          fontSize: duSetFontSize(fontSize),
+          fontSize: fitFontSize(fontSize),
           height: 1,
         ),
       ),
@@ -45,8 +45,8 @@ Widget btnFlatButtonBorderOnlyWidget({
   required String iconFileName,
 }) {
   return Container(
-    width: duSetWidth(width),
-    height: duSetHeight(height),
+    width: fitWidth(width),
+    height: fitHeight(height),
     child: TextButton(
       onPressed: onPressed,
       child: Image.asset(
