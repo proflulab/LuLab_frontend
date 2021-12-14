@@ -3,8 +3,8 @@ import 'package:lulab/values/myIcon.dart';
 import 'pages/home/homepage.dart';
 import 'pages/course/coursepage.dart';
 import 'pages/users/userspage.dart';
-import 'pages/voicePage.dart';
-import 'pages/informationPage.dart';
+import 'pages/source/Informationpage.dart';
+import 'pages/voice/voicepage.dart';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);

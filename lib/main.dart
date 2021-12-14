@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-//import 'package:lulab/routers/app_pages.dart';
 import 'routers/router.dart';
 import 'package:get/get.dart';
 

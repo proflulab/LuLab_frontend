@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../widget/widgets.dart';
 
 import 'users_set_user.dart';
-import 'users_set_account.dart';
+//import 'users_set_account.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -46,8 +46,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 bottomname: "账号设置",
                 icon: Icon(Icons.ac_unit),
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SetAccount()));
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (context) => SetAccount()));
                 },
                 context: context),
             listtilebotton(

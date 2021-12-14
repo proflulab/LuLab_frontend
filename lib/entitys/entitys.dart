@@ -1,6 +1,7 @@
 library entitys;
 
-export 'course_data.dart';
-export 'registered_data.dart';
-export 'login_data.dart';
-export 'update_date.dart';
+export 'userdata_registered.dart';
+export 'userdata_login.dart';
+export 'userdata_update.dart';
+export 'coursedata.dart';
+export 'soursedata_infor.dart';

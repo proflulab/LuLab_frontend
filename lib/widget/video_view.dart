@@ -29,7 +29,6 @@ class _VideoViewState extends State<VideoView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // 初始化播放器
     _videoPlayerController = VideoPlayerController.network(widget.url);
@@ -42,7 +41,6 @@ class _VideoViewState extends State<VideoView> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     // 结束后释放controller
     _videoPlayerController.dispose();

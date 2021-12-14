@@ -13,7 +13,6 @@ class _VoicePageState extends State<VoicePage> {
     return AlertDialog(
       title: Text(
         '请说话',
-        
       ),
       content: Text('颠覆式创新'),
       backgroundColor: Colors.lightBlueAccent,
