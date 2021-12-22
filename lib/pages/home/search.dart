@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 //import 'services/screenAdapter.dart';
 
 class SearchPage extends StatefulWidget {

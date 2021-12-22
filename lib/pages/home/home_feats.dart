@@ -1,20 +1,25 @@
-//这个文件放置功勋园组件
 import 'package:flutter/material.dart';
+
+//import '../../entitys/entitys.dart';
+import '../../widget/widgets.dart';
+import '../../utils/utils.dart';
+//import '../../api/apis.dart';
 
 class FeatsPage extends StatefulWidget {
   @override
   _FeatsPageState createState() => _FeatsPageState();
 }
 
+//这个文件放置功勋园组件
 class _FeatsPageState extends State<FeatsPage> {
   @override
   Widget build(BuildContext context) {
     //获取屏幕高度
-    double screenheight = MediaQuery.of(context).size.height;
+    //double screenheight = MediaQuery.of(context).size.height;
     double screenwidth = MediaQuery.of(context).size.width;
     var widgetwidth = screenwidth - 10 * 2;
     return Container(
-      height: screenheight,
+      height: 1.sh,
       padding: EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
           //背景颜色在主题处统一设定
@@ -33,55 +38,34 @@ class _FeatsPageState extends State<FeatsPage> {
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
-                    bottomLeft: Radius.circular(0),
-                    bottomRight: Radius.circular(0),
                   ),
-                  border: Border.all(color: Colors.black54),
+                  //border: Border.all(color: Colors.black54),
                 ),
                 margin: EdgeInsets.only(top: 10),
                 child: Stack(
                   children: <Widget>[
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Container(
-                        height: 150,
-                        width: 140,
-                        color: Colors.red,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: Image.network(
-                              'https://www.itying.com/images/flutter/hot${index + 1}.jpg'),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 10,
-                      left: 10,
-                      child: Container(
-                        height: 20,
-                        child: Text(
-                          '张三-三哥餐饮CEO',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 35,
-                      left: 10,
-                      child: Container(
+                    positionedImage(
+                        context: context,
+                        top: 10,
+                        left: 500,
+                        height: 200,
+                        width: 200,
+                        url:
+                            'https://www.itying.com/images/flutter/hot${index + 1}.jpg'),
+                    positionedText(
+                        context: context,
+                        top: 30,
+                        left: 50,
                         height: 40,
                         width: 200,
-                        child: Text(
-                          '新东方厨师学校毕业，冷链运输专家。',
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ),
+                        text: '张三-三哥餐饮CEO'),
+                    positionedText(
+                        context: context,
+                        top: 80,
+                        left: 50,
+                        height: 40,
+                        width: 200,
+                        text: '新东方厨师学校毕业，冷链运输专家。'),
                     // Positioned(
                     //   top: 80,
                     //   left: 10,
@@ -109,8 +93,6 @@ class _FeatsPageState extends State<FeatsPage> {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0),
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15),
                     ),
@@ -119,17 +101,20 @@ class _FeatsPageState extends State<FeatsPage> {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: Container(
+                        child: Center(
+                            child: Container(
                           width: 100,
                           height: 40,
-                          color: Colors.green,
-                          child: InkWell(
-                            onTap: () {
-                              print("进入主页");
-                            },
-                            child: Text("他的主页"),
+                          color: Colors.white,
+                          child: Center(
+                            child: InkWell(
+                              onTap: () {
+                                print("进入主页");
+                              },
+                              child: Text("他的主页"),
+                            ),
                           ),
-                        ),
+                        )),
                       ),
                       Expanded(
                         flex: 0,
@@ -145,17 +130,20 @@ class _FeatsPageState extends State<FeatsPage> {
                       ),
                       Expanded(
                         flex: 2,
-                        child: Container(
+                        child: Center(
+                            child: Container(
                           width: 100,
                           height: 40,
-                          color: Colors.green,
-                          child: InkWell(
-                            onTap: () {
-                              print("关注他");
-                            },
-                            child: Text("关注他"),
+                          color: Colors.white,
+                          child: Center(
+                            child: InkWell(
+                              onTap: () {
+                                print("关注他");
+                              },
+                              child: Text("关注他"),
+                            ),
                           ),
-                        ),
+                        )),
                       ),
                     ],
                   ))

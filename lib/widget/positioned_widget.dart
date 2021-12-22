@@ -42,7 +42,7 @@ Widget positionedText({
       child: Text(
         text,
         textAlign: TextAlign.left,
-        textDirection: TextDirection.rtl,
+        //textDirection: TextDirection.rtl,
         softWrap: true,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(

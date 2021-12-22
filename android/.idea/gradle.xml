@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.10.2-all/9fahxiiecdb76a5g3aw9oi8rv/gradle-4.10.2" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/connectivity_plus-1.4.0/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/device_info-2.0.3/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_webview_plugin-0.4.0/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/fluttertoast-8.0.8/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-2.0.4/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-2.0.7/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-2.2.7/android" />
+            <option value="$PROJECT_DIR$/../../../../rjaz/FutterSDK/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock-0.5.6/android" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

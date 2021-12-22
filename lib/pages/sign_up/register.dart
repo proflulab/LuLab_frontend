@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widget/widgets.dart';
 import '../../utils/utils.dart';
-//import '../../values/values.dart';
 import '../../api/apis.dart';
-import '../../utils/screen.dart';
 import '../../entitys/entitys.dart';
 
 class SignUpPage extends StatefulWidget {

@@ -11,7 +11,7 @@ class _TrainState extends State<Train> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("我是训练营"),
+      child: Text("技术训练营，创新训练营，其他。。。。。。"),
     );
   }
 }
