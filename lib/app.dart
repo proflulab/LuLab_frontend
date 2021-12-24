@@ -6,6 +6,19 @@ import 'pages/users/userspage.dart';
 import 'pages/source/Informationpage.dart';
 import 'pages/voice/voicepage.dart';
 
+// import 'package:flutter_sound_lite/flutter_sound.dart';
+// import 'package:flutter_sound_lite/public/flutter_sound_player.dart';
+// import 'package:flutter_sound_lite/public/flutter_sound_recorder.dart';
+// import 'package:flutter_sound_lite/public/tau.dart';
+// import 'package:flutter_sound_lite/public/ui/recorder_playback_controller.dart';
+// import 'package:flutter_sound_lite/public/ui/sound_player_ui.dart';
+// import 'package:flutter_sound_lite/public/ui/sound_recorder_ui.dart';
+// import 'package:flutter_sound_lite/public/util/enum_helper.dart';
+// import 'package:flutter_sound_lite/public/util/flutter_sound_ffmpeg.dart';
+// import 'package:flutter_sound_lite/public/util/flutter_sound_helper.dart';
+// import 'package:flutter_sound_lite/public/util/temp_file_system.dart';
+// import 'package:flutter_sound_lite/public/util/wave_header.dart';
+
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
 
@@ -22,6 +35,24 @@ class _AppState extends State<App> {
     InformationPage(),
     UsersPage(),
   ];
+
+  //generated_plugin_registrant.dart? _mPlayer = FlutterSoundPlayer();
+
+  // void play() {
+  //   _mPlayer!
+  //       .startPlayer(
+  //           //fromURI: _mPath,
+  //           fromURI:
+  //               'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3',
+  //           //codec: kIsWeb ? Codec.opusWebM : Codec.aacADTS,
+  //           whenFinished: () {
+  //             setState(() {});
+  //           })
+  //       .then((value) {
+  //     setState(() {});
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +69,7 @@ class _AppState extends State<App> {
           child: FloatingActionButton(
               child: Icon(Icons.graphic_eq),
               onPressed: () {
+                //play();
                 print("弹起语音识别");
               },
               backgroundColor: Color.fromRGBO(34, 139, 230, 0.8)),

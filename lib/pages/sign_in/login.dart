@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import 'login_page.dart';
 //import 'password_login.dart';
 import 'phone_login.dart';
 import '../sign_up/register.dart';
