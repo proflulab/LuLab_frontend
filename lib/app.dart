@@ -5,6 +5,8 @@ import 'pages/course/coursepage.dart';
 import 'pages/users/userspage.dart';
 import 'pages/source/Informationpage.dart';
 import 'pages/voice/voicepage.dart';
+import 'package:audioplayers/audioplayers.dart';
+//import 'widget/widgets.dart';
 
 // import 'package:flutter_sound_lite/flutter_sound.dart';
 // import 'package:flutter_sound_lite/public/flutter_sound_player.dart';
@@ -35,6 +37,28 @@ class _AppState extends State<App> {
     InformationPage(),
     UsersPage(),
   ];
+
+  AudioPlayer audioPlayer = AudioPlayer();
+  bool firstExecuting = true;
+  double volume = 0.5;
+
+  _executar() async {
+    audioPlayer.setVolume(volume);
+    //播放本地音频
+    // if (firstExecuting) {
+    //   audioPlayer = await _audioCache.play("bach.mp3");
+    //   firstExecuting = false;
+    // } else {
+    //   audioPlayer.resume();
+    // }
+
+    String url =
+        "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
+    int result = await audioPlayer.play(url);
+    if (result == 1) {
+      // success
+    }
+  }
 
   //generated_plugin_registrant.dart? _mPlayer = FlutterSoundPlayer();
 
@@ -69,7 +93,7 @@ class _AppState extends State<App> {
           child: FloatingActionButton(
               child: Icon(Icons.graphic_eq),
               onPressed: () {
-                //play();
+                _executar();
                 print("弹起语音识别");
               },
               backgroundColor: Color.fromRGBO(34, 139, 230, 0.8)),
