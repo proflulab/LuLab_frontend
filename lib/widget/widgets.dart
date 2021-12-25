@@ -15,3 +15,4 @@ export 'list_user.dart';
 export 'positioned_widget.dart';
 export 'fbutton.dart';
 export 'audioplayers.dart';
+export 'flutter_tts.dart';
