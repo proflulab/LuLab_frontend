@@ -16,3 +16,4 @@ export 'positioned_widget.dart';
 export 'fbutton.dart';
 export 'audioplayers.dart';
 export 'flutter_tts.dart';
+export 'speech_to_text.dart';

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../utils/utils.dart';
 
+//可定位图片
 Widget positionedImage({
   required BuildContext context,
   required String url,
@@ -25,6 +27,7 @@ Widget positionedImage({
   );
 }
 
+//可定位文本
 Widget positionedText({
   required BuildContext context,
   required String text,

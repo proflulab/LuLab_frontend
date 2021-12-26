@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lulab/values/myIcon.dart';
-import 'pages/home/homepage.dart';
-import 'pages/course/coursepage.dart';
-import 'pages/users/userspage.dart';
+import 'package:avatar_glow/avatar_glow.dart';
+
+import 'pages/home/home_page.dart';
+import 'pages/course/course_page.dart';
+import 'pages/users/users_page.dart';
 import 'pages/source/Informationpage.dart';
 import 'pages/voice/voicepage.dart';
 
 import 'widget/widgets.dart';
+import '/values/values.dart';
 
 // import 'package:flutter_sound_lite/flutter_sound.dart';
 // import 'package:flutter_sound_lite/public/flutter_sound_player.dart';
@@ -42,23 +44,49 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
         //语音识别按钮
-        floatingActionButton: Container(
-          height: 80.0,
-          width: 80.0,
-          margin: EdgeInsets.only(top: 40),
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(45),
-            color: Color.fromRGBO(250, 250, 250, 1),
-          ),
-          child: FloatingActionButton(
-              child: Icon(Icons.graphic_eq),
-              onPressed: () {
-                executar(
-                    'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3');
-                print("弹起语音识别");
-              },
-              backgroundColor: Color.fromRGBO(34, 139, 230, 0.8)),
+        floatingActionButton: AvatarGlow(
+          animate: true,
+          glowColor: Colors.red,
+          endRadius: 65.0,
+          duration: Duration(milliseconds: 2000),
+          repeatPauseDuration: Duration(milliseconds: 100),
+          repeat: true,
+          child: Container(
+              height: 80.0,
+              width: 80.0,
+              margin: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(45),
+                color: Color.fromRGBO(250, 250, 250, 1),
+              ),
+              child: InkWell(
+                onTap: () {
+                  executar(
+                      'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3');
+                  print("点击事件");
+                },
+                onDoubleTap: () {
+                  pausar();
+                  print("双击事件");
+                },
+                onTapCancel: () {
+                  print("点击取消");
+                },
+                onLongPress: () {
+                  print("长按事件");
+                },
+                child: Icon(Icons.graphic_eq),
+
+                // FloatingActionButton(
+                //     child: Icon(Icons.graphic_eq),
+                //     onPressed: () {
+                //       // executar(
+                //       //     'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3');
+                //       // print("弹起语音识别");
+                //     },
+                //     backgroundColor: Color.fromRGBO(34, 139, 230, 0.8)),
+              )),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: this._pageList[this._currentIndex],

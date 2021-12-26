@@ -37,6 +37,8 @@ dependencies:
   text_to_speech: ^0.2.3
   flutter_tts: ^3.3.2
   path_provider: ^2.0.3
+  flutter_easyrefresh: ^2.2.1
+  avatar_glow: ^2.0.2 #用于按钮周围的发光效果
 
 dev_dependencies:
   flutter_test:
