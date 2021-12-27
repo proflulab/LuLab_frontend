@@ -2,5 +2,17 @@
     "editor.detectIndentation": false,
     "editor.tabSize": 4,
     "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+        "audioplayers",
+        "chewie",
+        "easyrefresh",
+        "fbutton",
+        "fluro",
+        "fluttertoast",
+        "fluwx",
+        "nullsafety",
+        "screenutil",
+        "swiper"
+    ]
 }
