@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 icon: const Icon(Icons.ac_unit),
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => SetUser()));
+                      .push(MaterialPageRoute(builder: (context) => const SetUser()));
                 },
                 context: context),
             listtilebotton(

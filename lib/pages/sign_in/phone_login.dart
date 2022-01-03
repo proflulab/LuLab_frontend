@@ -22,34 +22,32 @@ class PhoneLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          BackLineWidget(),
-          // logo
-          const LogoIconWidget(),
-          // 手机号
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50),
-            child: PhoneFieldWidget(),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          // 验证码
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50),
-            child: VerifyFieldWidget(),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          // 提交
-          const SubmitButtonWidget(),
-          // 协议
-          const ProtocolButtonWidget()
-        ],
-      ),
+    return Column(
+      children: [
+        BackLineWidget(),
+        // logo
+        const LogoIconWidget(),
+        // 手机号
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: PhoneFieldWidget(),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        // 验证码
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          child: VerifyFieldWidget(),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        // 提交
+        const SubmitButtonWidget(),
+        // 协议
+        const ProtocolButtonWidget()
+      ],
     );
   }
 }

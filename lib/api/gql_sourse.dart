@@ -11,7 +11,7 @@ class SourseAPI {
     required String schema,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-      schema: GQL_SOURSE_INFROR,
+      schema: gqlSourseInfror,
       context: context,
       variables: {},
     );

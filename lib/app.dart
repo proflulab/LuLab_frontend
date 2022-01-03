@@ -145,26 +145,26 @@ class _AppState extends State<App> {
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(MyIcon.nav_icon_home_default),
-                  activeIcon: Icon(MyIcon.nav_icon_home_selected),
+                  icon: Icon(MyIcon.navIconHomeDefault),
+                  activeIcon: Icon(MyIcon.navIconHomeSelected),
                   label: ('首页'),
                   //去掉长按提示语
                   tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(MyIcon.nav_icon_course_default),
-                  activeIcon: Icon(MyIcon.nav_icon_course_selected),
+                  icon: Icon(MyIcon.navIconCourseDefault),
+                  activeIcon: Icon(MyIcon.navIconCourseSelected),
                   label: ('课程'),
                   tooltip: ''),
               BottomNavigationBarItem(
                   icon: Icon(Icons.sms), label: (''), tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(MyIcon.nav_icon_find_default),
-                  activeIcon: Icon(MyIcon.nav_icon_find_selected),
+                  icon: Icon(MyIcon.navIconFindDefault),
+                  activeIcon: Icon(MyIcon.navIconFindSelected),
                   label: ('资讯'),
                   tooltip: ''),
               BottomNavigationBarItem(
-                  icon: Icon(MyIcon.nav_icon_user_default),
-                  activeIcon: Icon(MyIcon.nav_icon_user_selected),
+                  icon: Icon(MyIcon.navIconUserDefault),
+                  activeIcon: Icon(MyIcon.navIconUserSelected),
                   label: ('我的'),
                   tooltip: '')
             ],

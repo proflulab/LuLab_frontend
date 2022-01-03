@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SetAbout extends StatefulWidget {
-  SetAbout({Key? key}) : super(key: key);
+  const SetAbout({Key? key}) : super(key: key);
   @override
   _SetAboutState createState() => _SetAboutState();
 }
@@ -11,7 +11,7 @@ class _SetAboutState extends State<SetAbout> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             '关于实验室',
           ),
         ),

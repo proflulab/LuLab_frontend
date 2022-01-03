@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import '../utils/storage.dart';
 
 class SearchServices {
@@ -28,7 +30,9 @@ class SearchServices {
         return v == keywords;
       });
       if (!hasData) {
-        print(keywords);
+        if (kDebugMode) {
+          print(keywords);
+        }
         searchListData.add(keywords);
         await Storage.setString('searchList', json.encode(searchListData));
       }

@@ -5,7 +5,7 @@
 //   "password": "1"
 // }
 
-const String GQL_USER_LOGIN = r'''
+const String gqlUserLogin = r'''
 
 query UserLogin($name: String!, $password: String!) {
   userLogin(userInput: {name: $name, password: $password}) {

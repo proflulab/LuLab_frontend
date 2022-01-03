@@ -129,7 +129,7 @@ class _UsersPageState extends State<UsersPage> {
             combotton(
                 bottomname: " 购买记录",
                 icon: const Icon(
-                  MyIcon.user_buy,
+                  MyIcon.userBuy,
                   size: 40,
                   color: Colors.red,
                 ),
@@ -142,7 +142,7 @@ class _UsersPageState extends State<UsersPage> {
             combotton(
                 bottomname: "离线课程",
                 icon: const Icon(
-                  MyIcon.user_download,
+                  MyIcon.userDownload,
                   size: 40,
                   color: Colors.red,
                 ),
@@ -151,7 +151,7 @@ class _UsersPageState extends State<UsersPage> {
             combotton(
                 bottomname: "我的收藏",
                 icon: const Icon(
-                  MyIcon.user_collect,
+                  MyIcon.userCollect,
                   size: 40,
                   color: Colors.red,
                 ),
@@ -160,7 +160,7 @@ class _UsersPageState extends State<UsersPage> {
             combotton(
                 bottomname: "观看历史",
                 icon: const Icon(
-                  MyIcon.user_history,
+                  MyIcon.userHistory,
                   size: 40,
                   color: Colors.red,
                 ),
@@ -169,7 +169,7 @@ class _UsersPageState extends State<UsersPage> {
             combotton(
                 bottomname: "我的会员",
                 icon: const Icon(
-                  MyIcon.user_vip,
+                  MyIcon.userVip,
                   size: 40,
                   color: Colors.red,
                 ),
@@ -194,7 +194,7 @@ class _UsersPageState extends State<UsersPage> {
             listtilebotton(
                 bottomname: "电话咨询",
                 icon: const Icon(
-                  MyIcon.user_phone,
+                  MyIcon.userPhone,
                   size: 30,
                   color: Colors.red,
                 ),
@@ -204,7 +204,7 @@ class _UsersPageState extends State<UsersPage> {
             listtilebotton(
                 bottomname: "在线咨询",
                 icon: const Icon(
-                  MyIcon.user_online,
+                  MyIcon.userOnline,
                   size: 30,
                   color: Colors.red,
                 ),
@@ -218,7 +218,7 @@ class _UsersPageState extends State<UsersPage> {
             listtilebotton(
                 bottomname: "帮助中心",
                 icon: const Icon(
-                  MyIcon.user_help,
+                  MyIcon.userHelp,
                   size: 30,
                   color: Colors.red,
                 ),
@@ -232,7 +232,7 @@ class _UsersPageState extends State<UsersPage> {
             listtilebotton(
                 bottomname: "商务合作",
                 icon: const Icon(
-                  MyIcon.user_cooperation,
+                  MyIcon.userCooperation,
                   size: 30,
                   color: Colors.red,
                 ),
@@ -260,7 +260,7 @@ class _UsersPageState extends State<UsersPage> {
                   }
 
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SettingsPage()));
+                      MaterialPageRoute(builder: (context) => const SettingsPage()));
                 },
                 icon: const Icon(
                   Icons.settings,

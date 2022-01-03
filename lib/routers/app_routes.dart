@@ -1,6 +1,6 @@
 part of 'app_pages.dart';
 
 abstract class AppRoutes {
-  static const Home = '/home';
-  static const Course = '/course';
+  static const home = '/home';
+  static const course = '/course';
 }

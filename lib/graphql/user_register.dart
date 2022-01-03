@@ -6,7 +6,7 @@
 //   "ensurePassword": "1111111"
 // }
 
-const String GQL_USER_REGISTER = r'''
+const String gqlUserRegister = r'''
 
   mutation UserLogin($name: String!, $password: String!, $ensurePassword: String!) {
   userRigister(userInput: {name: $name, password: $password, ensurePassword: $ensurePassword}) {

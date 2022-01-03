@@ -20,35 +20,33 @@ class VerifyCodeLogin extends StatelessWidget {
   const VerifyCodeLogin({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          // 返回行
-          BackLineWidget(
-            txt: "验证码登录",
+    return Column(
+      children: [
+        // 返回行
+        BackLineWidget(
+          txt: "验证码登录",
+        ),
+        // 标题行
+        const TitleLineWidget(),
+        Container(
+          padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+          child: Column(
+            children: const [
+              // 手机号
+              PhoneFieldWidget(),
+              SizedBox(
+                height: 35,
+              ),
+              // 验证码
+              VerifyFieldWidget(),
+              SizedBox(
+                height: 60,
+              ),
+              SubmitButtonWidget(),
+            ],
           ),
-          // 标题行
-          const TitleLineWidget(),
-          Container(
-            padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
-            child: Column(
-              children: const [
-                // 手机号
-                PhoneFieldWidget(),
-                SizedBox(
-                  height: 35,
-                ),
-                // 验证码
-                VerifyFieldWidget(),
-                SizedBox(
-                  height: 60,
-                ),
-                SubmitButtonWidget(),
-              ],
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 }

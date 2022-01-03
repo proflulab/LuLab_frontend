@@ -13,20 +13,21 @@ import '../pages/sign_in/login.dart';
 
 //配置路由
 final Map<String, Function> routes = {
-  '/': (context) => LoadingPage(),
+  '/': (context) => const LoadingPage(),
   '/firstguide': (context) => const FirstGuidePage(),
   '/app': (context) => const App(),
   '/search': (context) => const SearchPage(),
   '/history': (context) => const History(),
   '/download': (context) => const Download(),
   '/customer': (context) => const Customer(),
-  '/message': (context) => Message(),
+  '/message': (context) => const Message(),
   //'/course': (context) => CourseIndexPage(),
   '/login': (context) => const Login1(),
   //'/set': (context) => SettingsPage(),
 };
 
 //固定写法
+
 var onGenerateRoute = (RouteSettings settings) {
   final String? name = settings.name;
   final Function? pageContentBuilder = routes[name];

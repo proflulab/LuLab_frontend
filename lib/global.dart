@@ -96,6 +96,6 @@ class Global {
   // 持久化 用户信息
   static Future<bool?> saveProfile(UserLogin userResponse) {
     profile = userResponse;
-    return Storage.setJson(STORAGE_USER_PROFILE_KEY, userResponse.toJson());
+    return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
 }

@@ -14,7 +14,7 @@ Widget listtilebotton({
       leading: icon,
       title: Text(bottomname),
       contentPadding: const EdgeInsets.all(0),
-      trailing: const Icon(MyIcon.user_right),
+      trailing: const Icon(MyIcon.userRight),
       onTap: onPressed,
     ),
   );

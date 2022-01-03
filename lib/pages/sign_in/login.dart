@@ -129,12 +129,12 @@ class Login extends StatelessWidget {
                       // Navigator.of(context).push(MaterialPageRoute(
                       //     builder: (context) => VerifyCodeLogin1()));
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignInPage()));
+                          builder: (context) => const SignInPage()));
                     }),
                 TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignUpPage()));
+                          builder: (context) => const SignUpPage()));
                     },
                     child: const Text('点我注册',
                         style: TextStyle(color: Color(0xff8a8a8a))))

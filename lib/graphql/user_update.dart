@@ -10,7 +10,7 @@
 //   "phone": "234532632"
 // }
 
-const String GQL_USER_UPDATE = r'''
+const String gqlUserUpdata = r'''
 
 mutation userUpdate($name: String!, $password: String!, $sex: String!, $img: String!, $description: String!, $wechat: String!, $phone: String!) {
   userUpdate(userInput: {name: $name, password: $password, sex: $sex, img: $img, description: $description, wechat: $wechat, phone: $phone}) {

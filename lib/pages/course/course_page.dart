@@ -75,7 +75,9 @@ class _CoursePageState extends State<CoursePage> {
           icon: const Icon(Icons.download_for_offline_outlined,
               color: Color.fromRGBO(117, 117, 117, 1)),
           onPressed: () {
-            print("跳转到下载记录");
+            if (kDebugMode) {
+              print("跳转到下载记录");
+            }
             Navigator.pushNamed(context, '/download');
           },
         ),

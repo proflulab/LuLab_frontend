@@ -7,7 +7,7 @@ import '../../api/apis.dart';
 import '../../global.dart';
 
 class SetUser extends StatefulWidget {
-  SetUser({Key? key}) : super(key: key);
+  const SetUser({Key? key}) : super(key: key);
   @override
   _SetUserState createState() => _SetUserState();
 }
@@ -78,7 +78,7 @@ class _SetUserState extends State<SetUser> {
               context: context,
               title: '头像',
               child: ClipOval(child: Image.network(Global.profile.data.img)),
-              icon: const Icon(MyIcon.user_right),
+              icon: const Icon(MyIcon.userRight),
               onTap: () {
                 if (kDebugMode) {
                   print("该功能未开发，当前无法更改");
@@ -109,7 +109,7 @@ class _SetUserState extends State<SetUser> {
               context: context,
               title: '性别',
               child: Text(_sexValue),
-              icon: const Icon(MyIcon.user_right),
+              icon: const Icon(MyIcon.userRight),
               onTap: () async {
                 //触摸失去焦点
                 FocusScope.of(context).requestFocus(FocusNode());

@@ -96,123 +96,121 @@ class _CourseDetailState extends State<CourseDetail> {
     );
   }
 
-  Container buildDetailBody() {
-    return Container(
-      child: Column(
-        children: [
-          const ListTile(
-            leading: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/logo.png'),
-            ),
-            title: Text(
-              '陆向谦',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            ),
-            subtitle: Text(
-              '实验室创始人',
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+  Column buildDetailBody() {
+    return Column(
+      children: [
+        const ListTile(
+          leading: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/logo.png'),
+          ),
+          title: Text(
+            '陆向谦',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          subtitle: Text(
+            '实验室创始人',
+            style: TextStyle(fontSize: 16, color: Colors.grey),
+          ),
+        ),
+        // 课程评价
+        ListTile(
+          leading: const Text(
+            '课程评价',
+            style: TextStyle(
+              color: Colors.grey,
             ),
           ),
-          // 课程评价
-          ListTile(
-            leading: const Text(
-              '课程评价',
-              style: TextStyle(
+          title: Row(
+            children: const [
+              Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+              Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+              Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+              Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+              Icon(
+                Icons.star,
                 color: Colors.grey,
               ),
+              Text(
+                '4.0',
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        // 播放次数
+        ListTile(
+          leading: const Text(
+            '播放次数',
+            style: TextStyle(
+              color: Colors.grey,
             ),
-            title: Row(
-              children: const [
-                Icon(
-                  Icons.star,
-                  color: Colors.orange,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.orange,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.orange,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.orange,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.grey,
-                ),
-                Text(
-                  '4.0',
+          ),
+          title: Row(
+            children: const [
+              Text(
+                '989次播放',
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        // 上线时间
+        ListTile(
+          leading: const Text(
+            '上线时间',
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          title: Row(
+            children: const [
+              Text(
+                '2021年7月9日上线',
+                style: TextStyle(color: Colors.grey),
+              )
+            ],
+          ),
+        ),
+        // 课程标签
+        ListTile(
+          leading: const Text(
+            '课程标签',
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          title: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                child: const Text(
+                  '颠覆式创新',
                   style: TextStyle(color: Colors.grey),
-                )
-              ],
-            ),
-          ),
-          // 播放次数
-          ListTile(
-            leading: const Text(
-              '播放次数',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            title: Row(
-              children: const [
-                Text(
-                  '989次播放',
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
-            ),
-          ),
-          // 上线时间
-          ListTile(
-            leading: const Text(
-              '上线时间',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            title: Row(
-              children: const [
-                Text(
-                  '2021年7月9日上线',
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
-            ),
-          ),
-          // 课程标签
-          ListTile(
-            leading: const Text(
-              '课程标签',
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-            title: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  child: const Text(
-                    '颠覆式创新',
-                    style: TextStyle(color: Colors.grey),
-                  ),
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  child: const Text(
-                    '公司',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                child: const Text(
+                  '公司',
+                  style: TextStyle(color: Colors.grey),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

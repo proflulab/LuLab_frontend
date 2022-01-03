@@ -11,9 +11,7 @@ class GqlUserAPI {
     required Loginrequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context,
-        schema: GQL_USER_LOGIN,
-        variables: variables.toJson());
+        context: context, schema: gqlUserLogin, variables: variables.toJson());
     return UserLogin.fromJson(response.data!["userLogin"]);
   }
 
@@ -24,7 +22,7 @@ class GqlUserAPI {
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
         context: context,
-        schema: GQL_USER_REGISTER,
+        schema: gqlUserRegister,
         variables: variables.toJson());
 
     return UserRigister.fromJson(response.data!["userRigister"]);
@@ -36,9 +34,7 @@ class GqlUserAPI {
     required UserUpdaterequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context,
-        schema: GQL_USER_UPDATE,
-        variables: variables.toJson());
+        context: context, schema: gqlUserUpdata, variables: variables.toJson());
 
     return UserUpdateresponse.fromJson(response.data!);
   }

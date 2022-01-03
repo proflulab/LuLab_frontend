@@ -6,7 +6,7 @@ import '../values/values.dart';
 class GraphqlClientUtil {
   static client() {
     final _httpLink = HttpLink(
-      SERVER_API_GRAPHQL_URL,
+      serverApiGraphqlUrl,
     );
 
     // final AuthLink _authLink = AuthLink(

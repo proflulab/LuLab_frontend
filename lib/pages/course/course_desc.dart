@@ -30,53 +30,49 @@ class CourseDesc extends StatelessWidget {
     );
   }
 
-  Container buildDesc(context) {
-    return Container(
-      child: Column(
-        children: [
-          const ListTile(
-            title: Text('颠覆式创新'),
-            subtitle:  Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
-          ),
-          ListTile(
-            title: const Text('清华大学，介绍。。。'),
-            // trailing: Icon(Icons.keyboard_arrow_right_sharp),
-            trailing: IconButton(
-                onPressed: () {
-                  bounceBottomSheet(context, const CourseDetail());
-                },
-                icon: const Icon(
-                  Icons.keyboard_arrow_right,
-                )),
-          )
-        ],
-      ),
+  Column buildDesc(context) {
+    return Column(
+      children: [
+        const ListTile(
+          title: Text('颠覆式创新'),
+          subtitle:  Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
+        ),
+        ListTile(
+          title: const Text('清华大学，介绍。。。'),
+          // trailing: Icon(Icons.keyboard_arrow_right_sharp),
+          trailing: IconButton(
+              onPressed: () {
+                bounceBottomSheet(context, const CourseDetail());
+              },
+              icon: const Icon(
+                Icons.keyboard_arrow_right,
+              )),
+        )
+      ],
     );
   }
 
 // 收藏下载分享
-  Container buildFavDownShare() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          Icon(
-            Icons.star,
-            size: 22,
-            color: Colors.grey,
-          ),
-          Icon(
-            Icons.download,
-            size: 22,
-            color: Colors.grey,
-          ),
-          Icon(
-            Icons.share,
-            size: 22,
-            color: Colors.grey,
-          ),
-        ],
-      ),
+  Row buildFavDownShare() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: const [
+        Icon(
+          Icons.star,
+          size: 22,
+          color: Colors.grey,
+        ),
+        Icon(
+          Icons.download,
+          size: 22,
+          color: Colors.grey,
+        ),
+        Icon(
+          Icons.share,
+          size: 22,
+          color: Colors.grey,
+        ),
+      ],
     );
   }
 

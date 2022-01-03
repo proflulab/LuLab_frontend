@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-//import '../sign_in/phone_login.dart';
 
 class TextFieldDemo1 extends StatelessWidget {
   const TextFieldDemo1({Key? key}) : super(key: key);
@@ -42,7 +41,7 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
           const SizedBox(
             height: 40,
           ),
-          _button()
+          button()
         ],
       ),
     );
@@ -104,7 +103,7 @@ class PasswordWidget extends StatelessWidget {
 }
 
 // 注册
-// Widget _buildRegister() {
+// Widget buildRegister() {
 //   return Container(
 //     width: 200,
 //     height: 50,
@@ -122,7 +121,7 @@ class PasswordWidget extends StatelessWidget {
 //   );
 // }
 
-Widget _button() {
+Widget button() {
   return SizedBox(
     width: 200,
     height: 40,

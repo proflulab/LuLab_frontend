@@ -1,6 +1,6 @@
 // 参数
 
-const String GQL_SOURSE_INFROR = r'''
+const String gqlSourseInfror = r'''
 
 query latestInformation {
   latestInformation(option: {limit: 1, skip: 1}) {
