@@ -106,7 +106,7 @@ class _CourseDetailState extends State<CourseDetail> {
             ),
             title: Text(
               '陆向谦',
-              style:  TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             subtitle: Text(
               '实验室创始人',

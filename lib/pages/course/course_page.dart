@@ -8,7 +8,7 @@ import '../../api/apis.dart';
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {
-  CoursePage({Key? key}) : super(key: key);
+  const CoursePage({Key? key}) : super(key: key);
 
   @override
   _CoursePageState createState() => _CoursePageState();
@@ -82,18 +82,20 @@ class _CoursePageState extends State<CoursePage> {
         actions: [
           IconButton(
               onPressed: () {
-                print("跳转到观看历史");
+                if (kDebugMode) {
+                  print("跳转到观看历史");
+                }
                 Navigator.pushNamed(context, '/history');
               },
               icon: const Icon(
                 Icons.history,
-                color: const Color.fromRGBO(117, 117, 117, 1),
+                color: Color.fromRGBO(117, 117, 117, 1),
               ))
         ],
       ),
       body: Row(
         children: <Widget>[
-          Container(
+          SizedBox(
             width: 100,
             height: double.infinity,
             child: ListView.builder(
@@ -104,7 +106,9 @@ class _CoursePageState extends State<CoursePage> {
                     InkWell(
                       onTap: () {
                         setState(() {
-                          print("点击了课程目录");
+                          if (kDebugMode) {
+                            print("点击了课程目录");
+                          }
                           _selectIndex = index;
                         });
                       },

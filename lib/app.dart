@@ -5,7 +5,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'pages/home/home_page.dart';
 import 'pages/course/course_page.dart';
 import 'pages/users/users_page.dart';
-import 'pages/source/InformationPage.dart';
+import 'pages/source/Information_page.dart';
 import 'pages/voice/voicepage.dart';
 
 import 'widget/widgets.dart';
@@ -35,11 +35,11 @@ class _AppState extends State<App> {
   int _currentIndex = 0;
 
   final List _pageList = [
-    HomePage(),
-    CoursePage(),
-    VoicePage(),
-    InformationPage(),
-    UsersPage(),
+    const HomePage(),
+    const CoursePage(),
+    const VoicePage(),
+    const InformationPage(),
+    const UsersPage(),
   ];
 
   @override

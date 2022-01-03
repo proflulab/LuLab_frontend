@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 //import '../sign_in/phone_login.dart';
 
@@ -6,14 +7,14 @@ class TextFieldDemo1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: TextFieldDemo(),
     );
   }
 }
 
 class TextFieldDemo extends StatefulWidget {
-  TextFieldDemo({Key? key}) : super(key: key);
+  const TextFieldDemo({Key? key}) : super(key: key);
 
   @override
   _TextFieldDemoState createState() => _TextFieldDemoState();
@@ -23,22 +24,22 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 180,
           ),
-          PhoneWidget(),
-          SizedBox(
+          const PhoneWidget(),
+          const SizedBox(
             height: 40,
           ),
-          PasswordWidget(),
-          SizedBox(
+          const PasswordWidget(),
+          const SizedBox(
             height: 40,
           ),
-          PasswordWidget(),
-          SizedBox(
+          const PasswordWidget(),
+          const SizedBox(
             height: 40,
           ),
           _button()
@@ -56,10 +57,11 @@ class PhoneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    // ignore: prefer_const_constructors
+    return SizedBox(
         height: 50,
         width: 300,
-        child: TextField(
+        child: const TextField(
           textAlign: TextAlign.center,
           autofocus: true,
           style: TextStyle(
@@ -90,7 +92,7 @@ class PasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return const TextField(
       obscureText: true,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
@@ -121,25 +123,27 @@ class PasswordWidget extends StatelessWidget {
 // }
 
 Widget _button() {
-  return Container(
+  return SizedBox(
     width: 200,
     height: 40,
     child: RawMaterialButton(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(30))),
       elevation: 5,
       highlightElevation: 0,
       fillColor: Colors.blue,
       splashColor: Colors.orange,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
         fontSize: 20,
         textBaseline: TextBaseline.alphabetic,
       ),
       onLongPress: () {
-        print('onLongPress');
+        if (kDebugMode) {
+          print('onLongPress');
+        }
       },
-      child: Text("注册"),
-      onPressed: () => print('onPressed'),
+      child: const Text("注册"),
+      onPressed: () => debugPrint('onPressed'),
     ),
   );
 }

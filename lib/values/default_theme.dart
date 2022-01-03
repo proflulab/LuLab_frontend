@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-final ThemeData mDefaultTheme = new ThemeData(
+final ThemeData mDefaultTheme = ThemeData(
   //主⾊，决定导航栏颜⾊，所有导航栏的颜色将在这里统一设定
-  primaryColor: Color.fromRGBO(116, 192, 252, 1),
+  primaryColor: const Color.fromRGBO(116, 192, 252, 1),
   //背景主体颜色
-  scaffoldBackgroundColor: Color.fromRGBO(246, 246, 246, 1),
+  scaffoldBackgroundColor: const Color.fromRGBO(246, 246, 246, 1),
   //卡⽚颜⾊
-  cardColor: Color(0xF13975EE),
+  cardColor: const Color(0xF13975EE),
   //深色还是浅色
   brightness: Brightness.light,
 );

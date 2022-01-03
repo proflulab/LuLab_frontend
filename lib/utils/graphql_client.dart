@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import '../values/values.dart';
@@ -5,7 +6,7 @@ import '../values/values.dart';
 class GraphqlClientUtil {
   static client() {
     final _httpLink = HttpLink(
-      '$SERVER_API_GRAPHQL_URL',
+      SERVER_API_GRAPHQL_URL,
     );
 
     // final AuthLink _authLink = AuthLink(
@@ -36,7 +37,9 @@ class GraphqlClientUtil {
     QueryResult result = await client().query(options);
 
     if (result.hasException) {
-      print(result.exception.toString());
+      if (kDebugMode) {
+        print(result.exception.toString());
+      }
       //toastInfo(msg: result.exception.toString());
       //throw result.exception;
     }
@@ -57,7 +60,9 @@ class GraphqlClientUtil {
 
     QueryResult result = await client().mutate(options);
     if (result.hasException) {
-      print(result.exception.toString());
+      if (kDebugMode) {
+        print(result.exception.toString());
+      }
       //toastInfo(msg: result.exception.toString());
       //throw result.exception;
     }

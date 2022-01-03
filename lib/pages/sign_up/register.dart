@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../widget/widgets.dart';
 import '../../utils/utils.dart';
@@ -5,7 +6,7 @@ import '../../api/apis.dart';
 import '../../entitys/entitys.dart';
 
 class SignUpPage extends StatefulWidget {
-  SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -39,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
       toastInfo(msg: '密码不能小于6位');
       return;
     }
-    if ('${_passController1.value.text}' != '${_passController.value.text}') {
+    if (_passController1.value.text != _passController.value.text) {
       toastInfo(msg: '两次密码不一样');
       return;
     }
@@ -59,8 +60,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
       toastInfo(msg: '注册成功，返回登录页!');
     } catch (e) {
-      print("打印错误信息");
-      print(e);
+      if (kDebugMode) {
+        print("打印错误信息");
+      }
+      if (kDebugMode) {
+        print(e);
+      }
       return toastInfo(msg: '注册失败，请正确输入账号、密码!');
     }
 
@@ -129,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
           children: <Widget>[
             Divider(height: 100.h),
             _buildInputForm(),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),

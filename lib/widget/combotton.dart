@@ -8,7 +8,7 @@ Widget combotton({
 }) {
   return GestureDetector(
       onTap: onPressed,
-      child: Container(
+      child: SizedBox(
           width: 90,
           child: Center(
             child: Column(
@@ -16,11 +16,11 @@ Widget combotton({
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundColor: Color.fromRGBO(246, 246, 246, 1),
+                  backgroundColor: const Color.fromRGBO(246, 246, 246, 1),
                   child: icon,
                 ),
                 Text(bottomname,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                         decoration: TextDecoration.none,

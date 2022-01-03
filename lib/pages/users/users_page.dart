@@ -7,6 +7,8 @@ import '../../global.dart';
 import 'users_set.dart';
 
 class UsersPage extends StatefulWidget {
+  const UsersPage({Key? key}) : super(key: key);
+
   @override
   _UsersPageState createState() => _UsersPageState();
 }

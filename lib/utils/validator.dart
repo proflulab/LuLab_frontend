@@ -11,7 +11,7 @@ bool duIsEmail(String input) {
 bool duIsPhone(String input) {
   if (input.isEmpty) return false;
 
-  String regexPhone = "(13\d|14[579]|15[^4\D]|17[^49\D]|18\d)\d{8}";
+  String regexPhone = "(13d|14[579]|15[^4D]|17[^49D]|18d)d{8}";
   return RegExp(regexPhone).hasMatch(input);
 }
 

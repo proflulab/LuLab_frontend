@@ -14,13 +14,13 @@ Widget btnFlatButtonWidget({
   String fontName = "Montserrat",
   FontWeight fontWeight = FontWeight.w400,
 }) {
-  return Container(
+  return SizedBox(
     width: width.w,
     height: height.h,
     child: TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        backgroundColor: Color.fromRGBO(81, 207, 108, 1),
+        backgroundColor: const Color.fromRGBO(81, 207, 108, 1),
       ),
       child: Text(
         title,
@@ -44,7 +44,7 @@ Widget btnFlatButtonBorderOnlyWidget({
   double height = 44,
   required String iconFileName,
 }) {
-  return Container(
+  return SizedBox(
     width: fitWidth(width),
     height: fitHeight(height),
     child: TextButton(

@@ -18,18 +18,15 @@ class CourseDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: 200,
-      child: Wrap(
-        children: [
-          // 简介
-          buildDesc(context),
-          // 收藏、缓存、分享
-          buildFavDownShare(),
-          // 目录
-          buildCatalog(),
-        ],
-      ),
+    return Wrap(
+      children: [
+        // 简介
+        buildDesc(context),
+        // 收藏、缓存、分享
+        buildFavDownShare(),
+        // 目录
+        buildCatalog(),
+      ],
     );
   }
 
@@ -39,7 +36,7 @@ class CourseDesc extends StatelessWidget {
         children: [
           const ListTile(
             title: Text('颠覆式创新'),
-            subtitle: const Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
+            subtitle:  Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
           ),
           ListTile(
             title: const Text('清华大学，介绍。。。'),
