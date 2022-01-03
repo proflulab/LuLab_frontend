@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:io' show Platform;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class Tts extends StatefulWidget {
+  const Tts({Key? key}) : super(key: key);
+
   @override
   _TtsState createState() => _TtsState();
 }
@@ -56,21 +58,27 @@ class _TtsState extends State<Tts> {
 
     flutterTts.setStartHandler(() {
       setState(() {
-        print("Playing");
+        if (kDebugMode) {
+          print("Playing");
+        }
         ttsState = TtsState.playing;
       });
     });
 
     flutterTts.setCompletionHandler(() {
       setState(() {
-        print("Complete");
+        if (kDebugMode) {
+          print("Complete");
+        }
         ttsState = TtsState.stopped;
       });
     });
 
     flutterTts.setCancelHandler(() {
       setState(() {
-        print("Cancel");
+        if (kDebugMode) {
+          print("Cancel");
+        }
         ttsState = TtsState.stopped;
       });
     });
@@ -78,14 +86,18 @@ class _TtsState extends State<Tts> {
     if (isWeb || isIOS) {
       flutterTts.setPauseHandler(() {
         setState(() {
-          print("Paused");
+          if (kDebugMode) {
+            print("Paused");
+          }
           ttsState = TtsState.paused;
         });
       });
 
       flutterTts.setContinueHandler(() {
         setState(() {
-          print("Continued");
+          if (kDebugMode) {
+            print("Continued");
+          }
           ttsState = TtsState.continued;
         });
       });
@@ -93,7 +105,9 @@ class _TtsState extends State<Tts> {
 
     flutterTts.setErrorHandler((msg) {
       setState(() {
-        print("error: $msg");
+        if (kDebugMode) {
+          print("error: $msg");
+        }
         ttsState = TtsState.stopped;
       });
     });
@@ -108,7 +122,9 @@ class _TtsState extends State<Tts> {
     var engines = await flutterTts.getEngines;
     if (engines != null) {
       for (dynamic engine in engines) {
-        print(engine);
+        if (kDebugMode) {
+          print(engine);
+        }
       }
     }
   }
@@ -171,7 +187,7 @@ class _TtsState extends State<Tts> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter TTS'),
+          title: const Text('Flutter TTS'),
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -179,7 +195,7 @@ class _TtsState extends State<Tts> {
             children: [
               _inputSection(),
               _btnSection(),
-              languages != null ? _languageDropDownSection() : Text(""),
+              languages != null ? _languageDropDownSection() : const Text(""),
               _buildSliders()
             ],
           ),
@@ -190,7 +206,7 @@ class _TtsState extends State<Tts> {
 
   Widget _inputSection() => Container(
         alignment: Alignment.topCenter,
-        padding: EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
+        padding: const EdgeInsets.only(top: 25.0, left: 25.0, right: 25.0),
         child: TextField(
           onChanged: (String value) {
             _onChange(value);
@@ -201,7 +217,7 @@ class _TtsState extends State<Tts> {
   Widget _btnSection() {
     if (isAndroid) {
       return Container(
-        padding: EdgeInsets.only(top: 50.0),
+        padding: const EdgeInsets.only(top: 50.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -214,7 +230,7 @@ class _TtsState extends State<Tts> {
       );
     } else {
       return Container(
-        padding: EdgeInsets.only(top: 50.0),
+        padding: const EdgeInsets.only(top: 50.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -231,7 +247,7 @@ class _TtsState extends State<Tts> {
   }
 
   Widget _languageDropDownSection() => Container(
-        padding: EdgeInsets.only(top: 50.0),
+        padding: const EdgeInsets.only(top: 50.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

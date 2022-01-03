@@ -7,8 +7,8 @@ import 'course_recom.dart';
 /// 课程视频播放页面
 
 class CourseIndexPage extends StatefulWidget {
-  CourseIndexPage({Key? key, required this.product}) : super(key: key);
-  late final product;
+  const CourseIndexPage({Key? key, required this.product}) : super(key: key);
+  final product;
 
   @override
   _CourseIndexPageState createState() => _CourseIndexPageState();
@@ -33,40 +33,38 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     _tabController.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(""),
+        title: const Text(""),
         toolbarHeight: 0,
         toolbarOpacity: 0,
         backgroundColor: (Colors.black),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            VideoView(
-              widget.product.videoUrl,
-              //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-              cover:
-                  'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
-            ),
-            // tab栏
-            _buildTabNavigation(),
-            Flexible(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0),
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    CourseDescPage(),
-                    CourseCommentPage(),
-                    CourseRecomPage(),
-                  ],
-                ),
+      body: Column(
+        children: [
+          VideoView(
+            widget.product.videoUrl,
+            //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+            cover: 'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
+          ),
+          // tab栏
+          _buildTabNavigation(),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  CourseDescPage(),
+                  CourseCommentPage(),
+                  CourseRecomPage(),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -79,7 +77,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       shadowColor: Colors.grey[100],
       child: Container(
         alignment: Alignment.centerLeft,
-        padding: EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.only(left: 20),
         height: 50,
         color: Colors.white,
         child: Row(

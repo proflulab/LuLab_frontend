@@ -7,7 +7,7 @@ import '../../values/values.dart';
 
 //启动页面
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,15 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: Size(750, 1334), //配置设计稿的宽度高度
+        designSize: const Size(750, 1334), //配置设计稿的宽度高度
         builder: () => MaterialApp(
-            locale: Locale('zh', 'CN'),
-            localizationsDelegates: [
+            locale: const Locale('zh', 'CN'),
+            localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               //GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: [
+            supportedLocales: const [
               Locale('en', 'US'), // English, no country code
               Locale('zh', 'CN'), // 中文简体
             ],

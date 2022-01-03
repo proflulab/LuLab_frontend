@@ -7,7 +7,7 @@ Widget listGroup1({
   required TextEditingController textController,
 }) {
   return Container(
-    margin: EdgeInsets.only(left: 20, right: 20),
+    margin: const EdgeInsets.only(left: 20, right: 20),
     child: Row(
       children: [
         Expanded(
@@ -21,7 +21,7 @@ Widget listGroup1({
             //autofocus: true,
             textAlign: TextAlign.right,
             controller: textController, //设置controller
-            decoration: InputDecoration.collapsed(hintText: "编辑内容"),
+            decoration: const InputDecoration.collapsed(hintText: "编辑内容"),
           ),
         ),
       ],
@@ -37,7 +37,7 @@ Widget listGroup2({
   required VoidCallback onTap,
 }) {
   return Container(
-      margin: EdgeInsets.only(left: 20, right: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20),
       child: InkWell(
         onTap: onTap,
         child: Row(

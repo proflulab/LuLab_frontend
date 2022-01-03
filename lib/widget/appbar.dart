@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lulab/values/colors.dart';
+import '../../values/values.dart';
 
 /// 透明背景 AppBar
 Widget transparentAppBar({

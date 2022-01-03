@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class WatchHistory extends StatefulWidget {
+  const WatchHistory({Key? key}) : super(key: key);
+
   @override
   _WatchHistoryState createState() => _WatchHistoryState();
 }
@@ -10,12 +12,12 @@ class _WatchHistoryState extends State<WatchHistory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '观看历史',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
           ),
@@ -25,7 +27,7 @@ class _WatchHistoryState extends State<WatchHistory> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () {},
           ),
         ],

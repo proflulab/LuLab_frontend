@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../entitys/entitys.dart';
@@ -31,7 +32,7 @@ class _CoursePageState extends State<CoursePage> {
     var focusList = _postsData.latestCourse;
 
     setState(() {
-      this._focusData = focusList;
+      _focusData = focusList;
     });
   }
 
@@ -48,13 +49,13 @@ class _CoursePageState extends State<CoursePage> {
           },
           child: Container(
             height: 30.0,
-            padding: EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 15),
             decoration: BoxDecoration(
                 //改变搜索外框颜色
                 //border: Border.all(color: Colors.black),
-                color: Color.fromRGBO(230, 230, 230, 0.8),
+                color: const Color.fromRGBO(230, 230, 230, 0.8),
                 borderRadius: BorderRadius.circular(15)),
-            child: Row(children: <Widget>[
+            child: Row(children: const <Widget>[
               Icon(
                 Icons.search,
                 color: (Color.fromRGBO(89, 89, 89, 1)),
@@ -71,7 +72,7 @@ class _CoursePageState extends State<CoursePage> {
           ),
         ),
         leading: IconButton(
-          icon: Icon(Icons.download_for_offline_outlined,
+          icon: const Icon(Icons.download_for_offline_outlined,
               color: Color.fromRGBO(117, 117, 117, 1)),
           onPressed: () {
             print("跳转到下载记录");
@@ -84,9 +85,9 @@ class _CoursePageState extends State<CoursePage> {
                 print("跳转到观看历史");
                 Navigator.pushNamed(context, '/history');
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.history,
-                color: Color.fromRGBO(117, 117, 117, 1),
+                color: const Color.fromRGBO(117, 117, 117, 1),
               ))
         ],
       ),
@@ -110,12 +111,12 @@ class _CoursePageState extends State<CoursePage> {
                       child: Container(
                         width: double.infinity,
                         height: 60,
-                        child: Text("推荐", textAlign: TextAlign.center),
+                        child: const Text("推荐", textAlign: TextAlign.center),
                         color:
                             _selectIndex == index ? Colors.blue : Colors.white,
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       height: 5,
                       endIndent: 10,
                     )
@@ -127,29 +128,31 @@ class _CoursePageState extends State<CoursePage> {
           Expanded(
               flex: 1,
               child: Container(
-                padding: EdgeInsets.only(left: 10, right: 12),
+                padding: const EdgeInsets.only(left: 10, right: 12),
                 child: ListView.builder(
                   itemCount: _focusData.length,
                   itemBuilder: (context, index) {
-                    if (this._focusData.length > 0) {
+                    if (_focusData.isNotEmpty) {
                       return InkWell(
                         onTap: () async {
-                          print('到课程详情');
+                          if (kDebugMode) {
+                            print('到课程详情');
+                          }
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => new CourseIndexPage(
+                                  builder: (context) => CourseIndexPage(
                                       product: _focusData[index])));
                         },
                         child: Container(
                           height: 170.h,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(12.0)),
                             //border: Border.all(color: Colors.black54),
                           ),
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           child: Stack(
                             children: <Widget>[
                               // 课程封面
@@ -201,7 +204,7 @@ class _CoursePageState extends State<CoursePage> {
                         ),
                       );
                     } else {
-                      return Text('加载中...');
+                      return const Text('加载中...');
                     }
                   },
                 ),

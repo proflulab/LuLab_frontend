@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../widget/widgets.dart';
 import '../../utils/utils.dart';
@@ -8,7 +9,7 @@ import '../../app.dart';
 import '../../global.dart';
 
 class SignInPage extends StatefulWidget {
-  SignInPage({Key? key}) : super(key: key);
+  const SignInPage({Key? key}) : super(key: key);
 
   @override
   _SignInPageState createState() => _SignInPageState();
@@ -52,14 +53,18 @@ class _SignInPageState extends State<SignInPage> {
       );
       Global.saveProfile(userProfile);
     } catch (e) {
-      print("===========登录报错===============");
-      print(e);
+      if (kDebugMode) {
+        print("===========登录报错===============");
+      }
+      if (kDebugMode) {
+        print(e);
+      }
       return toastInfo(msg: '请正确输入账号、密码！');
     }
 
     // ExtendedNavigator.rootNavigator
     //     .pushReplacementNamed(Routes.applicationPageRoute);
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => App()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const App()));
   }
 
   // 登录表单
@@ -92,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
           // 登录
           Container(
             //height: 100.h,
-            margin: EdgeInsets.only(top: 50),
+            margin: const EdgeInsets.only(top: 50),
             child: btnFlatButtonWidget(
               width: 622,
               height: 112,
@@ -114,7 +119,7 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           children: <Widget>[
             _buildInputForm(),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),

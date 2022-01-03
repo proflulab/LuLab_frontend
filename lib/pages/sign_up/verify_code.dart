@@ -6,7 +6,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       // appBar: AppBar(
       //   title: Text("TextFieldDemo"),
       // ),
@@ -16,35 +16,35 @@ class Home extends StatelessWidget {
 }
 
 class VerifyCodeLogin extends StatelessWidget {
+  const VerifyCodeLogin({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          // 返回行
-          BackLineWidget(),
-          // 标题行
-          TitleLineWidget(),
-          Container(
-            padding: EdgeInsets.only(top: 100, left: 50, right: 50),
-            child: Column(
-              children: [
-                // 手机号
-                PhoneFieldWidget(),
-                SizedBox(
-                  height: 35,
-                ),
-                // 验证码
-                VerifyFieldWidget(),
-                SizedBox(
-                  height: 60,
-                ),
-                SubmitButtonWidget(),
-              ],
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        // 返回行
+        BackLineWidget(),
+        // 标题行
+        const TitleLineWidget(),
+        Container(
+          padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
+          child: Column(
+            children: const [
+              // 手机号
+              PhoneFieldWidget(),
+              SizedBox(
+                height: 35,
+              ),
+              // 验证码
+              VerifyFieldWidget(),
+              SizedBox(
+                height: 60,
+              ),
+              SubmitButtonWidget(),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
@@ -60,8 +60,8 @@ class TitleLineWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          margin: EdgeInsets.only(top: 20, left: 30),
-          child: Text(
+          margin: const EdgeInsets.only(top: 20, left: 30),
+          child: const Text(
             "手机号登录",
             style: TextStyle(
               fontSize: 30,
@@ -82,9 +82,9 @@ class PhoneFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: const [
         Padding(
-          padding: const EdgeInsets.only(left: 40),
+          padding: EdgeInsets.only(left: 40),
           child: TextField(
             autofocus: true,
             keyboardType: TextInputType.phone,
@@ -117,7 +117,7 @@ class VerifyFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: const [
         TextField(
           obscureText: true,
           keyboardType: TextInputType.text,
@@ -152,11 +152,11 @@ class SendVerifyCodeWidget extends StatelessWidget {
       child: TextButton(
         style: ButtonStyle(
           side: MaterialStateProperty.all(
-              BorderSide(color: Colors.blue, width: 1)),
+              const BorderSide(color: Colors.blue, width: 1)),
           shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
         ),
-        child: Text(
+        child: const Text(
           "获取验证码",
         ),
         onPressed: () {},
@@ -173,7 +173,7 @@ class SubmitButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 1500,
       height: 55,
       child: Padding(
@@ -182,9 +182,9 @@ class SubmitButtonWidget extends StatelessWidget {
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),
-              backgroundColor: MaterialStateProperty.all(Color(0xff0079fe))),
+              backgroundColor: MaterialStateProperty.all(const Color(0xff0079fe))),
           onPressed: () {},
-          child: Text(
+          child: const Text(
             "确定",
             textAlign: TextAlign.center,
             style: TextStyle(

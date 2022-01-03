@@ -1,4 +1,4 @@
-package com.example.lulab
+package com.example.proflu
 
 import io.flutter.embedding.android.FlutterActivity
 

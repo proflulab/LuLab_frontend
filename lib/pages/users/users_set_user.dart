@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../values/values.dart';
 import '../../widget/widgets.dart';
@@ -13,13 +14,13 @@ class SetUser extends StatefulWidget {
 
 class _SetUserState extends State<SetUser> {
   String _sexValue = Global.profile.data.sex;
-  TextEditingController _nameController =
+  final TextEditingController _nameController =
       TextEditingController(text: Global.profile.data.name);
-  TextEditingController _introController =
+  final TextEditingController _introController =
       TextEditingController(text: Global.profile.data.description);
-  TextEditingController _phoneController =
+  final TextEditingController _phoneController =
       TextEditingController(text: Global.profile.data.phone);
-  TextEditingController _wechatnameController =
+  final TextEditingController _wechatnameController =
       TextEditingController(text: Global.profile.data.wechat);
 
 // 执行修改个人信息操作
@@ -39,8 +40,12 @@ class _SetUserState extends State<SetUser> {
 
       toastInfo(msg: '修改成功');
     } catch (e) {
-      print("打印错误信息");
-      print(e);
+      if (kDebugMode) {
+        print("打印错误信息");
+      }
+      if (kDebugMode) {
+        print(e);
+      }
       return toastInfo(msg: '修改失败，数据上传出错！');
     }
 
@@ -51,16 +56,18 @@ class _SetUserState extends State<SetUser> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             '个人信息',
           ),
           actions: [
             Center(
                 child: InkWell(
-              child: Text("保存"),
+              child: const Text("保存"),
               onTap: () {
                 _carryUp();
-                print("保存个人信息");
+                if (kDebugMode) {
+                  print("保存个人信息");
+                }
               },
             ))
           ],
@@ -71,45 +78,47 @@ class _SetUserState extends State<SetUser> {
               context: context,
               title: '头像',
               child: ClipOval(child: Image.network(Global.profile.data.img)),
-              icon: Icon(MyIcon.user_right),
+              icon: const Icon(MyIcon.user_right),
               onTap: () {
-                print("该功能未开发，当前无法更改");
+                if (kDebugMode) {
+                  print("该功能未开发，当前无法更改");
+                }
                 toastInfo(msg: '功能未开发，当前无法修改');
               },
             ),
-            Divider(),
+            const Divider(),
             listGroup1(
                 context: context, title: '姓名', textController: _nameController),
-            Divider(),
+            const Divider(),
             listGroup1(
                 context: context,
                 title: '简介',
                 textController: _introController),
-            Divider(),
+            const Divider(),
             listGroup1(
                 context: context,
                 title: '号码',
                 textController: _phoneController),
-            Divider(),
+            const Divider(),
             listGroup1(
                 context: context,
                 title: '微信号',
                 textController: _wechatnameController),
-            Divider(),
+            const Divider(),
             listGroup2(
               context: context,
               title: '性别',
               child: Text(_sexValue),
-              icon: Icon(MyIcon.user_right),
+              icon: const Icon(MyIcon.user_right),
               onTap: () async {
                 //触摸失去焦点
                 FocusScope.of(context).requestFocus(FocusNode());
                 await showModalBottomSheet(
-                    backgroundColor: Color.fromRGBO(1, 1, 1, 0),
+                    backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
                     context: context,
                     builder: (BuildContext context) {
                       return Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.rectangle,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -120,11 +129,11 @@ class _SetUserState extends State<SetUser> {
                         child: Center(
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 height: 60,
                                 width: double.infinity,
                                 child: TextButton(
-                                  child: Text('男'),
+                                  child: const Text('男'),
                                   onPressed: () {
                                     setState(() {
                                       _sexValue = "男";
@@ -133,11 +142,11 @@ class _SetUserState extends State<SetUser> {
                                   },
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 height: 60,
                                 width: double.infinity,
                                 child: TextButton(
-                                  child: Text('女'),
+                                  child: const Text('女'),
                                   onPressed: () {
                                     setState(() {
                                       _sexValue = "女";
@@ -146,11 +155,11 @@ class _SetUserState extends State<SetUser> {
                                   },
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 height: 60,
                                 width: double.infinity,
                                 child: TextButton(
-                                  child: Text('保密'),
+                                  child: const Text('保密'),
                                   onPressed: () {
                                     setState(() {
                                       _sexValue = "保密";
@@ -166,7 +175,7 @@ class _SetUserState extends State<SetUser> {
                     });
               },
             ),
-            Divider(),
+            const Divider(),
             //按钮选择性别
             // Row(
             //   children: <Widget>[

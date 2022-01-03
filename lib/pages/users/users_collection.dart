@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatefulWidget {
+  const FavoritesPage({Key? key}) : super(key: key);
+
   @override
   _FavoritesPageState createState() => _FavoritesPageState();
 }
@@ -12,12 +14,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
     double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '我的收藏',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
           ),
@@ -28,14 +30,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Container(
+      body: SizedBox(
         width: screenwidth,
         child: Column(
           children: [
             Container(
               height: 160,
               width: screenwidth,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
                     width: 1,
@@ -45,10 +47,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
               ),
               child: Stack(
                 children: [
-                  Positioned(
+                  const Positioned(
                     left: 20,
                     top: 10,
-                    child: Container(
+                    child: SizedBox(
                       height: 30,
                       width: 120,
                       child: Text(
@@ -63,17 +65,17 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   Positioned(
                     left: 20,
                     top: 40,
-                    child: Container(
+                    child: SizedBox(
                       height: 105,
                       width: 105,
                       child: ClipRRect(
                           child: Image.asset('assets/images/logo.png')),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 150,
                     top: 45,
-                    child: Container(
+                    child: SizedBox(
                       height: 30,
                       width: 80,
                       child: Text(
@@ -85,10 +87,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 150,
                     top: 80,
-                    child: Container(
+                    child: SizedBox(
                       height: 80,
                       width: 120,
                       child: Text(

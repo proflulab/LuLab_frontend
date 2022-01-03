@@ -4,7 +4,7 @@ import '../agreement/agreement_use.dart';
 
 //二级见面手机一键登录
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -23,16 +23,16 @@ class _LoginPageState extends State<LoginPage> {
               IconButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Login1()));
+                      .push(MaterialPageRoute(builder: (context) => const Login1()));
                 },
                 iconSize: 38.0,
-                icon: Icon(Icons.keyboard_arrow_left),
+                icon: const Icon(Icons.keyboard_arrow_left),
               ),
             ]),
             const SizedBox(
               height: 41.0,
             ),
-            Text(
+            const Text(
               '本机号码一键登录',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 58.0,
             ),
-            Text(
+            const Text(
               '12345678',
               style: TextStyle(
                 fontSize: 28,
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 8.0,
             ),
-            Text(
+            const Text(
               '中国电信提供认证服务',
               style: TextStyle(
                 fontSize: 12,
@@ -69,10 +69,10 @@ class _LoginPageState extends State<LoginPage> {
               autofocus: true,
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue),
-                shape: MaterialStateProperty.all(StadiumBorder()),
-                minimumSize: MaterialStateProperty.all(Size(280, 40)),
+                shape: MaterialStateProperty.all(const StadiumBorder()),
+                minimumSize: MaterialStateProperty.all(const Size(280, 40)),
               ),
-              child: Text(
+              child: const Text(
                 "一键登录",
                 style: TextStyle(
                     fontSize: 16,
@@ -88,12 +88,12 @@ class _LoginPageState extends State<LoginPage> {
               autofocus: true,
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(StadiumBorder()),
-                minimumSize: MaterialStateProperty.all(Size(280, 40)),
+                shape: MaterialStateProperty.all(const StadiumBorder()),
+                minimumSize: MaterialStateProperty.all(const Size(280, 40)),
                 side: MaterialStateProperty.all(
-                    BorderSide(color: Colors.grey, width: 1)),
+                    const BorderSide(color: Colors.grey, width: 1)),
               ),
-              child: Text(
+              child: const Text(
                 "切换账号",
                 style: TextStyle(
                     fontSize: 16,
@@ -115,10 +115,10 @@ class _LoginPageState extends State<LoginPage> {
                 autofocus: true,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all(StadiumBorder()),
-                  minimumSize: MaterialStateProperty.all(Size(36, 36)),
+                  shape: MaterialStateProperty.all(const StadiumBorder()),
+                  minimumSize: MaterialStateProperty.all(const Size(36, 36)),
                   side: MaterialStateProperty.all(
-                      BorderSide(color: Colors.grey, width: 1)),
+                      const BorderSide(color: Colors.grey, width: 1)),
                 ),
                 onPressed: () {},
               ),
@@ -134,10 +134,10 @@ class _LoginPageState extends State<LoginPage> {
                 autofocus: true,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all(StadiumBorder()),
-                  minimumSize: MaterialStateProperty.all(Size(36, 36)),
+                  shape: MaterialStateProperty.all(const StadiumBorder()),
+                  minimumSize: MaterialStateProperty.all(const Size(36, 36)),
                   side: MaterialStateProperty.all(
-                      BorderSide(color: Colors.grey, width: 1)),
+                      const BorderSide(color: Colors.grey, width: 1)),
                 ),
                 onPressed: () {},
               ),
@@ -153,10 +153,10 @@ class _LoginPageState extends State<LoginPage> {
                 autofocus: true,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all(StadiumBorder()),
-                  minimumSize: MaterialStateProperty.all(Size(36, 36)),
+                  shape: MaterialStateProperty.all(const StadiumBorder()),
+                  minimumSize: MaterialStateProperty.all(const Size(36, 36)),
                   side: MaterialStateProperty.all(
-                      BorderSide(color: Colors.grey, width: 1)),
+                      const BorderSide(color: Colors.grey, width: 1)),
                 ),
                 onPressed: () {},
               ),
@@ -166,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               TextButton(
-                child: Text(
+                child: const Text(
                   '用户协议',
                   style: TextStyle(
                     color: Colors.deepPurple,
@@ -176,17 +176,17 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => UserAgreement()));
+                      MaterialPageRoute(builder: (context) => const UserAgreement()));
                 },
               ),
-              Text('及',
+              const Text('及',
                   style: TextStyle(
                     //color: Colors.deepPurple,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   )),
               TextButton(
-                child: Text(
+                child: const Text(
                   '隐私政策',
                   style: TextStyle(
                     color: Colors.deepPurple,
@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 onPressed: () {},
               ),
-              Text('，中国电信认证服务条款',
+              const Text('，中国电信认证服务条款',
                   style: TextStyle(
                     //color: Colors.deepPurple,
                     fontSize: 12,

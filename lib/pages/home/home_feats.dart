@@ -1,12 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lulab/values/values.dart';
 
 //import '../../entitys/entitys.dart';
 import '../../widget/widgets.dart';
 import '../../utils/utils.dart';
+import '../../values/values.dart';
 //import '../../api/apis.dart';
 
 class FeatsPage extends StatefulWidget {
+  const FeatsPage({Key? key}) : super(key: key);
+
   @override
   _FeatsPageState createState() => _FeatsPageState();
 }
@@ -109,9 +112,11 @@ class _FeatsPageState extends State<FeatsPage> {
                           child: Center(
                             child: InkWell(
                               onTap: () {
-                                print("进入主页");
+                                if (kDebugMode) {
+                                  print("进入主页");
+                                }
                               },
-                              child: Text("他的主页"),
+                              child: const Text("他的主页"),
                             ),
                           ),
                         )),
@@ -136,9 +141,11 @@ class _FeatsPageState extends State<FeatsPage> {
                           child: Center(
                             child: InkWell(
                               onTap: () {
-                                print("关注他");
+                                if (kDebugMode) {
+                                  print("关注他");
+                                }
                               },
-                              child: Text("关注他"),
+                              child: const Text("关注他"),
                             ),
                           ),
                         )),

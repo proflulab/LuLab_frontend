@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AdviceOnlinePage extends StatefulWidget {
+  const AdviceOnlinePage({Key? key}) : super(key: key);
+
   @override
   _AdviceOnlinePageState createState() => _AdviceOnlinePageState();
 }
@@ -12,13 +14,13 @@ class _AdviceOnlinePageState extends State<AdviceOnlinePage> {
     //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '在线咨询',
           style: TextStyle(color: Colors.black),
         ),
         //appbar左侧返回按钮
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
           ),

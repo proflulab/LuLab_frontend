@@ -18,7 +18,7 @@ Widget inputTextEdit({
       height: height.h,
       margin: EdgeInsets.only(top: marginTop.h),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(243, 243, 240, 1),
+        color: const Color.fromRGBO(243, 243, 240, 1),
         borderRadius: Radii.k6pxRadius,
       ),
       child: Center(
@@ -28,7 +28,7 @@ Widget inputTextEdit({
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hintText,
-            contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+            contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
             border: InputBorder.none,
           ),
           style: TextStyle(
@@ -60,7 +60,7 @@ Widget inputEmailEdit({
     decoration: BoxDecoration(
       color: AppColors.primaryBackground,
       borderRadius: Radii.k6pxRadius,
-      boxShadow: [
+      boxShadow: const [
         BoxShadow(
           color: Color.fromARGB(41, 0, 0, 0),
           offset: Offset(0, 1),
@@ -74,9 +74,9 @@ Widget inputEmailEdit({
       keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: hintText,
-        contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+        contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
         border: InputBorder.none,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: AppColors.primaryText,
         ),
       ),

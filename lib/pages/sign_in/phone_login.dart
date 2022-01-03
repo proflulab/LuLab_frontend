@@ -8,7 +8,7 @@ class PhoneLogin1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       // appBar: AppBar(
       //   title: Text("TextFieldDemo"),
       // ),
@@ -27,27 +27,27 @@ class PhoneLogin extends StatelessWidget {
         children: [
           BackLineWidget(),
           // logo
-          LogoIconWidget(),
+          const LogoIconWidget(),
           // 手机号
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50),
             child: PhoneFieldWidget(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           // 验证码
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50),
             child: VerifyFieldWidget(),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           // 提交
-          SubmitButtonWidget(),
+          const SubmitButtonWidget(),
           // 协议
-          ProtocolButtonWidget()
+          const ProtocolButtonWidget()
         ],
       ),
     );
@@ -69,16 +69,16 @@ class BackLineWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-            margin: EdgeInsets.only(left: 30, top: 20),
+            margin: const EdgeInsets.only(left: 30, top: 20),
             child: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
+              icon: const Icon(Icons.arrow_back_ios),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Login1()));
+                    .push(MaterialPageRoute(builder: (context) => const Login1()));
               },
             )),
         Container(
-          margin: EdgeInsets.only(top: 30, right: 20),
+          margin: const EdgeInsets.only(top: 30, right: 20),
           child: Text(txt.toString()),
         ),
       ],
@@ -100,8 +100,8 @@ class LogoIconWidget extends StatelessWidget {
           height: 100,
           width: 100,
           // 上边距
-          margin: EdgeInsets.only(top: 50, left: 230, bottom: 50),
-          child: Center(
+          margin: const EdgeInsets.only(top: 50, left: 230, bottom: 50),
+          child: const Center(
             // logo 文本
             child: Text(
               "lulab",
@@ -112,7 +112,7 @@ class LogoIconWidget extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             // logo 背景色
-            color: Color(0xff2a67fe),
+            color: const Color(0xff2a67fe),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
@@ -129,7 +129,7 @@ class PhoneFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return const TextField(
       autofocus: true,
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
@@ -156,11 +156,11 @@ class SendVerifyCodeWidget extends StatelessWidget {
       child: TextButton(
         style: ButtonStyle(
           side: MaterialStateProperty.all(
-              BorderSide(color: Colors.blue, width: 1)),
+              const BorderSide(color: Colors.blue, width: 1)),
           shape: MaterialStateProperty.all(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
         ),
-        child: Text(
+        child: const Text(
           "发送验证码",
         ),
         onPressed: () {},
@@ -178,7 +178,7 @@ class VerifyFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: const [
         TextField(
           obscureText: true,
           keyboardType: TextInputType.text,
@@ -202,7 +202,7 @@ class SubmitButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 55,
       child: Padding(
@@ -211,9 +211,9 @@ class SubmitButtonWidget extends StatelessWidget {
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),
-              backgroundColor: MaterialStateProperty.all(Color(0xff0079fe))),
+              backgroundColor: MaterialStateProperty.all(const Color(0xff0079fe))),
           onPressed: () {},
-          child: Text(
+          child: const Text(
             "提交",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -239,9 +239,9 @@ class ProtocolButtonWidget extends StatelessWidget {
       width: 350,
       height: 40,
       // 上边距
-      margin: EdgeInsets.only(top: 50),
+      margin: const EdgeInsets.only(top: 50),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text(
+        const Text(
           "同意",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -249,7 +249,7 @@ class ProtocolButtonWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          child: Text(
+          child: const Text(
             '用户协议',
             style: TextStyle(
               color: Colors.deepPurple,
@@ -259,10 +259,10 @@ class ProtocolButtonWidget extends StatelessWidget {
           ),
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => UserAgreement()));
+                .push(MaterialPageRoute(builder: (context) => const UserAgreement()));
           },
         ),
-        Text(
+        const Text(
           "与隐私政策",
           textAlign: TextAlign.center,
           style: TextStyle(

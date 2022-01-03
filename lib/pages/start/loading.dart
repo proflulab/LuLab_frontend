@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //import '../utils/utils.dart';
 
 class LoadingPage extends StatefulWidget {
+  const LoadingPage({Key? key}) : super(key: key);
+
   @override
   _LoadingPageState createState() => _LoadingPageState();
 }
@@ -34,13 +37,17 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void countDown() {
-    var _duration = Duration(seconds: 3);
+    var _duration = const Duration(seconds: 3);
 
-    print("LuLab程序启动....");
+    if (kDebugMode) {
+      print("LuLab程序启动....");
+    }
     //Storage.getInt("Key_Int");
     Future<int> result = readData();
     result.then((guide) {
-      print(guide);
+      if (kDebugMode) {
+        print(guide);
+      }
       //判断是否是第一次启动app
       if (guide == 0) {
         Future.delayed(_duration, _firstguide);

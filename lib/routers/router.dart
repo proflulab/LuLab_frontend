@@ -14,15 +14,15 @@ import '../pages/sign_in/login.dart';
 //配置路由
 final Map<String, Function> routes = {
   '/': (context) => LoadingPage(),
-  '/firstguide': (context) => FirstGuidePage(),
-  '/app': (context) => App(),
-  '/search': (context) => SearchPage(),
-  '/history': (context) => History(),
-  '/download': (context) => Download(),
-  '/customer': (context) => Customer(),
+  '/firstguide': (context) => const FirstGuidePage(),
+  '/app': (context) => const App(),
+  '/search': (context) => const SearchPage(),
+  '/history': (context) => const History(),
+  '/download': (context) => const Download(),
+  '/customer': (context) => const Customer(),
   '/message': (context) => Message(),
   //'/course': (context) => CourseIndexPage(),
-  '/login': (context) => Login1(),
+  '/login': (context) => const Login1(),
   //'/set': (context) => SettingsPage(),
 };
 

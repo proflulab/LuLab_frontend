@@ -14,7 +14,7 @@ Widget positionedImage({
   return Positioned(
     top: top.h,
     left: left.w,
-    child: Container(
+    child: SizedBox(
       height: height.h,
       width: width.w,
       child: ClipRRect(
@@ -39,7 +39,7 @@ Widget positionedText({
   return Positioned(
     top: top.h,
     left: left.w,
-    child: Container(
+    child: SizedBox(
       height: height.h,
       width: width.w,
       child: Text(
@@ -48,7 +48,7 @@ Widget positionedText({
         //textDirection: TextDirection.rtl,
         softWrap: true,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14,
         ),
       ),

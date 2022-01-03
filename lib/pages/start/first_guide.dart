@@ -7,14 +7,14 @@ class FirstGuidePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: FirstGuide(),
     );
   }
 }
 
 class FirstGuide extends StatefulWidget {
-  FirstGuide({Key? key}) : super(key: key);
+  const FirstGuide({Key? key}) : super(key: key);
 
   @override
   _FirstGuideState createState() => _FirstGuideState();
@@ -63,9 +63,9 @@ class _FirstGuideState extends State<FirstGuide> {
         AnimatedContainer(
           height: _currIndex == 2 ? 50 : 0,
           width: _currIndex == 2 ? 240 : 0,
-          duration: Duration(milliseconds: 0),
+          duration: const Duration(milliseconds: 0),
           child: ElevatedButton(
-            child: Text('立即体验'),
+            child: const Text('立即体验'),
             onPressed: () {
               Storage.setInt('Key_Int', 1);
               Navigator.of(context).pushReplacementNamed('/login');
@@ -113,13 +113,13 @@ class _FirstGuideState extends State<FirstGuide> {
   // 小圆点
   Widget buidIndefot(bool isSelected) {
     return AnimatedContainer(
-      margin: EdgeInsets.only(left: 50),
+      margin: const EdgeInsets.only(left: 50),
       height: 18,
       width: isSelected ? 24 : 18,
-      duration: Duration(milliseconds: 300),
-      decoration: BoxDecoration(
+      duration: const Duration(milliseconds: 300),
+      decoration: const BoxDecoration(
           color: Colors.blue,
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+          borderRadius:  BorderRadius.all(Radius.circular(10))),
     );
   }
 }

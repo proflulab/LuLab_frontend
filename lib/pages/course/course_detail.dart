@@ -7,14 +7,14 @@ class CourseDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: CourseDetail(),
     );
   }
 }
 
 class CourseDetail extends StatefulWidget {
-  CourseDetail({Key? key}) : super(key: key);
+  const CourseDetail({Key? key}) : super(key: key);
 
   @override
   _CourseDetailState createState() => _CourseDetailState();
@@ -23,7 +23,7 @@ class CourseDetail extends StatefulWidget {
 class _CourseDetailState extends State<CourseDetail> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 800,
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -32,15 +32,15 @@ class _CourseDetailState extends State<CourseDetail> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('详情'),
+                const Text('详情'),
                 IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: Icon(Icons.keyboard_arrow_down))
+                    icon: const Icon(Icons.keyboard_arrow_down))
               ],
             ),
-            Divider(
+            const Divider(
               color: Color(0xffe4e4e4),
             ),
             // 详情标题
@@ -60,9 +60,9 @@ class _CourseDetailState extends State<CourseDetail> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
-            children: [
+            children: const [
               Text(
                 '课程介绍',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
@@ -71,9 +71,9 @@ class _CourseDetailState extends State<CourseDetail> {
           ),
         ),
         Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: Wrap(
-            children: [
+            children: const [
               Text('介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍')
             ],
           ),
@@ -84,9 +84,9 @@ class _CourseDetailState extends State<CourseDetail> {
 
   Container buildDetailTitle() {
     return Container(
-      margin: EdgeInsets.only(left: 20),
+      margin: const EdgeInsets.only(left: 20),
       child: Row(
-        children: [
+        children: const [
           Text(
             '颠覆式创新:大公司消失的根本原因',
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
@@ -100,13 +100,13 @@ class _CourseDetailState extends State<CourseDetail> {
     return Container(
       child: Column(
         children: [
-          ListTile(
+          const ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage('assets/images/logo.png'),
             ),
             title: Text(
               '陆向谦',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style:  TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             subtitle: Text(
               '实验室创始人',
@@ -115,14 +115,14 @@ class _CourseDetailState extends State<CourseDetail> {
           ),
           // 课程评价
           ListTile(
-            leading: Text(
+            leading: const Text(
               '课程评价',
               style: TextStyle(
                 color: Colors.grey,
               ),
             ),
             title: Row(
-              children: [
+              children: const [
                 Icon(
                   Icons.star,
                   color: Colors.orange,
@@ -152,14 +152,14 @@ class _CourseDetailState extends State<CourseDetail> {
           ),
           // 播放次数
           ListTile(
-            leading: Text(
+            leading: const Text(
               '播放次数',
               style: TextStyle(
                 color: Colors.grey,
               ),
             ),
             title: Row(
-              children: [
+              children: const [
                 Text(
                   '989次播放',
                   style: TextStyle(color: Colors.grey),
@@ -169,14 +169,14 @@ class _CourseDetailState extends State<CourseDetail> {
           ),
           // 上线时间
           ListTile(
-            leading: Text(
+            leading: const Text(
               '上线时间',
               style: TextStyle(
                 color: Colors.grey,
               ),
             ),
             title: Row(
-              children: [
+              children: const [
                 Text(
                   '2021年7月9日上线',
                   style: TextStyle(color: Colors.grey),
@@ -186,7 +186,7 @@ class _CourseDetailState extends State<CourseDetail> {
           ),
           // 课程标签
           ListTile(
-            leading: Text(
+            leading: const Text(
               '课程标签',
               style: TextStyle(
                 color: Colors.grey,
@@ -195,15 +195,15 @@ class _CourseDetailState extends State<CourseDetail> {
             title: Row(
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  child: Text(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  child: const Text(
                     '颠覆式创新',
                     style: TextStyle(color: Colors.grey),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  child: Text(
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  child: const Text(
                     '公司',
                     style: TextStyle(color: Colors.grey),
                   ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 //import 'PasswordChange.dart';
 
 class AccountSetPage extends StatefulWidget {
+  const AccountSetPage({Key? key}) : super(key: key);
+
   @override
   _AccountSetPageState createState() => _AccountSetPageState();
 }
@@ -13,12 +15,12 @@ class _AccountSetPageState extends State<AccountSetPage> {
     double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           '账号设置',
           style: TextStyle(color: Colors.black),
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.black,
           ),
@@ -37,8 +39,8 @@ class _AccountSetPageState extends State<AccountSetPage> {
             child: Container(
               height: 30,
               width: 80,
-              padding: EdgeInsets.fromLTRB(3, 7, 0, 0),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(3, 7, 0, 0),
+              child: const Text(
                 '密码设置',
                 style: TextStyle(
                   fontSize: 16,
@@ -53,7 +55,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
             child: Container(
               height: 50,
               width: screenwidth,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 border: Border(
                   bottom: BorderSide(
@@ -75,11 +77,11 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   //     ));
                 },
                 child: Stack(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Positioned(
                       left: 14,
                       top: 5,
-                      child: Container(
+                      child: SizedBox(
                         height: 35,
                         width: 240,
                         child: Text(
@@ -110,8 +112,8 @@ class _AccountSetPageState extends State<AccountSetPage> {
             child: Container(
               height: 30,
               width: 80,
-              padding: EdgeInsets.fromLTRB(3, 7, 0, 0),
-              child: Text(
+              padding: const EdgeInsets.fromLTRB(3, 7, 0, 0),
+              child: const Text(
                 '账户绑定',
                 style: TextStyle(
                   fontSize: 16,
@@ -126,7 +128,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
             child: Container(
               height: 200,
               width: screenwidth,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Column(
@@ -134,7 +136,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   Container(
                     height: 50,
                     width: screenwidth,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -149,11 +151,11 @@ class _AccountSetPageState extends State<AccountSetPage> {
                     child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 14,
                             top: 5,
-                            child: Container(
+                            child: SizedBox(
                               height: 35,
                               width: 240,
                               child: Text(
@@ -191,7 +193,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   Container(
                     height: 50,
                     width: screenwidth,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -202,11 +204,11 @@ class _AccountSetPageState extends State<AccountSetPage> {
                     child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 14,
                             top: 5,
-                            child: Container(
+                            child: SizedBox(
                               height: 35,
                               width: 240,
                               child: Text(
@@ -244,7 +246,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   Container(
                     height: 50,
                     width: screenwidth,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -255,11 +257,11 @@ class _AccountSetPageState extends State<AccountSetPage> {
                     child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 14,
                             top: 5,
-                            child: Container(
+                            child: SizedBox(
                               height: 35,
                               width: 240,
                               child: Text(
@@ -297,7 +299,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
                   Container(
                     height: 50,
                     width: screenwidth,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
                           width: 1,
@@ -308,11 +310,11 @@ class _AccountSetPageState extends State<AccountSetPage> {
                     child: TextButton(
                       onPressed: () {},
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 14,
                             top: 5,
-                            child: Container(
+                            child: SizedBox(
                               height: 35,
                               width: 240,
                               child: Text(

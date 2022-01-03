@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class History extends StatefulWidget {
-  History({Key? key}) : super(key: key);
+  const History({Key? key}) : super(key: key);
 
   @override
   _HistoryState createState() => _HistoryState();
@@ -12,9 +12,9 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("我是观看历史区"),
+        title: const Text("我是观看历史区"),
       ),
-      body: Text("我是观看历史区"),
+      body: const Text("我是观看历史区"),
     );
   }
 }

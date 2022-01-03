@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UserAgreement extends StatefulWidget {
-  UserAgreement({Key? key}) : super(key: key);
+  const UserAgreement({Key? key}) : super(key: key);
 
   @override
   _UserAgreementState createState() => _UserAgreementState();
@@ -11,16 +11,16 @@ class _UserAgreementState extends State<UserAgreement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('用户协议')),
+      appBar: AppBar(title: const Text('用户协议')),
       body: SingleChildScrollView(
           child: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           width: 1000,
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 '''尊敬的客户，在您下载程序( 下称“APP")使用我们的服务前，请仔细阅读本用户协议。用户协议本协议是您与视算新里程科技(北京)有限公司(以下简称“视算新里程科技”)签署的《用户协议》。您下载本APP并成功注册后，即被视为已阅读、理解、接受本协议条款。本协议可由我们不时作出修订，且构成您与我们之间达成的有关APP使用、具有约束力的协议。您在修订发布后继续使用APP，即视为您已接受了相关修订。如果您不同意本协议或相关修订，则应立即卸载本APP。如果您不满十八(18) 周岁，您应确保与您的父母或监护人共同阅读本协议，以便您及您的父母或监护人理解并同意本协议的内容。
 
 1.用户许可
@@ -50,9 +50,9 @@ class _UserAgreementState extends State<UserAgreement> {
                     TextStyle(color: Colors.black, fontSize: 14, height: 1.4),
               ),
               Container(
-                padding: EdgeInsets.only(right: 10),
+                padding: const EdgeInsets.only(right: 10),
                 child: Row(
-                  children: <Widget>[
+                  children: const <Widget>[
                     Expanded(
                       child: Text(
                         '视算新里程科技(北京)有限公司',

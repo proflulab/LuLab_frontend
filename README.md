@@ -1,4 +1,4 @@
-# 陆向谦实验室APP
+# 陆向谦实验室AI-APP
 
 A new Flutter project.
 

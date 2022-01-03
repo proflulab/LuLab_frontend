@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/widgets.dart';
@@ -22,7 +23,7 @@ class _UsersPageState extends State<UsersPage> {
     Widget _username() {
       return Container(
         //height: 100,
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         //color: Colors.white,
         child: ListTile(
           leading: ClipOval(child: Image.network(Global.profile.data.img)),
@@ -31,18 +32,20 @@ class _UsersPageState extends State<UsersPage> {
           //   backgroundImage: AssetImage("assets/images/logo.png"),
           // ),
           title: Text(Global.profile.data.name),
-          subtitle: Text("功勋学员"),
-          contentPadding: EdgeInsets.all(10),
-          trailing: Text("个人主页"),
+          subtitle: const Text("功勋学员"),
+          contentPadding: const EdgeInsets.all(10),
+          trailing: const Text("个人主页"),
           onTap: () {
-            print("进入个人主页");
+            if (kDebugMode) {
+              print("进入个人主页");
+            }
           },
         ),
       );
     }
 
     Widget _dynamicdata() {
-      return Container(
+      return SizedBox(
         height: 60,
         width: screenwidth,
         child: Row(
@@ -76,9 +79,9 @@ class _UsersPageState extends State<UsersPage> {
     Widget _adv() {
       return Container(
         height: 90,
-        padding: EdgeInsets.only(left: 15, right: 5),
-        margin: EdgeInsets.only(left: 30, right: 30),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.only(left: 15, right: 5),
+        margin: const EdgeInsets.only(left: 30, right: 30),
+        decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15),
@@ -87,15 +90,17 @@ class _UsersPageState extends State<UsersPage> {
             color: Colors.green),
         child: Center(
           child: ListTile(
-            title: Text("VIP"),
-            subtitle: Text("优享&大特权"),
-            contentPadding: EdgeInsets.all(10),
-            trailing: Chip(
+            title: const Text("VIP"),
+            subtitle: const Text("优享&大特权"),
+            contentPadding: const EdgeInsets.all(10),
+            trailing: const Chip(
               avatar: null,
               label: Text("立即加入"),
             ),
             onTap: () {
-              print("进入会员详情");
+              if (kDebugMode) {
+                print("进入会员详情");
+              }
             },
           ),
         ),
@@ -107,8 +112,8 @@ class _UsersPageState extends State<UsersPage> {
         height: 250,
         width: 500,
         //padding: EdgeInsets.only(left: 5, right: 5),
-        margin: EdgeInsets.only(left: 10, right: 10),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Colors.white),
@@ -121,18 +126,20 @@ class _UsersPageState extends State<UsersPage> {
           children: [
             combotton(
                 bottomname: " 购买记录",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_buy,
                   size: 40,
                   color: Colors.red,
                 ),
                 onPressed: () {
-                  print("跳转到购买记录");
+                  if (kDebugMode) {
+                    print("跳转到购买记录");
+                  }
                 },
                 context: context),
             combotton(
                 bottomname: "离线课程",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_download,
                   size: 40,
                   color: Colors.red,
@@ -141,7 +148,7 @@ class _UsersPageState extends State<UsersPage> {
                 context: context),
             combotton(
                 bottomname: "我的收藏",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_collect,
                   size: 40,
                   color: Colors.red,
@@ -150,7 +157,7 @@ class _UsersPageState extends State<UsersPage> {
                 context: context),
             combotton(
                 bottomname: "观看历史",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_history,
                   size: 40,
                   color: Colors.red,
@@ -159,7 +166,7 @@ class _UsersPageState extends State<UsersPage> {
                 context: context),
             combotton(
                 bottomname: "我的会员",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_vip,
                   size: 40,
                   color: Colors.red,
@@ -174,57 +181,63 @@ class _UsersPageState extends State<UsersPage> {
     Widget _contact() {
       return Container(
         height: 290,
-        margin: EdgeInsets.only(left: 10, right: 10),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Colors.white),
         child: Column(
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             listtilebotton(
                 bottomname: "电话咨询",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_phone,
                   size: 30,
                   color: Colors.red,
                 ),
                 onPressed: () {},
                 context: context),
-            Divider(),
+            const Divider(),
             listtilebotton(
                 bottomname: "在线咨询",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_online,
                   size: 30,
                   color: Colors.red,
                 ),
                 onPressed: () {
-                  print("object");
+                  if (kDebugMode) {
+                    print("object");
+                  }
                 },
                 context: context),
-            Divider(),
+            const Divider(),
             listtilebotton(
                 bottomname: "帮助中心",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_help,
                   size: 30,
                   color: Colors.red,
                 ),
                 onPressed: () {
-                  print("object");
+                  if (kDebugMode) {
+                    print("object");
+                  }
                 },
                 context: context),
-            Divider(),
+            const Divider(),
             listtilebotton(
                 bottomname: "商务合作",
-                icon: Icon(
+                icon: const Icon(
                   MyIcon.user_cooperation,
                   size: 30,
                   color: Colors.red,
                 ),
                 onPressed: () {
-                  print("object");
+                  if (kDebugMode) {
+                    print("object");
+                  }
                 },
                 context: context)
           ],
@@ -240,21 +253,25 @@ class _UsersPageState extends State<UsersPage> {
           actions: [
             IconButton(
                 onPressed: () {
-                  print("跳转到设置");
+                  if (kDebugMode) {
+                    print("跳转到设置");
+                  }
 
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => SettingsPage()));
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                   //color: Color.fromRGBO(117, 117, 117, 1),
                 ))
           ],
           leading: IconButton(
-            icon: Icon(Icons.headset_mic,
+            icon: const Icon(Icons.headset_mic,
                 color: Color.fromRGBO(117, 117, 117, 1)),
             onPressed: () {
-              print("扫码");
+              if (kDebugMode) {
+                print("扫码");
+              }
               Navigator.pushNamed(context, '/customer');
             },
           ),
@@ -265,7 +282,7 @@ class _UsersPageState extends State<UsersPage> {
             _dynamicdata(),
             _adv(),
             _jumpbutton(),
-            Divider(),
+            const Divider(),
             _contact(),
           ],
         ));

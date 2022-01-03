@@ -10,8 +10,8 @@ Widget fButton({
 }) {
   return FButton(
     text: hintText,
-    style: TextStyle(color: Colors.amber),
-    color: Color(0xffffc900),
+    style: const TextStyle(color: Colors.amber),
+    color: const Color(0xffffc900),
 
     /// 配置 loading 大小
     ///

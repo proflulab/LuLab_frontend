@@ -7,7 +7,7 @@ class CourseDescPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: CourseDesc(),
     );
   }
@@ -37,18 +37,18 @@ class CourseDesc extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          ListTile(
+          const ListTile(
             title: Text('颠覆式创新'),
-            subtitle: Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
+            subtitle: const Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
           ),
           ListTile(
-            title: Text('清华大学，介绍。。。'),
+            title: const Text('清华大学，介绍。。。'),
             // trailing: Icon(Icons.keyboard_arrow_right_sharp),
             trailing: IconButton(
                 onPressed: () {
-                  bounceBottomSheet(context, CourseDetail());
+                  bounceBottomSheet(context, const CourseDetail());
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.keyboard_arrow_right,
                 )),
           )
@@ -62,7 +62,7 @@ class CourseDesc extends StatelessWidget {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
+        children: const [
           Icon(
             Icons.star,
             size: 22,
@@ -89,14 +89,14 @@ class CourseDesc extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               '目录',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             ),
           ],
         ),
-        Container(
+        SizedBox(
             height: 500,
             child: ListView.builder(
               itemCount: 30,
