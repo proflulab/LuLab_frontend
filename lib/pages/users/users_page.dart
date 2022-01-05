@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/widgets.dart';
-import '../../values/myIcon.dart';
+import '../../values/myicon.dart';
 import '../../global.dart';
 import 'users_set.dart';
 
