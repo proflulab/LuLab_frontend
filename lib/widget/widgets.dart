@@ -3,7 +3,7 @@ library widgets;
 export 'appbar.dart';
 export 'video_view.dart';
 export 'hi_tab.dart';
-export 'contactItem.dart';
+export 'contact_item.dart';
 export 'bounce_bottom_sheet.dart';
 export 'button.dart';
 export 'toast.dart';

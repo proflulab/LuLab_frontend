@@ -22,7 +22,8 @@ class ContactItem extends StatelessWidget {
             ),
             child: Text(count, style: const TextStyle(fontSize: 18.0)),
           ),
-          Text(title, style: const TextStyle(color: Colors.black54, fontSize: 14.0)),
+          Text(title,
+              style: const TextStyle(color: Colors.black54, fontSize: 14.0)),
         ],
       ),
     );

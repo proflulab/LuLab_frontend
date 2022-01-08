@@ -1,3 +1,4 @@
+//课程数据请求
 const String gqlCourseList = r'''
   query{
   latestCourse (option:{limit:1,skip:1}){
