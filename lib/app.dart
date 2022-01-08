@@ -5,7 +5,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'pages/home/home_page.dart';
 import 'pages/course/course_page.dart';
 import 'pages/users/users_page.dart';
-import 'pages/source/Information_page.dart';
+import 'pages/source/information_page.dart';
 import 'pages/voice/voicepage.dart';
 
 import 'widget/widgets.dart';
