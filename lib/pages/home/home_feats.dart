@@ -128,7 +128,7 @@ import 'package:flutter/material.dart';
 import '../../utils/utils.dart';
 //import '../../entitys/entitys.dart';
 import '../../widget/widgets.dart';
-import 'FeastPersonal.dart';
+import 'feast_personal.dart';
 // import 'test.dart';
 
 class FeatsPage extends StatefulWidget {

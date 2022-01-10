@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/widgets.dart';
-import 'TabBarInFeast.dart';
+import 'tab_barin_feast.dart';
 
 class FeastPersonal extends StatelessWidget {
   const FeastPersonal({Key? key}) : super(key: key);
