@@ -1,7 +1,6 @@
 library values;
 
 export 'colors.dart';
-export 'server.dart';
 export 'myicon.dart';
 export 'storage.dart';
 export 'radii.dart';
