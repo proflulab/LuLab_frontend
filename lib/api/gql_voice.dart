@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import 'package:proflu/graphql/voice.dart';
 
+import '../graphql/graphql.dart';
 import '../entitys/entitys.dart';
 import '../utils/utils.dart';
 
