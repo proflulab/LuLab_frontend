@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import '../utils/utils.dart';
+import 'package:proflu/graphql/voice.dart';
+
 import '../entitys/entitys.dart';
-import '../graphql/graphql.dart';
+import '../utils/utils.dart';
 
 /// 语音
 class VoiceAPI {
