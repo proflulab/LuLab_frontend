@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'course_detail.dart';
-import '../../widget/widgets.dart';
+
+import 'course_expansionpanelpage.dart';
 
 class CourseDescPage extends StatelessWidget {
   const CourseDescPage({Key? key}) : super(key: key);
@@ -25,30 +25,35 @@ class CourseDesc extends StatelessWidget {
         // 收藏、缓存、分享
         buildFavDownShare(),
         // 目录
-        buildCatalog(),
+        // buildCatalog(),
       ],
     );
   }
 
-  Column buildDesc(context) {
-    return Column(
-      children: [
-        const ListTile(
-          title: Text('颠覆式创新'),
-          subtitle:  Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
-        ),
-        ListTile(
-          title: const Text('清华大学，介绍。。。'),
-          // trailing: Icon(Icons.keyboard_arrow_right_sharp),
-          trailing: IconButton(
-              onPressed: () {
-                bounceBottomSheet(context, const CourseDetail());
-              },
-              icon: const Icon(
-                Icons.keyboard_arrow_right,
-              )),
-        )
-      ],
+  SizedBox buildDesc(context) {
+    return const SizedBox(
+      height: 1200,
+      child: ExpansionPanelPage(),
+      // child: Column(
+      //   children: [
+      //     // ListTile(
+      //     //   title: Text('颠覆式创新'),
+      //     //   subtitle: Text('陆向谦 实验室创始人\n 2021年7月9日上线 989次播放'),
+      //     // ),
+      //     ExpansionPanelPage(),
+      //     // ListTile(
+      //     //   title: Text('清华大学，介绍。。。'),
+      //     //   // trailing: Icon(Icons.keyboard_arrow_right_sharp),
+      //     //   trailing: IconButton(
+      //     //       onPressed: () {
+      //     //         bounceBottomSheet(context, CourseDetail());
+      //     //       },
+      //     //       icon: Icon(
+      //     //         Icons.keyboard_arrow_right,
+      //     //       )),
+      //     // )
+      //   ],
+      // ),
     );
   }
 

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../entitys/entitys.dart';
-import '../../widget/widgets.dart';
-import '../../utils/utils.dart';
 import '../../api/apis.dart';
+import '../../entitys/entitys.dart';
+import '../../utils/utils.dart';
+import '../../widget/widgets.dart';
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {

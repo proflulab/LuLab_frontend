@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import '../values/values.dart';
+import '../services/services.dart';
 
 class GraphqlClientUtil {
   static client() {

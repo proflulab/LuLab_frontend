@@ -30,11 +30,6 @@ class _SignInPageState extends State<SignInPage> {
 
   // 执行登录操作
   _handleSignIn() async {
-    // if (!duIsEmail(_emailController.value.text)) {
-    //   toastInfo(msg: '请正确输入邮件');
-    //   return;
-    // }
-
     if (!duCheckStringLength(_passController.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
@@ -54,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
       Global.saveProfile(userProfile);
     } catch (e) {
       if (kDebugMode) {
-        print("===========登录报错===============");
+        print("===========登录报错内容===============");
       }
       if (kDebugMode) {
         print(e);
@@ -64,7 +59,8 @@ class _SignInPageState extends State<SignInPage> {
 
     // ExtendedNavigator.rootNavigator
     //     .pushReplacementNamed(Routes.applicationPageRoute);
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const App()));
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const App()));
   }
 
   // 登录表单

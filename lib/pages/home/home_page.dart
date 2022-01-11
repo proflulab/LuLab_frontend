@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'home_feats.dart';
 import 'home_gather.dart';
 import 'home_product.dart';
-import 'home_feats.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -40,6 +40,8 @@ dependencies:
   path_provider: ^2.0.3
   flutter_easyrefresh: ^2.2.1
   avatar_glow: ^2.0.2 #用于按钮周围的发光效果
+  permission_handler: ^8.3.0
+  sound_stream: ^0.3.0
   flutter_localizations:
     sdk: flutter
 
