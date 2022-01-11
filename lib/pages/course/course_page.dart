@@ -26,7 +26,7 @@ class _CoursePageState extends State<CoursePage> {
     _loadAllData();
   }
 
-  // 读取所有数据
+  // 读取所有课程数据
   _loadAllData() async {
     _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
     var focusList = _postsData.latestCourse;
