@@ -125,11 +125,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../values/values.dart';
 import '../../utils/utils.dart';
 //import '../../entitys/entitys.dart';
 import '../../widget/widgets.dart';
 import 'feast_personal.dart';
-// import 'test.dart';
 
 class FeatsPage extends StatefulWidget {
   const FeatsPage({Key? key}) : super(key: key);
@@ -144,32 +144,31 @@ class _FeatsPageState extends State<FeatsPage> {
   Widget build(BuildContext context) {
     //获取屏幕高度
     //double screenheight = MediaQuery.of(context).size.height;
-    double screenwidth = MediaQuery.of(context).size.width;
-    var widgetwidth = screenwidth - 10 * 2;
+    //double screenwidth = MediaQuery.of(context).size.width;
+    //var widgetwidth = screenwidth - 10 * 2;
     return Container(
       height: 1.sh,
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      decoration: const BoxDecoration(
-          //背景颜色在主题处统一设定
-          //color: Colors.black12,
-          ),
+      padding: EdgeInsets.only(left: 15.w, right: 15.w),
+      // decoration: BoxDecoration(
+      //     color: Colors.black12,
+      //     ),
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: 5,
         itemBuilder: (contxt, index) {
           return Column(
             children: [
               Container(
-                height: 170,
-                width: widgetwidth,
-                decoration: const BoxDecoration(
+                height: 200.h,
+                width: 1.sw,
+                decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
+                    topLeft: Radius.circular(15.r),
+                    topRight: Radius.circular(15.r),
                   ),
                   //border: Border.all(color: Colors.black54),
                 ),
-                margin: const EdgeInsets.only(top: 10),
+                margin: EdgeInsets.only(top: 10.h),
                 child: Stack(
                   children: <Widget>[
                     positionedImage(
@@ -216,13 +215,13 @@ class _FeatsPageState extends State<FeatsPage> {
                 ),
               ),
               Container(
-                  height: 80,
-                  width: widgetwidth,
-                  decoration: const BoxDecoration(
+                  height: 80.h,
+                  width: 1.sw,
+                  decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(15.r),
+                      bottomRight: Radius.circular(15.r),
                     ),
                   ),
                   child: Row(
@@ -255,13 +254,11 @@ class _FeatsPageState extends State<FeatsPage> {
                       Expanded(
                         flex: 0,
                         child: Container(
-                          height: 70,
-                          decoration: const BoxDecoration(
-                              border: Border(
-                                  left: BorderSide(
-                            color: Colors.grey,
-                            width: 5,
-                          ))),
+                          height: 70.h,
+                          width: 10.w,
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: Radii.k6pxRadius),
                         ),
                       ),
                       Expanded(

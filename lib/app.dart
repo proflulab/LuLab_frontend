@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/voice/voicepage.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 // import 'dart:async';
 import 'package:text_to_speech/text_to_speech.dart';
@@ -105,7 +106,7 @@ class _AppState extends State<App> {
   final List _pageList = [
     const HomePage(),
     const CoursePage(),
-    // VoicePage(),
+    const VoicePage(),
     const InformationPage(),
     const UsersPage(),
   ];
