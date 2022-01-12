@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../api/apis.dart';
-import '../../entitys/entitys.dart';
-import '../../widget/widgets.dart';
-import '../../utils/utils.dart';
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
 
 import 'infor_details.dart';
 
@@ -59,8 +59,7 @@ class _InformationPageState extends State<InformationPage> {
               child: Container(
                 height: 170.h,
                 padding: EdgeInsets.only(left: 10.w, right: 10.w),
-                margin:
-                    EdgeInsets.only(bottom: 10.h, left: 30.w, right: 30.w),
+                margin: EdgeInsets.only(bottom: 10.h, left: 30.w, right: 30.w),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),

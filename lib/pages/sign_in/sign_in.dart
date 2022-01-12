@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../widget/widgets.dart';
-import '../../utils/utils.dart';
-import '../../values/values.dart';
-import '../../api/apis.dart';
-import '../../entitys/entitys.dart';
-import '../../app.dart';
-import '../../global.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../app.dart';
+import '../../common/global/global.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);

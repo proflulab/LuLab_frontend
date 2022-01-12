@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../widget/widgets.dart';
-import '../../utils/utils.dart';
-import '../../api/apis.dart';
-import '../../entitys/entitys.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);

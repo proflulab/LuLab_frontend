@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import '../utils/utils.dart';
-import '../entitys/entitys.dart';
-import '../graphql/graphql.dart';
+import '../../common/utils/utils.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/graphql/graphql.dart';
 
 class GqlUserAPI {
   // 登录

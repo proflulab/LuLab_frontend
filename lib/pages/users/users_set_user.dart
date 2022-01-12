@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../values/values.dart';
-import '../../widget/widgets.dart';
-import '../../entitys/entitys.dart';
-import '../../api/apis.dart';
-import '../../global.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/api/apis.dart';
+import '../../common/global/global.dart';
 
 class SetUser extends StatefulWidget {
   const SetUser({Key? key}) : super(key: key);

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../widget/widgets.dart';
-import '../../values/myicon.dart';
-import '../../global.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/values/myicon.dart';
+import '../../common/global/global.dart';
 import 'users_set.dart';
 
 class UsersPage extends StatefulWidget {
@@ -259,8 +259,8 @@ class _UsersPageState extends State<UsersPage> {
                     print("跳转到设置");
                   }
 
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const SettingsPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SettingsPage()));
                 },
                 icon: const Icon(
                   Icons.settings,

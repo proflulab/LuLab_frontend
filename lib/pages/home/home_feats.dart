@@ -125,10 +125,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../values/values.dart';
-import '../../utils/utils.dart';
-//import '../../entitys/entitys.dart';
-import '../../widget/widgets.dart';
+import '../../common/values/values.dart';
+import '../../common/utils/utils.dart';
+//import '../../common/entitys/entitys.dart';
+import '../../common/widget/widgets.dart';
 import 'feast_personal.dart';
 
 class FeatsPage extends StatefulWidget {

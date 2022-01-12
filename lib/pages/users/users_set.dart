@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../widget/widgets.dart';
+import '../../common/widget/widgets.dart';
 
 import 'users_set_user.dart';
 //import 'users_set_account.dart';
@@ -41,8 +41,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 bottomname: "个人信息",
                 icon: const Icon(Icons.ac_unit),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => const SetUser()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SetUser()));
                 },
                 context: context),
             listtilebotton(

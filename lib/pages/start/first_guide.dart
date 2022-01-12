@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/utils.dart';
+import '../../common/utils/utils.dart';
 
 class FirstGuidePage extends StatelessWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
@@ -119,7 +119,7 @@ class _FirstGuideState extends State<FirstGuide> {
       duration: const Duration(milliseconds: 300),
       decoration: const BoxDecoration(
           color: Colors.blue,
-          borderRadius:  BorderRadius.all(Radius.circular(10))),
+          borderRadius: BorderRadius.all(Radius.circular(10))),
     );
   }
 }

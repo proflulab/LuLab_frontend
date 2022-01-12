@@ -2,14 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 
-import 'pages/home/home_page.dart';
-import 'pages/course/course_page.dart';
-import 'pages/users/users_page.dart';
-import 'pages/source/information_page.dart';
-import 'pages/voice/voicepage.dart';
+import 'home/home_page.dart';
+import 'course/course_page.dart';
+import 'users/users_page.dart';
+import 'source/information_page.dart';
+import 'voice/voice_view.dart';
 
-import 'widget/widgets.dart';
-import '/values/values.dart';
+import '../common/widget/widgets.dart';
+import '../common/values/values.dart';
 
 // import 'package:flutter_sound_lite/flutter_sound.dart';
 // import 'package:flutter_sound_lite/public/flutter_sound_player.dart';
@@ -37,7 +37,7 @@ class _AppState extends State<App> {
   final List _pageList = [
     const HomePage(),
     const CoursePage(),
-    const VoicePage(),
+    const VoiceView(),
     const InformationPage(),
     const UsersPage(),
   ];

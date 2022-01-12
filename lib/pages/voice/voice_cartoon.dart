@@ -9,7 +9,7 @@ class WaterRipplePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body:
-      Center(child: SizedBox(height: 50, width: 50, child: WaterRipple())),
+          Center(child: SizedBox(height: 50, width: 50, child: WaterRipple())),
     );
   }
 }

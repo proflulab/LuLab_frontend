@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../widget/widgets.dart';
+import '../../common/widget/widgets.dart';
 import 'course_desc.dart';
 import 'course_comment.dart';
 import 'course_recom.dart';

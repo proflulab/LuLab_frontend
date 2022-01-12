@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../app.dart';
-import '../pages/other/customer.dart';
-import '../pages/other/download.dart';
-import '../pages/other/history.dart';
-import '../pages/other/message.dart';
-import '../pages/search.dart';
-import '../pages/sign_in/login.dart';
-import '../pages/start/first_guide.dart';
+import '../../pages/app.dart';
+import '../../pages/other/customer.dart';
+import '../../pages/other/download.dart';
+import '../../pages/other/history.dart';
+import '../../pages/other/message.dart';
+import '../../pages/search.dart';
+import '../../pages/sign_in/login.dart';
+import '../../pages/start/first_guide.dart';
 //import '../pages/users/settings/settings.dart';
 //import '../pages/course/course_index.dart';
 
