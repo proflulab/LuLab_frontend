@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ce7bb42-a9da-423c-8949-b1ad7b28e4b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.run/main.dart.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/entitys/json_convert_content.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/entitys/json_field.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/entitys/response_data_entity.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/entitys/response_data_entity_helper.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_expansionpanelpage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home/FeastPersonal.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home/TabBarInFeast.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/voice/voice_donghua.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/sound_manage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/xf_manage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/xf_utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/gql_voice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/gql_voice.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/graphql/graphql.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_desc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_desc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="3ce7bb42-a9da-423c-8949-b1ad7b28e4b8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

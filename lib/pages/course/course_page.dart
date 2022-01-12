@@ -30,6 +30,7 @@ class _CoursePageState extends State<CoursePage> {
   _loadAllData() async {
     _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
     var focusList = _postsData.latestCourse;
+    // var focusId = _postsData.latestCourse[1].id;
 
     setState(() {
       _focusData = focusList;
