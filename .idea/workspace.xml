@@ -13,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/api_server.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/api_server.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/xf_manage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/xf_manage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
