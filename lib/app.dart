@@ -2,20 +2,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:proflu/pages/voice/voicepage.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
-// import 'dart:async';
 import 'package:text_to_speech/text_to_speech.dart';
 
+import 'api/gql_voice.dart';
+import 'entitys/entitys.dart';
 import 'pages/course/course_page.dart';
 import 'pages/home/home_page.dart';
 import 'pages/source/Information_page.dart';
 import 'pages/users/users_page.dart';
 import 'pages/voice/voice_donghua.dart';
-// import 'VoiceAI/sound_manage.dart';
-// import 'VoiceAI/voice_donghua.dart';
-// import 'VoiceAI/xf_manage.dart';
 import 'utils/sound_manage.dart';
 import 'utils/xf_manage.dart';
 import 'values/myicon.dart';
+// import 'graphql/graphql.dart';
 
 const host = 'iat-api.xfyun.cn';
 const appId = '552cfd88';
@@ -48,6 +47,14 @@ class _AppState extends State<App> {
   List<String> languageCodes = <String>[];
   String? voice;
 
+  // late VoiceRequest _request;
+  // String _focusText = '';
+  // String _focusId = '';
+
+  late stt.SpeechToText speech;
+  String text = '';
+  double conf = 1.0;
+
   TextEditingController textEditingController = TextEditingController();
   @override
   void initState() {
@@ -57,11 +64,23 @@ class _AppState extends State<App> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       initLanguages();
     });
+    // _loadAllData();
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   SoundRecord.init();
+
+  // // 读取所有数据
+  // _loadAllData() async {
+  //   _request = (await VoiceAPI.indexPageInfo(schema: '', context: context))
+  //       as VoiceRequest;
+  //   // var focusList = _postsData.latestCourse;
+  //   var focusText = _request.queryText;
+  //   var focusId = _request.userId;
+  //   // var focusId = _postsData.latestCourse[1].id;
+  //
+  //   setState(() {
+  //     _focusText = focusText;
+  //     text = focusText;
+  //     _focusId = focusId;
+  //   });
   // }
 
   Future<void> initLanguages() async {
@@ -110,9 +129,6 @@ class _AppState extends State<App> {
     const InformationPage(),
     const UsersPage(),
   ];
-  late stt.SpeechToText speech;
-  String text = '对不起现在我还没有接收到后端的数据';
-  double conf = 1.0;
 
   @override
   void dispose() {
@@ -148,7 +164,9 @@ class _AppState extends State<App> {
                       });
                     } else {
                       connect();
-                      speak();
+                      _handleSignIn();
+                      // _loadAllData();
+                      // speak();
                       // visible = !visible;
                     }
                     // setState(() {
@@ -277,21 +295,65 @@ class _AppState extends State<App> {
         });
       },
     );
+    // if (kDebugMode) {
+    //   print(msg);
+    // }
+    // _handleSignIn();
+  }
+
+  // 执行语音文本提交操作
+  _handleSignIn() async {
+    VoiceRequest variables = VoiceRequest(
+      // name: _emailController.value.text,
+      // password: _passController.value.text,
+      queryText: msg,
+      userId: '宇轩',
+      // password: duSHA256(_passController.value.text),
+    );
+    if (kDebugMode) {
+      print("===========314===============");
+    }
     if (kDebugMode) {
       print(msg);
     }
+    try {
+      VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
+        context: context,
+        variables: variables,
+        schema: '',
+      );
+      // visible = !visible;
+      tts.setVolume(volume);
+      tts.setRate(rate);
+      if (languageCode != null) {
+        tts.setLanguage(languageCode!);
+      }
+      tts.setPitch(pitch);
+      tts.speak(voiceText.data.speechGoogle.msg);
+      // Global.saveProfile(voiceText.data.speechGoogle.msg);
+    } catch (e) {
+      if (kDebugMode) {
+        print("===========报错内容===============");
+        print(e);
+      }
+    }
+
+    // void speak() {
+    //
+    // }
   }
 
-  void speak() {
-    // visible = !visible;
-    tts.setVolume(volume);
-    tts.setRate(rate);
-    if (languageCode != null) {
-      tts.setLanguage(languageCode!);
-    }
-    tts.setPitch(pitch);
-    tts.speak(text);
-  }
+  // late VoiceResponse _postsData;
+  // _loadAllData() async {
+  //   _postsData = await VoiceAPI.indexPageInfo(schema: '', context: context);
+  //   var focusList = _postsData.data;
+  //   // var focusId = _postsData.latestCourse[1].id;
+  //
+  //   setState(() {
+  //     text = focusList as String;
+  //   });
+  // }
+
 }
 
 class TestAWidget extends StatelessWidget {
@@ -377,24 +439,24 @@ class TestCWidget extends StatelessWidget {
   }
 }
 
-// class TestDWidget extends StatelessWidget {
-//   final bool show;
-//   final String text;
-//
-//   const TestDWidget({Key? key, required this.show, required this.text})
-//       : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return AnimatedOpacity(
-//       duration: const Duration(milliseconds: 300),
-//       opacity: show ? 1.0 : 0.0,
-//       child: Container(
-//         height: 50.0,
-//         width: 300.0,
-//         color: Colors.blue,
-//         child: Text(text),
-//       ),
-//     );
-//   }
-// }
+class TestDWidget extends StatelessWidget {
+  final bool show;
+  final String text;
+
+  const TestDWidget({Key? key, required this.show, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 300),
+      opacity: show ? 1.0 : 0.0,
+      child: Container(
+        height: 50.0,
+        width: 300.0,
+        color: Colors.blue,
+        child: Text(text),
+      ),
+    );
+  }
+}
