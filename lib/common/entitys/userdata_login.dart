@@ -73,7 +73,7 @@ class Data {
         wechat: json["wechat"] ?? "",
         phone: json["phone"] ?? "",
         sex: json["sex"] ?? "",
-        description: json["description"] ?? "",
+        description: json["description"],
       );
 
   Map<String, dynamic> toJson() => {

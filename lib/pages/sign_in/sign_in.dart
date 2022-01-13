@@ -50,8 +50,6 @@ class _SignInPageState extends State<SignInPage> {
     } catch (e) {
       if (kDebugMode) {
         print("===========登录报错内容===============");
-      }
-      if (kDebugMode) {
         print(e);
       }
       return toastInfo(msg: '请正确输入账号、密码！');
