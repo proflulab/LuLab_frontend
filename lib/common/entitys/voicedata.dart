@@ -17,8 +17,8 @@ class VoiceRequest {
   final String queryText;
 
   factory VoiceRequest.fromJson(Map<String, dynamic> json) => VoiceRequest(
-        userId: json["userId"] as String,
-        queryText: json["queryText"] as String,
+        userId: json["userId"],
+        queryText: json["queryText"],
       );
 
   Map<String, dynamic> toJson() => {

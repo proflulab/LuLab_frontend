@@ -52,8 +52,6 @@ class _VoiceViewState extends State<VoiceView> {
           } else {
             SoundRecord.stopListening();
             xfSst();
-            //voicegql();
-            //sstSpeak(text: "文本转语音测试完毕");
           }
         },
         child: visible
@@ -108,6 +106,9 @@ class _VoiceViewState extends State<VoiceView> {
         variables: variables,
       );
       sstSpeak(text: voiceText.data.speechGoogle.msg);
+      setState(() {
+        isListening = true;
+      });
     } catch (e) {
       if (kDebugMode) {
         print("===========获取语音响应内容报错===============");
