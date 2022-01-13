@@ -53,7 +53,7 @@ class _VoiceViewState extends State<VoiceView> {
           } else {
             SoundRecord.stopListening();
             xfSst();
-            voicegql();
+            //voicegql();
             //sstSpeak(text: "文本转语音测试完毕");
           }
         },
@@ -94,13 +94,14 @@ class _VoiceViewState extends State<VoiceView> {
         });
       },
     );
+    voicegql();
   }
 
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
-      queryText: '你好',
       userId: 'shiming',
+      queryText: '你好',
     );
     try {
       VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
