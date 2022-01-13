@@ -15,7 +15,7 @@ class Loginresponse {
   final UserLogin userLogin;
 
   factory Loginresponse.fromJson(Map<String, dynamic> json) => Loginresponse(
-        userLogin: UserLogin.fromJson(json["userLogin"]),
+        userLogin: UserLogin.fromJson(json),
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,13 +67,13 @@ class Data {
   final dynamic description;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        name: json["name"],
-        password: json["password"],
-        img: json["img"],
-        wechat: json["wechat"],
-        phone: json["phone"],
-        sex: json["sex"],
-        description: json["description"],
+        name: json["name"] == null ? "" : json["name"],
+        password: json["password"] == null ? "" : json["password"],
+        img: json["img"] == null ? "" : json["img"],
+        wechat: json["wechat"] == null ? "" : json["wechat"],
+        phone: json["phone"] == null ? "" : json["phone"],
+        sex: json["sex"] == null ? "" : json["sex"],
+        description: json["description"] == null ? "" : json["description"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -103,8 +103,8 @@ class Loginrequest {
   final String password;
 
   factory Loginrequest.fromJson(Map<String, dynamic> json) => Loginrequest(
-        name: json["name"],
-        password: json["password"],
+        name: json["name"] as String,
+        password: json["password"] as String,
       );
 
   Map<String, dynamic> toJson() => {
