@@ -9,11 +9,10 @@ import '../../common/utils/utils.dart';
 class VoiceAPI {
   static Future<VoiceResponse> indexPageInfo({
     required BuildContext context,
-    required String schema,
-    variables,
+    required VoiceRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-        schema: voice, context: context, variables: {});
+        schema: voice, context: context, variables: variables.toJson());
 
     return VoiceResponse.fromJson(response.data!);
   }

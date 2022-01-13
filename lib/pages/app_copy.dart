@@ -141,7 +141,6 @@ class _AppState extends State<App> {
               size: 26,
               opacity: 1,
             ),
-
             type: BottomNavigationBarType.fixed,
             items: const [
               BottomNavigationBarItem(
