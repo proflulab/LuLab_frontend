@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
-import '../voice/voice_cartoon.dart';
+import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/utils/utils.dart';
 import '../../common/services/services.dart';
+import '../../common/utils/utils.dart';
+import '../voice/voice_cartoon.dart';
 
 class VoiceView extends StatefulWidget {
   const VoiceView({Key? key}) : super(key: key);
@@ -53,8 +52,6 @@ class _VoiceViewState extends State<VoiceView> {
           } else {
             SoundRecord.stopListening();
             xfSst();
-            //voicegql();
-            //sstSpeak(text: "文本转语音测试完毕");
           }
         },
         child: visible
@@ -91,17 +88,17 @@ class _VoiceViewState extends State<VoiceView> {
           if (kDebugMode) {
             print(sstText);
           }
+          voicegql();
         });
       },
     );
-    voicegql();
   }
 
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
       userId: 'shiming',
-      queryText: '你好',
+      queryText: sstText,
     );
     try {
       VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
@@ -109,6 +106,9 @@ class _VoiceViewState extends State<VoiceView> {
         variables: variables,
       );
       sstSpeak(text: voiceText.data.speechGoogle.msg);
+      setState(() {
+        isListening = true;
+      });
     } catch (e) {
       if (kDebugMode) {
         print("===========获取语音响应内容报错===============");

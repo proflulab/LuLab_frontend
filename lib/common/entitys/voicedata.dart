@@ -41,7 +41,7 @@ class VoiceResponse {
   final VoiceData data;
 
   factory VoiceResponse.fromJson(Map<String, dynamic> json) => VoiceResponse(
-        data: VoiceData.fromJson(json["data"]),
+        data: VoiceData.fromJson(json),
       );
 
   Map<String, dynamic> toJson() => {
@@ -84,6 +84,3 @@ class SpeechGoogle {
         "status": status,
       };
 }
-
-
-

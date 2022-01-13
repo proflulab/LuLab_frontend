@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/start/loading.dart';
 
 import '../../pages/app.dart';
 import '../../pages/other/customer.dart';
@@ -13,7 +14,7 @@ import '../../pages/start/first_guide.dart';
 
 //配置路由
 final Map<String, Function> routes = {
-  '/': (context) => const App(),
+  '/': (context) => const LoadingPage(),
   '/firstguide': (context) => const FirstGuidePage(),
   '/app': (context) => const App(),
   '/search': (context) => const SearchPage(),

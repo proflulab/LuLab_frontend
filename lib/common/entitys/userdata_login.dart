@@ -15,7 +15,7 @@ class Loginresponse {
   final UserLogin userLogin;
 
   factory Loginresponse.fromJson(Map<String, dynamic> json) => Loginresponse(
-        userLogin: UserLogin.fromJson(json["userLogin"]),
+        userLogin: UserLogin.fromJson(json['userLogin']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,10 +69,10 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         name: json["name"],
         password: json["password"],
-        img: json["img"],
-        wechat: json["wechat"],
-        phone: json["phone"],
-        sex: json["sex"],
+        img: json["img"] ?? "",
+        wechat: json["wechat"] ?? "",
+        phone: json["phone"] ?? "",
+        sex: json["sex"] ?? "",
         description: json["description"],
       );
 

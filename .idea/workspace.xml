@@ -4,25 +4,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ce7bb42-a9da-423c-8949-b1ad7b28e4b8" name="Default Changelist" comment="" />
+    <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/voicedata.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/voicedata.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_5_API_31.avd]" />
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Dart File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="23QcefNA3nK2ZCIsjEIlBZzQQv1" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectId" id="23dWkc9Y25ILCMqbbbWT7JWCoBl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -45,18 +46,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3ce7bb42-a9da-423c-8949-b1ad7b28e4b8" name="Default Changelist" comment="" />
-      <created>1641669848878</created>
+      <changelist id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="" />
+      <created>1642064587513</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1641669848878</updated>
+      <updated>1642064587513</updated>
     </task>
     <servers />
   </component>
@@ -76,7 +76,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
