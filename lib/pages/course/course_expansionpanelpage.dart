@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'course_detail.dart';
-
 class Item {
   Item({
     required this.expandedValue,
@@ -46,7 +44,7 @@ class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
             // 简介
             _buildPanel(),
             // 收藏、缓存、分享
-            buildFavDownShare(),
+            // buildFavDownShare(),
             // 目录
             // buildCatalog(),
           ],
@@ -84,12 +82,11 @@ class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
               height: 500.0,
               color: Colors.white,
               alignment: Alignment.center,
-              child:
-                  // Icon(
-                  //   Icons.security,
-                  //   size: 35.0,
-                  // ),
-                  const CourseDetail(),
+              child: Icon(
+                Icons.security,
+                size: 35.0,
+              ),
+              // const CourseDetail(),
             ),
           ),
           isExpanded: item.isExpanded,

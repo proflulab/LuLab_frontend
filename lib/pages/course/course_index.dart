@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../common/widget/widgets.dart';
-import 'course_desc.dart';
 import 'course_comment.dart';
+import 'course_desc.dart';
 import 'course_recom.dart';
 
 /// 课程视频播放页面
@@ -56,10 +57,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               padding: const EdgeInsets.symmetric(horizontal: 0),
               child: TabBarView(
                 controller: _tabController,
-                children: const [
-                  CourseDescPage(),
-                  CourseCommentPage(),
-                  CourseRecomPage(),
+                children: [
+                  CourseDescPage(title: widget.product),
+                  const CourseCommentPage(),
+                  const CourseRecomPage(),
                 ],
               ),
             ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:proflu/pages/voice/voice_view.dart';
 
+import '../common/values/values.dart';
 import 'course/course_page.dart';
 import 'home/home_page.dart';
 import 'source/Information_page.dart';
 import 'users/users_page.dart';
-
-import '../common/values/values.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -50,11 +49,16 @@ class _AppState extends State<App> {
             // 选中图标主题
             selectedIconTheme: const IconThemeData(
               // 图标颜色
-              color: Colors.blue,
+              color: Color.fromRGBO(77, 196, 96, 1),
               // 图标大小
               size: 28,
               // 图标透明度
               opacity: 1.0,
+            ),
+            //选中字体颜色
+            selectedLabelStyle: const TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Color.fromRGBO(77, 196, 96, 1),
             ),
             //未选中图标主题
             unselectedIconTheme: const IconThemeData(

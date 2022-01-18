@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
-
+import '../../common/widget/widgets.dart';
 import 'infor_details.dart';
 
 class InformationPage extends StatefulWidget {
@@ -48,7 +47,7 @@ class _InformationPageState extends State<InformationPage> {
             return InkWell(
               onTap: () async {
                 if (kDebugMode) {
-                  print('到课程详情');
+                  print('到咨询详情');
                 }
                 Navigator.push(
                     context,

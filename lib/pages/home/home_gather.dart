@@ -1,8 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:proflu/pages/course/course_index.dart';
+import 'package:proflu/pages/source/infor_details.dart';
 
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);
@@ -12,36 +17,76 @@ class Gather extends StatefulWidget {
 }
 
 class _GatherState extends State<Gather> {
+  late PostsData _postsData;
+  List _focusData = [];
+  late Inforponse _postsIfoData;
+  List _focusData2 = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadIfoData();
+    _loadAllData();
+  }
+
+  // 读取咨询所有数据
+  _loadIfoData() async {
+    _postsIfoData = await SourseAPI.userup(context: context, schema: '');
+    var focusList = _postsIfoData.latestInformation;
+
+    setState(() {
+      _focusData2 = focusList;
+    });
+  }
+
+  // 读取所有课程数据
+  _loadAllData() async {
+    _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
+    var focusList = _postsData.latestCourse;
+    // var focusId = _postsData.latestCourse[1].id;
+
+    setState(() {
+      _focusData = focusList;
+    });
+  }
+
   //轮播图
   Widget _swiperWidget() {
     List<Map> imgList = [
-      {"url": "https://i03piccdn.sogoucdn.com/a8c779e94bd78aed"},
-      {"url": "https://i01piccdn.sogoucdn.com/39b671bca8fc928c"},
-      {"url": "https://i02piccdn.sogoucdn.com/44c83a326173f013"},
+      {"url": "assets/images/Rectangle 4.png"},
+      {"url": "assets/images/unsplash_VWAzEW0bi58.png"},
+      {"url": "assets/images/Rectangle 5.png"},
     ];
 
-    return AspectRatio(
-      aspectRatio: 5 / 2,
-      child: Swiper(
-        itemBuilder: (BuildContext context, int index) {
-          return Image.network(
-            imgList[index]["url"],
-            fit: BoxFit.fill,
-          );
-        },
-        //条目个数
-        itemCount: imgList.length,
-        //轮播指示符
-        //control: new SwiperControl(),
-        //分页指示器
-        pagination: buildSwiperPagination(),
-        //自动翻页
-        autoplay: true,
-        onTap: (index) {
-          if (kDebugMode) {
-            print(" 点击 " + index.toString());
-          }
-        },
+    return Container(
+      margin: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 15.0),
+      decoration: BoxDecoration(
+        //设置四周圆角 角度
+        borderRadius: Radii.k15pxRadius,
+      ),
+      child: AspectRatio(
+        aspectRatio: 9 / 5,
+        child: Swiper(
+          itemBuilder: (BuildContext context, int index) {
+            return Image.asset(
+              imgList[index]["url"],
+              fit: BoxFit.fill,
+            );
+          },
+          //条目个数
+          itemCount: imgList.length,
+          //轮播指示符
+          //control: new SwiperControl(),
+          //分页指示器
+          pagination: buildSwiperPagination(),
+          //自动翻页
+          autoplay: true,
+          onTap: (index) {
+            if (kDebugMode) {
+              print(" 点击 " + index.toString());
+            }
+          },
+        ),
       ),
     );
   }
@@ -65,55 +110,66 @@ class _GatherState extends State<Gather> {
           // 没选中时的颜色
           color: Colors.white,
           //选中时的颜色
-          activeColor: Colors.blue),
+          activeColor: Colors.green),
     );
   }
 
   Widget _titleWidget(value) {
     return Container(
-      height: fitHeight(32),
-      margin: EdgeInsets.only(left: fitWidth(20)),
-      padding: EdgeInsets.only(left: fitWidth(20)),
+      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
       decoration: BoxDecoration(
-          border: Border(
-              left: BorderSide(
-        color: Colors.blue,
-        width: fitWidth(20),
-      ))),
-      child: Text(
-        value,
-        style: const TextStyle(color: Colors.black54),
-      ),
-    );
-  }
-
-  Widget _hotProductListWidget() {
-    return Container(
-      height: 100.0,
-      width: 400.0,
-      decoration: const BoxDecoration(
+        //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        borderRadius: Radii.k6pxRadius,
       ),
-      child: ListTile(
-        leading: Image.network(
-            'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
-        title: const Text('案例课直播  学理论不如学案例'),
-        subtitle: const Text('介绍：'),
-        trailing: TextButton(
-          autofocus: true,
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              shape: MaterialStateProperty.all(const StadiumBorder())),
-          child: const Text(
-            "预约",
-            style: TextStyle(color: Colors.white),
+      height: 60.h,
+      width: 100,
+      // color: Colors.white,
+      child: Stack(children: [
+        Positioned(
+          top: 8.0,
+          left: 20.0,
+          child: SizedBox(
+            child: Text(
+              value,
+              style: const TextStyle(
+                fontFamily: 'MyFontStyle',
+                fontSize: 24,
+              ),
+            ),
           ),
-          onPressed: () {},
         ),
-      ),
+      ]),
     );
   }
+//课程预约
+  // Widget _hotProductListWidget() {
+  //   return Container(
+  //     height: 100.0,
+  //     width: 400.0,
+  //     decoration: const BoxDecoration(
+  //       color: Colors.white,
+  //       borderRadius: BorderRadius.all(Radius.circular(8.0)),
+  //     ),
+  //     child: ListTile(
+  //       leading: Image.network(
+  //           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
+  //       title: const Text('案例课直播  学理论不如学案例'),
+  //       subtitle: const Text('介绍：'),
+  //       trailing: TextButton(
+  //         autofocus: true,
+  //         style: ButtonStyle(
+  //             backgroundColor: MaterialStateProperty.all(Colors.blue),
+  //             shape: MaterialStateProperty.all(const StadiumBorder())),
+  //         child: const Text(
+  //           "预约",
+  //           style: TextStyle(color: Colors.white),
+  //         ),
+  //         onPressed: () {},
+  //       ),
+  //     ),
+  //   );
+  // }
 
   //推荐
 
@@ -122,16 +178,17 @@ class _GatherState extends State<Gather> {
     return ListView(
       children: <Widget>[
         _swiperWidget(),
-        SizedBox(height: fitHeight(20)),
-        _titleWidget("课程预约"),
-        SizedBox(height: fitHeight(20)),
-        _hotProductListWidget(),
-        SizedBox(height: fitHeight(20)),
-        _titleWidget("免费体验"),
-        _buildFreeCourse(),
-        SizedBox(height: fitHeight(20)),
-        _titleWidget("精彩课程"),
-        buildWonderCourse(),
+        // SizedBox(height: fitHeight(20)),
+        // _titleWidget("课程预约"),
+        // SizedBox(height: fitHeight(20)),
+        // _hotProductListWidget(),
+        // SizedBox(height: fitHeight(20)),
+        _titleWidget("最新咨询"),
+        _buildInfomation(),
+        // _buildFreeCourse(),
+        _titleWidget("精选课程"),
+        _buildCourse(),
+        // buildWonderCourse(),
       ],
     );
   }
@@ -180,6 +237,195 @@ class _GatherState extends State<Gather> {
           ),
         ],
       ),
+    );
+  }
+
+  // 最新咨询
+  Container _buildInfomation() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      decoration: BoxDecoration(
+        //设置四周圆角 角度
+        color: Colors.white,
+        borderRadius: Radii.k6pxRadius,
+      ),
+      height: 237,
+      width: 345,
+      // color: Colors.white,
+      child: _buildInfomation_context(),
+    );
+  }
+
+  ListView _buildInfomation_context() {
+    return ListView.builder(
+      itemCount: _focusData2.length,
+      itemBuilder: (context, index) {
+        if (_focusData2.isNotEmpty) {
+          return InkWell(
+              onTap: () async {
+                if (kDebugMode) {
+                  print('到课程详情');
+                }
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            InforDetails(product: _focusData2[index])));
+              },
+              child: Container(
+                height: 200.h,
+                width: 345.w,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  //border: Border.all(color: Colors.black54),
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    // 课程封面
+                    Positioned(
+                      top: 10.0,
+                      left: 12.0,
+                      child: Container(
+                        height: 80,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          //设置四周圆角 角度
+                          borderRadius: Radii.k6pxRadius,
+                        ),
+                        child: Image.asset(
+                          'assets/images/liuqiangdong.jpg',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+
+                    // 课程标题
+                    Positioned(
+                      top: 10.0,
+                      left: 155.0,
+                      child: SizedBox(
+                        height: 100,
+                        width: 168,
+                        child: Text(
+                          _focusData2[index].title,
+                          style: const TextStyle(
+                            fontFamily: 'MyFontStyle',
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ) // ),
+              );
+        } else {
+          return const Text('加载中...');
+        }
+      },
+    );
+  }
+
+//精彩课程
+
+  Container _buildCourse() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      decoration: BoxDecoration(
+        //设置四周圆角 角度
+        color: Colors.white,
+        borderRadius: Radii.k6pxRadius,
+      ),
+      height: 400.h,
+      width: 345,
+      child: _buildCourse_context(),
+    );
+  }
+
+  ListView _buildCourse_context() {
+    return ListView.builder(
+      itemCount: _focusData.length,
+      itemBuilder: (context, index) {
+        if (_focusData.isNotEmpty) {
+          return InkWell(
+              onTap: () async {
+                if (kDebugMode) {
+                  print('到课程详情');
+                }
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CourseIndexPage(product: _focusData[index])));
+              },
+              child: Container(
+                height: 140.h,
+                width: 345.w,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  //border: Border.all(color: Colors.black54),
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    // 课程封面
+                    Positioned(
+                      top: 10.0,
+                      left: 12.0,
+                      child: Container(
+                        height: 80,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          //设置四周圆角 角度
+                          borderRadius: Radii.k15pxRadius,
+                        ),
+                        child: Image.network(
+                          'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+
+                    // 课程标题
+                    Positioned(
+                      top: 10.0,
+                      left: 145.0,
+                      child: Text(
+                        _focusData[index].title,
+                        style: const TextStyle(
+                          fontFamily: 'MyFontStyle',
+                          fontSize: 21,
+                        ),
+                      ),
+                    ),
+
+                    // 作者
+                    // positionedText(
+                    //     context: context,
+                    //     top: 55,
+                    //     left: 190,
+                    //     height: 40,
+                    //     width: 200,
+                    //     text: _focusData[index].author),
+                    const Positioned(
+                      top: 30.0,
+                      left: 145.0,
+                      child: SizedBox(
+                          height: 36,
+                          width: 188,
+                          child: Text('介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍',
+                              style: TextStyle(
+                                  fontSize: 12.0, color: Colors.grey))),
+                    ),
+                  ],
+                ),
+              ) // ),
+              );
+        } else {
+          return const Text('加载中...');
+        }
+      },
     );
   }
 

@@ -62,7 +62,7 @@ class _CoursePageState extends State<CoursePage> {
                 color: (Color.fromRGBO(89, 89, 89, 1)),
               ),
               Text(
-                "   开始搜索",
+                "开始搜索",
                 //textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(89, 89, 89, 1),
@@ -72,16 +72,16 @@ class _CoursePageState extends State<CoursePage> {
             ]),
           ),
         ),
-        leading: IconButton(
-          icon: const Icon(Icons.download_for_offline_outlined,
-              color: Color.fromRGBO(117, 117, 117, 1)),
-          onPressed: () {
-            if (kDebugMode) {
-              print("跳转到下载记录");
-            }
-            Navigator.pushNamed(context, '/download');
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.download_for_offline_outlined,
+        //       color: Color.fromRGBO(117, 117, 117, 1)),
+        //   onPressed: () {
+        //     if (kDebugMode) {
+        //       print("跳转到下载记录");
+        //     }
+        //     Navigator.pushNamed(context, '/download');
+        //   },
+        // ),
         actions: [
           IconButton(
               onPressed: () {

@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
             preferredSize: const Size.fromHeight(110),
             child: AppBar(
               //由主题统一配色，不在这里重新设定颜色
-              //backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              backgroundColor: const Color.fromRGBO(246, 246, 246, 1),
               bottom: const TabBar(
                   tabs: [
                     Tab(text: "推荐区"),
@@ -32,21 +32,23 @@ class _HomePageState extends State<HomePage> {
                     Tab(text: "训练营"),
                   ],
                   //文字选中颜色
-                  labelColor: Colors.black,
+                  labelColor: Color.fromRGBO(77, 196, 96, 1),
                   //文字未选中颜色
-                  unselectedLabelColor: Color.fromRGBO(89, 89, 89, 1),
+                  unselectedLabelColor: Color.fromRGBO(154, 167, 177, 1),
                   //文字选中样式
                   labelStyle: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: 'MyFontStyle',
-                      fontSize: 20),
+                      fontSize: 25),
                   //文字未选中样式
-                  unselectedLabelStyle:
-                      TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+                  unselectedLabelStyle: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'MyFontStyle',
+                      fontSize: 15),
                   //设置线条的颜色
-                  indicatorColor: Color(0xFF0D6AF5),
+                  indicatorColor: Color.fromRGBO(77, 196, 96, 1),
                   //设置线条的粗细
-                  indicatorWeight: 3,
+                  indicatorWeight: 4,
                   indicatorPadding:
                       EdgeInsets.only(right: 40, left: 40, bottom: 3)),
               title: InkWell(
@@ -66,43 +68,44 @@ class _HomePageState extends State<HomePage> {
                   child: Row(children: const <Widget>[
                     Icon(
                       Icons.search,
-                      color: (Color.fromRGBO(89, 89, 89, 1)),
+                      color: (Color.fromRGBO(154, 167, 177, 1)),
                     ),
                     Text(
                       "   开始搜索",
                       //textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Color.fromRGBO(89, 89, 89, 1),
+                        color: Color.fromRGBO(154, 167, 177, 1),
                         fontSize: 15,
                       ),
                     )
                   ]),
                 ),
               ),
-              leading: IconButton(
-                icon: const Icon(Icons.headset_mic,
-                    color: Color.fromRGBO(117, 117, 117, 1)),
-                //如果没有onPressed会报错
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("跳转到客服");
-                  }
-                  Navigator.pushNamed(context, '/customer');
-                },
-              ),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      if (kDebugMode) {
-                        print("我收到的信息");
-                      }
-                      Navigator.pushNamed(context, '/message');
-                    },
-                    icon: const Icon(
-                      Icons.mail,
-                      color: Color.fromRGBO(117, 117, 117, 1),
-                    ))
-              ],
+              //客服邮件功能
+              // leading: IconButton(
+              //   icon: const Icon(Icons.headset_mic,
+              //       color: Color.fromRGBO(117, 117, 117, 1)),
+              //   //如果没有onPressed会报错
+              //   onPressed: () {
+              //     if (kDebugMode) {
+              //       print("跳转到客服");
+              //     }
+              //     Navigator.pushNamed(context, '/customer');
+              //   },
+              // ),
+              // actions: [
+              //   IconButton(
+              //       onPressed: () {
+              //         if (kDebugMode) {
+              //           print("我收到的信息");
+              //         }
+              //         Navigator.pushNamed(context, '/message');
+              //       },
+              //       icon: const Icon(
+              //         Icons.mail,
+              //         color: Color.fromRGBO(117, 117, 117, 1),
+              //       ))
+              // ],
             )),
       ),
     );
