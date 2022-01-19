@@ -106,30 +106,30 @@ class _CourseDescState extends State<CourseDesc> {
 //     );
 //   }
 
-// 目录
-  Column buildCatalog() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              widget.product.title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-            ),
-          ],
-        ),
-        SizedBox(
-            height: 500,
-            child: ListView.builder(
-              itemCount: 30,
-              itemBuilder: (BuildContext context, int index) => ListTile(
-                title: Text('第${index + 1}节：大公司被颠覆的底层原因\n25分钟'),
-              ),
-            )),
-      ],
-    );
-  }
+// // 目录
+//   Column buildCatalog() {
+//     return Column(
+//       children: [
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.start,
+//           children: [
+//             Text(
+//               widget.product.title,
+//               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+//             ),
+//           ],
+//         ),
+//         SizedBox(
+//             height: 500,
+//             child: ListView.builder(
+//               itemCount: 30,
+//               itemBuilder: (BuildContext context, int index) => ListTile(
+//                 title: Text('第${index + 1}节：大公司被颠覆的底层原因\n25分钟'),
+//               ),
+//             )),
+//       ],
+//     );
+//   }
 }
 
 // 底部弹起新页面

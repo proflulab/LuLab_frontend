@@ -48,7 +48,7 @@ class _VoiceViewState extends State<VoiceView> {
       child: ElevatedButton(
         //短按打开关闭操作
         onPressed: () {
-          visible = !visible;
+          // visible = !visible;
           // if (isListening) {
           //   tts.stop();
           //   if (show) {
@@ -111,7 +111,7 @@ class _VoiceViewState extends State<VoiceView> {
             //       )
             //     :
             TestBWidget(
-          visible: !visible,
+          visible: visible,
           show: show,
           values: values,
         ),
