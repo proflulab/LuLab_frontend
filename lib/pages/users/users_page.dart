@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common/widget/widgets.dart';
-import '../../common/values/myicon.dart';
 import '../../common/global/global.dart';
+import '../../common/values/myicon.dart';
+import '../../common/widget/widgets.dart';
 import 'users_set.dart';
 
 class UsersPage extends StatefulWidget {
@@ -182,7 +183,7 @@ class _UsersPageState extends State<UsersPage> {
 
     Widget _contact() {
       return Container(
-        height: 290,
+        height: 370.h,
         margin: const EdgeInsets.only(left: 10, right: 10),
         decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
@@ -196,31 +197,32 @@ class _UsersPageState extends State<UsersPage> {
                 icon: const Icon(
                   MyIcon.userPhone,
                   size: 30,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                 onPressed: () {},
                 context: context),
-            const Divider(),
-            listtilebotton(
-                bottomname: "在线咨询",
-                icon: const Icon(
-                  MyIcon.userOnline,
-                  size: 30,
-                  color: Colors.red,
-                ),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("object");
-                  }
-                },
-                context: context),
+            //在线咨询
+            // const Divider(),
+            // listtilebotton(
+            //     bottomname: "在线咨询",
+            //     icon: const Icon(
+            //       MyIcon.userOnline,
+            //       size: 30,
+            //       color: Colors.red,
+            //     ),
+            //     onPressed: () {
+            //       if (kDebugMode) {
+            //         print("object");
+            //       }
+            //     },
+            //     context: context),
             const Divider(),
             listtilebotton(
                 bottomname: "帮助中心",
                 icon: const Icon(
                   MyIcon.userHelp,
                   size: 30,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                 onPressed: () {
                   if (kDebugMode) {
@@ -234,7 +236,7 @@ class _UsersPageState extends State<UsersPage> {
                 icon: const Icon(
                   MyIcon.userCooperation,
                   size: 30,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                 onPressed: () {
                   if (kDebugMode) {
@@ -267,23 +269,23 @@ class _UsersPageState extends State<UsersPage> {
                   //color: Color.fromRGBO(117, 117, 117, 1),
                 ))
           ],
-          leading: IconButton(
-            icon: const Icon(Icons.headset_mic,
-                color: Color.fromRGBO(117, 117, 117, 1)),
-            onPressed: () {
-              if (kDebugMode) {
-                print("扫码");
-              }
-              Navigator.pushNamed(context, '/customer');
-            },
-          ),
+          // leading: IconButton(
+          //   icon: const Icon(Icons.headset_mic,
+          //       color: Color.fromRGBO(117, 117, 117, 1)),
+          //   onPressed: () {
+          //     if (kDebugMode) {
+          //       print("扫码");
+          //     }
+          //     Navigator.pushNamed(context, '/customer');
+          //   },
+          // ),
         ),
         body: ListView(
           children: <Widget>[
             _username(),
-            _dynamicdata(),
-            _adv(),
-            _jumpbutton(),
+            // _dynamicdata(),
+            // _adv(),
+            // _jumpbutton(),
             const Divider(),
             _contact(),
           ],

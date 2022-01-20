@@ -110,15 +110,22 @@ class AppBardemoPage extends StatelessWidget {
                   labelStyle: TextStyle(fontSize: 20),
                   tabs: <Widget>[
                     Tab(
-                      text: "动态",
+                      text: "成长历程",
                     ),
-                    Tab(text: "培养方案")
+                    Tab(text: "动态")
                   ]),
             ),
             preferredSize: const Size.fromHeight(60.0)),
         body: TabBarView(
           children: <Widget>[
             //利用Builder
+            ListView(
+              children: const <Widget>[
+                ListTile(title: Text("这是第二个 tab")),
+                ListTile(title: Text("这是第二个 tab")),
+                ListTile(title: Text("这是第二个 tab"))
+              ],
+            ),
             ListView(
               children: <Widget>[
                 Container(
@@ -135,13 +142,6 @@ class AppBardemoPage extends StatelessWidget {
                 ),
               ],
             ),
-            ListView(
-              children: const <Widget>[
-                ListTile(title: Text("这是第二个 tab")),
-                ListTile(title: Text("这是第二个 tab")),
-                ListTile(title: Text("这是第二个 tab"))
-              ],
-            )
           ],
         ),
       ),

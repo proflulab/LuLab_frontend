@@ -125,10 +125,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/values/values.dart';
 import '../../common/utils/utils.dart';
-//import '../../common/entitys/entitys.dart';
-import '../../common/widget/widgets.dart';
+import '../../common/values/values.dart';
 import 'feast_personal.dart';
 
 class FeatsPage extends StatefulWidget {
@@ -158,7 +156,7 @@ class _FeatsPageState extends State<FeatsPage> {
           return Column(
             children: [
               Container(
-                height: 200.h,
+                height: 250.h,
                 width: 1.sw,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -171,28 +169,62 @@ class _FeatsPageState extends State<FeatsPage> {
                 margin: EdgeInsets.only(top: 10.h),
                 child: Stack(
                   children: <Widget>[
-                    positionedImage(
-                        context: context,
-                        top: 10,
-                        left: 500,
-                        height: 200,
-                        width: 200,
-                        url:
-                            'https://www.itying.com/images/flutter/hot${index + 1}.jpg'),
-                    positionedText(
-                        context: context,
-                        top: 30,
-                        left: 50,
-                        height: 40,
-                        width: 200,
-                        text: '张三-三哥餐饮CEO'),
-                    positionedText(
-                        context: context,
-                        top: 80,
-                        left: 50,
-                        height: 40,
-                        width: 200,
-                        text: '新东方厨师学校毕业，冷链运输专家。'),
+                    //图片
+                    Positioned(
+                      top: 0,
+                      left: 230,
+                      child: Container(
+                        height: 250.h,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          //设置四周圆角 角度
+                          borderRadius: Radii.k15pxRadius,
+                        ),
+                        child: Image.network(
+                          'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    //姓名
+                    const Positioned(
+                      top: 10.0,
+                      left: 75.0,
+                      child: Text(
+                        '陆向谦',
+                        style: TextStyle(
+                          fontFamily: 'MyFontStyle',
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                    //标签
+                    Positioned(
+                      top: 40,
+                      left: 80,
+                      child: Container(
+                          height: 20,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            //设置四周圆角 角度
+                            borderRadius: Radii.k15pxRadius,
+                            color: Colors.greenAccent,
+                          ),
+                          child: const Text('CEO',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 15))),
+                    ),
+                    //介绍
+                    const Positioned(
+                        top: 60,
+                        left: 20,
+                        child: SizedBox(
+                            height: 80,
+                            width: 188,
+                            child: Text(
+                                '介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍', //最多60字
+                                style: TextStyle(
+                                    fontFamily: 'MyFontStyle', fontSize: 15)))),
                     // Positioned(
                     //   top: 80,
                     //   left: 10,
@@ -246,7 +278,11 @@ class _FeatsPageState extends State<FeatsPage> {
                                   print("进入主页");
                                 }
                               },
-                              child: const Text("他的主页"),
+                              child: const Text(
+                                "他的主页",
+                                style: TextStyle(
+                                    fontFamily: 'MyFontStyle', fontSize: 20),
+                              ),
                             ),
                           ),
                         )),
@@ -257,7 +293,7 @@ class _FeatsPageState extends State<FeatsPage> {
                           height: 70.h,
                           width: 10.w,
                           decoration: BoxDecoration(
-                              color: Colors.amber,
+                              color: Colors.green,
                               borderRadius: Radii.k6pxRadius),
                         ),
                       ),
@@ -275,7 +311,11 @@ class _FeatsPageState extends State<FeatsPage> {
                                   print("关注他");
                                 }
                               },
-                              child: const Text("关注他"),
+                              child: const Text(
+                                "关注他",
+                                style: TextStyle(
+                                    fontFamily: 'MyFontStyle', fontSize: 20),
+                              ),
                             ),
                           ),
                         )),

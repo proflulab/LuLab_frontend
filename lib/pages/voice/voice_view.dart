@@ -80,7 +80,7 @@ class _VoiceViewState extends State<VoiceView> {
             xfSst();
             setState(() {
               a = 2;
-              values = 'assets/images/20220116223044.gif';
+              values = 'assets/images/voice.gif';
             });
           } else {
             tts.stop();

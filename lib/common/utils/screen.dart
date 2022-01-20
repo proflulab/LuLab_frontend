@@ -47,15 +47,16 @@ double fitScreenHeight(double fontSize) {
 }
 
 extension SizeExtension on num {
+  //宽度适配
   ///[ScreenUtil.setWidth]
   double get w => ScreenUtil().setWidth(this);
-
+//高度适配
   ///[ScreenUtil.setHeight]
   double get h => ScreenUtil().setHeight(this);
-
+//圆角
   ///[ScreenUtil.radius]
   double get r => ScreenUtil().radius(this);
-
+//
   ///[ScreenUtil.setSp]
   double get sp => ScreenUtil().setSp(this);
 

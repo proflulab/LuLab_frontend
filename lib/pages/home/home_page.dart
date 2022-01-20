@@ -122,10 +122,10 @@ class HomePageList extends StatefulWidget {
 class _HomePageListState extends State<HomePageList> {
   @override
   Widget build(BuildContext context) {
-    return const TabBarView(
+    return TabBarView(
       children: [
-        Center(child: Gather()),
-        Center(child: FeatsPage()),
+        const Center(child: Gather()),
+        const Center(child: FeatsPage()),
         Center(child: Train())
       ],
     );

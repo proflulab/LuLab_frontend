@@ -42,6 +42,8 @@ dependencies:
   avatar_glow: ^2.0.2 #用于按钮周围的发光效果
   permission_handler: ^8.3.0
   sound_stream: ^0.3.0
+  flutter_echart: ^1.0.0
+  charts_flutter: ^0.12.0
   flutter_localizations:
     sdk: flutter
 
