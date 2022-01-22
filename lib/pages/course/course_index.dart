@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../common/widget/widgets.dart';
-import 'course_catalogue.dart';
 import 'course_comment.dart';
-import 'course_desc.dart';
+import 'course_detail.dart';
 
 /// 课程视频播放页面
 
@@ -20,7 +19,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   late final course = widget.product;
   // 声明tabcontroller和tab标题
   late TabController _tabController;
-  List tabs = ["简介", "评价", "目录"];
+  List tabs = ["简介", "评价"];
 
   @override
   void initState() {
@@ -58,9 +57,9 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  CourseDescPage(title: widget.product),
+                  CourseDetail(product: widget.product),
                   const CourseCommentPage(),
-                  const CourseCatalogue(),
+                  // const CourseCatalogue(),
                   // const CourseRecomPage(),
                 ],
               ),

@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/voice.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_catalogue.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home/chart.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/语音动效 300.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/语音动效 圆环.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/语音动效2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/home/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.run/main.dart.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/main.dart.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/chart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/chart.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/tab_barin_feast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/tab_barin_feast.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />

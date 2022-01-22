@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -199,7 +200,39 @@ class _UsersPageState extends State<UsersPage> {
                   size: 30,
                   color: Colors.green,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showDialog<Null>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      // return AlertDialog(
+                      //   // title: const Text('标题'),
+                      //   content: buildContent(context),
+                      //   actions: <Widget>[
+                      //     ElevatedButton(
+                      //       child: const Text('确定'),
+                      //       onPressed: () {
+                      //         Navigator.of(context).pop();
+                      //       },
+                      //     ),
+                      //   ],
+                      // );
+                      return CupertinoAlertDialog(
+                        content: const Text('具体咨询请致电：123456'),
+                        actions: <Widget>[
+                          CupertinoDialogAction(
+                            child: const Text("确定"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ).then((val) {
+                    print(val);
+                  });
+                },
                 context: context),
             //在线咨询
             // const Divider(),
@@ -228,6 +261,38 @@ class _UsersPageState extends State<UsersPage> {
                   if (kDebugMode) {
                     print("object");
                   }
+                  ;
+                  showDialog<Null>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      // return AlertDialog(
+                      //   // title: const Text('标题'),
+                      //   content: buildContent(context),
+                      //   actions: <Widget>[
+                      //     ElevatedButton(
+                      //       child: const Text('确定'),
+                      //       onPressed: () {
+                      //         Navigator.of(context).pop();
+                      //       },
+                      //     ),
+                      //   ],
+                      // );
+                      return CupertinoAlertDialog(
+                        content: const Text('具体咨询请致电：123456'),
+                        actions: <Widget>[
+                          CupertinoDialogAction(
+                            child: const Text("确定"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ).then((val) {
+                    print(val);
+                  });
                 },
                 context: context),
             const Divider(),
@@ -242,6 +307,38 @@ class _UsersPageState extends State<UsersPage> {
                   if (kDebugMode) {
                     print("object");
                   }
+                  ;
+                  showDialog<Null>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      // return AlertDialog(
+                      //   // title: const Text('标题'),
+                      //   content: buildContent(context),
+                      //   actions: <Widget>[
+                      //     ElevatedButton(
+                      //       child: const Text('确定'),
+                      //       onPressed: () {
+                      //         Navigator.of(context).pop();
+                      //       },
+                      //     ),
+                      //   ],
+                      // );
+                      return CupertinoAlertDialog(
+                        content: Image.asset('assets/images/语音动效 300.gif'),
+                        actions: <Widget>[
+                          CupertinoDialogAction(
+                            child: const Text("确定"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ).then((val) {
+                    print(val);
+                  });
                 },
                 context: context)
           ],

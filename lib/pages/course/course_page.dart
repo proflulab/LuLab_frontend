@@ -99,7 +99,7 @@ class _CoursePageState extends State<CoursePage> {
       body: Row(
         children: <Widget>[
           SizedBox(
-            width: 100,
+            width: 100.w,
             height: double.infinity,
             child: ListView.builder(
               itemCount: 1,

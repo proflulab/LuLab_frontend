@@ -23,7 +23,7 @@ class _VoiceViewState extends State<VoiceView> {
   bool show = true;
   TextToSpeech tts = TextToSpeech();
   int a = 0;
-  String values = 'assets/images/siri.jpeg';
+  String values = 'assets/images/语音动效2.gif';
 
   @override
   void initState() {
@@ -73,20 +73,20 @@ class _VoiceViewState extends State<VoiceView> {
             setState(() {
               isListening = false;
               a = 1;
-              values = 'assets/images/20220117094600.gif';
+              values = 'assets/images/语音动效 圆环.gif';
             });
           } else if (a == 1) {
             SoundRecord.stopListening();
             xfSst();
             setState(() {
               a = 2;
-              values = 'assets/images/voice.gif';
+              values = 'assets/images/语音动效 300.gif';
             });
           } else {
             tts.stop();
             setState(() {
               a = 0;
-              values = 'assets/images/siri.jpeg';
+              values = 'assets/images/语音动效2.gif';
             });
           }
         },
