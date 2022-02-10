@@ -1,7 +1,6 @@
-//课程数据请求
-const String gqlCourseList = r'''
-  query{
-  latestCourse (option:{limit:4,skip:0}){
+const String gqlMainCourseList = r'''
+query{
+  latestMainCourse(option:{limit:5,skip:0}) {
     _id
     title
     classTags
@@ -11,7 +10,10 @@ const String gqlCourseList = r'''
     category
     mode
     videoUrl
+    imgUrl
+    firstCourseId
     duration
   }
 }
+
 ''';

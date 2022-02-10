@@ -15,7 +15,7 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  late PostsData _postsData;
+  late LatestMainCourse _postsData;
   List _focusData = [];
 
   int _selectIndex = 0;
@@ -28,8 +28,9 @@ class _CoursePageState extends State<CoursePage> {
 
   // 读取所有课程数据
   _loadAllData() async {
-    _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
-    var focusList = _postsData.latestCourse;
+    _postsData =
+        await GqlMainCourseAPI.indexPageInfo(schema: '', context: context);
+    var focusList = _postsData.latestMainCourse;
     // var focusId = _postsData.latestCourse[1].id;
 
     setState(() {
@@ -72,16 +73,6 @@ class _CoursePageState extends State<CoursePage> {
             ]),
           ),
         ),
-        // leading: IconButton(
-        //   icon: const Icon(Icons.download_for_offline_outlined,
-        //       color: Color.fromRGBO(117, 117, 117, 1)),
-        //   onPressed: () {
-        //     if (kDebugMode) {
-        //       print("跳转到下载记录");
-        //     }
-        //     Navigator.pushNamed(context, '/download');
-        //   },
-        // ),
         actions: [
           IconButton(
               onPressed: () {
@@ -169,8 +160,7 @@ class _CoursePageState extends State<CoursePage> {
                                   left: 10,
                                   height: 160,
                                   width: 160,
-                                  url:
-                                      'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg'),
+                                  url: _focusData[index].imgUrl),
                               // 课程标题
                               positionedText(
                                   context: context,
@@ -187,25 +177,6 @@ class _CoursePageState extends State<CoursePage> {
                                   height: 40,
                                   width: 200,
                                   text: _focusData[index].author),
-                              // 课程学习进度
-                              // Positioned(
-                              //   top: 80,
-                              //   left: 130,
-                              //   child: Container(
-                              //     height: 20,
-                              //     width: 80,
-                              //     decoration: BoxDecoration(
-                              //       color: Colors.grey,
-                              //     ),
-                              //     child: Text(
-                              //       '已学2节/共5节',
-                              //       style: TextStyle(
-                              //         fontSize: 12,
-                              //         color: Colors.white,
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),

@@ -2,8 +2,8 @@
 
 const String gqlSourseInfror = r'''
 
-query latestInformation {
-  latestInformation(option: {limit: 1, skip: 1}) {
+query{
+  latestInformation(option:{skip:0,limit:40}){
     title
     content
   }

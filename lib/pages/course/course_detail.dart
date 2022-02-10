@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_course.dart';
-import 'package:proflu/common/entitys/coursedata.dart';
+import 'package:proflu/common/api/gql_latestdetailcourse.dart';
+import 'package:proflu/common/entitys/detail_coursedata.dart';
 import 'package:proflu/common/widget/positioned_widget.dart';
+import 'package:proflu/pages/course/course_index2.dart';
 
 import '../../common/utils/utils.dart';
-import 'course_index.dart';
 
 /// 底部弹起的课程详情
 
@@ -18,20 +18,24 @@ class CourseDetail extends StatefulWidget {
 }
 
 class _CourseDetailState extends State<CourseDetail> {
-  late PostsData _postsData;
+  late DetailCourse _detailCourse;
   List _focusData = [];
 
   @override
   void initState() {
     super.initState();
-    _loadAllData();
+    _handleCourse();
   }
 
   // 读取所有课程数据
-  _loadAllData() async {
-    _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
-    var focusList = _postsData.latestCourse;
-    // var focusId = _postsData.latestCourse[1].id;
+  _handleCourse() async {
+    CourseRequest variables = CourseRequest(
+      dirId: widget.product._id,
+      courseId: widget.product.firstCourseId,
+    );
+    _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
+        variables: variables, context: context);
+    var focusList = _detailCourse.detailCourse.subCourses;
 
     setState(() {
       _focusData = focusList;
@@ -148,8 +152,8 @@ class _CourseDetailState extends State<CourseDetail> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                CourseIndexPage(product: _focusData[index])));
+                            builder: (context) => CourseIndexPageTwo(
+                                product: _focusData[index])));
                   },
                   child: Container(
                     height: 150.h,
@@ -161,15 +165,6 @@ class _CourseDetailState extends State<CourseDetail> {
                     margin: const EdgeInsets.all(5.0),
                     child: Stack(
                       children: <Widget>[
-                        // 课程封面
-                        positionedImage(
-                            context: context,
-                            top: 10,
-                            left: 10,
-                            height: 160,
-                            width: 160,
-                            url:
-                                'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg'),
                         // 课程标题
                         positionedText(
                             context: context,
@@ -177,15 +172,7 @@ class _CourseDetailState extends State<CourseDetail> {
                             left: 190,
                             height: 40,
                             width: 200,
-                            text: _focusData[index].title),
-                        // 作者
-                        positionedText(
-                            context: context,
-                            top: 55,
-                            left: 190,
-                            height: 40,
-                            width: 200,
-                            text: _focusData[index].author),
+                            text: _focusData[index].subTitle),
                       ],
                     ),
                   ),

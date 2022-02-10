@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 import '../../common/widget/widgets.dart';
 import 'tab_barin_feast.dart';
 
-class FeastPersonal extends StatelessWidget {
-  const FeastPersonal({Key? key}) : super(key: key);
+class FeastPersonal extends StatefulWidget {
+  const FeastPersonal({Key? key, required this.product}) : super(key: key);
+  final product;
 
+  @override
+  _FeastPersonalState createState() => _FeastPersonalState();
+}
+
+class _FeastPersonalState extends State<FeastPersonal> {
+  late final model = widget.product;
   @override
   Widget build(BuildContext context) {
     var stack = Stack(

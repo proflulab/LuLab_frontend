@@ -20,7 +20,7 @@ class _TrainState extends State<Train> {
   ZefyrController _controller = ZefyrController();
   @override
   Widget build(BuildContext context) {
-    // return buildPieChatWidget(_dataList);
+    return buildPieChatWidget(_dataList);
     // return const Text('nihapo');
     // return Container(
     //     width: 420.0, //容器的相关参数
@@ -33,17 +33,18 @@ class _TrainState extends State<Train> {
     //   title: '',
     // );
     // return FanYe();
-    return Column(
-      children: [
-        ZefyrToolbar.basic(controller: _controller),
-        Expanded(
-          child: ZefyrEditor(
-            controller: _controller,
-          ),
-        ),
-      ],
-    );
+    // return Column(
+    //   children: [
+    //     ZefyrToolbar.basic(controller: _controller),
+    //     Expanded(
+    //       child: ZefyrEditor(
+    //         controller: _controller,
+    //       ),
+    //     ),
+    //   ],
+    // );
     // return TanChuang();
+    // return UserSet();
   }
 
   PieChatWidget buildPieChatWidget(_dataList) {

@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-import '../../common/entitys/entitys.dart';
-import '../../common/api/apis.dart';
-import '../../common/global/global.dart';
 
 class SetUser extends StatefulWidget {
   const SetUser({Key? key}) : super(key: key);
@@ -67,6 +68,7 @@ class _SetUserState extends State<SetUser> {
                 _carryUp();
                 if (kDebugMode) {
                   print("保存个人信息");
+                  print(_nameController.value.text);
                 }
               },
             ))
