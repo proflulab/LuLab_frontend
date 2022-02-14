@@ -9,15 +9,15 @@ import '../../common/utils/utils.dart';
 
 /// 底部弹起的课程详情
 
-class CourseDetail extends StatefulWidget {
+class CourseDetailTwo extends StatefulWidget {
   final product;
-  const CourseDetail({Key? key, required this.product}) : super(key: key);
+  const CourseDetailTwo({Key? key, required this.product}) : super(key: key);
 
   @override
-  _CourseDetailState createState() => _CourseDetailState();
+  _CourseDetailTwoState createState() => _CourseDetailTwoState();
 }
 
-class _CourseDetailState extends State<CourseDetail> {
+class _CourseDetailTwoState extends State<CourseDetailTwo> {
   late DetailCourse _detailCourse;
   List _focusData = [];
 
@@ -30,8 +30,8 @@ class _CourseDetailState extends State<CourseDetail> {
   // 读取所有课程数据
   _handleCourse() async {
     CourseRequest variables = CourseRequest(
-      dirId: widget.product._id,
-      courseId: widget.product.firstCourseId,
+      dirId: widget.product.mainCourseId,
+      courseId: widget.product._id,
     );
     _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
         variables: variables, context: context);
@@ -39,7 +39,6 @@ class _CourseDetailState extends State<CourseDetail> {
 
     setState(() {
       _focusData = focusList;
-      print(_focusData);
     });
   }
 

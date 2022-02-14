@@ -5,39 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_commentadd.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_latestcomment.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_latestdetailcourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_latestmaincourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_latestmodel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/comment_add_data.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/detail_coursedata.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/lateast_comment.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/main_coursedata.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/modeldata.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/commentAdd.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/latestComment.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/latestDetailCourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/latestMainCourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/latestModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_index2.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_comment2.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_comment_detail.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/course/course_detail2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/Rectangle 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/unsplash_VWAzEW0bi58.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/apis.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/course_content.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/course_content.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/user_sourse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/user_sourse.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_commentadd.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_commentadd.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/comment_add_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/comment_add_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/lateast_comment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/lateast_comment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/global/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/global/global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/commentAdd.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/commentAdd.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/latestComment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/latestComment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/user_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/user_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_comment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_comment.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/chart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/chart.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/feast_personal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/feast_personal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index2.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

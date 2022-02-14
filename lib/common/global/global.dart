@@ -23,6 +23,7 @@ class Global {
         phone: '无',
         sex: '未知',
         description: '无',
+        id: '',
       ));
 
   /// 发布渠道

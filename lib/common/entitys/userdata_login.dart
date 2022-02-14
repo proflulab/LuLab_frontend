@@ -49,6 +49,7 @@ class UserLogin {
 
 class Data {
   Data({
+    required this.id,
     required this.name,
     required this.password,
     required this.img,
@@ -58,6 +59,7 @@ class Data {
     required this.description,
   });
 
+  String id;
   final String name;
   final String password;
   final String img;
@@ -67,6 +69,7 @@ class Data {
   final dynamic description;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
+        id: json["_id"],
         name: json["name"],
         password: json["password"],
         img: json["img"] ?? "",
@@ -77,6 +80,7 @@ class Data {
       );
 
   Map<String, dynamic> toJson() => {
+        "_id": id,
         "name": name,
         "password": password,
         "img": img,

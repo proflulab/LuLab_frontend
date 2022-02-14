@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/api/gql_latestdetailcourse.dart';
+import 'package:proflu/common/entitys/detail_coursedata.dart';
 
 import '../../common/widget/widgets.dart';
 import 'course_comment.dart';
@@ -21,10 +23,29 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   late TabController _tabController;
   List tabs = ["简介", "评价"];
 
+  late DetailCourse _detailCourse;
+  Map _focusData = {};
+
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
+    _handleCourse();
+  }
+
+  // 读取所有课程数据
+  _handleCourse() async {
+    CourseRequest variables = CourseRequest(
+      dirId: widget.product._id,
+      courseId: widget.product.firstCourseId,
+    );
+    _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
+        variables: variables, context: context);
+    var focusList = _detailCourse.detailCourse;
+
+    setState(() {
+      _focusData = focusList as Map;
+    });
   }
 
   @override
@@ -58,7 +79,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                 controller: _tabController,
                 children: [
                   CourseDetail(product: widget.product),
-                  const CourseCommentPage(),
+                  CourseCommentPage(product: widget.product),
                   // const CourseCatalogue(),
                   // const CourseRecomPage(),
                 ],

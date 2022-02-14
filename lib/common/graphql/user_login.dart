@@ -12,6 +12,7 @@ query UserLogin($name: String!, $password: String!) {
     status
     msg
     data {
+      _id
       name
       password
       img

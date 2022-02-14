@@ -1,100 +1,157 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/api/gql_commentadd.dart';
+import 'package:proflu/common/api/gql_latestcomment.dart';
+import 'package:proflu/common/entitys/comment_add_data.dart';
+import 'package:proflu/common/entitys/lateast_comment.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/values/colors.dart';
+import 'package:proflu/common/widget/button.dart';
+import 'package:proflu/common/widget/input.dart';
+
+import 'course_comment_detail.dart';
 
 /// 课程评论页面
 
-class CourseCommentPage extends StatelessWidget {
-  const CourseCommentPage({Key? key}) : super(key: key);
+class CourseCommentPage extends StatefulWidget {
+  final product;
+  const CourseCommentPage({Key? key, required this.product}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: CourseComment(),
-    );
+  _CourseCommentPageState createState() => _CourseCommentPageState();
+}
+
+class _CourseCommentPageState extends State<CourseCommentPage> {
+  //评论监控
+  TextEditingController _commentController = TextEditingController();
+  late LatestComment _latestComment;
+  late CommentAdd _commentAdd;
+  List _commentData = [];
+  List _commentData2 = [];
+  int a = 0;
+  String b = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _handleComment();
   }
-}
 
-class CourseComment extends StatefulWidget {
-  const CourseComment({Key? key}) : super(key: key);
+  // 读取所有课程数据
+  _handleComment() async {
+    LatestCommentRequest variables = LatestCommentRequest(
+      courseId: widget.product.firstCourseId,
+    );
+    _latestComment = await GqlLatestCommentAPI.indexPageInfo(
+        variables: variables, context: context);
+    var commentData = _latestComment;
 
-  @override
-  _CourseCommentState createState() => _CourseCommentState();
-}
+    setState(() {
+      _commentData = commentData as List;
+    });
+  }
 
-class _CourseCommentState extends State<CourseComment> {
+  //添加评论
+  _handleCommentAdd() async {
+    CommentAddRequest variables = CommentAddRequest(
+      content: _commentController.value.text,
+      authorId: Global.profile.data.id,
+      authorImg: Global.profile.data.img,
+      courseId: Global.profile.data.id,
+      authorName: Global.profile.data.name,
+    );
+    _commentAdd = await GqlCommentAddAPI.indexPageInfo(
+        variables: variables, context: context);
+    var commentData2 = _commentAdd;
+
+    setState(() {
+      _commentData2 = commentData2 as List;
+    });
+
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => CourseCommentPage(
+              product: widget.product,
+            )));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        //  评价顶部
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const Text('综合评分：'),
-              Row(
-                children: const [
-                  Icon(
-                    Icons.star,
-                    color: Colors.orange,
-                    size: 25,
-                  ),
-                  Icon(
-                    Icons.star,
-                    size: 25,
-                    color: Colors.orange,
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.orange,
-                    size: 25,
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.orange,
-                    size: 25,
-                  ),
-                  Icon(
-                    Icons.star,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-              const Text(
-                "4.0分",
-                style: TextStyle(fontSize: 16),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 50,
-        ),
-        // 评论列表
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text(
-                  '全部评价(30)',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                ),
-              ],
+    a = _commentData.length;
+    b = a.toString();
+    return Scaffold(
+      body:
+          // 评论列表
+          Column(
+        children: <Widget>[
+          Container(
+              height: 300,
+              width: 375,
+              child: SingleChildScrollView(
+                child: Center(
+                    child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          '全部评价' + '(' + b + ')',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(top: 30),
+                      height: 500,
+                      child: ListView.builder(
+                          itemCount: _commentData.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              CommentDetail(product: _commentData[index])),
+                    ),
+                  ],
+                )),
+              )),
+          Container(
+            height: 53,
+            width: 375,
+            child: ElevatedButton(
+              child: Text("点击"),
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                          height: 500,
+                          width: 375,
+                          child: Column(
+                            children: [
+                              inputTextEdit(
+                                  controller: _commentController,
+                                  hintText: "请输入评论",
+                                  marginTop: 200,
+                                  autofocus: true,
+                                  width: 622,
+                                  height: 300),
+                              Container(
+                                //height: 100.h,
+                                margin: const EdgeInsets.only(top: 50),
+                                child: btnFlatButtonWidget(
+                                  width: 622,
+                                  height: 112,
+                                  onPressed: () {
+                                    _handleCommentAdd();
+                                  },
+                                  gbColor: AppColors.primaryElement,
+                                  title: "发送",
+                                ),
+                              ),
+                            ],
+                          ));
+                    });
+              },
             ),
-            Container(
-              padding: const EdgeInsets.only(top: 30),
-              height: 500,
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) =>
-                      buildEachCourseComment()),
-            ),
-          ],
-        ),
-      ],
+          )
+        ],
+      ),
     );
   }
 
@@ -110,7 +167,7 @@ class _CourseCommentState extends State<CourseComment> {
             // 头衔
             buildName(),
             // 评分
-            buildScore(),
+            // buildScore(),
             // 评论
             buildCourseComment(),
             // 时间
@@ -180,7 +237,7 @@ class _CourseCommentState extends State<CourseComment> {
           flex: 4,
           child: Text(
             '2021-09-08 10:56',
-            style:  TextStyle(color: Color(0xffaaaaaa), fontSize: 12),
+            style: TextStyle(color: Color(0xffaaaaaa), fontSize: 12),
           ),
         ),
         Expanded(

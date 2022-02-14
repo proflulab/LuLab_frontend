@@ -8,7 +8,7 @@ mutation CommentAdd($content: String!, $authorId: String!, $authorImg: String!, 
 
 ''';
 
-//{
+// {
 //   "content": "nihao",
 //   "authorId": "test",
 //   "authorImg": "test",

@@ -3,8 +3,8 @@ import 'package:proflu/common/api/gql_latestdetailcourse.dart';
 import 'package:proflu/common/entitys/detail_coursedata.dart';
 
 import '../../common/widget/widgets.dart';
-import 'course_comment.dart';
-import 'course_detail.dart';
+import 'course_comment2.dart';
+import 'course_detail2.dart';
 
 /// 课程视频播放页面
 
@@ -35,8 +35,8 @@ class _CourseIndexPageTwoState extends State<CourseIndexPageTwo>
   // 读取所有课程数据
   _handleCourse() async {
     CourseRequest variables = CourseRequest(
-      dirId: widget.product._id,
-      courseId: widget.product.firstCourseId,
+      dirId: widget.product.mainCourseId,
+      courseId: widget.product.courseId,
     );
     _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
         variables: variables, context: context);
@@ -77,8 +77,8 @@ class _CourseIndexPageTwoState extends State<CourseIndexPageTwo>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  CourseDetail(product: _focusData),
-                  const CourseCommentPage(),
+                  CourseDetailTwo(product: _focusData),
+                  CourseCommentPageTwo(product: _focusData),
                   // const CourseCatalogue(),
                   // const CourseRecomPage(),
                 ],

@@ -25,23 +25,27 @@ class LatestComment {
 
 class LatestCommentElement {
   LatestCommentElement({
+    required this.id,
     required this.content,
     required this.authorImg,
     required this.authorId,
   });
 
+  String id;
   String content;
   String authorImg;
   String authorId;
 
   factory LatestCommentElement.fromJson(Map<String, dynamic> json) =>
       LatestCommentElement(
+        id: json["_id"],
         content: json["content"],
         authorImg: json["authorImg"],
         authorId: json["authorId"],
       );
 
   Map<String, dynamic> toJson() => {
+        "_id": id,
         "content": content,
         "authorImg": authorImg,
         "authorId": authorId,

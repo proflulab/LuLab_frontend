@@ -13,7 +13,7 @@ class CommentAdd {
   CommentAddClass commentAdd;
 
   factory CommentAdd.fromJson(Map<String, dynamic> json) => CommentAdd(
-        commentAdd: CommentAddClass.fromJson(json["commentAdd"]),
+        commentAdd: CommentAddClass.fromJson(json),
       );
 
   Map<String, dynamic> toJson() => {
