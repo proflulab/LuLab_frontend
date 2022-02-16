@@ -20,6 +20,8 @@ class _CoursePageState extends State<CoursePage> {
 
   int _selectIndex = 0;
 
+  late MainCourseRequest _postsDatatest;
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +33,15 @@ class _CoursePageState extends State<CoursePage> {
     _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
     var focusList = _postsData.latestCourse;
     // var focusId = _postsData.latestCourse[1].id;
+
+    _postsDatatest =
+        await MainCourseAPI.maincourse(schema: '', context: context);
+    if (kDebugMode) {
+      print('========================================');
+    }
+    if (kDebugMode) {
+      print(_postsDatatest.data.latestMainCourse.first.id);
+    }
 
     setState(() {
       _focusData = focusList;
