@@ -10,4 +10,3 @@ export 'userdata_login.dart';
 export 'userdata_registered.dart';
 export 'userdata_update.dart';
 export 'voicedata.dart';
-export 'main_course_data.dart';
