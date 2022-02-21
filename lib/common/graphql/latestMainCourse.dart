@@ -1,5 +1,6 @@
-const String gqlMainCourseList = r'''
-query{
+//课程详情数据请求
+const String gqlmainCourseList = r'''
+  query{
   latestMainCourse(option:{limit:5,skip:0}) {
     _id
     title
@@ -15,5 +16,4 @@ query{
     duration
   }
 }
-
 ''';

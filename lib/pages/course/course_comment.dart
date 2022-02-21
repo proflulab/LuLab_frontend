@@ -9,6 +9,7 @@ import 'package:proflu/common/widget/button.dart';
 import 'package:proflu/common/widget/input.dart';
 
 import 'course_comment_detail.dart';
+import 'course_index.dart';
 
 /// 课程评论页面
 
@@ -26,7 +27,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   late LatestComment _latestComment;
   late CommentAdd _commentAdd;
   List _commentData = [];
-  List _commentData2 = [];
+  var _commentData2;
   int a = 0;
   String b = '';
 
@@ -39,14 +40,13 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   // 读取所有课程数据
   _handleComment() async {
     LatestCommentRequest variables = LatestCommentRequest(
-      courseId: widget.product.firstCourseId,
+      courseId: '619cb9c3ee78eb0f41329627',
     );
     _latestComment = await GqlLatestCommentAPI.indexPageInfo(
         variables: variables, context: context);
-    var commentData = _latestComment;
-
+    var commentData = _latestComment.latestComment;
     setState(() {
-      _commentData = commentData as List;
+      _commentData = commentData;
     });
   }
 
@@ -56,19 +56,19 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
       content: _commentController.value.text,
       authorId: Global.profile.data.id,
       authorImg: Global.profile.data.img,
-      courseId: Global.profile.data.id,
+      courseId: '619cb9c3ee78eb0f41329627',
       authorName: Global.profile.data.name,
     );
     _commentAdd = await GqlCommentAddAPI.indexPageInfo(
         variables: variables, context: context);
-    var commentData2 = _commentAdd;
+    var commentData2 = _commentAdd.commentAdd;
 
     setState(() {
-      _commentData2 = commentData2 as List;
+      _commentData2 = commentData2;
     });
 
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => CourseCommentPage(
+        builder: (context) => CourseIndexPage(
               product: widget.product,
             )));
   }
@@ -83,7 +83,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           Column(
         children: <Widget>[
           Container(
-              height: 300,
+              height: 450,
               width: 375,
               child: SingleChildScrollView(
                 child: Center(
@@ -127,10 +127,10 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                               inputTextEdit(
                                   controller: _commentController,
                                   hintText: "请输入评论",
-                                  marginTop: 200,
+                                  marginTop: 30,
                                   autofocus: true,
                                   width: 622,
-                                  height: 300),
+                                  height: 100),
                               Container(
                                 //height: 100.h,
                                 margin: const EdgeInsets.only(top: 50),

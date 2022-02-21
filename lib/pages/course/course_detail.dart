@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_latestdetailcourse.dart';
-import 'package:proflu/common/entitys/detail_coursedata.dart';
 import 'package:proflu/common/widget/positioned_widget.dart';
-import 'package:proflu/pages/course/course_index2.dart';
 
 import '../../common/utils/utils.dart';
+import 'course_index.dart';
 
 /// 底部弹起的课程详情
 
@@ -18,29 +16,9 @@ class CourseDetail extends StatefulWidget {
 }
 
 class _CourseDetailState extends State<CourseDetail> {
-  late DetailCourse _detailCourse;
-  List _focusData = [];
-
   @override
   void initState() {
     super.initState();
-    _handleCourse();
-  }
-
-  // 读取所有课程数据
-  _handleCourse() async {
-    CourseRequest variables = CourseRequest(
-      dirId: widget.product._id,
-      courseId: widget.product.firstCourseId,
-    );
-    _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
-        variables: variables, context: context);
-    var focusList = _detailCourse.detailCourse.subCourses;
-
-    setState(() {
-      _focusData = focusList;
-      print(_focusData);
-    });
   }
 
   @override
@@ -50,6 +28,8 @@ class _CourseDetailState extends State<CourseDetail> {
 
 //课程简介
   ListView buildCourseDetail() {
+    print('===========================31');
+    print(widget.product.title);
     return ListView(
       children: [
         const Divider(
@@ -142,19 +122,21 @@ class _CourseDetailState extends State<CourseDetail> {
           height: 800.h,
           width: 500.w,
           child: ListView.builder(
-            itemCount: _focusData.length,
+            itemCount: widget.product.subCourses.length,
             itemBuilder: (context, index) {
-              if (_focusData.isNotEmpty) {
+              if (widget.product.subCourses.isNotEmpty) {
                 return InkWell(
                   onTap: () async {
-                    if (kDebugMode) {
-                      print('到课程详情');
-                    }
+                    print(
+                        '==================================================================131');
+                    print(widget.product.subCourses[index].subTitle);
+                    print('到课程详情');
+
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CourseIndexPageTwo(
-                                product: _focusData[index])));
+                            builder: (context) => CourseIndexPage(
+                                product: widget.product.subCourses[index])));
                   },
                   child: Container(
                     height: 150.h,
@@ -173,7 +155,7 @@ class _CourseDetailState extends State<CourseDetail> {
                             left: 190,
                             height: 40,
                             width: 200,
-                            text: _focusData[index].subTitle),
+                            text: widget.product.subCourses[index].subTitle),
                       ],
                     ),
                   ),

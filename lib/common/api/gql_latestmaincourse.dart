@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import 'package:proflu/common/entitys/main_coursedata.dart';
 
+import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
 import '../../common/utils/utils.dart';
 
-/// 主要课程
-class GqlMainCourseAPI {
-  static Future<LatestMainCourse> indexPageInfo({
+class MainCourseAPI {
+  // 课程详情信息请求
+  static Future<MainCourseRequest> maincourse({
     required BuildContext context,
     required String schema,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-        schema: gqlMainCourseList, context: context, variables: {});
+      schema: gqlmainCourseList,
+      context: context,
+      variables: {},
+    );
 
-    return LatestMainCourse.fromJson(response.data!);
+    return MainCourseRequest.fromJson(response.data!);
   }
 }

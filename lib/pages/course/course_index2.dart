@@ -19,7 +19,7 @@ class CourseIndexPageTwo extends StatefulWidget {
 class _CourseIndexPageTwoState extends State<CourseIndexPageTwo>
     with TickerProviderStateMixin {
   late DetailCourse _detailCourse;
-  List _focusData = [];
+  var _focusData;
   late final course = widget.product;
   // 声明tabcontroller和tab标题
   late TabController _tabController;
@@ -43,7 +43,7 @@ class _CourseIndexPageTwoState extends State<CourseIndexPageTwo>
     var focusList = _detailCourse.detailCourse;
 
     setState(() {
-      _focusData = focusList as List;
+      _focusData = focusList;
     });
   }
 

@@ -15,7 +15,7 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  late LatestMainCourse _postsData;
+  late MainCourseRequest _postsData;
   List _focusData = [];
 
   int _selectIndex = 0;
@@ -28,10 +28,8 @@ class _CoursePageState extends State<CoursePage> {
 
   // 读取所有课程数据
   _loadAllData() async {
-    _postsData =
-        await GqlMainCourseAPI.indexPageInfo(schema: '', context: context);
-    var focusList = _postsData.latestMainCourse;
-    // var focusId = _postsData.latestCourse[1].id;
+    _postsData = await MainCourseAPI.maincourse(schema: '', context: context);
+    var focusList = _postsData.data.latestMainCourse;
 
     setState(() {
       _focusData = focusList;
@@ -133,9 +131,6 @@ class _CoursePageState extends State<CoursePage> {
                     if (_focusData.isNotEmpty) {
                       return InkWell(
                         onTap: () async {
-                          if (kDebugMode) {
-                            print('到课程详情');
-                          }
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -160,7 +155,8 @@ class _CoursePageState extends State<CoursePage> {
                                   left: 10,
                                   height: 160,
                                   width: 160,
-                                  url: _focusData[index].imgUrl),
+                                  url:
+                                      'https://images8.alphacoders.com/498/thumb-1920-498307.jpg'),
                               // 课程标题
                               positionedText(
                                   context: context,

@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final latestComment = latestCommentFromJson(jsonString);
+
 import 'dart:convert';
 
 LatestComment latestCommentFromJson(String str) =>
@@ -27,28 +31,44 @@ class LatestCommentElement {
   LatestCommentElement({
     required this.id,
     required this.content,
-    required this.authorImg,
+    required this.courseId,
+    required this.authorName,
     required this.authorId,
+    required this.authorImg,
+    this.category,
+    required this.addTime,
   });
 
   String id;
   String content;
-  String authorImg;
+  String courseId;
+  String authorName;
   String authorId;
+  String authorImg;
+  dynamic category;
+  String addTime;
 
   factory LatestCommentElement.fromJson(Map<String, dynamic> json) =>
       LatestCommentElement(
         id: json["_id"],
         content: json["content"],
-        authorImg: json["authorImg"],
+        courseId: json["courseId"],
+        authorName: json["authorName"],
         authorId: json["authorId"],
+        authorImg: json["authorImg"],
+        category: json["category"],
+        addTime: json["addTime"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "content": content,
-        "authorImg": authorImg,
+        "courseId": courseId,
+        "authorName": authorName,
         "authorId": authorId,
+        "authorImg": authorImg,
+        "category": category,
+        "addTime": addTime,
       };
 }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:proflu/common/api/gql_latestdetailcourse.dart';
 import 'package:proflu/common/entitys/detail_coursedata.dart';
@@ -24,7 +25,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   List tabs = ["简介", "评价"];
 
   late DetailCourse _detailCourse;
-  Map _focusData = {};
+  var _focusData;
 
   @override
   void initState() {
@@ -35,16 +36,18 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   // 读取所有课程数据
   _handleCourse() async {
+    print('=====================================================39');
+    // print(widget.product.id);
+    print(widget.product.courseId);
+    // print(widget.product.id ?? widget.product.courseId);
     CourseRequest variables = CourseRequest(
-      dirId: widget.product._id,
-      courseId: widget.product.firstCourseId,
-    );
+        dirId: widget.product.id ?? widget.product.courseId,
+        courseId: widget.product.firstCourseId ?? widget.product.mainCourseId);
     _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
         variables: variables, context: context);
     var focusList = _detailCourse.detailCourse;
-
     setState(() {
-      _focusData = focusList as Map;
+      _focusData = focusList;
     });
   }
 
@@ -66,7 +69,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       body: Column(
         children: [
           VideoView(
-            widget.product.videoUrl,
+            // widget.product.videoUrl,
+            'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
             cover: 'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
           ),
@@ -78,7 +82,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  CourseDetail(product: widget.product),
+                  CourseDetail(product: _focusData),
                   CourseCommentPage(product: widget.product),
                   // const CourseCatalogue(),
                   // const CourseRecomPage(),

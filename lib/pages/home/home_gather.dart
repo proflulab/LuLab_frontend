@@ -53,8 +53,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List<Map> imgList = [
-      {"url": "assets/images/Rectangle 4.png"},
-      {"url": "assets/images/unsplash_VWAzEW0bi58.png"},
+      {"url": "assets/images/liuqiangdong.jpg"},
+      {"url": "assets/images/Rectangle 6.png"},
       {"url": "assets/images/Rectangle 5.png"},
     ];
 

@@ -1,27 +1,42 @@
 // To parse this JSON data, do
 //
-//     final latestMainCourse = latestMainCourseFromJson(jsonString);
+//     final mainCourseRequest = mainCourseRequestFromJson(jsonString);
 
 import 'dart:convert';
 
-LatestMainCourse latestMainCourseFromJson(String str) =>
-    LatestMainCourse.fromJson(json.decode(str));
+MainCourseRequest mainCourseRequestFromJson(String str) =>
+    MainCourseRequest.fromJson(json.decode(str));
 
-String latestMainCourseToJson(LatestMainCourse data) =>
+String mainCourseRequestToJson(MainCourseRequest data) =>
     json.encode(data.toJson());
 
-class LatestMainCourse {
-  LatestMainCourse({
+class MainCourseRequest {
+  MainCourseRequest({
+    required this.data,
+  });
+
+  final MainData data;
+
+  factory MainCourseRequest.fromJson(Map<String, dynamic> json) =>
+      MainCourseRequest(
+        data: MainData.fromJson(json),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "data": data.toJson(),
+      };
+}
+
+class MainData {
+  MainData({
     required this.latestMainCourse,
   });
 
-  List<LatestMainCourseElement> latestMainCourse;
+  final List<LatestMainCourse> latestMainCourse;
 
-  factory LatestMainCourse.fromJson(Map<String, dynamic> json) =>
-      LatestMainCourse(
-        latestMainCourse: List<LatestMainCourseElement>.from(
-            json["latestMainCourse"]
-                .map((x) => LatestMainCourseElement.fromJson(x))),
+  factory MainData.fromJson(Map<String, dynamic> json) => MainData(
+        latestMainCourse: List<LatestMainCourse>.from(
+            json["latestMainCourse"].map((x) => LatestMainCourse.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,8 +45,8 @@ class LatestMainCourse {
       };
 }
 
-class LatestMainCourseElement {
-  LatestMainCourseElement({
+class LatestMainCourse {
+  LatestMainCourse({
     required this.id,
     required this.title,
     required this.classTags,
@@ -46,48 +61,47 @@ class LatestMainCourseElement {
     required this.duration,
   });
 
-  String id;
-  String title;
-  String classTags;
-  String description;
-  String author;
-  String authorTags;
-  String category;
-  String mode;
-  String videoUrl;
-  String imgUrl;
-  String firstCourseId;
-  int duration;
+  final String id;
+  final String title;
+  final String classTags;
+  final String description;
+  final String author;
+  final String authorTags;
+  final String category;
+  final String mode;
+  final String videoUrl;
+  final String imgUrl;
+  final String firstCourseId;
+  final int duration;
 
-  factory LatestMainCourseElement.fromJson(Map<String, dynamic> json) =>
-      LatestMainCourseElement(
+  factory LatestMainCourse.fromJson(Map<String, dynamic> json) =>
+      LatestMainCourse(
         id: json["_id"],
         title: json["title"],
-        classTags: json["classTags"] == null ? null : json["classTags"],
-        description: json["description"] == null ? null : json["description"],
+        classTags: json["classTags"],
+        description: json["description"],
         author: json["author"],
-        authorTags: json["authorTags"] == null ? null : json["authorTags"],
-        category: json["category"] == null ? null : json["category"],
-        mode: json["mode"] == null ? null : json["mode"],
-        videoUrl: json["videoUrl"] == null ? null : json["videoUrl"],
-        imgUrl: json["imgUrl"] == null ? null : json["imgUrl"],
-        firstCourseId:
-            json["firstCourseId"] == null ? null : json["firstCourseId"],
+        authorTags: json["authorTags"],
+        category: json["category"],
+        mode: json["mode"],
+        videoUrl: json["videoUrl"],
+        imgUrl: json["imgUrl"],
+        firstCourseId: json["firstCourseId"],
         duration: json["duration"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "title": title,
-        "classTags": classTags == null ? null : classTags,
-        "description": description == null ? null : description,
+        "classTags": classTags,
+        "description": description,
         "author": author,
-        "authorTags": authorTags == null ? null : authorTags,
-        "category": category == null ? null : category,
-        "mode": mode == null ? null : mode,
-        "videoUrl": videoUrl == null ? null : videoUrl,
-        "imgUrl": imgUrl == null ? null : imgUrl,
-        "firstCourseId": firstCourseId == null ? null : firstCourseId,
+        "authorTags": authorTags,
+        "category": category,
+        "mode": mode,
+        "videoUrl": videoUrl,
+        "imgUrl": imgUrl,
+        "firstCourseId": firstCourseId,
         "duration": duration,
       };
 }
