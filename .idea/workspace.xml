@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/other/history.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/other/history.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/apis.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_latestmaincourse.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/main_coursedata.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/latestMainCourse.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

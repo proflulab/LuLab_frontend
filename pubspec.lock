@@ -490,13 +490,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.5"
-  notus_format:
-    dependency: transitive
-    description:
-      name: notus_format
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.3"
   path:
     dependency: transitive
     description:
