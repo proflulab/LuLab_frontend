@@ -7,14 +7,7 @@
     <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/apis.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_latestmaincourse.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/main_coursedata.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/latestMainCourse.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +15,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[bbfa694b]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -58,6 +52,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />

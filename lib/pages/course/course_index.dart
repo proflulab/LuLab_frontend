@@ -38,11 +38,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   _handleCourse() async {
     print('=====================================================39');
     // print(widget.product.id);
-    print(widget.product.courseId);
+    print(widget.product.id);
     // print(widget.product.id ?? widget.product.courseId);
     CourseRequest variables = CourseRequest(
-        dirId: widget.product.id ?? widget.product.courseId,
-        courseId: widget.product.firstCourseId ?? widget.product.mainCourseId);
+        dirId: widget.product.id, courseId: widget.product.firstCourseId);
     _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
         variables: variables, context: context);
     var focusList = _detailCourse.detailCourse;
@@ -68,7 +67,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          VideoView(
+          const VideoView(
             // widget.product.videoUrl,
             'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
