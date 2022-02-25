@@ -251,13 +251,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-  flutter_echarts:
-    dependency: "direct main"
-    description:
-      name: flutter_echarts
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -490,6 +483,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.5"
+  notus_format:
+    dependency: transitive
+    description:
+      name: notus_format
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   path:
     dependency: transitive
     description:
@@ -908,13 +908,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  webview_flutter:
-    dependency: transitive
-    description:
-      name: webview_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.7"
   win32:
     dependency: transitive
     description:

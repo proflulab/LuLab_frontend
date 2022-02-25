@@ -131,7 +131,7 @@ class _CourseDetailState extends State<CourseDetail> {
                         '==================================================================131');
                     print(widget.product.subCourses[index].subTitle);
                     print('到课程详情');
-
+                    // changeName();
                     Navigator.push(
                         context,
                         MaterialPageRoute(

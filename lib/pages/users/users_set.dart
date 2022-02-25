@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../common/widget/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/widget/widgets.dart';
 import 'users_set_user.dart';
 //import 'users_set_account.dart';
 
@@ -19,9 +20,14 @@ class _SettingsPageState extends State<SettingsPage> {
     //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text(
             '设置',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.green,
+              fontSize: 24,
+            ),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -37,64 +43,43 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         body: Column(
           children: [
-            listtilebotton(
-                bottomname: "个人信息",
-                icon: const Icon(Icons.ac_unit),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const SetUser()));
-                },
-                context: context),
-            listtilebotton(
-                bottomname: "账号设置",
-                icon: const Icon(Icons.ac_unit),
-                onPressed: () {
-                  // Navigator.of(context).push(
-                  //     MaterialPageRoute(builder: (context) => SetAccount()));
-                },
-                context: context),
-            listtilebotton(
-                bottomname: "软件升级",
-                icon: const Icon(Icons.ac_unit),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("object");
-                  }
-                },
-                context: context),
-            listtilebotton(
-                bottomname: "清理缓存",
-                icon: const Icon(Icons.ac_unit),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("object");
-                  }
-                },
-                context: context),
-            listtilebotton(
-                bottomname: "关于我们",
-                icon: const Icon(Icons.ac_unit),
-                onPressed: () {
-                  bounceBottomSheet(context, const Text("data"));
-                },
-                context: context),
+            Container(
+              height: 230.h,
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.white),
+              child: Column(
+                children: [
+                  listtilebotton(
+                      bottomname: "个人信息",
+                      icon: const Icon(Icons.ac_unit),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const SetUser()));
+                      },
+                      context: context),
+                  const Divider(),
+                  listtilebotton(
+                      bottomname: "关于我们",
+                      icon: const Icon(Icons.ac_unit),
+                      onPressed: () {
+                        bounceBottomSheet(context, const Text("data"));
+                      },
+                      context: context),
+                ],
+              ),
+            ),
             const SizedBox(
               height: 30,
             ),
             Container(
-              height: 50,
-              width: double.infinity,
+              height: 100.h,
+              width: 700.w,
               decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    width: 1,
-                    color: Colors.black26,
-                  ),
-                  top: BorderSide(
-                    width: 1,
-                    color: Colors.black26,
-                  ),
-                ),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(14.0)),
               ),
               child: TextButton(
                 onPressed: () {
@@ -105,7 +90,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: const Text(
                   '退出登录',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontFamily: 'MyFontStyle',
+                    color: Colors.black,
+                    fontSize: 20,
                   ),
                 ),
               ),

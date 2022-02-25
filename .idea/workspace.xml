@@ -8,20 +8,30 @@
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/apis.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_latestmaincourse.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/main_coursedata.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/latestMainCourse.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/list_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/list_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/positioned_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/positioned_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/feast_personal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/feast_personal.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_feats.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/source/information_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/information_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_XL_API_31.avd]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>

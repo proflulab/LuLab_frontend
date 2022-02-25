@@ -41,57 +41,67 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(
         //由主题统一配色，不在这里重新设定颜色
-        //backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-        title: InkWell(
-          //onTap是点击事件回调
-          onTap: () {
-            Navigator.pushNamed(context, '/search');
-          },
-          child: Container(
-            height: 30.0,
-            padding: const EdgeInsets.only(left: 15),
-            decoration: BoxDecoration(
-                //改变搜索外框颜色
-                //border: Border.all(color: Colors.black),
-                color: const Color.fromRGBO(230, 230, 230, 0.8),
-                borderRadius: BorderRadius.circular(15)),
-            child: Row(children: const <Widget>[
-              Icon(
-                Icons.search,
-                color: (Color.fromRGBO(89, 89, 89, 1)),
-              ),
-              Text(
-                "开始搜索",
-                //textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(89, 89, 89, 1),
-                  fontSize: 15,
-                ),
-              )
-            ]),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        title: const Text(
+          '课程',
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 24,
           ),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                if (kDebugMode) {
-                  print("跳转到观看历史");
-                }
-                Navigator.pushNamed(context, '/history');
-              },
-              icon: const Icon(
-                Icons.history,
-                color: Color.fromRGBO(117, 117, 117, 1),
-              ))
-        ],
+        // title: InkWell(
+        //   //onTap是点击事件回调
+        //   onTap: () {
+        //     Navigator.pushNamed(context, '/search');
+        //   },
+        //   child: Container(
+        //     height: 30.0,
+        //     padding: const EdgeInsets.only(left: 15),
+        //     decoration: BoxDecoration(
+        //         //改变搜索外框颜色
+        //         //border: Border.all(color: Colors.black),
+        //         color: const Color.fromRGBO(230, 230, 230, 0.8),
+        //         borderRadius: BorderRadius.circular(15)),
+        //     child: Row(children: const <Widget>[
+        //       Icon(
+        //         Icons.search,
+        //         color: (Color.fromRGBO(89, 89, 89, 1)),
+        //       ),
+        //       Text(
+        //         "开始搜索",
+        //         //textAlign: TextAlign.center,
+        //         style: TextStyle(
+        //           color: Color.fromRGBO(89, 89, 89, 1),
+        //           fontSize: 15,
+        //         ),
+        //       )
+        //     ]),
+        //   ),
+        // ),
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         if (kDebugMode) {
+        //           print("跳转到观看历史");
+        //         }
+        //         Navigator.pushNamed(context, '/history');
+        //       },
+        //       icon: const Icon(
+        //         Icons.history,
+        //         color: Color.fromRGBO(117, 117, 117, 1),
+        //       ))
+        // ],
       ),
       body: Row(
         children: <Widget>[
           SizedBox(
-            width: 100.w,
+            width: 0.w,
             height: double.infinity,
             child: ListView.builder(
-              itemCount: 1,
+              itemCount: 0,
               itemBuilder: (context, index) {
                 return Column(
                   children: <Widget>[
@@ -107,9 +117,15 @@ class _CoursePageState extends State<CoursePage> {
                       child: Container(
                         width: double.infinity,
                         height: 60,
-                        child: const Text("推荐", textAlign: TextAlign.center),
+                        child: const Text("推荐",
+                            style: TextStyle(
+                              fontFamily: 'MyFontStyle',
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                            textAlign: TextAlign.center),
                         color:
-                            _selectIndex == index ? Colors.blue : Colors.white,
+                            _selectIndex == index ? Colors.grey : Colors.white,
                       ),
                     ),
                     const Divider(
@@ -162,16 +178,16 @@ class _CoursePageState extends State<CoursePage> {
                                   context: context,
                                   top: 30,
                                   left: 190,
-                                  height: 40,
-                                  width: 200,
+                                  height: 80.h,
+                                  width: 700.w,
                                   text: _focusData[index].title),
                               // 作者
                               positionedText(
                                   context: context,
                                   top: 55,
                                   left: 190,
-                                  height: 40,
-                                  width: 200,
+                                  height: 80.h,
+                                  width: 700.w,
                                   text: _focusData[index].author),
                             ],
                           ),

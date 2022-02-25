@@ -38,7 +38,17 @@ class _InformationPageState extends State<InformationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("资讯"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: const Text(
+          "资讯",
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 24,
+          ),
+        ),
       ),
       body: ListView.builder(
         itemCount: _focusData.length,
@@ -66,14 +76,14 @@ class _InformationPageState extends State<InformationPage> {
                 child: Stack(
                   children: <Widget>[
                     // 资讯封面
-                    positionedImage(
-                        context: context,
-                        top: 10,
-                        left: 10,
-                        height: 150,
-                        width: 150,
-                        url:
-                            'https://image2.cnpp.cn/upload/images/20210427/17584971448_207x90.gif'),
+                    // positionedImage(
+                    //     context: context,
+                    //     top: 10,
+                    //     left: 10,
+                    //     height: 150,
+                    //     width: 150,
+                    //     url:
+                    //         'https://image2.cnpp.cn/upload/images/20210427/17584971448_207x90.gif'),
                     // 资讯标题
                     positionedText(
                         context: context,

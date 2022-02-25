@@ -48,8 +48,10 @@ Widget positionedText({
         //textDirection: TextDirection.rtl,
         softWrap: true,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          fontSize: 14,
+        style: TextStyle(
+          fontFamily: 'MyFontStyle',
+          color: Colors.black,
+          fontSize: 18,
         ),
       ),
     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../values/myicon.dart';
 
 Widget listtilebotton({
@@ -12,7 +13,14 @@ Widget listtilebotton({
     color: Colors.white,
     child: ListTile(
       leading: icon,
-      title: Text(bottomname),
+      title: Text(
+        bottomname,
+        style: const TextStyle(
+          fontFamily: 'MyFontStyle',
+          color: Colors.black,
+          fontSize: 20,
+        ),
+      ),
       contentPadding: const EdgeInsets.all(0),
       trailing: const Icon(MyIcon.userRight),
       onTap: onPressed,

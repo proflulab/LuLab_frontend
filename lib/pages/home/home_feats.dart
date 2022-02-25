@@ -61,9 +61,8 @@ class _FeatsPageState extends State<FeatsPage> {
                   width: 1.sw,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.r),
-                      topRight: Radius.circular(15.r),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15.r),
                     ),
                     //border: Border.all(color: Colors.black54),
                   ),
@@ -101,23 +100,30 @@ class _FeatsPageState extends State<FeatsPage> {
                       ),
                       //标签
                       Positioned(
-                        top: 40,
-                        left: 80,
-                        child: Container(
-                            height: 20,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              //设置四周圆角 角度
-                              borderRadius: Radii.k15pxRadius,
-                              color: Colors.greenAccent,
-                            ),
-                            child: Text(_focusData[index].identity,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 12))),
+                        top: 45,
+                        left: 45,
+                        child: Text("身份：" + _focusData[index].identity,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontFamily: 'MyFontStyle',
+                                color: Colors.green,
+                                fontSize: 15)),
+                        // Container(
+                        //     height: 20,
+                        //     width: 100,
+                        //     decoration: BoxDecoration(
+                        //       //设置四周圆角 角度
+                        //       borderRadius: Radii.k15pxRadius,
+                        //       color: Colors.greenAccent,
+                        //     ),
+                        //     child: Text(_focusData[index].identity,
+                        //         textAlign: TextAlign.center,
+                        //         style: const TextStyle(
+                        //             fontFamily: 'MyFontStyle', fontSize: 15))),
                       ),
                       //介绍
                       Positioned(
-                          top: 60,
+                          top: 70,
                           left: 20,
                           child: SizedBox(
                               height: 80,
@@ -125,7 +131,7 @@ class _FeatsPageState extends State<FeatsPage> {
                               child: Text(_focusData[index].description, //最多60字
                                   style: const TextStyle(
                                       fontFamily: 'MyFontStyle',
-                                      fontSize: 15)))),
+                                      fontSize: 18)))),
                     ],
                   ),
                 ),
@@ -175,39 +181,39 @@ class _FeatsPageState extends State<FeatsPage> {
                             ),
                           )),
                         ),
-                        Expanded(
-                          flex: 0,
-                          child: Container(
-                            height: 70.h,
-                            width: 10.w,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: Radii.k6pxRadius),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Center(
-                              child: Container(
-                            width: 100,
-                            height: 40,
-                            color: Colors.white,
-                            child: Center(
-                              child: InkWell(
-                                onTap: () {
-                                  if (kDebugMode) {
-                                    print("关注他");
-                                  }
-                                },
-                                child: const Text(
-                                  "关注他",
-                                  style: TextStyle(
-                                      fontFamily: 'MyFontStyle', fontSize: 20),
-                                ),
-                              ),
-                            ),
-                          )),
-                        ),
+                        // Expanded(
+                        //   flex: 0,
+                        //   child: Container(
+                        //     height: 70.h,
+                        //     width: 10.w,
+                        //     decoration: BoxDecoration(
+                        //         color: Colors.green,
+                        //         borderRadius: Radii.k6pxRadius),
+                        //   ),
+                        // ),
+                        // Expanded(
+                        //   flex: 2,
+                        //   child: Center(
+                        //       child: Container(
+                        //     width: 100,
+                        //     height: 40,
+                        //     color: Colors.white,
+                        //     child: Center(
+                        //       child: InkWell(
+                        //         onTap: () {
+                        //           if (kDebugMode) {
+                        //             print("关注他");
+                        //           }
+                        //         },
+                        //         child: const Text(
+                        //           "关注他",
+                        //           style: TextStyle(
+                        //               fontFamily: 'MyFontStyle', fontSize: 20),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   )),
+                        // ),
                       ],
                     ))
               ],

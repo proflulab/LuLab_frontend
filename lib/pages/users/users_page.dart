@@ -35,14 +35,38 @@ class _UsersPageState extends State<UsersPage> {
           //   radius: 25,
           //   backgroundImage: AssetImage("assets/images/logo.png"),
           // ),
-          title: Text(Global.profile.data.name),
-          subtitle: const Text("功勋学员"),
+          title: Text(
+            Global.profile.data.name,
+            style: TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 28,
+            ),
+          ),
+          subtitle: const Text(
+            "功勋学员",
+            style: TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.green,
+              fontSize: 14,
+            ),
+          ),
           contentPadding: const EdgeInsets.all(10),
-          trailing: const Text("个人主页"),
+          trailing: const Text(
+            "个人主页",
+            style: TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
           onTap: () {
             if (kDebugMode) {
               print("进入个人主页");
             }
+            ;
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SettingsPage()));
           },
         ),
       );
@@ -184,7 +208,7 @@ class _UsersPageState extends State<UsersPage> {
 
     Widget _contact() {
       return Container(
-        height: 370.h,
+        height: 250.h,
         margin: const EdgeInsets.only(left: 10, right: 10),
         decoration: const BoxDecoration(
             shape: BoxShape.rectangle,
@@ -194,7 +218,7 @@ class _UsersPageState extends State<UsersPage> {
           children: [
             const SizedBox(height: 10),
             listtilebotton(
-                bottomname: "电话咨询",
+                bottomname: "邮箱咨询",
                 icon: const Icon(
                   MyIcon.userPhone,
                   size: 30,
@@ -249,52 +273,52 @@ class _UsersPageState extends State<UsersPage> {
             //       }
             //     },
             //     context: context),
-            const Divider(),
-            listtilebotton(
-                bottomname: "帮助中心",
-                icon: const Icon(
-                  MyIcon.userHelp,
-                  size: 30,
-                  color: Colors.green,
-                ),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("object");
-                  }
-                  ;
-                  showDialog<Null>(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      // return AlertDialog(
-                      //   // title: const Text('标题'),
-                      //   content: buildContent(context),
-                      //   actions: <Widget>[
-                      //     ElevatedButton(
-                      //       child: const Text('确定'),
-                      //       onPressed: () {
-                      //         Navigator.of(context).pop();
-                      //       },
-                      //     ),
-                      //   ],
-                      // );
-                      return CupertinoAlertDialog(
-                        content: const Text('具体咨询请致电：123456'),
-                        actions: <Widget>[
-                          CupertinoDialogAction(
-                            child: const Text("确定"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ).then((val) {
-                    print(val);
-                  });
-                },
-                context: context),
+            // const Divider(),
+            // listtilebotton(
+            //     bottomname: "帮助中心",
+            //     icon: const Icon(
+            //       MyIcon.userHelp,
+            //       size: 30,
+            //       color: Colors.green,
+            //     ),
+            //     onPressed: () {
+            //       if (kDebugMode) {
+            //         print("object");
+            //       }
+            //       ;
+            //       showDialog<Null>(
+            //         context: context,
+            //         barrierDismissible: false,
+            //         builder: (BuildContext context) {
+            //           // return AlertDialog(
+            //           //   // title: const Text('标题'),
+            //           //   content: buildContent(context),
+            //           //   actions: <Widget>[
+            //           //     ElevatedButton(
+            //           //       child: const Text('确定'),
+            //           //       onPressed: () {
+            //           //         Navigator.of(context).pop();
+            //           //       },
+            //           //     ),
+            //           //   ],
+            //           // );
+            //           return CupertinoAlertDialog(
+            //             content: const Text('具体咨询请致电：123456'),
+            //             actions: <Widget>[
+            //               CupertinoDialogAction(
+            //                 child: const Text("确定"),
+            //                 onPressed: () {
+            //                   Navigator.of(context).pop();
+            //                 },
+            //               ),
+            //             ],
+            //           );
+            //         },
+            //       ).then((val) {
+            //         print(val);
+            //       });
+            //     },
+            //     context: context),
             const Divider(),
             listtilebotton(
                 bottomname: "商务合作",
@@ -348,7 +372,7 @@ class _UsersPageState extends State<UsersPage> {
 
     return Scaffold(
         appBar: AppBar(
-          //backgroundColor: Color.fromRGBO(14, 14, 31, 1),
+          backgroundColor: Colors.white,
           //backgroundColor: Colors.transparent,
           //elevation: 0,
           actions: [
@@ -363,19 +387,17 @@ class _UsersPageState extends State<UsersPage> {
                 },
                 icon: const Icon(
                   Icons.settings,
-                  //color: Color.fromRGBO(117, 117, 117, 1),
+                  color: Colors.green,
                 ))
           ],
-          // leading: IconButton(
-          //   icon: const Icon(Icons.headset_mic,
-          //       color: Color.fromRGBO(117, 117, 117, 1)),
-          //   onPressed: () {
-          //     if (kDebugMode) {
-          //       print("扫码");
-          //     }
-          //     Navigator.pushNamed(context, '/customer');
-          //   },
-          // ),
+          leading: IconButton(
+            icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
+            onPressed: () {
+              if (kDebugMode) {
+                print("扫码");
+              }
+            },
+          ),
         ),
         body: ListView(
           children: <Widget>[
