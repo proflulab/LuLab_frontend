@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
+import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
@@ -37,10 +37,24 @@ class _SetUserState extends State<SetUser> {
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
     );
+    UserLogin profiler = UserLogin(
+        msg: '',
+        status: '',
+        data: Data(
+          name: _nameController.value.text,
+          password: '12345678',
+          img:
+              "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
+          wechat: _wechatnameController.value.text,
+          phone: _phoneController.value.text,
+          sex: _sexValue,
+          description: _introController.value.text,
+          id: '',
+        ));
     try {
-      // UserUpdateresponse userProfile =
       await GqlUserAPI.userup(context: context, variables: variables);
-      // Global.saveProfile(userProfile);
+      Global.saveProfile(profiler);
+
       toastInfo(msg: '修改成功');
     } catch (e) {
       if (kDebugMode) {

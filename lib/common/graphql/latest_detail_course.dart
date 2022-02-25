@@ -1,3 +1,9 @@
+// {
+//   "dirId":
+//   "courseId":
+// }
+
+
 const String gqlDetailCourseList = r'''
 query DetailCourse($dirId: String!, $courseId: String!) {
   detailCourse(dirId:$dirId, courseId: $courseId) {

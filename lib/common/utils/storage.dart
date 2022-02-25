@@ -16,7 +16,6 @@ class Storage {
   static Future<bool?> setJson(key, value) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     sp.setString(key, jsonEncode(value));
-    return null;
   }
 
   static Future<String?> getJson(key) async {
