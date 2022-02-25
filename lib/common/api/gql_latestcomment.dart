@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:proflu/common/entitys/lateast_comment.dart';
-import 'package:proflu/common/graphql/latestComment.dart';
+import 'package:proflu/common/graphql/latest_comment.dart';
 
 import '../../common/utils/utils.dart';
 

@@ -82,7 +82,7 @@ class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
               height: 500.0,
               color: Colors.white,
               alignment: Alignment.center,
-              child: Icon(
+              child: const Icon(
                 Icons.security,
                 size: 35.0,
               ),

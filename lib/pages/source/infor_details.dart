@@ -19,7 +19,7 @@ class _InforDetailsState extends State<InforDetails> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             '详情',
             style: TextStyle(
               fontFamily: 'MyFontStyle',
@@ -49,7 +49,7 @@ class _InforDetailsState extends State<InforDetails> {
                     children: <Widget>[
                       Text(
                         infordata.title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'MyFontStyle',
                           color: Colors.black,
                           fontSize: 22,
@@ -73,7 +73,7 @@ class _InforDetailsState extends State<InforDetails> {
                             const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
                         child: Text(
                           infordata.content,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                           ),

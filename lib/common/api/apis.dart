@@ -1,6 +1,8 @@
 library apis;
 
+export 'gql_commentadd.dart';
 export 'gql_course.dart';
+export 'gql_latestcomment.dart';
 export 'gql_latestdetailcourse.dart';
 export 'gql_latestmaincourse.dart';
 export 'gql_latestmodel.dart';

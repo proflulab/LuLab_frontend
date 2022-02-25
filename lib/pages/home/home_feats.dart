@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_latestmodel.dart';
-import 'package:proflu/common/entitys/modeldata.dart';
 
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import 'feast_personal.dart';
@@ -18,8 +18,6 @@ class FeatsPage extends StatefulWidget {
 class _FeatsPageState extends State<FeatsPage> {
   late LatestModel _postsData;
   List _focusData = [];
-
-  int _selectIndex = 0;
 
   @override
   void initState() {

@@ -24,7 +24,7 @@ class _CommentDetailState extends State<CommentDetail> {
               children: [
                 Text(
                   widget.product.authorName,
-                  style: TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 15),
                 ),
                 // SizedBox(
                 //   width: 10,
@@ -42,7 +42,7 @@ class _CommentDetailState extends State<CommentDetail> {
                 Expanded(
                   child: Text(
                     widget.product.content,
-                    style: TextStyle(fontSize: 13),
+                    style: const TextStyle(fontSize: 13),
                     textAlign: TextAlign.start,
                     // overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -58,7 +58,7 @@ class _CommentDetailState extends State<CommentDetail> {
                   flex: 4,
                   child: Text(
                     widget.product.addTime,
-                    style: TextStyle(color: Color(0xffaaaaaa), fontSize: 12),
+                    style: const TextStyle(color: const Color(0xffaaaaaa), fontSize: 12),
                   ),
                 ),
                 Expanded(

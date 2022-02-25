@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         designSize: const Size(750, 1334), //配置设计稿的宽度高度
         builder: () => MaterialApp(
             locale: const Locale('zh', 'CN'),
-            localizationsDelegates: [
+            localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               //GlobalCupertinoLocalizations.delegate,

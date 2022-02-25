@@ -184,8 +184,8 @@ class _GatherState extends State<Gather> {
         // _hotProductListWidget(),
         // SizedBox(height: fitHeight(20)),
         _titleWidget("最新咨询"),
-        _buildInfomation(),
-        // _buildFreeCourse(),
+        buildInfomation(),
+        // buildFreeCourse(),
         _titleWidget("精选课程"),
         _buildCourse(),
         // buildWonderCourse(),
@@ -194,7 +194,7 @@ class _GatherState extends State<Gather> {
   }
 
 // 免费体验课程
-  SingleChildScrollView _buildFreeCourse() {
+  SingleChildScrollView buildFreeCourse() {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(vertical: 20),
       scrollDirection: Axis.horizontal,
@@ -241,7 +241,7 @@ class _GatherState extends State<Gather> {
   }
 
   // 最新咨询
-  Container _buildInfomation() {
+  Container buildInfomation() {
     return Container(
       margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
       decoration: BoxDecoration(
@@ -252,11 +252,11 @@ class _GatherState extends State<Gather> {
       height: 237,
       width: 345,
       // color: Colors.white,
-      child: _buildInfomation_context(),
+      child: buildInfomationContext(),
     );
   }
 
-  ListView _buildInfomation_context() {
+  ListView buildInfomationContext() {
     return ListView.builder(
       itemCount: _focusData2.length,
       itemBuilder: (context, index) {
@@ -339,11 +339,11 @@ class _GatherState extends State<Gather> {
       ),
       height: 400.h,
       width: 345,
-      child: _buildCourse_context(),
+      child: buildCourseContext(),
     );
   }
 
-  ListView _buildCourse_context() {
+  ListView buildCourseContext() {
     return ListView.builder(
       itemCount: _focusData.length,
       itemBuilder: (context, index) {
@@ -386,7 +386,6 @@ class _GatherState extends State<Gather> {
                         ),
                       ),
                     ),
-
                     // 课程标题
                     Positioned(
                       top: 10.0,

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/utils/utils.dart';
 import '../../common/global/global.dart';
-import '../../common/values/myicon.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import 'users_set.dart';
 
@@ -37,7 +37,7 @@ class _UsersPageState extends State<UsersPage> {
           // ),
           title: Text(
             Global.profile.data.name,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
               fontSize: 28,
@@ -64,7 +64,6 @@ class _UsersPageState extends State<UsersPage> {
             if (kDebugMode) {
               print("进入个人主页");
             }
-            ;
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const SettingsPage()));
           },
@@ -331,7 +330,7 @@ class _UsersPageState extends State<UsersPage> {
                   if (kDebugMode) {
                     print("object");
                   }
-                  ;
+
                   showDialog<Null>(
                     context: context,
                     barrierDismissible: false,

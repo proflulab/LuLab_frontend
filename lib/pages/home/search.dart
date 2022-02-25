@@ -305,7 +305,6 @@ class SearchBarDelegate extends SearchDelegate<String> {
   //返回一个主题，也就是可以自定义搜索界面的主题样式
   @override
   ThemeData appBarTheme(BuildContext context) {
-    // TODO: implement appBarTheme
     return super.appBarTheme(context);
   }
 }

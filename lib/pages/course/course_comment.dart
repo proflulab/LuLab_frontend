@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_commentadd.dart';
-import 'package:proflu/common/api/gql_latestcomment.dart';
-import 'package:proflu/common/entitys/comment_add_data.dart';
-import 'package:proflu/common/entitys/lateast_comment.dart';
-import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/values/colors.dart';
-import 'package:proflu/common/widget/button.dart';
-import 'package:proflu/common/widget/input.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
 
 import 'course_comment_detail.dart';
 import 'course_index.dart';
@@ -23,7 +21,7 @@ class CourseCommentPage extends StatefulWidget {
 
 class _CourseCommentPageState extends State<CourseCommentPage> {
   //评论监控
-  TextEditingController _commentController = TextEditingController();
+  final TextEditingController _commentController = TextEditingController();
   late LatestComment _latestComment;
   late CommentAdd _commentAdd;
   List _commentData = [];
@@ -94,7 +92,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                       children: [
                         Text(
                           '全部评价' + '(' + b + ')',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -110,11 +108,11 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                   ],
                 )),
               )),
-          Container(
+          SizedBox(
             height: 53,
             width: 375,
             child: ElevatedButton(
-              child: Text("点击"),
+              child: const Text("点击"),
               onPressed: () {
                 showModalBottomSheet(
                     context: context,

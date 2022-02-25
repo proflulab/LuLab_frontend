@@ -1,9 +1,9 @@
 library schema;
 
 export 'course_content.dart';
-export 'latestDetailCourse.dart';
-export 'latestMainCourse.dart';
-export 'latestModel.dart';
+export 'latest_detail_course.dart';
+export 'latest_main_course.dart';
+export 'latest_model.dart';
 export 'user_login.dart';
 export 'user_register.dart';
 export 'user_sourse.dart';

@@ -1,10 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/api/gql_latestdetailcourse.dart';
-import 'package:proflu/common/entitys/detail_coursedata.dart';
 
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course_comment.dart';
 
 /// 课程视频播放页面
@@ -73,7 +73,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          VideoView(
+          const VideoView(
             // widget.product.videoUrl,
             'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
@@ -192,7 +192,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-        Container(
+        SizedBox(
           height: 800.h,
           width: 500.w,
           child: ListView.builder(
@@ -206,8 +206,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                     print(_focusData.subCourses[index].subTitle);
                     print('到课程详情');
                     setState(() {
-                      this.dirId = _focusData.subCourses[index].mainCourseId;
-                      this.courseId = _focusData.subCourses[index].courseId;
+                      dirId = _focusData.subCourses[index].mainCourseId;
+                      courseId = _focusData.subCourses[index].courseId;
                     });
                     _handleCourse();
                     // Navigator.push(

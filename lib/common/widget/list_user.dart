@@ -14,7 +14,7 @@ Widget listGroup1({
           flex: 1,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
               fontSize: 18,

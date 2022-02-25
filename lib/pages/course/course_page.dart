@@ -5,6 +5,7 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {

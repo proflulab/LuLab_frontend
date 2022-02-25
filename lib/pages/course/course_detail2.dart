@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_latestdetailcourse.dart';
-import 'package:proflu/common/entitys/detail_coursedata.dart';
-import 'package:proflu/common/widget/positioned_widget.dart';
-import 'package:proflu/pages/course/course_index2.dart';
 
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+import '../../common/widget/widgets.dart';
+
+import 'package:proflu/pages/course/course_index2.dart';
 
 /// 底部弹起的课程详情
 
@@ -137,7 +138,7 @@ class _CourseDetailTwoState extends State<CourseDetailTwo> {
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-        Container(
+        SizedBox(
           height: 800.h,
           width: 500.w,
           child: ListView.builder(
