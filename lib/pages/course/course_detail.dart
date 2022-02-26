@@ -118,7 +118,7 @@ class _CourseDetailState extends State<CourseDetail> {
               fontSize: 20,
               fontWeight: FontWeight.w500),
         ),
-        Container(
+        SizedBox(
           height: 800.h,
           width: 500.w,
           child: ListView.builder(

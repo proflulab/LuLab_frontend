@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_course.dart';
-import 'package:proflu/common/entitys/coursedata.dart';
-import 'package:proflu/common/utils/screen.dart';
-import 'package:proflu/common/widget/positioned_widget.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/widget/widgets.dart';
+
 
 import 'course_index.dart';
 

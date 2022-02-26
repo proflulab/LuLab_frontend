@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:text_to_speech/text_to_speech.dart';
+
+import '../../common/utils/utils.dart';
 
 class InforDetails extends StatefulWidget {
   const InforDetails({Key? key, required this.product}) : super(key: key);

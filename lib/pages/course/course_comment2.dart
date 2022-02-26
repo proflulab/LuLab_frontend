@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_latestcomment.dart';
-import 'package:proflu/common/entitys/lateast_comment.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 
 /// 课程评论页面
 

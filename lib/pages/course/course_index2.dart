@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_latestdetailcourse.dart';
-import 'package:proflu/common/entitys/detail_coursedata.dart';
 
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course_comment2.dart';
 import 'course_detail2.dart';
 

@@ -80,7 +80,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           // 评论列表
           Column(
         children: <Widget>[
-          Container(
+          SizedBox(
               height: 450,
               width: 375,
               child: SingleChildScrollView(
@@ -117,7 +117,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                 showModalBottomSheet(
                     context: context,
                     builder: (BuildContext context) {
-                      return Container(
+                      return SizedBox(
                           height: 500,
                           width: 375,
                           child: Column(

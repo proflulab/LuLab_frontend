@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../common/utils/utils.dart';
 
 import 'tab_barin_feast.dart';
 
@@ -38,7 +38,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
             width: 750.w,
 
             decoration: const BoxDecoration(
-//背景
+              //背景
               color: Colors.white,
               //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
               borderRadius: BorderRadius.only(

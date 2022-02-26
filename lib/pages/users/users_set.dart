@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 import 'users_set_user.dart';
 //import 'users_set_account.dart';
