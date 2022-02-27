@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import '../../common/utils/utils.dart';
+
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
+import '../../common/utils/utils.dart';
 
 class GqlUserAPI {
   // 登录
@@ -29,13 +30,13 @@ class GqlUserAPI {
   }
 
   // 个人信息更新
-  static Future<UserUpdateresponse> userup({
+  static Future<UserUpdate> userup({
     required BuildContext context,
     required UserUpdaterequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
         context: context, schema: gqlUserUpdata, variables: variables.toJson());
 
-    return UserUpdateresponse.fromJson(response.data!);
+    return UserUpdate.fromJson(response.data!);
   }
 }

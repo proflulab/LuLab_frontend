@@ -38,9 +38,9 @@ class _SetUserState extends State<SetUser> {
       wechat: _wechatnameController.value.text,
     );
     try {
-      // UserUpdateresponse userProfile =
-      await GqlUserAPI.userup(context: context, variables: variables);
-      // Global.saveProfile(userProfile);
+      UserUpdate userProfile2 =
+          await GqlUserAPI.userup(context: context, variables: variables);
+      Global.saveProfile2(userProfile2);
       toastInfo(msg: '修改成功');
     } catch (e) {
       if (kDebugMode) {

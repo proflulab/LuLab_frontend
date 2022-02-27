@@ -25,6 +25,10 @@ class Global {
         description: '无',
         id: '',
       ));
+  static UserUpdate profile2 = UserUpdate(
+    msg: '',
+    status: '',
+  );
 
   /// 发布渠道
   // static String channel = "xiaomi";
@@ -97,6 +101,11 @@ class Global {
   // 持久化 用户信息
   static Future<bool?> saveProfile(UserLogin userResponse) {
     profile = userResponse;
+    return Storage.setJson(storageUserProfileKey, userResponse.toJson());
+  }
+
+  static Future<bool?> saveProfile2(UserUpdate userResponse) {
+    profile2 = userResponse;
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
 }
