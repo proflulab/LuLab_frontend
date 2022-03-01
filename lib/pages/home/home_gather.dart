@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:proflu/pages/course/course_index.dart';
-import 'package:proflu/pages/source/infor_details.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
+
+import '../../pages/course/course_index.dart';
+import '../../pages/source/infor_details.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);
@@ -52,25 +53,29 @@ class _GatherState extends State<Gather> {
 
   //轮播图
   Widget _swiperWidget() {
-    List<Map> imgList = [
-      {"url": "assets/images/liuqiangdong.jpg"},
-      {"url": "assets/images/Rectangle 6.png"},
-      {"url": "assets/images/Rectangle 5.png"},
+    List imgList = [
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
     ];
 
     return Container(
       margin: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 15.0),
-      decoration: BoxDecoration(
-        //设置四周圆角 角度
-        borderRadius: Radii.k15pxRadius,
-      ),
       child: AspectRatio(
         aspectRatio: 9 / 5,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return Image.asset(
-              imgList[index]["url"],
-              fit: BoxFit.fill,
+            return Container(
+              // 用Container实现图片圆角的效果
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imgList[index]), // 图片数组
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10.0),
+                ),
+              ),
             );
           },
           //条目个数
