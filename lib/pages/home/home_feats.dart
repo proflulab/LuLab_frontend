@@ -70,24 +70,25 @@ class _FeatsPageState extends State<FeatsPage> {
                       //图片
                       Positioned(
                         top: 0,
-                        left: 230,
+                        right: 0,
                         child: Container(
                           height: 250.h,
-                          width: 120,
+                          width: 220.w,
                           decoration: BoxDecoration(
                             //设置四周圆角 角度
                             borderRadius: Radii.k15pxRadius,
-                          ),
-                          child: Image.network(
-                            'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
-                            fit: BoxFit.fill,
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  "https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg"),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                       //姓名
                       Positioned(
-                        top: 10.0,
-                        left: 75.0,
+                        top: 40.0.h,
+                        left: 15.0.w,
                         child: Text(
                           _focusData[index].name,
                           style: const TextStyle(
@@ -98,8 +99,8 @@ class _FeatsPageState extends State<FeatsPage> {
                       ),
                       //标签
                       Positioned(
-                        top: 45,
-                        left: 45,
+                        top: 80.h,
+                        left: 15.w,
                         child: Text("身份：" + _focusData[index].identity,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
@@ -121,8 +122,8 @@ class _FeatsPageState extends State<FeatsPage> {
                       ),
                       //介绍
                       Positioned(
-                          top: 70,
-                          left: 20,
+                          top: 120.h,
+                          left: 15.w,
                           child: SizedBox(
                               height: 80,
                               width: 188,
