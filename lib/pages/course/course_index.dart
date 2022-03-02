@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
@@ -21,6 +22,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
   late var dirId = widget.product.id;
   late var courseId = widget.product.firstCourseId;
+  late var vUrl = widget.product.videoUrl;
+
   // 声明tabcontroller和tab标题
   late TabController _tabController;
   List tabs = ["简介", "评价"];
@@ -37,7 +40,6 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   // 读取所有课程数据
   _handleCourse() async {
-    print('=====================================================39');
     CourseRequest variables = CourseRequest(dirId: dirId, courseId: courseId);
     _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
         variables: variables, context: context);
@@ -73,9 +75,9 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          const VideoView(
-            // widget.product.videoUrl,
-            'https://media.w3.org/2010/05/sintel/trailer.mp4',
+          VideoView(
+            vUrl,
+            //'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
             cover: 'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
           ),
@@ -102,8 +104,6 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   //课程简介
   ListView buildCourseDetail() {
-    print('===========================31');
-    print(_focusData.title);
     return ListView(
       children: [
         const Divider(
@@ -201,13 +201,16 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               if (_focusData.subCourses.isNotEmpty) {
                 return InkWell(
                   onTap: () async {
-                    print(
-                        '==================================================================131');
-                    print(_focusData.subCourses[index].subTitle);
-                    print('到课程详情');
+                    if (kDebugMode) {
+                      print(_focusData.subCourses[index].subTitle);
+                    }
+                    if (kDebugMode) {
+                      print('到课程详情');
+                    }
                     setState(() {
                       dirId = _focusData.subCourses[index].mainCourseId;
                       courseId = _focusData.subCourses[index].courseId;
+                      //vUrl = _focusData.subCourses[index].videoUrl;
                     });
                     _handleCourse();
                     // Navigator.push(

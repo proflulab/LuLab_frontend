@@ -32,7 +32,7 @@ class _FeatsPageState extends State<FeatsPage> {
     // var focusId = _postsData.latestCourse[1].id;
 
     setState(() {
-      _focusData = focusList as List;
+      _focusData = focusList;
     });
   }
 
@@ -78,8 +78,7 @@ class _FeatsPageState extends State<FeatsPage> {
                             //设置四周圆角 角度
                             borderRadius: Radii.k15pxRadius,
                             image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg"),
+                              image: NetworkImage(_focusData[index].imgUrl),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -99,27 +98,30 @@ class _FeatsPageState extends State<FeatsPage> {
                       ),
                       //标签
                       Positioned(
-                        top: 80.h,
-                        left: 15.w,
-                        child: Text("身份：" + _focusData[index].identity,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontFamily: 'MyFontStyle',
-                                color: Colors.green,
-                                fontSize: 15)),
-                        // Container(
-                        //     height: 20,
-                        //     width: 100,
-                        //     decoration: BoxDecoration(
-                        //       //设置四周圆角 角度
-                        //       borderRadius: Radii.k15pxRadius,
-                        //       color: Colors.greenAccent,
-                        //     ),
-                        //     child: Text(_focusData[index].identity,
-                        //         textAlign: TextAlign.center,
-                        //         style: const TextStyle(
-                        //             fontFamily: 'MyFontStyle', fontSize: 15))),
-                      ),
+                          top: 80.h,
+                          left: 15.w,
+                          child: SizedBox(
+                            width: 370.h,
+                            child: Text("身份：" + _focusData[index].identity,
+                                textAlign: TextAlign.left,
+                                style: const TextStyle(
+                                    fontFamily: 'MyFontStyle',
+                                    color: Colors.green,
+                                    fontSize: 15)),
+                          )
+                          // Container(
+                          //     height: 20,
+                          //     width: 100,
+                          //     decoration: BoxDecoration(
+                          //       //设置四周圆角 角度
+                          //       borderRadius: Radii.k15pxRadius,
+                          //       color: Colors.greenAccent,
+                          //     ),
+                          //     child: Text(_focusData[index].identity,
+                          //         textAlign: TextAlign.center,
+                          //         style: const TextStyle(
+                          //             fontFamily: 'MyFontStyle', fontSize: 15))),
+                          ),
                       //介绍
                       Positioned(
                           top: 120.h,
@@ -218,7 +220,26 @@ class _FeatsPageState extends State<FeatsPage> {
               ],
             );
           } else {
-            return const Text('加载中...');
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(color: Colors.transparent),
+              alignment: Alignment.center,
+              child: Container(
+                height: 80,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: const Color(0x88000000),
+                    borderRadius: BorderRadius.circular(6)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: const <Widget>[
+                    CircularProgressIndicator(),
+                    Text('正在加载')
+                  ],
+                ),
+              ),
+            );
           }
         },
       ),

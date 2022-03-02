@@ -169,10 +169,9 @@ class _CoursePageState extends State<CoursePage> {
                                   context: context,
                                   top: 10,
                                   left: 10,
-                                  height: 160,
+                                  height: 150,
                                   width: 160,
-                                  url:
-                                      'https://images8.alphacoders.com/498/thumb-1920-498307.jpg'),
+                                  url: _focusData[index].imgUrl),
                               // 课程标题
                               positionedText(
                                   context: context,

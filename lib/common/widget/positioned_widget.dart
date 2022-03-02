@@ -14,15 +14,16 @@ Widget positionedImage({
   return Positioned(
     top: top.h,
     left: left.w,
-    child: SizedBox(
+    child: Container(
       height: height.h,
       width: width.w,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12.0),
-        child: Image.network(
-          url,
-        ),
-      ),
+      decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(url),
+            fit: BoxFit.cover,
+          ),
+          color: const Color.fromRGBO(200, 233, 233, 1),
+          borderRadius: BorderRadius.circular(10)),
     ),
   );
 }

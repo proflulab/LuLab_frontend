@@ -5,6 +5,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
 
 import 'course_comment_detail.dart';
 import 'course_index.dart';
@@ -81,8 +82,8 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           Column(
         children: <Widget>[
           SizedBox(
-              height: 450,
-              width: 375,
+              height: 300,
+              width: 1.sw,
               child: SingleChildScrollView(
                 child: Center(
                     child: Column(
