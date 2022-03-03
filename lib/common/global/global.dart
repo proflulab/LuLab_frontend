@@ -42,7 +42,7 @@ class Global {
   //static PackageInfo packageInfo;
 
   /// 是否第一次打开
-  // static bool isFirstOpen = false;
+  static int isFirstOpen = 1;
 
   /// 是否离线登录
   // static bool isOfflineLogin = false;

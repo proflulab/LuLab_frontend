@@ -1,12 +1,16 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../app.dart';
 import '../../common/global/global.dart';
+
+import '../app.dart';
+import '../sign_up/register.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -69,12 +73,15 @@ class _SignInPageState extends State<SignInPage> {
       margin: EdgeInsets.only(top: fitHeight(49)),
       child: Column(
         children: [
+          SizedBox(
+            height: 250.h,
+          ),
           //输入账号
           inputTextEdit(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               hintText: "请输入账号",
-              marginTop: 200,
+              marginTop: 0,
               autofocus: true,
               width: 622,
               height: 112),
@@ -100,6 +107,22 @@ class _SignInPageState extends State<SignInPage> {
               title: "登录",
             ),
           ),
+          SizedBox(
+            height: 50.h,
+          ),
+          Text.rich(TextSpan(
+            children: [
+              TextSpan(
+                  text: "没有账号？点击注册",
+                  style: const TextStyle(
+                      fontSize: 25, color: Color.fromARGB(234, 46, 199, 32)),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignUpPage()));
+                    }),
+            ],
+          )),
         ],
       ),
     );

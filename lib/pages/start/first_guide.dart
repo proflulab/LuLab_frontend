@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
+import '../../common/global/global.dart';
 
 class FirstGuidePage extends StatelessWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
@@ -33,9 +34,9 @@ class _FirstGuideState extends State<FirstGuide> {
         buildFirstGuideBackGround(width, height),
         // 小圆点
         Positioned(
-          left: 0,
-          right: 0,
-          bottom: 50,
+          left: 0.w,
+          right: 0.w,
+          bottom: 0.1.sh,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,9 +48,9 @@ class _FirstGuideState extends State<FirstGuide> {
         ),
         // 去首页
         Positioned(
-          left: 0,
-          right: 0,
-          bottom: 40,
+          left: 0.w,
+          right: 0.w,
+          bottom: 0.2.sh,
           child: buildGoHome(),
         ),
       ],
@@ -61,14 +62,14 @@ class _FirstGuideState extends State<FirstGuide> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AnimatedContainer(
-          height: _currIndex == 2 ? 50 : 0,
-          width: _currIndex == 2 ? 240 : 0,
+          height: _currIndex == 2 ? 70.h : 0,
+          width: _currIndex == 2 ? 300.w : 0,
           duration: const Duration(milliseconds: 0),
           child: ElevatedButton(
             child: const Text('立即体验'),
             onPressed: () {
-              Storage.setInt('Key_Int', 1);
-              Navigator.of(context).pushReplacementNamed('/login');
+              Storage.setInt('isFirstOpen', Global.isFirstOpen);
+              Navigator.of(context).pushReplacementNamed('/signinpage');
             } // 去首页路由
             ,
           ),
@@ -113,13 +114,13 @@ class _FirstGuideState extends State<FirstGuide> {
   // 小圆点
   Widget buidIndefot(bool isSelected) {
     return AnimatedContainer(
-      margin: const EdgeInsets.only(left: 50),
+      margin: const EdgeInsets.all(15),
       height: 18,
-      width: isSelected ? 24 : 18,
-      duration: const Duration(milliseconds: 300),
+      width: isSelected ? 25 : 18,
+      duration: const Duration(milliseconds: 200),
       decoration: const BoxDecoration(
           color: Colors.blue,
-          borderRadius: BorderRadius.all(Radius.circular(10))),
+          borderRadius: BorderRadius.all(Radius.circular(15))),
     );
   }
 }

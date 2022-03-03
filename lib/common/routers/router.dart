@@ -9,6 +9,7 @@ import '../../pages/other/message.dart';
 import '../../pages/search.dart';
 import '../../pages/sign_in/login.dart';
 import '../../pages/start/first_guide.dart';
+import '../../pages/sign_in/sign_in.dart';
 //import '../pages/users/settings/settings.dart';
 //import '../pages/course/course_index.dart';
 
@@ -25,6 +26,7 @@ final Map<String, Function> routes = {
   //'/course': (context) => CourseIndexPage(),
   '/login': (context) => const Login1(),
   //'/set': (context) => SettingsPage(),
+  '/signinpage': (context) => const SignInPage(),
 };
 
 //固定写法

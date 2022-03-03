@@ -14,7 +14,7 @@ class LoadingPage extends StatefulWidget {
 class _LoadingPageState extends State<LoadingPage> {
   Future<int> readData() async {
     var prefs = await SharedPreferences.getInstance();
-    var result = prefs.getInt('Key_Int');
+    var result = prefs.getInt('isFirstOpen');
 
     return result ?? 0;
   }
@@ -40,7 +40,7 @@ class _LoadingPageState extends State<LoadingPage> {
     var _duration = const Duration(seconds: 3);
 
     if (kDebugMode) {
-      print("LuLab程序启动....");
+      print("陆向谦程序启动....");
     }
     //Storage.getInt("Key_Int");
     Future<int> result = readData();
@@ -62,6 +62,6 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _app() {
-    Navigator.of(context).pushReplacementNamed('/login');
+    Navigator.of(context).pushReplacementNamed('/signinpage');
   }
 }
