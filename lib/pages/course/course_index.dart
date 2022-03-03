@@ -68,13 +68,13 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          VideoView(
-            vUrl,
-            //'https://media.w3.org/2010/05/sintel/trailer.mp4',
-            //'https://media.w3.org/2010/05/sintel/trailer.mp4',
-            //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-            cover: 'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
-          ),
+          VideoView(vUrl,
+              //'https://media.w3.org/2010/05/sintel/trailer.mp4',
+              //'https://media.w3.org/2010/05/sintel/trailer.mp4',
+              //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+              cover:
+                  'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
+              key: UniqueKey()),
           // tab栏
           _buildTabNavigation(),
           Flexible(
