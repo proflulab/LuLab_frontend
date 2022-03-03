@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import 'package:proflu/common/entitys/lateast_comment.dart';
-import 'package:proflu/common/graphql/latest_comment.dart';
 
+import '../../common/entitys/entitys.dart';
+import '../../common/graphql/graphql.dart';
 import '../../common/utils/utils.dart';
 
 /// 课程详情

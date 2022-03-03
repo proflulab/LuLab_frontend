@@ -1,6 +1,8 @@
 library schema;
 
+export 'comment_add.dart';
 export 'course_content.dart';
+export 'latest_comment.dart';
 export 'latest_detail_course.dart';
 export 'latest_main_course.dart';
 export 'latest_model.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import 'package:proflu/common/entitys/modeldata.dart';
 
+import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
 import '../../common/utils/utils.dart';
 

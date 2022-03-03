@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/widget/positioned_widget.dart';
 
+import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import 'course_index.dart';
 

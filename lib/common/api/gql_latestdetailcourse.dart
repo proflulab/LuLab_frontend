@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
-import 'package:proflu/common/entitys/detail_coursedata.dart';
-import 'package:proflu/common/graphql/latest_detail_course.dart';
 
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
