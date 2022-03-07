@@ -253,7 +253,9 @@ class _UsersPageState extends State<UsersPage> {
                       );
                     },
                   ).then((val) {
-                    print(val);
+                    if (kDebugMode) {
+                      print(val);
+                    }
                   });
                 },
                 context: context),
@@ -360,7 +362,9 @@ class _UsersPageState extends State<UsersPage> {
                       );
                     },
                   ).then((val) {
-                    print(val);
+                    if (kDebugMode) {
+                      print(val);
+                    }
                   });
                 },
                 context: context)
