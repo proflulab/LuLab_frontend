@@ -58,7 +58,7 @@ class _CommentDetailState extends State<CommentDetail> {
                   flex: 4,
                   child: Text(
                     widget.product.addTime,
-                    style: const TextStyle(color: const Color(0xffaaaaaa), fontSize: 12),
+                    style: const TextStyle(color: Color(0xffaaaaaa), fontSize: 12),
                   ),
                 ),
                 Expanded(

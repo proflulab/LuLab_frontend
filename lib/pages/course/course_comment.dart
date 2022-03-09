@@ -77,9 +77,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
     a = _commentData.length;
     b = a.toString();
     return Scaffold(
-      body:
-          // 评论列表
-          Column(
+      body: Column(
         children: <Widget>[
           SizedBox(
               height: 300,

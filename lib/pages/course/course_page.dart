@@ -109,7 +109,11 @@ class _CoursePageState extends State<CoursePage> {
                       onTap: () {
                         setState(() {
                           if (kDebugMode) {
+                            print(DateTime.now());
                             print("点击了课程目录");
+                            // print(DateTime.now().millisecondsSinceEpoch);
+                            // print(DateTime.fromMillisecondsSinceEpoch(
+                            //     DateTime.now().millisecondsSinceEpoch));
                           }
                           _selectIndex = index;
                         });

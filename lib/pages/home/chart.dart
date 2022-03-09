@@ -258,84 +258,84 @@
 //
 //   LinearSales(this.year, this.sales);
 // }
-import 'dart:math';
+// import 'dart:math';
 
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:flutter/material.dart';
+// import 'package:charts_flutter/flutter.dart' as charts;
+// import 'package:flutter/material.dart';
 
-class ChartTestPage extends StatelessWidget {
-  const ChartTestPage({Key? key}) : super(key: key);
+// class ChartTestPage extends StatelessWidget {
+//   const ChartTestPage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("chart_flutter")),
-      body: Column(children: [Container(height: 240, child: _simpleBar())]),
-    );
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: const Text("chart_flutter")),
+//       body: Column(children: [SizedBox(height: 240, child: _simpleBar())]),
+//     );
+//   }
 
-  Widget _simpleBar() {
-    var random = Random();
+//   Widget _simpleBar() {
+//     var random = Random();
 
-    var data = [
-      OrdinalSales('2014', 10),
-      OrdinalSales('2015', random.nextInt(100)),
-      OrdinalSales('2016', random.nextInt(100)),
-      OrdinalSales('2017', random.nextInt(100)),
-    ];
-    var data1 = [
-      OrdinalSales('2014', 10),
-      OrdinalSales('2015', random.nextInt(100)),
-      OrdinalSales('2016', random.nextInt(100)),
-      OrdinalSales('2017', random.nextInt(100)),
-    ];
-    var data2 = [
-      OrdinalSales('2014', 10),
-      OrdinalSales('2015', random.nextInt(100)),
-      OrdinalSales('2016', random.nextInt(100)),
-      OrdinalSales('2017', random.nextInt(100)),
-    ];
+//     var data = [
+//       OrdinalSales('2014', 10),
+//       OrdinalSales('2015', random.nextInt(100)),
+//       OrdinalSales('2016', random.nextInt(100)),
+//       OrdinalSales('2017', random.nextInt(100)),
+//     ];
+//     var data1 = [
+//       OrdinalSales('2014', 10),
+//       OrdinalSales('2015', random.nextInt(100)),
+//       OrdinalSales('2016', random.nextInt(100)),
+//       OrdinalSales('2017', random.nextInt(100)),
+//     ];
+//     var data2 = [
+//       OrdinalSales('2014', 10),
+//       OrdinalSales('2015', random.nextInt(100)),
+//       OrdinalSales('2016', random.nextInt(100)),
+//       OrdinalSales('2017', random.nextInt(100)),
+//     ];
 
-    // var seriesList = [
-    //   charts.Series<OrdinalSales, String>(
-    //     id: 'Sales',
-    //     colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-    //     domainFn: (OrdinalSales sales, _) => sales.year,
-    //     measureFn: (OrdinalSales sales, _) => sales.sales,
-    //     data: data,
-    //   )
-    // ];
-    var seriesList = [
-      charts.Series<OrdinalSales, String>(
-        id: 'Sales',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
-        data: data1,
-      ),
-      charts.Series<OrdinalSales, String>(
-        id: 'Sales',
-        colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
-        data: data2,
-      )
-    ];
+//     // var seriesList = [
+//     //   charts.Series<OrdinalSales, String>(
+//     //     id: 'Sales',
+//     //     colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//     //     domainFn: (OrdinalSales sales, _) => sales.year,
+//     //     measureFn: (OrdinalSales sales, _) => sales.sales,
+//     //     data: data,
+//     //   )
+//     // ];
+//     var seriesList = [
+//       charts.Series<OrdinalSales, String>(
+//         id: 'Sales',
+//         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+//         domainFn: (OrdinalSales sales, _) => sales.year,
+//         measureFn: (OrdinalSales sales, _) => sales.sales,
+//         data: data1,
+//       ),
+//       charts.Series<OrdinalSales, String>(
+//         id: 'Sales',
+//         colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+//         domainFn: (OrdinalSales sales, _) => sales.year,
+//         measureFn: (OrdinalSales sales, _) => sales.sales,
+//         data: data2,
+//       )
+//     ];
 
-    return charts.BarChart(
-      seriesList,
-      animate: true,
-    );
-  }
-}
+//     return charts.BarChart(
+//       seriesList,
+//       animate: true,
+//     );
+//   }
+// }
 
-class OrdinalSales {
-  final String year;
-  final int sales;
+// class OrdinalSales {
+//   final String year;
+//   final int sales;
 
-  OrdinalSales(this.year, this.sales);
-}
-//搜索测试
+//   OrdinalSales(this.year, this.sales);
+// }
+// //搜索测试
 // // import 'package:flutter/material.dart';
 // //
 // // const searchList = ['jiejie-大长腿', 'jiejie-水蛇腰', 'gege-帅气欧巴', 'gege-小鲜肉'];

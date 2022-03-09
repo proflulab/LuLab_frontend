@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               //苹果弹窗本地化处理
               GlobalCupertinoLocalizations.delegate,
               //咨询分页本地化处理
-              // GlobalEasyRefreshLocalizations.delegate,
+              //GlobalEasyRefreshLocalizations.delegate,
             ],
             supportedLocales: const [
               Locale('en', 'US'), // English, no country code
