@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 import 'users_set_user.dart';
+import 'package/users_wast_user.dart';
+import '../../pages/sign_in/sign_in.dart';
+
 //import 'users_set_account.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -65,7 +68,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       bottomname: "关于我们",
                       icon: const Icon(Icons.ac_unit),
                       onPressed: () {
-                        bounceBottomSheet(context, const Text("data"));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Dty()));
                       },
                       context: context),
                 ],
@@ -84,7 +88,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: TextButton(
                 onPressed: () {
                   if (kDebugMode) {
-                    print("退出登录");
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SignInPage()));
                   }
                 },
                 child: const Text(
