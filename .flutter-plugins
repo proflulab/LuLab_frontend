@@ -1,4 +1,5 @@
 # This is a generated file; do not edit or check into version control.
+add_2_calendar=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/add_2_calendar-2.1.3/
 audioplayers=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.20.1/
 connectivity_plus=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus-2.2.1/
 connectivity_plus_linux=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_linux-1.3.0/
@@ -44,3 +45,4 @@ video_player_web=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartla
 wakelock=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock-0.6.1+1/
 wakelock_macos=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_macos-0.4.0/
 wakelock_web=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/wakelock_web-0.4.0/
+xfspeech=/Users/shayuxuan/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/xfspeech-1.0.0/

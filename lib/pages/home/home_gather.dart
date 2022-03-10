@@ -1,14 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:proflu/common/api/gql_latestdirectcourse.dart';
+import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
+import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);
@@ -22,10 +24,13 @@ class _GatherState extends State<Gather> {
   List _focusData = [];
   late Inforponse _postsIfoData;
   List _focusData2 = [];
+  late LatestDirectCourse _latestDirectCourse;
+  List _focusData3 = [];
 
   @override
   void initState() {
     super.initState();
+    _handleCourse();
     _loadIfoData();
     _loadAllData();
   }
@@ -48,6 +53,16 @@ class _GatherState extends State<Gather> {
 
     setState(() {
       _focusData = focusList;
+    });
+  }
+
+  // 读取直播课程数据
+  _handleCourse() async {
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(mode: "2");
+    _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
+        variables: variables, context: context);
+    setState(() {
+      _focusData3 = _latestDirectCourse.latestDirectCourse;
     });
   }
 
@@ -188,6 +203,8 @@ class _GatherState extends State<Gather> {
         // SizedBox(height: fitHeight(20)),
         // _hotProductListWidget(),
         // SizedBox(height: fitHeight(20)),
+        _titleWidget("直播预约"),
+        _buildLive(),
         _titleWidget("最新咨询"),
         buildInfomation(),
         // buildFreeCourse(),
@@ -195,6 +212,127 @@ class _GatherState extends State<Gather> {
         _buildCourse(),
         // buildWonderCourse(),
       ],
+    );
+  }
+
+  // 直播预约
+  Container _buildLive() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      decoration: BoxDecoration(
+        //设置四周圆角 角度
+        color: Colors.white,
+        borderRadius: Radii.k6pxRadius,
+      ),
+      height: 237,
+      width: 345,
+      // color: Colors.white,
+      child: _buildLive_context(),
+    );
+  }
+
+  ListView _buildLive_context() {
+    return ListView.builder(
+      itemCount: _focusData3.length,
+      itemBuilder: (context, index) {
+        if (_focusData3.isNotEmpty) {
+          return InkWell(
+              onTap: () async {
+                if (kDebugMode) {
+                  print('到课程详情');
+                }
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            LiveDetail(product: _focusData3[index])));
+              },
+              child: Container(
+                height: 200.h,
+                width: 345.w,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  //border: Border.all(color: Colors.black54),
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    // 课程封面
+                    Positioned(
+                      top: 10.0,
+                      left: 12.0,
+                      child: Container(
+                        height: 80,
+                        width: 130,
+                        decoration: BoxDecoration(
+                          //设置四周圆角 角度
+                          borderRadius: Radii.k6pxRadius,
+                        ),
+                        child: Image.network(
+                          _focusData3[index].imgUrl,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+
+                    // 课程标题
+                    Positioned(
+                      top: 10.0,
+                      left: 155.0,
+                      child: SizedBox(
+                        height: 100,
+                        width: 168,
+                        child: Text(
+                          _focusData3[index].title,
+                          style: const TextStyle(
+                            fontFamily: 'MyFontStyle',
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 45.0,
+                      left: 240.0,
+                      child: ElevatedButton(
+                        child: Text("详情"),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.green), //背景颜色
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.white), //字体颜色
+                          overlayColor: MaterialStateProperty.all(
+                              Color(0xffFFF8E5)), // 高亮色
+                          shadowColor: MaterialStateProperty.all(
+                              Color(0xffffffff)), //阴影颜色
+                          elevation: MaterialStateProperty.all(0), //阴影值
+                          textStyle: MaterialStateProperty.all(TextStyle(
+                            fontSize: 15,
+                            fontFamily: 'MyFontStyle',
+                          )), //字体
+                          shape: MaterialStateProperty.all(
+                              BeveledRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(5))), //圆角弧度
+                        ),
+                        onPressed: () {
+                          //执行预约方法
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LiveDetail(product: _focusData3[index])));
+                        },
+                      ),
+                    )
+                  ],
+                ),
+              ) // ),
+              );
+        } else {
+          return const Text('加载中...');
+        }
+      },
     );
   }
 
