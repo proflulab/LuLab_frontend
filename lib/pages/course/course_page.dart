@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/common/values/colors.dart';
+import 'package:proflu/common/values/values.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -20,9 +22,11 @@ class _CoursePageState extends State<CoursePage> {
 
   int _selectIndex = 0;
 
-  final double _selectColumnsWidth = 0.245333333333333333.sw;
+  //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
+  final double _selectColumnsWidth = 1.sw * 0.293 - 12.w;
+  final double _coursesDetailsWidth = 1.sw * (1 - 0.293) - 16.w;
 
-  final List _courseid = ['理论课程', '大咖访谈', '举例1', '举例2', '举例3', '举例4'];
+  final List _courseList = ['理论课程', '大咖访谈', '往期课程', '精彩例会', '举例1', '举例2'];
 
   @override
   void initState() {
@@ -52,7 +56,7 @@ class _CoursePageState extends State<CoursePage> {
           '课程',
           style: TextStyle(
             fontFamily: 'MyFontStyle',
-            color: Colors.green,
+            color: AppColors.emphasisText,
             fontSize: 24,
           ),
         ),
@@ -100,7 +104,7 @@ class _CoursePageState extends State<CoursePage> {
         // ],
       ),
       body: Container(
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(color: AppColors.secondaryBackground),
         child: Row(
           children: <Widget>[
             SizedBox(
@@ -108,17 +112,19 @@ class _CoursePageState extends State<CoursePage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: _courseid.length * _selectColumnsWidth * 0.618,
+                    height: _courseList.length * _selectColumnsWidth * 0.618,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _courseid.length,
+                      itemCount: _courseList.length,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
                             setState(() {
                               if (kDebugMode) {
                                 print(DateTime.now());
-                                print('点击了' + _courseid[index]);
+                                print('点击了' + _courseList[index]);
+                                print(100.h);
+                                print(100.w);
                                 // print(DateTime.now().millisecondsSinceEpoch);
                                 // print(DateTime.fromMillisecondsSinceEpoch(
                                 //     DateTime.now().millisecondsSinceEpoch));
@@ -144,7 +150,7 @@ class _CoursePageState extends State<CoursePage> {
                                                 topRight: Radius.circular(10))
                                             : null),
                             child: Center(
-                              child: Text(_courseid[index],
+                              child: Text(_courseList[index],
                                   style: _selectIndex == index
                                       ? const TextStyle(
                                           fontFamily: 'MyFontStyle',
@@ -174,10 +180,11 @@ class _CoursePageState extends State<CoursePage> {
                           height: _selectColumnsWidth * 0.618,
                           decoration: BoxDecoration(
                               color: const Color.fromRGBO(246, 246, 246, 1),
-                              borderRadius: _selectIndex == _courseid.length - 1
-                                  ? const BorderRadius.only(
-                                      topRight: Radius.circular(10))
-                                  : null),
+                              borderRadius:
+                                  _selectIndex == _courseList.length - 1
+                                      ? const BorderRadius.only(
+                                          topRight: Radius.circular(10))
+                                      : null),
                         );
                       },
                     ),
@@ -193,7 +200,7 @@ class _CoursePageState extends State<CoursePage> {
             Flexible(
                 child: Container(
               decoration: const BoxDecoration(color: Colors.white),
-              padding: const EdgeInsets.only(left: 10, right: 12),
+              padding: EdgeInsets.only(left: 12.w, right: 16.w),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: _focusData.length,
@@ -208,36 +215,45 @@ class _CoursePageState extends State<CoursePage> {
                                     product: _focusData[index])));
                       },
                       child: Container(
-                        height: 170.h,
+                        height: _coursesDetailsWidth * 0.414,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                           //border: Border.all(color: Colors.black54),
                         ),
-                        margin: const EdgeInsets.only(bottom: 10),
+                        //margin: const EdgeInsets.only(bottom: 10),
                         child: Stack(
                           children: <Widget>[
                             // 课程封面
                             positionedImage(
                                 context: context,
-                                top: 10,
-                                left: 10,
-                                height: 150,
-                                width: 160,
+                                top: 15.h,
+                                left: 16.w,
+                                height: _coursesDetailsWidth * 0.414 - 16.w * 2,
+                                width:
+                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
+                                        (3 / 4),
                                 url: _focusData[index].imgUrl),
                             // 课程标题
-                            positionedText(
+                            positioningText(
                                 context: context,
-                                top: 30,
-                                left: 190,
+                                top: 15.h,
+                                left: 16.w +
+                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
+                                        (3 / 4) +
+                                    16.w,
                                 height: 80.h,
-                                width: 700.w,
-                                text: _focusData[index].title),
+                                width: 355.w,
+                                text: _focusData[index].title,
+                                font: 'MyFontStyle'),
                             // 作者
-                            positionedText(
+                            positioningText(
                                 context: context,
-                                top: 55,
-                                left: 190,
+                                top: 55.h,
+                                left: 16.w +
+                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
+                                        (3 / 4) +
+                                    16.w,
                                 height: 80.h,
                                 width: 700.w,
                                 text: _focusData[index].author),

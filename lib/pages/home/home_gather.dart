@@ -294,18 +294,18 @@ class _GatherState extends State<Gather> {
                       top: 45.0,
                       left: 240.0,
                       child: ElevatedButton(
-                        child: Text("详情"),
+                        child: const Text("详情"),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.green), //背景颜色
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white), //字体颜色
                           overlayColor: MaterialStateProperty.all(
-                              Color(0xffFFF8E5)), // 高亮色
+                              const Color(0xffFFF8E5)), // 高亮色
                           shadowColor: MaterialStateProperty.all(
-                              Color(0xffffffff)), //阴影颜色
+                              const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(TextStyle(
+                          textStyle: MaterialStateProperty.all(const TextStyle(
                             fontSize: 15,
                             fontFamily: 'MyFontStyle',
                           )), //字体

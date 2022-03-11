@@ -27,22 +27,22 @@ class _LiveDetailState extends State<LiveDetail> {
     var now2 = widget.product.onlineTime;
     var future = DateTime.fromMillisecondsSinceEpoch(now2);
     // print(formatDate(now, [yyyy, '年', mm, '月', dd, ' ', HH, ':', nn, ':', ss]));
-    var now_year = int.parse(formatDate(now, [yyyy]));
-    var now_mounth = int.parse(formatDate(now, [mm]));
-    var now_day = int.parse(formatDate(now, [dd]));
-    var now_hour = int.parse(formatDate(now, [HH]));
-    var now_minute = int.parse(formatDate(now, [nn]));
-    var now_second = int.parse(formatDate(now, [ss]));
-    var future_year = int.parse(formatDate(future, [yyyy]));
-    var future_mounth = int.parse(formatDate(future, [mm]));
-    var future_day = int.parse(formatDate(future, [dd]));
-    var future_hour = int.parse(formatDate(future, [HH]));
-    var future_minute = int.parse(formatDate(future, [nn]));
-    var future_second = int.parse(formatDate(future, [ss]));
-    var startDate = new DateTime(
-        now_year, now_mounth, now_day, now_hour, now_minute, now_second);
-    var endDate = new DateTime(future_year, future_mounth, future_day,
-        future_hour, future_minute, future_second);
+    var nowYear = int.parse(formatDate(now, [yyyy]));
+    var nowMounth = int.parse(formatDate(now, [mm]));
+    var nowDay = int.parse(formatDate(now, [dd]));
+    var nowHour = int.parse(formatDate(now, [HH]));
+    var nowMinute = int.parse(formatDate(now, [nn]));
+    var nowSecond = int.parse(formatDate(now, [ss]));
+    var futureYear = int.parse(formatDate(future, [yyyy]));
+    var futureMounth = int.parse(formatDate(future, [mm]));
+    var futureDay = int.parse(formatDate(future, [dd]));
+    var futureHour = int.parse(formatDate(future, [HH]));
+    var futureMinute = int.parse(formatDate(future, [nn]));
+    var futureSecond = int.parse(formatDate(future, [ss]));
+    var startDate =
+        DateTime(nowYear, nowMounth, nowDay, nowHour, nowMinute, nowSecond);
+    var endDate = DateTime(futureYear, futureMounth, futureDay, futureHour,
+        futureMinute, futureSecond);
     var seconds2 = endDate.difference(startDate).inSeconds;
     //获取 2 分钟的时间间隔
     var twoHours = now.add(Duration(seconds: seconds2)).difference(now);
@@ -54,25 +54,25 @@ class _LiveDetailState extends State<LiveDetail> {
   Event buildEvent({Recurrence? recurrence}) {
     var now2 = widget.product.onlineTime;
     var future = DateTime.fromMillisecondsSinceEpoch(now2);
-    var future_year = int.parse(formatDate(future, [yyyy]));
-    var future_mounth = int.parse(formatDate(future, [mm]));
-    var future_day = int.parse(formatDate(future, [dd]));
-    var future_hour = int.parse(formatDate(future, [HH]));
-    var future_minute = int.parse(formatDate(future, [nn]));
+    var futureYear = int.parse(formatDate(future, [yyyy]));
+    var futureMounth = int.parse(formatDate(future, [mm]));
+    var futureDay = int.parse(formatDate(future, [dd]));
+    var futureHour = int.parse(formatDate(future, [HH]));
+    var futureMinute = int.parse(formatDate(future, [nn]));
     return Event(
       title: widget.product.title,
       description: widget.product.description,
       // location: 'Flutter app',
       startDate: DateTime(
-          future_year, future_mounth, future_day, future_hour, future_minute),
-      endDate: DateTime(future_year, future_mounth, future_day, future_hour,
-              future_minute)
+          futureYear, futureMounth, futureDay, futureHour, futureMinute),
+      endDate: DateTime(
+              futureYear, futureMounth, futureDay, futureHour, futureMinute)
           .add(Duration(minutes: widget.product.duration)),
       allDay: false,
       iosParams: IOSParams(
         reminder: Duration(minutes: widget.product.duration),
       ),
-      androidParams: AndroidParams(
+      androidParams: const AndroidParams(
         emailInvites: ["test@example.com"],
       ),
       recurrence: recurrence,
@@ -86,7 +86,7 @@ class _LiveDetailState extends State<LiveDetail> {
     var stack = Stack(
       children: <Widget>[
         Positioned(
-          child: Container(
+          child: SizedBox(
             width: 750.0.w, //容器的相关参数
             height: 430.0.h,
             // alignment: Alignment.center, //在容器的位置
@@ -105,7 +105,7 @@ class _LiveDetailState extends State<LiveDetail> {
             width: 750.w,
 
             decoration: const BoxDecoration(
-//背景
+              //背景
               color: Colors.white,
               //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
               borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -185,16 +185,16 @@ class _LiveDetailState extends State<LiveDetail> {
             width: 270.0.w, //容器的相关参数
             height: 70.0.h,
             child: ElevatedButton(
-              child: Text("开播提醒"),
+              child: const Text("开播提醒"),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.green), //背景颜色
                 foregroundColor: MaterialStateProperty.all(Colors.white), //字体颜色
                 overlayColor:
-                    MaterialStateProperty.all(Color(0xffFFF8E5)), // 高亮色
+                    MaterialStateProperty.all(const Color(0xffFFF8E5)), // 高亮色
                 shadowColor:
-                    MaterialStateProperty.all(Color(0xffffffff)), //阴影颜色
+                    MaterialStateProperty.all(const Color(0xffffffff)), //阴影颜色
                 elevation: MaterialStateProperty.all(0), //阴影值
-                textStyle: MaterialStateProperty.all(TextStyle(
+                textStyle: MaterialStateProperty.all(const TextStyle(
                   fontSize: 20,
                   fontFamily: 'MyFontStyle',
                 )), //字体
@@ -206,7 +206,7 @@ class _LiveDetailState extends State<LiveDetail> {
                 Add2Calendar.addEvent2Cal(buildEvent(
                   recurrence: Recurrence(
                     frequency: Frequency.weekly,
-                    endDate: DateTime.now().add(Duration(days: 60)),
+                    endDate: DateTime.now().add(const Duration(days: 60)),
                   ),
                 ));
               },
@@ -216,11 +216,11 @@ class _LiveDetailState extends State<LiveDetail> {
       ],
     );
     return Scaffold(
-        backgroundColor: Color.fromRGBO(220, 220, 220, 1),
+        backgroundColor: const Color.fromRGBO(220, 220, 220, 1),
         body: ListView(
           // scrollDirection: Axis.vertical, //纵向滚动
           children: <Widget>[
-            Container(
+            SizedBox(
               width: 750.0.w, //容器的相关参数
               height: 430.0.h,
               // alignment: Alignment.center, //在容器的位置
@@ -238,16 +238,16 @@ class _LiveDetailState extends State<LiveDetail> {
                   //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text("详情",
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.green,
                           fontFamily: 'MyFontStyle',
                           fontSize: 20)),
                 )),
             Container(
               margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 //设置四周圆角 角度
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -286,18 +286,18 @@ class _LiveDetailState extends State<LiveDetail> {
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
                       child: ElevatedButton(
-                        child: Text("开播提醒"),
+                        child: const Text("开播提醒"),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.green), //背景颜色
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white), //字体颜色
                           overlayColor: MaterialStateProperty.all(
-                              Color(0xffFFF8E5)), // 高亮色
+                              const Color(0xffFFF8E5)), // 高亮色
                           shadowColor: MaterialStateProperty.all(
-                              Color(0xffffffff)), //阴影颜色
+                              const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(TextStyle(
+                          textStyle: MaterialStateProperty.all(const TextStyle(
                             fontSize: 20,
                             fontFamily: 'MyFontStyle',
                           )), //字体
@@ -311,7 +311,8 @@ class _LiveDetailState extends State<LiveDetail> {
                           Add2Calendar.addEvent2Cal(buildEvent(
                             recurrence: Recurrence(
                               frequency: Frequency.weekly,
-                              endDate: DateTime.now().add(Duration(days: 60)),
+                              endDate:
+                                  DateTime.now().add(const Duration(days: 60)),
                             ),
                           ));
                         },
@@ -323,7 +324,7 @@ class _LiveDetailState extends State<LiveDetail> {
             ),
             Container(
               margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 //设置四周圆角 角度
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -436,7 +437,7 @@ class _LiveDetailState extends State<LiveDetail> {
 
   void startTimer() {
     //设置 1 秒回调一次
-    const period = const Duration(seconds: 1);
+    const period = Duration(seconds: 1);
     _timer = Timer.periodic(period, (timer) {
       //更新界面
       setState(() {

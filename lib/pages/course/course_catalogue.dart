@@ -6,7 +6,6 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 
-
 import 'course_index.dart';
 
 class CourseCatalogue extends StatefulWidget {
@@ -104,7 +103,7 @@ class _CourseCatalogueState extends State<CourseCatalogue> {
                             url:
                                 'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg'),
                         // 课程标题
-                        positionedText(
+                        positioningText(
                             context: context,
                             top: 30,
                             left: 190,
@@ -112,7 +111,7 @@ class _CourseCatalogueState extends State<CourseCatalogue> {
                             width: 200,
                             text: _focusData[index].title),
                         // 作者
-                        positionedText(
+                        positioningText(
                             context: context,
                             top: 55,
                             left: 190,

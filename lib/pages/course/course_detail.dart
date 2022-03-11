@@ -148,7 +148,7 @@ class _CourseDetailState extends State<CourseDetail> {
                     child: Stack(
                       children: <Widget>[
                         // 课程标题
-                        positionedText(
+                        positioningText(
                             context: context,
                             top: 30,
                             left: 190,
