@@ -69,9 +69,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE2.png",
     ];
 
     return Container(

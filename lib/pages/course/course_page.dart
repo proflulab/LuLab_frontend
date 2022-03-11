@@ -20,6 +20,9 @@ class _CoursePageState extends State<CoursePage> {
 
   int _selectIndex = 0;
 
+  final double _selectColumnsWidth = 0.245333333333333333.sw;
+  final List _courseid = ['理论课程', '大咖访谈', '举例1', '举例2', '举例3', '举例4'];
+
   @override
   void initState() {
     super.initState();
@@ -95,114 +98,145 @@ class _CoursePageState extends State<CoursePage> {
         //       ))
         // ],
       ),
-      body: Row(
-        children: <Widget>[
-          SizedBox(
-            width: 0.w,
-            height: double.infinity,
-            child: ListView.builder(
-              itemCount: 0,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (kDebugMode) {
-                            print(DateTime.now());
-                            print("点击了课程目录");
-                            // print(DateTime.now().millisecondsSinceEpoch);
-                            // print(DateTime.fromMillisecondsSinceEpoch(
-                            //     DateTime.now().millisecondsSinceEpoch));
-                          }
-                          _selectIndex = index;
-                        });
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 60,
-                        child: const Text("推荐",
-                            style: TextStyle(
-                              fontFamily: 'MyFontStyle',
-                              color: Colors.black,
-                              fontSize: 18,
+      body: Container(
+        decoration: const BoxDecoration(color: Colors.white),
+        child: Row(
+          children: <Widget>[
+            SizedBox(
+                width: _selectColumnsWidth,
+                height: double.infinity,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: ListView.builder(
+                        itemCount: _courseid.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (kDebugMode) {
+                                  print(DateTime.now());
+                                  print("点击了课程目录");
+                                  // print(DateTime.now().millisecondsSinceEpoch);
+                                  // print(DateTime.fromMillisecondsSinceEpoch(
+                                  //     DateTime.now().millisecondsSinceEpoch));
+                                }
+                                _selectIndex = index;
+                              });
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: _selectColumnsWidth * 0.618,
+                              decoration: BoxDecoration(
+                                  color: _selectIndex == index
+                                      ? Colors.white
+                                      : const Color.fromRGBO(246, 246, 246, 1),
+                                  borderRadius: _selectIndex == index
+                                      ? const BorderRadius.only()
+                                      : _selectIndex == index + 1
+                                          ? const BorderRadius.only(
+                                              bottomRight: Radius.circular(10),
+                                            )
+                                          : _selectIndex == index - 1
+                                              ? const BorderRadius.only(
+                                                  topRight: Radius.circular(10))
+                                              : const BorderRadius.only()),
+                              child: Center(
+                                child: Text(_courseid[index],
+                                    style: _selectIndex == index
+                                        ? const TextStyle(
+                                            fontFamily: 'MyFontStyle',
+                                            color:
+                                                Color.fromRGBO(51, 51, 51, 1),
+                                            fontSize: 20,
+                                          )
+                                        : const TextStyle(
+                                            color: Color.fromRGBO(
+                                                136, 136, 136, 1),
+                                            fontSize: 18,
+                                          ),
+                                    textAlign: TextAlign.center),
+                              ),
                             ),
-                            textAlign: TextAlign.center),
-                        color:
-                            _selectIndex == index ? Colors.grey : Colors.white,
+                          );
+                        },
                       ),
                     ),
-                    const Divider(
-                      height: 5,
-                      endIndent: 10,
-                    )
+                    Container(
+                      color: const Color.fromRGBO(246, 246, 246, 1),
+                      width: _selectColumnsWidth,
+                      height: 1.sh -
+                          (_selectColumnsWidth * 0.618 * _courseid.length +
+                              220.h),
+                    ),
                   ],
-                );
-              },
-            ),
-          ),
-          Expanded(
-              flex: 1,
-              child: Container(
-                padding: const EdgeInsets.only(left: 10, right: 12),
-                child: ListView.builder(
-                  itemCount: _focusData.length,
-                  itemBuilder: (context, index) {
-                    if (_focusData.isNotEmpty) {
-                      return InkWell(
-                        onTap: () async {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CourseIndexPage(
-                                      product: _focusData[index])));
-                        },
-                        child: Container(
-                          height: 170.h,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            //border: Border.all(color: Colors.black54),
+                )),
+            Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: const BoxDecoration(color: Colors.white),
+                  padding: const EdgeInsets.only(left: 10, right: 12),
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: _focusData.length,
+                    itemBuilder: (context, index) {
+                      if (_focusData.isNotEmpty) {
+                        return InkWell(
+                          onTap: () async {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CourseIndexPage(
+                                        product: _focusData[index])));
+                          },
+                          child: Container(
+                            height: 170.h,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              //border: Border.all(color: Colors.black54),
+                            ),
+                            margin: const EdgeInsets.only(bottom: 10),
+                            child: Stack(
+                              children: <Widget>[
+                                // 课程封面
+                                positionedImage(
+                                    context: context,
+                                    top: 10,
+                                    left: 10,
+                                    height: 150,
+                                    width: 160,
+                                    url: _focusData[index].imgUrl),
+                                // 课程标题
+                                positionedText(
+                                    context: context,
+                                    top: 30,
+                                    left: 190,
+                                    height: 80.h,
+                                    width: 700.w,
+                                    text: _focusData[index].title),
+                                // 作者
+                                positionedText(
+                                    context: context,
+                                    top: 55,
+                                    left: 190,
+                                    height: 80.h,
+                                    width: 700.w,
+                                    text: _focusData[index].author),
+                              ],
+                            ),
                           ),
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: Stack(
-                            children: <Widget>[
-                              // 课程封面
-                              positionedImage(
-                                  context: context,
-                                  top: 10,
-                                  left: 10,
-                                  height: 150,
-                                  width: 160,
-                                  url: _focusData[index].imgUrl),
-                              // 课程标题
-                              positionedText(
-                                  context: context,
-                                  top: 30,
-                                  left: 190,
-                                  height: 80.h,
-                                  width: 700.w,
-                                  text: _focusData[index].title),
-                              // 作者
-                              positionedText(
-                                  context: context,
-                                  top: 55,
-                                  left: 190,
-                                  height: 80.h,
-                                  width: 700.w,
-                                  text: _focusData[index].author),
-                            ],
-                          ),
-                        ),
-                      );
-                    } else {
-                      return const Text('加载中...');
-                    }
-                  },
-                ),
-              ))
-        ],
+                        );
+                      } else {
+                        return const Text('加载中...');
+                      }
+                    },
+                  ),
+                ))
+          ],
+        ),
       ),
     );
   }
