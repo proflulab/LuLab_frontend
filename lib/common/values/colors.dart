@@ -1,6 +1,8 @@
 import 'dart:ui';
 
-class AppColors {
+
+
+class ProfluColors {
   /// 主背景
   static const Color primaryBackground = Color.fromRGBO(246, 246, 246, 1);
 

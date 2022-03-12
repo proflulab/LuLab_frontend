@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/values/colors.dart';
-import 'package:proflu/common/values/values.dart';
 
+import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {
@@ -27,6 +27,8 @@ class _CoursePageState extends State<CoursePage> {
   final double _coursesDetailsWidth = 1.sw * (1 - 0.293) - 16.w;
 
   final List _courseList = ['理论课程', '大咖访谈', '往期课程', '精彩例会', '举例1', '举例2'];
+
+  String a = "123";
 
   @override
   void initState() {
@@ -49,14 +51,14 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(
         //由主题统一配色，不在这里重新设定颜色
-        backgroundColor: Colors.white,
+        backgroundColor: ProfluColors.primaryBackground,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
           '课程',
           style: TextStyle(
             fontFamily: 'MyFontStyle',
-            color: AppColors.emphasisText,
+            color: ProfluColors.emphasisText,
             fontSize: 24,
           ),
         ),
@@ -104,7 +106,8 @@ class _CoursePageState extends State<CoursePage> {
         // ],
       ),
       body: Container(
-        decoration: const BoxDecoration(color: AppColors.secondaryBackground),
+        decoration:
+            const BoxDecoration(color: ProfluColors.secondaryBackground),
         child: Row(
           children: <Widget>[
             SizedBox(
@@ -123,11 +126,9 @@ class _CoursePageState extends State<CoursePage> {
                               if (kDebugMode) {
                                 print(DateTime.now());
                                 print('点击了' + _courseList[index]);
-                                print(100.h);
-                                print(100.w);
-                                // print(DateTime.now().millisecondsSinceEpoch);
-                                // print(DateTime.fromMillisecondsSinceEpoch(
-                                //     DateTime.now().millisecondsSinceEpoch));
+                                // print(100.h);
+                                // print(100.w);
+                                print(a.length);
                               }
                               _selectIndex = index;
                             });
@@ -137,8 +138,8 @@ class _CoursePageState extends State<CoursePage> {
                             height: _selectColumnsWidth * 0.618,
                             decoration: BoxDecoration(
                                 color: _selectIndex == index
-                                    ? Colors.white
-                                    : const Color.fromRGBO(246, 246, 246, 1),
+                                    ? ProfluColors.secondaryBackground
+                                    : ProfluColors.primaryBackground,
                                 borderRadius: _selectIndex == index
                                     ? null
                                     : _selectIndex == index + 1
@@ -154,13 +155,12 @@ class _CoursePageState extends State<CoursePage> {
                                   style: _selectIndex == index
                                       ? const TextStyle(
                                           fontFamily: 'MyFontStyle',
-                                          color: Color.fromRGBO(51, 51, 51, 1),
-                                          fontSize: 20,
+                                          color: ProfluColors.primaryText,
+                                          fontSize: 18,
                                         )
                                       : const TextStyle(
-                                          color:
-                                              Color.fromRGBO(136, 136, 136, 1),
-                                          fontSize: 18,
+                                          color: ProfluColors.secondaryText,
+                                          fontSize: 16,
                                         ),
                                   textAlign: TextAlign.center),
                             ),
@@ -179,7 +179,7 @@ class _CoursePageState extends State<CoursePage> {
                           width: double.infinity,
                           height: _selectColumnsWidth * 0.618,
                           decoration: BoxDecoration(
-                              color: const Color.fromRGBO(246, 246, 246, 1),
+                              color: ProfluColors.primaryBackground,
                               borderRadius:
                                   _selectIndex == _courseList.length - 1
                                       ? const BorderRadius.only(
@@ -191,7 +191,7 @@ class _CoursePageState extends State<CoursePage> {
                   ),
                   Flexible(
                       child: Container(
-                    color: const Color.fromRGBO(246, 246, 246, 1),
+                    color: ProfluColors.primaryBackground,
                     width: _selectColumnsWidth,
                   )),
                 ],
@@ -199,12 +199,19 @@ class _CoursePageState extends State<CoursePage> {
             ),
             Flexible(
                 child: Container(
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration:
+                  const BoxDecoration(color: ProfluColors.secondaryBackground),
               padding: EdgeInsets.only(left: 12.w, right: 16.w),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: _focusData.length,
                 itemBuilder: (context, index) {
+                  var _imageHeight = _coursesDetailsWidth * 0.414 - 16.w * 2;
+                  var _imageWidht =
+                      (_coursesDetailsWidth * 0.414 - 16.w * 2) * 3 / 4;
+                  var _textWidht =
+                      _coursesDetailsWidth - (16.w + _imageWidht + 16.w);
+
                   if (_focusData.isNotEmpty) {
                     return InkWell(
                       onTap: () async {
@@ -219,9 +226,7 @@ class _CoursePageState extends State<CoursePage> {
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                          //border: Border.all(color: Colors.black54),
                         ),
-                        //margin: const EdgeInsets.only(bottom: 10),
                         child: Stack(
                           children: <Widget>[
                             // 课程封面
@@ -229,34 +234,49 @@ class _CoursePageState extends State<CoursePage> {
                                 context: context,
                                 top: 15.h,
                                 left: 16.w,
-                                height: _coursesDetailsWidth * 0.414 - 16.w * 2,
-                                width:
-                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
-                                        (3 / 4),
+                                height: _imageHeight,
+                                width: _imageWidht,
                                 url: _focusData[index].imgUrl),
                             // 课程标题
                             positioningText(
                                 context: context,
                                 top: 15.h,
-                                left: 16.w +
-                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
-                                        (3 / 4) +
-                                    16.w,
-                                height: 80.h,
-                                width: 355.w,
+                                left: 16.w + _imageWidht + 16.w,
+                                height: _focusData[index].title.length > 11
+                                    ? 50.h
+                                    : 25.h,
+                                width: _textWidht,
                                 text: _focusData[index].title,
                                 font: 'MyFontStyle'),
                             // 作者
                             positioningText(
-                                context: context,
-                                top: 55.h,
-                                left: 16.w +
-                                    (_coursesDetailsWidth * 0.414 - 16.w * 2) *
-                                        (3 / 4) +
-                                    16.w,
-                                height: 80.h,
-                                width: 700.w,
-                                text: _focusData[index].author),
+                              context: context,
+                              top: _focusData[index].title.length > 11
+                                  ? 75.h
+                                  : 50.h,
+                              left: 16.w + _imageWidht + 16.w,
+                              height: 25.h,
+                              width: 85.w,
+                              text: _focusData[index].author,
+                              font: '',
+                              fontWeight: FontWeight.bold,
+                              fontSize: ProfluFonfSize.size14,
+                              color: ProfluColors.secondaryText,
+                            ),
+                            // 作者标签
+                            positioningText(
+                              context: context,
+                              top: _focusData[index].title.length > 11
+                                  ? 75.h
+                                  : 50.h,
+                              left: 16.w + _imageWidht + 16.w + 95.w,
+                              height: 25.h,
+                              width: _textWidht - 95.w,
+                              text: "实验室创始人",
+                              font: '',
+                              fontSize: ProfluFonfSize.size14,
+                              color: ProfluColors.secondaryText,
+                            ),
                           ],
                         ),
                       ),

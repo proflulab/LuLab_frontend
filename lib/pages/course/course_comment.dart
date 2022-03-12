@@ -137,7 +137,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                                   onPressed: () {
                                     _handleCommentAdd();
                                   },
-                                  gbColor: AppColors.primaryElement,
+                                  gbColor: ProfluColors.primaryElement,
                                   title: "发送",
                                 ),
                               ),

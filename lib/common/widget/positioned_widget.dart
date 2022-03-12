@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 //import '../utils/utils.dart';
+import '../../common/values/values.dart';
 
 //可定位图片
 Widget positionedImage({
@@ -29,30 +30,38 @@ Widget positionedImage({
 }
 
 //可定位文本
-Widget positioningText(
-    {required BuildContext context,
-    required String text,
-    double top = 10,
-    double left = 10,
-    double height = 100,
-    double width = 100,
-    String font = ''}) {
+Widget positioningText({
+  required BuildContext context,
+  required String text,
+  double top = 10,
+  double left = 10,
+  double height = 100,
+  double width = 100,
+  int maxLines = 2,
+  String font = 'MyFontStyle',
+  Color? color = ProfluColors.primaryText,
+  double? fontSize = ProfluFonfSize.size17,
+  FontWeight? fontWeight = FontWeight.normal,
+}) {
   return Positioned(
     top: top,
     left: left,
     child: SizedBox(
+      // color: Colors.red,
       height: height,
       width: width,
       child: Text(
         text,
         textAlign: TextAlign.left,
-        //textDirection: TextDirection.rtl,
-        //softWrap: true,
+        textDirection: TextDirection.rtl,
+        softWrap: true,
         overflow: TextOverflow.ellipsis,
+        maxLines: maxLines,
         style: TextStyle(
           fontFamily: font,
-          color: Colors.black,
-          fontSize: 18,
+          color: color,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
         ),
       ),
     ),
