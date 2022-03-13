@@ -209,7 +209,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                     child: Stack(
                                       children: <Widget>[
                                         // 课程标题
-                                        positionedText(
+                                        positioningText(
                                             context: context,
                                             top: 45,
                                             left: 30,
