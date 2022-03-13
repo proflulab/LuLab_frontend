@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/common/api/gql_latestdirectcourse.dart';
+import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -17,7 +19,9 @@ class CoursePage extends StatefulWidget {
 class _CoursePageState extends State<CoursePage> {
   late MainCourseRequest _postsData;
   List _focusData = [];
-
+  late LatestDirectCourse _latestDirectCourse;
+  List _focusData3 = [];
+  var mode = 1;
   int _selectIndex = 0;
 
   @override
@@ -33,6 +37,15 @@ class _CoursePageState extends State<CoursePage> {
 
     setState(() {
       _focusData = focusList;
+    });
+  }
+
+  _handleCourse() async {
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(mode: "1");
+    _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
+        variables: variables, context: context);
+    setState(() {
+      _focusData3 = _latestDirectCourse.latestDirectCourse;
     });
   }
 
@@ -98,10 +111,10 @@ class _CoursePageState extends State<CoursePage> {
       body: Row(
         children: <Widget>[
           SizedBox(
-            width: 0.w,
+            width: 100.w,
             height: double.infinity,
             child: ListView.builder(
-              itemCount: 0,
+              itemCount: 3,
               itemBuilder: (context, index) {
                 return Column(
                   children: <Widget>[
@@ -111,9 +124,6 @@ class _CoursePageState extends State<CoursePage> {
                           if (kDebugMode) {
                             print(DateTime.now());
                             print("点击了课程目录");
-                            // print(DateTime.now().millisecondsSinceEpoch);
-                            // print(DateTime.fromMillisecondsSinceEpoch(
-                            //     DateTime.now().millisecondsSinceEpoch));
                           }
                           _selectIndex = index;
                         });
