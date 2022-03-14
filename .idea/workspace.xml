@@ -5,19 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="126213d1-e4ac-4b12-ad7a-6b3666b5720c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_latestdirectcourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/latestdirectcourse_data.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/graphql/latest_directcourse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/api/gql_courseclassification.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/entitys/course_classification_data.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/graphql/course_classification.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/utils/screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/values/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/values/colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/values/font_size.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/values/font_size.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/values/values.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/values/values.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/appbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/appbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/input.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/positioned_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/positioned_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_catalogue.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_catalogue.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_comment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_comment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_comment2.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_detail2.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/source/information_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/information_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +48,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="25uYm27pAOn9y4RU7isOeXgfqYK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

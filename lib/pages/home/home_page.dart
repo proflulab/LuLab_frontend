@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/values/values.dart';
 
 import 'home_feats.dart';
 import 'home_gather.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                     Tab(text: "训练营"),
                   ],
                   //文字选中颜色
-                  labelColor: Color.fromRGBO(77, 196, 96, 1),
+                  labelColor: ProfluC.themeColor,
                   //文字未选中颜色
                   unselectedLabelColor: Color.fromRGBO(154, 167, 177, 1),
                   //文字选中样式
@@ -43,10 +44,10 @@ class _HomePageState extends State<HomePage> {
                   //文字未选中样式
                   unselectedLabelStyle: TextStyle(
                       fontWeight: FontWeight.normal,
-                      fontFamily: 'MyFontStyle',
+                      //fontFamily: 'MyFontStyle2',
                       fontSize: 15),
                   //设置线条的颜色
-                  indicatorColor: Color.fromRGBO(77, 196, 96, 1),
+                  indicatorColor: ProfluC.themeColor,
                   //设置线条的粗细
                   indicatorWeight: 4,
                   indicatorPadding:
@@ -159,7 +160,7 @@ class HomePageList extends StatefulWidget {
 class _HomePageListState extends State<HomePageList> {
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
+    return const TabBarView(
       children: [
         Center(child: Gather()),
         Center(child: FeatsPage()),

@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:proflu/common/api/gql_latestdirectcourse.dart';
-import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
+
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -69,9 +68,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE2.png",
     ];
 
     return Container(
@@ -274,7 +272,6 @@ class _GatherState extends State<Gather> {
                         ),
                       ),
                     ),
-
                     // 课程标题
                     Positioned(
                       top: 10.0,
@@ -295,18 +292,18 @@ class _GatherState extends State<Gather> {
                       top: 45.0,
                       left: 240.0,
                       child: ElevatedButton(
-                        child: Text("详情"),
+                        child: const Text("详情"),
                         style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.green), //背景颜色
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white), //字体颜色
                           overlayColor: MaterialStateProperty.all(
-                              Color(0xffFFF8E5)), // 高亮色
+                              const Color(0xffFFF8E5)), // 高亮色
                           shadowColor: MaterialStateProperty.all(
-                              Color(0xffffffff)), //阴影颜色
+                              const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(TextStyle(
+                          textStyle: MaterialStateProperty.all(const TextStyle(
                             fontSize: 15,
                             fontFamily: 'MyFontStyle',
                           )), //字体
@@ -442,7 +439,6 @@ class _GatherState extends State<Gather> {
                         ),
                       ),
                     ),
-
                     // 课程标题
                     Positioned(
                       top: 10.0,

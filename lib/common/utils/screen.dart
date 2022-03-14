@@ -49,7 +49,7 @@ double fitScreenHeight(double fontSize) {
 }
 
 //获取状态栏高度 刘海屏会更高
-double fitScreenBarHeight= ScreenUtil().statusBarHeight;
+double fitScreenBarHeight = ScreenUtil().statusBarHeight;
 
 extension SizeExtension on num {
   //宽度适配

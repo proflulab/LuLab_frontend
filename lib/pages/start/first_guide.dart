@@ -89,19 +89,19 @@ class _FirstGuideState extends State<FirstGuide> {
         },
         children: [
           Image.network(
-            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页1.jpg',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%95%E5%AF%BC%E9%A1%B53.png',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
           Image.network(
-            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页2.jpg',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%95%E5%AF%BC%E9%A1%B52.png',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
           Image.network(
-            'https://gitee.com/shimingy/imagesbed/raw/master/img/引导页3.jpg',
+            'https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%95%E5%AF%BC%E9%A1%B51.png',
             width: width,
             height: height,
             fit: BoxFit.fill,

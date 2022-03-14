@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:xfspeech/xfspeech.dart';
@@ -44,14 +45,18 @@ class _MyAppState extends State<MyApp> {
     });
 
     Xfspeech().onResult().listen((event) {
-      print('收到事件');
+      if (kDebugMode) {
+        print('收到事件');
+      }
       setState(() {
         transResult = event.transResult;
         // print(event);
         // print(event.resultString);
         // print(event.transResult);
       });
-      print(json.decode(event.result));
+      if (kDebugMode) {
+        print(json.decode(event.result));
+      }
     });
   }
 
@@ -71,28 +76,28 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () async {
                   await Xfspeech.init(APP_ID: '552cfd88');
                 },
-                child: Text('初始化讯飞')),
+                child: const Text('初始化讯飞')),
             ElevatedButton(
                 onPressed: () async {
                   await Xfspeech.startIvw(APP_ID: '552cfd88');
                 },
-                child: Text('开始监听唤醒词')),
+                child: const Text('开始监听唤醒词')),
             ElevatedButton(
                 onPressed: () async {
                   await Xfspeech.ivwStop();
                 },
-                child: Text('停止监听唤醒词')),
+                child: const Text('停止监听唤醒词')),
             ElevatedButton(
                 onPressed: () async {
                   await Xfspeech.startIat(
                       APP_ID: '552cfd88', mEngineType: 'local');
                 },
-                child: Text('开始语音听写')),
+                child: const Text('开始语音听写')),
             ElevatedButton(
                 onPressed: () async {
                   await Xfspeech.iatStop();
                 },
-                child: Text('停止语音听写')),
+                child: const Text('停止语音听写')),
             Text('识别结果：' + transResult)
           ],
         ),

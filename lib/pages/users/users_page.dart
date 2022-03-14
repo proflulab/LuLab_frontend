@@ -103,107 +103,107 @@ class _UsersPageState extends State<UsersPage> {
       );
     }
 
-    Widget _adv() {
-      return Container(
-        height: 90,
-        padding: const EdgeInsets.only(left: 15, right: 5),
-        margin: const EdgeInsets.only(left: 30, right: 30),
-        decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15),
-              topRight: Radius.circular(15),
-            ),
-            color: Colors.green),
-        child: Center(
-          child: ListTile(
-            title: const Text("VIP"),
-            subtitle: const Text("优享&大特权"),
-            contentPadding: const EdgeInsets.all(10),
-            trailing: const Chip(
-              avatar: null,
-              label: Text("立即加入"),
-            ),
-            onTap: () {
-              if (kDebugMode) {
-                print("进入会员详情");
-              }
-            },
-          ),
-        ),
-      );
-    }
+    // Widget _adv() {
+    //   return Container(
+    //     height: 90,
+    //     padding: const EdgeInsets.only(left: 15, right: 5),
+    //     margin: const EdgeInsets.only(left: 30, right: 30),
+    //     decoration: const BoxDecoration(
+    //         shape: BoxShape.rectangle,
+    //         borderRadius: BorderRadius.only(
+    //           topLeft: Radius.circular(15),
+    //           topRight: Radius.circular(15),
+    //         ),
+    //         color: Colors.green),
+    //     child: Center(
+    //       child: ListTile(
+    //         title: const Text("VIP"),
+    //         subtitle: const Text("优享&大特权"),
+    //         contentPadding: const EdgeInsets.all(10),
+    //         trailing: const Chip(
+    //           avatar: null,
+    //           label: Text("立即加入"),
+    //         ),
+    //         onTap: () {
+    //           if (kDebugMode) {
+    //             print("进入会员详情");
+    //           }
+    //         },
+    //       ),
+    //     ),
+    //   );
+    // }
 
-    Widget _jumpbutton() {
-      return Container(
-        height: 250,
-        width: 500,
-        //padding: EdgeInsets.only(left: 5, right: 5),
-        margin: const EdgeInsets.only(left: 10, right: 10),
-        decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Colors.white),
-        child: Wrap(
-          spacing: 0, // 主轴(水平)方向间距
-          runSpacing: 20,
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.spaceBetween,
-          verticalDirection: VerticalDirection.down,
-          children: [
-            combotton(
-                bottomname: " 购买记录",
-                icon: const Icon(
-                  MyIcon.userBuy,
-                  size: 40,
-                  color: Colors.red,
-                ),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("跳转到购买记录");
-                  }
-                },
-                context: context),
-            combotton(
-                bottomname: "离线课程",
-                icon: const Icon(
-                  MyIcon.userDownload,
-                  size: 40,
-                  color: Colors.red,
-                ),
-                onPressed: () {},
-                context: context),
-            combotton(
-                bottomname: "我的收藏",
-                icon: const Icon(
-                  MyIcon.userCollect,
-                  size: 40,
-                  color: Colors.red,
-                ),
-                onPressed: () {},
-                context: context),
-            combotton(
-                bottomname: "观看历史",
-                icon: const Icon(
-                  MyIcon.userHistory,
-                  size: 40,
-                  color: Colors.red,
-                ),
-                onPressed: () {},
-                context: context),
-            combotton(
-                bottomname: "我的会员",
-                icon: const Icon(
-                  MyIcon.userVip,
-                  size: 40,
-                  color: Colors.red,
-                ),
-                onPressed: () {},
-                context: context),
-          ],
-        ),
-      );
-    }
+    // Widget _jumpbutton() {
+    //   return Container(
+    //     height: 250,
+    //     width: 500,
+    //     //padding: EdgeInsets.only(left: 5, right: 5),
+    //     margin: const EdgeInsets.only(left: 10, right: 10),
+    //     decoration: const BoxDecoration(
+    //         shape: BoxShape.rectangle,
+    //         borderRadius: BorderRadius.all(Radius.circular(20)),
+    //         color: Colors.white),
+    //     child: Wrap(
+    //       spacing: 0, // 主轴(水平)方向间距
+    //       runSpacing: 20,
+    //       direction: Axis.horizontal,
+    //       alignment: WrapAlignment.spaceBetween,
+    //       verticalDirection: VerticalDirection.down,
+    //       children: [
+    //         combotton(
+    //             bottomname: " 购买记录",
+    //             icon: const Icon(
+    //               MyIcon.userBuy,
+    //               size: 40,
+    //               color: Colors.red,
+    //             ),
+    //             onPressed: () {
+    //               if (kDebugMode) {
+    //                 print("跳转到购买记录");
+    //               }
+    //             },
+    //             context: context),
+    //         combotton(
+    //             bottomname: "离线课程",
+    //             icon: const Icon(
+    //               MyIcon.userDownload,
+    //               size: 40,
+    //               color: Colors.red,
+    //             ),
+    //             onPressed: () {},
+    //             context: context),
+    //         combotton(
+    //             bottomname: "我的收藏",
+    //             icon: const Icon(
+    //               MyIcon.userCollect,
+    //               size: 40,
+    //               color: Colors.red,
+    //             ),
+    //             onPressed: () {},
+    //             context: context),
+    //         combotton(
+    //             bottomname: "观看历史",
+    //             icon: const Icon(
+    //               MyIcon.userHistory,
+    //               size: 40,
+    //               color: Colors.red,
+    //             ),
+    //             onPressed: () {},
+    //             context: context),
+    //         combotton(
+    //             bottomname: "我的会员",
+    //             icon: const Icon(
+    //               MyIcon.userVip,
+    //               size: 40,
+    //               color: Colors.red,
+    //             ),
+    //             onPressed: () {},
+    //             context: context),
+    //       ],
+    //     ),
+    //   );
+    // }
 
     Widget _contact() {
       return Container(
@@ -224,7 +224,7 @@ class _UsersPageState extends State<UsersPage> {
                   color: Colors.green,
                 ),
                 onPressed: () {
-                  showDialog<Null>(
+                  showDialog<void>(
                     context: context,
                     barrierDismissible: false,
                     builder: (BuildContext context) {
@@ -252,11 +252,7 @@ class _UsersPageState extends State<UsersPage> {
                         ],
                       );
                     },
-                  ).then((val) {
-                    if (kDebugMode) {
-                      print(val);
-                    }
-                  });
+                  ).then((val) {});
                 },
                 context: context),
             //在线咨询
@@ -332,8 +328,7 @@ class _UsersPageState extends State<UsersPage> {
                   if (kDebugMode) {
                     print("object");
                   }
-
-                  showDialog<Null>(
+                  showDialog<void>(
                     context: context,
                     barrierDismissible: false,
                     builder: (BuildContext context) {
@@ -361,11 +356,7 @@ class _UsersPageState extends State<UsersPage> {
                         ],
                       );
                     },
-                  ).then((val) {
-                    if (kDebugMode) {
-                      print(val);
-                    }
-                  });
+                  ).then((val) {});
                 },
                 context: context)
           ],

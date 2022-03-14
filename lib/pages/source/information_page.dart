@@ -85,7 +85,7 @@ class _InformationPageState extends State<InformationPage> {
                     //     url:
                     //         'https://image2.cnpp.cn/upload/images/20210427/17584971448_207x90.gif'),
                     // 资讯标题
-                    positionedText(
+                    positioningText(
                         context: context,
                         top: 30,
                         left: 180,

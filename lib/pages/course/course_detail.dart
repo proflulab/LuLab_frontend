@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
+import '../../common/widget/widgets.dart';
 import 'course_index.dart';
 
 /// 底部弹起的课程详情
@@ -126,11 +127,10 @@ class _CourseDetailState extends State<CourseDetail> {
               if (widget.product.subCourses.isNotEmpty) {
                 return InkWell(
                   onTap: () async {
-                    print(
-                        '==================================================================131');
-                    print(widget.product.subCourses[index].subTitle);
-                    print('到课程详情');
-                    // changeName();
+                    if (kDebugMode) {
+                      print(widget.product.subCourses[index].subTitle);
+                      print('到课程详情');
+                    }
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -148,7 +148,7 @@ class _CourseDetailState extends State<CourseDetail> {
                     child: Stack(
                       children: <Widget>[
                         // 课程标题
-                        positionedText(
+                        positioningText(
                             context: context,
                             top: 30,
                             left: 190,
