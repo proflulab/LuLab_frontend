@@ -32,7 +32,7 @@ Widget inputTextEdit({
             border: InputBorder.none,
           ),
           style: TextStyle(
-            color: ProfluColors.primaryText,
+            color: ProfluC.primaryText,
             fontFamily: "Avenir",
             fontWeight: FontWeight.w400,
             fontSize: fitFontSize(35),
@@ -58,7 +58,7 @@ Widget inputEmailEdit({
     height: fitHeight(44),
     margin: EdgeInsets.only(top: fitHeight(marginTop)),
     decoration: BoxDecoration(
-      color: ProfluColors.primaryBackground,
+      color: ProfluC.primaryBackground,
       borderRadius: Radii.k6pxRadius,
       boxShadow: const [
         BoxShadow(
@@ -77,11 +77,11 @@ Widget inputEmailEdit({
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
         border: InputBorder.none,
         hintStyle: const TextStyle(
-          color: ProfluColors.primaryText,
+          color: ProfluC.primaryText,
         ),
       ),
       style: TextStyle(
-        color: ProfluColors.primaryText,
+        color: ProfluC.primaryText,
         fontFamily: "Avenir",
         fontWeight: FontWeight.w400,
         fontSize: fitFontSize(18),

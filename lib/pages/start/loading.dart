@@ -24,7 +24,7 @@ class _LoadingPageState extends State<LoadingPage> {
     return Container(
       color: Colors.white,
       child: Image.network(
-        'https://gitee.com/shimingy/imagesbed/raw/master/img/启动页.jpg',
+        'https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%90%AF%E5%8A%A8%E9%A1%B5.png',
         fit: BoxFit.cover,
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:xfspeech/xfspeech.dart';
@@ -44,14 +45,18 @@ class _MyAppState extends State<MyApp> {
     });
 
     Xfspeech().onResult().listen((event) {
-      print('收到事件');
+      if (kDebugMode) {
+        print('收到事件');
+      }
       setState(() {
         transResult = event.transResult;
         // print(event);
         // print(event.resultString);
         // print(event.transResult);
       });
-      print(json.decode(event.result));
+      if (kDebugMode) {
+        print(json.decode(event.result));
+      }
     });
   }
 

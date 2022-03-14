@@ -4,7 +4,7 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/values/radii.dart';
+import 'package:proflu/common/values/size_radii.dart';
 
 class LiveDetail extends StatefulWidget {
   const LiveDetail({Key? key, required this.product}) : super(key: key);

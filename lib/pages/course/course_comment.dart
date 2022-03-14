@@ -90,7 +90,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          '全部评价' + '(' + b + ')',
+                          '全部评价' '(' + b + ')',
                           style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
@@ -137,7 +137,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                                   onPressed: () {
                                     _handleCommentAdd();
                                   },
-                                  gbColor: ProfluColors.primaryElement,
+                                  gbColor: ProfluC.primaryElement,
                                   title: "发送",
                                 ),
                               ),

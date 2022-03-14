@@ -18,7 +18,7 @@ Widget transparentAppBar({
 }
 
 /// 10像素 Divider
-Widget divider10Px({Color bgColor = ProfluColors.secondaryElement}) {
+Widget divider10Px({Color bgColor = ProfluC.secondaryElement}) {
   return Container(
     height: 10,
     decoration: BoxDecoration(

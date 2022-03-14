@@ -26,12 +26,8 @@ class _CoursePageState extends State<CoursePage> {
   int _selectIndex = 0;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
-  final double _selectColumnsWidth = 1.sw * 0.293 - 12.w;
-  final double _coursesDetailsWidth = 1.sw * (1 - 0.293) - 16.w;
-
-  //final List _courseList = ['理论课程', '大咖访谈', '往期课程', '精彩例会', '举例1', '举例2'];
-
-  String a = "123";
+  final double _selectW = 1.sw * (1 - ProfluF.silver) - 12.w;
+  final double _coursesW = 1.sw * ProfluF.silver - 16.w;
 
   @override
   void initState() {
@@ -76,14 +72,14 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(
         //由主题统一配色，不在这里重新设定颜色
-        backgroundColor: ProfluColors.primaryBackground,
+        backgroundColor: ProfluC.primaryBackground,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
           '课程',
           style: TextStyle(
             fontFamily: 'MyFontStyle',
-            color: ProfluColors.emphasisText,
+            color: ProfluC.emphasisText,
             fontSize: 24,
           ),
         ),
@@ -131,16 +127,15 @@ class _CoursePageState extends State<CoursePage> {
         // ],
       ),
       body: Container(
-        decoration:
-            const BoxDecoration(color: ProfluColors.secondaryBackground),
+        decoration: const BoxDecoration(color: ProfluC.secondaryBackground),
         child: Row(
           children: <Widget>[
             SizedBox(
-              width: _selectColumnsWidth,
+              width: _selectW,
               child: Column(
                 children: [
                   SizedBox(
-                    height: _focusData2.length * _selectColumnsWidth * 0.618,
+                    height: _focusData2.length * _selectW * ProfluF.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _focusData2.length,
@@ -151,6 +146,7 @@ class _CoursePageState extends State<CoursePage> {
                                 if (kDebugMode) {
                                   print('点击了' + _focusData2[index].title);
                                   print('点击了' + _focusData2[index].mode);
+                                  print(cycle(1, 0.618, 100));
                                 }
                                 _selectIndex = index;
                                 mode = _focusData2[index].mode;
@@ -160,23 +156,23 @@ class _CoursePageState extends State<CoursePage> {
                             child: Row(
                               children: [
                                 Container(
-                                  width: _selectColumnsWidth * 0.05,
-                                  height: _selectColumnsWidth * 0.618 - 30.h,
+                                  width: _selectW * 0.05,
+                                  height: _selectW * ProfluF.golden - 30.h,
                                   decoration: BoxDecoration(
                                     color: _selectIndex == index
-                                        ? ProfluColors.themeColor
-                                        : ProfluColors.primaryBackground,
+                                        ? ProfluC.themeColor
+                                        : ProfluC.primaryBackground,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5.r)),
                                   ),
                                 ),
                                 Container(
-                                  width: _selectColumnsWidth * 0.95,
-                                  height: _selectColumnsWidth * 0.618,
+                                  width: _selectW * 0.95,
+                                  height: _selectW * ProfluF.golden,
                                   decoration: BoxDecoration(
                                       color: _selectIndex == index
-                                          ? ProfluColors.secondaryBackground
-                                          : ProfluColors.primaryBackground,
+                                          ? ProfluC.secondaryBackground
+                                          : ProfluC.primaryBackground,
                                       borderRadius: _selectIndex == index
                                           ? null
                                           : _selectIndex == index + 1
@@ -194,12 +190,11 @@ class _CoursePageState extends State<CoursePage> {
                                         style: _selectIndex == index
                                             ? const TextStyle(
                                                 fontFamily: 'MyFontStyle',
-                                                color: ProfluColors.primaryText,
+                                                color: ProfluC.primaryText,
                                                 fontSize: 18,
                                               )
                                             : const TextStyle(
-                                                color:
-                                                    ProfluColors.secondaryText,
+                                                color: ProfluC.secondaryText,
                                                 fontSize: 16,
                                               ),
                                         textAlign: TextAlign.center),
@@ -211,16 +206,16 @@ class _CoursePageState extends State<CoursePage> {
                     ),
                   ),
                   SizedBox(
-                    height: _selectColumnsWidth * 0.618,
+                    height: _selectW * 0.618,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Container(
                           width: double.infinity,
-                          height: _selectColumnsWidth * 0.618,
+                          height: _selectW * ProfluF.golden,
                           decoration: BoxDecoration(
-                              color: ProfluColors.primaryBackground,
+                              color: ProfluC.primaryBackground,
                               borderRadius:
                                   _selectIndex == _focusData2.length - 1
                                       ? const BorderRadius.only(
@@ -232,8 +227,8 @@ class _CoursePageState extends State<CoursePage> {
                   ),
                   Flexible(
                       child: Container(
-                    color: ProfluColors.primaryBackground,
-                    width: _selectColumnsWidth,
+                    color: ProfluC.primaryBackground,
+                    width: _selectW,
                   )),
                 ],
               ),
@@ -241,17 +236,15 @@ class _CoursePageState extends State<CoursePage> {
             Flexible(
                 child: Container(
               decoration:
-                  const BoxDecoration(color: ProfluColors.secondaryBackground),
+                  const BoxDecoration(color: ProfluC.secondaryBackground),
               padding: EdgeInsets.only(left: 12.w, right: 16.w),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: _focusData3.length,
                 itemBuilder: (context, index) {
-                  var _imageHeight = _coursesDetailsWidth * 0.414 - 16.w * 2;
-                  var _imageWidht =
-                      (_coursesDetailsWidth * 0.414 - 16.w * 2) * 3 / 4;
-                  var _textWidht =
-                      _coursesDetailsWidth - (16.w + _imageWidht + 16.w);
+                  var _imageHeight = _coursesW * 0.414 - 16.w * 2;
+                  var _imageWidht = _imageHeight * ProfluF.ratio3_4;
+                  var _textWidht = _coursesW - (16.w + _imageWidht + 16.w);
                   if (_focusData3.isNotEmpty) {
                     return InkWell(
                       onTap: () async {
@@ -262,7 +255,7 @@ class _CoursePageState extends State<CoursePage> {
                                     product: _focusData3[index])));
                       },
                       child: Container(
-                        height: _coursesDetailsWidth * 0.414,
+                        height: _coursesW * 0.414,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -296,13 +289,13 @@ class _CoursePageState extends State<CoursePage> {
                                   ? 75.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w,
-                              height: 25.h,
+                              height: 30.h,
                               width: 85.w,
                               text: _focusData3[index].author,
                               font: '',
                               fontWeight: FontWeight.bold,
-                              fontSize: ProfluFonfSize.size14,
-                              color: ProfluColors.secondaryText,
+                              fontSize: ProfluFS.size14,
+                              color: ProfluC.secondaryText,
                             ),
                             // 作者标签
                             positioningText(
@@ -311,13 +304,13 @@ class _CoursePageState extends State<CoursePage> {
                                   ? 75.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w + 95.w,
-                              height: 25.h,
+                              height: 30.h,
                               width: _textWidht - 95.w,
                               text: _focusData3[index].authorTags,
                               font: '',
-                              fontSize: ProfluFonfSize.size14,
+                              fontSize: ProfluFS.size14,
                               maxLines: 1,
-                              color: ProfluColors.secondaryText,
+                              color: ProfluC.secondaryText,
                             ),
                           ],
                         ),

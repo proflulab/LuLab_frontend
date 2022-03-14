@@ -39,15 +39,15 @@ Widget positioningText({
   double width = 100,
   int maxLines = 2,
   String font = 'MyFontStyle',
-  Color? color = ProfluColors.primaryText,
-  double? fontSize = ProfluFonfSize.size17,
+  Color? color = ProfluC.primaryText,
+  double? fontSize = ProfluFS.size17,
   FontWeight? fontWeight = FontWeight.normal,
 }) {
   return Positioned(
     top: top,
     left: left,
     child: SizedBox(
-      // color: Colors.red,
+      //color: Colors.red,
       height: height,
       width: width,
       child: Text(
