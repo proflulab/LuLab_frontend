@@ -16,12 +16,11 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  //late MainCourseRequest _postsData;
-  //List _focusData = [];
   late QueryCourseClassification _classification;
-  List _focusData2 = [];
+  List<QueryCourseClassificationElement> _focusData2 = [];
+
   late LatestDirectCourse _latestDirectCourse;
-  List _focusData3 = [];
+  List<LatestDirectCourseElement> _focusData3 = [];
   var mode = "1";
   int _selectIndex = 0;
 
@@ -32,20 +31,9 @@ class _CoursePageState extends State<CoursePage> {
   @override
   void initState() {
     super.initState();
-    //_loadAllData();
     _loadClassificationData();
     _handleCourse();
   }
-
-  // 读取所有课程数据
-  // _loadAllData() async {
-  //   _postsData = await MainCourseAPI.maincourse(schema: '', context: context);
-  //   var focusList = _postsData.data.latestMainCourse;
-
-  //   setState(() {
-  //     _focusData = focusList;
-  //   });
-  // }
 
   //读取课程分类
   _loadClassificationData() async {
@@ -72,14 +60,14 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(
         //由主题统一配色，不在这里重新设定颜色
-        backgroundColor: ProfluC.primaryBackground,
+        backgroundColor: ProfluC.backgroundPrimary,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
           '课程',
           style: TextStyle(
             fontFamily: 'MyFontStyle',
-            color: ProfluC.emphasisText,
+            color: ProfluC.textEmphasis,
             fontSize: 24,
           ),
         ),
@@ -127,7 +115,7 @@ class _CoursePageState extends State<CoursePage> {
         // ],
       ),
       body: Container(
-        decoration: const BoxDecoration(color: ProfluC.secondaryBackground),
+        decoration: const BoxDecoration(color: ProfluC.backgroundSecondary),
         child: Row(
           children: <Widget>[
             SizedBox(
@@ -161,7 +149,7 @@ class _CoursePageState extends State<CoursePage> {
                                   decoration: BoxDecoration(
                                     color: _selectIndex == index
                                         ? ProfluC.themeColor
-                                        : ProfluC.primaryBackground,
+                                        : ProfluC.backgroundPrimary,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5.r)),
                                   ),
@@ -171,8 +159,8 @@ class _CoursePageState extends State<CoursePage> {
                                   height: _selectW * ProfluF.golden,
                                   decoration: BoxDecoration(
                                       color: _selectIndex == index
-                                          ? ProfluC.secondaryBackground
-                                          : ProfluC.primaryBackground,
+                                          ? ProfluC.backgroundSecondary
+                                          : ProfluC.backgroundPrimary,
                                       borderRadius: _selectIndex == index
                                           ? null
                                           : _selectIndex == index + 1
@@ -190,11 +178,11 @@ class _CoursePageState extends State<CoursePage> {
                                         style: _selectIndex == index
                                             ? const TextStyle(
                                                 fontFamily: 'MyFontStyle',
-                                                color: ProfluC.primaryText,
+                                                color: ProfluC.textPrimary,
                                                 fontSize: 18,
                                               )
                                             : const TextStyle(
-                                                color: ProfluC.secondaryText,
+                                                color: ProfluC.textSecondary,
                                                 fontSize: 16,
                                               ),
                                         textAlign: TextAlign.center),
@@ -206,7 +194,7 @@ class _CoursePageState extends State<CoursePage> {
                     ),
                   ),
                   SizedBox(
-                    height: _selectW * 0.618,
+                    height: _selectW * ProfluF.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 1,
@@ -215,7 +203,7 @@ class _CoursePageState extends State<CoursePage> {
                           width: double.infinity,
                           height: _selectW * ProfluF.golden,
                           decoration: BoxDecoration(
-                              color: ProfluC.primaryBackground,
+                              color: ProfluC.backgroundPrimary,
                               borderRadius:
                                   _selectIndex == _focusData2.length - 1
                                       ? const BorderRadius.only(
@@ -227,7 +215,7 @@ class _CoursePageState extends State<CoursePage> {
                   ),
                   Flexible(
                       child: Container(
-                    color: ProfluC.primaryBackground,
+                    color: ProfluC.backgroundPrimary,
                     width: _selectW,
                   )),
                 ],
@@ -236,7 +224,7 @@ class _CoursePageState extends State<CoursePage> {
             Flexible(
                 child: Container(
               decoration:
-                  const BoxDecoration(color: ProfluC.secondaryBackground),
+                  const BoxDecoration(color: ProfluC.backgroundSecondary),
               padding: EdgeInsets.only(left: 12.w, right: 16.w),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -274,7 +262,7 @@ class _CoursePageState extends State<CoursePage> {
                             positioningText(
                               context: context,
                               top: 15.h,
-                              left: (16.w + _imageWidht + 16.w) - 5.w,
+                              left: (16.w + _imageWidht + 16.w) - 3.w,
                               height: _focusData3[index].title.length > 11
                                   ? 50.h
                                   : 25.h,
@@ -295,7 +283,7 @@ class _CoursePageState extends State<CoursePage> {
                               font: '',
                               fontWeight: FontWeight.bold,
                               fontSize: ProfluFS.size14,
-                              color: ProfluC.secondaryText,
+                              color: ProfluC.textSecondary,
                             ),
                             // 作者标签
                             positioningText(
@@ -310,7 +298,7 @@ class _CoursePageState extends State<CoursePage> {
                               font: '',
                               fontSize: ProfluFS.size14,
                               maxLines: 1,
-                              color: ProfluC.secondaryText,
+                              color: ProfluC.textSecondary,
                             ),
                           ],
                         ),

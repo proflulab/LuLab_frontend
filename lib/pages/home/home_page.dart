@@ -38,14 +38,16 @@ class _HomePageState extends State<HomePage> {
                   unselectedLabelColor: Color.fromRGBO(154, 167, 177, 1),
                   //文字选中样式
                   labelStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'MyFontStyle',
-                      fontSize: 25),
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'MyFontStyle',
+                    fontSize: 25,
+                  ),
                   //文字未选中样式
                   unselectedLabelStyle: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      //fontFamily: 'MyFontStyle2',
-                      fontSize: 15),
+                    fontWeight: FontWeight.normal,
+                    //fontFamily: 'MyFontStyle2',
+                    fontSize: 15,
+                  ),
                   //设置线条的颜色
                   indicatorColor: ProfluC.themeColor,
                   //设置线条的粗细

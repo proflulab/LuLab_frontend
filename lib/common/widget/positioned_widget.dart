@@ -39,7 +39,7 @@ Widget positioningText({
   double width = 100,
   int maxLines = 2,
   String font = 'MyFontStyle',
-  Color? color = ProfluC.primaryText,
+  Color? color = ProfluC.textPrimary,
   double? fontSize = ProfluFS.size17,
   FontWeight? fontWeight = FontWeight.normal,
 }) {

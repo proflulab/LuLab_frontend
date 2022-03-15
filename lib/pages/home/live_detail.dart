@@ -103,7 +103,6 @@ class _LiveDetailState extends State<LiveDetail> {
             //从这里开始
             height: 100.h,
             width: 750.w,
-
             decoration: const BoxDecoration(
               //背景
               color: Colors.white,
@@ -452,9 +451,7 @@ class _LiveDetailState extends State<LiveDetail> {
   }
 
   void cancelTimer() {
-    if (_timer != null) {
-      _timer.cancel();
-    }
+    _timer.cancel();
   }
 
   @override

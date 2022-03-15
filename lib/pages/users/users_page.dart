@@ -20,7 +20,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
 //print(profile.data.img);
     //获取屏幕宽度、高度
-    double screenwidth = MediaQuery.of(context).size.width;
+    //double screenwidth = MediaQuery.of(context).size.width;
     //double screenheight = MediaQuery.of(context).size.height;
 
 //个人头像，姓名，等级
@@ -71,37 +71,37 @@ class _UsersPageState extends State<UsersPage> {
       );
     }
 
-    Widget _dynamicdata() {
-      return SizedBox(
-        height: 60,
-        width: screenwidth,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ContactItem(
-              count: '56',
-              title: '动态',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '78',
-              title: '关注',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '90',
-              title: '粉丝',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '12min',
-              title: '累计学习',
-              onPressed: () {},
-            ),
-          ],
-        ),
-      );
-    }
+    // Widget _dynamicdata() {
+    //   return SizedBox(
+    //     height: 60,
+    //     width: screenwidth,
+    //     child: Row(
+    //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //       children: [
+    //         ContactItem(
+    //           count: '56',
+    //           title: '动态',
+    //           onPressed: () {},
+    //         ),
+    //         ContactItem(
+    //           count: '78',
+    //           title: '关注',
+    //           onPressed: () {},
+    //         ),
+    //         ContactItem(
+    //           count: '90',
+    //           title: '粉丝',
+    //           onPressed: () {},
+    //         ),
+    //         ContactItem(
+    //           count: '12min',
+    //           title: '累计学习',
+    //           onPressed: () {},
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // }
 
     // Widget _adv() {
     //   return Container(

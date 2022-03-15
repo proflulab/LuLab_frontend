@@ -5,7 +5,7 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
-import 'feast_personal.dart';
+import 'home_feats_personal.dart';
 
 class FeatsPage extends StatefulWidget {
   const FeatsPage({Key? key}) : super(key: key);
@@ -29,7 +29,6 @@ class _FeatsPageState extends State<FeatsPage> {
   _loadAllData() async {
     _postsData = await GqlModelAPI.indexPageInfo(schema: '', context: context);
     var focusList = _postsData.latestModel;
-    // var focusId = _postsData.latestCourse[1].id;
 
     setState(() {
       _focusData = focusList;

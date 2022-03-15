@@ -28,8 +28,6 @@ class _CourseDetailState extends State<CourseDetail> {
 
 //课程简介
   ListView buildCourseDetail() {
-    print('===========================31');
-    print(widget.product.title);
     return ListView(
       children: [
         const Divider(

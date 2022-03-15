@@ -13,11 +13,14 @@ class _CommentDetailState extends State<CommentDetail> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 3),
-      child: ListTile(
+      child: 
+      
+      ListTile(
         leading: CircleAvatar(
           backgroundImage: AssetImage(widget.product.authorImg),
         ),
-        title: Column(
+        title: 
+        Column(
           children: [
             // 头衔
             Row(
@@ -35,7 +38,6 @@ class _CommentDetailState extends State<CommentDetail> {
                 // )
               ],
             ),
-
             // 评论
             Row(
               children: [
