@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/pages/users/package/users_dt_user.dart';
 // import 'tttt/dtys.dart';
 import '../users_set.dart';
 import 'users_dart_user.dart';
 import 'users_sat_user.dart';
 import 'users_tst_user.dart';
-import 'users_Dt_user.dart';
+//import 'users_Dt_user.dart';
 
 class Dty extends StatelessWidget {
   const Dty({
@@ -44,7 +43,7 @@ class Ttt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(246, 246, 246, 1),
+      color: const Color.fromRGBO(246, 246, 246, 1),
       child: Column(children: [
         Image.asset(
           'assets/images/OIP-TY.jpg',
@@ -101,8 +100,8 @@ class Ttt extends StatelessWidget {
                   trailing:
                       const Icon(Icons.chevron_right, color: Colors.black54),
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const St()));
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (context) => const St()));
                   },
                 ),
               ],

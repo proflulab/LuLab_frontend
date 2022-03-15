@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
@@ -225,11 +224,11 @@ class _GatherState extends State<Gather> {
       height: 237,
       width: 345,
       // color: Colors.white,
-      child: _buildLive_context(),
+      child: buildLiveContext(),
     );
   }
 
-  ListView _buildLive_context() {
+  ListView buildLiveContext() {
     return ListView.builder(
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {

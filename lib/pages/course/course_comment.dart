@@ -7,7 +7,7 @@ import '../../common/global/global.dart';
 // import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 
-import 'course_comment_detail.dart';
+//import 'course_comment_detail.dart';
 import 'course_index.dart';
 
 /// 课程评论页面
@@ -27,9 +27,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   late LatestComment _latestComment;
   late CommentAdd _commentAdd;
   List _commentData = [];
-  var _commentData2;
-  int a = 0;
-  String b = '';
+  late CommentAddClass _commentData2;
 
   @override
   void initState() {
@@ -214,14 +212,15 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(top: 30),
-                    height: 500,
-                    child: ListView.builder(
-                        itemCount: _commentData.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            CommentDetail(product: _commentData[index])),
-                  ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(top: 30),
+                  //   height: 500,
+                  //   child: ListView.builder(
+                  //     itemCount: _commentData.length,
+                  //     itemBuilder: (BuildContext context, int index) =>
+                  //         CommentDetail(product: _commentData[index]),
+                  //   ),
+                  // ),
                 ],
               )),
             )),
