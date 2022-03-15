@@ -4,6 +4,7 @@ import 'package:proflu/common/api/gql_courseclassification.dart';
 import 'package:proflu/common/api/gql_latestdirectcourse.dart';
 import 'package:proflu/common/entitys/course_classification_data.dart';
 import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
+import 'package:proflu/common/global/global.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -67,7 +68,8 @@ class _CoursePageState extends State<CoursePage> {
   }
 
   _handleCourse() async {
-    LatestDirectCourseRequest variables = LatestDirectCourseRequest(mode: mode);
+    LatestDirectCourseRequest variables =
+        LatestDirectCourseRequest(mode: mode, authorId: Global.profile.data.id);
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
     setState(() {

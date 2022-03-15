@@ -45,6 +45,7 @@ class LatestDirectCourseElement {
     required this.imgUrl,
     required this.firstCourseId,
     required this.duration,
+    required this.status,
   });
 
   String id;
@@ -60,6 +61,7 @@ class LatestDirectCourseElement {
   String imgUrl;
   String firstCourseId;
   int duration;
+  String status;
 
   factory LatestDirectCourseElement.fromJson(Map<String, dynamic> json) =>
       LatestDirectCourseElement(
@@ -76,6 +78,7 @@ class LatestDirectCourseElement {
         imgUrl: json["imgUrl"],
         firstCourseId: json["firstCourseId"],
         duration: json["duration"],
+        status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -92,6 +95,7 @@ class LatestDirectCourseElement {
         "imgUrl": imgUrl,
         "firstCourseId": firstCourseId,
         "duration": duration,
+        "status": status,
       };
 }
 
@@ -104,16 +108,20 @@ String latestDirectCourseRequestToJson(LatestDirectCourseRequest data) =>
 class LatestDirectCourseRequest {
   LatestDirectCourseRequest({
     required this.mode,
+    required this.authorId,
   });
 
   String mode;
+  String authorId;
 
   factory LatestDirectCourseRequest.fromJson(Map<String, dynamic> json) =>
       LatestDirectCourseRequest(
         mode: json["mode"],
+        authorId: json["authorId"],
       );
 
   Map<String, dynamic> toJson() => {
         "mode": mode,
+        "authorId": authorId,
       };
 }

@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/utils/utils.dart';
 import '../../common/global/global.dart';
+import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import 'notice_page.dart';
 import 'users_set.dart';
 
 class UsersPage extends StatefulWidget {
@@ -382,6 +383,20 @@ class _UsersPageState extends State<UsersPage> {
             IconButton(
                 onPressed: () {
                   if (kDebugMode) {
+                    print("跳转到通知");
+                    print(Global.profile.data.id);
+                  }
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const NoticePage()));
+                },
+                icon: const Icon(
+                  Icons.notifications_active_outlined,
+                  color: Colors.green,
+                )),
+            IconButton(
+                onPressed: () {
+                  if (kDebugMode) {
                     print("跳转到设置");
                   }
 
@@ -391,7 +406,7 @@ class _UsersPageState extends State<UsersPage> {
                 icon: const Icon(
                   Icons.settings,
                   color: Colors.green,
-                ))
+                )),
           ],
           leading: IconButton(
             icon: const Icon(Icons.qr_code_scanner, color: Colors.green),

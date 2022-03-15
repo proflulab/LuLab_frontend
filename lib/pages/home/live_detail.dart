@@ -1,10 +1,18 @@
 import 'dart:async';
 
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:alarm_calendar/alarm_calendar.dart';
+import 'package:alarm_calendar/calendars.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/values/radii.dart';
+import 'package:proflu/common/api/gql_latestusercourserecord.dart';
+import 'package:proflu/common/api/gql_recordadd.dart';
+import 'package:proflu/common/entitys/latestusercourserecord_data.dart';
+import 'package:proflu/common/entitys/record_add_data.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/widget/toast.dart';
+import 'package:share_plus/share_plus.dart';
 
 class LiveDetail extends StatefulWidget {
   const LiveDetail({Key? key, required this.product}) : super(key: key);
@@ -16,12 +24,20 @@ class LiveDetail extends StatefulWidget {
 class _LiveDetailState extends State<LiveDetail> {
   late Timer _timer;
   late int seconds;
+  DateTime now = new DateTime.now();
+  late RecordAdd _recordAdd;
+  var _recordData;
+  late var stauts = widget.product.status;
+  late LatestUserCourseRecord _latestUserCourseRecord;
+  var state;
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
   @override
   void initState() {
     super.initState();
+    //查询预约情况
+    _handleCourseRecord();
     //获取当期时间
     var now = DateTime.now();
     var now2 = widget.product.onlineTime;
@@ -79,141 +95,81 @@ class _LiveDetailState extends State<LiveDetail> {
     );
   }
 
+  //查询课程预约情况
+  _handleCourseRecord() async {
+    LatestUserCourseRecordRequest variables = LatestUserCourseRecordRequest(
+        courseId: widget.product.id, authorId: Global.profile.data.id);
+    _latestUserCourseRecord = await GqlLatestUserCourseRecordAPI.indexPageInfo(
+        variables: variables, context: context);
+    setState(() {
+      state = _latestUserCourseRecord.latestUserCourseRecord.status;
+    });
+  }
+
+  void _onShare(BuildContext context, String text) async {
+    final box = context.findRenderObject() as RenderBox?;
+
+    await Share.share(text,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  }
+
+  Future<void> createEvent(Calendars calendars) async {
+    //查询是否有读权限。
+    await AlarmCalendar.CheckReadPermission().then((res) async {
+      if (res != null) {
+        //查询是否有写权限
+        await AlarmCalendar.CheckWritePermission().then((resWrite) async {
+          if (resWrite != null) {
+            final id = await AlarmCalendar.createEvent(calendars);
+            calendars.setEventId = id!;
+            print('获得ID为：' + id);
+          }
+        });
+      }
+    });
+  }
+
+  //添加预约
+  _handleRecordAdd() async {
+    RecordAddRequest variables = RecordAddRequest(
+      authorId: Global.profile.data.id,
+      status: "1",
+      courseId: widget.product.id,
+      onlineTime: now,
+    );
+    _recordAdd = await GqlRecordAddAPI.indexPageInfo(
+        variables: variables, context: context);
+    var recordData = _recordAdd.recordAdd;
+    toastInfo(msg: '预约成功');
+    setState(() {
+      _recordData = recordData;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
-    var stack = Stack(
-      children: <Widget>[
-        Positioned(
-          child: SizedBox(
-            width: 750.0.w, //容器的相关参数
-            height: 430.0.h,
-            // alignment: Alignment.center, //在容器的位置
-            child: Image.network(
-              widget.product.imgUrl,
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        Positioned(
-          top: 210.0,
-          // right: 10,
-          child: Container(
-            //从这里开始
-            height: 100.h,
-            width: 750.w,
-
-            decoration: const BoxDecoration(
-              //背景
-              color: Colors.white,
-              //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
-              borderRadius: BorderRadius.all(Radius.circular(25)),
-            ),
-          ),
-        ),
-        Positioned(
-          top: 275.0,
-          left: 5,
-          child: Container(
-            margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
-            decoration: BoxDecoration(
-              //设置四周圆角 角度
-              color: Colors.white,
-              borderRadius: Radii.k6pxRadius,
-            ),
-            height: 237,
-            width: 345,
-            // color: Colors.white,
-          ),
-        ),
-        // Positioned(
-        //   top: 230.0,
-        //   left: 20.0,
-        //   child: SizedBox(
-        //     width: 1000.0.w, //容器的相关参数
-        //     height: 80.0.h,
-        //     // color: Colors.green,
-        //     child: Text(
-        //       widget.product.title,
-        //       style: const TextStyle(
-        //           fontFamily: 'MyFontStyle', color: Colors.black, fontSize: 20),
-        //     ),
-        //   ),
-        // ),
-        // Positioned(
-        //   top: 270.0,
-        //   left: 210.0,
-        //   child: SizedBox(
-        //     width: 200.0.w, //容器的相关参数
-        //     height: 100.0.h,
-        //     // color: Colors.green,
-        //     child: Text(
-        //       widget.product.authorTags,
-        //       style: const TextStyle(
-        //           fontFamily: 'MyFontStyle', color: Colors.black, fontSize: 18),
-        //     ),
-        //   ),
-        // ),
-        Positioned(
-          top: 295.0,
-          left: 38.0,
-          child: SizedBox(
-            width: 800.0.w, //容器的相关参数
-            height: 200.0.h,
-            // color: Colors.green,
-            child: Text("距离" + time1 + "直播开始还有",
-                style:
-                    const TextStyle(fontFamily: 'MyFontStyle', fontSize: 18)),
-          ),
-        ),
-
-        Positioned(
-          top: 320.0,
-          left: 30.0,
-          child: SizedBox(
-            width: 800.0.w, //容器的相关参数
-            height: 200.0.h,
-            // color: Colors.green,
-            child: constructTime(seconds),
-          ),
-        ),
-        Positioned(
-          top: 380.0,
-          left: 120.0,
-          child: SizedBox(
-            width: 270.0.w, //容器的相关参数
-            height: 70.0.h,
-            child: ElevatedButton(
-              child: const Text("开播提醒"),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.green), //背景颜色
-                foregroundColor: MaterialStateProperty.all(Colors.white), //字体颜色
-                overlayColor:
-                    MaterialStateProperty.all(const Color(0xffFFF8E5)), // 高亮色
-                shadowColor:
-                    MaterialStateProperty.all(const Color(0xffffffff)), //阴影颜色
-                elevation: MaterialStateProperty.all(0), //阴影值
-                textStyle: MaterialStateProperty.all(const TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'MyFontStyle',
-                )), //字体
-                shape: MaterialStateProperty.all(BeveledRectangleBorder(
-                    borderRadius: BorderRadius.circular(5))), //圆角弧度
-              ),
-              onPressed: () {
-                //执行预约方法
-                Add2Calendar.addEvent2Cal(buildEvent(
-                  recurrence: Recurrence(
-                    frequency: Frequency.weekly,
-                    endDate: DateTime.now().add(const Duration(days: 60)),
-                  ),
-                ));
-              },
-            ),
-          ),
-        ),
-      ],
+    String text = Global.profile.data.name +
+        "邀请您在" +
+        time1 +
+        "参加" +
+        widget.product.title +
+        "，主讲人：" +
+        widget.product.author;
+    var now2 = widget.product.onlineTime;
+    var future = DateTime.fromMillisecondsSinceEpoch(now2);
+    var futureYear = int.parse(formatDate(future, [yyyy]));
+    var futureMounth = int.parse(formatDate(future, [mm]));
+    var futureDay = int.parse(formatDate(future, [dd]));
+    var futureHour = int.parse(formatDate(future, [HH]));
+    var futureMinute = int.parse(formatDate(future, [nn]));
+    Calendars calendars = Calendars(
+      DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute),
+      DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute)
+          .add(Duration(minutes: widget.product.duration)),
+      widget.product.title,
+      widget.product.description,
     );
     return Scaffold(
         backgroundColor: const Color.fromRGBO(220, 220, 220, 1),
@@ -281,15 +237,15 @@ class _LiveDetailState extends State<LiveDetail> {
                   ),
                   Positioned(
                     top: 110.0,
-                    left: 105.0,
+                    left: 32.5,
                     child: SizedBox(
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
                       child: ElevatedButton(
-                        child: const Text("开播提醒"),
+                        child: const Text("邀请好友一起看"),
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.green), //背景颜色
+                          backgroundColor: MaterialStateProperty.all(
+                              Colors.lightGreen), //背景颜色
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white), //字体颜色
                           overlayColor: MaterialStateProperty.all(
@@ -298,7 +254,7 @@ class _LiveDetailState extends State<LiveDetail> {
                               const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
                           textStyle: MaterialStateProperty.all(const TextStyle(
-                            fontSize: 20,
+                            fontSize: 13,
                             fontFamily: 'MyFontStyle',
                           )), //字体
                           shape: MaterialStateProperty.all(
@@ -307,14 +263,48 @@ class _LiveDetailState extends State<LiveDetail> {
                                       BorderRadius.circular(5))), //圆角弧度
                         ),
                         onPressed: () {
+                          _onShare(context, text);
+                        },
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 110.0,
+                    left: 177.5,
+                    child: SizedBox(
+                      width: 270.0.w, //容器的相关参数
+                      height: 70.0.h,
+                      child: ElevatedButton(
+                        child: state == "-1" ? Text("预约") : Text("已预约"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              state == "-1"
+                                  ? Colors.green
+                                  : Colors.grey), //背景颜色
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.white), //字体颜色
+                          overlayColor: MaterialStateProperty.all(
+                              const Color(0xffFFF8E5)), // 高亮色
+                          shadowColor: MaterialStateProperty.all(
+                              const Color(0xffffffff)), //阴影颜色
+                          elevation: MaterialStateProperty.all(0), //阴影值
+                          textStyle: MaterialStateProperty.all(const TextStyle(
+                            fontSize: 13,
+                            fontFamily: 'MyFontStyle',
+                          )), //字体
+                          shape: MaterialStateProperty.all(
+                              BeveledRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(5))), //圆角弧度
+                        ),
+                        onPressed: () {
+                          //执行日历预约方法
+                          createEvent(calendars);
                           //执行预约方法
-                          Add2Calendar.addEvent2Cal(buildEvent(
-                            recurrence: Recurrence(
-                              frequency: Frequency.weekly,
-                              endDate:
-                                  DateTime.now().add(const Duration(days: 60)),
-                            ),
-                          ));
+                          setState(() {
+                            _handleRecordAdd();
+                            state = "0";
+                          });
                         },
                       ),
                     ),

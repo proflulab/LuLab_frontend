@@ -1,8 +1,15 @@
+import 'package:alarm_calendar/alarm_calendar.dart';
+import 'package:alarm_calendar/calendars.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:proflu/common/api/gql_latestdirectcourse.dart';
+import 'package:proflu/common/api/gql_recordadd.dart';
 import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
+import 'package:proflu/common/entitys/record_add_data.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/widget/toast.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -26,6 +33,13 @@ class _GatherState extends State<Gather> {
   List _focusData2 = [];
   late LatestDirectCourse _latestDirectCourse;
   List _focusData3 = [];
+  late RecordAdd _recordAdd;
+  var _recordData;
+  DateTime now = new DateTime.now();
+  _getInitial() async {
+    print('回退刷新数据');
+    _handleCourse();
+  }
 
   @override
   void initState() {
@@ -45,6 +59,23 @@ class _GatherState extends State<Gather> {
     });
   }
 
+  //添加预约
+  _handleRecordAdd(int index) async {
+    RecordAddRequest variables = RecordAddRequest(
+      authorId: Global.profile.data.id,
+      status: "1",
+      courseId: _focusData3[index].id,
+      onlineTime: now,
+    );
+    _recordAdd = await GqlRecordAddAPI.indexPageInfo(
+        variables: variables, context: context);
+    var recordData = _recordAdd.recordAdd;
+    toastInfo(msg: '预约成功');
+    setState(() {
+      _recordData = recordData;
+    });
+  }
+
   // 读取所有课程数据
   _loadAllData() async {
     _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
@@ -58,11 +89,28 @@ class _GatherState extends State<Gather> {
 
   // 读取直播课程数据
   _handleCourse() async {
-    LatestDirectCourseRequest variables = LatestDirectCourseRequest(mode: "2");
+    LatestDirectCourseRequest variables =
+        LatestDirectCourseRequest(mode: "2", authorId: Global.profile.data.id);
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
     setState(() {
       _focusData3 = _latestDirectCourse.latestDirectCourse;
+    });
+  }
+
+  Future<void> createEvent(Calendars calendars) async {
+    //查询是否有读权限。
+    await AlarmCalendar.CheckReadPermission().then((res) async {
+      if (res != null) {
+        //查询是否有写权限
+        await AlarmCalendar.CheckWritePermission().then((resWrite) async {
+          if (resWrite != null) {
+            final id = await AlarmCalendar.createEvent(calendars);
+            calendars.setEventId = id!;
+            print('获得ID为：' + id);
+          }
+        });
+      }
     });
   }
 
@@ -234,6 +282,23 @@ class _GatherState extends State<Gather> {
     return ListView.builder(
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {
+        var now2 = _focusData3[index].onlineTime;
+        var future = DateTime.fromMillisecondsSinceEpoch(now2);
+        var futureYear = int.parse(formatDate(future, [yyyy]));
+        var futureMounth = int.parse(formatDate(future, [mm]));
+        var futureDay = int.parse(formatDate(future, [dd]));
+        var futureHour = int.parse(formatDate(future, [HH]));
+        var futureMinute = int.parse(formatDate(future, [nn]));
+        var status = _focusData3[index].status;
+        Calendars calendars = Calendars(
+          DateTime(
+              futureYear, futureMounth, futureDay, futureHour, futureMinute),
+          DateTime(
+                  futureYear, futureMounth, futureDay, futureHour, futureMinute)
+              .add(Duration(minutes: _focusData3[index].duration)),
+          _focusData3[index].title,
+          _focusData3[index].description,
+        );
         if (_focusData3.isNotEmpty) {
           return InkWell(
               onTap: () async {
@@ -241,10 +306,11 @@ class _GatherState extends State<Gather> {
                   print('到课程详情');
                 }
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            LiveDetail(product: _focusData3[index])));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                LiveDetail(product: _focusData3[index])))
+                    .then((value) => _getInitial());
               },
               child: Container(
                 height: 200.h,
@@ -291,39 +357,82 @@ class _GatherState extends State<Gather> {
                       ),
                     ),
                     Positioned(
-                      top: 45.0,
-                      left: 240.0,
-                      child: ElevatedButton(
-                        child: const Text("详情"),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.green), //背景颜色
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.white), //字体颜色
-                          overlayColor: MaterialStateProperty.all(
-                              const Color(0xffFFF8E5)), // 高亮色
-                          shadowColor: MaterialStateProperty.all(
-                              const Color(0xffffffff)), //阴影颜色
-                          elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(const TextStyle(
-                            fontSize: 15,
-                            fontFamily: 'MyFontStyle',
-                          )), //字体
-                          shape: MaterialStateProperty.all(
-                              BeveledRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(5))), //圆角弧度
-                        ),
-                        onPressed: () {
-                          //执行预约方法
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      LiveDetail(product: _focusData3[index])));
-                        },
-                      ),
-                    )
+                        top: 45.0,
+                        left: 240.0,
+                        child: ElevatedButton(
+                          child: status == "0" ? Text("预约") : Text("已预约"),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                status == "0"
+                                    ? Colors.green
+                                    : Colors.grey), //背景颜色
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.white), //字体颜色
+                            overlayColor: MaterialStateProperty.all(
+                                const Color(0xffFFF8E5)), // 高亮色
+                            shadowColor: MaterialStateProperty.all(
+                                const Color(0xffffffff)), //阴影颜色
+                            elevation: MaterialStateProperty.all(0), //阴影值
+                            textStyle:
+                                MaterialStateProperty.all(const TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'MyFontStyle',
+                            )), //字体
+                            shape: MaterialStateProperty.all(
+                                BeveledRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(5))), //圆角弧度
+                          ),
+                          onPressed: () {
+                            //执行日历预约方法
+                            createEvent(calendars);
+                            //执行预约方法
+                            setState(() {
+                              _handleRecordAdd(index);
+                              status = "1";
+                              _handleCourse();
+                            });
+
+                            Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LiveDetail(
+                                            product: _focusData3[index])))
+                                .then((value) => _getInitial());
+                          },
+                        )
+                        // : ElevatedButton(
+                        //     child: const Text("已预约"),
+                        //     style: ButtonStyle(
+                        //       backgroundColor: MaterialStateProperty.all(
+                        //           Colors.grey), //背景颜色
+                        //       foregroundColor: MaterialStateProperty.all(
+                        //           Colors.white), //字体颜色
+                        //       overlayColor: MaterialStateProperty.all(
+                        //           const Color(0xffFFF8E5)), // 高亮色
+                        //       shadowColor: MaterialStateProperty.all(
+                        //           const Color(0xffffffff)), //阴影颜色
+                        //       elevation: MaterialStateProperty.all(0), //阴影值
+                        //       textStyle:
+                        //           MaterialStateProperty.all(const TextStyle(
+                        //         fontSize: 15,
+                        //         fontFamily: 'MyFontStyle',
+                        //       )), //字体
+                        //       shape: MaterialStateProperty.all(
+                        //           BeveledRectangleBorder(
+                        //               borderRadius:
+                        //                   BorderRadius.circular(5))), //圆角弧度
+                        //     ),
+                        //     onPressed: () {
+                        //       //执行预约方法
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => LiveDetail(
+                        //                   product: _focusData3[index])));
+                        //     },
+                        //   )
+                        )
                   ],
                 ),
               ) // ),
