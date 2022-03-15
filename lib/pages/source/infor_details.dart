@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
+//import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+//import '../../common/widget/widgets.dart';
 
 class InforDetails extends StatefulWidget {
   const InforDetails({Key? key, required this.product}) : super(key: key);
-  final product;
+  final LatestInformation product;
 
   @override
   _InforDetailsState createState() => _InforDetailsState();

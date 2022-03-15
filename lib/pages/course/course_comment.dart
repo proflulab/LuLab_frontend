@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-import '../../common/values/values.dart';
-import '../../common/widget/widgets.dart';
+// import '../../common/values/values.dart';
+// import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 
 import 'course_comment_detail.dart';
@@ -13,8 +13,9 @@ import 'course_index.dart';
 /// 课程评论页面
 
 class CourseCommentPage extends StatefulWidget {
-  final product;
-  const CourseCommentPage({Key? key, required this.product}) : super(key: key);
+  final LatestDirectCourseElement courseData;
+  const CourseCommentPage({Key? key, required this.courseData})
+      : super(key: key);
 
   @override
   _CourseCommentPageState createState() => _CourseCommentPageState();
@@ -36,16 +37,15 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
     _handleComment();
   }
 
-  // 读取所有课程数据
+  // 读取所有课程评论数据
   _handleComment() async {
     LatestCommentRequest variables = LatestCommentRequest(
-      courseId: '619cb9c3ee78eb0f41329627',
+      courseId: widget.courseData.firstCourseId,
     );
     _latestComment = await GqlLatestCommentAPI.indexPageInfo(
         variables: variables, context: context);
-    var commentData = _latestComment.latestComment;
     setState(() {
-      _commentData = commentData;
+      _commentData = _latestComment.latestComment;
     });
   }
 
@@ -55,7 +55,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
       content: _commentController.value.text,
       authorId: Global.profile.data.id,
       authorImg: Global.profile.data.img,
-      courseId: '619cb9c3ee78eb0f41329627',
+      courseId: widget.courseData.firstCourseId,
       authorName: Global.profile.data.name,
     );
     _commentAdd = await GqlCommentAddAPI.indexPageInfo(
@@ -68,87 +68,205 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
 
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => CourseIndexPage(
-              product: widget.product,
+              product: widget.courseData,
             )));
   }
 
   @override
   Widget build(BuildContext context) {
-    a = _commentData.length;
-    b = a.toString();
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Text(
+            '全部评价' + _commentData.length.toString(),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+          ),
+          // Flexible(
+          //     child:
           SizedBox(
-              height: 300,
-              width: 1.sw,
-              child: SingleChildScrollView(
-                child: Center(
-                    child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          '全部评价' + '(' + b + ')',
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 30),
-                      height: 500,
-                      child: ListView.builder(
-                          itemCount: _commentData.length,
-                          itemBuilder: (BuildContext context, int index) =>
-                              CommentDetail(product: _commentData[index])),
-                    ),
-                  ],
-                )),
-              )),
-          SizedBox(
-            height: 53,
-            width: 375,
-            child: ElevatedButton(
-              child: const Text("点击"),
-              onPressed: () {
-                showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return SizedBox(
-                          height: 500,
-                          width: 375,
-                          child: Column(
-                            children: [
-                              inputTextEdit(
-                                  controller: _commentController,
-                                  hintText: "请输入评论",
-                                  marginTop: 30,
-                                  autofocus: true,
-                                  width: 622,
-                                  height: 100),
-                              Container(
-                                //height: 100.h,
-                                margin: const EdgeInsets.only(top: 50),
-                                child: btnFlatButtonWidget(
-                                  width: 622,
-                                  height: 112,
-                                  onPressed: () {
-                                    _handleCommentAdd();
-                                  },
-                                  gbColor: ProfluColors.primaryElement,
-                                  title: "发送",
+            height: _commentData.length * 100,
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: _commentData.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(_commentData[index].authorImg),
+                  ),
+                  title: Column(
+                    children: [
+                      // 头衔
+                      Row(
+                        children: [
+                          Text(
+                            _commentData[index].authorName,
+                            style: const TextStyle(fontSize: 15),
+                          ),
+                          // SizedBox(
+                          //   width: 10,
+                          // ),
+                          // Text(
+                          //   '骨干学员',
+                          //   style: TextStyle(color: Color(0xffcccccc), fontSize: 15),
+                          // )
+                        ],
+                      ),
+                      // 评论
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _commentData[index].content,
+                              style: const TextStyle(fontSize: 13),
+                              textAlign: TextAlign.start,
+                              // overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                      // 时间
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Expanded(
+                            flex: 4,
+                            child: Text(
+                              _commentData[index].addTime,
+                              style: const TextStyle(
+                                  color: Color(0xffaaaaaa), fontSize: 12),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: const [
+                                Icon(
+                                  Icons.mode_comment_outlined,
+                                  color: Color(0xffaaaaaa),
+                                  size: 16,
                                 ),
-                              ),
-                            ],
-                          ));
-                    });
+                                Text(
+                                  '1',
+                                  style: TextStyle(
+                                      color: Color(0xffaaaaaa), fontSize: 12),
+                                ),
+                                Icon(
+                                  Icons.thumb_up,
+                                  color: Color(0xffaaaaaa),
+                                  size: 16,
+                                ),
+                                Text(
+                                  '1',
+                                  style: TextStyle(
+                                      color: Color(0xffaaaaaa), fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
               },
             ),
+            //)
           )
         ],
       ),
+    );
+
+    // Container(
+    //   color: Colors.red,
+    //   height: 100,
+    //   width: 1.sw,
+    //   child: SingleChildScrollView(
+    //     child: ListView(
+    //       children: [
+    //         Text(
+    //           '全部评价' + _commentData.length.toString(),
+    //           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
+  }
+
+  text() {
+    Column(
+      children: <Widget>[
+        SizedBox(
+            width: 1.sw,
+            child: SingleChildScrollView(
+              child: Center(
+                  child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        '全部评价' + _commentData.length.toString(),
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 30),
+                    height: 500,
+                    child: ListView.builder(
+                        itemCount: _commentData.length,
+                        itemBuilder: (BuildContext context, int index) =>
+                            CommentDetail(product: _commentData[index])),
+                  ),
+                ],
+              )),
+            )),
+        // SizedBox(
+        //   height: 53,
+        //   width: 375,
+        //   child: ElevatedButton(
+        //     child: const Text("点击"),
+        //     onPressed: () {
+        //       showModalBottomSheet(
+        //           context: context,
+        //           builder: (BuildContext context) {
+        //             return SizedBox(
+        //                 height: 500,
+        //                 width: 375,
+        //                 child: Column(
+        //                   children: [
+        //                     inputTextEdit(
+        //                       controller: _commentController,
+        //                       hintText: "请输入评论",
+        //                       marginTop: 30,
+        //                       autofocus: true,
+        //                       width: 622,
+        //                       height: 100,
+        //                     ),
+        //                     Container(
+        //                       //height: 100.h,
+        //                       margin: const EdgeInsets.only(top: 50),
+        //                       child: btnFlatButtonWidget(
+        //                         width: 622,
+        //                         height: 112,
+        //                         onPressed: () {
+        //                           _handleCommentAdd();
+        //                         },
+        //                         gbColor: ProfluC.primaryElement,
+        //                         title: "发送",
+        //                       ),
+        //                     ),
+        //                   ],
+        //                 ));
+        //           });
+        //     },
+        //   ),
+        // )
+      ],
     );
   }
 

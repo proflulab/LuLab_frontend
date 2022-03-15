@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
@@ -27,8 +28,6 @@ class _CourseDetailState extends State<CourseDetail> {
 
 //课程简介
   ListView buildCourseDetail() {
-    print('===========================31');
-    print(widget.product.title);
     return ListView(
       children: [
         const Divider(
@@ -126,11 +125,10 @@ class _CourseDetailState extends State<CourseDetail> {
               if (widget.product.subCourses.isNotEmpty) {
                 return InkWell(
                   onTap: () async {
-                    print(
-                        '==================================================================131');
-                    print(widget.product.subCourses[index].subTitle);
-                    print('到课程详情');
-                    // changeName();
+                    if (kDebugMode) {
+                      print(widget.product.subCourses[index].subTitle);
+                      print('到课程详情');
+                    }
                     Navigator.push(
                         context,
                         MaterialPageRoute(

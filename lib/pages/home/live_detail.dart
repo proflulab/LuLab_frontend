@@ -150,6 +150,7 @@ class _LiveDetailState extends State<LiveDetail> {
   Widget build(BuildContext context) {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
+
     String text = Global.profile.data.name +
         "邀请您在" +
         time1 +
@@ -442,9 +443,7 @@ class _LiveDetailState extends State<LiveDetail> {
   }
 
   void cancelTimer() {
-    if (_timer != null) {
-      _timer.cancel();
-    }
+    _timer.cancel();
   }
 
   @override

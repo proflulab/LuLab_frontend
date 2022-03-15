@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proflu/common/api/gql_latestrecord.dart';
 import 'package:proflu/common/entitys/latestrecord_data.dart';
 import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/values/radii.dart';
+import 'package:proflu/common/values/size_radii.dart';
 
 class NoticePage extends StatefulWidget {
   const NoticePage({Key? key}) : super(key: key);

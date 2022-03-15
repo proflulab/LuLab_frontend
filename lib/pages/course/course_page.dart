@@ -1,9 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/api/gql_courseclassification.dart';
-import 'package:proflu/common/api/gql_latestdirectcourse.dart';
-import 'package:proflu/common/entitys/course_classification_data.dart';
-import 'package:proflu/common/entitys/latestdirectcourse_data.dart';
 import 'package:proflu/common/global/global.dart';
 
 import '../../common/api/apis.dart';
@@ -21,39 +17,23 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  late MainCourseRequest _postsData;
-  List _focusData = [];
   late QueryCourseClassification _classification;
-  List _focusData2 = [];
+  List<QueryCourseClassificationElement> _focusData2 = [];
+
   late LatestDirectCourse _latestDirectCourse;
-  List _focusData3 = [];
+  List<LatestDirectCourseElement> _focusData3 = [];
   var mode = "1";
   int _selectIndex = 0;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
-  final double _selectColumnsWidth = 1.sw * 0.293 - 12.w;
-  final double _coursesDetailsWidth = 1.sw * (1 - 0.293) - 16.w;
-
-  final List _courseList = ['理论课程', '大咖访谈', '往期课程', '精彩例会', '举例1', '举例2'];
-
-  String a = "123";
+  final double _selectW = 1.sw * (1 - ProfluF.silver) - 12.w;
+  final double _coursesW = 1.sw * ProfluF.silver - 16.w;
 
   @override
   void initState() {
     super.initState();
-    _loadAllData();
     _loadClassificationData();
     _handleCourse();
-  }
-
-  // 读取所有课程数据
-  _loadAllData() async {
-    _postsData = await MainCourseAPI.maincourse(schema: '', context: context);
-    var focusList = _postsData.data.latestMainCourse;
-
-    setState(() {
-      _focusData = focusList;
-    });
   }
 
   //读取课程分类
@@ -82,14 +62,14 @@ class _CoursePageState extends State<CoursePage> {
     return Scaffold(
       appBar: AppBar(
         //由主题统一配色，不在这里重新设定颜色
-        backgroundColor: ProfluColors.primaryBackground,
+        backgroundColor: ProfluC.backgroundPrimary,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const Text(
           '课程',
           style: TextStyle(
             fontFamily: 'MyFontStyle',
-            color: ProfluColors.emphasisText,
+            color: ProfluC.textEmphasis,
             fontSize: 24,
           ),
         ),
@@ -137,79 +117,95 @@ class _CoursePageState extends State<CoursePage> {
         // ],
       ),
       body: Container(
-        decoration:
-            const BoxDecoration(color: ProfluColors.secondaryBackground),
+        decoration: const BoxDecoration(color: ProfluC.backgroundSecondary),
         child: Row(
           children: <Widget>[
             SizedBox(
-              width: _selectColumnsWidth,
+              width: _selectW,
               child: Column(
                 children: [
                   SizedBox(
-                    height: _focusData2.length * _selectColumnsWidth * 0.618,
+                    height: _focusData2.length * _selectW * ProfluF.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _focusData2.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () {
-                            setState(() {
-                              if (kDebugMode) {
-                                print('点击了' + _focusData2[index].title);
-                                print('点击了' + _focusData2[index].mode);
-                              }
-                              _selectIndex = index;
-                              mode = _focusData2[index].mode;
-                              _handleCourse();
-                            });
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: _selectColumnsWidth * 0.618,
-                            decoration: BoxDecoration(
-                                color: _selectIndex == index
-                                    ? ProfluColors.secondaryBackground
-                                    : ProfluColors.primaryBackground,
-                                borderRadius: _selectIndex == index
-                                    ? null
-                                    : _selectIndex == index + 1
-                                        ? const BorderRadius.only(
-                                            bottomRight: Radius.circular(10),
-                                          )
-                                        : _selectIndex == index - 1
-                                            ? const BorderRadius.only(
-                                                topRight: Radius.circular(10))
-                                            : null),
-                            child: Center(
-                              child: Text(_focusData2[index].title,
-                                  style: _selectIndex == index
-                                      ? const TextStyle(
-                                          fontFamily: 'MyFontStyle',
-                                          color: ProfluColors.primaryText,
-                                          fontSize: 18,
-                                        )
-                                      : const TextStyle(
-                                          color: ProfluColors.secondaryText,
-                                          fontSize: 16,
-                                        ),
-                                  textAlign: TextAlign.center),
-                            ),
-                          ),
-                        );
+                            onTap: () {
+                              setState(() {
+                                if (kDebugMode) {
+                                  print('点击了' + _focusData2[index].title);
+                                  print('点击了' + _focusData2[index].mode);
+                                  print(cycle(1, 0.618, 100));
+                                }
+                                _selectIndex = index;
+                                mode = _focusData2[index].mode;
+                                _handleCourse();
+                              });
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: _selectW * 0.05,
+                                  height: _selectW * ProfluF.golden - 30.h,
+                                  decoration: BoxDecoration(
+                                    color: _selectIndex == index
+                                        ? ProfluC.themeColor
+                                        : ProfluC.backgroundPrimary,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.r)),
+                                  ),
+                                ),
+                                Container(
+                                  width: _selectW * 0.95,
+                                  height: _selectW * ProfluF.golden,
+                                  decoration: BoxDecoration(
+                                      color: _selectIndex == index
+                                          ? ProfluC.backgroundSecondary
+                                          : ProfluC.backgroundPrimary,
+                                      borderRadius: _selectIndex == index
+                                          ? null
+                                          : _selectIndex == index + 1
+                                              ? const BorderRadius.only(
+                                                  bottomRight:
+                                                      Radius.circular(10),
+                                                )
+                                              : _selectIndex == index - 1
+                                                  ? const BorderRadius.only(
+                                                      topRight:
+                                                          Radius.circular(10))
+                                                  : null),
+                                  child: Center(
+                                    child: Text(_focusData2[index].title,
+                                        style: _selectIndex == index
+                                            ? const TextStyle(
+                                                fontFamily: 'MyFontStyle',
+                                                color: ProfluC.textPrimary,
+                                                fontSize: 18,
+                                              )
+                                            : const TextStyle(
+                                                color: ProfluC.textSecondary,
+                                                fontSize: 16,
+                                              ),
+                                        textAlign: TextAlign.center),
+                                  ),
+                                ),
+                              ],
+                            ));
                       },
                     ),
                   ),
                   SizedBox(
-                    height: _selectColumnsWidth * 0.618,
+                    height: _selectW * ProfluF.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Container(
                           width: double.infinity,
-                          height: _selectColumnsWidth * 0.618,
+                          height: _selectW * ProfluF.golden,
                           decoration: BoxDecoration(
-                              color: ProfluColors.primaryBackground,
+                              color: ProfluC.backgroundPrimary,
                               borderRadius:
                                   _selectIndex == _focusData2.length - 1
                                       ? const BorderRadius.only(
@@ -221,8 +217,8 @@ class _CoursePageState extends State<CoursePage> {
                   ),
                   Flexible(
                       child: Container(
-                    color: ProfluColors.primaryBackground,
-                    width: _selectColumnsWidth,
+                    color: ProfluC.backgroundPrimary,
+                    width: _selectW,
                   )),
                 ],
               ),
@@ -230,18 +226,15 @@ class _CoursePageState extends State<CoursePage> {
             Flexible(
                 child: Container(
               decoration:
-                  const BoxDecoration(color: ProfluColors.secondaryBackground),
+                  const BoxDecoration(color: ProfluC.backgroundSecondary),
               padding: EdgeInsets.only(left: 12.w, right: 16.w),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: _focusData3.length,
                 itemBuilder: (context, index) {
-                  var _imageHeight = _coursesDetailsWidth * 0.414 - 16.w * 2;
-                  var _imageWidht =
-                      (_coursesDetailsWidth * 0.414 - 16.w * 2) * 3 / 4;
-                  var _textWidht =
-                      _coursesDetailsWidth - (16.w + _imageWidht + 16.w);
-
+                  var _imageHeight = _coursesW * 0.414 - 16.w * 2;
+                  var _imageWidht = _imageHeight * ProfluF.ratio3_4;
+                  var _textWidht = _coursesW - (16.w + _imageWidht + 16.w);
                   if (_focusData3.isNotEmpty) {
                     return InkWell(
                       onTap: () async {
@@ -252,7 +245,7 @@ class _CoursePageState extends State<CoursePage> {
                                     product: _focusData3[index])));
                       },
                       child: Container(
-                        height: _coursesDetailsWidth * 0.414,
+                        height: _coursesW * 0.414,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -269,15 +262,16 @@ class _CoursePageState extends State<CoursePage> {
                                 url: _focusData3[index].imgUrl),
                             // 课程标题
                             positioningText(
-                                context: context,
-                                top: 15.h,
-                                left: 16.w + _imageWidht + 16.w,
-                                height: _focusData3[index].title.length > 11
-                                    ? 50.h
-                                    : 25.h,
-                                width: _textWidht,
-                                text: _focusData3[index].title,
-                                font: 'MyFontStyle'),
+                              context: context,
+                              top: 15.h,
+                              left: (16.w + _imageWidht + 16.w) - 3.w,
+                              height: _focusData3[index].title.length > 11
+                                  ? 50.h
+                                  : 25.h,
+                              width: _textWidht,
+                              text: _focusData3[index].title,
+                              font: 'MyFontStyle',
+                            ),
                             // 作者
                             positioningText(
                               context: context,
@@ -285,13 +279,13 @@ class _CoursePageState extends State<CoursePage> {
                                   ? 75.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w,
-                              height: 25.h,
+                              height: 30.h,
                               width: 85.w,
                               text: _focusData3[index].author,
                               font: '',
                               fontWeight: FontWeight.bold,
-                              fontSize: ProfluFonfSize.size14,
-                              color: ProfluColors.secondaryText,
+                              fontSize: ProfluFS.size14,
+                              color: ProfluC.textSecondary,
                             ),
                             // 作者标签
                             positioningText(
@@ -300,12 +294,13 @@ class _CoursePageState extends State<CoursePage> {
                                   ? 75.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w + 95.w,
-                              height: 25.h,
+                              height: 30.h,
                               width: _textWidht - 95.w,
-                              text: "实验室创始人",
+                              text: _focusData3[index].authorTags,
                               font: '',
-                              fontSize: ProfluFonfSize.size14,
-                              color: ProfluColors.secondaryText,
+                              fontSize: ProfluFS.size14,
+                              maxLines: 1,
+                              color: ProfluC.textSecondary,
                             ),
                           ],
                         ),

@@ -6,7 +6,7 @@ import '../../pages/other/customer.dart';
 import '../../pages/other/download.dart';
 import '../../pages/other/history.dart';
 import '../../pages/other/message.dart';
-import '../../pages/search.dart';
+import '../../pages/search/search.dart';
 import '../../pages/sign_in/login.dart';
 import '../../pages/start/first_guide.dart';
 import '../../pages/sign_in/sign_in.dart';
