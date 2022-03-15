@@ -45,7 +45,7 @@ class Ttt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(246, 246, 246, 1),
+      color: const Color.fromRGBO(246, 246, 246, 1),
       child: Column(children: [
         Image.asset(
           'assets/images/OIP-TY.jpg',

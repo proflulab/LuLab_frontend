@@ -272,11 +272,11 @@ class _GatherState extends State<Gather> {
       height: 237,
       width: 345,
       // color: Colors.white,
-      child: _buildLive_context(),
+      child: buildLiveContext(),
     );
   }
 
-  ListView _buildLive_context() {
+  ListView buildLiveContext() {
     return ListView.builder(
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {
