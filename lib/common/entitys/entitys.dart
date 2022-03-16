@@ -11,6 +11,7 @@ export 'lateast_comment.dart';
 export 'latestdirectcourse_data.dart';
 export 'main_coursedata.dart';
 export 'modeldata.dart';
+export 'record_add_data.dart';
 //export 'response_data_entity.dart';
 export 'response_data_entity_helper.dart';
 export 'soursedata_infor.dart';

@@ -48,20 +48,20 @@ class LatestDirectCourseElement {
     required this.status,
   });
 
-  String id;
-  String title;
-  String classTags;
-  String description;
-  String author;
-  String authorTags;
-  String category;
-  String mode;
-  String videoUrl;
-  int onlineTime;
-  String imgUrl;
-  String firstCourseId;
-  int duration;
-  String status;
+  final String id;
+  final String title;
+  final String classTags;
+  final String description;
+  final String author;
+  final String authorTags;
+  final String category;
+  final String mode;
+  final String videoUrl;
+  final int onlineTime;
+  final String imgUrl;
+  final String firstCourseId;
+  final int duration;
+  final dynamic status;
 
   factory LatestDirectCourseElement.fromJson(Map<String, dynamic> json) =>
       LatestDirectCourseElement(

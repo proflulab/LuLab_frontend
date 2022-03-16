@@ -5,7 +5,9 @@ A new Flutter project.
 ## 无线调试app
 
 1. adb tcpip 5555
-2. adb connect 192.168.101.10
+2. adb connect 192.168.101.108
+
+参考<https://developer.android.google.cn/studio/command-line/adb?hl=zh-cn>
 
 ## 测试音频
 

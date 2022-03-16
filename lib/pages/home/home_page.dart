@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/values/values.dart';
+
+import '../../common/values/values.dart';
 
 import 'home_feats.dart';
 import 'home_gather.dart';
@@ -162,11 +163,11 @@ class HomePageList extends StatefulWidget {
 class _HomePageListState extends State<HomePageList> {
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
+    return const TabBarView(
       children: [
         Center(child: Gather()),
         Center(child: FeatsPage()),
-        Center(child: DemoApp())
+        Center(child: AppDemo())
       ],
     );
   }

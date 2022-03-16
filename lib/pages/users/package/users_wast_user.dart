@@ -103,7 +103,7 @@ class Ttt extends StatelessWidget {
                       const Icon(Icons.chevron_right, color: Colors.black54),
                   onTap: () {
                     Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => St()));
+                        .push(MaterialPageRoute(builder: (context) => const St()));
                   },
                 ),
               ],

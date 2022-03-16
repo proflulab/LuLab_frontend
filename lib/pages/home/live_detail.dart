@@ -24,7 +24,7 @@ class LiveDetail extends StatefulWidget {
 class _LiveDetailState extends State<LiveDetail> {
   late Timer _timer;
   late int seconds;
-  DateTime now = new DateTime.now();
+  DateTime now =  DateTime.now();
   late RecordAdd _recordAdd;
   var _recordData;
   late var stauts = widget.product.status;
@@ -276,7 +276,7 @@ class _LiveDetailState extends State<LiveDetail> {
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
                       child: ElevatedButton(
-                        child: state == "-1" ? Text("预约") : Text("已预约"),
+                        child: state == "-1" ? const Text("预约") : const Text("已预约"),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               state == "-1"

@@ -8,6 +8,7 @@ export 'gql_latestdetailcourse.dart';
 export 'gql_latestmaincourse.dart';
 export 'gql_latestdirectcourse.dart';
 export 'gql_latestmodel.dart';
+export 'gql_recordadd.dart';
 export 'gql_sourse.dart';
 export 'gql_user.dart';
 export 'gql_voice.dart';

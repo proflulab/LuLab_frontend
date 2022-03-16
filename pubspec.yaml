@@ -46,7 +46,7 @@ dependencies:
   charts_flutter: ^0.12.0
   zefyrka: ^1.1.1
   dio_cookie_manager: ^2.0.0
-  image_picker: ^0.6.3+1
+  image_picker: ^0.8.4+11
   fijkplayer: ^0.10.1
   add_2_calendar: ^2.1.2
   xfspeech: ^1.0.0
