@@ -62,6 +62,6 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _app() {
-    Navigator.of(context).pushReplacementNamed('/signinpage');
+    Navigator.of(context).pushReplacementNamed('/app');
   }
 }

@@ -112,6 +112,28 @@ class _GatherState extends State<Gather> {
     });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        _swiperWidget(),
+        // SizedBox(height: fitHeight(20)),
+        // _titleWidget("课程预约"),
+        // SizedBox(height: fitHeight(20)),
+        // _hotProductListWidget(),
+        // SizedBox(height: fitHeight(20)),
+        _focusData3.length == 0 ? SizedBox(height: 0) : _titleWidget("直播预约"),
+        _focusData3.length == 0 ? SizedBox(height: 0) : _buildLive(),
+        _titleWidget("最新咨询"),
+        buildInfomation(),
+        // buildFreeCourse(),
+        _titleWidget("精选课程"),
+        _buildCourse(),
+        // buildWonderCourse(),
+      ],
+    );
+  }
+
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
@@ -238,28 +260,6 @@ class _GatherState extends State<Gather> {
 
   //推荐
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        _swiperWidget(),
-        // SizedBox(height: fitHeight(20)),
-        // _titleWidget("课程预约"),
-        // SizedBox(height: fitHeight(20)),
-        // _hotProductListWidget(),
-        // SizedBox(height: fitHeight(20)),
-        _titleWidget("直播预约"),
-        _buildLive(),
-        _titleWidget("最新咨询"),
-        buildInfomation(),
-        // buildFreeCourse(),
-        _titleWidget("精选课程"),
-        _buildCourse(),
-        // buildWonderCourse(),
-      ],
-    );
-  }
-
   // 直播预约
   Container _buildLive() {
     return Container(
@@ -269,7 +269,7 @@ class _GatherState extends State<Gather> {
         color: Colors.white,
         borderRadius: Radii.k6pxRadius,
       ),
-      height: 237,
+      height: 118.5 * _focusData3.length,
       width: 345,
       // color: Colors.white,
       child: buildLiveContext(),
@@ -375,10 +375,12 @@ class _GatherState extends State<Gather> {
                               fontSize: 15,
                               fontFamily: 'MyFontStyle',
                             )), //字体
-                            shape: MaterialStateProperty.all(
-                                BeveledRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(5))), //圆角弧度
+                            shape: MaterialStateProperty.all(StadiumBorder(
+                                side: BorderSide(
+                              //设置 界面效果
+                              style: BorderStyle.solid,
+                              color: status == "0" ? Colors.green : Colors.grey,
+                            ))), //圆角弧度
                           ),
                           onPressed: () {
                             //执行日历预约方法

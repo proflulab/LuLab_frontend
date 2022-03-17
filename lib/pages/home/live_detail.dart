@@ -258,10 +258,12 @@ class _LiveDetailState extends State<LiveDetail> {
                             fontSize: 13,
                             fontFamily: 'MyFontStyle',
                           )), //字体
-                          shape: MaterialStateProperty.all(
-                              BeveledRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(5))), //圆角弧度
+                          shape: MaterialStateProperty.all(StadiumBorder(
+                              side: BorderSide(
+                            //设置 界面效果
+                            style: BorderStyle.solid,
+                            color: Colors.lightGreen,
+                          ))), //圆角弧度
                         ),
                         onPressed: () {
                           _onShare(context, text);
@@ -293,10 +295,12 @@ class _LiveDetailState extends State<LiveDetail> {
                             fontSize: 13,
                             fontFamily: 'MyFontStyle',
                           )), //字体
-                          shape: MaterialStateProperty.all(
-                              BeveledRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(5))), //圆角弧度
+                          shape: MaterialStateProperty.all(StadiumBorder(
+                              side: BorderSide(
+                            //设置 界面效果
+                            style: BorderStyle.solid,
+                            color: state == "-1" ? Colors.green : Colors.grey,
+                          ))), //圆角弧度
                         ),
                         onPressed: () {
                           //执行日历预约方法
