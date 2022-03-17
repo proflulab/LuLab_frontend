@@ -23,7 +23,7 @@ class Global {
         phone: '无',
         sex: '未知',
         description: '无',
-        id: '',
+        id: '61d9604f5fcd295d1b6893cf',
       ));
 
   /// 发布渠道

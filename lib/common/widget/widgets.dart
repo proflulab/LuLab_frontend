@@ -1,5 +1,6 @@
 library widgets;
 
+export 'action_input.dart';
 export 'appbar.dart';
 export 'audioplayers.dart';
 export 'bounce_bottom_sheet.dart';

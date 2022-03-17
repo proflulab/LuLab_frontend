@@ -1,5 +1,6 @@
 // {
-//   "mode":1
+//    "mode":"3",
+//    "authorId": "61d9604f5fcd295d1b6893cf"
 // }
 
 const String gqllatestDirectCourseList = r'''
@@ -13,7 +14,7 @@ query LatestDirectCourse($mode: String! , $authorId: String!){
     authorTags
     category
     mode
-   category
+    category
     videoUrl
     onlineTime
     imgUrl

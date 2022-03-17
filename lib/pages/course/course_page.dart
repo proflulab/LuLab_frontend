@@ -48,8 +48,10 @@ class _CoursePageState extends State<CoursePage> {
   }
 
   _handleCourse() async {
-    LatestDirectCourseRequest variables =
-        LatestDirectCourseRequest(mode: mode, authorId: Global.profile.data.id);
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(
+      mode: mode,
+      authorId: Global.profile.data.id,
+    );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
     setState(() {

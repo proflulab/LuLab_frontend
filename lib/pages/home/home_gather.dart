@@ -4,15 +4,14 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:proflu/common/api/gql_recordadd.dart';
-import 'package:proflu/common/entitys/record_add_data.dart';
-import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/widget/toast.dart';
 
+import '../../common/widget/toast.dart';
+import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import 'live_detail.dart';
@@ -33,9 +32,11 @@ class _GatherState extends State<Gather> {
   List _focusData3 = [];
   late RecordAdd _recordAdd;
   var _recordData;
-  DateTime now = new DateTime.now();
+  DateTime now = DateTime.now();
   _getInitial() async {
-    print('回退刷新数据');
+    if (kDebugMode) {
+      print('回退刷新数据');
+    }
     _handleCourse();
   }
 
@@ -105,7 +106,9 @@ class _GatherState extends State<Gather> {
           if (resWrite != null) {
             final id = await AlarmCalendar.createEvent(calendars);
             calendars.setEventId = id!;
-            print('获得ID为：' + id);
+            if (kDebugMode) {
+              print('获得ID为：' + id);
+            }
           }
         });
       }
@@ -357,7 +360,9 @@ class _GatherState extends State<Gather> {
                         top: 45.0,
                         left: 240.0,
                         child: ElevatedButton(
-                          child: status == "0" ? Text("预约") : Text("已预约"),
+                          child: status == "0"
+                              ? const Text("预约")
+                              : const Text("已预约"),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                                 status == "0"
@@ -391,7 +396,6 @@ class _GatherState extends State<Gather> {
                               status = "1";
                               _handleCourse();
                             });
-
                             Navigator.push(
                                     context,
                                     MaterialPageRoute(
