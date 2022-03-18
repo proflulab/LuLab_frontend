@@ -1,9 +1,10 @@
 {
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "screenwidth"
-    ]
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "cSpell.words": ["screenwidth"],
+  "[markdown]": {
+    "editor.cursorSurroundingLines": 0
+  }
 }
