@@ -2,13 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/widget/widgets.dart';
-import '../../common/utils/utils.dart';
-import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
 import '../app.dart';
 import '../sign_up/register.dart';
 
@@ -61,8 +60,13 @@ class _SignInPageState extends State<SignInPage> {
 
     // ExtendedNavigator.rootNavigator
     //     .pushReplacementNamed(Routes.applicationPageRoute);
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => const App()));
+    // Navigator.of(context)
+    //     .push(MaterialPageRoute(builder: (context) => const App()));
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const App()),
+      (route) => route == null,
+    );
   }
 
   // 登录表单
