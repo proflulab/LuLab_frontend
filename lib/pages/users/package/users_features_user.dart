@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:proflu/common/utils/utils.dart';
-import 'users_wast_user.dart';
+import 'users_The home page_user.dart';
 
-class Qroduct extends StatelessWidget {
-  const Qroduct({Key? key}) : super(key: key);
+class Features extends StatelessWidget {
+  const Features({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class APP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.only(right: 10, left: 15),
       //内间距
       child: Stack(
         //重叠的Stack Widget，实现重叠

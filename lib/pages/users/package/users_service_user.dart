@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'users_wast_user.dart';
+import 'users_The home page_user.dart';
 import 'package:flutter/material.dart';
 
 class Service extends StatelessWidget {
@@ -46,7 +46,7 @@ class Thetext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.only(right: 10, left: 15),
       //内间距
       child: Stack(
         //重叠的Stack Widget，实现重叠
@@ -59,7 +59,7 @@ class Thetext extends StatelessWidget {
               ), //图片模糊过滤，横向竖向都设置5.0
               child: Opacity(
                 //透明控件
-                opacity: 0.5,
+                opacity: 0.15,
                 child: Image.asset(
                   'assets/images/OIP-TY.jpg',
                   fit: BoxFit.contain,
@@ -67,7 +67,7 @@ class Thetext extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
               width: 1.sw,
               height: 1.sh,
               child: ListView(
@@ -88,57 +88,5 @@ class Thetext extends StatelessWidget {
         ],
       ),
     );
-    //Container(
-    //   margin: EdgeInsets.all(5.0),
-    //   //内间距
-
-    //   child: Stack(
-    //     //重叠的Stack Widget，实现重贴
-    //     children: <Widget>[
-    //       ConstrainedBox(
-    //           //约束盒子组件，添加额外的限制条件到 child上。
-    //           constraints: const BoxConstraints.expand(), //限制条件，可扩展的。
-    //           child: Image.asset(
-    //             'assets/images/OIP-TY.jpg',
-    //             fit: BoxFit.contain,
-    //           )),
-    //       Center(
-    //         child: ClipRect(
-    //           //裁切长方形
-    //           child: BackdropFilter(
-    //             //背景滤镜器
-    //             filter: ImageFilter.blur(
-    //               sigmaX: 0.5,
-    //             ), //图片模糊过滤，横向竖向都设置5.0
-    //             child: Opacity(
-    //               //透明控件
-    //               opacity: 0.5,
-    //               child: Container(
-    //                 // 容器组件
-    //                 width: 500.0,
-    //                 height: 700.0,
-    //                 decoration: BoxDecoration(
-    //                     color: Colors.grey.shade200), //盒子装饰器，进行装饰，设置颜色为灰色
-    //                 child: Center(
-    //                     child: ListView(
-    //                   children: const [
-    //                     ListTile(
-
-    //                     ),
-    //                     ListTile(
-
-    //                     ),
-    //                     ListTile(
-
-    //                   ],
-    //                 )),
-    //               ),
-    //             ),
-    //           ),
-    //         ),
-    //       )
-    //     ],
-    //   ),
-    // );
   }
 }

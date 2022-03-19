@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'users_wast_user.dart';
+import 'users_The home page_user.dart';
 
 class Qrivacy extends StatelessWidget {
   const Qrivacy({
@@ -46,7 +46,7 @@ class User extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.only(right: 10, left: 15),
       //内间距
       child: Stack(
         //重叠的Stack Widget，实现重叠
@@ -59,7 +59,7 @@ class User extends StatelessWidget {
               ), //图片模糊过滤，横向竖向都设置5.0
               child: Opacity(
                 //透明控件
-                opacity: 0.5,
+                opacity: 0.15,
                 child: Image.asset(
                   'assets/images/OIP-TY.jpg',
                   fit: BoxFit.contain,

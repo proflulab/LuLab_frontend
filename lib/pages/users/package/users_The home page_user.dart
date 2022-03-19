@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../users_set.dart';
 import 'users_copyright_user.dart';
-import 'users_product_user.dart';
+import 'users_features_user.dart';
 import 'users_service_user.dart';
 import 'users_privacy_user.dart';
 
@@ -46,14 +46,14 @@ class Ttt extends StatelessWidget {
       color: const Color.fromRGBO(246, 246, 246, 1),
       child: Column(children: [
         Image.asset(
-          'assets/images/OIP-TY.jpg',
+          'assets/images/OIP-YYH.jpg',
           fit: BoxFit.fill,
           width: 359,
           height: 240,
         ),
         Container(
-            width: 330,
-            height: 178,
+            width: 360,
+            height: 233,
             child: ListView(
               children: [
                 ListTile(
@@ -92,6 +92,19 @@ class Ttt extends StatelessWidget {
                             const Copyright(title: '我是跳转传值')));
                   },
                 ),
+                Container(
+                  color: const Color.fromRGBO(227, 227, 227, 1),
+                  height: 2,
+                ),
+                ListTile(
+                  title: const Text('产品特色'),
+                  trailing:
+                      const Icon(Icons.chevron_right, color: Colors.black54),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Features()));
+                  },
+                ),
               ],
             ),
             decoration: BoxDecoration(
@@ -102,44 +115,6 @@ class Ttt extends StatelessWidget {
                 color: const Color.fromRGBO(227, 227, 227, 1),
               ),
             )),
-        Container(
-          height: 30,
-        ),
-        Container(
-            height: 60,
-            width: 330,
-            child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Qroduct()));
-                },
-                // padding: EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 10,
-                    ),
-                    const Text(
-                      '产品特色',
-                      style: TextStyle(color: Colors.black, fontSize: 15),
-                    ),
-                    Container(
-                      width: 210,
-                    ),
-                    const Icon(Icons.chevron_right, color: Colors.black54),
-                  ],
-                )
-
-                // padding: EdgeInsets.zero,
-                ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-              border: Border.all(
-                width: 1,
-                color: const Color.fromRGBO(227, 227, 227, 1),
-              ),
-            ))
       ]),
     );
   }
