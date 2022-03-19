@@ -63,7 +63,7 @@ class Content extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
               width: 1.sw,
               height: 1.sh,
               child: ListView(

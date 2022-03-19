@@ -53,7 +53,7 @@ class APP extends StatelessWidget {
               ), //图片模糊过滤，横向竖向都设置5.0
               child: Opacity(
                 //透明控件
-                opacity: 0.5,
+                opacity: 0.15,
                 child: Image.asset(
                   'assets/images/OIP-TY.jpg',
                   fit: BoxFit.contain,
@@ -61,7 +61,7 @@ class APP extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          SizedBox(
               width: 1.sw,
               height: 1.sh,
               child: ListView(
