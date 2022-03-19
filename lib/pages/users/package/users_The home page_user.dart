@@ -52,7 +52,7 @@ class Ttt extends StatelessWidget {
           height: 240,
         ),
         Container(
-            width: 360,
+            width: 359,
             height: 233,
             child: ListView(
               children: [
