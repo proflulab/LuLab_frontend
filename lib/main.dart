@@ -16,27 +16,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(750, 1334), //配置设计稿的宽度高度
-        builder: () => MaterialApp(
-            locale: const Locale('zh', 'CN'),
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              //GlobalCupertinoLocalizations.delegate,
-              //苹果弹窗本地化处理
-              GlobalCupertinoLocalizations.delegate,
-              //咨询分页本地化处理
-              //GlobalEasyRefreshLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en', 'US'), // English, no country code
-              Locale('zh', 'CN'), // 中文简体
-            ],
-            debugShowCheckedModeBanner: false,
-            title: "陆向谦实验室",
-            theme: mDefaultTheme,
-            initialRoute: '/',
-            //getPages: AppPages.routes,
-            onGenerateRoute: onGenerateRoute));
+      designSize: const Size(750, 1334), //配置设计稿的宽度高度
+      builder: () => MaterialApp(
+        locale: const Locale('zh', 'CN'),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          //GlobalCupertinoLocalizations.delegate,
+          //苹果弹窗本地化处理
+          GlobalCupertinoLocalizations.delegate,
+          //咨询分页本地化处理
+          //GlobalEasyRefreshLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'), // English, no country code
+          Locale('zh', 'CN'), // 中文简体
+        ],
+        debugShowCheckedModeBanner: false,
+        title: "陆向谦实验室",
+        theme: mDefaultTheme,
+        initialRoute: '/',
+        //getPages: AppPages.routes,
+        onGenerateRoute: onGenerateRoute,
+      ),
+    );
   }
 }

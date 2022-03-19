@@ -103,7 +103,9 @@ class _CtionInputDialogState extends State<CtionInputDialog>
   @override
   Widget build(BuildContext context) {
     var mediaQueryData = MediaQueryData.fromWindow(ui.window);
-    return AnimatedContainer(
+    return 
+    
+    AnimatedContainer(
       //color: Colors.transparent,
       duration: const Duration(milliseconds: 2),
       alignment: Alignment.bottomCenter,

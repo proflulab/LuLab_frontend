@@ -12,8 +12,8 @@ import '../../common/values/values.dart';
 // import '../../common/widget/find_bottom_tool.dart';
 // import '../../common/widget/find_config.dart';
 // import '../../common/widget/widgets.dart';
-import 'course_comment_send.dart';
-import 'course_index.dart';
+//import 'course_comment_send.dart';
+//import 'course_index.dart';
 
 /// 课程评论页面
 
@@ -27,8 +27,9 @@ class CourseCommentPage extends StatefulWidget {
 }
 
 class _CourseCommentPageState extends State<CourseCommentPage> {
+  final TextEditingController _commentController = TextEditingController();
   late LatestComment _latestComment;
-  late CommentAdd _commentAdd;
+  //late CommentAdd _commentAdd;
   List _commentData = [];
 
   @override
@@ -50,6 +51,31 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _commentController.dispose();
+  }
+
+  //添加评论
+  _handleCommentAdd() async {
+    CommentAddRequest variables = CommentAddRequest(
+      content: _commentController.value.text,
+      authorId: Global.profile.data.id,
+      authorImg: Global.profile.data.img,
+      courseId: widget.courseData.firstCourseId,
+      authorName: Global.profile.data.name,
+    );
+    //_commentAdd =
+    await GqlCommentAddAPI.indexPageInfo(
+        variables: variables, context: context);
+    //var commentData2 = _commentAdd.commentAdd;
+    setState(() {
+      _handleComment();
+      _commentController.text = "";
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,20 +84,6 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           flex: 1,
           child: CustomScrollView(
             slivers: <Widget>[
-              // ListView(
-              //   children: [],
-              // ),
-              // SliverAppBar(
-              //   pinned: true,
-              //   expandedHeight: 230.0,
-              //   flexibleSpace: FlexibleSpaceBar(
-              //     title: const Text('复仇者联盟'),
-              //     background: Image.network(
-              //       'http://img.haote.com/upload/20180918/2018091815372344164.jpg',
-              //       fit: BoxFit.fitHeight,
-              //     ),
-              //   ),
-              // ),
               SliverList(
                 delegate: SliverChildBuilderDelegate((content, index) {
                   return Text(
@@ -84,10 +96,10 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
               SliverList(
                 delegate: SliverChildBuilderDelegate((content, index) {
                   return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage:
-                          AssetImage(_commentData[index].authorImg),
-                    ),
+                    // leading: CircleAvatar(
+                    //   backgroundImage:
+                    //       AssetImage(_commentData[index].authorImg),
+                    // ),
                     title: Column(
                       children: [
                         // 头衔
@@ -195,13 +207,35 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                           color: Colors.amber,
                         )),
                   ),
-                  onTap: () {
-                    CtionComment.showActionSheet(context,
-                        focusNode: FocusNode(),
-                        placehold: '快来评论吧...',
-                        submitAction: (text) {},
-                        courseId: widget.courseData.firstCourseId);
-                    //actionComment();
+                  onTap: () async {
+                    showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        builder: (BuildContext context) {
+                          return AnimatedContainer(
+                            //color: Colors.transparent,
+                            duration: const Duration(milliseconds: 2),
+                            alignment: Alignment.bottomCenter,
+                            padding: EdgeInsets.only(
+                                bottom: MediaQueryData.fromWindow(ui.window)
+                                    .viewInsets
+                                    .bottom),
+                            child: Material(
+                              child: Container(
+                                height: 50,
+                                color: Colors.white,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                child: Row(
+                                  children: <Widget>[
+                                    renderTextInput(),
+                                    renderSenderButton()
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        });
                   },
                 ),
               ],
@@ -209,6 +243,65 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           ),
         )
       ],
+    );
+  }
+
+  Widget renderTextInput() {
+    return Expanded(
+      child: TextField(
+        //keyboardType: TextInputType.text,
+        //focusNode: FocusNode(),
+        controller: _commentController,
+        autofocus: true,
+        //maxLines: null,
+        style: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+        //textInputAction: TextInputAction.send,
+        textAlignVertical: TextAlignVertical.top,
+        textAlign: TextAlign.start,
+        decoration: InputDecoration(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+          hintText: '快来评论吧...',
+          hintStyle: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+          counterText: '',
+          filled: true,
+          fillColor: ProfluC.themeColor10,
+          enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(style: BorderStyle.none, color: Colors.lime),
+              borderRadius: BorderRadius.circular(30)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  style: BorderStyle.none, color: Colors.transparent),
+              borderRadius: BorderRadius.circular(30)),
+        ),
+        onSubmitted: (text) {
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget renderSenderButton() {
+    return GestureDetector(
+      child: Container(
+        padding: const EdgeInsets.only(left: 16),
+        child: const Center(
+          child: Text('发送',
+              style: TextStyle(
+                fontSize: 16,
+                color: ProfluC.textEmphasis,
+              )),
+        ),
+      ),
+      onTap: () {
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        }
+        _handleCommentAdd();
+      },
     );
   }
 

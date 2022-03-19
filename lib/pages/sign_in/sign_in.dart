@@ -98,7 +98,6 @@ class _SignInPageState extends State<SignInPage> {
               marginTop: 50,
               width: 622,
               height: 112),
-
           // 登录
           Container(
             //height: 100.h,

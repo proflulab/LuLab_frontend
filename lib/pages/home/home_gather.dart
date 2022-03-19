@@ -33,6 +33,7 @@ class _GatherState extends State<Gather> {
   late RecordAdd _recordAdd;
   var _recordData;
   DateTime now = DateTime.now();
+
   _getInitial() async {
     if (kDebugMode) {
       print('回退刷新数据');
@@ -125,8 +126,8 @@ class _GatherState extends State<Gather> {
         // SizedBox(height: fitHeight(20)),
         // _hotProductListWidget(),
         // SizedBox(height: fitHeight(20)),
-        _focusData3.length == 0 ? SizedBox(height: 0) : _titleWidget("直播预约"),
-        _focusData3.length == 0 ? SizedBox(height: 0) : _buildLive(),
+        _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
+        _focusData3.isEmpty ? const SizedBox(height: 0) : _buildLive(),
         _titleWidget("最新咨询"),
         buildInfomation(),
         // buildFreeCourse(),
@@ -397,11 +398,12 @@ class _GatherState extends State<Gather> {
                               _handleCourse();
                             });
                             Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LiveDetail(
-                                            product: _focusData3[index])))
-                                .then((value) => _getInitial());
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    LiveDetail(product: _focusData3[index]),
+                              ),
+                            ).then((value) => _getInitial());
                           },
                         )
                         // : ElevatedButton(

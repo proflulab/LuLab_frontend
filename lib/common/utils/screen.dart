@@ -61,7 +61,7 @@ extension SizeExtension on num {
   //圆角
   ///[ScreenUtil.radius]
   double get r => ScreenUtil().radius(this);
-  //
+  //适配字体
   ///[ScreenUtil.setSp]
   double get sp => ScreenUtil().setSp(this);
 
