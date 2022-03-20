@@ -49,7 +49,7 @@ class Ttt extends StatelessWidget {
           'assets/images/OIP-YYH.jpg',
           fit: BoxFit.fill,
           width: 359,
-          height: 240,
+          height: 230,
         ),
         Container(
             width: 359,
