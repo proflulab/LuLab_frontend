@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/utils/utils.dart';
 
 import '../users_set.dart';
 import 'users_copyright_user.dart';
@@ -51,11 +52,11 @@ class Ttt extends StatelessWidget {
             'assets/images/OIP-YYH.jpg',
             fit: BoxFit.fill,
             width: 359,
-            height: 230,
+            height: 210,
           ),
           Container(
-              width: 359,
-              height: 233,
+              height: 410.h,
+              width: 700.w,
               child: ListView(
                 children: [
                   ListTile(
