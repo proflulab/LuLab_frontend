@@ -259,7 +259,7 @@ class _LiveDetailState extends State<LiveDetail> {
                             fontSize: 13,
                             fontFamily: 'MyFontStyle',
                           )), //字体
-                          shape: MaterialStateProperty.all(StadiumBorder(
+                          shape: MaterialStateProperty.all(const StadiumBorder(
                               side: BorderSide(
                             //设置 界面效果
                             style: BorderStyle.solid,

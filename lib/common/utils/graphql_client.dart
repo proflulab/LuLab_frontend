@@ -61,12 +61,13 @@ class GraphqlClientUtil {
     QueryResult result = await client().mutate(options);
     if (result.hasException) {
       if (kDebugMode) {
-        print(result.exception.toString());
+        print(
+          result.exception.toString(),
+        );
       }
       //toastInfo(msg: result.exception.toString());
       //throw result.exception;
     }
-
     return result;
   }
 }

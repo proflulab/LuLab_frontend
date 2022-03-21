@@ -76,7 +76,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
             //测试视频
             'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-            cover: '',
+            cover:
+                'https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png',
             key: UniqueKey(),
           ),
           // tab栏
@@ -181,7 +182,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: _subCourses.length,
                           itemBuilder: (context, index) {
-                            if (_subCourses.length != null) {
+                            if (_subCourses.isNotEmpty) {
                               return InkWell(
                                 onTap: () async {
                                   setState(() {

@@ -10,10 +10,10 @@ class CommentAdd {
     required this.commentAdd,
   });
 
-  CommentAddClass commentAdd;
+  final CommentAddClass commentAdd;
 
   factory CommentAdd.fromJson(Map<String, dynamic> json) => CommentAdd(
-        commentAdd: CommentAddClass.fromJson(json),
+        commentAdd: CommentAddClass.fromJson(json["commentAdd"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -27,8 +27,8 @@ class CommentAddClass {
     required this.msg,
   });
 
-  String status;
-  String msg;
+  final String status;
+  final String msg;
 
   factory CommentAddClass.fromJson(Map<String, dynamic> json) =>
       CommentAddClass(

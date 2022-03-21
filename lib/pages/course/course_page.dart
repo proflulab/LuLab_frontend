@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:proflu/common/global/global.dart';
 
+import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {
@@ -130,7 +131,7 @@ class _CoursePageState extends State<CoursePage> {
                     height: _focusData2.length * _selectW * ProfluF.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _focusData2.length,
+                      itemCount: _focusData2.length + 1,
                       itemBuilder: (context, index) {
                         return InkWell(
                             onTap: () {
@@ -268,39 +269,42 @@ class _CoursePageState extends State<CoursePage> {
                               top: 15.h,
                               left: (16.w + _imageWidht + 16.w) - 3.w,
                               height: _focusData3[index].title.length > 11
-                                  ? 50.h
+                                  ? 60.h
                                   : 25.h,
                               width: _textWidht,
                               text: _focusData3[index].title,
                               font: 'MyFontStyle',
+                              fontSize: 31.sp,
                             ),
                             // 作者
                             positioningText(
                               context: context,
                               top: _focusData3[index].title.length > 11
-                                  ? 75.h
+                                  ? 85.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w,
                               height: 30.h,
-                              width: 85.w,
+                              width: 80.w,
                               text: _focusData3[index].author,
                               font: '',
                               fontWeight: FontWeight.bold,
-                              fontSize: ProfluFS.size14,
+                              fontSize: 25.sp,
+                              maxLines: 1,
+                              overflow: TextOverflow.clip,
                               color: ProfluC.textSecondary,
                             ),
                             // 作者标签
                             positioningText(
                               context: context,
                               top: _focusData3[index].title.length > 11
-                                  ? 75.h
+                                  ? 85.h
                                   : 50.h,
                               left: 16.w + _imageWidht + 16.w + 95.w,
                               height: 30.h,
                               width: _textWidht - 95.w,
                               text: _focusData3[index].authorTags,
                               font: '',
-                              fontSize: ProfluFS.size14,
+                              fontSize: 25.sp,
                               maxLines: 1,
                               color: ProfluC.textSecondary,
                             ),
