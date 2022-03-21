@@ -16,7 +16,6 @@ query LatestDirectCourse($mode: String! , $authorId: String!,$limit:Int,$skip:In
     authorTags
     category
     mode
-    category
     videoUrl
     onlineTime
     imgUrl

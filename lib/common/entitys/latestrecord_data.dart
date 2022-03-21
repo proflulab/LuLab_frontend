@@ -44,7 +44,7 @@ class LatestRecordElement {
   String authorId;
   String status;
   String addTime;
-  DateTime onlineTime;
+  int onlineTime;
   String timestamp;
   String imgUrl;
   String title;
@@ -57,7 +57,7 @@ class LatestRecordElement {
         authorId: json["authorId"],
         status: json["status"],
         addTime: json["addTime"],
-        onlineTime: DateTime.parse(json["onlineTime"]),
+        onlineTime: json["onlineTime"],
         timestamp: json["timestamp"],
         imgUrl: json["imgUrl"],
         title: json["title"],
@@ -70,7 +70,7 @@ class LatestRecordElement {
         "authorId": authorId,
         "status": status,
         "addTime": addTime,
-        "onlineTime": onlineTime.toIso8601String(),
+        "onlineTime": onlineTime,
         "timestamp": timestamp,
         "imgUrl": imgUrl,
         "title": title,

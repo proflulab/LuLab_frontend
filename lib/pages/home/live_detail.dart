@@ -148,6 +148,7 @@ class _LiveDetailState extends State<LiveDetail> {
 
   @override
   Widget build(BuildContext context) {
+    var height = (widget.product.description.length / 21) * 32.h;
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
 
@@ -215,8 +216,8 @@ class _LiveDetailState extends State<LiveDetail> {
               child: Stack(
                 children: <Widget>[
                   Positioned(
-                    top: 10.0,
-                    left: 38.0,
+                    top: 30.0.h,
+                    left: 50.0.w,
                     child: SizedBox(
                       width: 800.0.w, //容器的相关参数
                       height: 200.0.h,
@@ -227,8 +228,8 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 43.0,
-                    left: 25.0,
+                    top: 80.0.h,
+                    left: 25.0.w,
                     child: SizedBox(
                       width: 800.0.w, //容器的相关参数
                       height: 200.0.h,
@@ -237,8 +238,8 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 110.0,
-                    left: 32.5,
+                    top: 185.0.h,
+                    left: 50.w,
                     child: SizedBox(
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
@@ -272,8 +273,8 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 110.0,
-                    left: 177.5,
+                    top: 185.0.h,
+                    left: 370.w,
                     child: SizedBox(
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
@@ -326,14 +327,14 @@ class _LiveDetailState extends State<LiveDetail> {
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              height: 320.h,
+              height: 150.h + height,
               width: 690.w,
               // color: Colors.white,
               child: Stack(
                 children: <Widget>[
                   Positioned(
-                    top: 20.0,
-                    left: 15.0,
+                    top: 20.0.h,
+                    left: 45.0.w,
                     child: SizedBox(
                       width: 690.0.w, //容器的相关参数
                       height: 80.0.h,
@@ -348,8 +349,8 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 49.0,
-                    left: 18.0,
+                    top: 70.0.h,
+                    left: 45.0.w,
                     child: SizedBox(
                       width: 690.0.w, //容器的相关参数
                       height: 80.0.h,
@@ -364,8 +365,8 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 71.0,
-                    left: 18.0,
+                    top: 110.0.h,
+                    left: 45.0.w,
                     child: SizedBox(
                       width: 690.0.w, //容器的相关参数
                       height: 80.0.h,
@@ -380,11 +381,11 @@ class _LiveDetailState extends State<LiveDetail> {
                     ),
                   ),
                   Positioned(
-                    top: 104.0,
-                    left: 15.0,
+                    top: 150.0.h,
+                    left: 40.0.w,
                     child: SizedBox(
                       width: 634.0.w, //容器的相关参数
-                      height: 240.0.h,
+                      height: height,
                       child: Text(
                         widget.product.description,
                         style: const TextStyle(

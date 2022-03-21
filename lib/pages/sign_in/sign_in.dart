@@ -21,10 +21,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   // 账号控制器
   final TextEditingController _emailController =
-      TextEditingController(text: "shiming");
+      TextEditingController(text: "");
   // 密码控制器
-  final TextEditingController _passController =
-      TextEditingController(text: "12345678");
+  final TextEditingController _passController = TextEditingController(text: "");
 
   // 跳转 注册界面
   // _handleNavSignUp() {
@@ -126,6 +125,11 @@ class _SignInPageState extends State<SignInPage> {
                     }),
             ],
           )),
+          Container(
+            alignment: const Alignment(-0, 0.5),
+            height: 200,
+            child: const CustomCheckbox(),
+          ),
         ],
       ),
     );
@@ -144,5 +148,77 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+}
+
+class CustomCheckbox extends StatefulWidget {
+  const CustomCheckbox({Key? key}) : super(key: key);
+
+  @override
+  _CustomCheckboxState createState() => _CustomCheckboxState();
+}
+
+class _CustomCheckboxState extends State<CustomCheckbox> {
+  bool _checked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      SizedBox(
+          width: 350,
+          height: 80,
+          child: Stack(children: <Widget>[
+            Align(
+              alignment: const Alignment(-0.7, -1.3),
+              child: Checkbox(
+                  shape: const CircleBorder(),
+                  value: _checked,
+                  onChanged: (v) {
+                    setState(() {
+                      _checked = v!;
+                    });
+                  }),
+            ),
+            Align(
+                alignment: const Alignment(0.1, 1),
+                child: SizedBox(
+                    width: 190,
+                    height: 100,
+                    child: Column(children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          const SizedBox(
+                            height: 11.0,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              text: '我已阅读陆向谦创新创业实验室,',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 13.0),
+                              children: <TextSpan>[
+                                const TextSpan(
+                                  text: '《.........》,《......》,《...》',
+                                  style: TextStyle(color: Colors.blue),
+                                  // recognizer: TapGestureRecognizer()
+                                  //   ..onTap = () async {}
+                                ),
+                                const TextSpan(
+                                  text: '和 ',
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                TextSpan(
+                                    text: '《...》',
+                                    style: const TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {}),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ])))
+          ]))
+    ]);
   }
 }

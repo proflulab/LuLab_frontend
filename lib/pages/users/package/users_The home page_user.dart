@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/utils/utils.dart';
 
 import '../users_set.dart';
 import 'users_copyright_user.dart';
@@ -28,7 +29,8 @@ class Dty extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        title: const Text('关于实验室', style: TextStyle(color: Colors.black)),
+        title: const Text('关于实验室',
+            style: TextStyle(fontFamily: 'MyFontStyle', color: Colors.black)),
       ),
       body: const Ttt(),
     );
@@ -42,80 +44,91 @@ class Ttt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromRGBO(246, 246, 246, 1),
-      child: Column(children: [
-        Image.asset(
-          'assets/images/OIP-YYH.jpg',
-          fit: BoxFit.fill,
-          width: 359,
-          height: 240,
-        ),
-        Container(
-            width: 360,
-            height: 233,
-            child: ListView(
-              children: [
-                ListTile(
-                  title: const Text('服务使用协议'),
-                  trailing:
-                      const Icon(Icons.chevron_right, color: Colors.black54),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Service()));
-                  },
-                ),
-                Container(
-                  color: const Color.fromRGBO(227, 227, 227, 1),
-                  height: 2,
-                ),
-                ListTile(
-                  title: const Text('隐私政策'),
-                  trailing:
-                      const Icon(Icons.chevron_right, color: Colors.black54),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Qrivacy(title: '我是跳转传值')));
-                  },
-                ),
-                Container(
-                  color: const Color.fromRGBO(227, 227, 227, 1),
-                  height: 2,
-                ),
-                ListTile(
-                  title: const Text('版权声明'),
-                  trailing:
-                      const Icon(Icons.chevron_right, color: Colors.black54),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            const Copyright(title: '我是跳转传值')));
-                  },
-                ),
-                Container(
-                  color: const Color.fromRGBO(227, 227, 227, 1),
-                  height: 2,
-                ),
-                ListTile(
-                  title: const Text('产品特色'),
-                  trailing:
-                      const Icon(Icons.chevron_right, color: Colors.black54),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Features()));
-                  },
-                ),
-              ],
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-              border: Border.all(
-                width: 1,
-                color: const Color.fromRGBO(227, 227, 227, 1),
+    return Center(
+      child: Container(
+        color: const Color.fromRGBO(246, 246, 246, 1),
+        child: Column(children: [
+          Image.asset(
+            'assets/images/OIP-YYH.jpg',
+            fit: BoxFit.fill,
+            width: 359,
+            height: 210,
+          ),
+          Container(
+              height: 410.h,
+              width: 700.w,
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const Text('服务使用协议',
+                        style: TextStyle(
+                            fontFamily: 'MyFontStyle', color: Colors.black)),
+                    trailing:
+                        const Icon(Icons.chevron_right, color: Colors.black54),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Service()));
+                    },
+                  ),
+                  Container(
+                    color: const Color.fromRGBO(227, 227, 227, 1),
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: const Text('隐私政策',
+                        style: TextStyle(
+                            fontFamily: 'MyFontStyle', color: Colors.black)),
+                    trailing:
+                        const Icon(Icons.chevron_right, color: Colors.black54),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              const Qrivacy(title: '我是跳转传值')));
+                    },
+                  ),
+                  Container(
+                    color: const Color.fromRGBO(227, 227, 227, 1),
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: const Text('版权声明',
+                        style: TextStyle(
+                            fontFamily: 'MyFontStyle', color: Colors.black)),
+                    trailing:
+                        const Icon(Icons.chevron_right, color: Colors.black54),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              const Copyright(title: '我是跳转传值')));
+                    },
+                  ),
+                  Container(
+                    color: const Color.fromRGBO(227, 227, 227, 1),
+                    height: 2,
+                  ),
+                  ListTile(
+                    title: const Text('产品特色',
+                        style: TextStyle(
+                            fontFamily: 'MyFontStyle', color: Colors.black)),
+                    trailing:
+                        const Icon(Icons.chevron_right, color: Colors.black54),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Features()));
+                    },
+                  ),
+                ],
               ),
-            )),
-      ]),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                border: Border.all(
+                  width: 1,
+                  color: const Color.fromRGBO(227, 227, 227, 1),
+                ),
+              )),
+        ]),
+      ),
     );
   }
 }
