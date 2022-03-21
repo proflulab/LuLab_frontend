@@ -8,6 +8,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import '../other/loading.dart';
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {
@@ -27,8 +28,8 @@ class _CoursePageState extends State<CoursePage> {
   int _selectIndex = 0;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
-  final double _selectW = 1.sw * (1 - ProfluF.silver) - 12.w;
-  final double _coursesW = 1.sw * ProfluF.silver - 16.w;
+  final double _selectW = 1.sw * (1 - PFf.silver) - 12.w;
+  final double _coursesW = 1.sw * PFf.silver - 16.w;
 
   @override
   void initState() {
@@ -52,6 +53,8 @@ class _CoursePageState extends State<CoursePage> {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: mode,
       authorId: Global.profile.data.id,
+      limit: 10,
+      skip: 0,
     );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
@@ -128,7 +131,7 @@ class _CoursePageState extends State<CoursePage> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: _focusData2.length * _selectW * ProfluF.golden,
+                    height: _focusData2.length * _selectW * PFf.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _focusData2.length + 1,
@@ -150,7 +153,7 @@ class _CoursePageState extends State<CoursePage> {
                               children: [
                                 Container(
                                   width: _selectW * 0.05,
-                                  height: _selectW * ProfluF.golden - 30.h,
+                                  height: _selectW * PFf.golden - 30.h,
                                   decoration: BoxDecoration(
                                     color: _selectIndex == index
                                         ? ProfluC.themeColor
@@ -161,7 +164,7 @@ class _CoursePageState extends State<CoursePage> {
                                 ),
                                 Container(
                                   width: _selectW * 0.95,
-                                  height: _selectW * ProfluF.golden,
+                                  height: _selectW * PFf.golden,
                                   decoration: BoxDecoration(
                                       color: _selectIndex == index
                                           ? ProfluC.backgroundSecondary
@@ -199,14 +202,14 @@ class _CoursePageState extends State<CoursePage> {
                     ),
                   ),
                   SizedBox(
-                    height: _selectW * ProfluF.golden,
+                    height: _selectW * PFf.golden,
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Container(
                           width: double.infinity,
-                          height: _selectW * ProfluF.golden,
+                          height: _selectW * PFf.golden,
                           decoration: BoxDecoration(
                               color: ProfluC.backgroundPrimary,
                               borderRadius:
@@ -236,7 +239,7 @@ class _CoursePageState extends State<CoursePage> {
                 itemCount: _focusData3.length,
                 itemBuilder: (context, index) {
                   var _imageHeight = _coursesW * 0.414 - 16.w * 2;
-                  var _imageWidht = _imageHeight * ProfluF.ratio3_4;
+                  var _imageWidht = _imageHeight * PFf.ratio3_4;
                   var _textWidht = _coursesW - (16.w + _imageWidht + 16.w);
                   if (_focusData3.isNotEmpty) {
                     return InkWell(
@@ -257,12 +260,16 @@ class _CoursePageState extends State<CoursePage> {
                           children: <Widget>[
                             // 课程封面
                             positionedImage(
-                                context: context,
-                                top: 15.h,
-                                left: 16.w,
-                                height: _imageHeight,
-                                width: _imageWidht,
-                                url: _focusData3[index].imgUrl),
+                              context: context,
+                              top: 15.h,
+                              left: 16.w,
+                              height: _imageHeight,
+                              width: _imageWidht,
+                              url: _focusData3[index].imgUrl,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.r),
+                              ),
+                            ),
                             // 课程标题
                             positioningText(
                               context: context,
@@ -313,7 +320,7 @@ class _CoursePageState extends State<CoursePage> {
                       ),
                     );
                   } else {
-                    return const Text('加载中...');
+                    return const Loading();
                   }
                 },
               ),

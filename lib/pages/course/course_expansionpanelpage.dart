@@ -30,7 +30,7 @@ class ExpansionPanelPage extends StatefulWidget {
 
 class _ExpansionPanelPageState extends State<ExpansionPanelPage> {
   final List<Item> _data = generateItems(1);
-  var isExpanded;
+  //var isExpanded;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 // {
-//   "dirId":
-//   "courseId":
+//   "dirId":"62345d7be311a5451190def0",
+//   "courseId":"62345c54e311a5451190deef"
 // }
 
 const String gqlDetailCourseList = r'''

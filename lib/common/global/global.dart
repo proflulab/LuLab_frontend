@@ -12,19 +12,20 @@ import '../../../../common/values/values.dart';
 class Global {
   /// 用户配置
   static UserLogin profile = UserLogin(
-      msg: '',
-      status: '',
-      data: Data(
-        name: 'name',
-        password: 'password',
-        img:
-            "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-        wechat: "无",
-        phone: '无',
-        sex: '未知',
-        description: '无',
-        id: '61d9604f5fcd295d1b6893cf',
-      ));
+    msg: '',
+    status: '',
+    data: Data(
+      name: 'name',
+      password: 'password',
+      img:
+          "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
+      wechat: "无",
+      phone: '无',
+      sex: '未知',
+      description: '无',
+      id: '61d9604f5fcd295d1b6893cf',
+    ),
+  );
 
   /// 发布渠道
   // static String channel = "xiaomi";

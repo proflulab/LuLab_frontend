@@ -5,15 +5,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-import '../../common/widget/toast.dart';
-import '../../common/global/global.dart';
+import '../../common/widget/widgets.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
+import '../other/loading.dart';
 import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
@@ -27,11 +27,11 @@ class _GatherState extends State<Gather> {
   late PostsData _postsData;
   List _focusData = [];
   late Inforponse _postsIfoData;
-  List _focusData2 = [];
+  List<LatestInformation> _focusData2 = [];
   late LatestDirectCourse _latestDirectCourse;
-  List _focusData3 = [];
-  late RecordAdd _recordAdd;
-  var _recordData;
+  List<LatestDirectCourseElement> _focusData3 = [];
+  //late RecordAdd _recordAdd;
+  //late RecordAddClass _recordData;
   DateTime now = DateTime.now();
 
   _getInitial() async {
@@ -67,13 +67,13 @@ class _GatherState extends State<Gather> {
       courseId: _focusData3[index].id,
       onlineTime: now,
     );
-    _recordAdd = await GqlRecordAddAPI.indexPageInfo(
-        variables: variables, context: context);
-    var recordData = _recordAdd.recordAdd;
+    //_recordAdd =
+    await GqlRecordAddAPI.indexPageInfo(variables: variables, context: context);
+    //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
-    setState(() {
-      _recordData = recordData;
-    });
+    // setState(() {
+    //   _recordData = recordData;
+    // });
   }
 
   // 读取所有课程数据
@@ -89,8 +89,12 @@ class _GatherState extends State<Gather> {
 
   // 读取直播课程数据
   _handleCourse() async {
-    LatestDirectCourseRequest variables =
-        LatestDirectCourseRequest(mode: "2", authorId: Global.profile.data.id);
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(
+      mode: "2",
+      authorId: Global.profile.data.id,
+      limit: 10,
+      skip: 0,
+    );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
     setState(() {
@@ -211,26 +215,28 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 60.h,
       width: 100,
       // color: Colors.white,
-      child: Stack(children: [
-        Positioned(
-          top: 8.0,
-          left: 20.0,
-          child: SizedBox(
-            child: Text(
-              value,
-              style: const TextStyle(
-                fontFamily: 'MyFontStyle',
-                fontSize: 24,
+      child: Stack(
+        children: [
+          Positioned(
+            top: 8.0,
+            left: 20.0,
+            child: SizedBox(
+              child: Text(
+                value,
+                style: const TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  fontSize: 24,
+                ),
               ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 //课程预约
@@ -271,7 +277,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 118.5 * _focusData3.length,
       width: 345,
@@ -282,10 +288,12 @@ class _GatherState extends State<Gather> {
 
   ListView buildLiveContext() {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {
         var now2 = _focusData3[index].onlineTime;
         var future = DateTime.fromMillisecondsSinceEpoch(now2);
+        String time = formatDate(future, [mm, '月', dd, '日']);
         var futureYear = int.parse(formatDate(future, [yyyy]));
         var futureMounth = int.parse(formatDate(future, [mm]));
         var futureDay = int.parse(formatDate(future, [dd]));
@@ -306,6 +314,7 @@ class _GatherState extends State<Gather> {
               onTap: () async {
                 if (kDebugMode) {
                   print('到课程详情');
+                  print(_focusData3[index].description.length);
                 }
                 Navigator.push(
                         context,
@@ -326,40 +335,78 @@ class _GatherState extends State<Gather> {
                   children: <Widget>[
                     // 课程封面
                     Positioned(
-                      top: 10.0,
-                      left: 12.0,
-                      child: Container(
-                        height: 80,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          //设置四周圆角 角度
-                          borderRadius: Radii.k6pxRadius,
-                        ),
-                        child: Image.network(
-                          _focusData3[index].imgUrl,
-                          fit: BoxFit.fill,
-                        ),
+                      top: 10.0.h,
+                      left: 12.0.w,
+                      child: tagImage(
+                        context: context,
+                        url: _focusData3[index].imgUrl,
+                        tag: _focusData3[index].category,
                       ),
                     ),
                     // 课程标题
                     Positioned(
-                      top: 10.0,
-                      left: 155.0,
+                      top: 10.0.h,
+                      left: 320.0.w,
                       child: SizedBox(
-                        height: 100,
-                        width: 168,
+                        height: 70.h,
+                        width: 350.w,
                         child: Text(
                           _focusData3[index].title,
                           style: const TextStyle(
                             fontFamily: 'MyFontStyle',
-                            fontSize: 17,
+                            fontSize: 16,
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                        top: 45.0,
-                        left: 240.0,
+                      top: 130.0.h,
+                      left: 320.0.w,
+                      child: SizedBox(
+                        height: 100.h,
+                        width: 168.w,
+                        child: Text(
+                          time,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 80.0.h,
+                      left: 320.0.w,
+                      child: SizedBox(
+                        height: 100.h,
+                        width: 168.w,
+                        child: Text(
+                          _focusData3[index].author,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 80.0.h,
+                      left: 430.0.w,
+                      child: SizedBox(
+                        height: 100.h,
+                        width: 168.w,
+                        child: Text(
+                          _focusData3[index].authorTags,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                        top: 100.0.h,
+                        left: 530.0.w,
                         child: ElevatedButton(
                           child: status == "0"
                               ? const Text("预约")
@@ -378,7 +425,7 @@ class _GatherState extends State<Gather> {
                             elevation: MaterialStateProperty.all(0), //阴影值
                             textStyle:
                                 MaterialStateProperty.all(const TextStyle(
-                              fontSize: 15,
+                              fontSize: 10,
                               fontFamily: 'MyFontStyle',
                             )), //字体
                             shape: MaterialStateProperty.all(StadiumBorder(
@@ -386,7 +433,10 @@ class _GatherState extends State<Gather> {
                               //设置 界面效果
                               style: BorderStyle.solid,
                               color: status == "0" ? Colors.green : Colors.grey,
-                            ))), //圆角弧度
+                            ))),
+                            //圆角弧度
+                            fixedSize:
+                                MaterialStateProperty.all(const Size(5, 0)),
                           ),
                           onPressed: () {
                             //执行日历预约方法
@@ -405,45 +455,13 @@ class _GatherState extends State<Gather> {
                               ),
                             ).then((value) => _getInitial());
                           },
-                        )
-                        // : ElevatedButton(
-                        //     child: const Text("已预约"),
-                        //     style: ButtonStyle(
-                        //       backgroundColor: MaterialStateProperty.all(
-                        //           Colors.grey), //背景颜色
-                        //       foregroundColor: MaterialStateProperty.all(
-                        //           Colors.white), //字体颜色
-                        //       overlayColor: MaterialStateProperty.all(
-                        //           const Color(0xffFFF8E5)), // 高亮色
-                        //       shadowColor: MaterialStateProperty.all(
-                        //           const Color(0xffffffff)), //阴影颜色
-                        //       elevation: MaterialStateProperty.all(0), //阴影值
-                        //       textStyle:
-                        //           MaterialStateProperty.all(const TextStyle(
-                        //         fontSize: 15,
-                        //         fontFamily: 'MyFontStyle',
-                        //       )), //字体
-                        //       shape: MaterialStateProperty.all(
-                        //           BeveledRectangleBorder(
-                        //               borderRadius:
-                        //                   BorderRadius.circular(5))), //圆角弧度
-                        //     ),
-                        //     onPressed: () {
-                        //       //执行预约方法
-                        //       Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //               builder: (context) => LiveDetail(
-                        //                   product: _focusData3[index])));
-                        //     },
-                        //   )
-                        )
+                        ))
                   ],
                 ),
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );
@@ -503,7 +521,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 237,
       width: 345,
@@ -547,7 +565,7 @@ class _GatherState extends State<Gather> {
                         width: 130,
                         decoration: BoxDecoration(
                           //设置四周圆角 角度
-                          borderRadius: Radii.k6pxRadius,
+                          borderRadius: PFRadius.a6,
                         ),
                         child: Image.asset(
                           'assets/images/liuqiangdong.jpg',
@@ -576,7 +594,7 @@ class _GatherState extends State<Gather> {
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );
@@ -590,7 +608,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 400.h,
       width: 345,
@@ -633,7 +651,7 @@ class _GatherState extends State<Gather> {
                         width: 120,
                         decoration: BoxDecoration(
                           //设置四周圆角 角度
-                          borderRadius: Radii.k15pxRadius,
+                          borderRadius: PFRadius.a15,
                         ),
                         child: Image.network(
                           'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
@@ -653,7 +671,6 @@ class _GatherState extends State<Gather> {
                         ),
                       ),
                     ),
-
                     // 作者
                     // positionedText(
                     //     context: context,
@@ -677,7 +694,7 @@ class _GatherState extends State<Gather> {
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );

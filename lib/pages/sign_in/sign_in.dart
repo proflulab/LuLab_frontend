@@ -21,10 +21,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   // 账号控制器
   final TextEditingController _emailController =
-      TextEditingController(text: "shiming");
+      TextEditingController(text: "");
   // 密码控制器
-  final TextEditingController _passController =
-      TextEditingController(text: "12345678");
+  final TextEditingController _passController = TextEditingController(text: "");
 
   // 跳转 注册界面
   // _handleNavSignUp() {
@@ -62,6 +61,7 @@ class _SignInPageState extends State<SignInPage> {
     //     .pushReplacementNamed(Routes.applicationPageRoute);
     // Navigator.of(context)
     //     .push(MaterialPageRoute(builder: (context) => const App()));
+
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const App()),
@@ -129,9 +129,7 @@ class _SignInPageState extends State<SignInPage> {
           Container(
             alignment: const Alignment(-0, 0.5),
             height: 200,
-            child: Container(
-              child: const CustomCheckbox(),
-            ),
+            child: const CustomCheckbox(),
           ),
         ],
       ),

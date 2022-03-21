@@ -7,6 +7,7 @@ import '../../common/utils/utils.dart';
 //import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import '../other/loading.dart';
 import 'course_comment.dart';
 
 // 课程视频播放页面
@@ -87,7 +88,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               controller: _tabController,
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 16.w, right: 16.w),
+                  margin: EdgeInsets.only(
+                      left: PFspace.screeMargin, right: PFspace.screeMargin),
                   child: ListView(
                     children: [
                       SizedBox(
@@ -172,7 +174,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         style: TextStyle(
                             color: Colors.green,
                             fontFamily: 'MyFontStyle',
-                            fontSize: 25,
+                            fontSize: 24,
                             fontWeight: FontWeight.w500),
                       ),
                       SizedBox(
@@ -215,10 +217,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                       // 课程标题
                                       positioningText(
                                         context: context,
-                                        top: 25,
-                                        left: 30,
-                                        height: 40,
-                                        width: 200,
+                                        top: 25.h,
+                                        left: PFspace.screeMargin,
+                                        height: 80.h,
+                                        width: 1.sw - PFspace.screeMargin * 4,
                                         text: _focusData
                                             .subCourses[index].subTitle,
                                         color: _selectIndex == index
@@ -233,7 +235,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                 ),
                               );
                             } else {
-                              return const Text('加载中...');
+                              return const Loading();
                             }
                           },
                         ),

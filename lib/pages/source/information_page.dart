@@ -5,6 +5,7 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+import '../other/loading.dart';
 import 'infor_details.dart';
 
 class InformationPage extends StatefulWidget {
@@ -16,7 +17,7 @@ class InformationPage extends StatefulWidget {
 
 class _InformationPageState extends State<InformationPage> {
   late Inforponse _postsIfoData;
-  List _focusData = [];
+  List<LatestInformation> _focusData = [];
 
   @override
   void initState() {
@@ -60,10 +61,13 @@ class _InformationPageState extends State<InformationPage> {
                   print('到咨询详情');
                 }
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            InforDetails(product: _focusData[index])));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => InforDetails(
+                      product: _focusData[index],
+                    ),
+                  ),
+                );
               },
               child: Container(
                 height: 170.h,
@@ -86,12 +90,13 @@ class _InformationPageState extends State<InformationPage> {
                     //         'https://image2.cnpp.cn/upload/images/20210427/17584971448_207x90.gif'),
                     // 资讯标题
                     positioningText(
-                        context: context,
-                        top: 30,
-                        left: 180,
-                        height: 90,
-                        width: 500,
-                        text: _focusData[index].title),
+                      context: context,
+                      top: 30.h,
+                      left: 180.w,
+                      height: 90.h,
+                      width: 500.w,
+                      text: _focusData[index].title,
+                    ),
                     // 观看次数
                     // positionedText(
                     //     context: context,
@@ -105,12 +110,7 @@ class _InformationPageState extends State<InformationPage> {
               ),
             );
           } else {
-            return Container(
-              height: 100,
-              width: 200,
-              color: Colors.black12,
-              child: const Text("加载中。。。。。"),
-            );
+            return const Loading();
           }
         },
       ),

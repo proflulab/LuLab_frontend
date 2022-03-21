@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//import '../app.dart';
+
 //import '../utils/utils.dart';
 
 class LoadingPage extends StatefulWidget {
@@ -62,6 +64,9 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _app() {
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     MaterialPageRoute(builder: (context) => const App()),
+    //     (route) => route == null);
     Navigator.of(context).pushReplacementNamed('/app');
   }
 }
