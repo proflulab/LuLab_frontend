@@ -6,6 +6,8 @@ import 'package:proflu/common/api/gql_latestrecord.dart';
 import 'package:proflu/common/entitys/latestrecord_data.dart';
 import 'package:proflu/common/global/global.dart';
 
+import 'notice_detail.dart';
+
 class NoticePage extends StatefulWidget {
   const NoticePage({Key? key}) : super(key: key);
 
@@ -76,12 +78,11 @@ class _NoticePageState extends State<NoticePage> {
                     if (kDebugMode) {
                       print('到通知详情');
                     }
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             LiveDetail(product: _focusData3[index])))
-                    //     .then((value) => _getInitial());
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                NoticeDetail(product: _focusData[index])));
                   },
                   child: Column(
                     children: [
