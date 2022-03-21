@@ -21,10 +21,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   // 账号控制器
   final TextEditingController _emailController =
-      TextEditingController(text: "shiming");
+      TextEditingController(text: "");
   // 密码控制器
-  final TextEditingController _passController =
-      TextEditingController(text: "12345678");
+  final TextEditingController _passController = TextEditingController(text: "");
 
   // 跳转 注册界面
   // _handleNavSignUp() {

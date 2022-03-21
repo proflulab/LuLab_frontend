@@ -14,7 +14,6 @@ query LatestDirectCourse($mode: String! , $authorId: String!){
     authorTags
     category
     mode
-    category
     videoUrl
     onlineTime
     imgUrl

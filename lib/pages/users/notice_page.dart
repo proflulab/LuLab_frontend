@@ -1,9 +1,10 @@
+import 'package:date_format/date_format.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proflu/common/api/gql_latestrecord.dart';
 import 'package:proflu/common/entitys/latestrecord_data.dart';
 import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/values/size_radii.dart';
 
 class NoticePage extends StatefulWidget {
   const NoticePage({Key? key}) : super(key: key);
@@ -66,114 +67,89 @@ class _NoticePageState extends State<NoticePage> {
           child: ListView.builder(
             itemCount: _focusData.length,
             itemBuilder: (contxt, index) {
-              var time = _focusData[index].onlineTime.toString();
+              var future = DateTime.fromMillisecondsSinceEpoch(
+                  _focusData[index].onlineTime);
+              String time = formatDate(future, [mm, '月', dd, '日']);
               if (_focusData.isNotEmpty) {
-                return Column(
-                  children: [
-                    Container(
-                      height: 250.h,
-                      width: 1.sw,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15.r),
-                        ),
-                        //border: Border.all(color: Colors.black54),
-                      ),
-                      margin: EdgeInsets.only(top: 10.h),
-                      child: Stack(
-                        children: <Widget>[
-                          //图片
-                          Positioned(
-                            top: 0,
-                            right: 0,
-                            child: Container(
-                              height: 250.h,
-                              width: 220.w,
-                              decoration: BoxDecoration(
-                                //设置四周圆角 角度
-                                borderRadius: Radii.k15pxRadius,
-                                image: DecorationImage(
-                                  image: NetworkImage(_focusData[index].imgUrl),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                          //标题
-                          Positioned(
-                            top: 40.0.h,
-                            left: 15.0.w,
-                            child: Text(
-                              _focusData[index].title,
-                              style: const TextStyle(
-                                fontFamily: 'MyFontStyle',
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          //时间
-                          Positioned(
-                            top: 80.0.h,
-                            left: 15.0.w,
-                            child: Text(
-                              time,
-                              style: const TextStyle(
-                                fontFamily: 'MyFontStyle',
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                          //介绍
-                          Positioned(
-                              top: 140.h,
-                              left: 15.w,
-                              child: SizedBox(
-                                  height: 80,
-                                  width: 188,
-                                  child: Text(
-                                      _focusData[index].description, //最多60字
-                                      style: const TextStyle(
-                                          fontFamily: 'MyFontStyle',
-                                          fontSize: 13)))),
-                        ],
-                      ),
-                    ),
-                    Container(
-                        height: 80.h,
+                return InkWell(
+                  onTap: () async {
+                    if (kDebugMode) {
+                      print('到通知详情');
+                    }
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) =>
+                    //             LiveDetail(product: _focusData3[index])))
+                    //     .then((value) => _getInitial());
+                  },
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 150.h,
                         width: 1.sw,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15.r),
-                            bottomRight: Radius.circular(15.r),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30),
                           ),
+                          // border: Border.all(color: Colors.black54),
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Center(
-                                  child: Container(
-                                width: 100,
-                                height: 40,
-                                color: Colors.white,
-                                child: Center(
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: const Text(
-                                      "查看详情",
-                                      style: TextStyle(
-                                          fontFamily: 'MyFontStyle',
-                                          fontSize: 20),
-                                    ),
-                                  ),
+                        margin: EdgeInsets.only(top: 10.h),
+                        child: Stack(
+                          children: <Widget>[
+                            //图片
+                            Positioned(
+                                top: 16.h,
+                                left: 20.w,
+                                child: new CircleAvatar(
+                                  radius: 70.0.r,
+                                  backgroundImage:
+                                      NetworkImage(_focusData[index].imgUrl),
+                                )),
+                            //标题
+                            Positioned(
+                              top: 24.0.h,
+                              left: 170.0.w,
+                              child: Text(
+                                _focusData[index].title,
+                                style: const TextStyle(
+                                  fontFamily: 'MyFontStyle',
+                                  fontSize: 16,
                                 ),
-                              )),
+                              ),
                             ),
+                            //时间
+                            Positioned(
+                              top: 30.0.h,
+                              left: 580.0.w,
+                              child: Text(
+                                time,
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontFamily: 'MyFontStyle',
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                            //介绍
+                            Positioned(
+                                top: 85.h,
+                                left: 180.w,
+                                child: SizedBox(
+                                    height: 80.h,
+                                    width: 400.w,
+                                    child: Text(
+                                        _focusData[index].description, //最多60字
+                                        style: const TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'MyFontStyle',
+                                            fontSize: 14)))),
                           ],
-                        ))
-                  ],
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               } else {
                 return Container(

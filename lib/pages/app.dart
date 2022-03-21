@@ -1,4 +1,11 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/common/api/gql_user.dart';
+import 'package:proflu/common/entitys/userdata_login.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/utils/storage.dart';
 import 'package:proflu/pages/voice/voice_view.dart';
 
 import '../common/values/values.dart';
@@ -24,6 +31,39 @@ class _AppState extends State<App> {
     const InformationPage(),
     const UsersPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _handleSignIn();
+  }
+
+  // 执行登录操作
+  _handleSignIn() async {
+    var user = Storage.getJson(storageUserProfileKey);
+    user.then((guide) async {
+      if (kDebugMode) {
+        print(guide);
+      }
+      var user1 = UserLogin.fromJson(json.decode(guide!));
+      print(user1.data.name);
+      Loginrequest variables = Loginrequest(
+        name: user1.data.name,
+        password: user1.data.password,
+      );
+      try {
+        UserLogin userProfile = await GqlUserAPI.login(
+          context: context,
+          variables: variables,
+        );
+        Global.saveProfile(userProfile);
+      } catch (e) {
+        if (kDebugMode) {
+          print("===========登录报错内容===============");
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
