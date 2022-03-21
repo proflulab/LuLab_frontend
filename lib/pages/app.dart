@@ -49,7 +49,9 @@ class _AppState extends State<App> {
         print(guide);
       }
       var user1 = UserLogin.fromJson(json.decode(guide!));
-      print(user1.data.name);
+      if (kDebugMode) {
+        print(user1.data.name);
+      }
       Loginrequest variables = Loginrequest(
         name: user1.data.name,
         password: user1.data.password,

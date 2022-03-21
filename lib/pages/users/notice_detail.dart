@@ -13,7 +13,7 @@ class NoticeDetail extends StatefulWidget {
 
 class _NoticeDetailState extends State<NoticeDetail> {
   late DetailMainCourse _detailMainCourse;
-  var _focusData;
+  late DetailMainCourseClass _focusData;
   @override
   void initState() {
     super.initState();

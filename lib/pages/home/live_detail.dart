@@ -26,7 +26,7 @@ class _LiveDetailState extends State<LiveDetail> {
   late int seconds;
   DateTime now = DateTime.now();
   late RecordAdd _recordAdd;
-  var _recordData;
+  late RecordAddClass _recordData;
   late var stauts = widget.product.status;
   late LatestUserCourseRecord _latestUserCourseRecord;
   var state;

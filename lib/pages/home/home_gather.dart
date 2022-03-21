@@ -4,14 +4,13 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:proflu/common/widget/tag_imge.dart';
 
+import '../../common/widget/widgets.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
-import '../../common/widget/toast.dart';
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import '../other/loading.dart';
@@ -28,11 +27,11 @@ class _GatherState extends State<Gather> {
   late PostsData _postsData;
   List _focusData = [];
   late Inforponse _postsIfoData;
-  List _focusData2 = [];
+  List<LatestInformation> _focusData2 = [];
   late LatestDirectCourse _latestDirectCourse;
-  List _focusData3 = [];
-  late RecordAdd _recordAdd;
-  var _recordData;
+  List<LatestDirectCourseElement> _focusData3 = [];
+  //late RecordAdd _recordAdd;
+  //late RecordAddClass _recordData;
   DateTime now = DateTime.now();
 
   _getInitial() async {
@@ -68,13 +67,13 @@ class _GatherState extends State<Gather> {
       courseId: _focusData3[index].id,
       onlineTime: now,
     );
-    _recordAdd = await GqlRecordAddAPI.indexPageInfo(
-        variables: variables, context: context);
-    var recordData = _recordAdd.recordAdd;
+    //_recordAdd =
+    await GqlRecordAddAPI.indexPageInfo(variables: variables, context: context);
+    //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
-    setState(() {
-      _recordData = recordData;
-    });
+    // setState(() {
+    //   _recordData = recordData;
+    // });
   }
 
   // 读取所有课程数据
