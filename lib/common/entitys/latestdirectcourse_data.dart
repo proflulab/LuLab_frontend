@@ -99,6 +99,7 @@ class LatestDirectCourseElement {
       };
 }
 
+
 LatestDirectCourseRequest latestDirectCourseRequestFromJson(String str) =>
     LatestDirectCourseRequest.fromJson(json.decode(str));
 
@@ -109,19 +110,28 @@ class LatestDirectCourseRequest {
   LatestDirectCourseRequest({
     required this.mode,
     required this.authorId,
+    required this.limit,
+    required this.skip,
   });
 
-  String mode;
-  String authorId;
+  final String mode;
+  final String authorId;
+  final int limit;
+  final int skip;
 
   factory LatestDirectCourseRequest.fromJson(Map<String, dynamic> json) =>
       LatestDirectCourseRequest(
         mode: json["mode"],
         authorId: json["authorId"],
+        limit: json["limit"],
+        skip: json["skip"],
       );
 
   Map<String, dynamic> toJson() => {
         "mode": mode,
         "authorId": authorId,
+        "limit": limit,
+        "skip": skip,
       };
 }
+

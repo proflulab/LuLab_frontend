@@ -8,23 +8,28 @@ Widget positionedImage({
   required BuildContext context,
   required String url,
   double top = 10,
-  double left = 10,
+  double? left,
+  double? right,
   double height = 100,
   double width = 100,
+  BorderRadiusGeometry? borderRadius,
 }) {
   return Positioned(
     top: top,
     left: left,
+    right: right,
     child: Container(
       height: height,
       width: width,
       decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(url),
-            fit: BoxFit.cover,
-          ),
-          color: const Color.fromRGBO(200, 233, 233, 1),
-          borderRadius: BorderRadius.circular(10)),
+        image: DecorationImage(
+          image: NetworkImage(url),
+          fit: BoxFit.cover,
+        ),
+        color: const Color.fromRGBO(200, 233, 233, 1),
+        borderRadius: borderRadius,
+        //BorderRadius.circular(10),
+      ),
     ),
   );
 }
@@ -42,7 +47,7 @@ Widget positioningText({
   bool softWrap = false,
   String font = 'MyFontStyle',
   Color? color = ProfluC.textPrimary,
-  double? fontSize = ProfluFS.size17,
+  double? fontSize = PFfont.size17,
   FontWeight? fontWeight = FontWeight.normal,
 }) {
   return Positioned(
@@ -55,7 +60,7 @@ Widget positioningText({
       child: Text(
         text,
         textAlign: TextAlign.left,
-        textDirection: TextDirection.rtl,
+        //textDirection: TextDirection.rtl,
         softWrap: softWrap,
         overflow: overflow,
         maxLines: maxLines,

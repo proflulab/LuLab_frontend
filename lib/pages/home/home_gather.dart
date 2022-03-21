@@ -14,6 +14,7 @@ import '../../common/values/values.dart';
 
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
+import '../other/loading.dart';
 import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
@@ -89,8 +90,12 @@ class _GatherState extends State<Gather> {
 
   // 读取直播课程数据
   _handleCourse() async {
-    LatestDirectCourseRequest variables =
-        LatestDirectCourseRequest(mode: "2", authorId: Global.profile.data.id);
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(
+      mode: "2",
+      authorId: Global.profile.data.id,
+      limit: 10,
+      skip: 0,
+    );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
     setState(() {
@@ -211,7 +216,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 60.h,
       width: 100,
@@ -271,7 +276,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 118.5 * _focusData3.length,
       width: 345,
@@ -333,7 +338,7 @@ class _GatherState extends State<Gather> {
                         width: 130,
                         decoration: BoxDecoration(
                           //设置四周圆角 角度
-                          borderRadius: Radii.k6pxRadius,
+                          borderRadius: PFRadius.a6,
                         ),
                         child: Image.network(
                           _focusData3[index].imgUrl,
@@ -443,7 +448,7 @@ class _GatherState extends State<Gather> {
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );
@@ -503,7 +508,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 237,
       width: 345,
@@ -547,7 +552,7 @@ class _GatherState extends State<Gather> {
                         width: 130,
                         decoration: BoxDecoration(
                           //设置四周圆角 角度
-                          borderRadius: Radii.k6pxRadius,
+                          borderRadius: PFRadius.a6,
                         ),
                         child: Image.asset(
                           'assets/images/liuqiangdong.jpg',
@@ -576,7 +581,7 @@ class _GatherState extends State<Gather> {
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );
@@ -590,7 +595,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       height: 400.h,
       width: 345,
@@ -633,7 +638,7 @@ class _GatherState extends State<Gather> {
                         width: 120,
                         decoration: BoxDecoration(
                           //设置四周圆角 角度
-                          borderRadius: Radii.k15pxRadius,
+                          borderRadius: PFRadius.a15,
                         ),
                         child: Image.network(
                           'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
@@ -653,7 +658,6 @@ class _GatherState extends State<Gather> {
                         ),
                       ),
                     ),
-
                     // 作者
                     // positionedText(
                     //     context: context,
@@ -677,7 +681,7 @@ class _GatherState extends State<Gather> {
               ) // ),
               );
         } else {
-          return const Text('加载中...');
+          return const Loading();
         }
       },
     );

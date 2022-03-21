@@ -6,6 +6,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 
+import '../other/loading.dart';
 import 'course_index.dart';
 
 class CourseCatalogue extends StatefulWidget {
@@ -142,7 +143,7 @@ class _CourseCatalogueState extends State<CourseCatalogue> {
                   ),
                 );
               } else {
-                return const Text('加载中...');
+                return const Loading();
               }
             },
           ),

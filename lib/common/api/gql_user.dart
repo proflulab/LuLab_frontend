@@ -12,7 +12,10 @@ class GqlUserAPI {
     required Loginrequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context, schema: gqlUserLogin, variables: variables.toJson());
+      context: context,
+      schema: gqlUserLogin,
+      variables: variables.toJson(),
+    );
     return UserLogin.fromJson(response.data!["userLogin"]);
   }
 

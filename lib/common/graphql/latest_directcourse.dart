@@ -1,11 +1,13 @@
 // {
-//    "mode":"3",
-//    "authorId": "61d9604f5fcd295d1b6893cf"
+//   "mode":"1",
+//   "authorId": "61d9604f5fcd295d1b6893cf",
+//   "limit": 10,
+//   "skip": 0
 // }
 
 const String gqllatestDirectCourseList = r'''
-query LatestDirectCourse($mode: String! , $authorId: String!){
-  latestDirectCourse(mode:$mode,authorId:$authorId,option:{limit:2,skip:0}) {
+query LatestDirectCourse($mode: String! , $authorId: String!,$limit:Int,$skip:Int!){
+  latestDirectCourse(mode:$mode,authorId:$authorId,option:{limit:$limit,skip:$skip}) {
     _id
     title
     classTags

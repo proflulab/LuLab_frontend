@@ -19,7 +19,7 @@ Widget inputTextEdit({
       margin: EdgeInsets.only(top: marginTop.h),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(243, 243, 240, 1),
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       child: Center(
         child: TextField(
@@ -59,7 +59,7 @@ Widget inputEmailEdit({
     margin: EdgeInsets.only(top: fitHeight(marginTop)),
     decoration: BoxDecoration(
       color: ProfluC.backgroundPrimary,
-      borderRadius: Radii.k6pxRadius,
+      borderRadius: PFRadius.a6,
       boxShadow: const [
         BoxShadow(
           color: Color.fromARGB(41, 0, 0, 0),

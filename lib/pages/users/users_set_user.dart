@@ -1,3 +1,5 @@
+// import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +26,18 @@ class _SetUserState extends State<SetUser> {
       TextEditingController(text: Global.profile.data.phone);
   final TextEditingController _wechatnameController =
       TextEditingController(text: Global.profile.data.wechat);
+  //获取个人缓存信息
+  // _getuser() {
+  //   var user = Storage.getJson(storageUserProfileKey);
+  //   user.then((guide) {
+  //     var _user = UserLogin.fromJson(json.decode(guide!));
+  //     print(_user.data.img);
+  //   });
+  // }
 
-// 执行修改个人信息操作
+  // 执行修改个人信息操作
   _carryUp() async {
+    //_getuser();
     UserUpdaterequest variables = UserUpdaterequest(
       name: _nameController.value.text,
       password: "12345678",
@@ -54,7 +65,6 @@ class _SetUserState extends State<SetUser> {
     try {
       await GqlUserAPI.userup(context: context, variables: variables);
       Global.saveProfile(profiler);
-
       toastInfo(msg: '修改成功');
     } catch (e) {
       if (kDebugMode) {
@@ -65,7 +75,6 @@ class _SetUserState extends State<SetUser> {
       }
       return toastInfo(msg: '修改失败，数据上传出错！');
     }
-
     Navigator.pop(context);
   }
 

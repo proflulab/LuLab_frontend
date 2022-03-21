@@ -92,7 +92,7 @@ class _NoticePageState extends State<NoticePage> {
                               width: 220.w,
                               decoration: BoxDecoration(
                                 //设置四周圆角 角度
-                                borderRadius: Radii.k15pxRadius,
+                                borderRadius: PFRadius.a15,
                                 image: DecorationImage(
                                   image: NetworkImage(_focusData[index].imgUrl),
                                   fit: BoxFit.cover,

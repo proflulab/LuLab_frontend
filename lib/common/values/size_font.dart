@@ -1,5 +1,5 @@
 //字体规格
-class ProfluFS {
+class PFfont {
   static const double? size20 = 20;
   static const double? size18 = 18;
   static const double? size17 = 17;
