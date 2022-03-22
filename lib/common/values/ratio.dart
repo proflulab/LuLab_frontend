@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 //字体规格,参考以下网站
 //https://www.shejidaren.com/examples/tools/golden-ratio/index.html
-class PFf {
+class PFr {
   static const double ratio16_9 = 16 / 9;
   static const double ratio16_10 = 16 / 10;
   static const double ratio1_1 = 1;

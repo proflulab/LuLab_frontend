@@ -12,9 +12,10 @@ class GqlDetailCourseAPI {
     required CourseRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context,
-        schema: gqlDetailCourseList,
-        variables: variables.toJson());
+      context: context,
+      schema: gqlDetailCourseList,
+      variables: variables.toJson(),
+    );
     return DetailCourse.fromJson(response.data!);
   }
 }

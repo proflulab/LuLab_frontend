@@ -189,10 +189,10 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
         ),
         Container(
           height: 80.h,
-          color: ProfluC.backgroundPrimary,
+          color: PFc.backgroundPrimary,
           padding: EdgeInsets.only(left: 16.w, bottom: 10.h, right: 16.w),
           child: Container(
-            color: ProfluC.backgroundPrimary,
+            color: PFc.backgroundPrimary,
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,7 +204,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                     padding:
                         EdgeInsets.only(left: 25.w, top: 13.h, bottom: 10.h),
                     decoration: BoxDecoration(
-                      color: ProfluC.themeColor10,
+                      color: PFc.themeColor10,
                       borderRadius: BorderRadius.circular(25.h),
                     ),
                     child: const Text(
@@ -212,7 +212,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
                       //textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 15,
-                        color: ProfluC.textEmphasis,
+                        color: PFc.textEmphasis,
                       ),
                     ),
                   ),
@@ -266,7 +266,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
         controller: _commentController,
         autofocus: true,
         //maxLines: null,
-        style: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+        style: const TextStyle(fontSize: 14, color: PFc.textPrimary),
         //textInputAction: TextInputAction.send,
         textAlignVertical: TextAlignVertical.top,
         textAlign: TextAlign.start,
@@ -274,10 +274,10 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           contentPadding:
               const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           hintText: '快来评论吧...',
-          hintStyle: const TextStyle(fontSize: 14, color: ProfluC.textEmphasis),
+          hintStyle: const TextStyle(fontSize: 14, color: PFc.textEmphasis),
           counterText: '',
           filled: true,
-          fillColor: ProfluC.themeColor10,
+          fillColor: PFc.themeColor10,
           enabledBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(style: BorderStyle.none, color: Colors.lime),
@@ -304,7 +304,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
           child: Text('发送',
               style: TextStyle(
                 fontSize: 16,
-                color: ProfluC.textEmphasis,
+                color: PFc.textEmphasis,
               )),
         ),
       ),

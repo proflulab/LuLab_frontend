@@ -106,7 +106,7 @@
 //         controller: widget.textController,
 //         autofocus: true,
 //         //maxLines: null,
-//         style: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+//         style: const TextStyle(fontSize: 14, color: PFc.textPrimary),
 //         textInputAction: TextInputAction.send,
 //         textAlignVertical: TextAlignVertical.top,
 //         textAlign: TextAlign.start,
@@ -114,10 +114,10 @@
 //           contentPadding:
 //               const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
 //           hintText: widget.placehold,
-//           hintStyle: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+//           hintStyle: const TextStyle(fontSize: 14, color: PFc.textPrimary),
 //           counterText: '',
 //           filled: true,
-//           fillColor: ProfluC.themeColor10,
+//           fillColor: PFc.themeColor10,
 //           enabledBorder: OutlineInputBorder(
 //               borderSide:
 //                   const BorderSide(style: BorderStyle.none, color: Colors.lime),
@@ -146,7 +146,7 @@
 //           child: Text('发送',
 //               style: TextStyle(
 //                 fontSize: 16,
-//                 color: ProfluC.textEmphasis,
+//                 color: PFc.textEmphasis,
 //               )),
 //         ),
 //       ),

@@ -103,9 +103,7 @@ class _CtionInputDialogState extends State<CtionInputDialog>
   @override
   Widget build(BuildContext context) {
     var mediaQueryData = MediaQueryData.fromWindow(ui.window);
-    return 
-    
-    AnimatedContainer(
+    return AnimatedContainer(
       //color: Colors.transparent,
       duration: const Duration(milliseconds: 2),
       alignment: Alignment.bottomCenter,
@@ -131,7 +129,7 @@ class _CtionInputDialogState extends State<CtionInputDialog>
         controller: _commentController,
         autofocus: true,
         //maxLines: null,
-        style: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+        style: const TextStyle(fontSize: 14, color: PFc.textPrimary),
         textInputAction: TextInputAction.send,
         textAlignVertical: TextAlignVertical.top,
         textAlign: TextAlign.start,
@@ -139,10 +137,10 @@ class _CtionInputDialogState extends State<CtionInputDialog>
           contentPadding:
               const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
           hintText: widget.placehold,
-          hintStyle: const TextStyle(fontSize: 14, color: ProfluC.textPrimary),
+          hintStyle: const TextStyle(fontSize: 14, color: PFc.textPrimary),
           counterText: '',
           filled: true,
-          fillColor: ProfluC.themeColor10,
+          fillColor: PFc.themeColor10,
           enabledBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(style: BorderStyle.none, color: Colors.lime),
@@ -171,7 +169,7 @@ class _CtionInputDialogState extends State<CtionInputDialog>
           child: Text('发送',
               style: TextStyle(
                 fontSize: 16,
-                color: ProfluC.textEmphasis,
+                color: PFc.textEmphasis,
               )),
         ),
       ),

@@ -44,19 +44,19 @@ class _FeatsPageState extends State<FeatsPage> {
     //var widgetwidth = screenwidth - 10 * 2;
     return Container(
       height: 1.sh,
-      padding: EdgeInsets.symmetric(horizontal: PFspace.screeMargin),
+      padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       child: ListView.builder(
         itemCount: _focusData.length,
         itemBuilder: (contxt, index) {
           if (_focusData.isNotEmpty) {
             //功勋卡片长度
-            double _boxw = (1.sw - PFspace.screeMargin * 2);
+            double _boxw = (1.sw - PFspace.screenMargin * 2);
             //功勋卡片高度
-            double _boxh = _boxw * PFf.golden;
+            double _boxh = _boxw * PFr.golden;
             //图片高度
             double _imageh = _boxh * 0.75;
             //图片长度
-            double _imagew = _imageh * PFf.golden;
+            double _imagew = _imageh * PFr.golden;
             //底部按钮高度
             double _bottomh = _boxh * (1 - 0.75);
             return SizedBox(
@@ -67,7 +67,7 @@ class _FeatsPageState extends State<FeatsPage> {
                   Container(
                     height: _imageh,
                     decoration: BoxDecoration(
-                        color: ProfluC.backgroundSecondary,
+                        color: PFc.backgroundSecondary,
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(10.r),
                         )),
@@ -90,22 +90,22 @@ class _FeatsPageState extends State<FeatsPage> {
                         positioningText(
                           context: context,
                           top: 40.h,
-                          left: PFspace.screeMargin,
+                          left: PFspace.screenMargin,
                           width: 370.h,
                           height: 40,
                           text: _focusData[index].name,
-                          color: ProfluC.themeColor,
+                          color: PFc.themeColor,
                           fontSize: 25,
                         ),
                         //标签
                         positioningText(
                           context: context,
                           top: 100.h,
-                          left: PFspace.screeMargin,
+                          left: PFspace.screenMargin,
                           width: 370.h,
                           height: 40,
                           text: _focusData[index].identity,
-                          color: ProfluC.textPrimary,
+                          color: PFc.textPrimary,
                           fontSize: 15,
                           font: "",
                         ),
@@ -113,11 +113,11 @@ class _FeatsPageState extends State<FeatsPage> {
                         positioningText(
                           context: context,
                           top: 175.h,
-                          left: PFspace.screeMargin,
+                          left: PFspace.screenMargin,
                           width: 370.h,
                           height: 40.w,
                           text: _focusData[index].description, //最多60字
-                          color: ProfluC.textPrimary,
+                          color: PFc.textPrimary,
                           fontSize: 15,
                           font: "",
                         ),
@@ -127,7 +127,7 @@ class _FeatsPageState extends State<FeatsPage> {
                   Container(
                     height: _bottomh,
                     decoration: BoxDecoration(
-                      color: ProfluC.backgroundSecondary,
+                      color: PFc.backgroundSecondary,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(15.r),
                         bottomRight: Radius.circular(15.r),
@@ -140,7 +140,7 @@ class _FeatsPageState extends State<FeatsPage> {
                           child: Center(
                             child: Container(
                               width: 100,
-                              color: ProfluC.backgroundSecondary,
+                              color: PFc.backgroundSecondary,
                               child: Center(
                                 child: InkWell(
                                   onTap: () {
@@ -163,7 +163,7 @@ class _FeatsPageState extends State<FeatsPage> {
                                     "他的主页",
                                     style: TextStyle(
                                       fontFamily: 'MyFontStyle',
-                                      color: ProfluC.textPrimary,
+                                      color: PFc.textPrimary,
                                       fontSize: 20,
                                     ),
                                   ),

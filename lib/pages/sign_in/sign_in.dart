@@ -105,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
               width: 622,
               height: 112,
               onPressed: () => _handleSignIn(),
-              gbColor: ProfluC.primaryElement,
+              gbColor: PFc.primaryElement,
               title: "登录",
             ),
           ),

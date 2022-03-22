@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../common/values/values.dart';
 import '../../common/utils/utils.dart';
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -25,14 +26,14 @@ class _FeastPersonalState extends State<FeastPersonal> {
       children: <Widget>[
         Positioned(
           child: Container(
-            width: a, //容器的相关参数
-            height: a * 9 / 16,
+            width: PFspace.screenW,
+            height: PFspace.screenW * PFr.ratio9_16,
             alignment: Alignment.center, //在容器的位置
             child: VideoView(
               widget.product.videoUrl,
               //'https://media.w3.org/2010/05/sintel/trailer.mp4',
               cover:
-                  'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
+                  'https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png',
             ),
           ),
         ),
@@ -48,7 +49,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
               color: Colors.white,
               //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             ),
           ),
         ),
@@ -58,7 +59,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
           child: CircleAvatar(
             //底层的组件
             backgroundImage: NetworkImage(widget.product.imgUrl),
-            radius: 50.0, //参数
+            radius: 40.0, //参数
           ),
         ),
         Positioned(
@@ -71,7 +72,10 @@ class _FeastPersonalState extends State<FeastPersonal> {
             child: Text(
               widget.product.name,
               style: const TextStyle(
-                  fontFamily: 'MyFontStyle', color: Colors.black, fontSize: 30),
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 30,
+              ),
             ),
           ),
         ),
@@ -85,7 +89,10 @@ class _FeastPersonalState extends State<FeastPersonal> {
             child: Text(
               widget.product.identity,
               style: const TextStyle(
-                  fontFamily: 'MyFontStyle', color: Colors.black, fontSize: 18),
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 18,
+              ),
             ),
           ),
         ),
@@ -96,9 +103,13 @@ class _FeastPersonalState extends State<FeastPersonal> {
             width: 800.0.w, //容器的相关参数
             height: 200.0.h,
             // color: Colors.green,
-            child: Text(widget.product.description,
-                style:
-                    const TextStyle(fontFamily: 'MyFontStyle', fontSize: 18)),
+            child: Text(
+              widget.product.description,
+              style: const TextStyle(
+                fontFamily: 'MyFontStyle',
+                fontSize: 18,
+              ),
+            ),
           ),
         ),
       ],
@@ -110,7 +121,6 @@ class _FeastPersonalState extends State<FeastPersonal> {
           child: AppBar(),
         ),
         body: ListView(
-          // scrollDirection: Axis.vertical, //纵向滚动
           children: <Widget>[
             Container(
               width: 375.0.w,

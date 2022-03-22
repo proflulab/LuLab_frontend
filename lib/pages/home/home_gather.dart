@@ -317,11 +317,12 @@ class _GatherState extends State<Gather> {
                   print(_focusData3[index].description.length);
                 }
                 Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                LiveDetail(product: _focusData3[index])))
-                    .then((value) => _getInitial());
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        LiveDetail(product: _focusData3[index]),
+                  ),
+                ).then((value) => _getInitial());
               },
               child: Container(
                 height: 200.h,

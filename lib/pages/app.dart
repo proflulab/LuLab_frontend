@@ -109,17 +109,15 @@ class _AppState extends State<App> {
           // 选中图标主题
           selectedIconTheme: const IconThemeData(
             // 图标颜色
-            color: Color.fromRGBO(77, 196, 96, 1),
+            color: PFc.themeColor,
             // 图标大小
             size: 28,
             // 图标透明度
             opacity: 1.0,
           ),
           //选中字体颜色
-          selectedLabelStyle: const TextStyle(
-            fontFamily: 'MyFontStyle',
-            color: Color.fromRGBO(77, 196, 96, 1),
-          ),
+          selectedLabelStyle:
+              const TextStyle(fontFamily: 'MyFontStyle', color: PFc.themeColor),
           //未选中图标主题
           unselectedIconTheme: const IconThemeData(
             color: Colors.black,

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class ProfluC {
+class PFc {
   // 主题色
   static const Color themeColor = Color.fromRGBO(77, 196, 96, 1);
 

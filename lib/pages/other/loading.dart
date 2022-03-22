@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:proflu/common/values/colors.dart';
+
+import '../../common/values/values.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -14,13 +15,15 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return const Center(
       child: SpinKitFadingCircle(
-        color: ProfluC.themeColor,
+        color: PFc.themeColor,
         size: 80.0,
       ),
     );
   }
 }
 
+
+//可选类型
 // SpinKitRotatingCircle(color: Colors.white)
 // SpinKitRotatingPlain(color: Colors.white)
 // SpinKitChasingDots(color: Colors.white)

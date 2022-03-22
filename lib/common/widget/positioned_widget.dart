@@ -46,8 +46,8 @@ Widget positioningText({
   TextOverflow overflow = TextOverflow.ellipsis,
   bool softWrap = false,
   String font = 'MyFontStyle',
-  Color? color = ProfluC.textPrimary,
-  double? fontSize = PFfont.size17,
+  Color? color = PFc.textPrimary,
+  double? fontSize,
   FontWeight? fontWeight = FontWeight.normal,
 }) {
   return Positioned(

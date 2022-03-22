@@ -7,7 +7,6 @@ import 'common/values/values.dart';
 //BaiduNetdiskDownload 'package:get/get.dart';
 
 //启动页面
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(750, 1334), //配置设计稿的宽度高度
-
       builder: () => MaterialApp(
         locale: const Locale('zh', 'CN'),
         localizationsDelegates: const [

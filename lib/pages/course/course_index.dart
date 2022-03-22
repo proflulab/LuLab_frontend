@@ -73,9 +73,9 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       body: Column(
         children: [
           VideoView(
-            //vUrl,
+            vUrl,
             //测试视频
-            'https://media.w3.org/2010/05/sintel/trailer.mp4',
+            //'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
             cover:
                 'https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png',
@@ -89,7 +89,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      left: PFspace.screeMargin, right: PFspace.screeMargin),
+                      left: PFspace.screenMargin, right: PFspace.screenMargin),
                   child: ListView(
                     children: [
                       SizedBox(
@@ -172,10 +172,11 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         '目录',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            color: Colors.green,
-                            fontFamily: 'MyFontStyle',
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500),
+                          color: Colors.green,
+                          fontFamily: 'MyFontStyle',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       SizedBox(
                         height: (114.h + 15) * _subCourses.length,
@@ -201,31 +202,31 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                   height: 114.h,
                                   decoration: BoxDecoration(
                                     color: _selectIndex == index
-                                        ? ProfluC.themeColor10
-                                        : ProfluC.backgroundSecondary,
+                                        ? PFc.themeColor10
+                                        : PFc.backgroundSecondary,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(12.r)),
                                     border: Border.all(
                                       color: _selectIndex == index
-                                          ? ProfluC.themeColor
-                                          : ProfluC.backgroundSecondary,
+                                          ? PFc.themeColor
+                                          : PFc.backgroundSecondary,
                                     ),
                                   ),
-                                  margin: EdgeInsets.only(top: 10.0.h),
+                                  margin: EdgeInsets.only(top: 10.h),
                                   child: Stack(
                                     children: <Widget>[
                                       // 课程标题
                                       positioningText(
                                         context: context,
                                         top: 25.h,
-                                        left: PFspace.screeMargin,
+                                        left: PFspace.screenMargin,
                                         height: 80.h,
-                                        width: 1.sw - PFspace.screeMargin * 4,
+                                        width: 1.sw - PFspace.screenMargin * 4,
                                         text: _focusData
                                             .subCourses[index].subTitle,
                                         color: _selectIndex == index
-                                            ? ProfluC.themeColor
-                                            : ProfluC.textPrimary,
+                                            ? PFc.themeColor
+                                            : PFc.textPrimary,
                                         font: _selectIndex == index
                                             ? 'MyFontStyle'
                                             : '',
