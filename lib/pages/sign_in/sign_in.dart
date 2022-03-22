@@ -10,6 +10,10 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../app.dart';
 import '../sign_up/register.dart';
+import '../users/package/users_serice_user .dart';
+import '../users/package/users_privay_user.dart';
+import '../users/package/users_copyrig_user.dart';
+import '../users/package/users_featurs_user.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -61,6 +65,7 @@ class _SignInPageState extends State<SignInPage> {
     //     .pushReplacementNamed(Routes.applicationPageRoute);
     // Navigator.of(context)
     //     .push(MaterialPageRoute(builder: (context) => const App()));
+
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const App()),
@@ -191,27 +196,64 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
                           const SizedBox(
                             height: 11.0,
                           ),
+                          // ElevatedButton(
+                          //   child: const Text("《.........》,"),
+                          //   onPressed: () {},
+                          // ),
                           RichText(
                             text: TextSpan(
                               text: '我已阅读陆向谦创新创业实验室,',
                               style: const TextStyle(
                                   color: Colors.black, fontSize: 13.0),
                               children: <TextSpan>[
-                                const TextSpan(
-                                  text: '《.........》,《......》,《...》',
-                                  style: TextStyle(color: Colors.blue),
-                                  // recognizer: TapGestureRecognizer()
-                                  //   ..onTap = () async {}
-                                ),
+                                TextSpan(
+                                    text: '《服务使用协议》,',
+                                    style: const TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Service()));
+                                      }),
+                                TextSpan(
+                                    text: '《隐私政策》',
+                                    style: const TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Qrivacy(
+                                                      title: '',
+                                                    )));
+                                      }),
+                                TextSpan(
+                                    text: ',《版权声明》',
+                                    style: const TextStyle(color: Colors.blue),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Copyright(
+                                                      title: '',
+                                                    )));
+                                      }),
                                 const TextSpan(
                                   text: '和 ',
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 TextSpan(
-                                    text: '《...》',
+                                    text: '《产品特色》',
                                     style: const TextStyle(color: Colors.blue),
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap = () async {}),
+                                      ..onTap = () async {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Features()));
+                                      }),
                               ],
                             ),
                           )
