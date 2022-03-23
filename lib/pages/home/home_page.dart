@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 left: 40,
                 bottom: 3,
               ),
-              //https://www.yiibai.com/flutter/flutter-tabbar.html
+              //参考https://www.yiibai.com/flutter/flutter-tabbar.html
               // indicator: ShapeDecoration(
               //   shape: UnderlineInputBorder(
               //     borderSide: BorderSide(
@@ -69,14 +69,6 @@ class _HomePageState extends State<HomePage> {
               //   ),
               // ),
             ),
-            // title: Text(
-            //   '首页',
-            //   style: TextStyle(
-            //     fontFamily: 'MyFontStyle',
-            //     color: Colors.green,
-            //     fontSize: 24,
-            //   ),
-            // ),
             // centerTitle: true,
             // title: Padding(
             //   padding: const EdgeInsets.only(top: 2, bottom: 2, left: 16),
@@ -178,10 +170,10 @@ class HomePageList extends StatefulWidget {
 class _HomePageListState extends State<HomePageList> {
   @override
   Widget build(BuildContext context) {
-    return TabBarView(
+    return const TabBarView(
       children: [
-        const Center(child: Gather()),
-        const Center(child: FeatsPage()),
+        Center(child: Gather()),
+        Center(child: FeatsPage()),
         Center(child: Product())
       ],
     );

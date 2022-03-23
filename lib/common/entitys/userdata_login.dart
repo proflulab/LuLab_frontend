@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 // 用户登录 - response
-
 Loginresponse loginresponseFromJson(String str) =>
     Loginresponse.fromJson(json.decode(str));
 

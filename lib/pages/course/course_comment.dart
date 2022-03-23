@@ -190,10 +190,13 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
         Container(
           height: 80.h,
           color: PFc.backgroundPrimary,
-          padding: EdgeInsets.only(left: 16.w, bottom: 10.h, right: 16.w),
+          padding: EdgeInsets.only(
+              left: PFspace.screenMargin,
+              bottom: 10.h,
+              right: PFspace.screenMargin),
           child: Container(
             color: PFc.backgroundPrimary,
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

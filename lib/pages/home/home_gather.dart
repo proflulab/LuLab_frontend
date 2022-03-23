@@ -125,6 +125,7 @@ class _GatherState extends State<Gather> {
     return ListView(
       children: <Widget>[
         _swiperWidget(),
+        SizedBox(height: 20.h),
         // SizedBox(height: fitHeight(20)),
         // _titleWidget("课程预约"),
         // SizedBox(height: fitHeight(20)),
@@ -132,6 +133,7 @@ class _GatherState extends State<Gather> {
         // SizedBox(height: fitHeight(20)),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _buildLive(),
+        SizedBox(height: 20.h),
         _titleWidget("最新咨询"),
         buildInfomation(),
         // buildFreeCourse(),
@@ -150,13 +152,12 @@ class _GatherState extends State<Gather> {
     ];
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 15.0),
+      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       child: AspectRatio(
         aspectRatio: 9 / 5,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              // 用Container实现图片圆角的效果
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(imgList[index]), // 图片数组
@@ -209,79 +210,41 @@ class _GatherState extends State<Gather> {
     );
   }
 
+  //栏目名称
   Widget _titleWidget(value) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+      padding: EdgeInsets.all(PFspace.screenMargin),
       decoration: BoxDecoration(
-        //设置四周圆角 角度
-        color: Colors.white,
+        //设置四周圆角角度
+        color: PFc.backgroundSecondary,
         borderRadius: PFRadius.a6,
       ),
       height: 60.h,
-      width: 100,
-      // color: Colors.white,
-      child: Stack(
-        children: [
-          Positioned(
-            top: 8.0,
-            left: 20.0,
-            child: SizedBox(
-              child: Text(
-                value,
-                style: const TextStyle(
-                  fontFamily: 'MyFontStyle',
-                  fontSize: 24,
-                ),
-              ),
-            ),
-          ),
-        ],
+      child: Text(
+        value,
+        textAlign: TextAlign.start,
+        style: const TextStyle(
+          //fontFamily: 'MyFontStyle',
+          fontSize: 18,
+        ),
       ),
     );
   }
-//课程预约
-  // Widget _hotProductListWidget() {
-  //   return Container(
-  //     height: 100.0,
-  //     width: 400.0,
-  //     decoration: const BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.all(Radius.circular(8.0)),
-  //     ),
-  //     child: ListTile(
-  //       leading: Image.network(
-  //           'https://p2.itc.cn/q_70/images03/20210821/11edfd2d54b6492ea3af068c0762b801.jpeg'),
-  //       title: const Text('案例课直播  学理论不如学案例'),
-  //       subtitle: const Text('介绍：'),
-  //       trailing: TextButton(
-  //         autofocus: true,
-  //         style: ButtonStyle(
-  //             backgroundColor: MaterialStateProperty.all(Colors.blue),
-  //             shape: MaterialStateProperty.all(const StadiumBorder())),
-  //         child: const Text(
-  //           "预约",
-  //           style: TextStyle(color: Colors.white),
-  //         ),
-  //         onPressed: () {},
-  //       ),
-  //     ),
-  //   );
-  // }
 
-  //推荐
-
-  // 直播预约
+  //直播预约
   Container _buildLive() {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
         borderRadius: PFRadius.a6,
       ),
-      height: 118.5 * _focusData3.length,
-      width: 345,
-      // color: Colors.white,
+      height: (PFspace.screenW - PFspace.screenMargin) *
+          PFr.bronze *
+          _focusData3.length,
+      width: PFspace.screenW - PFspace.screenMargin * 2,
       child: buildLiveContext(),
     );
   }
@@ -302,10 +265,21 @@ class _GatherState extends State<Gather> {
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
           DateTime(
-              futureYear, futureMounth, futureDay, futureHour, futureMinute),
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ),
           DateTime(
-                  futureYear, futureMounth, futureDay, futureHour, futureMinute)
-              .add(Duration(minutes: _focusData3[index].duration)),
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ).add(
+            Duration(minutes: _focusData3[index].duration),
+          ),
           _focusData3[index].title,
           _focusData3[index].description,
         );
@@ -325,21 +299,25 @@ class _GatherState extends State<Gather> {
                 ).then((value) => _getInitial());
               },
               child: Container(
-                height: 200.h,
-                width: 345.w,
+                height: (PFspace.screenW - PFspace.screenMargin) * PFr.bronze,
+                width: PFspace.screenW - PFspace.screenMargin,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                  //border: Border.all(color: Colors.black54),
                 ),
                 child: Stack(
                   children: <Widget>[
                     // 课程封面
                     Positioned(
-                      top: 10.0.h,
-                      left: 12.0.w,
+                      top: 10.h,
+                      left: PFspace.screenMargin,
                       child: tagImage(
                         context: context,
+                        width: (PFspace.screenW - PFspace.screenMargin * 2) *
+                            PFr.bronze,
+                        height: (PFspace.screenW - PFspace.screenMargin * 2) *
+                            PFr.bronze *
+                            PFr.ratio3_4,
                         url: _focusData3[index].imgUrl,
                         tag: _focusData3[index].category,
                       ),

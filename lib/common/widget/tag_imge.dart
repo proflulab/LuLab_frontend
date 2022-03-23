@@ -1,16 +1,18 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/screen.dart';
+import '../../common/utils/screen.dart';
 
 Widget tagImage({
   required BuildContext context,
   required String url,
   required String tag,
+  double height = 160,
+  double width = 160,
 }) {
   return Container(
-    height: 160.h,
-    width: 280.w,
+    height: height,
+    width: width,
     decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(url),

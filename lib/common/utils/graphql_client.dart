@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import '../services/services.dart';
+import '../widget/toast.dart';
 
 class GraphqlClientUtil {
   static client() {
@@ -27,7 +28,6 @@ class GraphqlClientUtil {
     required BuildContext? context,
     required String schema,
     required Map<String, dynamic> variables,
-    //int nRepositories = 50,
   }) async {
     QueryOptions options = QueryOptions(
       document: gql(schema),
@@ -40,7 +40,7 @@ class GraphqlClientUtil {
       if (kDebugMode) {
         print(result.exception.toString());
       }
-      //toastInfo(msg: result.exception.toString());
+      toastInfo(msg: result.exception.toString());
       //throw result.exception;
     }
 
@@ -70,4 +70,32 @@ class GraphqlClientUtil {
     }
     return result;
   }
+
+  //   /// 错误处理
+  // static _formatException(BuildContext context, OperationException exception) {
+  //   var statusCode = '';
+  //   try {
+  //     statusCode = exception
+  //         .graphqlErrors[0]?.extensions["exception"]["output"]["statusCode"]
+  //         .toString();
+  //     if (statusCode == '') {
+  //       statusCode = exception.graphqlErrors[0]?.extensions["exception"]["code"]
+  //           .toString();
+  //     }
+  //   } catch (e) {}
+
+  //   switch (statusCode) {
+  //     case '400': // 重新登录
+  //       toastInfo(msg: "错误请求，提交数据错误！");
+  //       break;
+  //     case '401': // 没有认证
+  //     case '403': // 没有授权
+  //       toastInfo(msg: "账号无效、服务没有授权，请重新登录！");
+  //       return goLoginPage(context);
+  //     // break;
+  //     default:
+  //       toastInfo(msg: exception.toString());
+  //   }
+  //   throw exception;
+  // }
 }

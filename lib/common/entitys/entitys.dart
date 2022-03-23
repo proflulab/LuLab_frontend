@@ -4,6 +4,7 @@ export 'comment_add_data.dart';
 export 'course_classification_data.dart';
 export 'coursedata.dart';
 export 'detail_coursedata.dart';
+export 'home_train.dart';
 export 'entitys.dart';
 export 'json_convert_content.dart';
 export 'json_field.dart';

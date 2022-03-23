@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../common/entitys/entitys.dart';
 import 'home_product_apply.dart';
 import '../../common/widget/webview.dart';
 
@@ -7,8 +8,7 @@ import '../../common/widget/webview.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key, required this.product}) : super(key: key);
-  final String product;
-  final String applyurl = "https://www.jianshu.com/p/96a9a38413a5";
+  final Product product;
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -22,7 +22,7 @@ class _ProductDetailState extends State<ProductDetail> {
       body: Column(
         children: [
           Flexible(
-            child: Browser(url: widget.product),
+            child: Browser(url: widget.product.detailurl),
           ),
           GestureDetector(
             child: Container(
@@ -35,7 +35,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductApply(
-                    product: widget.applyurl,
+                    product: widget.product.applyurl,
                   ),
                 ),
               );

@@ -17,7 +17,7 @@ class PFr {
   static const double platinum = 0.577;
   static const double ratio1_2 = 1 / 2;
   //青铜比例（Bronze Ratio）
-  static const double? bronze = 0.303;
+  static const double bronze = 0.303;
 }
 
 //e输入参数，t比例值，n循环次数
