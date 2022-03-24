@@ -15,6 +15,7 @@ class PFr {
   static const double golden = 0.618;
   //铂金比例（Platinum Ratio）
   static const double platinum = 0.577;
+  static const double silver414 = 0.414;
   static const double ratio1_2 = 1 / 2;
   //青铜比例（Bronze Ratio）
   static const double bronze = 0.303;

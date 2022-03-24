@@ -52,11 +52,12 @@ class _GatherState extends State<Gather> {
   // 读取咨询所有数据
   _loadIfoData() async {
     _postsIfoData = await SourseAPI.userup(context: context, schema: '');
-    var focusList = _postsIfoData.latestInformation;
-
-    setState(() {
-      _focusData2 = focusList;
-    });
+    //var focusList = _postsIfoData.latestInformation;
+    if (mounted) {
+      setState(() {
+        _focusData2 = _postsIfoData.latestInformation;
+      });
+    }
   }
 
   //添加预约
@@ -82,9 +83,11 @@ class _GatherState extends State<Gather> {
     var focusList = _postsData.latestCourse;
     // var focusId = _postsData.latestCourse[1].id;
 
-    setState(() {
-      _focusData = focusList;
-    });
+    if (mounted) {
+      setState(() {
+        _focusData = focusList;
+      });
+    }
   }
 
   // 读取直播课程数据
@@ -97,27 +100,34 @@ class _GatherState extends State<Gather> {
     );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
-    setState(() {
-      _focusData3 = _latestDirectCourse.latestDirectCourse;
-    });
+
+    if (mounted) {
+      setState(() {
+        _focusData3 = _latestDirectCourse.latestDirectCourse;
+      });
+    }
   }
 
   Future<void> createEvent(Calendars calendars) async {
     //查询是否有读权限。
-    await AlarmCalendar.CheckReadPermission().then((res) async {
-      if (res != null) {
-        //查询是否有写权限
-        await AlarmCalendar.CheckWritePermission().then((resWrite) async {
-          if (resWrite != null) {
-            final id = await AlarmCalendar.createEvent(calendars);
-            calendars.setEventId = id!;
-            if (kDebugMode) {
-              print('获得ID为：' + id);
-            }
-          }
-        });
-      }
-    });
+    await AlarmCalendar.CheckReadPermission().then(
+      (res) async {
+        if (res != null) {
+          //查询是否有写权限
+          await AlarmCalendar.CheckWritePermission().then(
+            (resWrite) async {
+              if (resWrite != null) {
+                final id = await AlarmCalendar.createEvent(calendars);
+                calendars.setEventId = id!;
+                if (kDebugMode) {
+                  print('获得ID为：' + id);
+                }
+              }
+            },
+          );
+        }
+      },
+    );
   }
 
   @override
@@ -134,7 +144,7 @@ class _GatherState extends State<Gather> {
         _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _buildLive(),
         SizedBox(height: 20.h),
-        _titleWidget("最新咨询"),
+        _titleWidget("最新资讯"),
         buildInfomation(),
         // buildFreeCourse(),
         _titleWidget("精选课程"),
@@ -239,7 +249,7 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: PFRadius.a6,
+        borderRadius: PFRadius.a15,
       ),
       height: (PFspace.screenW - PFspace.screenMargin) *
           PFr.bronze *
@@ -249,7 +259,16 @@ class _GatherState extends State<Gather> {
     );
   }
 
+  //直播预约模块
   ListView buildLiveContext() {
+    double pieceW = PFspace.screenW - PFspace.screenMargin;
+    double pieceH = pieceW * PFr.bronze;
+
+    double imageH = pieceW * PFr.bronze - PFspace.ruleM * 2;
+    double imageW = imageH / PFr.silver;
+
+    double textL = imageH / PFr.silver + PFspace.screenMargin + PFspace.ruleS;
+
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       itemCount: _focusData3.length,
@@ -285,160 +304,144 @@ class _GatherState extends State<Gather> {
         );
         if (_focusData3.isNotEmpty) {
           return InkWell(
-              onTap: () async {
-                if (kDebugMode) {
-                  print('到课程详情');
-                  print(_focusData3[index].description.length);
-                }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        LiveDetail(product: _focusData3[index]),
+            onTap: () async {
+              if (kDebugMode) {
+                print('到课程详情');
+                print(_focusData3[index].description.length);
+              }
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LiveDetail(product: _focusData3[index]),
+                ),
+              ).then((value) => _getInitial());
+            },
+            child: Container(
+              width: pieceW,
+              height: pieceH,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(12.0)),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  // 课程封面
+                  Positioned(
+                    top: PFspace.ruleM,
+                    left: PFspace.screenMargin,
+                    child: tagImage(
+                      context: context,
+                      width: imageW,
+                      height: imageH,
+                      url: _focusData3[index].imgUrl,
+                      tag: _focusData3[index].category,
+                    ),
                   ),
-                ).then((value) => _getInitial());
-              },
-              child: Container(
-                height: (PFspace.screenW - PFspace.screenMargin) * PFr.bronze,
-                width: PFspace.screenW - PFspace.screenMargin,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                ),
-                child: Stack(
-                  children: <Widget>[
-                    // 课程封面
-                    Positioned(
-                      top: 10.h,
-                      left: PFspace.screenMargin,
-                      child: tagImage(
-                        context: context,
-                        width: (PFspace.screenW - PFspace.screenMargin * 2) *
-                            PFr.bronze,
-                        height: (PFspace.screenW - PFspace.screenMargin * 2) *
-                            PFr.bronze *
-                            PFr.ratio3_4,
-                        url: _focusData3[index].imgUrl,
-                        tag: _focusData3[index].category,
-                      ),
-                    ),
-                    // 课程标题
-                    Positioned(
-                      top: 10.0.h,
-                      left: 320.0.w,
-                      child: SizedBox(
-                        height: 70.h,
-                        width: 350.w,
-                        child: Text(
-                          _focusData3[index].title,
-                          style: const TextStyle(
+                  // 课程标题
+                  positioningText(
+                    context: context,
+                    top: PFspace.ruleM,
+                    left: textL,
+                    height: _focusData3[index].title.length > 11 ? 60.h : 28.h,
+                    width: pieceW - textL - PFspace.screenMargin,
+                    text: _focusData3[index].title,
+                    font: 'MyFontStyle',
+                    fontSize: 31.sp,
+                  ),
+                  //直播时间
+                  positioningText(
+                    context: context,
+                    top: 130.0.h,
+                    left: textL,
+                    height: 100.h,
+                    width: 168.w,
+                    text: time,
+                    font: '',
+                    fontSize: 28.sp,
+                  ),
+                  //主讲人
+                  positioningText(
+                    context: context,
+                    top: 80.0.h,
+                    left: textL,
+                    height: 100.h,
+                    width: 168.w,
+                    text: _focusData3[index].author,
+                    font: '',
+                    fontSize: 26.sp,
+                  ),
+                  //主讲人标签
+                  positioningText(
+                    context: context,
+                    top: 80.0.h,
+                    left: textL + 100.w,
+                    height: 100.h,
+                    width: 168.w,
+                    text: _focusData3[index].authorTags,
+                    font: '',
+                    fontSize: 26.sp,
+                  ),
+                  //预约按钮
+                  Positioned(
+                    bottom: PFspace.screenMargin,
+                    right: PFspace.screenMargin,
+                    child: SizedBox(
+                      width: 130.w,
+                      height: 50.w,
+                      child: ElevatedButton(
+                        child: status == "0"
+                            ? const Text("预约")
+                            : const Text("已预约"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              status == "0"
+                                  ? Colors.green
+                                  : Colors.grey), //背景颜色
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.white), //字体颜色
+                          overlayColor: MaterialStateProperty.all(
+                              const Color(0xffFFF8E5)), // 高亮色
+                          shadowColor: MaterialStateProperty.all(
+                              const Color(0xffffffff)), //阴影颜色
+                          elevation: MaterialStateProperty.all(0), //阴影值
+                          textStyle: MaterialStateProperty.all(const TextStyle(
+                            fontSize: 10,
                             fontFamily: 'MyFontStyle',
-                            fontSize: 16,
-                          ),
+                          )), //字体
+                          shape: MaterialStateProperty.all(StadiumBorder(
+                              side: BorderSide(
+                            //设置 界面效果
+                            style: BorderStyle.solid,
+                            color: status == "0" ? Colors.green : Colors.grey,
+                          ))),
+                          //圆角弧度
+                          fixedSize:
+                              MaterialStateProperty.all(const Size(5, 0)),
                         ),
+                        onPressed: () {
+                          //执行日历预约方法
+                          createEvent(calendars);
+                          //执行预约方法
+                          setState(() {
+                            _handleRecordAdd(index);
+                            status = "1";
+                            _handleCourse();
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  LiveDetail(product: _focusData3[index]),
+                            ),
+                          ).then((value) => _getInitial());
+                        },
                       ),
                     ),
-                    Positioned(
-                      top: 130.0.h,
-                      left: 320.0.w,
-                      child: SizedBox(
-                        height: 100.h,
-                        width: 168.w,
-                        child: Text(
-                          time,
-                          style: const TextStyle(
-                            // fontFamily: 'MyFontStyle',
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 80.0.h,
-                      left: 320.0.w,
-                      child: SizedBox(
-                        height: 100.h,
-                        width: 168.w,
-                        child: Text(
-                          _focusData3[index].author,
-                          style: const TextStyle(
-                            // fontFamily: 'MyFontStyle',
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 80.0.h,
-                      left: 430.0.w,
-                      child: SizedBox(
-                        height: 100.h,
-                        width: 168.w,
-                        child: Text(
-                          _focusData3[index].authorTags,
-                          style: const TextStyle(
-                            // fontFamily: 'MyFontStyle',
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                        top: 100.0.h,
-                        left: 530.0.w,
-                        child: ElevatedButton(
-                          child: status == "0"
-                              ? const Text("预约")
-                              : const Text("已预约"),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                status == "0"
-                                    ? Colors.green
-                                    : Colors.grey), //背景颜色
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.white), //字体颜色
-                            overlayColor: MaterialStateProperty.all(
-                                const Color(0xffFFF8E5)), // 高亮色
-                            shadowColor: MaterialStateProperty.all(
-                                const Color(0xffffffff)), //阴影颜色
-                            elevation: MaterialStateProperty.all(0), //阴影值
-                            textStyle:
-                                MaterialStateProperty.all(const TextStyle(
-                              fontSize: 10,
-                              fontFamily: 'MyFontStyle',
-                            )), //字体
-                            shape: MaterialStateProperty.all(StadiumBorder(
-                                side: BorderSide(
-                              //设置 界面效果
-                              style: BorderStyle.solid,
-                              color: status == "0" ? Colors.green : Colors.grey,
-                            ))),
-                            //圆角弧度
-                            fixedSize:
-                                MaterialStateProperty.all(const Size(5, 0)),
-                          ),
-                          onPressed: () {
-                            //执行日历预约方法
-                            createEvent(calendars);
-                            //执行预约方法
-                            setState(() {
-                              _handleRecordAdd(index);
-                              status = "1";
-                              _handleCourse();
-                            });
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    LiveDetail(product: _focusData3[index]),
-                              ),
-                            ).then((value) => _getInitial());
-                          },
-                        ))
-                  ],
-                ),
-              ) // ),
-              );
+                  ),
+                ],
+              ),
+            ),
+          );
         } else {
           return const Loading();
         }

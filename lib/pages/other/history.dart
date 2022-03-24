@@ -28,8 +28,11 @@ class _HistoryState extends State<History> {
                   width: 50,
                   height: 40,
                   decoration: const BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(4.0))),
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4.0),
+                    ),
+                  ),
                   child: Image.network(
                     'https://tse2-mm.cn.bing.net/th/id/OIP-C.tFVNDYNDkIfVoD3631C9TAHaE7?w=301&h=199&c=7&r=0&o=5&dpr=1.25&pid=1.7',
                   ),

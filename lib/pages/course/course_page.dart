@@ -31,7 +31,14 @@ class _CoursePageState extends State<CoursePage> {
 
   late EasyRefreshController _controllerCourse;
 
-  int _count = 6;
+  //第一次请求获取课程个数
+  final int _countFirst = 5;
+
+  //刷新请求获取课程个数
+  int _count = 5;
+
+  //底部刷新请求个数
+  final int _countDown = 6;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
   final double _selectW = PFspace.screenW * (1 - PFr.silver) - 12.w;
@@ -41,7 +48,7 @@ class _CoursePageState extends State<CoursePage> {
   void initState() {
     super.initState();
     _controllerCourse = EasyRefreshController();
-    _handleCourse();
+    _handleCourse(0, _countFirst);
     _loadClassificationData();
   }
 
@@ -51,26 +58,33 @@ class _CoursePageState extends State<CoursePage> {
         schema: '', context: context);
     var focusList = _classification.queryCourseClassification;
 
-    setState(
-      () {
+    if (mounted) {
+      setState(() {
         _focusData2 = focusList;
-      },
-    );
+      });
+    }
   }
 
   //获取主课程信息
-  _handleCourse() async {
+  _handleCourse(int skip, int limit) async {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: _mode,
       authorId: Global.profile.data.id,
-      limit: 10,
-      skip: 0,
+      limit: limit,
+      skip: skip,
     );
     _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
         variables: variables, context: context);
-    setState(() {
-      _focusData3 = _latestDirectCourse.latestDirectCourse;
-    });
+
+    if (mounted) {
+      setState(() {
+        if (skip > 0) {
+          _focusData3.addAll(_latestDirectCourse.latestDirectCourse);
+        } else {
+          _focusData3 = _latestDirectCourse.latestDirectCourse;
+        }
+      });
+    }
   }
 
   //左课程栏目
@@ -91,7 +105,7 @@ class _CoursePageState extends State<CoursePage> {
                       setState(() {
                         _selectIndex = index;
                         _mode = _focusData2[index].mode;
-                        _handleCourse();
+                        _handleCourse(0, _countFirst);
                       });
                     },
                     child: Row(
@@ -201,20 +215,21 @@ class _CoursePageState extends State<CoursePage> {
         header: ClassicalHeader(),
         footer: ClassicalFooter(),
         onRefresh: () async {
-          _handleCourse();
+          _handleCourse(0, _countFirst);
           await Future.delayed(const Duration(seconds: 1), () {
             setState(() {
-              _count = 6;
+              _count = _countFirst;
             });
             _controllerCourse.resetLoadState();
           });
         },
         onLoad: () async {
+          _handleCourse(_count, _countDown);
           await Future.delayed(const Duration(seconds: 1), () {
             setState(() {
-              _count += 1;
+              _count += _countDown;
             });
-            _controllerCourse.finishLoad(noMore: _count >= _focusData3.length);
+            _controllerCourse.finishLoad(noMore: _count > _focusData3.length);
           });
         },
         slivers: <Widget>[
@@ -223,7 +238,8 @@ class _CoursePageState extends State<CoursePage> {
               (context, index) {
                 var _imageHeight = _coursesW * 0.414 - PFspace.screenMargin * 2;
                 var _imageWidht = _imageHeight * PFr.ratio3_4;
-                var _textWidht = _coursesW - (PFspace.screenMargin + _imageWidht + PFspace.screenMargin);
+                var _textWidht = _coursesW -
+                    (PFspace.screenMargin + _imageWidht + PFspace.screenMargin);
                 if (_focusData3.isNotEmpty) {
                   return InkWell(
                     onTap: () async {
@@ -278,7 +294,9 @@ class _CoursePageState extends State<CoursePage> {
                             top: _focusData3[index].title.length > 11
                                 ? 85.h
                                 : 50.h,
-                            left: PFspace.screenMargin + _imageWidht + PFspace.screenMargin,
+                            left: PFspace.screenMargin +
+                                _imageWidht +
+                                PFspace.screenMargin,
                             height: 30.h,
                             width: 80.w,
                             text: _focusData3[index].author,
@@ -295,7 +313,10 @@ class _CoursePageState extends State<CoursePage> {
                             top: _focusData3[index].title.length > 11
                                 ? 85.h
                                 : 50.h,
-                            left: PFspace.screenMargin + _imageWidht + PFspace.screenMargin + 95.w,
+                            left: PFspace.screenMargin +
+                                _imageWidht +
+                                PFspace.screenMargin +
+                                95.w,
                             height: 30.h,
                             width: _textWidht - 95.w,
                             text: _focusData3[index].authorTags,

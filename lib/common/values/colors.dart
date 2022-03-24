@@ -28,6 +28,9 @@ class PFc {
   // 强调文本 绿色
   static const Color textEmphasis = Color.fromRGBO(77, 196, 96, 1);
 
+  // 白文本
+  static const Color textWhite = Color.fromARGB(255, 255, 255, 255);
+
   // 主控件-背景 蓝色
   static const Color primaryElement = Color.fromRGBO(41, 103, 255, 1);
 
