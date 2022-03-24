@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/widget/markdown.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/staticdata/makdowndata.dart';
 import '../../common/utils/utils.dart';
 //import '../../common/widget/widgets.dart';
 
@@ -20,95 +22,103 @@ class _InforDetailsState extends State<InforDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: const Text(
-            '详情',
-            style: TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.green,
-              fontSize: 20,
-            ),
-          ),
-          leading: IconButton(
-            icon: const Icon(
-              Icons.keyboard_arrow_left,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: const Text(
+          '详情',
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 20,
           ),
         ),
-        body: Column(
-          children: <Widget>[
-            Container(
-                height: 1082.h,
-                width: 800.w,
-                color: Colors.white,
-                child: SingleChildScrollView(
-                  child: Center(
-                      child: Column(
-                    children: <Widget>[
-                      Text(
-                        infordata.title,
-                        style: const TextStyle(
-                          fontFamily: 'MyFontStyle',
-                          color: Colors.black,
-                          fontSize: 22,
-                        ),
-                      ),
-                      // ElevatedButton(
-                      //   child: Text("播放"),
-                      //   onPressed: () {
-                      //     sstSpeak(text: infordata.content);
-                      //   },
-                      // ),
-                      // ElevatedButton(
-                      //   child: Text("暂停"),
-                      //   onPressed: () {
-                      //     tts.stop();
-                      //   },
-                      // ),
-                      Container(
-                        width: 375,
-                        padding:
-                            const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-                        child: Text(
-                          infordata.content,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-                )),
-            // Container(
-            //   height: 53,
-            //   width: 375,
-            //   child: ElevatedButton(
-            //     child: Text("点击"),
-            //     onPressed: () {
-            //       showModalBottomSheet(
-            //           context: context,
-            //           builder: (BuildContext context) {
-            //             return Container(
-            //                 height: 500,
-            //                 width: 375,
-            //                 child: new TextField(
-            //                   keyboardType: TextInputType.multiline,
-            //
-            //                   maxLines: 30,
-            //                   //maxLines:null 不限制行数
-            //                 ));
-            //           });
-            //     },
-            //   ),
-            // )
-          ],
-        ));
+        leading: IconButton(
+          icon: const Icon(
+            Icons.keyboard_arrow_left,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            height: 1082.h,
+            width: 1.sw,
+            color: Colors.white,
+            child: const PFMarkdown(data: Markdowndata.essay),
+          ),
+          // Container(
+          //   height: 1082.h,
+          //   width: 800.w,
+          //   color: Colors.white,
+          //   child: SingleChildScrollView(
+          //     child: Center(
+          //       child: Column(
+          //         children: <Widget>[
+          //           Text(
+          //             infordata.title,
+          //             style: const TextStyle(
+          //               fontFamily: 'MyFontStyle',
+          //               color: Colors.black,
+          //               fontSize: 22,
+          //             ),
+          //           ),
+          //           // ElevatedButton(
+          //           //   child: Text("播放"),
+          //           //   onPressed: () {
+          //           //     sstSpeak(text: infordata.content);
+          //           //   },
+          //           // ),
+          //           // ElevatedButton(
+          //           //   child: Text("暂停"),
+          //           //   onPressed: () {
+          //           //     tts.stop();
+          //           //   },
+          //           // ),
+          //           Container(
+          //             width: 375,
+          //             padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+          //             child: Text(
+          //               infordata.content,
+          //               style: const TextStyle(
+          //                 color: Colors.black,
+          //                 fontSize: 20,
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   height: 53,
+          //   width: 375,
+          //   child: ElevatedButton(
+          //     child: Text("点击"),
+          //     onPressed: () {
+          //       showModalBottomSheet(
+          //           context: context,
+          //           builder: (BuildContext context) {
+          //             return Container(
+          //                 height: 500,
+          //                 width: 375,
+          //                 child: new TextField(
+          //                   keyboardType: TextInputType.multiline,
+          //
+          //                   maxLines: 30,
+          //                   //maxLines:null 不限制行数
+          //                 ));
+          //           });
+          //     },
+          //   ),
+          // )
+        ],
+      ),
+    );
   }
 }

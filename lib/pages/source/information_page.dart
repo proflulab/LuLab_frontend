@@ -30,9 +30,11 @@ class _InformationPageState extends State<InformationPage> {
     _postsIfoData = await SourseAPI.userup(context: context, schema: '');
     var focusList = _postsIfoData.latestInformation;
 
-    setState(() {
-      _focusData = focusList;
-    });
+    if (mounted) {
+      setState(() {
+        _focusData = focusList;
+      });
+    }
   }
 
   @override

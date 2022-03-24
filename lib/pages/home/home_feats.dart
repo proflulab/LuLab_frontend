@@ -31,9 +31,11 @@ class _FeatsPageState extends State<FeatsPage> {
     _postsData = await GqlModelAPI.indexPageInfo(schema: '', context: context);
     var focusList = _postsData.latestModel;
 
-    setState(() {
-      _focusData = focusList;
-    });
+    if (mounted) {
+      setState(() {
+        _focusData = focusList;
+      });
+    }
   }
 
   @override
