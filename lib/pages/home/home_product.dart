@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/staticdata/jsondata.dart';
 
 import '../../common/entitys/entitys.dart';
-import '../../common/staticdata/jsondata.dart';
+import '../../common/json/jsondata.dart';
 import '../../common/utils/utils.dart';
 import 'home_product_detail.dart';
 
@@ -14,6 +15,8 @@ class Product extends StatefulWidget {
 
 class _ProductState extends State<Product> {
   late Train _postsDataProduct;
+
+  //final _product = Train.fromJson(json.decode(Jsondata.product));
 
   @override
   void initState() {
@@ -28,7 +31,6 @@ class _ProductState extends State<Product> {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           child: Container(
-<<<<<<< HEAD
               alignment: Alignment.topLeft,
               width: 1.sw,
               height: 300,
@@ -87,7 +89,7 @@ class _ProductState extends State<Product> {
                                   child: Container(
                                     alignment: Alignment.center,
                                     height: 50,
-                                    child: const Text('特点1'),
+                                    child: Text('特点1'),
                                   ),
                                 ),
                                 Container(
@@ -114,7 +116,7 @@ class _ProductState extends State<Product> {
                                         child: Container(
                                           alignment: Alignment.center,
                                           height: 50,
-                                          child: const Text(' 特点2'),
+                                          child: Text(' 特点2'),
                                         ))),
                               ],
                             ),
@@ -130,15 +132,6 @@ class _ProductState extends State<Product> {
                       ),
                 ],
               )),
-=======
-            width: 1.sw,
-            height: 300,
-            color: const Color.fromARGB(255, 226, 195, 192),
-            child: Text(
-              _postsDataProduct.data.product[index].description,
-            ),
-          ),
->>>>>>> eac05b9bb861cf39e3d18edceb1f96624512e6cd
           onTap: () {
             Navigator.push(
               context,
