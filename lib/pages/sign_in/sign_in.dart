@@ -74,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
         (route) => route == null,
       );
     } else {
-      return toastInfo(msg: '++++++++=');
+      return toastInfo(msg: '请勾选服务使用协议');
     }
   }
 
