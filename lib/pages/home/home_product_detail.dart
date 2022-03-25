@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../common/values/values.dart';
 import '../../common/entitys/entitys.dart';
-import 'home_product_apply.dart';
 import '../../common/widget/webview.dart';
-
-//import '../../common/utils/utils.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key, required this.product}) : super(key: key);
@@ -18,24 +16,29 @@ class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Column(
         children: [
           Flexible(
-            child: Browser(url: widget.product.detailurl),
+            child: Browser(
+              url: widget.product.detailurl,
+              title: widget.product.name,
+            ),
           ),
           GestureDetector(
             child: Container(
-              color: Colors.blue,
-              height: 100,
-              child: const Text("点击申请"),
+              color: PFc.themeColor10,
+              height: PFspace.screenH * 0.15,
+              child: const Center(
+                child: Text("点击申请"),
+              ),
             ),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProductApply(
-                    product: widget.product.applyurl,
+                  builder: (context) => Browser(
+                    url: widget.product.applyurl,
+                    title: "填写申请",
                   ),
                 ),
               );

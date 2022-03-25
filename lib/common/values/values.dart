@@ -9,4 +9,5 @@ export 'size_font.dart';
 export 'size_radii.dart';
 export 'size_spacing.dart';
 export 'shadows.dart';
+export 'size_text.dart';
 export 'storage.dart';

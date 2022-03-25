@@ -58,6 +58,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   webview_flutter: ^3.0.1
   flutter_markdown: ^0.6.9
+  any_syntax_highlighter: ^0.0.12
 
   flutter_localizations:
     sdk: flutter

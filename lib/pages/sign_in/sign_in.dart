@@ -10,7 +10,7 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../app.dart';
 import '../sign_up/register.dart';
-import '../users/package/users_serice_user .dart';
+import '../users/package/users_serice_user.dart';
 import '../users/package/users_privay_user.dart';
 import '../users/package/users_copyrig_user.dart';
 import '../users/package/users_featurs_user.dart';

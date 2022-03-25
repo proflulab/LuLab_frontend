@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proflu/common/api/gql_detailmaincourse.dart';
 import 'package:proflu/common/entitys/detail_maincourse.dart';
 
+import '../../common/entitys/latestrecord_data.dart';
+
 class NoticeDetail extends StatefulWidget {
   const NoticeDetail({Key? key, required this.product}) : super(key: key);
-  final product;
+  final LatestRecordElement product;
   @override
   State<NoticeDetail> createState() => _NoticeDetailState();
 }

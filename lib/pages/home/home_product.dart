@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:proflu/common/staticdata/jsondata.dart';
 
 import '../../common/entitys/entitys.dart';
-import '../../common/json/jsondata.dart';
 import '../../common/utils/utils.dart';
 import 'home_product_detail.dart';
 
@@ -89,7 +88,7 @@ class _ProductState extends State<Product> {
                                   child: Container(
                                     alignment: Alignment.center,
                                     height: 50,
-                                    child: Text('特点1'),
+                                    child: const Text('特点1'),
                                   ),
                                 ),
                                 Container(
@@ -116,7 +115,7 @@ class _ProductState extends State<Product> {
                                         child: Container(
                                           alignment: Alignment.center,
                                           height: 50,
-                                          child: Text(' 特点2'),
+                                          child: const Text(' 特点2'),
                                         ))),
                               ],
                             ),

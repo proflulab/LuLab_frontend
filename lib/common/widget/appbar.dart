@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 
-// 透明背景 AppBar
+// 透明背景AppBar
 Widget transparentAppBar({
   required BuildContext context,
   required Widget title,
@@ -25,21 +25,24 @@ PreferredSizeWidget appBarCommon({
   Widget? leading,
   List<Widget>? actions,
 }) {
-  return AppBar(
-    centerTitle: true,
-    automaticallyImplyLeading: false,
-    backgroundColor: Colors.transparent,
-    elevation: 0,
-    title: Text(
-      title,
-      style: const TextStyle(
-        fontFamily: 'MyFontStyle',
-        color: PFc.textEmphasis,
-        fontSize: 24,
+  return PreferredSize(
+    preferredSize: Size.fromHeight(PFspace.screenH * 0.1),
+    child: AppBar(
+      centerTitle: true,
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      title: Text(
+        title,
+        style: const TextStyle(
+          fontFamily: 'MyFontStyle',
+          color: PFc.textEmphasis,
+          fontSize: 24,
+        ),
       ),
+      leading: leading,
+      actions: actions,
     ),
-    leading: leading,
-    actions: actions,
   );
 }
 

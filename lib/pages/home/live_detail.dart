@@ -4,19 +4,20 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:alarm_calendar/alarm_calendar.dart';
 import 'package:alarm_calendar/calendars.dart';
 import 'package:date_format/date_format.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/api/gql_latestusercourserecord.dart';
-import 'package:proflu/common/api/gql_recordadd.dart';
-import 'package:proflu/common/entitys/latestusercourserecord_data.dart';
-import 'package:proflu/common/entitys/record_add_data.dart';
-import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/widget/toast.dart';
 import 'package:share_plus/share_plus.dart';
+
+import 'package:proflu/common/api/apis.dart';
+import 'package:proflu/common/entitys/entitys.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/widget/widgets.dart';
 
 class LiveDetail extends StatefulWidget {
   const LiveDetail({Key? key, required this.product}) : super(key: key);
-  final product;
+  final LatestDirectCourseElement product;
   @override
   _LiveDetailState createState() => _LiveDetailState();
 }
@@ -25,11 +26,11 @@ class _LiveDetailState extends State<LiveDetail> {
   late Timer _timer;
   late int seconds;
   DateTime now = DateTime.now();
-  late RecordAdd _recordAdd;
-  late RecordAddClass _recordData;
+  //late RecordAdd _recordAdd;
+  //late RecordAddClass _recordData;
   late var stauts = widget.product.status;
   late LatestUserCourseRecord _latestUserCourseRecord;
-  var state;
+  late String state;
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
@@ -122,7 +123,9 @@ class _LiveDetailState extends State<LiveDetail> {
           if (resWrite != null) {
             final id = await AlarmCalendar.createEvent(calendars);
             calendars.setEventId = id!;
-            print('获得ID为：' + id);
+            if (kDebugMode) {
+              print('获得ID为：' + id);
+            }
           }
         });
       }
@@ -137,13 +140,13 @@ class _LiveDetailState extends State<LiveDetail> {
       courseId: widget.product.id,
       onlineTime: now,
     );
-    _recordAdd = await GqlRecordAddAPI.indexPageInfo(
-        variables: variables, context: context);
-    var recordData = _recordAdd.recordAdd;
+    //_recordAdd =
+    await GqlRecordAddAPI.indexPageInfo(variables: variables, context: context);
+    //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
-    setState(() {
-      _recordData = recordData;
-    });
+    // setState(() {
+    //   _recordData = recordData;
+    // });
   }
 
   @override
