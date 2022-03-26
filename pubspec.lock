@@ -339,7 +339,7 @@ packages:
       name: flutter_markdown
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.9"
+    version: "0.6.9+1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -935,7 +935,7 @@ packages:
       name: synchronized
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.0+2"
   term_glyph:
     dependency: transitive
     description:
@@ -1075,7 +1075,7 @@ packages:
       name: video_player_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   video_player_avfoundation:
     dependency: transitive
     description:
