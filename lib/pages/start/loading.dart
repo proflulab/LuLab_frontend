@@ -25,10 +25,22 @@ class _LoadingPageState extends State<LoadingPage> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Image.network(
-        'https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%90%AF%E5%8A%A8%E9%A1%B5.png',
-        fit: BoxFit.cover,
+      child: Image.asset(
+        'assets/images/StartPage.png',
+        fit: BoxFit.contain,
       ),
+
+      // const FadeInImage(
+      //   placeholder: AssetImage('assets/images/微信.png'),
+      //   image: NetworkImage(
+      //     'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+      //   ),
+      // )
+
+      // Image.network(
+      //   'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+      //   fit: BoxFit.cover,
+      // ),
     );
   }
 

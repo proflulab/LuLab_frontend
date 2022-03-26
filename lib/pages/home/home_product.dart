@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/staticdata/jsondata.dart';
+import '../../common/staticdata/jsondata.dart';
 
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+
 import 'home_product_detail.dart';
 
 class Product extends StatefulWidget {

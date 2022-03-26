@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/values/values.dart';
+import '../../common/values/values.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 //import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import 'home_feats_personal.dart';
 
 class FeatsPage extends StatefulWidget {
@@ -26,14 +27,13 @@ class _FeatsPageState extends State<FeatsPage> {
     _loadAllData();
   }
 
-  // 读取所有课程数据
+  // 读取所有功勋员数据
   _loadAllData() async {
-    _postsData = await GqlModelAPI.indexPageInfo(schema: '', context: context);
-    var focusList = _postsData.latestModel;
+    _postsData = await GqlHomeAPI.featInfo(context: context);
 
     if (mounted) {
       setState(() {
-        _focusData = focusList;
+        _focusData = _postsData.latestModel;
       });
     }
   }

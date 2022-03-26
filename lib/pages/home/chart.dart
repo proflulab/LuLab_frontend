@@ -433,8 +433,8 @@
 // // }
 //表格翻页测试
 // import 'package:flutter/material.dart';
-// import 'package:proflu/common/api/gql_sourse.dart';
-// import 'package:proflu/common/entitys/soursedata_infor.dart';
+// import '../../common/api/gql_sourse.dart';
+// import '../../common/entitys/soursedata_infor.dart';
 // import 'package:proflu/pages/home/test.dart';
 //
 // var nameList = ["绿皮南瓜", "番茄", "白菜", "胡萝卜", "土豆", "甜菜", "白甜"];

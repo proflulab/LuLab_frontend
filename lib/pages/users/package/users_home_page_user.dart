@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/utils.dart';
+import '../../../common/utils/utils.dart';
 
 import '../users_set.dart';
 import 'users_copyright_user.dart';

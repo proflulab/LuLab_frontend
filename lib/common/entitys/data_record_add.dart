@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final recordAdd = recordAddFromJson(jsonString);
-
 import 'dart:convert';
 
 RecordAdd recordAddFromJson(String str) => RecordAdd.fromJson(json.decode(str));

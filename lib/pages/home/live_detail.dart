@@ -7,13 +7,13 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'package:proflu/common/api/apis.dart';
-import 'package:proflu/common/entitys/entitys.dart';
-import 'package:proflu/common/global/global.dart';
-import 'package:proflu/common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
+import '../../common/widget/widgets.dart';
 
 class LiveDetail extends StatefulWidget {
   const LiveDetail({Key? key, required this.product}) : super(key: key);
@@ -100,7 +100,7 @@ class _LiveDetailState extends State<LiveDetail> {
   _handleCourseRecord() async {
     LatestUserCourseRecordRequest variables = LatestUserCourseRecordRequest(
         courseId: widget.product.id, authorId: Global.profile.data.id);
-    _latestUserCourseRecord = await GqlLatestUserCourseRecordAPI.indexPageInfo(
+    _latestUserCourseRecord = await GqlCourseAPI.orderCourseInfo(
         variables: variables, context: context);
     setState(() {
       state = _latestUserCourseRecord.latestUserCourseRecord.status;
@@ -141,7 +141,7 @@ class _LiveDetailState extends State<LiveDetail> {
       onlineTime: now,
     );
     //_recordAdd =
-    await GqlRecordAddAPI.indexPageInfo(variables: variables, context: context);
+    await GqlHomeAPI.recordAddInfo(variables: variables, context: context);
     //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
     // setState(() {

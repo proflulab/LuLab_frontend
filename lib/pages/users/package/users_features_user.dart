@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/utils.dart';
+import '../../../common/utils/utils.dart';
 import 'users_home_page_user.dart';
 
 class Features extends StatelessWidget {

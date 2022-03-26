@@ -1,8 +1,8 @@
 // import 'package:flutter/material.dart';
-// import 'package:proflu/common/values/values.dart';
+// import '../../common/values/values.dart';
 
-// import 'package:proflu/common/widget/action_input.dart';
-// import 'package:proflu/common/widget/find_config.dart';
+// import '../../common/widget/action_input.dart';
+// import '../../common/widget/find_config.dart';
 
 // class FindBottomTool extends StatelessWidget {
 //   final FocusNode focusNode;

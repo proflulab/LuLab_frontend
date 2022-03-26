@@ -5,6 +5,7 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import '../other/loading.dart';
 import 'infor_details.dart';
 
@@ -25,14 +26,14 @@ class _InformationPageState extends State<InformationPage> {
     _loadIfoData();
   }
 
-  // 读取所有数据
+  // 获取所有数据
   _loadIfoData() async {
-    _postsIfoData = await SourseAPI.userup(context: context, schema: '');
-    var focusList = _postsIfoData.latestInformation;
+    _postsIfoData = await SourseAPI.inforInfo(
+        context: context, variables: Inforrequest(limit: 0, skip: 0));
 
     if (mounted) {
       setState(() {
-        _focusData = focusList;
+        _focusData = _postsIfoData.latestInformation;
       });
     }
   }
@@ -81,15 +82,15 @@ class _InformationPageState extends State<InformationPage> {
                 ),
                 child: Stack(
                   children: <Widget>[
-                    // 资讯封面
-                    // positionedImage(
-                    //     context: context,
-                    //     top: 10,
-                    //     left: 10,
-                    //     height: 150,
-                    //     width: 150,
-                    //     url:
-                    //         'https://image2.cnpp.cn/upload/images/20210427/17584971448_207x90.gif'),
+                    //资讯封面
+                    positionedImage(
+                      context: context,
+                      top: 10,
+                      left: 10,
+                      height: 100,
+                      width: 100,
+                      url: _focusData[index].img,
+                    ),
                     // 资讯标题
                     positioningText(
                       context: context,

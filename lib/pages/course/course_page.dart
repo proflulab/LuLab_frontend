@@ -54,13 +54,11 @@ class _CoursePageState extends State<CoursePage> {
 
   //获取课程分类
   _loadClassificationData() async {
-    _classification = await GqlCourseClassificationAPI.indexPageInfo(
-        schema: '', context: context);
-    var focusList = _classification.queryCourseClassification;
+    _classification = await GqlCourseAPI.classIficationInfo(context: context);
 
     if (mounted) {
       setState(() {
-        _focusData2 = focusList;
+        _focusData2 = _classification.queryCourseClassification;
       });
     }
   }
@@ -73,7 +71,7 @@ class _CoursePageState extends State<CoursePage> {
       limit: limit,
       skip: skip,
     );
-    _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
+    _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
         variables: variables, context: context);
 
     if (mounted) {

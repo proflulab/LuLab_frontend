@@ -31,7 +31,6 @@ class Service extends StatelessWidget {
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
-
           // padding: EdgeInsets.zero,
         ),
       ),

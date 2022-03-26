@@ -4,16 +4,8 @@ import 'dart:ui' as ui;
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-//import '../../common/values/values.dart';
-//import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
-
-//import '../../common/widget/find_bottom_tool.dart';
-//import '../../common/widget/find_config.dart';
-//import '../../common/widget/widgets.dart';
-//import 'course_comment_send.dart';
-//import 'course_index.dart';
 
 /// 课程评论页面
 
@@ -45,7 +37,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
     LatestCommentRequest variables = LatestCommentRequest(
       courseId: widget.courseData.firstCourseId,
     );
-    _latestComment = await GqlLatestCommentAPI.indexPageInfo(
+    _latestComment = await GqlCommentAPI.commentRequestInfo(
         variables: variables, context: context);
     setState(() {
       _commentData = _latestComment.latestComment;
@@ -68,8 +60,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
       authorName: Global.profile.data.name,
     );
     //_commentAdd =
-    await GqlCommentAddAPI.indexPageInfo(
-        variables: variables, context: context);
+    await GqlCommentAPI.commenAddInfo(variables: variables, context: context);
     //var commentData2 = _commentAdd.commentAdd;
     setState(() {
       _handleComment();

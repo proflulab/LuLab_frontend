@@ -4,6 +4,8 @@ A new Flutter project.
 
 ## 技术说明
 
+tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到dirTree.txt中
+
 无线调试app
 
 1. adb tcpip 5555
@@ -18,6 +20,10 @@ A new Flutter project.
 [WebSocket测试网址](http://wstool.js.org/)
 
 [测试接口ws://49.234.18.41:8866](ws://49.234.18.41:8866)
+
+[Json转Dart类](https://app.quicktype.io/)
+
+[JSON格式化工具 - 在线查看, 编辑和格式化工具 (doudoudzj.github.io)](https://doudoudzj.github.io/html-tools/jsoneditor/v2/)
 
 ## 产品文档
 

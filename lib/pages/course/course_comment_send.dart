@@ -1,13 +1,9 @@
-// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-// import '../../common/widget/toast.dart';
 import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-// import '../../common/utils/utils.dart';
-// import '../../common/entitys/entitys.dart';
 import '../../common/values/values.dart';
 
 typedef ActionInputSelect = void Function(String text);
@@ -91,7 +87,7 @@ class _CtionInputDialogState extends State<CtionInputDialog>
       authorName: Global.profile.data.name,
     );
     //_commentAdd =
-    await GqlCommentAddAPI.indexPageInfo(
+    await GqlCommentAPI.commenAddInfo(
         variables: variables, context: context);
     //var commentData2 = _commentAdd.commentAdd;
 

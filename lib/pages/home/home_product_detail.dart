@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/values/values.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/widget/webview.dart';
+import '../../common/widget/widgets.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key, required this.product}) : super(key: key);

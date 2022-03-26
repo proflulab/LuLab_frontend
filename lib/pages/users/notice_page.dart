@@ -1,10 +1,11 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/api/gql_latestrecord.dart';
-import 'package:proflu/common/entitys/latestrecord_data.dart';
-import 'package:proflu/common/global/global.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/global/global.dart';
 
 import 'notice_detail.dart';
 
@@ -28,8 +29,8 @@ class _NoticePageState extends State<NoticePage> {
   _handleNotice() async {
     LatestRecordRequest variables =
         LatestRecordRequest(authorId: Global.profile.data.id);
-    _latestRecord = await GqlLatestRecordAPI.indexPageInfo(
-        variables: variables, context: context);
+    _latestRecord =
+        await GqlHomeAPI.ordersInfo(variables: variables, context: context);
     setState(() {
       _focusData = _latestRecord.latestRecord;
     });
@@ -79,10 +80,12 @@ class _NoticePageState extends State<NoticePage> {
                       print('到通知详情');
                     }
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                NoticeDetail(product: _focusData[index])));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NoticeDetail(product: _focusData[index]),
+                      ),
+                    );
                   },
                   child: Column(
                     children: [

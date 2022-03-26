@@ -33,7 +33,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
               widget.product.videoUrl,
               //'https://media.w3.org/2010/05/sintel/trailer.mp4',
               cover:
-                  'https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png',
+                  'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
             ),
           ),
         ),

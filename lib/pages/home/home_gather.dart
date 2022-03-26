@@ -5,12 +5,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-import '../../common/widget/widgets.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import '../other/loading.dart';
@@ -32,6 +33,7 @@ class _GatherState extends State<Gather> {
   List<LatestDirectCourseElement> _focusData3 = [];
   //late RecordAdd _recordAdd;
   //late RecordAddClass _recordData;
+
   DateTime now = DateTime.now();
 
   _getInitial() async {
@@ -49,10 +51,11 @@ class _GatherState extends State<Gather> {
     _loadAllData();
   }
 
-  // 读取咨询所有数据
+  // 读取资讯所有数据
   _loadIfoData() async {
-    _postsIfoData = await SourseAPI.userup(context: context, schema: '');
-    //var focusList = _postsIfoData.latestInformation;
+    _postsIfoData = await SourseAPI.inforInfo(
+        context: context, variables: Inforrequest(limit: 0, skip: 0));
+
     if (mounted) {
       setState(() {
         _focusData2 = _postsIfoData.latestInformation;
@@ -69,7 +72,7 @@ class _GatherState extends State<Gather> {
       onlineTime: now,
     );
     //_recordAdd =
-    await GqlRecordAddAPI.indexPageInfo(variables: variables, context: context);
+    await GqlHomeAPI.recordAddInfo(variables: variables, context: context);
     //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
     // setState(() {
@@ -79,7 +82,7 @@ class _GatherState extends State<Gather> {
 
   // 读取所有课程数据
   _loadAllData() async {
-    _postsData = await GqlCourseAPI.indexPageInfo(schema: '', context: context);
+    _postsData = await GqlCourseAPI.indexPageInfo(context: context);
     var focusList = _postsData.latestCourse;
     // var focusId = _postsData.latestCourse[1].id;
 
@@ -98,7 +101,7 @@ class _GatherState extends State<Gather> {
       limit: 10,
       skip: 0,
     );
-    _latestDirectCourse = await GqlLatestDirectCourseAPI.indexPageInfo(
+    _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
         variables: variables, context: context);
 
     if (mounted) {
@@ -157,8 +160,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE2.png",
+      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
+      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
     ];
 
     return Container(

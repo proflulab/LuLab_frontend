@@ -26,7 +26,7 @@ Widget positionedImage({
           image: NetworkImage(url),
           fit: BoxFit.cover,
         ),
-        color: const Color.fromRGBO(200, 233, 233, 1),
+        color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: borderRadius,
         //BorderRadius.circular(10),
       ),

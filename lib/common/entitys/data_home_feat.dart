@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final latestModel = latestModelFromJson(jsonString);
-
 import 'dart:convert';
 
 LatestModel latestModelFromJson(String str) =>

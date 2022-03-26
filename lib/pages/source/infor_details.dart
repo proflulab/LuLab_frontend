@@ -4,7 +4,7 @@ import 'package:text_to_speech/text_to_speech.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/staticdata/makdowndata.dart';
+//import '../../common/staticdata/makdowndata.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -64,7 +64,7 @@ class _InforDetailsState extends State<InforDetails> {
                                 height: 100.h,
                                 width: 1.sw,
                                 child: Text(
-                                  DateTime.now().toString(),
+                                  infordata.releaseDate,
                                   textAlign: TextAlign.left,
                                   softWrap: false,
                                   overflow: TextOverflow.ellipsis,
@@ -80,7 +80,7 @@ class _InforDetailsState extends State<InforDetails> {
                             ],
                           );
                         } else if (index == 1) {
-                          return const PFMarkdown(data: Markdowndata.essay);
+                          return PFMarkdown(data: infordata.mdtext);
                         } else if (index == 2) {
                           return Column(
                             children: [

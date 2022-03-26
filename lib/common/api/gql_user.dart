@@ -13,7 +13,7 @@ class GqlUserAPI {
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: gqlUserLogin,
+      schema: SchemaUser.gqlUserLogin,
       variables: variables.toJson(),
     );
     return UserLogin.fromJson(response.data!["userLogin"]);
@@ -25,20 +25,24 @@ class GqlUserAPI {
     required Registeredrequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context,
-        schema: gqlUserRegister,
-        variables: variables.toJson());
+      context: context,
+      schema: SchemaUser.gqlUserRegister,
+      variables: variables.toJson(),
+    );
 
     return UserRigister.fromJson(response.data!["userRigister"]);
   }
 
-  // 个人信息更新
+  // 修改个人信息
   static Future<UserUpdateresponse> userup({
     required BuildContext context,
     required UserUpdaterequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
-        context: context, schema: gqlUserUpdata, variables: variables.toJson());
+      context: context,
+      schema: SchemaUser.gqlUserUpdata,
+      variables: variables.toJson(),
+    );
 
     return UserUpdateresponse.fromJson(response.data!);
   }

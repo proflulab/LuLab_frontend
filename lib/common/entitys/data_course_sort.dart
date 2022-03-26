@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final queryCourseClassification = queryCourseClassificationFromJson(jsonString);
-
 import 'dart:convert';
 
 QueryCourseClassification queryCourseClassificationFromJson(String str) =>

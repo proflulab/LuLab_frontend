@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+
 import 'users_set_user.dart';
 import 'package/users_home_page_user.dart';
 import '../../pages/sign_in/sign_in.dart';
@@ -44,7 +45,6 @@ class _SettingsPageState extends State<SettingsPage> {
             },
           ),
           backgroundColor: Colors.white,
-          //centerTitle: true,
         ),
         body: Column(
           children: [

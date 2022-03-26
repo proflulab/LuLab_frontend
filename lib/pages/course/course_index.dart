@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/values/values.dart';
+import '../../common/values/values.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -47,8 +47,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   // 读取所有课程数据
   _handleCourse() async {
     CourseRequest variables = CourseRequest(dirId: dirId, courseId: courseId);
-    _detailCourse = await GqlDetailCourseAPI.indexPageInfo(
-        variables: variables, context: context);
+    _detailCourse =
+        await GqlCourseAPI.detailsInfo(variables: variables, context: context);
     setState(() {
       _focusData = _detailCourse.detailCourse;
       _subCourses = _detailCourse.detailCourse.subCourses;
@@ -77,8 +77,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
             //测试视频
             //'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-            cover:
-                'https://gitee.com/shimingy/imagesbed/raw/master/img/%E8%BD%AE%E6%92%AD%E5%9B%BE1.png',
+            cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
             key: UniqueKey(),
           ),
           // tab栏
@@ -180,7 +179,6 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                       ),
                       SizedBox(
                         height: (114.h + 15) * _subCourses.length,
-                        //width: 500.w,
                         child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: _subCourses.length,

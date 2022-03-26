@@ -1,10 +1,9 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/api/gql_detailmaincourse.dart';
-import 'package:proflu/common/entitys/detail_maincourse.dart';
 
-import '../../common/entitys/latestrecord_data.dart';
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
 
 class NoticeDetail extends StatefulWidget {
   const NoticeDetail({Key? key, required this.product}) : super(key: key);
@@ -25,7 +24,7 @@ class _NoticeDetailState extends State<NoticeDetail> {
   _handleDetail() async {
     DetailMainCourseRequest variables =
         DetailMainCourseRequest(courseId: '6219874d916b276883e04f6f');
-    _detailMainCourse = await GqlDetailMainCourseAPI.indexPageInfo(
+    _detailMainCourse = await GqlCourseAPI.singleCourseInfo(
         variables: variables, context: context);
     setState(() {
       _focusData = _detailMainCourse.detailMainCourse;

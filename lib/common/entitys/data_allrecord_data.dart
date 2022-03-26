@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final latestRecord = latestRecordFromJson(jsonString);
-
 import 'dart:convert';
 
 LatestRecord latestRecordFromJson(String str) =>

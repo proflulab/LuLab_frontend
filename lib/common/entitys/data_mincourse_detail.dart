@@ -1,10 +1,6 @@
-// To parse this JSON data, do
-//
-//     final detailCourse = detailCourseFromJson(jsonString);
-
 import 'dart:convert';
 
-//课程详情数据
+//查询主课下每小节信息
 DetailCourse detailCourseFromJson(String str) =>
     DetailCourse.fromJson(json.decode(str));
 

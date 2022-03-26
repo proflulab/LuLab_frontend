@@ -6,6 +6,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import 'notice_page.dart';
 import 'users_set.dart';
 
@@ -377,7 +378,6 @@ class _UsersPageState extends State<UsersPage> {
                     print("跳转到通知");
                     print(Global.profile.data.id);
                   }
-
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const NoticePage()));
                 },
@@ -390,7 +390,6 @@ class _UsersPageState extends State<UsersPage> {
                   if (kDebugMode) {
                     print("跳转到设置");
                   }
-
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const SettingsPage()));
                 },

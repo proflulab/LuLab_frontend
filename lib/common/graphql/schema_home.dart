@@ -1,0 +1,72 @@
+class SchemaHome {
+  //添加预约
+  // {
+  //   "courseId": "6219874d916b276883e04f6f",
+  //   "authorId": "61da3c75bc88025d1d517492",
+  //   "status": "1",
+  //   "onlineTime": "2022-10-20 10:10:10"
+  // }
+  static const String gqlRecordAddList = r'''
+mutation RecordAdd($courseId:String!, $authorId:String!, $status:String!, $onlineTime:String!){
+  recordAdd(orderRecordInput:{courseId:$courseId, authorId:$authorId, status:$status, onlineTime:$onlineTime}){
+    status
+    msg
+  }
+}
+
+''';
+
+//课程预约查询
+// {
+//   "courseId": "6219874d916b276883e04f6f",
+//   "authorId": "61da3c75bc88025d1d517492"
+// }
+
+  static const String gqlLatestUserCourseRecordList = r'''
+query LatestUserCourseRecord($authorId:String!, $courseId:String!){
+  latestUserCourseRecord(authorId:$authorId, courseId:$courseId){
+    status
+    msg
+  }
+}
+
+''';
+
+  //所有预约查询
+  // {
+  //   "authorId":"shiming"
+  // }
+  static const String gqlLatestRecordList = r'''
+  query LatestRecord($authorId: String!){
+    latestRecord(authorId:$authorId,option:{limit:2,skip:0}) {
+      courseId
+      authorId
+      status
+      addTime
+      onlineTime
+      timestamp
+      imgUrl
+      title
+      author
+      description
+    }
+  }
+''';
+
+  //功勋员数据请求
+  static const String gqlModelList = r'''
+query{
+  latestModel(option:{limit:10,skip:0}) {
+    _id
+    name
+    description
+    identity
+    imgUrl
+    videoUrl
+    growthDescription
+    timestamp
+  }
+}
+
+''';
+}

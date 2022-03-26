@@ -1,7 +1,7 @@
 //import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:proflu/common/values/values.dart';
+import '../../common/values/values.dart';
 import '../utils/utils.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';

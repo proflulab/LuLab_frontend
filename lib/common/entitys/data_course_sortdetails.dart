@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final latestDirectCourse = latestDirectCourseFromJson(jsonString);
-
 import 'dart:convert';
 
 LatestDirectCourse latestDirectCourseFromJson(String str) =>
