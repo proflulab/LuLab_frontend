@@ -8,6 +8,7 @@ export 'button.dart';
 export 'chewie_video.dart';
 export 'combotton.dart';
 export 'contact_item.dart';
+export 'delayexit.dart';
 export 'fbutton.dart';
 export 'fijkplayer_video.dart';
 export 'flutter_tts.dart';
