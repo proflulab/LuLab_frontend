@@ -17,15 +17,15 @@ class SetUser extends StatefulWidget {
 }
 
 class _SetUserState extends State<SetUser> {
-  String _sexValue = Global.profile.data.sex;
+  String _sexValue = Global.profile.sex;
   final TextEditingController _nameController =
-      TextEditingController(text: Global.profile.data.name);
+      TextEditingController(text: Global.profile.name);
   final TextEditingController _introController =
-      TextEditingController(text: Global.profile.data.description);
+      TextEditingController(text: Global.profile.description);
   final TextEditingController _phoneController =
-      TextEditingController(text: Global.profile.data.phone);
+      TextEditingController(text: Global.profile.phone);
   final TextEditingController _wechatnameController =
-      TextEditingController(text: Global.profile.data.wechat);
+      TextEditingController(text: Global.profile.wechat);
   //获取个人缓存信息
   // _getuser() {
   //   var user = Storage.getJson(storageUserProfileKey);
@@ -48,23 +48,24 @@ class _SetUserState extends State<SetUser> {
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
     );
-    UserLogin profiler = UserLogin(
-        msg: '',
-        status: '',
-        data: Data(
-          name: _nameController.value.text,
-          password: '12345678',
-          img:
-              "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-          wechat: _wechatnameController.value.text,
-          phone: _phoneController.value.text,
-          sex: _sexValue,
-          description: _introController.value.text,
-          id: '',
-        ));
+    // UserLogin profiler = UserLogin(
+    //   msg: '',
+    //   status: '',
+    //   data: Data(
+    //     name: _nameController.value.text,
+    //     password: '12345678',
+    //     iconUrl:
+    //         "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
+    //     wechat: _wechatnameController.value.text,
+    //     phone: _phoneController.value.text,
+    //     sex: _sexValue,
+    //     description: _introController.value.text,
+    //     id: '',
+    //   ),
+    // );
     try {
       await GqlUserAPI.userup(context: context, variables: variables);
-      Global.saveProfile(profiler);
+      //Global.saveProfile(profiler);
       toastInfo(msg: '修改成功');
     } catch (e) {
       if (kDebugMode) {
@@ -137,7 +138,7 @@ class _SetUserState extends State<SetUser> {
                       context: context,
                       title: '头像',
                       child: ClipOval(
-                          child: Image.network(Global.profile.data.img)),
+                          child: Image.network(Global.profile.iconUrl)),
                       icon: const Icon(MyIcon.userRight),
                       onTap: () {
                         if (kDebugMode) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 import 'package:text_to_speech/text_to_speech.dart';
 
@@ -20,6 +21,21 @@ class InforDetails extends StatefulWidget {
 class _InforDetailsState extends State<InforDetails> {
   late final infordata = widget.product;
   TextToSpeech tts = TextToSpeech();
+  final TextEditingController _commentController = TextEditingController();
+  bool click = false;
+
+  @override
+  void initState() {
+    //_handleComment();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _commentController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,82 +125,176 @@ class _InforDetailsState extends State<InforDetails> {
                 ),
               ),
               Container(
-                color: Colors.black,
-                height: 100,
-                child: const Text("data"),
+                height: 80.h,
+                color: PFc.backgroundPrimary,
+                padding: EdgeInsets.only(
+                    left: PFspace.screenMargin,
+                    bottom: 10.h,
+                    right: PFspace.screenMargin),
+                child: Container(
+                  color: PFc.backgroundPrimary,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      GestureDetector(
+                        child: Container(
+                          height: 50.h,
+                          width: 500.w,
+                          padding: EdgeInsets.only(
+                              left: 25.w, top: 13.h, bottom: 10.h),
+                          decoration: BoxDecoration(
+                            color: PFc.themeColor10,
+                            borderRadius: BorderRadius.circular(25.h),
+                          ),
+                          child: const Text(
+                            '快来评论吧...',
+                            //textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: PFc.textEmphasis,
+                            ),
+                          ),
+                        ),
+                        onTap: () async {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: Colors.transparent,
+                            //isDismissible: false, //能否点击消失
+                            builder: (BuildContext context) {
+                              return AnimatedContainer(
+                                height: click ? 100.h : 580.h,
+                                //color: const Color.fromARGB(255, 255, 0, 0),
+                                duration: const Duration(milliseconds: 10),
+                                alignment: Alignment.bottomCenter,
+                                padding: EdgeInsets.only(
+                                    bottom: MediaQueryData.fromWindow(ui.window)
+                                        .viewInsets
+                                        .bottom),
+                                child: Material(
+                                  child: Container(
+                                    height: 80.h,
+                                    color: Colors.white,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16, vertical: 8),
+                                    child: Row(
+                                      children: <Widget>[
+                                        renderTextInput(),
+                                        renderSenderButton()
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      // Row(
+                      //   children: <Widget>[
+                      //     bottomItem(icon,),
+                      //     const SizedBox(width: 30),
+                      //     bottomItem()
+                      //   ],
+                      // )
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
-        )
+        ));
+  }
 
-        // Container(
-        //   height: 1082.h,
-        //   width: 800.w,
-        //   color: Colors.white,
-        //   child: SingleChildScrollView(
-        //     child: Center(
-        //       child: Column(
-        //         children: <Widget>[
-        //           Text(
-        //             infordata.title,
-        //             style: const TextStyle(
-        //               fontFamily: 'MyFontStyle',
-        //               color: Colors.black,
-        //               fontSize: 22,
-        //             ),
-        //           ),
-        //           // ElevatedButton(
-        //           //   child: Text("播放"),
-        //           //   onPressed: () {
-        //           //     sstSpeak(text: infordata.content);
-        //           //   },
-        //           // ),
-        //           // ElevatedButton(
-        //           //   child: Text("暂停"),
-        //           //   onPressed: () {
-        //           //     tts.stop();
-        //           //   },
-        //           // ),
-        //           Container(
-        //             width: 375,
-        //             padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-        //             child: Text(
-        //               infordata.content,
-        //               style: const TextStyle(
-        //                 color: Colors.black,
-        //                 fontSize: 20,
-        //               ),
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        // Container(
-        //   height: 53,
-        //   width: 375,
-        //   child: ElevatedButton(
-        //     child: Text("点击"),
-        //     onPressed: () {
-        //       showModalBottomSheet(
-        //           context: context,
-        //           builder: (BuildContext context) {
-        //             return Container(
-        //                 height: 500,
-        //                 width: 375,
-        //                 child: new TextField(
-        //                   keyboardType: TextInputType.multiline,
-        //
-        //                   maxLines: 30,
-        //                   //maxLines:null 不限制行数
-        //                 ));
-        //           });
-        //     },
-        //   ),
-        // )
-        //   ],
-        // ),
-        );
+  Widget renderTextInput() {
+    return Expanded(
+      child: TextField(
+        keyboardType: TextInputType.text,
+        //focusNode: focusNode(),
+        controller: _commentController,
+        autofocus: true,
+        //maxLines: null,
+        style: const TextStyle(fontSize: 14, color: PFc.textPrimary),
+        textInputAction: TextInputAction.send,
+        textAlignVertical: TextAlignVertical.top,
+        textAlign: TextAlign.start,
+        decoration: InputDecoration(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+          hintText: "widget.placehold",
+          hintStyle: const TextStyle(fontSize: 14, color: PFc.textPrimary),
+          counterText: '',
+          filled: true,
+          fillColor: PFc.themeColor10,
+          enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(style: BorderStyle.none, color: Colors.lime),
+              borderRadius: BorderRadius.circular(30)),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  style: BorderStyle.none, color: Colors.transparent),
+              borderRadius: BorderRadius.circular(30)),
+        ),
+        onSubmitted: (text) {
+          //widget.focusNode.unfocus();
+          if (Navigator.of(context).canPop()) {
+            Navigator.of(context).pop();
+          }
+          //widget.submitAction(text);
+        },
+      ),
+    );
+  }
+
+  Widget renderSenderButton() {
+    return GestureDetector(
+      child: Container(
+        padding: const EdgeInsets.only(left: 16),
+        child: const Center(
+          child: Text('发送',
+              style: TextStyle(
+                fontSize: 16,
+                color: PFc.textEmphasis,
+              )),
+        ),
+      ),
+      onTap: () {
+        //widget.focusNode.unfocus();
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        }
+        //widget.submitAction(_commentController.text);
+        // if (_commentController.text.isEmpty) {
+        //   toastInfo(msg: '评论内容不能为空');
+        //   return;
+        // }
+        //_handleCommentAdd();
+      },
+    );
+  }
+
+  Widget bottomItem(IconData icon, Color iconColor, String number, int index) {
+    return GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            icon,
+            size: 20,
+            color: iconColor,
+          ),
+          Text(number, style: const TextStyle(fontSize: 13))
+        ],
+      ),
+      onTap: () {
+        if (index == 0) {
+          //actionCallback(FindActionType.agree);
+        } else if (index == 1) {
+          //actionCallback(FindActionType.collection);
+        }
+      },
+    );
   }
 }

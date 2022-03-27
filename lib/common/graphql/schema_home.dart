@@ -33,9 +33,7 @@ query LatestUserCourseRecord($authorId:String!, $courseId:String!){
 ''';
 
   //所有预约查询
-  // {
-  //   "authorId":"shiming"
-  // }
+  //  { "authorId":"shiming"}
   static const String gqlLatestRecordList = r'''
   query LatestRecord($authorId: String!){
     latestRecord(authorId:$authorId,option:{limit:2,skip:0}) {
@@ -54,19 +52,37 @@ query LatestUserCourseRecord($authorId:String!, $courseId:String!){
 ''';
 
   //功勋员数据请求
+  //{"category": "2","skip": 0,"limit": 0}
   static const String gqlModelList = r'''
-query{
-  latestModel(option:{limit:10,skip:0}) {
+query feats($category: String!, $skip: Int!, $limit: Int!) {
+  latestClassificationUser(category: $category, option: {skip: $skip, limit: $limit}) {
     _id
     name
+    age
+    sex
+    position
+    industry
+    country
+    phone
+    email
+    wechat
+    schoolRecord
+    workCondition
+    detailMsg
     description
+    category
+    userType
     identity
     imgUrl
-    videoUrl
-    growthDescription
-    timestamp
+    iconUrl
+    bigCoverUrl
+    password
+    videos
+    imgs
+    docs
+    growthDescriptions
+    tags
   }
 }
-
 ''';
 }

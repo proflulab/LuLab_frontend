@@ -2,6 +2,8 @@
 
 //import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
+import 'dart:convert';
+
 import '../../../../common/entitys/entitys.dart';
 //import '../../provider/provider.dart';
 import '../../../../common/utils/utils.dart';
@@ -10,21 +12,34 @@ import '../../../../common/values/values.dart';
 
 /// 全局配置
 class Global {
-  /// 用户配置
-  static UserLogin profile = UserLogin(
-    msg: '',
-    status: '',
-    data: Data(
-      name: 'name',
-      password: 'password',
-      img:
-          "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-      wechat: "无",
-      phone: '无',
-      sex: '未知',
-      description: '无',
-      id: '61d9604f5fcd295d1b6893cf',
-    ),
+  // 用户配置
+  static Data profile = Data(
+    age: '',
+    bigCoverUrl: '',
+    category: '',
+    country: '',
+    description: '',
+    detailMsg: '',
+    docs: [],
+    email: '',
+    growthDescriptions: [],
+    iconUrl: '',
+    id: '',
+    identity: '',
+    imgs: [],
+    imgUrl: '',
+    industry: '',
+    name: '',
+    password: '',
+    phone: '',
+    position: '',
+    schoolRecord: '',
+    sex: '',
+    tags: [],
+    userType: '',
+    videos: [],
+    wechat: '',
+    workCondition: '',
   );
 
   /// 发布渠道
@@ -97,7 +112,17 @@ class Global {
 
   // 持久化 用户信息
   static Future<bool?> saveProfile(UserLogin userResponse) {
-    profile = userResponse;
+    profile = userResponse.data;
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
+  }
+
+  // 获取 持久化 用户信息
+  static getProfile() {
+    Storage.getJson(storageUserProfileKey).then(
+      (guide) async {
+        UserLogin usere = UserLogin.fromJson(json.decode(guide!));
+        return usere;
+      },
+    );
   }
 }

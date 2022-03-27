@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-// 用户登录 - response
 Loginresponse loginresponseFromJson(String str) =>
     Loginresponse.fromJson(json.decode(str));
 
@@ -14,7 +13,7 @@ class Loginresponse {
   final UserLogin userLogin;
 
   factory Loginresponse.fromJson(Map<String, dynamic> json) => Loginresponse(
-        userLogin: UserLogin.fromJson(json['userLogin']),
+        userLogin: UserLogin.fromJson(json["userLogin"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,43 +49,117 @@ class Data {
   Data({
     required this.id,
     required this.name,
-    required this.password,
-    required this.img,
-    required this.wechat,
-    required this.phone,
+    required this.age,
     required this.sex,
+    required this.position,
+    required this.industry,
+    required this.country,
+    required this.phone,
+    required this.email,
+    required this.wechat,
+    required this.schoolRecord,
+    required this.workCondition,
+    required this.detailMsg,
     required this.description,
+    required this.category,
+    required this.userType,
+    required this.identity,
+    required this.imgUrl,
+    required this.iconUrl,
+    required this.bigCoverUrl,
+    required this.password,
+    required this.videos,
+    required this.imgs,
+    required this.docs,
+    required this.growthDescriptions,
+    required this.tags,
   });
 
-  String id;
+  final String id;
   final String name;
-  final String password;
-  final String img;
-  final String wechat;
-  final String phone;
+  final String age;
   final String sex;
-  final dynamic description;
+  final String position;
+  final String industry;
+  final String country;
+  final String phone;
+  final String email;
+  final String wechat;
+  final String schoolRecord;
+  final String workCondition;
+  final String detailMsg;
+  final String description;
+  final String category;
+  final String userType;
+  final String identity;
+  final String imgUrl;
+  final String iconUrl;
+  final String bigCoverUrl;
+  final String password;
+  final List<String> videos;
+  final List<String> imgs;
+  final List<String> docs;
+  final List<String> growthDescriptions;
+  final List<String> tags;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
         name: json["name"],
-        password: json["password"],
-        img: json["img"] ?? "",
-        wechat: json["wechat"] ?? "",
-        phone: json["phone"] ?? "",
-        sex: json["sex"] ?? "",
+        age: json["age"],
+        sex: json["sex"],
+        position: json["position"],
+        industry: json["industry"],
+        country: json["country"],
+        phone: json["phone"],
+        email: json["email"],
+        wechat: json["wechat"],
+        schoolRecord: json["schoolRecord"],
+        workCondition: json["workCondition"],
+        detailMsg: json["detailMsg"],
         description: json["description"],
+        category: json["category"],
+        userType: json["userType"],
+        identity: json["identity"],
+        imgUrl: json["imgUrl"],
+        iconUrl: json["iconUrl"],
+        bigCoverUrl: json["bigCoverUrl"],
+        password: json["password"],
+        videos: List<String>.from(json["videos"].map((x) => x)),
+        imgs: List<String>.from(json["imgs"].map((x) => x)),
+        docs: List<String>.from(json["docs"].map((x) => x)),
+        growthDescriptions:
+            List<String>.from(json["growthDescriptions"].map((x) => x)),
+        tags: List<String>.from(json["tags"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "name": name,
-        "password": password,
-        "img": img,
-        "wechat": wechat,
-        "phone": phone,
+        "age": age,
         "sex": sex,
+        "position": position,
+        "industry": industry,
+        "country": country,
+        "phone": phone,
+        "email": email,
+        "wechat": wechat,
+        "schoolRecord": schoolRecord,
+        "workCondition": workCondition,
+        "detailMsg": detailMsg,
         "description": description,
+        "category": category,
+        "userType": userType,
+        "identity": identity,
+        "imgUrl": imgUrl,
+        "iconUrl": iconUrl,
+        "bigCoverUrl": bigCoverUrl,
+        "password": password,
+        "videos": List<dynamic>.from(videos.map((x) => x)),
+        "imgs": List<dynamic>.from(imgs.map((x) => x)),
+        "docs": List<dynamic>.from(docs.map((x) => x)),
+        "growthDescriptions":
+            List<dynamic>.from(growthDescriptions.map((x) => x)),
+        "tags": List<dynamic>.from(tags.map((x) => x)),
       };
 }
 

@@ -81,10 +81,10 @@ class _CtionInputDialogState extends State<CtionInputDialog>
   _handleCommentAdd() async {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
-      authorId: Global.profile.data.id,
-      authorImg: Global.profile.data.img,
+      authorId: Global.profile.id,
+      authorImg: Global.profile.iconUrl,
       courseId: widget.courseId,
-      authorName: Global.profile.data.name,
+      authorName: Global.profile.name,
     );
     //_commentAdd =
     await GqlCommentAPI.commenAddInfo(

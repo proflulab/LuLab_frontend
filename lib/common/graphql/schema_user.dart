@@ -2,8 +2,8 @@ class SchemaUser {
 //用户登录
 //请求数据参考
 // {
-//   "name": "da",
-//   "password": "1"
+//   "name": "shiming",
+//   "password": "12345678"
 // }
   static const String gqlUserLogin = r'''
 query UserLogin($name: String!, $password: String!) {
@@ -13,12 +13,30 @@ query UserLogin($name: String!, $password: String!) {
     data {
       _id
       name
-      password
-      img
-      wechat
-      phone
+      age
       sex
+      position
+      industry
+      country
+      phone
+      email
+      wechat
+      schoolRecord
+      workCondition
+      detailMsg
       description
+      category
+      userType
+      identity
+      imgUrl
+      iconUrl
+      bigCoverUrl
+      password
+      videos
+      imgs
+      docs
+      growthDescriptions
+      tags
     }
   }
 }

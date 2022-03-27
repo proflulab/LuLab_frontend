@@ -33,15 +33,16 @@ class GqlHomeAPI {
   }
 
   // 功勋员查询
-  static Future<LatestModel> featInfo({
+  static Future<Feats> featInfo({
     required BuildContext context,
+    required FeatsRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
       schema: SchemaHome.gqlModelList,
       context: context,
-      variables: {},
+      variables: variables.toJson(),
     );
 
-    return LatestModel.fromJson(response.data!);
+    return Feats.fromJson(response.data!);
   }
 }

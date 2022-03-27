@@ -10,7 +10,7 @@ import '../../common/widget/widgets.dart';
 
 class FeastPersonal extends StatefulWidget {
   const FeastPersonal({Key? key, required this.product}) : super(key: key);
-  final LatestModelElement product;
+  final LatestClassificationUser product;
 
   @override
   _FeastPersonalState createState() => _FeastPersonalState();
@@ -30,10 +30,9 @@ class _FeastPersonalState extends State<FeastPersonal> {
             height: PFspace.screenW * PFr.ratio9_16,
             alignment: Alignment.center, //在容器的位置
             child: VideoView(
-              widget.product.videoUrl,
+              widget.product.videos[1],
               //'https://media.w3.org/2010/05/sintel/trailer.mp4',
-              cover:
-                  'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+              cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
             ),
           ),
         ),

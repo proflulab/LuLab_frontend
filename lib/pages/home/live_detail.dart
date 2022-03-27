@@ -99,7 +99,9 @@ class _LiveDetailState extends State<LiveDetail> {
   //查询课程预约情况
   _handleCourseRecord() async {
     LatestUserCourseRecordRequest variables = LatestUserCourseRecordRequest(
-        courseId: widget.product.id, authorId: Global.profile.data.id);
+      courseId: widget.product.id,
+      authorId: Global.profile.id,
+    );
     _latestUserCourseRecord = await GqlCourseAPI.orderCourseInfo(
         variables: variables, context: context);
     setState(() {
@@ -135,7 +137,7 @@ class _LiveDetailState extends State<LiveDetail> {
   //添加预约
   _handleRecordAdd() async {
     RecordAddRequest variables = RecordAddRequest(
-      authorId: Global.profile.data.id,
+      authorId: Global.profile.id,
       status: "1",
       courseId: widget.product.id,
       onlineTime: now,
@@ -155,7 +157,7 @@ class _LiveDetailState extends State<LiveDetail> {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
 
-    String text = Global.profile.data.name +
+    String text = Global.profile.name +
         "邀请您在" +
         time1 +
         "参加" +
