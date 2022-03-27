@@ -16,18 +16,6 @@ class Product extends StatefulWidget {
 class _ProductState extends State<Product> {
   late Train _postsDataProduct;
 
-  var top;
-
-  var right;
-
-  var left;
-
-  var height;
-
-  var width;
-
-  //final _product = Train.fromJson(json.decode(Jsondata.product));
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +27,6 @@ class _ProductState extends State<Product> {
     return ListView.builder(
       itemCount: _postsDataProduct.data.product.length,
       itemBuilder: (BuildContext context, int index) {
-        var borderRadius;
         return GestureDetector(
           child: Container(
               alignment: Alignment.topLeft,
@@ -53,8 +40,11 @@ class _ProductState extends State<Product> {
                     height: 200,
                     child: Column(
                       children: [
-                        Text(
-                          _postsDataProduct.data.product[index].name,
+                        Container(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            _postsDataProduct.data.product[index].name,
+                          ),
                         ),
                         const SizedBox(height: 10),
                         Container(
@@ -66,7 +56,6 @@ class _ProductState extends State<Product> {
                                   flex: 1,
                                   child: Container(
                                     alignment: Alignment.center,
-                                    color: Colors.red,
                                     height: 100,
                                     child: Text(
                                       _postsDataProduct
@@ -75,28 +64,20 @@ class _ProductState extends State<Product> {
                                   )),
                               Expanded(
                                   flex: 1,
-                                  child: Positioned(
-                                    top: top,
-                                    left: left,
-                                    right: right,
-                                    child: Container(
-                                      height: height,
-                                      width: width,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(
-                                            _postsDataProduct
-                                                .data.product[index].img,
-                                          ),
-                                          fit: BoxFit.cover,
-                                        ),
-                                        color: const Color.fromRGBO(
-                                            200, 233, 233, 1),
-                                        borderRadius: borderRadius,
-                                        //BorderRadius.circular(10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          _postsDataProduct
+                                              .data.product[index].img,
+                                        ), // 图片数组
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(10),
                                       ),
                                     ),
-                                  ))
+                                  )),
                             ],
                           ),
                           // Image.network(
@@ -108,7 +89,7 @@ class _ProductState extends State<Product> {
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10),
                                 topRight: Radius.circular(10)),
-                            color: Colors.blue,
+                            color: Colors.red,
                           ),
                         ),
                         Container(
