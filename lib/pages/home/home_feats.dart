@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import '../../common/staticdata/staticdata.dart';
 import '../../common/values/values.dart';
 
 import '../../common/api/apis.dart';
@@ -18,8 +19,8 @@ class FeatsPage extends StatefulWidget {
 
 //这个文件放置功勋园组件
 class _FeatsPageState extends State<FeatsPage> {
-  late LatestModel _postsData;
-  List<LatestModelElement> _focusData = [];
+  late Feats _postsData;
+  List<LatestClassificationUser> _focusData = [];
 
   @override
   void initState() {
@@ -27,13 +28,18 @@ class _FeatsPageState extends State<FeatsPage> {
     _loadAllData();
   }
 
+  // _postsDataProduct = Train.fromJson(Jsondata.personalInfo);
+
   // 读取所有功勋员数据
   _loadAllData() async {
-    _postsData = await GqlHomeAPI.featInfo(context: context);
+    _postsData = await GqlHomeAPI.featInfo(
+      context: context,
+      variables: FeatsRequest(limit: 0, skip: 0, category: '2'),
+    );
 
     if (mounted) {
       setState(() {
-        _focusData = _postsData.latestModel;
+        _focusData = _postsData.latestClassificationUser;
       });
     }
   }

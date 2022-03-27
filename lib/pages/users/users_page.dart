@@ -20,7 +20,7 @@ class UsersPage extends StatefulWidget {
 class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
-//print(profile.data.img);
+//print(profile.img);
     //获取屏幕宽度、高度
     //double screenwidth = MediaQuery.of(context).size.width;
     //double screenheight = MediaQuery.of(context).size.height;
@@ -32,13 +32,13 @@ class _UsersPageState extends State<UsersPage> {
         margin: const EdgeInsets.all(20),
         //color: Colors.white,
         child: ListTile(
-          leading: ClipOval(child: Image.network(Global.profile.data.img)),
+          leading: ClipOval(child: Image.network(Global.profile.iconUrl)),
           // CircleAvatar(
           //   radius: 25,
           //   backgroundImage: AssetImage("assets/images/logo.png"),
           // ),
           title: Text(
-            Global.profile.data.name,
+            Global.profile.name,
             style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
@@ -376,7 +376,7 @@ class _UsersPageState extends State<UsersPage> {
                 onPressed: () {
                   if (kDebugMode) {
                     print("跳转到通知");
-                    print(Global.profile.data.id);
+                    print(Global.profile.id);
                   }
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const NoticePage()));

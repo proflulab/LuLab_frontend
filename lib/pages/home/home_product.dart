@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../common/staticdata/jsondata.dart';
+import '../../common/staticdata/json_data.dart';
 
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';

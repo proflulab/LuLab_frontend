@@ -66,7 +66,7 @@ class _GatherState extends State<Gather> {
   //添加预约
   _handleRecordAdd(int index) async {
     RecordAddRequest variables = RecordAddRequest(
-      authorId: Global.profile.data.id,
+      authorId: Global.profile.id,
       status: "1",
       courseId: _focusData3[index].id,
       onlineTime: now,
@@ -97,7 +97,7 @@ class _GatherState extends State<Gather> {
   _handleCourse() async {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: "2",
-      authorId: Global.profile.data.id,
+      authorId: Global.profile.id,
       limit: 10,
       skip: 0,
     );
