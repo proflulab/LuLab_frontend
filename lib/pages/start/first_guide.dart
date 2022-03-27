@@ -88,24 +88,29 @@ class _FirstGuideState extends State<FirstGuide> {
           });
         },
         children: [
-          Image.network(
-            'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+          Image.asset(
+            'assets/images/GuidePage1.png',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
-          Image.network(
-            'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+          Image.asset(
+            'assets/images/GuidePage2.png',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
-          Image.network(
-            'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+          Image.asset(
+            'assets/images/GuidePage3.png',
             width: width,
             height: height,
             fit: BoxFit.fill,
           ),
+          // Image.network(
+          //   'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+          //   width: width,
+          //   height: height,
+          //   fit: BoxFit.fill,
         ],
       ),
     );

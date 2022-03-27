@@ -90,12 +90,15 @@ class _InformationPageState extends State<InformationPage> {
                       height: 100,
                       width: 100,
                       url: _focusData[index].img,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.r),
+                      ),
                     ),
                     // 资讯标题
                     positioningText(
                       context: context,
                       top: 30.h,
-                      left: 180.w,
+                      left: 230.w,
                       height: 90.h,
                       width: 500.w,
                       text: _focusData[index].title,

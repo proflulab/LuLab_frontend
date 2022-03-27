@@ -6,17 +6,17 @@ import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
 
 class GqlCommentAPI {
-  // 请求课程评论
-  static Future<LatestComment> commentRequestInfo({
+  // 请求全部评论
+  static Future<CommentResponse> commentRequestInfo({
     required BuildContext context,
-    required LatestCommentRequest variables,
+    required CommentRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
       schema: SchemaComment.gqlLatestCommentList,
       variables: variables.toJson(),
     );
-    return LatestComment.fromJson(response.data!);
+    return CommentResponse.fromJson(response.data!);
   }
 
   // 添加课程评论

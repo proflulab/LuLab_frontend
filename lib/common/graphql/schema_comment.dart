@@ -1,16 +1,10 @@
 class SchemaComment {
   //添加课程评论
   //数据案例
-  // {
-  //   "content": "nihao",
-  //   "authorId": "test",
-  //   "authorImg": "test",
-  //   "courseId": "619cb9c3ee78eb0f41329627",
-  //   "authorName": "test"
-  // }
+  //{"content": "test","entityId": "6200f8a4c9e9c3609aa7045e","category": "2","authorName": "黄肖山","authorId": "623ea8486be88159e55f46c1","authorImg": "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%8D%A0%E4%BD%8D%E5%9B%BE2.jpg"}
   static const String gqlCommentAddList = r'''
-  mutation CommentAdd($content: String!, $authorId: String!, $authorImg: String!, $courseId: String!, $authorName: String!) {
-    commentAdd(commentInput: {content: $content, authorId: $authorId, authorImg: $authorImg, courseId: $courseId, authorName: $authorName}) {
+  mutation commentAdd ($content: String!, $entityId: String!, $category: String!, $authorName: String!,$authorId: String!,$authorImg:String!){
+    commentAdd(commentInput: {content: $content, entityId: $entityId, category:  $category, authorName:$authorName, authorId: $authorId, authorImg: $authorImg}) {
       status
       msg
     }
@@ -20,20 +14,22 @@ class SchemaComment {
 
   //请求课程评论
   //数据案例
-  // {
-  //   "courseId": "623d9be5975907b016b3e5ea"
-  // }
+
+  //{"entityId": "6200f8a4c9e9c3609aa7045e","category": "2","limit": 0,"skip": 0}
+
   static const String gqlLatestCommentList = r'''
-query LatestComment($courseId: String!) {
-  latestComment(courseId: $courseId, option: {limit: 500, skip: 0}) {
+query Comment  ( $entityId: String!, $category: String!, $skip: Int!,$limit: Int!){
+  latestComment( entityId: $entityId, category: $category,option: {skip: $skip, limit: $limit}) {
     _id
     content
-    courseId
+    entityId
+    parentCommentId
     authorName
     authorId
     authorImg
     category
     addTime
+    timestamp
   }
 }
 

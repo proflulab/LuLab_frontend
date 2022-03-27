@@ -1,24 +1,23 @@
-// To parse this JSON data, do
-//
-//     final latestComment = latestCommentFromJson(jsonString);
 
 import 'dart:convert';
 
-LatestComment latestCommentFromJson(String str) =>
-    LatestComment.fromJson(json.decode(str));
+CommentResponse commentResponseFromJson(String str) =>
+    CommentResponse.fromJson(json.decode(str));
 
-String latestCommentToJson(LatestComment data) => json.encode(data.toJson());
+String commentResponseToJson(CommentResponse data) =>
+    json.encode(data.toJson());
 
-class LatestComment {
-  LatestComment({
+class CommentResponse {
+  CommentResponse({
     required this.latestComment,
   });
 
-  List<LatestCommentElement> latestComment;
+  final List<LatestComment> latestComment;
 
-  factory LatestComment.fromJson(Map<String, dynamic> json) => LatestComment(
-        latestComment: List<LatestCommentElement>.from(
-            json["latestComment"].map((x) => LatestCommentElement.fromJson(x))),
+  factory CommentResponse.fromJson(Map<String, dynamic> json) =>
+      CommentResponse(
+        latestComment: List<LatestComment>.from(
+            json["latestComment"].map((x) => LatestComment.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -27,71 +26,88 @@ class LatestComment {
       };
 }
 
-class LatestCommentElement {
-  LatestCommentElement({
+class LatestComment {
+  LatestComment({
     required this.id,
     required this.content,
-    required this.courseId,
+    required this.entityId,
+    required this.parentCommentId,
     required this.authorName,
     required this.authorId,
     required this.authorImg,
-    this.category,
+    required this.category,
     required this.addTime,
+    required this.timestamp,
   });
 
-  String id;
-  String content;
-  String courseId;
-  String authorName;
-  String authorId;
-  String authorImg;
-  dynamic category;
-  String addTime;
+  final String id;
+  final String content;
+  final String entityId;
+  final dynamic parentCommentId;
+  final String authorName;
+  final String authorId;
+  final String authorImg;
+  final String category;
+  final String addTime;
+  final String timestamp;
 
-  factory LatestCommentElement.fromJson(Map<String, dynamic> json) =>
-      LatestCommentElement(
+  factory LatestComment.fromJson(Map<String, dynamic> json) => LatestComment(
         id: json["_id"],
         content: json["content"],
-        courseId: json["courseId"],
+        entityId: json["entityId"],
+        parentCommentId: json["parentCommentId"],
         authorName: json["authorName"],
         authorId: json["authorId"],
         authorImg: json["authorImg"],
         category: json["category"],
         addTime: json["addTime"],
+        timestamp: json["timestamp"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "content": content,
-        "courseId": courseId,
+        "entityId": entityId,
+        "parentCommentId": parentCommentId,
         "authorName": authorName,
         "authorId": authorId,
         "authorImg": authorImg,
         "category": category,
         "addTime": addTime,
+        "timestamp": timestamp,
       };
 }
 
-//评论请求
-LatestCommentRequest latestCommentRequestFromJson(String str) =>
-    LatestCommentRequest.fromJson(json.decode(str));
 
-String latestCommentRequestToJson(LatestCommentRequest data) =>
-    json.encode(data.toJson());
+CommentRequest commentRequestFromJson(String str) =>
+    CommentRequest.fromJson(json.decode(str));
 
-class LatestCommentRequest {
-  LatestCommentRequest({
-    required this.courseId,
+String commentRequestToJson(CommentRequest data) => json.encode(data.toJson());
+
+class CommentRequest {
+  CommentRequest({
+    required this.entityId,
+    required this.category,
+    required this.limit,
+    required this.skip, 
   });
 
-  String courseId;
+  final String entityId;
+  final String category;
+  final int limit;
+  final int skip;
 
-  factory LatestCommentRequest.fromJson(Map<String, dynamic> json) =>
-      LatestCommentRequest(
-        courseId: json["courseId"],
+  factory CommentRequest.fromJson(Map<String, dynamic> json) => CommentRequest(
+        entityId: json["entityId"],
+        category: json["category"],
+        limit: json["limit"],
+        skip: json["skip"],
       );
 
   Map<String, dynamic> toJson() => {
-        "courseId": courseId,
+        "entityId": entityId,
+        "category": category,
+        "limit": limit,
+        "skip": skip,
       };
 }

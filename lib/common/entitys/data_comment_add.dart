@@ -1,19 +1,21 @@
 import 'dart:convert';
 
-CommentAdd commentAddFromJson(String str) =>
-    CommentAdd.fromJson(json.decode(str));
+CommentAddResponse commentAddResponseFromJson(String str) =>
+    CommentAddResponse.fromJson(json.decode(str));
 
-String commentAddToJson(CommentAdd data) => json.encode(data.toJson());
+String commentAddResponseToJson(CommentAddResponse data) =>
+    json.encode(data.toJson());
 
-class CommentAdd {
-  CommentAdd({
-    required this.commentAdd,
+class CommentAddResponse {
+  CommentAddResponse({
+     required this.commentAdd,
   });
 
-  final CommentAddClass commentAdd;
+  final CommentAdd commentAdd;
 
-  factory CommentAdd.fromJson(Map<String, dynamic> json) => CommentAdd(
-        commentAdd: CommentAddClass.fromJson(json["commentAdd"]),
+  factory CommentAddResponse.fromJson(Map<String, dynamic> json) =>
+      CommentAddResponse(
+        commentAdd: CommentAdd.fromJson(json["commentAdd"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -21,8 +23,8 @@ class CommentAdd {
       };
 }
 
-class CommentAddClass {
-  CommentAddClass({
+class CommentAdd {
+  CommentAdd({
     required this.status,
     required this.msg,
   });
@@ -30,8 +32,7 @@ class CommentAddClass {
   final String status;
   final String msg;
 
-  factory CommentAddClass.fromJson(Map<String, dynamic> json) =>
-      CommentAddClass(
+  factory CommentAdd.fromJson(Map<String, dynamic> json) => CommentAdd(
         status: json["status"],
         msg: json["msg"],
       );
@@ -52,32 +53,36 @@ String commentAddRequestToJson(CommentAddRequest data) =>
 class CommentAddRequest {
   CommentAddRequest({
     required this.content,
+    required this.entityId,
+    required this.category,
+    required this.authorName,
     required this.authorId,
     required this.authorImg,
-    required this.courseId,
-    required this.authorName,
   });
 
-  String content;
-  String authorId;
-  String authorImg;
-  String courseId;
-  String authorName;
+  final String content;
+  final String entityId;
+  final String category;
+  final String authorName;
+  final String authorId;
+  final String authorImg;
 
   factory CommentAddRequest.fromJson(Map<String, dynamic> json) =>
       CommentAddRequest(
         content: json["content"],
+        entityId: json["entityId"],
+        category: json["category"],
+        authorName: json["authorName"],
         authorId: json["authorId"],
         authorImg: json["authorImg"],
-        courseId: json["courseId"],
-        authorName: json["authorName"],
       );
 
   Map<String, dynamic> toJson() => {
         "content": content,
+        "entityId": entityId,
+        "category": category,
+        "authorName": authorName,
         "authorId": authorId,
         "authorImg": authorImg,
-        "courseId": courseId,
-        "authorName": authorName,
       };
 }

@@ -20,7 +20,7 @@ class CourseCommentPage extends StatefulWidget {
 
 class _CourseCommentPageState extends State<CourseCommentPage> {
   final TextEditingController _commentController = TextEditingController();
-  late LatestComment _latestComment;
+  late CommentResponse _latestComment;
   //final FocusNode _commentFocus = FocusNode();
   List _commentData = [];
 
@@ -34,14 +34,20 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
 
   // 读取所有课程评论数据
   _handleComment() async {
-    LatestCommentRequest variables = LatestCommentRequest(
-      courseId: widget.courseData.firstCourseId,
-    );
     _latestComment = await GqlCommentAPI.commentRequestInfo(
-        variables: variables, context: context);
-    setState(() {
-      _commentData = _latestComment.latestComment;
-    });
+      variables: CommentRequest(
+        category: '2',
+        entityId: widget.courseData.firstCourseId,
+        limit: 0,
+        skip: 0,
+      ),
+      context: context,
+    );
+    setState(
+      () {
+        _commentData = _latestComment.latestComment;
+      },
+    );
   }
 
   @override
@@ -56,12 +62,11 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
       content: _commentController.value.text,
       authorId: Global.profile.id,
       authorImg: Global.profile.iconUrl,
-      courseId: widget.courseData.firstCourseId,
       authorName: Global.profile.name,
+      category: '2',
+      entityId: widget.courseData.firstCourseId,
     );
-    //_commentAdd =
     await GqlCommentAPI.commenAddInfo(variables: variables, context: context);
-    //var commentData2 = _commentAdd.commentAdd;
     setState(() {
       _handleComment();
       _commentController.text = "";
