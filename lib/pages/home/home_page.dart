@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../common/values/values.dart';
-
 import 'home_feats.dart';
 import 'home_gather.dart';
 import 'home_product.dart';
@@ -56,103 +55,7 @@ class _HomePageState extends State<HomePage> {
                 left: 40,
                 bottom: 3,
               ),
-              //参考https://www.yiibai.com/flutter/flutter-tabbar.html
-              // indicator: ShapeDecoration(
-              //   shape: UnderlineInputBorder(
-              //     borderSide: BorderSide(
-              //         color: Color.fromARGB(255, 255, 0, 0),
-              //         width: 10,
-              //         style: BorderStyle.solid),
-              //   ),
-              //   gradient: LinearGradient(
-              //     colors: [Color(0xff0081ff), Color(0xff01ff80)],
-              //   ),
-              // ),
             ),
-            // centerTitle: true,
-            // title: Padding(
-            //   padding: const EdgeInsets.only(top: 2, bottom: 2, left: 16),
-            //   child: Container(
-            //     height: 35,
-            //     width: MediaQuery.of(context).size.width - 64,
-            //     decoration: BoxDecoration(
-            //         color: const Color.fromRGBO(230, 230, 230, 1.0),
-            //         borderRadius: BorderRadius.circular(20)),
-            //     child: InkWell(
-            //       child: Row(
-            //         children: const <Widget>[
-            //           Padding(
-            //               padding: EdgeInsets.only(left: 10, right: 10),
-            //               child: Icon(Icons.search, color: Colors.teal)),
-            //           Text(
-            //             "点我进行搜索",
-            //             style: TextStyle(color: Colors.grey, fontSize: 15),
-            //           )
-            //         ],
-            //       ),
-            //       onTap: () {
-            //         //这里是跳转搜索界面的关键
-            //         showSearch(
-            //             context: context, delegate: SearchBarDelegate());
-            //       },
-            //     ),
-            //   ),
-            // )
-            // InkWell(
-            //   //onTap是点击事件回调
-            //   onTap: () {
-            //     Navigator.pushNamed(context, '/search');
-            //   },
-            //
-            //   child: Container(
-            //     height: 30.0,
-            //     padding: const EdgeInsets.only(left: 15),
-            //     decoration: BoxDecoration(
-            //         //改变搜索外框颜色
-            //         //border: Border.all(color: Colors.black),
-            //         color: const Color.fromRGBO(230, 230, 230, 0.8),
-            //         borderRadius: BorderRadius.circular(15)),
-            //     child: Row(children: const <Widget>[
-            //       Icon(
-            //         Icons.search,
-            //         color: (Color.fromRGBO(154, 167, 177, 1)),
-            //       ),
-            //       Text(
-            //         "   开始搜索",
-            //         //textAlign: TextAlign.center,
-            //         style: TextStyle(
-            //           color: Color.fromRGBO(154, 167, 177, 1),
-            //           fontSize: 15,
-            //         ),
-            //       )
-            //     ]),
-            //   ),
-            // ),
-            //客服邮件功能
-            // leading: IconButton(
-            //   icon: const Icon(Icons.headset_mic,
-            //       color: Color.fromRGBO(117, 117, 117, 1)),
-            //   //如果没有onPressed会报错
-            //   onPressed: () {
-            //     if (kDebugMode) {
-            //       print("跳转到客服");
-            //     }
-            //     Navigator.pushNamed(context, '/customer');
-            //   },
-            // ),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {
-            //         if (kDebugMode) {
-            //           print("我收到的信息");
-            //         }
-            //         Navigator.pushNamed(context, '/message');
-            //       },
-            //       icon: const Icon(
-            //         Icons.mail,
-            //         color: Color.fromRGBO(117, 117, 117, 1),
-            //       ))
-            // ],
           ),
         ),
       ),

@@ -6,13 +6,12 @@ import 'package:alarm_calendar/calendars.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:share_plus/share_plus.dart';
 
-import '../../common/utils/utils.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
+import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 
 class LiveDetail extends StatefulWidget {
@@ -30,7 +29,7 @@ class _LiveDetailState extends State<LiveDetail> {
   //late RecordAddClass _recordData;
   late var stauts = widget.product.status;
   late LatestUserCourseRecord _latestUserCourseRecord;
-  late String state;
+  late String state = "1";
 
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();

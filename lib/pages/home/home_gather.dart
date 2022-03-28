@@ -11,7 +11,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import '../other/loading.dart';
@@ -139,20 +138,13 @@ class _GatherState extends State<Gather> {
       children: <Widget>[
         _swiperWidget(),
         SizedBox(height: 20.h),
-        // SizedBox(height: fitHeight(20)),
-        // _titleWidget("课程预约"),
-        // SizedBox(height: fitHeight(20)),
-        // _hotProductListWidget(),
-        // SizedBox(height: fitHeight(20)),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _buildLive(),
         SizedBox(height: 20.h),
         _titleWidget("最新资讯"),
         buildInfomation(),
-        // buildFreeCourse(),
         _titleWidget("精选课程"),
         _buildCourse(),
-        // buildWonderCourse(),
       ],
     );
   }
@@ -233,7 +225,7 @@ class _GatherState extends State<Gather> {
         color: PFc.backgroundSecondary,
         borderRadius: PFRadius.a6,
       ),
-      height: 60.h,
+      height: 80.h,
       child: Text(
         value,
         textAlign: TextAlign.start,

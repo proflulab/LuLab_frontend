@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:porcupine_flutter/porcupine_error.dart';
+import 'package:porcupine_flutter/porcupine_manager.dart';
+import 'package:proflu/common/global/global.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../common/api/apis.dart';
@@ -24,12 +27,47 @@ class _VoiceViewState extends State<VoiceView> {
   TextToSpeech tts = TextToSpeech();
   int a = 0;
   String values = 'assets/images/语音动效2.gif';
+  PorcupineManager? _porcupineManager;
+  //换上自己的appid
+  final accessKey = "";
 
   @override
   void initState() {
     super.initState();
     SoundRecord.init();
     WidgetsBinding.instance?.addPostFrameCallback((_) {});
+    createPorcupineManager();
+    _porcupineManager?.start();
+  }
+
+  void createPorcupineManager() async {
+    try {
+      _porcupineManager = await PorcupineManager.fromKeywordPaths(
+          accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
+    } on PorcupineException catch (err) {
+      // handle porcupine init error
+    }
+    try {
+      await _porcupineManager?.start();
+    } on PorcupineException catch (ex) {
+      // deal with either audio exception
+    }
+  }
+
+  void wakeWordCallback(int keywordIndex) {
+    if (keywordIndex >= 0) {
+      // YYDialog.init(context);
+      // YYFixTextFieldDialog(recognizeFinished, text);
+      sstSpeak(text: '我在，你有什么问题');
+      // SoundRecord.startListening();
+      Future.delayed(const Duration(milliseconds: 2850), () {
+        SoundRecord.startListening();
+        Future.delayed(const Duration(seconds: 5), () {
+          SoundRecord.stopListening();
+          xfSst();
+        });
+      });
+    }
   }
 
   @override
@@ -48,25 +86,7 @@ class _VoiceViewState extends State<VoiceView> {
       child: ElevatedButton(
         //短按打开关闭操作
         onPressed: () {
-          // visible = !visible;
-          // if (isListening) {
-          //   tts.stop();
-          //   if (show) {
-          //     SoundRecord.startListening();
-          //     setState(() {
-          //       show = false;
-          //     });
-          //   } else {}
-          //   SoundRecord.startListening();
-          //   setState(() {
-          //     isListening = false;
-          //   });
-          // } else if(isListening){
-          //   SoundRecord.stopListening();
-          //   xfSst();
-          // }else{
-          //
-          // }
+          //第一版点击内容效果
           if (a == 0) {
             tts.stop();
             SoundRecord.startListening();
@@ -90,47 +110,11 @@ class _VoiceViewState extends State<VoiceView> {
             });
           }
         },
-        //长按一下开始说话
-        // onLongPress: () {
-        //   // if (show) {
-        //   //   SoundRecord.stopListening();
-        //   //   xfSst();
-        //   //   // SoundRecord.startListening();
-        //   //   // SoundRecord.stopListening();
-        //   //   // xfSst();
-        //   //   setState(() {
-        //   //
-        //   //   });
-        //   // }
-        //   show = false;
-        // },
-        child:
-            // visible
-            //     ? TestAWidget(
-            //         visible: visible,
-            //       )
-            //     :
-            TestBWidget(
+        child: TestBWidget(
           visible: visible,
           show: show,
           values: values,
         ),
-        //       if (a == 0) {
-        // TestAWidget(
-        //         visible: visible,
-        //       )
-        // ;
-        // } else if (a == 1) {
-        //   TestBWidget(
-        //               visible: !visible,
-        //               show: show,
-        //         values: '',
-        //             )
-        //
-        // } else {
-        // TestEWidget(),
-        // }
-        // },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(const Color(0xffffffff)),
           shape: MaterialStateProperty.all(const CircleBorder(
@@ -167,7 +151,7 @@ class _VoiceViewState extends State<VoiceView> {
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
-      userId: 'shiming',
+      userId: Global.profile.id,
       queryText: sstText,
     );
     try {
@@ -198,18 +182,9 @@ class TestAWidget extends StatelessWidget {
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 300),
       opacity: visible ? 1.0 : 0.0,
-      // child: Container(
-      //   color: Colors.blue,
-      //   height: 100.0,
-      //   child: const Center(
-      //     child: Text('TestAWidget'),
-      //   ),
-      // ),
       child: Container(
         height: 50,
         width: 50,
-        // margin: EdgeInsets.only(top: 40),
-        // padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(45),
           color: Colors.blue,
@@ -237,24 +212,12 @@ class TestBWidget extends StatelessWidget {
     return AnimatedOpacity(
         duration: const Duration(milliseconds: 300),
         opacity: visible ? 1.0 : 0.0,
-        // child: Container(
-        //   color: Colors.green,
-        //   height: 100.0,
-        //   child: const Center(
-        //     child: Text('TestBWidget'),
-        //   ),
-        // ),
-
         child: Container(
           alignment: Alignment.center,
           child: ClipOval(
             child: Image.asset(values),
           ),
-        )
-        // show
-        //     ? const SizedBox(height: 50, width: 50, child: WaterRipple())
-        //     : const TestEWidget(),
-        );
+        ));
   }
 }
 

@@ -59,6 +59,9 @@ dependencies:
   webview_flutter: ^3.0.1
   flutter_markdown: ^0.6.9
   any_syntax_highlighter: ^0.0.12
+  porcupine_flutter: ^2.1.1
+  flutter_picker: ^2.0.1
+  flutter_custom_dialog: ^1.2.0
 
 
   flutter_localizations:
@@ -73,6 +76,10 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/test_service_account.json
+    - assets/ppn/first_android.ppn
+    - assets/ppn/second_android.ppn
+    - assets/ppn/three_android.ppn
 
   uses-material-design: true
 

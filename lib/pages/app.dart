@@ -1,19 +1,19 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '/pages/voice/voice_view.dart';
+import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-import '../../common/api/apis.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'course/course_page.dart';
 import 'home/home_page.dart';
 import 'source/Information_page.dart';
 import 'users/users_page.dart';
-import '/pages/voice/voice_view.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -45,9 +45,6 @@ class _AppState extends State<App> {
   _handleSignIn() async {
     var user = Storage.getJson(storageUserProfileKey);
     user.then((guide) async {
-      if (kDebugMode) {
-        print(guide);
-      }
       var user1 = UserLogin.fromJson(json.decode(guide!));
       if (kDebugMode) {
         print(user1.data.name);
