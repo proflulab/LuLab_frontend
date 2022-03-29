@@ -29,27 +29,23 @@ class _ProductState extends State<Product> {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           child: Container(
+              margin: const EdgeInsets.all(10),
               alignment: Alignment.topLeft,
               width: 1.sw,
-              height: 300,
+              height: 200,
               color: Colors.white,
               child: Column(
                 children: [
                   Container(
                     width: 1.sw,
-                    height: 200,
+                    height: 180,
                     child: Column(
                       children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            _postsDataProduct.data.product[index].name,
-                          ),
-                        ),
                         const SizedBox(height: 10),
                         Container(
                           width: 340,
                           height: 100,
+
                           child: Row(
                             children: [
                               Expanded(
@@ -59,7 +55,7 @@ class _ProductState extends State<Product> {
                                     height: 100,
                                     child: Text(
                                       _postsDataProduct
-                                          .data.product[index].description,
+                                          .data.product[index].name,
                                     ),
                                   )),
                               Expanded(
@@ -128,7 +124,7 @@ class _ProductState extends State<Product> {
                                       child: Container(
                                         alignment: Alignment.center,
                                         height: 50,
-                                        child: const Text(' 特点2'),
+                                        child: const Text(' 特点3'),
                                       ))),
                             ],
                           ),
