@@ -45,47 +45,51 @@ class _ProductState extends State<Product> {
                         width: 340,
                         height: 100,
 
-                        child: Row(
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 50,
-                                      child: Text(
-                                        _postsDataProduct
-                                            .data.product[index].name,
+                        child: Container(
+                          width: 1.sw,
+                          height: 180,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 50,
+                                        child: Text(
+                                          _postsDataProduct
+                                              .data.product[index].name,
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        height: 50,
+                                        child: Text(
+                                          _postsDataProduct
+                                              .data.product[index].description,
+                                        ),
+                                      )
+                                    ],
+                                  )),
+                              Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          _postsDataProduct
+                                              .data.product[index].img,
+                                        ), // 图片数组
+                                        fit: BoxFit.fill,
+                                      ),
+                                      borderRadius: const BorderRadius.only(
+                                        topRight: Radius.circular(10),
                                       ),
                                     ),
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 50,
-                                      child: Text(
-                                        _postsDataProduct
-                                            .data.product[index].description,
-                                      ),
-                                    )
-                                  ],
-                                )),
-                            Expanded(
-                                flex: 1,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                        _postsDataProduct
-                                            .data.product[index].img,
-                                      ), // 图片数组
-                                      fit: BoxFit.cover,
-                                    ),
-                                    borderRadius: const BorderRadius.only(
-                                      topRight: Radius.circular(10),
-                                    ),
-                                  ),
-                                )),
-                          ],
+                                  )),
+                            ],
+                          ),
                         ),
                         // Image.network(
                         //   'https://img2.baidu.com/it/u=295131672,1212858880&fm=253&fmt=auto&app=138&f=JPEG?w=325&h=200',
