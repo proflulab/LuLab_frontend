@@ -8,7 +8,6 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 
 /// 课程评论页面
-
 class CourseCommentPage extends StatefulWidget {
   final LatestDirectCourseElement courseData;
   const CourseCommentPage({Key? key, required this.courseData})
@@ -22,7 +21,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   final TextEditingController _commentController = TextEditingController();
   late CommentResponse _latestComment;
   //final FocusNode _commentFocus = FocusNode();
-  List _commentData = [];
+  List<LatestComment> _commentData = [];
 
   bool click = false;
 

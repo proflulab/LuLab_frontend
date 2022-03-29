@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:text_to_speech/text_to_speech.dart';
 
 //import '../../common/api/apis.dart';
+import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 //import '../../common/staticdata/makdowndata.dart';
 import '../../common/utils/utils.dart';
@@ -24,10 +25,33 @@ class _InforDetailsState extends State<InforDetails> {
   final TextEditingController _commentController = TextEditingController();
   bool click = false;
 
+  late CommentResponse _latestComment;
+
+  List<LatestComment> _commentData = [];
+
   @override
   void initState() {
-    //_handleComment();
+    _handleComment();
     super.initState();
+  }
+
+  // 读取所有课程评论数据
+  _handleComment() async {
+    _latestComment = await GqlCommentAPI.commentRequestInfo(
+      variables: CommentRequest(
+        category: '2',
+        //todo 资讯id为空！！！！！！！！！！！,无法获取资讯id
+        entityId: "6200ee0472011f6f25bc83cb",
+        limit: 0,
+        skip: 0,
+      ),
+      context: context,
+    );
+    setState(
+      () {
+        _commentData = _latestComment.latestComment;
+      },
+    );
   }
 
   @override
@@ -98,29 +122,118 @@ class _InforDetailsState extends State<InforDetails> {
                         } else if (index == 1) {
                           return PFMarkdown(data: infordata.mdtext);
                         } else if (index == 2) {
-                          return Column(
-                            children: [
-                              SizedBox(
-                                height: 100.h,
-                                child: const Text(
-                                  "评价部分——未开发",
-                                  textAlign: TextAlign.left,
-                                  softWrap: false,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    fontFamily: 'MyFontStyle',
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
+                          return Text(
+                            '全部评价' + _commentData.length.toString(),
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w500),
                           );
                         }
                         return null;
                       }, childCount: 3),
                     ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (content, index) {
+                          if (_commentData.isEmpty) {
+                            return ListTile(
+                              title: Column(
+                                children: [
+                                  // 头衔
+                                  Row(
+                                    children: [
+                                      Text(
+                                        _commentData[index].authorName,
+                                        style: const TextStyle(fontSize: 15),
+                                      ),
+                                      // const SizedBox(
+                                      //   width: 10,
+                                      // ),
+                                      // const Text(
+                                      //   '骨干学员',
+                                      //   style: TextStyle(
+                                      //       color: Color.fromARGB(255, 219, 24, 24),
+                                      //       fontSize: 15),
+                                      // )
+                                    ],
+                                  ),
+                                  // 评论
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          _commentData[index].content,
+                                          style: const TextStyle(fontSize: 13),
+                                          textAlign: TextAlign.start,
+                                          // overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  // 时间
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: Text(
+                                          _commentData[index].addTime,
+                                          style: const TextStyle(
+                                              color: Color(0xffaaaaaa),
+                                              fontSize: 12),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: const [
+                                            Icon(
+                                              Icons.mode_comment_outlined,
+                                              color: Color(0xffaaaaaa),
+                                              size: 16,
+                                            ),
+                                            Text(
+                                              '1',
+                                              style: TextStyle(
+                                                  color: Color(0xffaaaaaa),
+                                                  fontSize: 12),
+                                            ),
+                                            Icon(
+                                              Icons.thumb_up,
+                                              color: Color(0xffaaaaaa),
+                                              size: 16,
+                                            ),
+                                            Text(
+                                              '1',
+                                              style: TextStyle(
+                                                  color: Color(0xffaaaaaa),
+                                                  fontSize: 12),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            return Container(
+                              width: 100,
+                              height: 100,
+                              color: Colors.blue,
+                              child: const Text("没有评价，显示图片"),
+                            );
+                          }
+                        },
+                        childCount: _commentData.length.toString() == "0"
+                            ? _commentData.length
+                            : 1,
+                      ),
+                    )
                   ],
                 ),
               ),

@@ -32,10 +32,10 @@ class _CoursePageState extends State<CoursePage> {
   late EasyRefreshController _controllerCourse;
 
   //第一次请求获取课程个数
-  final int _countFirst = 5;
+  final int _countFirst = 6;
 
   //刷新请求获取课程个数
-  int _count = 5;
+  int _count = 6;
 
   //底部刷新请求个数
   final int _countDown = 6;
@@ -68,20 +68,22 @@ class _CoursePageState extends State<CoursePage> {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: _mode,
       authorId: Global.profile.id,
-      limit: limit,
       skip: skip,
+      limit: limit,
     );
     _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
         variables: variables, context: context);
 
     if (mounted) {
-      setState(() {
-        if (skip > 0) {
-          _focusData3.addAll(_latestDirectCourse.latestDirectCourse);
-        } else {
-          _focusData3 = _latestDirectCourse.latestDirectCourse;
-        }
-      });
+      setState(
+        () {
+          if (skip > 0) {
+            _focusData3.addAll(_latestDirectCourse.latestDirectCourse);
+          } else {
+            _focusData3 = _latestDirectCourse.latestDirectCourse;
+          }
+        },
+      );
     }
   }
 

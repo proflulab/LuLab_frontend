@@ -8,7 +8,7 @@ String commentAddResponseToJson(CommentAddResponse data) =>
 
 class CommentAddResponse {
   CommentAddResponse({
-     required this.commentAdd,
+    required this.commentAdd,
   });
 
   final CommentAdd commentAdd;

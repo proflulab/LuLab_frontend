@@ -18,18 +18,8 @@ class _PFMarkdownState extends State<PFMarkdown> {
       //controller: controller,
       selectable: true,
       data: widget.data,
-      //https://www.itbaoku.cn/post/1596844/do
-      //改变文字大小
-      // styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)).copyWith(
-      //   p: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18.0),
-      // ),
       styleSheet: MarkdownStyleSheet(
-        // 支持修改样式
-        //a: const TextStyle(fontSize: 150),
-        p: const TextStyle(
-          fontSize: 15,
-          height: 1.5,
-        ),
+        p: const TextStyle(fontSize: 15, height: 1.5),
         pPadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
         h1: const TextStyle(fontSize: 14),
       ),
