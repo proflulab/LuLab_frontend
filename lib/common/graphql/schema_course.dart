@@ -78,35 +78,32 @@ class SchemaCourse {
   }
   ''';
   //查询主课下每小节信息
-  // {
-  //   "dirId":"62345d7be311a5451190def0",
-  //   "courseId":"62345c54e311a5451190deef"
-  // }
+  // {"dirId":"6200ee0472011f6f25bc83cb","courseId":"6200ee0472011f6f25bc83cb"}
   static const String gqlDetailCourseList = r'''
-query DetailCourse($dirId: String!, $courseId: String!) {
-  detailCourse(dirId:$dirId, courseId: $courseId) {
-    subCourses {
-      subTitle
-      courseId
+  query DetailCourse($dirId: String!, $courseId: String!) {
+    detailCourse(dirId:$dirId, courseId: $courseId) {
+      subCourses {
+        subTitle
+        courseId
+        mainCourseId
+      }
+      _id
+      title
+      classTags
+      description
+      author
+      authorTags
+      category
+      videoUrl
+      imgUrl
       mainCourseId
+      duration
+      onlineTime
+      addTime
+      updateTime
     }
-    _id
-    title
-    classTags
-    description
-    author
-    authorTags
-    category
-    videoUrl
-    imgUrl
-    mainCourseId
-    duration
-    onlineTime
-    addTime
-    updateTime
   }
-}
-
+  
 ''';
   //单课查询
   // {

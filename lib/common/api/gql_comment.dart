@@ -6,7 +6,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
 
 class GqlCommentAPI {
-  // 请求全部评论
+  // 请求评论
   static Future<CommentResponse> commentRequestInfo({
     required BuildContext context,
     required CommentRequest variables,
@@ -19,8 +19,8 @@ class GqlCommentAPI {
     return CommentResponse.fromJson(response.data!);
   }
 
-  // 添加课程评论
-  static Future<CommentAdd> commenAddInfo({
+  // 添加评论
+  static Future<CommentAddResponse> commenAddInfo({
     required BuildContext context,
     required CommentAddRequest variables,
   }) async {
@@ -29,6 +29,8 @@ class GqlCommentAPI {
       schema: SchemaComment.gqlCommentAddList,
       variables: variables.toJson(),
     );
-    return CommentAdd.fromJson(response.data!);
+    return CommentAddResponse.fromJson(response.data!);
   }
+
+  //删除评论
 }

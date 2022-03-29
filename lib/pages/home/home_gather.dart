@@ -202,16 +202,17 @@ class _GatherState extends State<Gather> {
       margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
       // 指示器构建
       builder: DotSwiperPaginationBuilder(
-          // 点之间的间隔
-          space: 8,
-          // 没选中时的大小
-          size: 6,
-          // 选中时的大小
-          activeSize: 12,
-          // 没选中时的颜色
-          color: Colors.white,
-          //选中时的颜色
-          activeColor: Colors.green),
+        // 点之间的间隔
+        space: 8,
+        // 没选中时的大小
+        size: 6,
+        // 选中时的大小
+        activeSize: 12,
+        // 没选中时的颜色
+        color: Colors.white,
+        //选中时的颜色
+        activeColor: Colors.green,
+      ),
     );
   }
 
@@ -223,7 +224,9 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角角度
         color: PFc.backgroundSecondary,
-        borderRadius: PFRadius.a6,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(10.r),
+        ),
       ),
       height: 80.h,
       child: Text(
@@ -244,7 +247,9 @@ class _GatherState extends State<Gather> {
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: PFRadius.a15,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(10.r),
+        ),
       ),
       height: (PFspace.screenW - PFspace.screenMargin) *
           PFr.bronze *

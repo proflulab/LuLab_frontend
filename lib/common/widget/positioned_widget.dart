@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../common/widget/widgets.dart';
+
 //import '../utils/utils.dart';
 import '../../common/values/values.dart';
 
@@ -12,23 +14,18 @@ Widget positionedImage({
   double? right,
   double height = 100,
   double width = 100,
-  BorderRadiusGeometry? borderRadius,
+  BorderRadius? borderRadius,
 }) {
   return Positioned(
     top: top,
     left: left,
     right: right,
-    child: Container(
+    child: SizedBox(
       height: height,
       width: width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(url),
-          fit: BoxFit.cover,
-        ),
-        color: const Color.fromARGB(255, 255, 255, 255),
+      child: ClipRRect(
         borderRadius: borderRadius,
-        //BorderRadius.circular(10),
+        child: CachedImage.typeLaod(url),
       ),
     ),
   );
