@@ -95,4 +95,17 @@ class GqlCourseAPI {
     );
     return LatestUserCourseRecord.fromJson(response.data!);
   }
+
+  // 课程详情（目录，播放链接等）
+  static Future<DetailCourseResponse> detailsCourseInfo({
+    required BuildContext context,
+    required DetailCourseRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.mutate(
+      context: context,
+      schema: SchemaCourse.gqldetailsCourseList,
+      variables: variables.toJson(),
+    );
+    return DetailCourseResponse.fromJson(response.data!);
+  }
 }
