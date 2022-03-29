@@ -10,6 +10,8 @@ export 'json_convert_content.dart';
 export 'json_field.dart';
 export 'data_comment_request.dart';
 export 'data_course_sortdetails.dart';
+export 'data_course_details.dart';
+
 export 'data_allrecord_data.dart';
 export 'data_courseorder.dart';
 export 'data_course_allmain.dart';

@@ -11,6 +11,7 @@ class SchemaCourse {
     }
   }
 ''';
+
   //全部主课程数据请求
   static const String gqlmainCourseList = r'''
   query MainCourse {
@@ -77,6 +78,7 @@ class SchemaCourse {
     }
   }
   ''';
+
   //查询主课下每小节信息
   // {"dirId":"6200ee0472011f6f25bc83cb","courseId":"6200ee0472011f6f25bc83cb"}
   static const String gqlDetailCourseList = r'''
@@ -105,6 +107,7 @@ class SchemaCourse {
   }
   
 ''';
+
   //单课查询
   // {
   //   "courseId":"6219874d916b276883e04f6f"
@@ -127,6 +130,34 @@ class SchemaCourse {
       firstCourseId
       duration
       onlineTime
+    }
+  }
+
+''';
+
+  //单课查询
+  //  { "dirId":"6200ee0472011f6f25bc83cb"}
+
+  static const String gqldetailsCourseList = r'''
+  query detailCourse ($dirId: String!){
+    detailCourse(dirId: $dirId) {
+      _id
+      title
+      dirTitle
+      classTags
+      description
+      author
+      authorTags
+      category
+      mode
+      videoUrl
+      imgUrl
+      sort
+      mainCourseId
+      duration
+      onlineTime
+      addTime
+      updateTime
     }
   }
 
