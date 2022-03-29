@@ -45,7 +45,6 @@ class _ProductState extends State<Product> {
                         Container(
                           width: 340,
                           height: 100,
-
                           child: Row(
                             children: [
                               Expanded(
