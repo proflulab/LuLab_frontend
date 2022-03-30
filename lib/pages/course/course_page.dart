@@ -236,7 +236,8 @@ class _CoursePageState extends State<CoursePage> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                var _imageHeight = _coursesW * 0.414 - PFspace.screenMargin * 2;
+                var _imageHeight =
+                    _coursesW * PFr.silver414 - PFspace.screenMargin * 2;
                 var _imageWidht = _imageHeight * PFr.ratio3_4;
                 var _textWidht = _coursesW -
                     (PFspace.screenMargin + _imageWidht + PFspace.screenMargin);
@@ -253,7 +254,7 @@ class _CoursePageState extends State<CoursePage> {
                       );
                     },
                     child: Container(
-                      height: _coursesW * 0.414,
+                      height: _coursesW * PFr.silver414,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(

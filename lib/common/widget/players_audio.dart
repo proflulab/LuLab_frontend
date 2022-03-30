@@ -17,7 +17,6 @@ executar(
   // } else {
   //   audioPlayer.resume();
   // }
-
   // String url =
   //     "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
   int result = await audioPlayer.play(url);

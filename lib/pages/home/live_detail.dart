@@ -198,14 +198,18 @@ class _LiveDetailState extends State<LiveDetail> {
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
                 ),
                 child: const Center(
-                  child: Text("详情",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontFamily: 'MyFontStyle',
-                          fontSize: 20)),
+                  child: Text(
+                    "详情",
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontFamily: 'MyFontStyle',
+                        fontSize: 20),
+                  ),
                 )),
             Container(
               margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
@@ -226,9 +230,11 @@ class _LiveDetailState extends State<LiveDetail> {
                       width: 800.0.w, //容器的相关参数
                       height: 200.0.h,
                       // color: Colors.green,
-                      child: Text("距离" + time1 + "直播开始还有",
-                          style: const TextStyle(
-                              fontFamily: 'MyFontStyle', fontSize: 18)),
+                      child: Text(
+                        "距离" + time1 + "直播开始还有",
+                        style: const TextStyle(
+                            fontFamily: 'MyFontStyle', fontSize: 18),
+                      ),
                     ),
                   ),
                   Positioned(
@@ -259,10 +265,12 @@ class _LiveDetailState extends State<LiveDetail> {
                           shadowColor: MaterialStateProperty.all(
                               const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(const TextStyle(
-                            fontSize: 13,
-                            fontFamily: 'MyFontStyle',
-                          )), //字体
+                          textStyle: MaterialStateProperty.all(
+                            const TextStyle(
+                              fontSize: 13,
+                              fontFamily: 'MyFontStyle',
+                            ),
+                          ), //字体
                           shape: MaterialStateProperty.all(const StadiumBorder(
                               side: BorderSide(
                             //设置 界面效果

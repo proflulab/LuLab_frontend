@@ -15,6 +15,7 @@ class NoticeDetail extends StatefulWidget {
 class _NoticeDetailState extends State<NoticeDetail> {
   late DetailMainCourse _detailMainCourse;
   late DetailMainCourseClass _focusData;
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +26,9 @@ class _NoticeDetailState extends State<NoticeDetail> {
     DetailMainCourseRequest variables =
         DetailMainCourseRequest(courseId: widget.product.courseId);
     _detailMainCourse = await GqlCourseAPI.singleCourseInfo(
-        variables: variables, context: context);
+      variables: variables,
+      context: context,
+    );
     setState(() {
       _focusData = _detailMainCourse.detailMainCourse;
     });

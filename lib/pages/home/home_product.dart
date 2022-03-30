@@ -43,7 +43,6 @@ class _ProductState extends State<Product> {
                       Container(
                         width: 340,
                         height: 100,
-
                         child: Container(
                           width: 1.sw,
                           height: 180,
@@ -119,14 +118,16 @@ class _ProductState extends State<Product> {
                               color: Colors.black,
                             ),
                             Expanded(
-                                flex: 1,
-                                child: SizedBox(
-                                    height: 50,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      height: 50,
-                                      child: const Text(' 特点2'),
-                                    ))),
+                              flex: 1,
+                              child: SizedBox(
+                                height: 50,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 50,
+                                  child: const Text(' 特点2'),
+                                ),
+                              ),
+                            ),
                             Container(
                               width: 1,
                               color: Colors.black,
@@ -155,7 +156,7 @@ class _ProductState extends State<Product> {
               ],
             ),
             decoration: BoxDecoration(
-//背景
+              //背景
               color: Colors.white,
               //设置四周圆角 角度
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),

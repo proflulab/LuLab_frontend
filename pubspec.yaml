@@ -63,6 +63,7 @@ dependencies:
   flutter_picker: ^2.0.1
   flutter_custom_dialog: ^1.2.0
   cached_network_image: ^3.2.0
+  flutter_svg: ^1.0.3
 
   flutter_localizations:
     sdk: flutter

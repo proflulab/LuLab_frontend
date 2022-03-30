@@ -28,6 +28,7 @@ class Inforponse {
 
 class LatestInformation {
   LatestInformation({
+    required this.id,
     required this.title,
     required this.introduction,
     required this.img,
@@ -39,6 +40,7 @@ class LatestInformation {
     required this.href,
   });
 
+  final String id;
   final String title;
   final String introduction;
   final String img;
@@ -51,6 +53,7 @@ class LatestInformation {
 
   factory LatestInformation.fromJson(Map<String, dynamic> json) =>
       LatestInformation(
+        id: json["_id"],
         title: json["title"],
         introduction: json["introduction"],
         img: json["img"],
@@ -63,6 +66,7 @@ class LatestInformation {
       );
 
   Map<String, dynamic> toJson() => {
+        "_id": id,
         "title": title,
         "introduction": introduction,
         "img": img,

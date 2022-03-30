@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 import 'package:text_to_speech/text_to_speech.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 //import '../../common/staticdata/makdowndata.dart';
+import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -22,6 +24,7 @@ class InforDetails extends StatefulWidget {
 class _InforDetailsState extends State<InforDetails> {
   late final infordata = widget.product;
   TextToSpeech tts = TextToSpeech();
+
   final TextEditingController _commentController = TextEditingController();
   bool click = false;
 
@@ -35,13 +38,12 @@ class _InforDetailsState extends State<InforDetails> {
     super.initState();
   }
 
-  // 读取所有课程评论数据
+  // 读取所有资讯评论数据
   _handleComment() async {
     _latestComment = await GqlCommentAPI.commentRequestInfo(
       variables: CommentRequest(
-        category: '2',
-        //todo 资讯id为空！！！！！！！！！！！,无法获取资讯id
-        entityId: "6200ee0472011f6f25bc83cb",
+        category: '1',
+        entityId: infordata.id,
         limit: 0,
         skip: 0,
       ),
@@ -52,6 +54,23 @@ class _InforDetailsState extends State<InforDetails> {
         _commentData = _latestComment.latestComment;
       },
     );
+  }
+
+  //添加评论
+  _handleCommentAdd() async {
+    CommentAddRequest variables = CommentAddRequest(
+      content: _commentController.value.text,
+      authorId: Global.profile.id,
+      authorImg: Global.profile.iconUrl,
+      authorName: Global.profile.name,
+      category: '1',
+      entityId: infordata.id,
+    );
+    await GqlCommentAPI.commenAddInfo(variables: variables, context: context);
+    setState(() {
+      _handleComment();
+      _commentController.text = "";
+    });
   }
 
   @override
@@ -134,7 +153,7 @@ class _InforDetailsState extends State<InforDetails> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (content, index) {
-                          if (_commentData.isEmpty) {
+                          if (_commentData.isNotEmpty) {
                             return ListTile(
                               title: Column(
                                 children: [
@@ -221,17 +240,36 @@ class _InforDetailsState extends State<InforDetails> {
                               ),
                             );
                           } else {
-                            return Container(
-                              width: 100,
-                              height: 100,
-                              color: Colors.blue,
-                              child: const Text("没有评价，显示图片"),
+                            return Column(
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/images/comment.svg",
+                                  color: PFc.themeColor20,
+                                  semanticsLabel: 'A red up arrow',
+                                  width: 0.3.sw,
+                                ),
+                                SizedBox(height: 0.03.sh),
+                                const Text("还没有人评论"),
+                                SizedBox(height: 0.03.sh),
+                                // ElevatedButton(
+                                //   onPressed: () {},
+                                //   child: const Text("快去抢沙发"),
+                                // )
+                              ],
                             );
+                            // Container(
+                            //   //width: 10,
+                            //   height: 100,
+                            //   color: Colors.blue,
+                            //   child: Center(
+                            //     child: const Text("没有评价，显示图片"),
+                            //   ),
+                            // );
                           }
                         },
                         childCount: _commentData.length.toString() == "0"
-                            ? _commentData.length
-                            : 1,
+                            ? 1
+                            : _commentData.length,
                       ),
                     )
                   ],
@@ -335,7 +373,7 @@ class _InforDetailsState extends State<InforDetails> {
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-          hintText: "widget.placehold",
+          hintText: "快来评论吧...",
           hintStyle: const TextStyle(fontSize: 14, color: PFc.textPrimary),
           counterText: '',
           filled: true,
@@ -378,11 +416,11 @@ class _InforDetailsState extends State<InforDetails> {
           Navigator.of(context).pop();
         }
         //widget.submitAction(_commentController.text);
-        // if (_commentController.text.isEmpty) {
-        //   toastInfo(msg: '评论内容不能为空');
-        //   return;
-        // }
-        //_handleCommentAdd();
+        if (_commentController.text.isEmpty) {
+          toastInfo(msg: '评论内容不能为空');
+          return;
+        }
+        _handleCommentAdd();
       },
     );
   }
