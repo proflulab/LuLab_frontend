@@ -82,12 +82,9 @@ class _GatherState extends State<Gather> {
   // 读取所有课程数据
   _loadAllData() async {
     _postsData = await GqlCourseAPI.indexPageInfo(context: context);
-    var focusList = _postsData.latestCourse;
-    // var focusId = _postsData.latestCourse[1].id;
-
     if (mounted) {
       setState(() {
-        _focusData = focusList;
+        _focusData = _postsData.latestCourse;
       });
     }
   }
@@ -309,7 +306,6 @@ class _GatherState extends State<Gather> {
             onTap: () async {
               if (kDebugMode) {
                 print('到课程详情');
-                print(_focusData3[index].description.length);
               }
               Navigator.push(
                 context,

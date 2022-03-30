@@ -23,7 +23,7 @@ class _NoticeDetailState extends State<NoticeDetail> {
 
   _handleDetail() async {
     DetailMainCourseRequest variables =
-        DetailMainCourseRequest(courseId: '6219874d916b276883e04f6f');
+        DetailMainCourseRequest(courseId: widget.product.courseId);
     _detailMainCourse = await GqlCourseAPI.singleCourseInfo(
         variables: variables, context: context);
     setState(() {
