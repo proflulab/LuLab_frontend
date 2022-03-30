@@ -8,6 +8,7 @@ class SchemaSourse {
 
   query Information($skip: Int!, $limit: Int!) {
   latestInformation(option: {skip: $skip, limit: $limit}) {
+    _id
     title
     introduction
     img
@@ -19,7 +20,5 @@ class SchemaSourse {
     href
   }
 }
-  
-  
   ''';
 }

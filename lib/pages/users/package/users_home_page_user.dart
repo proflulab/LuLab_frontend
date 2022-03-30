@@ -22,7 +22,8 @@ class Dty extends StatelessWidget {
         leading: TextButton(
           onPressed: () {
             Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SettingsPage()));
+              MaterialPageRoute(builder: (context) => const SettingsPage()),
+            );
           },
           child: const Icon(
             Icons.arrow_back_ios,

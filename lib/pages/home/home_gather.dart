@@ -383,7 +383,7 @@ class _GatherState extends State<Gather> {
                   ),
                   //预约按钮
                   Positioned(
-                    bottom: PFspace.screenMargin,
+                    bottom: PFspace.ruleM,
                     right: PFspace.screenMargin,
                     child: SizedBox(
                       width: 130.w,
@@ -404,10 +404,12 @@ class _GatherState extends State<Gather> {
                           shadowColor: MaterialStateProperty.all(
                               const Color(0xffffffff)), //阴影颜色
                           elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(const TextStyle(
-                            fontSize: 10,
-                            fontFamily: 'MyFontStyle',
-                          )), //字体
+                          textStyle: MaterialStateProperty.all(
+                            const TextStyle(
+                              fontSize: 13,
+                              fontFamily: 'MyFontStyle',
+                            ),
+                          ), //字体
                           shape: MaterialStateProperty.all(StadiumBorder(
                               side: BorderSide(
                             //设置 界面效果
