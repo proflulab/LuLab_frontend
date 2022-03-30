@@ -283,25 +283,27 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-          DateTime(
-            futureYear,
-            futureMounth,
-            futureDay,
-            futureHour,
-            futureMinute,
-          ),
-          DateTime(
-            futureYear,
-            futureMounth,
-            futureDay,
-            futureHour,
-            futureMinute,
-          ).add(
-            Duration(minutes: _focusData3[index].duration),
-          ),
-          _focusData3[index].title,
-          _focusData3[index].description,
-        );
+            DateTime(
+              futureYear,
+              futureMounth,
+              futureDay,
+              futureHour,
+              futureMinute,
+            ),
+            DateTime(
+              futureYear,
+              futureMounth,
+              futureDay,
+              futureHour,
+              futureMinute,
+            ).add(
+              Duration(minutes: _focusData3[index].duration),
+            ),
+            _focusData3[index].title,
+            _focusData3[index].description,
+            [5],
+            '1',
+            1);
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {
