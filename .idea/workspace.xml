@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bd53015-69f5-4948-ba1c-5234011daf0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_details.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
