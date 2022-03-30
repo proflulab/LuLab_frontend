@@ -23,7 +23,6 @@ class CourseIndexPage extends StatefulWidget {
 class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
   late var dirId = widget.product.id;
-  late var courseId = widget.product.firstCourseId;
   late var vUrl = widget.product.videoUrl;
 
   // 声明tabcontroller和tab标题
@@ -31,11 +30,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   List tabs = ["简介", "评价"];
 
-  late DetailCourse _detailCourse;
-  late DetailCourseClass _focusData;
+  late DetailCourseResponse _detailCourse;
+  List<DetailCoursel> _focusData = [];
 
   int _selectIndex = 0;
-  List _subCourses = [];
 
   @override
   void initState() {
@@ -46,12 +44,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   // 读取所有课程数据
   _handleCourse() async {
-    CourseRequest variables = CourseRequest(dirId: dirId, courseId: courseId);
-    _detailCourse =
-        await GqlCourseAPI.detailsInfo(variables: variables, context: context);
+    _detailCourse = await GqlCourseAPI.detailsCourseInfo(
+        variables: DetailCourseRequest(dirId: dirId), context: context);
     setState(() {
       _focusData = _detailCourse.detailCourse;
-      _subCourses = _detailCourse.detailCourse.subCourses;
     });
   }
 
@@ -178,22 +174,17 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         ),
                       ),
                       SizedBox(
-                        height: (114.h + 15) * _subCourses.length,
+                        height: (114.h + 15) * _focusData.length,
                         child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _subCourses.length,
+                          itemCount: _focusData.length,
                           itemBuilder: (context, index) {
-                            if (_subCourses.isNotEmpty) {
+                            if (_focusData.isNotEmpty) {
                               return InkWell(
                                 onTap: () async {
                                   setState(() {
-                                    dirId = _focusData
-                                        .subCourses[index].mainCourseId;
-                                    courseId =
-                                        _focusData.subCourses[index].courseId;
-                                    _handleCourse();
                                     _selectIndex = index;
-                                    vUrl = _focusData.videoUrl;
+                                    vUrl = _focusData[index].videoUrl;
                                   });
                                 },
                                 child: Container(
@@ -220,8 +211,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                         left: PFspace.screenMargin,
                                         height: 80.h,
                                         width: 1.sw - PFspace.screenMargin * 4,
-                                        text: _focusData
-                                            .subCourses[index].subTitle,
+                                        text: _focusData[index].title,
                                         color: _selectIndex == index
                                             ? PFc.themeColor
                                             : PFc.textPrimary,

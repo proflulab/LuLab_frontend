@@ -58,6 +58,7 @@ class _VoiceViewState extends State<VoiceView> {
     if (keywordIndex >= 0) {
       // YYDialog.init(context);
       // YYFixTextFieldDialog(recognizeFinished, text);
+      tts.stop();
       sstSpeak(text: '我在，你有什么问题');
       // SoundRecord.startListening();
       Future.delayed(const Duration(milliseconds: 2850), () {
