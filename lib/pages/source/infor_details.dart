@@ -279,16 +279,22 @@ class _InforDetailsState extends State<InforDetails> {
                 height: 80.h,
                 color: PFc.backgroundPrimary,
                 padding: EdgeInsets.only(
-                    left: PFspace.screenMargin,
-                    bottom: 10.h,
-                    right: PFspace.screenMargin),
+                  //left: PFspace.screenMargin,
+                  //bottom: 10.h,
+                  right: PFspace.screenMargin,
+                ),
                 child: Container(
                   color: PFc.backgroundPrimary,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+                  // padding:
+                  //     EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      IconButton(
+                        onPressed: () {},
+                        iconSize: 40,
+                        icon: const Icon(Icons.chevron_left),
+                      ),
                       GestureDetector(
                         child: Container(
                           height: 50.h,

@@ -60,7 +60,6 @@ class _NoticeDetailState extends State<NoticeDetail> {
           },
         ),
         backgroundColor: Colors.white,
-        //centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[

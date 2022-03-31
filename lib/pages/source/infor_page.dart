@@ -6,6 +6,7 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
+import '../../common/values/values.dart';
 
 import '../other/loading.dart';
 import 'infor_details.dart';
@@ -63,25 +64,14 @@ class _InformationPageState extends State<InformationPage> {
 
   @override
   Widget build(BuildContext context) {
+    double gap = PFspace.screenMargin / 2;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: const Text(
-          "资讯",
-          style: TextStyle(
-            fontFamily: 'MyFontStyle',
-            color: Colors.green,
-            fontSize: 24,
-          ),
-        ),
-      ),
+      appBar: appBarCommon(context: context, title: '资讯'),
       body: EasyRefresh.custom(
         enableControlFinishRefresh: false,
         enableControlFinishLoad: true,
         controller: _controllerCourse,
-        header: ClassicalHeader(),
+        header: ClassicalHeader(refreshText: "下拉刷新"),
         footer: ClassicalFooter(),
         onRefresh: () async {
           _loadIfoData(0, _countFirst);
@@ -121,45 +111,49 @@ class _InformationPageState extends State<InformationPage> {
                       );
                     },
                     child: Container(
-                      height: 170.h,
-                      padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                      height: PFspace.screenW * PFr.bronze - gap,
+                      padding: EdgeInsets.only(
+                        left: PFspace.screenMargin,
+                        right: PFspace.screenMargin,
+                        top: PFspace.screenMargin,
+                        bottom: PFspace.screenMargin,
+                      ),
                       margin: EdgeInsets.only(
-                          bottom: 10.h, left: 30.w, right: 30.w),
+                        bottom: gap,
+                        left: PFspace.screenMargin,
+                        right: PFspace.screenMargin,
+                      ),
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12.0),
+                        ),
                       ),
-                      child: Stack(
-                        children: <Widget>[
-                          //资讯封面
-                          positionedImage(
-                            context: context,
-                            top: 10,
-                            left: 10,
-                            height: 100,
-                            width: 100,
-                            url: _focusData[index].img,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.r),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: PFspace.screenW * PFr.bronze - 5 * gap,
+                            width: (PFspace.screenW * PFr.bronze - 5 * gap) /
+                                PFr.ratio3_4,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10.r),
+                              ),
+                              child:
+                                  CachedImage.typeLaod(_focusData[index].img),
                             ),
                           ),
-                          // 资讯标题
-                          positioningText(
-                            context: context,
-                            top: 30.h,
-                            left: 230.w,
-                            height: 90.h,
-                            width: 500.w,
-                            text: _focusData[index].title,
-                          ),
-                          // 观看次数
-                          // positionedText(
-                          //     context: context,
-                          //     top: 60,
-                          //     left: 180,
-                          //     height: 40,
-                          //     width: 200,
-                          //     text: "test"),
+                          SizedBox(width: PFspace.screenMargin),
+                          Flexible(
+                            child: Column(
+                              children: [
+                                text(
+                                  context: context,
+                                  text: _focusData[index].title,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),

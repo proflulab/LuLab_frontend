@@ -19,7 +19,7 @@ Widget transparentAppBar({
 }
 
 //AppBarCommon
-PreferredSizeWidget appBarCommon({
+PreferredSizeWidget appBarCommon({ 
   required BuildContext context,
   required String title,
   Widget? leading,

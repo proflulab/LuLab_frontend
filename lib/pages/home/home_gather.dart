@@ -11,6 +11,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import '../other/loading.dart';
@@ -220,22 +221,39 @@ class _GatherState extends State<Gather> {
   Widget _titleWidget(value) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-      padding: EdgeInsets.all(PFspace.screenMargin),
+      padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
-        //设置四周圆角角度
         color: PFc.backgroundSecondary,
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(10.r),
         ),
       ),
-      height: 80.h,
-      child: Text(
-        value,
-        textAlign: TextAlign.start,
-        style: const TextStyle(
-          //fontFamily: 'MyFontStyle',
-          fontSize: 18,
-        ),
+      height: 40.h,
+      child: Row(
+        children: [
+          Text(
+            value,
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              //fontFamily: 'MyFontStyle',
+              fontSize: 18,
+            ),
+          ),
+          // Flexible(
+          //   child: Container(
+          //     height: 1,
+          //   ),
+          // ),
+          // const Text(
+          //   "全部",
+          //   textAlign: TextAlign.start,
+          //   style: TextStyle(
+          //     //fontFamily: 'MyFontStyle',
+          //     fontSize: 18,
+          //   ),
+          // ),
+          // Icon(Icons.navigate_next)
+        ],
       ),
     );
   }
@@ -283,27 +301,25 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ),
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ).add(
-              Duration(minutes: _focusData3[index].duration),
-            ),
-            _focusData3[index].title,
-            _focusData3[index].description,
-            [5],
-            '1',
-            1);
+          DateTime(
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ),
+          DateTime(
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ).add(
+            Duration(minutes: _focusData3[index].duration),
+          ),
+          _focusData3[index].title,
+          _focusData3[index].description,
+        );
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {
