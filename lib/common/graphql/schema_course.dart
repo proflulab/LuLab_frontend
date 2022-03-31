@@ -109,9 +109,7 @@ class SchemaCourse {
 ''';
 
   //单课查询
-  // {
-  //   "courseId":"6219874d916b276883e04f6f"
-  // }
+  //  {"courseId":"6219874d916b276883e04f6f"}
   //
   static const String gqlDetailMainCourseList = r'''
   query DetailMainCourse($courseId: String!) {

@@ -6,7 +6,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'notice_page.dart';
 import 'users_set.dart';
 
@@ -32,7 +31,7 @@ class _UsersPageState extends State<UsersPage> {
         margin: const EdgeInsets.all(20),
         //color: Colors.white,
         child: ListTile(
-          leading: ClipOval(child: Image.network(Global.profile.iconUrl)),
+          // leading: ClipOval(child: Image.network(Global.profile.iconUrl)),
           // CircleAvatar(
           //   radius: 25,
           //   backgroundImage: AssetImage("assets/images/logo.png"),

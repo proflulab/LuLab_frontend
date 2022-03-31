@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/utils/utils.dart';
 import '../../common/global/global.dart';
-
+import '../../common/utils/utils.dart';
 import 'notice_detail.dart';
 
 class NoticePage extends StatefulWidget {
@@ -18,7 +17,7 @@ class NoticePage extends StatefulWidget {
 
 class _NoticePageState extends State<NoticePage> {
   late LatestRecord _latestRecord;
-  List _focusData = [];
+  List<LatestRecordElement> _focusData = [];
   @override
   void initState() {
     super.initState();
@@ -27,10 +26,9 @@ class _NoticePageState extends State<NoticePage> {
 
   // 读取通知
   _handleNotice() async {
-    LatestRecordRequest variables =
-        LatestRecordRequest(authorId: Global.profile.id);
-    _latestRecord =
-        await GqlHomeAPI.ordersInfo(variables: variables, context: context);
+    _latestRecord = await GqlHomeAPI.ordersInfo(
+        variables: LatestRecordRequest(authorId: Global.profile.id),
+        context: context);
     setState(() {
       _focusData = _latestRecord.latestRecord;
     });
