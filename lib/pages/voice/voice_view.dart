@@ -29,7 +29,7 @@ class _VoiceViewState extends State<VoiceView> {
   String values = 'assets/images/语音动效2.gif';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
-  final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
+  final accessKey = "";
 
   @override
   void initState() {
