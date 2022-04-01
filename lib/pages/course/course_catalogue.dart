@@ -6,7 +6,6 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 
-import '../other/loading.dart';
 import 'course_index.dart';
 
 class CourseCatalogue extends StatefulWidget {

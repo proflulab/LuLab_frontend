@@ -14,7 +14,6 @@ import '../../common/widget/widgets.dart';
 
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
-import '../other/loading.dart';
 import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
@@ -316,6 +315,9 @@ class _GatherState extends State<Gather> {
           ),
           _focusData3[index].title,
           _focusData3[index].description,
+          [5],
+          "1",
+          1,
         );
         if (_focusData3.isNotEmpty) {
           return InkWell(

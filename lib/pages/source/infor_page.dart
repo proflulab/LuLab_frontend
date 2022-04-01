@@ -8,7 +8,6 @@ import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/values/values.dart';
 
-import '../other/loading.dart';
 import 'infor_details.dart';
 
 class InformationPage extends StatefulWidget {
@@ -50,7 +49,6 @@ class _InformationPageState extends State<InformationPage> {
   _loadIfoData(int skip, int limit) async {
     _postsIfoData = await SourseAPI.inforInfo(
         context: context, variables: Inforrequest(limit: limit, skip: skip));
-
     if (mounted) {
       setState(() {
         if (skip > 0) {
@@ -68,26 +66,32 @@ class _InformationPageState extends State<InformationPage> {
     return Scaffold(
       appBar: appBarCommon(context: context, title: '资讯'),
       body: EasyRefresh.custom(
+        firstRefresh: true,
+        firstRefreshWidget: const Loading(),
         enableControlFinishRefresh: false,
         enableControlFinishLoad: true,
         controller: _controllerCourse,
-        header: ClassicalHeader(refreshText: "下拉刷新"),
-        footer: ClassicalFooter(),
+        header: EasyrefreshWidget.getHeader(),
+        footer: EasyrefreshWidget.getFooter(),
         onRefresh: () async {
           _loadIfoData(0, _countFirst);
           await Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              _count = _countFirst;
-            });
+            if (mounted) {
+              setState(() {
+                _count = _countFirst;
+              });
+            }
             _controllerCourse.resetLoadState();
           });
         },
         onLoad: () async {
           _loadIfoData(_count, _countDown);
           await Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              _count += _countDown;
-            });
+            if (mounted) {
+              setState(() {
+                _count += _countDown;
+              });
+            }
             _controllerCourse.finishLoad(noMore: _count > _focusData.length);
           });
         },

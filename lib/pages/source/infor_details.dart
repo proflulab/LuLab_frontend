@@ -82,286 +82,287 @@ class _InforDetailsState extends State<InforDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(0),
-          child: AppBar(),
-        ),
-        body: Container(
-          margin: EdgeInsets.fromLTRB(
-              PFspace.screenMargin, 0, PFspace.screenMargin, 0),
-          //color: Colors.red,
-          child: Column(
-            children: [
-              Flexible(
-                child: CustomScrollView(
-                  slivers: <Widget>[
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate((content, index) {
-                        if (index == 0) {
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: AppBar(),
+      ),
+      body: Column(
+        children: [
+          Flexible(
+            child: Container(
+              padding: EdgeInsets.fromLTRB(
+                PFspace.screenMargin,
+                0,
+                PFspace.screenMargin,
+                0,
+              ),
+              //color: Colors.red,
+              child: CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((content, index) {
+                      if (index == 0) {
+                        return Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0, 30.h, 0, 0),
+                              height: 100.h,
+                              width: 1.sw,
+                              child: Text(
+                                infordata.title,
+                                textAlign: TextAlign.left,
+                                softWrap: false,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: const TextStyle(
+                                  color: PFc.textPrimary,
+                                  fontFamily: 'MyFontStyle',
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0, 10.h, 0, 0),
+                              height: 100.h,
+                              width: 1.sw,
+                              child: Text(
+                                infordata.releaseDate,
+                                textAlign: TextAlign.left,
+                                softWrap: false,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: const TextStyle(
+                                  color: PFc.textPrimary,
+                                  fontFamily: '',
+                                  fontSize: 23,
+                                  //fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            PFMarkdown(data: infordata.mdtext),
+                            Text(
+                              '全部评价' + _commentData.length.toString(),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                      return null;
+                    }, childCount: 1),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (content, index) {
+                        if (_commentData.isNotEmpty) {
+                          return ListTile(
+                            title: Column(
+                              children: [
+                                // 头衔
+                                Row(
+                                  children: [
+                                    Text(
+                                      _commentData[index].authorName,
+                                      style: const TextStyle(fontSize: 15),
+                                    ),
+                                    // const SizedBox(
+                                    //   width: 10,
+                                    // ),
+                                    // const Text(
+                                    //   '骨干学员',
+                                    //   style: TextStyle(
+                                    //       color: Color.fromARGB(255, 219, 24, 24),
+                                    //       fontSize: 15),
+                                    // )
+                                  ],
+                                ),
+                                // 评论
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        _commentData[index].content,
+                                        style: const TextStyle(fontSize: 13),
+                                        textAlign: TextAlign.start,
+                                        // overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                // 时间
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      flex: 4,
+                                      child: Text(
+                                        _commentData[index].addTime,
+                                        style: const TextStyle(
+                                          color: Color(0xffaaaaaa),
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: const [
+                                          Icon(
+                                            Icons.mode_comment_outlined,
+                                            color: Color(0xffaaaaaa),
+                                            size: 16,
+                                          ),
+                                          Text(
+                                            '1',
+                                            style: TextStyle(
+                                                color: Color(0xffaaaaaa),
+                                                fontSize: 12),
+                                          ),
+                                          Icon(
+                                            Icons.thumb_up,
+                                            color: Color(0xffaaaaaa),
+                                            size: 16,
+                                          ),
+                                          Text(
+                                            '1',
+                                            style: TextStyle(
+                                                color: Color(0xffaaaaaa),
+                                                fontSize: 12),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
                           return Column(
                             children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 30.h, 0, 0),
-                                height: 100.h,
-                                width: 1.sw,
-                                child: Text(
-                                  infordata.title,
-                                  textAlign: TextAlign.left,
-                                  softWrap: false,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: const TextStyle(
-                                    color: PFc.textPrimary,
-                                    fontFamily: 'MyFontStyle',
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                              SvgPicture.asset(
+                                "assets/images/comment.svg",
+                                color: PFc.themeColor20,
+                                semanticsLabel: 'A red up arrow',
+                                width: 0.3.sw,
                               ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 10.h, 0, 0),
-                                height: 100.h,
-                                width: 1.sw,
-                                child: Text(
-                                  infordata.releaseDate,
-                                  textAlign: TextAlign.left,
-                                  softWrap: false,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: const TextStyle(
-                                    color: PFc.textPrimary,
-                                    fontFamily: '',
-                                    fontSize: 23,
-                                    //fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              SizedBox(height: 0.03.sh),
+                              const Text("还没有人评论"),
+                              SizedBox(height: 0.03.sh),
+                              // ElevatedButton(
+                              //   onPressed: () {},
+                              //   child: const Text("快去抢沙发"),
+                              // )
                             ],
                           );
-                        } else if (index == 1) {
-                          return PFMarkdown(data: infordata.mdtext);
-                        } else if (index == 2) {
-                          return Text(
-                            '全部评价' + _commentData.length.toString(),
-                            style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w500),
-                          );
                         }
-                        return null;
-                      }, childCount: 3),
+                      },
+                      childCount: _commentData.length.toString() == "0"
+                          ? 1
+                          : _commentData.length,
                     ),
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (content, index) {
-                          if (_commentData.isNotEmpty) {
-                            return ListTile(
-                              title: Column(
-                                children: [
-                                  // 头衔
-                                  Row(
-                                    children: [
-                                      Text(
-                                        _commentData[index].authorName,
-                                        style: const TextStyle(fontSize: 15),
-                                      ),
-                                      // const SizedBox(
-                                      //   width: 10,
-                                      // ),
-                                      // const Text(
-                                      //   '骨干学员',
-                                      //   style: TextStyle(
-                                      //       color: Color.fromARGB(255, 219, 24, 24),
-                                      //       fontSize: 15),
-                                      // )
-                                    ],
-                                  ),
-                                  // 评论
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Text(
-                                          _commentData[index].content,
-                                          style: const TextStyle(fontSize: 13),
-                                          textAlign: TextAlign.start,
-                                          // overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  // 时间
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Expanded(
-                                        flex: 4,
-                                        child: Text(
-                                          _commentData[index].addTime,
-                                          style: const TextStyle(
-                                              color: Color(0xffaaaaaa),
-                                              fontSize: 12),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        flex: 1,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: const [
-                                            Icon(
-                                              Icons.mode_comment_outlined,
-                                              color: Color(0xffaaaaaa),
-                                              size: 16,
-                                            ),
-                                            Text(
-                                              '1',
-                                              style: TextStyle(
-                                                  color: Color(0xffaaaaaa),
-                                                  fontSize: 12),
-                                            ),
-                                            Icon(
-                                              Icons.thumb_up,
-                                              color: Color(0xffaaaaaa),
-                                              size: 16,
-                                            ),
-                                            Text(
-                                              '1',
-                                              style: TextStyle(
-                                                  color: Color(0xffaaaaaa),
-                                                  fontSize: 12),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            );
-                          } else {
-                            return Column(
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/images/comment.svg",
-                                  color: PFc.themeColor20,
-                                  semanticsLabel: 'A red up arrow',
-                                  width: 0.3.sw,
-                                ),
-                                SizedBox(height: 0.03.sh),
-                                const Text("还没有人评论"),
-                                SizedBox(height: 0.03.sh),
-                                // ElevatedButton(
-                                //   onPressed: () {},
-                                //   child: const Text("快去抢沙发"),
-                                // )
-                              ],
-                            );
-                            // Container(
-                            //   //width: 10,
-                            //   height: 100,
-                            //   color: Colors.blue,
-                            //   child: Center(
-                            //     child: const Text("没有评价，显示图片"),
-                            //   ),
-                            // );
-                          }
-                        },
-                        childCount: _commentData.length.toString() == "0"
-                            ? 1
-                            : _commentData.length,
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
-              Container(
-                height: 80.h,
-                color: PFc.backgroundPrimary,
-                padding: EdgeInsets.only(
-                  //left: PFspace.screenMargin,
-                  //bottom: 10.h,
-                  right: PFspace.screenMargin,
-                ),
-                child: Container(
-                  color: PFc.backgroundPrimary,
-                  // padding:
-                  //     EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      IconButton(
-                        onPressed: () {},
-                        iconSize: 40,
-                        icon: const Icon(Icons.chevron_left),
+            ),
+          ),
+          Container(
+            height: 80.h,
+            color: PFc.backgroundPrimary,
+            padding: EdgeInsets.only(
+              //left: PFspace.screenMargin,
+              //bottom: 10.h,
+              right: PFspace.screenMargin,
+            ),
+            child: Container(
+              color: PFc.backgroundPrimary,
+              // padding:
+              //     EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    iconSize: 40,
+                    icon: const Icon(Icons.chevron_left),
+                  ),
+                  GestureDetector(
+                    child: Container(
+                      height: 50.h,
+                      width: 500.w,
+                      padding:
+                          EdgeInsets.only(left: 25.w, top: 13.h, bottom: 10.h),
+                      decoration: BoxDecoration(
+                        color: PFc.themeColor10,
+                        borderRadius: BorderRadius.circular(25.h),
                       ),
-                      GestureDetector(
-                        child: Container(
-                          height: 50.h,
-                          width: 500.w,
-                          padding: EdgeInsets.only(
-                              left: 25.w, top: 13.h, bottom: 10.h),
-                          decoration: BoxDecoration(
-                            color: PFc.themeColor10,
-                            borderRadius: BorderRadius.circular(25.h),
-                          ),
-                          child: const Text(
-                            '快来评论吧...',
-                            //textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: PFc.textEmphasis,
-                            ),
-                          ),
+                      child: const Text(
+                        '快来评论吧...',
+                        //textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: PFc.textEmphasis,
                         ),
-                        onTap: () async {
-                          showModalBottomSheet(
-                            context: context,
-                            backgroundColor: Colors.transparent,
-                            //isDismissible: false, //能否点击消失
-                            builder: (BuildContext context) {
-                              return AnimatedContainer(
-                                height: click ? 100.h : 580.h,
-                                //color: const Color.fromARGB(255, 255, 0, 0),
-                                duration: const Duration(milliseconds: 10),
-                                alignment: Alignment.bottomCenter,
-                                padding: EdgeInsets.only(
-                                    bottom: MediaQueryData.fromWindow(ui.window)
-                                        .viewInsets
-                                        .bottom),
-                                child: Material(
-                                  child: Container(
-                                    height: 80.h,
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16, vertical: 8),
-                                    child: Row(
-                                      children: <Widget>[
-                                        renderTextInput(),
-                                        renderSenderButton()
-                                      ],
-                                    ),
-                                  ),
+                      ),
+                    ),
+                    onTap: () async {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        //isDismissible: false, //能否点击消失
+                        builder: (BuildContext context) {
+                          return AnimatedContainer(
+                            height: click ? 100.h : 580.h,
+                            //color: const Color.fromARGB(255, 255, 0, 0),
+                            duration: const Duration(milliseconds: 10),
+                            alignment: Alignment.bottomCenter,
+                            padding: EdgeInsets.only(
+                                bottom: MediaQueryData.fromWindow(ui.window)
+                                    .viewInsets
+                                    .bottom),
+                            child: Material(
+                              child: Container(
+                                height: 80.h,
+                                color: Colors.white,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                child: Row(
+                                  children: <Widget>[
+                                    renderTextInput(),
+                                    renderSenderButton()
+                                  ],
                                 ),
-                              );
-                            },
+                              ),
+                            ),
                           );
                         },
-                      ),
-                      // Row(
-                      //   children: <Widget>[
-                      //     bottomItem(icon,),
-                      //     const SizedBox(width: 30),
-                      //     bottomItem()
-                      //   ],
-                      // )
-                    ],
+                      );
+                    },
                   ),
-                ),
+                  // Row(
+                  //   children: <Widget>[
+                  //     bottomItem(icon,),
+                  //     const SizedBox(width: 30),
+                  //     bottomItem()
+                  //   ],
+                  // )
+                ],
               ),
-            ],
+            ),
           ),
-        ));
+        ],
+      ),
+      //),
+    );
   }
 
   Widget renderTextInput() {
