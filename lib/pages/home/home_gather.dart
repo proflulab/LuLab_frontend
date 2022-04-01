@@ -13,7 +13,6 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
-import '../other/loading.dart';
 import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
@@ -286,6 +285,7 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
+
             DateTime(
               futureYear,
               futureMounth,

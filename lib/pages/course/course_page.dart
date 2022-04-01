@@ -10,7 +10,6 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
-import '../other/loading.dart';
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {

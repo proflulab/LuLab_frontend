@@ -44,28 +44,29 @@ Widget listGroup2({
   required VoidCallback onTap,
 }) {
   return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-      child: InkWell(
-        onTap: onTap,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 6,
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'MyFontStyle',
-                  color: Colors.black,
-                  fontSize: 18,
-                ),
+    margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+    child: InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 18,
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: child,
-            ),
-            Expanded(flex: 1, child: icon)
-          ],
-        ),
-      ));
+          ),
+          Expanded(
+            flex: 1,
+            child: child,
+          ),
+          Expanded(flex: 1, child: icon)
+        ],
+      ),
+    ),
+  );
 }

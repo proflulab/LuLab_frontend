@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
+//import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
 
 class PFMarkdown extends StatefulWidget {
@@ -19,7 +20,7 @@ class _PFMarkdownState extends State<PFMarkdown> {
       selectable: true,
       data: widget.data,
       styleSheet: MarkdownStyleSheet(
-        p: const TextStyle(fontSize: 15, height: 1.5),
+        p: const TextStyle(fontSize: 18, height: 1.8),
         pPadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
         h1: const TextStyle(fontSize: 14),
       ),
