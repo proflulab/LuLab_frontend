@@ -13,6 +13,7 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
+
 import 'live_detail.dart';
 
 class Gather extends StatefulWidget {
@@ -151,8 +152,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
-      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图2.png",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图1.png",
     ];
 
     return Container(
@@ -285,7 +286,6 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-
             DateTime(
               futureYear,
               futureMounth,

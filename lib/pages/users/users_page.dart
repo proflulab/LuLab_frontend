@@ -242,7 +242,7 @@ class _UsersPageState extends State<UsersPage> {
                       //   ],
                       // );
                       return CupertinoAlertDialog(
-                        content: const Text('具体咨询请致电：123456'),
+                        content: const Text('business@proflu.cn'),
                         actions: <Widget>[
                           CupertinoDialogAction(
                             child: const Text("确定"),

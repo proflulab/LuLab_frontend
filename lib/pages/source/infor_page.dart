@@ -77,9 +77,11 @@ class _InformationPageState extends State<InformationPage> {
           _loadIfoData(0, _countFirst);
           await Future.delayed(const Duration(seconds: 1), () {
             if (mounted) {
-              setState(() {
-                _count = _countFirst;
-              });
+              setState(
+                () {
+                  _count = _countFirst;
+                },
+              );
             }
             _controllerCourse.resetLoadState();
           });

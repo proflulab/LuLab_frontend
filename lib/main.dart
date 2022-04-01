@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'common/routers/router.dart';
 import 'common/values/values.dart';
-//BaiduNetdiskDownload 'package:get/get.dart';
+//import 'package:get/get.dart';
 
 //启动页面
 void main() => runApp(const MyApp());

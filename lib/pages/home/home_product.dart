@@ -59,7 +59,7 @@ class _ProductState extends State<Product> {
                   width: _boxw,
                   child: Container(
                     margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 40.h),
-                    alignment: Alignment(0, 0),
+                    alignment: const Alignment(0, 0),
                     height: 300.h,
                     width: 690.w,
                     decoration: BoxDecoration(
@@ -160,7 +160,7 @@ class _ProductState extends State<Product> {
                               child: Text(
                                 _focusData[index].trait,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: '',
                                   color: Colors.black,
                                   fontSize: 20,

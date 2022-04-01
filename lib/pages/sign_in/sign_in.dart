@@ -74,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
         (route) => route == null,
       );
     } else {
-      return toastInfo(msg: '请勾选服务使用协议');
+      return toastInfo(msg: '请勾选相关协议');
     }
   }
 
@@ -125,18 +125,19 @@ class _SignInPageState extends State<SignInPage> {
           Text.rich(TextSpan(
             children: [
               TextSpan(
-                  text: "没有账号？点击注册",
-                  style: const TextStyle(
-                      fontSize: 25, color: Color.fromARGB(234, 46, 199, 32)),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SignUpPage()));
-                    }),
+                text: "没有账号？点击注册",
+                style: const TextStyle(
+                    fontSize: 25, color: Color.fromARGB(234, 46, 199, 32)),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SignUpPage()));
+                  },
+              ),
             ],
           )),
-          Container(
-            alignment: const Alignment(-0, 0.5),
+          SizedBox(
+            //alignment: const Alignment(-0, 0.5),
             height: 200,
             child: Row(
               children: [
@@ -176,16 +177,19 @@ class _SignInPageState extends State<SignInPage> {
                                           color: Colors.black, fontSize: 13.0),
                                       children: <TextSpan>[
                                         TextSpan(
-                                            text: '《陆向谦实验室服务使用协议》,',
-                                            style: const TextStyle(
-                                                color: Colors.blue),
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Service()));
-                                              }),
+                                          text: '《陆向谦实验室服务使用协议》,',
+                                          style: const TextStyle(
+                                              color: Colors.blue),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () async {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const Service(),
+                                                ),
+                                              );
+                                            },
+                                        ),
                                         TextSpan(
                                             text: '《陆向谦实验室隐私政策》',
                                             style: const TextStyle(
@@ -193,41 +197,30 @@ class _SignInPageState extends State<SignInPage> {
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async {
                                                 Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Qrivacy(
-                                                              title: '',
-                                                            )));
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Qrivacy(
+                                                      title: '',
+                                                    ),
+                                                  ),
+                                                );
                                               }),
                                         TextSpan(
-                                            text: ',《陆向谦实验室版权声明》',
-                                            style: const TextStyle(
-                                                color: Colors.blue),
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Copyright(
-                                                              title: '',
-                                                            )));
-                                              }),
-                                        const TextSpan(
-                                          text: '和 ',
-                                          style: TextStyle(color: Colors.black),
+                                          text: ',《陆向谦实验室版权声明》',
+                                          style: const TextStyle(
+                                              color: Colors.blue),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () async {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const Copyright(
+                                                    title: '',
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                         ),
-                                        // TextSpan(
-                                        //   text: '《产品特色》',
-                                        //   style: const TextStyle(
-                                        //       color: Colors.blue),
-                                        //   recognizer: TapGestureRecognizer()
-                                        //     ..onTap = () async {
-                                        //       Navigator.of(context).push(
-                                        //           MaterialPageRoute(
-                                        //               builder: (context) =>
-                                        //                   const Features()));
-                                        //     },
-                                        // ),
                                       ],
                                     ),
                                   )
