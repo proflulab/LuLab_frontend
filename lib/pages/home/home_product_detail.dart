@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../common/values/values.dart';
-import '../../common/entitys/entitys.dart';
 import '../../common/widget/widgets.dart';
 
 class ProductDetail extends StatefulWidget {
   const ProductDetail({Key? key, required this.product}) : super(key: key);
-  final Product product;
+  final product;
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -20,7 +19,7 @@ class _ProductDetailState extends State<ProductDetail> {
         children: [
           Flexible(
             child: Browser(
-              url: widget.product.detailurl,
+              url: widget.product.detailUrl,
               title: widget.product.name,
             ),
           ),
@@ -37,7 +36,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => Browser(
-                    url: widget.product.applyurl,
+                    url: widget.product.applyUrl,
                     title: "填写申请",
                   ),
                 ),

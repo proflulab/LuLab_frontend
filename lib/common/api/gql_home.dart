@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-import '../graphql/schema_home.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+import '../graphql/schema_home.dart';
 
 class GqlHomeAPI {
   // 添加预约
@@ -44,5 +44,18 @@ class GqlHomeAPI {
     );
 
     return Feats.fromJson(response.data!);
+  }
+
+  //训练营内容查询
+  static Future<LatestTraining> latestTainingInfo({
+    required BuildContext context,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      schema: SchemaHome.gqlLatestTraining,
+      context: context,
+      variables: {},
+    );
+
+    return LatestTraining.fromJson(response.data!);
   }
 }

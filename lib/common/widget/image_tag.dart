@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../common/values/values.dart';
 //import '../../common/utils/screen.dart';
 
@@ -51,26 +52,6 @@ Widget tagImage({
                 bottomRight: Radius.circular(5),
               ),
             ),
-            // ClipRRect(
-            //   borderRadius: const BorderRadius.only(
-            //     topLeft: Radius.circular(10),
-            //     topRight: Radius.circular(0),
-            //     bottomLeft: Radius.circular(0),
-            //     bottomRight: Radius.circular(10),
-            //   ),
-            //   child: BackdropFilter(
-            //     filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-            //     child: Center(
-            //         child: Text(
-            //       tag,
-            //       style: const TextStyle(
-            //         fontFamily: 'MyFontStyle',
-            //         color: Colors.black,
-            //         fontSize: 14,
-            //       ),
-            //     )),
-            //   ),
-            // ),
           ),
         )
       ],

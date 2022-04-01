@@ -85,4 +85,19 @@ query feats($category: String!, $skip: Int!, $limit: Int!) {
   }
 }
 ''';
+  static const String gqlLatestTraining = r'''
+query {
+  latestTraining(option:{skip:0,limit:5}) {
+   _id
+   name
+   description
+   detailUrl
+   imgUrl
+   applyUrl
+   trait
+   addTime 
+   timestamp 
+  }
+}
+  ''';
 }

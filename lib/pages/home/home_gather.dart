@@ -24,12 +24,13 @@ class Gather extends StatefulWidget {
 }
 
 class _GatherState extends State<Gather> {
-  late PostsData _postsData;
-  List _focusData = [];
   late Inforponse _postsIfoData;
   List<LatestInformation> _focusData2 = [];
   late LatestDirectCourse _latestDirectCourse;
   List<LatestDirectCourseElement> _focusData3 = [];
+  late LatestDirectCourse _course;
+  List<LatestDirectCourseElement> _focusData4 = [];
+  final double _coursesW = PFspace.screenW * PFr.silver - PFspace.screenMargin;
   //late RecordAdd _recordAdd;
   //late RecordAddClass _recordData;
 
@@ -47,7 +48,7 @@ class _GatherState extends State<Gather> {
     super.initState();
     _handleCourse();
     _loadIfoData();
-    _loadAllData();
+    _loadCourse();
   }
 
   // 读取资讯所有数据
@@ -70,23 +71,8 @@ class _GatherState extends State<Gather> {
       courseId: _focusData3[index].id,
       onlineTime: now,
     );
-    //_recordAdd =
     await GqlHomeAPI.recordAddInfo(variables: variables, context: context);
-    //var recordData = _recordAdd.recordAdd;
     toastInfo(msg: '预约成功');
-    // setState(() {
-    //   _recordData = recordData;
-    // });
-  }
-
-  // 读取所有课程数据
-  _loadAllData() async {
-    _postsData = await GqlCourseAPI.indexPageInfo(context: context);
-    if (mounted) {
-      setState(() {
-        _focusData = _postsData.latestCourse;
-      });
-    }
   }
 
   // 读取直播课程数据
@@ -103,6 +89,23 @@ class _GatherState extends State<Gather> {
     if (mounted) {
       setState(() {
         _focusData3 = _latestDirectCourse.latestDirectCourse;
+      });
+    }
+  }
+
+  _loadCourse() async {
+    LatestDirectCourseRequest variables = LatestDirectCourseRequest(
+      mode: "1",
+      authorId: Global.profile.id,
+      limit: 10,
+      skip: 0,
+    );
+    _course = await GqlCourseAPI.sortCourseInfo(
+        variables: variables, context: context);
+
+    if (mounted) {
+      setState(() {
+        _focusData4 = _course.latestDirectCourse;
       });
     }
   }
@@ -449,53 +452,6 @@ class _GatherState extends State<Gather> {
     );
   }
 
-// 免费体验课程
-  SingleChildScrollView buildFreeCourse() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-          _buildEachFreeCourse(),
-        ],
-      ),
-    );
-  }
-
-// 每个免费课程
-  Container _buildEachFreeCourse() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: [
-          SizedBox(
-            // 课程图片
-            width: 100,
-            height: 150,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-          const Text(
-            'AI时代——造就...',
-            style: TextStyle(color: Color(0xff404040)),
-          ),
-          const Text(
-            '播放量130万',
-            style: TextStyle(
-              color: Color(0xffffcd92),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // 最新咨询
   Container buildInfomation() {
     return Container(
@@ -514,13 +470,14 @@ class _GatherState extends State<Gather> {
 
   ListView buildInfomationContext() {
     return ListView.builder(
-      itemCount: _focusData2.length,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 2,
       itemBuilder: (context, index) {
         if (_focusData2.isNotEmpty) {
           return InkWell(
               onTap: () async {
                 if (kDebugMode) {
-                  print('到课程详情');
+                  print('到资讯详情');
                 }
                 Navigator.push(
                     context,
@@ -538,39 +495,27 @@ class _GatherState extends State<Gather> {
                 ),
                 child: Stack(
                   children: <Widget>[
-                    // 课程封面
-                    Positioned(
-                      top: 10.0,
-                      left: 12.0,
-                      child: Container(
-                        height: 80,
-                        width: 130,
-                        decoration: BoxDecoration(
-                          //设置四周圆角 角度
-                          borderRadius: PFRadius.a6,
-                        ),
-                        child: Image.asset(
-                          'assets/images/liuqiangdong.jpg',
-                          fit: BoxFit.fill,
-                        ),
+                    //资讯封面
+                    positionedImage(
+                      context: context,
+                      top: 10,
+                      left: 10,
+                      height: 100,
+                      width: 100,
+                      url: _focusData2[index].img,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.r),
                       ),
                     ),
-                    // 课程标题
-                    Positioned(
-                      top: 10.0,
-                      left: 155.0,
-                      child: SizedBox(
-                        height: 100,
-                        width: 168,
-                        child: Text(
-                          _focusData2[index].title,
-                          style: const TextStyle(
-                            fontFamily: 'MyFontStyle',
-                            fontSize: 17,
-                          ),
-                        ),
-                      ),
-                    )
+                    // 资讯标题
+                    positioningText(
+                      context: context,
+                      top: 30.h,
+                      left: 230.w,
+                      height: 90.h,
+                      width: 500.w,
+                      text: _focusData2[index].title,
+                    ),
                   ],
                 ),
               ) // ),
@@ -600,9 +545,12 @@ class _GatherState extends State<Gather> {
 
   ListView buildCourseContext() {
     return ListView.builder(
-      itemCount: _focusData.length,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 2,
       itemBuilder: (context, index) {
-        if (_focusData.isNotEmpty) {
+        var _imageHeight = _coursesW * PFr.silver414 - PFspace.screenMargin * 2;
+        var _imageWidht = _imageHeight * PFr.ratio3_4;
+        if (_focusData4.isNotEmpty) {
           return InkWell(
               onTap: () async {
                 if (kDebugMode) {
@@ -612,10 +560,10 @@ class _GatherState extends State<Gather> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            CourseIndexPage(product: _focusData[index])));
+                            CourseIndexPage(product: _focusData4[index])));
               },
               child: Container(
-                height: 140.h,
+                height: 180.h,
                 width: 345.w,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -625,51 +573,59 @@ class _GatherState extends State<Gather> {
                 child: Stack(
                   children: <Widget>[
                     // 课程封面
-                    Positioned(
-                      top: 10.0,
-                      left: 12.0,
-                      child: Container(
-                        height: 80,
-                        width: 120,
-                        decoration: BoxDecoration(
-                          //设置四周圆角 角度
-                          borderRadius: PFRadius.a15,
-                        ),
-                        child: Image.network(
-                          'https://scpic2.chinaz.net/Files/pic/pic9/202108/bpic2394$index.jpg',
-                          fit: BoxFit.fill,
-                        ),
+                    positionedImage(
+                      context: context,
+                      top: 15.h,
+                      left: PFspace.screenMargin,
+                      height: 150.h,
+                      width: 180.w,
+                      url: _focusData4[index].imgUrl,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.r),
                       ),
                     ),
                     // 课程标题
-                    Positioned(
-                      top: 10.0,
-                      left: 145.0,
-                      child: Text(
-                        _focusData[index].title,
-                        style: const TextStyle(
-                          fontFamily: 'MyFontStyle',
-                          fontSize: 21,
-                        ),
-                      ),
+                    positioningText(
+                      context: context,
+                      top: 15.h,
+                      left: 250.w,
+                      height:
+                          _focusData4[index].title.length > 11 ? 60.h : 25.h,
+                      width: 380.w,
+                      text: _focusData4[index].title,
+                      font: 'MyFontStyle',
+                      fontSize: 31.sp,
                     ),
                     // 作者
-                    // positionedText(
-                    //     context: context,
-                    //     top: 55,
-                    //     left: 190,
-                    //     height: 40,
-                    //     width: 200,
-                    //     text: _focusData[index].author),
-                    const Positioned(
-                      top: 30.0,
-                      left: 145.0,
-                      child: SizedBox(
-                          height: 36,
-                          width: 188,
-                          child: Text('介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍',
-                              style: TextStyle(
-                                  fontSize: 12.0, color: Colors.grey))),
+                    positioningText(
+                      context: context,
+                      top: 130.h,
+                      left: 260.w,
+                      height: 30.h,
+                      width: 180.w,
+                      text: _focusData4[index].author,
+                      font: '',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.sp,
+                      maxLines: 1,
+                      overflow: TextOverflow.clip,
+                      color: PFc.textSecondary,
+                    ),
+                    // 作者标签
+                    positioningText(
+                      context: context,
+                      top: 70.h,
+                      left: PFspace.screenMargin +
+                          _imageWidht +
+                          PFspace.screenMargin +
+                          95.w,
+                      height: 30.h,
+                      width: 295.w,
+                      text: _focusData4[index].authorTags,
+                      font: '',
+                      fontSize: 25.sp,
+                      maxLines: 1,
+                      color: PFc.textSecondary,
                     ),
                   ],
                 ),
