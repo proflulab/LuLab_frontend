@@ -28,3 +28,4 @@ export 'textfield.dart';
 export 'toast.dart';
 export 'webview.dart';
 export 'webview_plugin.dart';
+export 'text_widget.dart';

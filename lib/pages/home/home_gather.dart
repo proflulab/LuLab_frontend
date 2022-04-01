@@ -220,22 +220,25 @@ class _GatherState extends State<Gather> {
   Widget _titleWidget(value) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-      padding: EdgeInsets.all(PFspace.screenMargin),
+      padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
-        //设置四周圆角角度
         color: PFc.backgroundSecondary,
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(10.r),
         ),
       ),
-      height: 80.h,
-      child: Text(
-        value,
-        textAlign: TextAlign.start,
-        style: const TextStyle(
-          //fontFamily: 'MyFontStyle',
-          fontSize: 18,
-        ),
+      height: 40.h,
+      child: Row(
+        children: [
+          Text(
+            value,
+            textAlign: TextAlign.start,
+            style: const TextStyle(
+              //fontFamily: 'MyFontStyle',
+              fontSize: 18,
+            ),
+          ),
+        ],
       ),
     );
   }

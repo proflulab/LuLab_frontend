@@ -41,9 +41,7 @@ class _ProductState extends State<Product> {
       itemCount: _focusData.length,
       itemBuilder: (BuildContext context, int index) {
         if (_focusData.isNotEmpty) {
-          //功勋卡片长度
           double _boxw = (1.sw - PFspace.screenMargin * 2);
-          //功勋卡片高度
           double _boxh = _boxw * PFr.golden;
           return InkWell(
               onTap: () async {
