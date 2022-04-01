@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bd53015-69f5-4948-ba1c-5234011daf0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/appbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/appbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/information_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/source/infor_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/notice_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/notice_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/package/users_copyrig_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/package/users_copyrig_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/package/users_features_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/package/users_features_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +48,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
