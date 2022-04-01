@@ -171,12 +171,14 @@ class _LiveDetailState extends State<LiveDetail> {
     var futureHour = int.parse(formatDate(future, [HH]));
     var futureMinute = int.parse(formatDate(future, [nn]));
     Calendars calendars = Calendars(
-      DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute),
-      DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute)
-          .add(Duration(minutes: widget.product.duration)),
-      widget.product.title,
-      widget.product.description,
-    );
+        DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute),
+        DateTime(futureYear, futureMounth, futureDay, futureHour, futureMinute)
+            .add(Duration(minutes: widget.product.duration)),
+        widget.product.title,
+        widget.product.description,
+        [5],
+        '1',
+        1);
     return Scaffold(
         backgroundColor: const Color.fromRGBO(220, 220, 220, 1),
         body: ListView(
