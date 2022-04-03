@@ -15,31 +15,15 @@ class Global {
   // 用户配置
   static Data profile = Data(
     age: '',
-    bigCoverUrl: '',
-    category: '',
-    country: '',
     description: '',
-    detailMsg: '',
-    docs: [],
     email: '',
-    growthDescriptions: [],
     iconUrl: '',
     id: '',
-    identity: '',
-    imgs: [],
-    imgUrl: '',
-    industry: '',
     name: '',
     password: '',
     phone: '',
-    position: '',
-    schoolRecord: '',
     sex: '',
-    tags: [],
-    userType: '',
-    videos: [],
     wechat: '',
-    workCondition: '',
   );
 
   /// 发布渠道

@@ -1,10 +1,7 @@
 class SchemaUser {
 //用户登录
 //请求数据参考
-// {
-//   "name": "shiming",
-//   "password": "12345678"
-// }
+//{"name": "shiming","password": "12345678"}
   static const String gqlUserLogin = r'''
 query UserLogin($name: String!, $password: String!) {
   userLogin(userInput: {name: $name, password: $password}) {
@@ -15,28 +12,13 @@ query UserLogin($name: String!, $password: String!) {
       name
       age
       sex
-      position
       industry
-      country
       phone
       email
       wechat
-      schoolRecord
-      workCondition
-      detailMsg
       description
-      category
-      userType
-      identity
-      imgUrl
       iconUrl
-      bigCoverUrl
       password
-      videos
-      imgs
-      docs
-      growthDescriptions
-      tags
     }
   }
 }
@@ -44,11 +26,7 @@ query UserLogin($name: String!, $password: String!) {
 
 //用户注册
 //请求数据参考
-// {
-//   "name": "1111111",
-//   "password": "1111111",
-//   "ensurePassword": "1111111"
-// }
+//{"name": "1111111","password": "1111111","ensurePassword": "1111111"}
   static const String gqlUserRegister = r'''
 
   mutation UserLogin($name: String!, $password: String!, $ensurePassword: String!) {
