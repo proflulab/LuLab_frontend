@@ -44,6 +44,9 @@ class Global {
   /// 是否第一次打开
   static int isFirstOpen = 1;
 
+  /// 是否第一次登录
+  static int isFirstSign = 1;
+
   /// 是否离线登录
   // static bool isOfflineLogin = false;
 

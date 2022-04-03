@@ -53,7 +53,7 @@ class _SignInPageState extends State<SignInPage> {
           context: context,
           variables: variables,
         );
-        Storage.setInt('isFirstOpen', Global.isFirstOpen);
+        Storage.setInt('isFirstSign', Global.isFirstSign);
         Global.saveProfile(userProfile);
       } catch (e) {
         if (kDebugMode) {

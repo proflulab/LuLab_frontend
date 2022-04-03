@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //import '../app.dart';
@@ -19,6 +20,13 @@ class _LoadingPageState extends State<LoadingPage> {
     var result = prefs.getInt('isFirstOpen');
 
     return result ?? 0;
+  }
+
+  Future<int> readData2() async {
+    var prefs = await SharedPreferences.getInstance();
+    var result2 = prefs.getInt('isFirstSign');
+
+    return result2 ?? 0;
   }
 
   @override
@@ -46,6 +54,7 @@ class _LoadingPageState extends State<LoadingPage> {
     }
     //Storage.getInt("Key_Int");
     Future<int> result = readData();
+    Future<int> result2 = readData2();
     result.then((guide) {
       if (kDebugMode) {
         print(guide);
@@ -54,13 +63,33 @@ class _LoadingPageState extends State<LoadingPage> {
       if (guide == 0) {
         Future.delayed(_duration, _firstguide);
       } else {
-        Future.delayed(_duration, _app);
+        // Future.delayed(_duration, _app);
+        result2.then((guide) {
+          if (kDebugMode) {
+            print(guide);
+          }
+          //判断是否是第一次登录app
+          if (guide == 0) {
+            Future.delayed(_duration, _firstsign);
+          } else {
+            Future.delayed(_duration, _app);
+          }
+        });
       }
     });
   }
 
   void _firstguide() {
     Navigator.of(context).pushReplacementNamed('/firstguide');
+  }
+
+  void _firstsign() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SignInPage(),
+      ),
+    );
   }
 
   void _app() {

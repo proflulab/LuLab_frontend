@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/common/global/global.dart';
 
 import '../../common/utils/utils.dart';
 
@@ -67,7 +68,7 @@ class _FirstGuideState extends State<FirstGuide> {
           child: ElevatedButton(
             child: const Text('立即体验'),
             onPressed: () {
-              // Storage.setInt('isFirstOpen', Global.isFirstOpen);
+              Storage.setInt('isFirstOpen', Global.isFirstOpen);
               Navigator.of(context).pushReplacementNamed('/signinpage');
             } // 去首页路由
             ,
