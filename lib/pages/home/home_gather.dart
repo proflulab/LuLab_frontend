@@ -53,7 +53,7 @@ class _GatherState extends State<Gather> {
   // 读取资讯所有数据
   _loadIfoData() async {
     _postsIfoData = await SourseAPI.inforInfo(
-        context: context, variables: Inforrequest(limit: 0, skip: 0));
+        context: context, variables: Inforrequest(limit: 2, skip: 0));
 
     if (mounted) {
       setState(() {
@@ -79,7 +79,7 @@ class _GatherState extends State<Gather> {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: "2",
       authorId: Global.profile.id,
-      limit: 10,
+      limit: 2,
       skip: 0,
     );
     _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
@@ -142,6 +142,7 @@ class _GatherState extends State<Gather> {
         SizedBox(height: 20.h),
         _titleWidget("最新资讯"),
         buildInfomation(),
+        SizedBox(height: 20.h),
         _titleWidget("精选课程"),
         _buildCourse(),
       ],
@@ -151,8 +152,8 @@ class _GatherState extends State<Gather> {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
-      "https://images.leotian.cn/blog/2019-04-29-102020.jpg",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图2.png",
+      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图1.png",
     ];
 
     return Container(
@@ -161,17 +162,21 @@ class _GatherState extends State<Gather> {
         aspectRatio: 9 / 5,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imgList[index]), // 图片数组
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10.0),
-                ),
-              ),
+            return ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(6.r)),
+              child: CachedImage.typeLaod(imgList[index]),
             );
+            // Container(
+            //   decoration: BoxDecoration(
+            //     image: DecorationImage(
+            //       image: NetworkImage(imgList[index]), // 图片数组
+            //       fit: BoxFit.cover,
+            //     ),
+            //     borderRadius: const BorderRadius.all(
+            //       Radius.circular(10.0),
+            //     ),
+            //   ),
+            // );
           },
           //条目个数
           itemCount: imgList.length,
@@ -285,27 +290,28 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ),
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ).add(
-              Duration(minutes: _focusData3[index].duration),
-            ),
-            _focusData3[index].title,
-            _focusData3[index].description,
-            [5],
-            '1',
-            1);
+          DateTime(
+            int.parse(TimeChange.client(_focusData3[index].onlineTime, "y")),
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ),
+          DateTime(
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ).add(
+            Duration(minutes: _focusData3[index].duration),
+          ),
+          _focusData3[index].title,
+          _focusData3[index].description,
+          [5],
+          '1',
+          1,
+        );
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {
@@ -456,14 +462,16 @@ class _GatherState extends State<Gather> {
     );
   }
 
-  // 最新咨询
+  // 最新资讯
   Container buildInfomation() {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: PFRadius.a6,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(10.r),
+        ),
       ),
       height: 237,
       width: 345,
@@ -484,10 +492,12 @@ class _GatherState extends State<Gather> {
                   print('到资讯详情');
                 }
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            InforDetails(product: _focusData2[index])));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        InforDetails(product: _focusData2[index]),
+                  ),
+                );
               },
               child: Container(
                 height: 200.h,
@@ -532,14 +542,15 @@ class _GatherState extends State<Gather> {
   }
 
 //精彩课程
-
   Container _buildCourse() {
     return Container(
-      margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 15.0),
+      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
         //设置四周圆角 角度
         color: Colors.white,
-        borderRadius: PFRadius.a6,
+        borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(10.r),
+        ),
       ),
       height: 400.h,
       width: 345,
@@ -639,45 +650,6 @@ class _GatherState extends State<Gather> {
           return const Loading();
         }
       },
-    );
-  }
-
-// 精彩课程
-  SingleChildScrollView buildWonderCourse() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          buildEachCourse(),
-          buildEachCourse(),
-          buildEachCourse(),
-          buildEachCourse(),
-        ],
-      ),
-    );
-  }
-
-// 每个课程
-  Container buildEachCourse() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: ListTile(
-        leading: Container(
-          width: 100,
-          child: Image.asset('assets/images/logo.png'),
-          decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xffc3c3c3)),
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-          ),
-        ),
-        title: const Text("颠覆式创新"),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [Text("陆向谦  实验室创始人"), Text("介绍。。。")],
-        ),
-      ),
     );
   }
 }

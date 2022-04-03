@@ -181,12 +181,13 @@ class _CoursePageState extends State<CoursePage> {
                   width: double.infinity,
                   height: _selectW * PFr.golden,
                   decoration: BoxDecoration(
-                      color: PFc.backgroundPrimary,
-                      borderRadius: _selectIndex == _focusData2.length - 1
-                          ? const BorderRadius.only(
-                              topRight: Radius.circular(10),
-                            )
-                          : null),
+                    color: PFc.backgroundPrimary,
+                    borderRadius: _selectIndex == _focusData2.length - 1
+                        ? const BorderRadius.only(
+                            topRight: Radius.circular(10),
+                          )
+                        : null,
+                  ),
                 );
               },
             ),
@@ -210,26 +211,39 @@ class _CoursePageState extends State<CoursePage> {
       child: EasyRefresh.custom(
         enableControlFinishRefresh: false,
         enableControlFinishLoad: true,
+        firstRefresh: true,
+        firstRefreshWidget: const Loading(),
         controller: _controllerCourse,
-        header: ClassicalHeader(),
-        footer: ClassicalFooter(),
+        header: EasyrefreshWidget.getHeader(),
+        footer: EasyrefreshWidget.getFooter(),
         onRefresh: () async {
           _handleCourse(0, _countFirst);
-          await Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              _count = _countFirst;
-            });
-            _controllerCourse.resetLoadState();
-          });
+          await Future.delayed(
+            const Duration(seconds: 1),
+            () {
+              if (mounted) {
+                setState(() {
+                  _count = _countFirst;
+                });
+                _controllerCourse.resetLoadState();
+              }
+            },
+          );
         },
         onLoad: () async {
           _handleCourse(_count, _countDown);
-          await Future.delayed(const Duration(seconds: 1), () {
-            setState(() {
-              _count += _countDown;
-            });
-            _controllerCourse.finishLoad(noMore: _count > _focusData3.length);
-          });
+          await Future.delayed(
+            const Duration(seconds: 1),
+            () {
+              if (mounted) {
+                setState(() {
+                  _count += _countDown;
+                });
+                _controllerCourse.finishLoad(
+                    noMore: _count > _focusData3.length);
+              }
+            },
+          );
         },
         slivers: <Widget>[
           SliverList(

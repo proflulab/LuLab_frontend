@@ -27,7 +27,8 @@ class _NoticePageState extends State<NoticePage> {
   // 读取通知
   _handleNotice() async {
     _latestRecord = await GqlHomeAPI.ordersInfo(
-        variables: LatestRecordRequest(authorId: Global.profile.id),
+        variables:
+            LatestRecordRequest(authorId: Global.profile.id, limit: 0, skip: 0),
         context: context);
     setState(() {
       _focusData = _latestRecord.latestRecord;
@@ -136,17 +137,20 @@ class _NoticePageState extends State<NoticePage> {
                           ),
                           //介绍
                           Positioned(
-                              top: 85.h,
-                              left: 180.w,
-                              child: SizedBox(
-                                  height: 80.h,
-                                  width: 400.w,
-                                  child: Text(
-                                      _focusData[index].description, //最多60字
-                                      style: const TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: 'MyFontStyle',
-                                          fontSize: 14)))),
+                            top: 85.h,
+                            left: 180.w,
+                            child: SizedBox(
+                              height: 80.h,
+                              width: 400.w,
+                              child: Text(
+                                _focusData[index].description, //最多60字
+                                style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'MyFontStyle',
+                                    fontSize: 14),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

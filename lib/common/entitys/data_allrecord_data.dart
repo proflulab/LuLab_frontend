@@ -84,16 +84,24 @@ String latestRecordRequestToJson(LatestRecordRequest data) =>
 class LatestRecordRequest {
   LatestRecordRequest({
     required this.authorId,
+    required this.limit,
+    required this.skip,
   });
 
-  String authorId;
+  final String authorId;
+  final int limit;
+  final int skip;
 
   factory LatestRecordRequest.fromJson(Map<String, dynamic> json) =>
       LatestRecordRequest(
         authorId: json["authorId"],
+        limit: json["limit"],
+        skip: json["skip"],
       );
 
   Map<String, dynamic> toJson() => {
         "authorId": authorId,
+        "limit": limit,
+        "skip": skip,
       };
 }

@@ -114,26 +114,27 @@ class _FeastPersonalState extends State<FeastPersonal> {
       ],
     );
     return Scaffold(
-        appBar: PreferredSize(
-          //设置appBar高度
-          preferredSize: const Size.fromHeight(0),
-          child: AppBar(),
-        ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              width: 375.0.w,
-              height: 1.sh,
-              color: Colors.grey,
-              child: stack,
-            ),
-            // Container(
-            //   width: 375.0.w,
-            //   height: 500.0.h,
-            //   alignment: Alignment.center,
-            //   child: const AppBardemoPage(),
-            // ),
-          ],
-        ));
+      appBar: PreferredSize(
+        //设置appBar高度
+        preferredSize: const Size.fromHeight(0),
+        child: AppBar(),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Container(
+            width: 375.0.w,
+            height: 1.sh,
+            color: Colors.grey,
+            child: stack,
+          ),
+          // Container(
+          //   width: 375.0.w,
+          //   height: 500.0.h,
+          //   alignment: Alignment.center,
+          //   child: const AppBardemoPage(),
+          // ),
+        ],
+      ),
+    );
   }
 }
