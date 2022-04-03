@@ -50,14 +50,9 @@ class SchemaCourse {
   }
 ''';
 
-  //分类数据查询，mode代表课程类别；1为大咖访谈，3为理论课程
+  //分类数据查询，mode代表课程类别；1为大咖访谈，2为预约课程，3为理论课程
   //请求参考：
-  // {
-  //   "mode":"1",
-  //   "authorId": "61d9604f5fcd295d1b6893cf",
-  //   "limit": 10,
-  //   "skip": 0
-  // }
+  // {"mode":"1","authorId": "61d9604f5fcd295d1b6893cf","limit": 10,"skip": 0}
   static const String gqllatestDirectCourseList = r'''
   query LatestDirectCourse($mode: String! , $authorId: String!,$limit:Int,$skip:Int!){
     latestDirectCourse(mode:$mode,authorId:$authorId,option:{limit:$limit,skip:$skip}) {

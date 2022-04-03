@@ -1,10 +1,10 @@
 //import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import '../../common/values/values.dart';
-import '../utils/utils.dart';
-
 import 'package:fluttertoast/fluttertoast.dart';
+
+import '../../common/values/values.dart';
+import '../../common/utils/utils.dart';
 
 Future<bool?> toastInfo({
   required String msg,

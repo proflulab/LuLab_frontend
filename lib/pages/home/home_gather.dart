@@ -1,4 +1,3 @@
-import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
@@ -49,7 +48,7 @@ class _GatherState extends State<Gather> {
     _loadCourse();
   }
 
-  // 读取资讯所有数据
+  // 获取资讯数据
   _loadIfoData() async {
     _postsIfoData = await SourseAPI.inforInfo(
         context: context, variables: Inforrequest(limit: 2, skip: 0));
@@ -63,26 +62,29 @@ class _GatherState extends State<Gather> {
 
   //添加预约
   _handleRecordAdd(int index) async {
-    RecordAddRequest variables = RecordAddRequest(
-      authorId: Global.profile.id,
-      status: "1",
-      courseId: _focusData3[index].id,
-      onlineTime: now,
+    await GqlHomeAPI.recordAddInfo(
+      context: context,
+      variables: RecordAddRequest(
+        authorId: Global.profile.id,
+        status: "1",
+        courseId: _focusData3[index].id,
+        onlineTime: now,
+      ),
     );
-    await GqlHomeAPI.recordAddInfo(variables: variables, context: context);
     toastInfo(msg: '预约成功');
   }
 
   // 读取直播课程数据
   _handleCourse() async {
-    LatestDirectCourseRequest variables = LatestDirectCourseRequest(
-      mode: "2",
-      authorId: Global.profile.id,
-      limit: 2,
-      skip: 0,
-    );
     _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
-        variables: variables, context: context);
+      context: context,
+      variables: LatestDirectCourseRequest(
+        mode: "2",
+        authorId: Global.profile.id,
+        limit: 2,
+        skip: 0,
+      ),
+    );
 
     if (mounted) {
       setState(() {
@@ -143,24 +145,31 @@ class _GatherState extends State<Gather> {
               borderRadius: BorderRadius.all(Radius.circular(6.r)),
               child: CachedImage.typeLaod(imgList[index]),
             );
-            // Container(
-            //   decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //       image: NetworkImage(imgList[index]), // 图片数组
-            //       fit: BoxFit.cover,
-            //     ),
-            //     borderRadius: const BorderRadius.all(
-            //       Radius.circular(10.0),
-            //     ),
-            //   ),
-            // );
           },
           //条目个数
           itemCount: imgList.length,
           //轮播指示符
           //control: new SwiperControl(),
           //分页指示器
-          pagination: buildSwiperPagination(),
+          pagination: const SwiperPagination(
+            //指示器显示的位置
+            alignment: Alignment.bottomCenter, // 位置 Alignment.bottomCenter 底部中间
+            // 距离调整
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            // 指示器构建
+            builder: DotSwiperPaginationBuilder(
+              // 点之间的间隔
+              space: 8,
+              // 没选中时的大小
+              size: 6,
+              // 选中时的大小
+              activeSize: 12,
+              // 没选中时的颜色
+              color: Colors.white,
+              //选中时的颜色
+              activeColor: Colors.green,
+            ),
+          ),
           //自动翻页
           autoplay: true,
           onTap: (index) {
@@ -169,30 +178,6 @@ class _GatherState extends State<Gather> {
             }
           },
         ),
-      ),
-    );
-  }
-
-  //自定圆点分页指示器
-  buildSwiperPagination() {
-    // 分页指示器
-    return const SwiperPagination(
-      //指示器显示的位置
-      alignment: Alignment.bottomCenter, // 位置 Alignment.bottomCenter 底部中间
-      // 距离调整
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      // 指示器构建
-      builder: DotSwiperPaginationBuilder(
-        // 点之间的间隔
-        space: 8,
-        // 没选中时的大小
-        size: 6,
-        // 选中时的大小
-        activeSize: 12,
-        // 没选中时的颜色
-        color: Colors.white,
-        //选中时的颜色
-        activeColor: Colors.green,
       ),
     );
   }
@@ -257,7 +242,6 @@ class _GatherState extends State<Gather> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {
-        var status = _focusData3[index].status;
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {
@@ -345,14 +329,15 @@ class _GatherState extends State<Gather> {
                       width: 130.w,
                       height: 50.w,
                       child: ElevatedButton(
-                        child: status == "0"
+                        child: _focusData3[index].status == "0"
                             ? const Text("预约")
                             : const Text("已预约"),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              status == "0"
-                                  ? Colors.green
-                                  : Colors.grey), //背景颜色
+                            _focusData3[index].status == "0"
+                                ? Colors.green
+                                : Colors.grey,
+                          ), //背景颜色
                           foregroundColor:
                               MaterialStateProperty.all(Colors.white), //字体颜色
                           overlayColor: MaterialStateProperty.all(
@@ -370,14 +355,16 @@ class _GatherState extends State<Gather> {
                               side: BorderSide(
                             //设置 界面效果
                             style: BorderStyle.solid,
-                            color: status == "0" ? Colors.green : Colors.grey,
+                            color: _focusData3[index].status == "0"
+                                ? Colors.green
+                                : Colors.grey,
                           ))),
                           //圆角弧度
                           fixedSize:
                               MaterialStateProperty.all(const Size(5, 0)),
                         ),
                         onPressed: () {
-                          if (status == "0") {
+                          if (_focusData3[index].status == "0") {
                             //执行日历预约方法
                             Calendar.createEvent(
                               _focusData3[index].title,
@@ -389,7 +376,7 @@ class _GatherState extends State<Gather> {
                             //执行预约方法
                             setState(() {
                               _handleRecordAdd(index);
-                              status = "1";
+                              //status = "1";
                               _handleCourse();
                             });
                           }
@@ -494,7 +481,7 @@ class _GatherState extends State<Gather> {
     );
   }
 
-//精彩课程
+  //精彩课程
   Container _buildCourse() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
