@@ -8,12 +8,11 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../app.dart';
 import '../sign_up/register.dart';
-import '../users/package/users_serice_user.dart';
-import '../users/package/users_privay_user.dart';
 import '../users/package/users_copyrig_user.dart';
+import '../users/package/users_privay_user.dart';
+import '../users/package/users_serice_user.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -54,6 +53,7 @@ class _SignInPageState extends State<SignInPage> {
           context: context,
           variables: variables,
         );
+        Storage.setInt('isFirstOpen', Global.isFirstOpen);
         Global.saveProfile(userProfile);
       } catch (e) {
         if (kDebugMode) {

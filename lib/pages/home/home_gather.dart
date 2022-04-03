@@ -11,7 +11,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import 'live_detail.dart';
@@ -431,14 +430,16 @@ class _GatherState extends State<Gather> {
                               MaterialStateProperty.all(const Size(5, 0)),
                         ),
                         onPressed: () {
-                          //执行日历预约方法
-                          createEvent(calendars);
-                          //执行预约方法
-                          setState(() {
-                            _handleRecordAdd(index);
-                            status = "1";
-                            _handleCourse();
-                          });
+                          if (status == "0") {
+                            //执行日历预约方法
+                            createEvent(calendars);
+                            //执行预约方法
+                            setState(() {
+                              _handleRecordAdd(index);
+                              status = "1";
+                              _handleCourse();
+                            });
+                          }
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -651,40 +652,4 @@ class _GatherState extends State<Gather> {
       },
     );
   }
-
-// // 精彩课程
-//   SingleChildScrollView buildWonderCourse() {
-//     return SingleChildScrollView(
-//       child: Column(
-//         children: [
-//           buildEachCourse(),
-//         ],
-//       ),
-//     );
-//   }
-
-// // 每个课程
-//   Container buildEachCourse() {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-//       decoration: const BoxDecoration(
-//         borderRadius: BorderRadius.all(Radius.circular(10)),
-//       ),
-//       child: ListTile(
-//         leading: Container(
-//           width: 100,
-//           child: Image.asset('assets/images/logo.png'),
-//           decoration: BoxDecoration(
-//             border: Border.all(color: const Color(0xffc3c3c3)),
-//             borderRadius: const BorderRadius.all(Radius.circular(5)),
-//           ),
-//         ),
-//         title: const Text("颠覆式创新"),
-//         subtitle: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: const [Text("陆向谦  实验室创始人"), Text("介绍。。。")],
-//         ),
-//       ),
-//     );
-//   }
 }

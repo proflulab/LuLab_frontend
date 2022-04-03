@@ -320,13 +320,15 @@ class _LiveDetailState extends State<LiveDetail> {
                           ))), //圆角弧度
                         ),
                         onPressed: () {
-                          //执行日历预约方法
-                          createEvent(calendars);
-                          //执行预约方法
-                          setState(() {
-                            _handleRecordAdd();
-                            state = "0";
-                          });
+                          if (state == "-1") {
+                            //执行日历预约方法
+                            createEvent(calendars);
+                            //执行预约方法
+                            setState(() {
+                              _handleRecordAdd();
+                              state = "0";
+                            });
+                          }
                         },
                       ),
                     ),
