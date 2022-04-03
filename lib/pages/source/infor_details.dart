@@ -247,7 +247,7 @@ class _InforDetailsState extends State<InforDetails> {
                         } else {
                           return Column(
                             children: [
-                              SvgPicture.asset(
+                              SvgPicture.asset( 
                                 "assets/images/comment.svg",
                                 color: PFc.themeColor20,
                                 semanticsLabel: 'A red up arrow',

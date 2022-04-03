@@ -31,7 +31,11 @@ class _UsersPageState extends State<UsersPage> {
         margin: const EdgeInsets.all(20),
         //color: Colors.white,
         child: ListTile(
-          // leading: ClipOval(child: Image.network(Global.profile.iconUrl)),
+          leading: ClipOval(
+            child:
+                //CachedImage.typeLaod(Global.profile.iconUrl)
+                Image.network(Global.profile.iconUrl),
+          ),
           // CircleAvatar(
           //   radius: 25,
           //   backgroundImage: AssetImage("assets/images/logo.png"),
@@ -366,55 +370,61 @@ class _UsersPageState extends State<UsersPage> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          //backgroundColor: Colors.transparent,
-          //elevation: 0,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("跳转到通知");
-                    print(Global.profile.id);
-                  }
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const NoticePage()));
-                },
-                icon: const Icon(
-                  Icons.notifications_active_outlined,
-                  color: Colors.green,
-                )),
-            IconButton(
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("跳转到设置");
-                  }
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SettingsPage()));
-                },
-                icon: const Icon(
-                  Icons.settings,
-                  color: Colors.green,
-                )),
-          ],
-          leading: IconButton(
-            icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        //backgroundColor: Colors.transparent,
+        //elevation: 0,
+        actions: [
+          IconButton(
             onPressed: () {
               if (kDebugMode) {
-                print("扫码");
+                print("跳转到通知");
+                print(Global.profile.id);
               }
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const NoticePage(),
+                ),
+              );
             },
+            icon: const Icon(
+              Icons.notifications_active_outlined,
+              color: Colors.green,
+            ),
           ),
+          IconButton(
+            onPressed: () {
+              if (kDebugMode) {
+                print("跳转到设置");
+              }
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const SettingsPage()));
+            },
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.green,
+            ),
+          ),
+        ],
+        leading: IconButton(
+          icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
+          onPressed: () {
+            if (kDebugMode) {
+              print("扫码");
+            }
+          },
         ),
-        body: ListView(
-          children: <Widget>[
-            _username(),
-            // _dynamicdata(),
-            // _adv(),
-            // _jumpbutton(),
-            const Divider(),
-            _contact(),
-          ],
-        ));
+      ),
+      body: ListView(
+        children: <Widget>[
+          _username(),
+          // _dynamicdata(),
+          // _adv(),
+          // _jumpbutton(),
+          const Divider(),
+          _contact(),
+        ],
+      ),
+    );
   }
 }

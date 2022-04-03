@@ -16,7 +16,7 @@ class _LoadingState extends State<Loading> {
     return const Center(
       child: SpinKitFadingCircle(
         color: PFc.themeColor,
-        size: 80.0,
+        size: 50.0,
       ),
     );
   }

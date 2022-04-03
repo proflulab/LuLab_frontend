@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CachedImage {
   //使用进度加载指示
@@ -10,8 +11,17 @@ class CachedImage {
       fit: BoxFit.cover,
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           LinearProgressIndicator(value: downloadProgress.progress),
-      errorWidget: (context, url, error) =>
-          Image.asset('assets/images/a.png', fit: BoxFit.cover),
+      errorWidget: (context, url, error) => SvgPicture.asset(
+        "assets/images/load.svg",
+        //color: PFc.themeColor20,
+        semanticsLabel: 'A red up arrow',
+        //width: 0.3.sw,
+        fit: BoxFit.cover,
+      ),
+      // Image.asset(
+      //   'assets/images/a.png',
+      //   fit: BoxFit.cover,
+      // ),
     );
   }
 
@@ -20,10 +30,22 @@ class CachedImage {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       fit: BoxFit.cover,
-      placeholder: (context, url) =>
-          Image.asset('assets/images/a.png', fit: BoxFit.cover),
-      errorWidget: (context, url, error) =>
-          Image.asset('assets/images/a.png', fit: BoxFit.cover),
+      placeholder: (context, url) => SvgPicture.asset(
+        "assets/images/load.svg",
+        //color: PFc.themeColor20,
+        semanticsLabel: 'A red up arrow',
+        //width: 0.3.sw,
+        fit: BoxFit.cover,
+      ),
+      //Image.asset('assets/images/a.png', fit: BoxFit.cover),
+      errorWidget: (context, url, error) => SvgPicture.asset(
+        "assets/images/load.svg",
+        //color: PFc.themeColor20,
+        semanticsLabel: 'A red up arrow',
+        //width: 0.3.sw,
+        fit: BoxFit.cover,
+      ),
+      //Image.asset('assets/images/a.png', fit: BoxFit.cover),
     );
   }
 }

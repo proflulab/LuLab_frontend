@@ -3,7 +3,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 
 // 透明背景AppBar
-Widget transparentAppBar({
+PreferredSizeWidget transparentAppBar({
   required BuildContext context,
   required Widget title,
   required Widget leading,
@@ -19,7 +19,7 @@ Widget transparentAppBar({
 }
 
 //AppBarCommon
-PreferredSizeWidget appBarCommon({ 
+PreferredSizeWidget appBarCommon({
   required BuildContext context,
   required String title,
   Widget? leading,

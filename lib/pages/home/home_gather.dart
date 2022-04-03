@@ -163,17 +163,21 @@ class _GatherState extends State<Gather> {
         aspectRatio: 9 / 5,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imgList[index]), // 图片数组
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10.0),
-                ),
-              ),
+            return ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(6.r)),
+              child: CachedImage.typeLaod(imgList[index]),
             );
+            // Container(
+            //   decoration: BoxDecoration(
+            //     image: DecorationImage(
+            //       image: NetworkImage(imgList[index]), // 图片数组
+            //       fit: BoxFit.cover,
+            //     ),
+            //     borderRadius: const BorderRadius.all(
+            //       Radius.circular(10.0),
+            //     ),
+            //   ),
+            // );
           },
           //条目个数
           itemCount: imgList.length,
@@ -287,27 +291,28 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ),
-            DateTime(
-              futureYear,
-              futureMounth,
-              futureDay,
-              futureHour,
-              futureMinute,
-            ).add(
-              Duration(minutes: _focusData3[index].duration),
-            ),
-            _focusData3[index].title,
-            _focusData3[index].description,
-            [5],
-            '1',
-            1);
+          DateTime(
+            int.parse(TimeChange.client(_focusData3[index].onlineTime, "y")),
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ),
+          DateTime(
+            futureYear,
+            futureMounth,
+            futureDay,
+            futureHour,
+            futureMinute,
+          ).add(
+            Duration(minutes: _focusData3[index].duration),
+          ),
+          _focusData3[index].title,
+          _focusData3[index].description,
+          [5],
+          '1',
+          1,
+        );
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {

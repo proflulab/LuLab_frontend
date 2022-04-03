@@ -33,10 +33,10 @@ query LatestUserCourseRecord($authorId:String!, $courseId:String!){
 ''';
 
   //所有预约查询
-  //  { "authorId":"shiming"}
+  //  { "authorId":"61d9604f5fcd295d1b6893cf","limit": 0,"skip": 0}
   static const String gqlLatestRecordList = r'''
-  query LatestRecord($authorId: String!){
-    latestRecord(authorId:$authorId,option:{limit:2,skip:0}) {
+  query LatestRecord($authorId: String!,$limit:Int!,$skip:Int!){
+    latestRecord(authorId:$authorId,option:{limit:$limit,skip:$skip}) {
       courseId
       authorId
       status
