@@ -1,5 +1,3 @@
-import 'package:alarm_calendar/alarm_calendar.dart';
-import 'package:alarm_calendar/calendars.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +9,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
 import 'live_detail.dart';
@@ -107,28 +106,6 @@ class _GatherState extends State<Gather> {
         _focusData4 = _course.latestDirectCourse;
       });
     }
-  }
-
-  Future<void> createEvent(Calendars calendars) async {
-    //查询是否有读权限。
-    await AlarmCalendar.CheckReadPermission().then(
-      (res) async {
-        if (res != null) {
-          //查询是否有写权限
-          await AlarmCalendar.CheckWritePermission().then(
-            (resWrite) async {
-              if (resWrite != null) {
-                final id = await AlarmCalendar.createEvent(calendars);
-                calendars.setEventId = id!;
-                if (kDebugMode) {
-                  print('获得ID为：' + id);
-                }
-              }
-            },
-          );
-        }
-      },
-    );
   }
 
   @override
@@ -280,38 +257,7 @@ class _GatherState extends State<Gather> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: _focusData3.length,
       itemBuilder: (context, index) {
-        var now2 = _focusData3[index].onlineTime;
-        var future = DateTime.fromMillisecondsSinceEpoch(now2);
-        String time = formatDate(future, [mm, '月', dd, '日']);
-        var futureYear = int.parse(formatDate(future, [yyyy]));
-        var futureMounth = int.parse(formatDate(future, [mm]));
-        var futureDay = int.parse(formatDate(future, [dd]));
-        var futureHour = int.parse(formatDate(future, [HH]));
-        var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
-        Calendars calendars = Calendars(
-          DateTime(
-            int.parse(TimeChange.client(_focusData3[index].onlineTime, "y")),
-            int.parse(TimeChange.client(_focusData3[index].onlineTime, "m")),
-            futureDay,
-            futureHour,
-            futureMinute,
-          ),
-          DateTime(
-            futureYear,
-            futureMounth,
-            futureDay,
-            futureHour,
-            futureMinute,
-          ).add(
-            Duration(minutes: _focusData3[index].duration),
-          ),
-          _focusData3[index].title,
-          _focusData3[index].description,
-          [5],
-          '1',
-          1,
-        );
         if (_focusData3.isNotEmpty) {
           return InkWell(
             onTap: () async {
@@ -364,7 +310,8 @@ class _GatherState extends State<Gather> {
                     left: textL,
                     height: 100.h,
                     width: 168.w,
-                    text: time,
+                    text:
+                        TimeChange.client(_focusData3[index].onlineTime, "md"),
                     font: '',
                     fontSize: 28.sp,
                   ),
@@ -432,7 +379,13 @@ class _GatherState extends State<Gather> {
                         onPressed: () {
                           if (status == "0") {
                             //执行日历预约方法
-                            createEvent(calendars);
+                            Calendar.createEvent(
+                              _focusData3[index].title,
+                              _focusData3[index].description,
+                              DateTime.fromMillisecondsSinceEpoch(
+                                  _focusData3[index].onlineTime),
+                              _focusData3[index].duration,
+                            );
                             //执行预约方法
                             setState(() {
                               _handleRecordAdd(index);

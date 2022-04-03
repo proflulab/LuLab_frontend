@@ -1,5 +1,3 @@
-//import 'package:flutter/material.dart';
-
 import 'package:date_format/date_format.dart';
 
 class TimeChange {
@@ -15,6 +13,8 @@ class TimeChange {
       return formatDate(time, [hh]);
     } else if (value == "m") {
       return formatDate(time, [nn]);
+    } else if (value == "s") {
+      return formatDate(time, [ss]);
     } else if (value == "ymd") {
       return formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
     } else if (value == "md") {
