@@ -29,18 +29,6 @@ class _LoadingPageState extends State<LoadingPage> {
         'assets/images/StartPage.png',
         fit: BoxFit.contain,
       ),
-
-      // const FadeInImage(
-      //   placeholder: AssetImage('assets/images/微信.png'),
-      //   image: NetworkImage(
-      //     'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-      //   ),
-      // )
-
-      // Image.network(
-      //   'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-      //   fit: BoxFit.cover,
-      // ),
     );
   }
 

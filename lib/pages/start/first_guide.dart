@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
-import '../../common/global/global.dart';
 
 class FirstGuidePage extends StatelessWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
@@ -68,7 +67,7 @@ class _FirstGuideState extends State<FirstGuide> {
           child: ElevatedButton(
             child: const Text('立即体验'),
             onPressed: () {
-              Storage.setInt('isFirstOpen', Global.isFirstOpen);
+              // Storage.setInt('isFirstOpen', Global.isFirstOpen);
               Navigator.of(context).pushReplacementNamed('/signinpage');
             } // 去首页路由
             ,
