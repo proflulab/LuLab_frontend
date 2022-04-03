@@ -285,7 +285,6 @@ class _GatherState extends State<Gather> {
         var futureMinute = int.parse(formatDate(future, [nn]));
         var status = _focusData3[index].status;
         Calendars calendars = Calendars(
-
             DateTime(
               futureYear,
               futureMounth,
@@ -425,14 +424,16 @@ class _GatherState extends State<Gather> {
                               MaterialStateProperty.all(const Size(5, 0)),
                         ),
                         onPressed: () {
-                          //执行日历预约方法
-                          createEvent(calendars);
-                          //执行预约方法
-                          setState(() {
-                            _handleRecordAdd(index);
-                            status = "1";
-                            _handleCourse();
-                          });
+                          if (status == "0") {
+                            //执行日历预约方法
+                            createEvent(calendars);
+                            //执行预约方法
+                            setState(() {
+                              _handleRecordAdd(index);
+                              status = "1";
+                              _handleCourse();
+                            });
+                          }
                           Navigator.push(
                             context,
                             MaterialPageRoute(

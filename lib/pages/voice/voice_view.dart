@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:proflu/common/global/global.dart';
@@ -56,18 +57,17 @@ class _VoiceViewState extends State<VoiceView> {
 
   void wakeWordCallback(int keywordIndex) {
     if (keywordIndex >= 0) {
-      // YYDialog.init(context);
-      // YYFixTextFieldDialog(recognizeFinished, text);
-      tts.stop();
+      YYDialog.init(context);
+      YYFixTextFieldDialog();
+      // tts.stop();
       sstSpeak(text: '我在，你有什么问题');
-      // SoundRecord.startListening();
-      Future.delayed(const Duration(milliseconds: 2850), () {
-        SoundRecord.startListening();
-        Future.delayed(const Duration(seconds: 5), () {
-          SoundRecord.stopListening();
-          xfSst();
-        });
-      });
+      // Future.delayed(const Duration(milliseconds: 2850), () {
+      //   SoundRecord.startListening();
+      //   Future.delayed(const Duration(seconds: 5), () {
+      //     SoundRecord.stopListening();
+      //     xfSst();
+      //   });
+      // });
     }
   }
 
@@ -170,6 +170,22 @@ class _VoiceViewState extends State<VoiceView> {
         print(e);
       }
     }
+  }
+
+  YYDialog YYFixTextFieldDialog() {
+    return YYDialog().build()
+      ..width = 120
+      ..height = 110
+      ..backgroundColor = Colors.white
+      ..borderRadius = 10.0
+      ..gravity = Gravity.bottom
+      ..widget(
+        const Padding(
+          padding: EdgeInsets.all(24),
+          child: TextField(),
+        ),
+      )
+      ..show();
   }
 }
 
