@@ -54,7 +54,7 @@ class _ProductState extends State<Product> {
                 ),
               );
             },
-            child: Container(
+            child: SizedBox(
               height: _boxh,
               width: _boxw,
               child: Container(

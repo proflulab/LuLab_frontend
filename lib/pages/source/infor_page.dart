@@ -105,7 +105,7 @@ class _InformationPageState extends State<InformationPage> {
                   return InkWell(
                     onTap: () async {
                       if (kDebugMode) {
-                        print('到咨询详情');
+                        print('到资讯详情');
                       }
                       Navigator.push(
                         context,
@@ -153,10 +153,7 @@ class _InformationPageState extends State<InformationPage> {
                           Flexible(
                             child: Column(
                               children: [
-                                text(
-                                  context: context,
-                                  text: _focusData[index].title,
-                                ),
+                                PFtext.text1(text: _focusData[index].title),
                               ],
                             ),
                           )

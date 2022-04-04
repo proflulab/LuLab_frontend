@@ -230,9 +230,8 @@ class _LiveDetailState extends State<LiveDetail> {
                       width: 270.0.w, //容器的相关参数
                       height: 70.0.h,
                       child: ElevatedButton(
-                        child: state == "-1"
-                            ? const Text("预约")
-                            : const Text("已预约"),
+                        child:
+                            state == "1" ? const Text("预约") : const Text("已预约"),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               state == "-1"
@@ -272,7 +271,6 @@ class _LiveDetailState extends State<LiveDetail> {
                                   widget.product.onlineTime),
                               widget.product.duration,
                             );
-                            //createEvent(calendars);
                             //执行预约方法
                             setState(
                               () {

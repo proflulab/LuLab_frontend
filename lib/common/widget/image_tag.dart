@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../common/widget/widgets.dart';
 import '../../common/values/values.dart';
 //import '../../common/utils/screen.dart';
 
@@ -10,23 +11,23 @@ Widget tagImage({
   double height = 160,
   double width = 160,
 }) {
-  return Container(
+  return SizedBox(
     height: height,
     width: width,
-    decoration: BoxDecoration(
-      image: DecorationImage(
-        image: NetworkImage(url),
-        fit: BoxFit.cover,
-      ),
-      color: const Color.fromRGBO(200, 233, 233, 1),
-      borderRadius: BorderRadius.circular(5),
-    ),
     child: Stack(
       children: <Widget>[
-        // FadeInImage(
-        //   placeholder: AssetImage('assets/images/微信.png'),
-        //   image: NetworkImage(url),
-        // ),
+        Positioned(
+          top: 0,
+          left: 0,
+          child: SizedBox(
+            height: height,
+            width: width,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: CachedImage.typeLaod(url),
+            ),
+          ),
+        ),
         Positioned(
           top: 0,
           left: 0,

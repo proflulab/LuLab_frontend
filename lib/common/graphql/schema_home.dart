@@ -17,10 +17,7 @@ mutation RecordAdd($courseId:String!, $authorId:String!, $status:String!, $onlin
 ''';
 
 //课程预约查询
-// {
-//   "courseId": "6219874d916b276883e04f6f",
-//   "authorId": "61da3c75bc88025d1d517492"
-// }
+// {"courseId": "6219874d916b276883e04f6f","authorId": "61d9604f5fcd295d1b6893cf"}
 
   static const String gqlLatestUserCourseRecordList = r'''
 query LatestUserCourseRecord($authorId:String!, $courseId:String!){
