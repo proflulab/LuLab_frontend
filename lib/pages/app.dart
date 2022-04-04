@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '/pages/voice/voice_view.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
@@ -11,6 +10,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import '/pages/voice/voice_view.dart';
 import 'course/course_page.dart';
 import 'home/home_page.dart';
 import 'source/Infor_page.dart';
