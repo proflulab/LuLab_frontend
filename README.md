@@ -25,11 +25,13 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 [Json转Dart类](https://app.quicktype.io/)
 
-[JSON格式化工具 - 在线查看, 编辑和格式化工具 (doudoudzj.github.io)](https://doudoudzj.github.io/html-tools/jsoneditor/v2/)
+[JSON格式化工具](https://doudoudzj.github.io/html-tools/jsoneditor/v2/)
 
 [图标工场 - 移动应用图标/启动图生成工具，一键生成所有尺寸的应用图标/启动图 (wuruihong.com)](https://icon.wuruihong.com/)
 
 [CODELF (unbug.github.io)](https://unbug.github.io/codelf/)
+
+[Free Lottie Animation Files,(动画文件搜索平台)](https://lottiefiles.com/)
 
 ## 产品文档
 

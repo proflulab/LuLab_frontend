@@ -46,11 +46,17 @@ class _VoiceViewState extends State<VoiceView> {
       _porcupineManager = await PorcupineManager.fromKeywordPaths(
           accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
     } on PorcupineException catch (err) {
+      if (kDebugMode) {
+        print(err);
+      }
       // handle porcupine init error
     }
     try {
       await _porcupineManager?.start();
     } on PorcupineException catch (ex) {
+      if (kDebugMode) {
+        print(ex);
+      }
       // deal with either audio exception
     }
   }

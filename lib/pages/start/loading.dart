@@ -87,7 +87,7 @@ class _LoadingPageState extends State<LoadingPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SignInPage(),
+        builder: (context) => const SignInPage(),
       ),
     );
   }

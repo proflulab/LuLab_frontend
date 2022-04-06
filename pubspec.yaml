@@ -64,6 +64,7 @@ dependencies:
   flutter_custom_dialog: ^1.2.0
   cached_network_image: ^3.2.0
   flutter_svg: ^1.0.3
+  lottie: ^1.2.2
 
   flutter_localizations:
     sdk: flutter
@@ -81,6 +82,7 @@ flutter:
     - assets/ppn/first_android.ppn
     - assets/ppn/second_android.ppn
     - assets/ppn/three_android.ppn
+    - assets/animation/
 
   uses-material-design: true
 
