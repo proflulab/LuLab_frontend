@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//import '../../common/global/global.dart';
+
 //import '../app.dart';
 
 //import '../utils/utils.dart';
@@ -55,28 +57,31 @@ class _LoadingPageState extends State<LoadingPage> {
     //Storage.getInt("Key_Int");
     Future<int> result = readData();
     Future<int> result2 = readData2();
-    result.then((guide) {
-      if (kDebugMode) {
-        print(guide);
-      }
-      //判断是否是第一次启动app
-      if (guide == 0) {
-        Future.delayed(_duration, _firstguide);
-      } else {
-        // Future.delayed(_duration, _app);
-        result2.then((guide) {
-          if (kDebugMode) {
-            print(guide);
-          }
-          //判断是否是第一次登录app
-          if (guide == 0) {
-            Future.delayed(_duration, _firstsign);
-          } else {
-            Future.delayed(_duration, _app);
-          }
-        });
-      }
-    });
+    result.then(
+      (guide) {
+        if (kDebugMode) {
+          print(guide);
+        }
+        //判断是否是第一次启动app
+        if (guide == 0) {
+          Future.delayed(_duration, _firstguide);
+        } else {
+          // Future.delayed(_duration, _app);
+          result2.then((guide) {
+            if (kDebugMode) {
+              print(guide);
+            }
+            //判断是否是第一次登录app
+            if (guide == 0) {
+              Future.delayed(_duration, _firstsign);
+            } else {
+              //Global.saveProfile(userProfile);
+              Future.delayed(_duration, _app);
+            }
+          });
+        }
+      },
+    );
   }
 
   void _firstguide() {

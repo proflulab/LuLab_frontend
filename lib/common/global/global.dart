@@ -14,7 +14,7 @@ import '../../../../common/values/values.dart';
 class Global {
   // 用户配置
   static Data profile = Data(
-    age: '',
+    birth: '',
     description: '',
     email: '',
     iconUrl: '',
@@ -24,6 +24,7 @@ class Global {
     phone: '',
     sex: '',
     wechat: '',
+    industry: '',
   );
 
   /// 发布渠道

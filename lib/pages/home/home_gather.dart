@@ -11,7 +11,7 @@ import '../../common/widget/widgets.dart';
 
 import '../../pages/course/course_index.dart';
 import '../../pages/source/infor_details.dart';
-import 'live_detail.dart';
+import '../../pages/home/live_detail.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);

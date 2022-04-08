@@ -10,7 +10,7 @@ query UserLogin($name: String!, $password: String!) {
     data {
       _id
       name
-      age
+      birth
       sex
       industry
       phone

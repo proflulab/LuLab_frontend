@@ -51,8 +51,9 @@ class Data {
   Data({
     required this.id,
     required this.name,
-    required this.age,
+    required this.birth,
     required this.sex,
+    required this.industry,
     required this.phone,
     required this.email,
     required this.wechat,
@@ -63,8 +64,9 @@ class Data {
 
   final String id;
   final String name;
-  final String age;
+  final String birth;
   final String sex;
+  final String industry;
   final String phone;
   final String email;
   final String wechat;
@@ -75,8 +77,9 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
         name: json["name"],
-        age: json["age"],
+        birth: json["birth"],
         sex: json["sex"],
+        industry: json["industry"],
         phone: json["phone"],
         email: json["email"],
         wechat: json["wechat"],
@@ -88,8 +91,9 @@ class Data {
   Map<String, dynamic> toJson() => {
         "_id": id,
         "name": name,
-        "age": age,
+        "birth": birth,
         "sex": sex,
+        "industry": industry,
         "phone": phone,
         "email": email,
         "wechat": wechat,
@@ -98,6 +102,7 @@ class Data {
         "password": password,
       };
 }
+
 
 
 // 用户登录 - request

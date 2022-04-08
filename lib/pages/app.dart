@@ -50,14 +50,14 @@ class _AppState extends State<App> {
       if (kDebugMode) {
         print(user1.data.name);
       }
-      Loginrequest variables = Loginrequest(
-        name: user1.data.name,
-        password: user1.data.password,
-      );
+
       try {
         UserLogin userProfile = await GqlUserAPI.login(
           context: context,
-          variables: variables,
+          variables: Loginrequest(
+            name: user1.data.name,
+            password: user1.data.password,
+          ),
         );
         Global.saveProfile(userProfile);
       } catch (e) {

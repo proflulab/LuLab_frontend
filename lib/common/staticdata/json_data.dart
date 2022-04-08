@@ -51,6 +51,58 @@ class Jsondata {
       ]
     }
   };
+
+  static const feat = {
+    {
+      "data": {
+        "userInfo": [
+          {
+            "_id": "623ea8046be88159e55f46c0",
+            "name": "张鹤",
+            "sex": "保密",
+            "phone": "13088002233",
+            "birth": "5789035798",
+            "email": "zhanghe@proflu.cn",
+            "wechat": "zhanghe",
+            "homeTown": ["中国", "北京"],
+            "location": ["美国", "硅谷"],
+            "tags": ["实验室助教"],
+            "Introduction": "清华本硕，实验室功勋学员，特斯拉高管",
+            "profilePicture":
+                "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%A0%E9%B9%A4.png",
+            "backgroundImage":
+                "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%A0%E9%B9%A4.png",
+            "video":
+                "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4",
+            "userType": "2",
+            "category": "2"
+          },
+          {
+            "_id": "623ea8046be88159e55f46c0",
+            "name": "张鹤",
+            "sex": "保密",
+            "phone": "13088002233",
+            "birth": "5789035798",
+            "email": "zhanghe@proflu.cn",
+            "wechat": "zhanghe",
+            "homeTown": ["中国", "北京"],
+            "location": ["美国", "硅谷"],
+            "tags": ["实验室助教"],
+            "Introduction": "清华本硕，实验室功勋学员，特斯拉高管",
+            "profilePicture":
+                "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%A0%E9%B9%A4.png",
+            "backgroundImage":
+                "https://gitee.com/shimingy/imagesbed/raw/master/img/%E5%BC%A0%E9%B9%A4.png",
+            "video":
+                "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4",
+            "userType": "2",
+            "category": "2"
+          }
+        ]
+      }
+    }
+  };
+
   //个人信息静态数据
   static const personalInfo = {
     "data": {
