@@ -27,118 +27,80 @@ class LatestClassificationUser {
   LatestClassificationUser({
     required this.id,
     required this.name,
-    required this.age,
+    required this.birth,
     required this.sex,
-    required this.position,
-    required this.industry,
-    required this.country,
     required this.phone,
     required this.email,
     required this.wechat,
-    required this.schoolRecord,
-    required this.workCondition,
+    required this.homeTown,
+    required this.location,
     required this.detailMsg,
     required this.description,
+    required this.profileImgUrl,
+    required this.bigCoverUrl,
+    required this.videoUrl,
+    required this.tags,
     required this.category,
     required this.userType,
-    required this.identity,
-    required this.imgUrl,
-    required this.iconUrl,
-    required this.bigCoverUrl,
-    required this.password,
-    required this.videos,
-    required this.imgs,
-    required this.docs,
-    required this.growthDescriptions,
-    required this.tags,
   });
 
   final String id;
   final String name;
-  final String age;
+  final String birth;
   final String sex;
-  final String position;
-  final String industry;
-  final String country;
   final String phone;
   final String email;
   final String wechat;
-  final String schoolRecord;
-  final String workCondition;
+  final List<String> homeTown;
+  final List<String> location;
   final String detailMsg;
   final String description;
+  final String profileImgUrl;
+  final String bigCoverUrl;
+  final String videoUrl;
+  final List<String> tags;
   final String category;
   final String userType;
-  final String identity;
-  final String imgUrl;
-  final String iconUrl;
-  final String bigCoverUrl;
-  final String password;
-  final List<String> videos;
-  final List<String> imgs;
-  final List<String> docs;
-  final List<String> growthDescriptions;
-  final List<String> tags;
 
   factory LatestClassificationUser.fromJson(Map<String, dynamic> json) =>
       LatestClassificationUser(
         id: json["_id"],
         name: json["name"],
-        age: json["age"],
+        birth: json["birth"],
         sex: json["sex"],
-        position: json["position"],
-        industry: json["industry"],
-        country: json["country"],
         phone: json["phone"],
         email: json["email"],
         wechat: json["wechat"],
-        schoolRecord: json["schoolRecord"],
-        workCondition: json["workCondition"],
+        homeTown: List<String>.from(json["homeTown"].map((x) => x)),
+        location: List<String>.from(json["location"].map((x) => x)),
         detailMsg: json["detailMsg"],
         description: json["description"],
+        profileImgUrl: json["profileImgUrl"],
+        bigCoverUrl: json["bigCoverUrl"],
+        videoUrl: json["videoUrl"],
+        tags: List<String>.from(json["tags"].map((x) => x)),
         category: json["category"],
         userType: json["userType"],
-        identity: json["identity"],
-        imgUrl: json["imgUrl"],
-        iconUrl: json["iconUrl"],
-        bigCoverUrl: json["bigCoverUrl"],
-        password: json["password"],
-        videos: List<String>.from(json["videos"].map((x) => x)),
-        imgs: List<String>.from(json["imgs"].map((x) => x)),
-        docs: List<String>.from(json["docs"].map((x) => x)),
-        growthDescriptions:
-            List<String>.from(json["growthDescriptions"].map((x) => x)),
-        tags: List<String>.from(json["tags"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "name": name,
-        "age": age,
+        "birth": birth,
         "sex": sex,
-        "position": position,
-        "industry": industry,
-        "country": country,
         "phone": phone,
         "email": email,
         "wechat": wechat,
-        "schoolRecord": schoolRecord,
-        "workCondition": workCondition,
+        "homeTown": List<dynamic>.from(homeTown.map((x) => x)),
+        "location": List<dynamic>.from(location.map((x) => x)),
         "detailMsg": detailMsg,
         "description": description,
+        "profileImgUrl": profileImgUrl,
+        "bigCoverUrl": bigCoverUrl,
+        "videoUrl": videoUrl,
+        "tags": List<dynamic>.from(tags.map((x) => x)),
         "category": category,
         "userType": userType,
-        "identity": identity,
-        "imgUrl": imgUrl,
-        "iconUrl": iconUrl,
-        "bigCoverUrl": bigCoverUrl,
-        "password": password,
-        "videos": List<dynamic>.from(videos.map((x) => x)),
-        "imgs": List<dynamic>.from(imgs.map((x) => x)),
-        "docs": List<dynamic>.from(docs.map((x) => x)),
-        "growthDescriptions":
-            List<dynamic>.from(growthDescriptions.map((x) => x)),
-        "tags": List<dynamic>.from(tags.map((x) => x)),
       };
 }
 

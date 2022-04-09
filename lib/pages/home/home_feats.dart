@@ -34,7 +34,7 @@ class _FeatsPageState extends State<FeatsPage> {
   _loadAllData() async {
     _postsData = await GqlHomeAPI.featInfo(
       context: context,
-      variables: FeatsRequest(limit: 0, skip: 0, category: '2'),
+      variables: FeatsRequest(limit: 1, skip: 2, category: '2'),
     );
 
     if (mounted) {
@@ -88,7 +88,7 @@ class _FeatsPageState extends State<FeatsPage> {
                           height: _imageh,
                           width: _imagew,
                           context: context,
-                          url: _focusData[index].imgUrl,
+                          url: _focusData[index].profileImgUrl,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(10.r),
                             bottomLeft: Radius.circular(10.r),
@@ -105,18 +105,18 @@ class _FeatsPageState extends State<FeatsPage> {
                           color: PFc.themeColor,
                           fontSize: 25,
                         ),
-                        //标签
-                        positioningText(
-                          context: context,
-                          top: 100.h,
-                          left: PFspace.screenMargin,
-                          width: 370.h,
-                          height: 40,
-                          text: _focusData[index].identity,
-                          color: PFc.textPrimary,
-                          fontSize: 15,
-                          font: "",
-                        ),
+                        // //标签
+                        // positioningText(
+                        //   context: context,
+                        //   top: 100.h,
+                        //   left: PFspace.screenMargin,
+                        //   width: 370.h,
+                        //   height: 40,
+                        //   text: _focusData[index].identity,
+                        //   color: PFc.textPrimary,
+                        //   fontSize: 15,
+                        //   font: "",
+                        // ),
                         //介绍
                         positioningText(
                           context: context,

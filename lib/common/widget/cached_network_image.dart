@@ -5,10 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CachedImage {
   //使用进度加载指示
-  static Widget typeLaod(String imageUrl) {
+  static Widget typeLaod(String imageUrl, {BoxFit fit = BoxFit.cover}) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-      fit: BoxFit.cover,
+      fit: fit,
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           LinearProgressIndicator(value: downloadProgress.progress),
       errorWidget: (context, url, error) => SvgPicture.asset(
@@ -16,7 +16,7 @@ class CachedImage {
         //color: PFc.themeColor20,
         semanticsLabel: 'A red up arrow',
         //width: 0.3.sw,
-        fit: BoxFit.cover,
+        fit: fit,
       ),
       // Image.asset(
       //   'assets/images/a.png',
