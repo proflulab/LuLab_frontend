@@ -21,6 +21,8 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 [图标工场 - 移动应用图标/启动图生成工具](https://icon.wuruihong.com/)
 
+[插件整理合集](https://fluttergems.dev/)
+
 [测试接口ws://49.234.18.41:8866](ws://49.234.18.41:8866)
 
 [Json转Dart类](https://app.quicktype.io/)
