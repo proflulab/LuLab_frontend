@@ -68,9 +68,20 @@ class _FeastPersonalState extends State<FeastPersonal> {
             ),
           ),
           Positioned(
+            top: 170.h,
+            right: 40.w,
+            child: RawChip(
+              label: const Text('视频介绍'),
+              onDeleted: () {},
+              deleteIcon: const Icon(Icons.play_circle_filled_rounded),
+              deleteIconColor: Colors.red,
+              deleteButtonTooltipMessage: '播放',
+            ),
+          ),
+          Positioned(
             width: 140.w,
             height: 140.w,
-            top: 130.h,
+            top: 140.h,
             left: 20.w,
             child: Container(
               padding: EdgeInsets.all(10.w),
@@ -105,15 +116,31 @@ class _FeastPersonalState extends State<FeastPersonal> {
             children: [
               Text(widget.product.name),
               SizedBox(width: 5.w),
-              Text(widget.product.sex == "1" ? "男" : "女"),
+              Icon(widget.product.sex == "1" ? Icons.boy : Icons.girl),
             ],
           ),
           SizedBox(height: 15.w),
           Row(
             children: [
-              const Text("特斯拉"),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
+                ),
+                child: Row(
+                  children: const [Text("特斯拉"), Icon(Icons.done)],
+                ),
+              ),
               SizedBox(width: 5.w),
-              const Text("高管"),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
+                ),
+                child: Row(
+                  children: const [Text("高管"), Icon(Icons.done)],
+                ),
+              ),
             ],
           ),
           SizedBox(height: 15.w),
@@ -136,6 +163,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                   widget.product.homeTown[1]),
             ],
           ),
+          const Divider(),
           richText(widget.product.detailMsg),
         ],
       ),
@@ -145,49 +173,30 @@ class _FeastPersonalState extends State<FeastPersonal> {
   _experience() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-      padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+      padding: EdgeInsets.all(PFspace.screenMargin),
       decoration: BoxDecoration(
         color: PFc.backgroundSecondary,
         borderRadius: BorderRadius.all(Radius.circular(25.w)),
       ),
       child: Column(
+        //mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text("个人经历"),
           Row(
             children: [
-              Text(widget.product.name),
-              SizedBox(width: 5.w),
-              Text(widget.product.sex == "1" ? "男" : "女"),
+              const Icon(Icons.add_location_alt_rounded),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text("销售总监"),
+                  Text("陆向谦实验室"),
+                  Text("2018.12-至今（4年7个月）"),
+                  Text("经历经历经历经历经历经历经历经历经历经历经历"),
+                ],
+              ),
             ],
           ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              const Text("特斯拉"),
-              SizedBox(width: 5.w),
-              const Text("高管"),
-            ],
-          ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              const Text("所在位置"),
-              SizedBox(width: 5.w),
-              Text(widget.product.location[0] +
-                  "·" +
-                  widget.product.location[1]),
-            ],
-          ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              const Text("家      乡"),
-              SizedBox(width: 5.w),
-              Text(widget.product.homeTown[0] +
-                  "·" +
-                  widget.product.homeTown[1]),
-            ],
-          ),
-          richText(widget.product.detailMsg),
         ],
       ),
     );
@@ -280,6 +289,8 @@ class _FeastPersonalState extends State<FeastPersonal> {
     }
   }
 }
+
+class $ {}
 
 
 
