@@ -1,15 +1,17 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
+import 'package:proflu/common/global/global.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/services/services.dart';
 import '../../common/utils/utils.dart';
-import '../../common/global/global.dart';
 
 class VoiceView extends StatefulWidget {
   const VoiceView({Key? key}) : super(key: key);
@@ -27,6 +29,7 @@ class _VoiceViewState extends State<VoiceView> {
   bool show = true;
   TextToSpeech tts = TextToSpeech();
   int a = 0;
+  int b = 0;
   String values = 'assets/images/语音动效2.gif';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
@@ -46,17 +49,11 @@ class _VoiceViewState extends State<VoiceView> {
       _porcupineManager = await PorcupineManager.fromKeywordPaths(
           accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
     } on PorcupineException catch (err) {
-      if (kDebugMode) {
-        print(err);
-      }
       // handle porcupine init error
     }
     try {
       await _porcupineManager?.start();
     } on PorcupineException catch (ex) {
-      if (kDebugMode) {
-        print(ex);
-      }
       // deal with either audio exception
     }
   }
@@ -66,7 +63,7 @@ class _VoiceViewState extends State<VoiceView> {
       YYDialog.init(context);
       YYFixTextFieldDialog();
       // tts.stop();
-      sstSpeak(text: '我在，你有什么问题');
+      // sstSpeak(text: '我在，你有什么问题');
       // Future.delayed(const Duration(milliseconds: 2850), () {
       //   SoundRecord.startListening();
       //   Future.delayed(const Duration(seconds: 5), () {
@@ -146,8 +143,8 @@ class _VoiceViewState extends State<VoiceView> {
       (msg) {
         setState(() {
           sstText = msg;
-          if (kDebugMode) {
-            print(sstText);
+          if (sstText == '') {
+            b = 1;
           }
           voicegql();
         });
@@ -180,18 +177,12 @@ class _VoiceViewState extends State<VoiceView> {
 
   YYDialog YYFixTextFieldDialog() {
     return YYDialog().build()
-      ..width = 120
-      ..height = 110
+      ..width = 750.w
+      ..height = 450.h
       ..backgroundColor = Colors.white
       ..borderRadius = 10.0
-      ..gravity = Gravity.bottom
-      ..widget(
-        const Padding(
-          padding: EdgeInsets.all(24),
-          child: TextField(),
-        ),
-      )
-      ..show();
+      ..widget(VoiceDetail())
+      ..show(0.0, 350.0);
   }
 }
 
@@ -213,6 +204,175 @@ class TestAWidget extends StatelessWidget {
           color: Colors.blue,
         ),
         child: const Icon(Icons.graphic_eq),
+      ),
+    );
+  }
+}
+
+class VoiceDetail extends StatefulWidget {
+  const VoiceDetail({Key? key}) : super(key: key);
+
+  @override
+  State<VoiceDetail> createState() => _VoiceDetailState();
+}
+
+class _VoiceDetailState extends State<VoiceDetail> {
+  XfManage? _xf;
+  String sstText = '未开始';
+  String title = '请说，我在聆听...';
+  int a = 0;
+  @override
+  void initState() {
+    super.initState();
+    voice();
+  }
+
+  voice() async {
+    sstSpeak(text: '我在，你有什么问题');
+    Future.delayed(const Duration(milliseconds: 2850), () {
+      SoundRecord.startListening();
+      Future.delayed(const Duration(seconds: 5), () {
+        SoundRecord.stopListening();
+        xfSst();
+      });
+    });
+  }
+
+  voicegql() async {
+    VoiceRequest variables = VoiceRequest(
+      userId: Global.profile.id,
+      queryText: sstText,
+    );
+    try {
+      VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
+        context: context,
+        variables: variables,
+      );
+      sstSpeak(text: voiceText.data.speechGoogle.msg);
+    } catch (e) {
+      if (kDebugMode) {
+        print("===========获取语音响应内容报错===============");
+        print(e);
+      }
+    }
+  }
+
+  xfSst() async {
+    _xf = XfManage.connect(
+      ViocePort.host,
+      ViocePort.apiKey,
+      ViocePort.apiSecret,
+      ViocePort.appId,
+      await SoundRecord.currentSamples(),
+      (msg) {
+        setState(() {
+          sstText = msg;
+          if (sstText == '') {
+            title = '未能识别，请点击语音按钮重试';
+          } else {
+            a = 1;
+          }
+          voicegql();
+        });
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return a == 0
+        ? Container(
+            height: 450.h,
+            width: 750.w,
+            child: Stack(children: [
+              Positioned(
+                top: 50.0.h,
+                left: 210.0.w,
+                child: Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    //文本的相关参数
+                    color: Colors.green,
+                    fontSize: 22.0,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 150.0.h,
+                left: 140.w,
+                child: Container(
+                  height: 100.0.h,
+                  width: 480.w,
+                  child: const Text(
+                    '你可以试试这样说：陆向谦实验室、预约课程、今日热点新闻',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      //文本的相关参数
+                      fontSize: 14.0,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 280.0.h,
+                left: 130.0.w,
+                child: Container(
+                  height: 50.h,
+                  width: 500.w,
+                  child: Image.asset(
+                    'assets/images/波浪线.gif',
+                  ),
+                ),
+              ),
+            ]),
+          )
+        : VoiceSpeak();
+  }
+}
+
+class VoiceSpeak extends StatefulWidget {
+  const VoiceSpeak({Key? key}) : super(key: key);
+
+  @override
+  State<VoiceSpeak> createState() => _VoiceSpeakState();
+}
+
+class _VoiceSpeakState extends State<VoiceSpeak> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 450.h,
+      width: 750.w,
+      child: //图片蒙层背景的实现
+          Stack(
+        children: <Widget>[
+          // //图片加载loading
+          // Center(child: new CircularProgressIndicator()),
+          //第一层是背景图
+          Positioned(
+            top: 50.0.h,
+            left: 230.0.w,
+            child: Container(
+              height: 200.h,
+              width: 300.w,
+              child: Image.asset(
+                'assets/images/logo.png',
+              ),
+            ),
+          ),
+          Positioned(
+            top: 280.0.h,
+            left: 135.0.w,
+            child: Container(
+              height: 50.h,
+              width: 500.w,
+              child: Image.asset(
+                'assets/images/发光条.gif',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
