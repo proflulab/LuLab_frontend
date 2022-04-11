@@ -69,6 +69,24 @@ query feats($category: String!, $skip: Int!, $limit: Int!) {
   }
 }
 ''';
+
+  //功勋员经历数据请求
+  //{ "userId":"624e90a7b2cc58a87ff8432c","limit": 0,"skip": 0}
+  static const String featsExperience = r'''
+query featsdetails($userId: String!,$limit:Int!,$skip:Int!){
+  latestUserGrowth(userId:$userId,option:{limit:$limit,skip:$skip}) {
+    company
+    beginTime
+    endTime
+    position
+    desc
+    logoUrl
+    type
+  }
+}
+''';
+
+  //训练营数据请求
   static const String gqlLatestTraining = r'''
 query {
   latestTraining(option:{skip:0,limit:5}) {

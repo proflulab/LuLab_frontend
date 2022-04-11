@@ -6,14 +6,14 @@ import 'package:video_player/video_player.dart';
 class VideoView extends StatefulWidget {
   // 定义构造函数参数，必选url视频播放链接，可选cover封面链接，autoPlay是否自动播放，looping循环播放，aspectRatio视频比例
   final String url;
-  final String cover;
+  //final String cover;
   final bool autoPlay;
   final bool looping;
   final double aspectRatio;
 
   const VideoView(this.url,
       {Key? key,
-      required this.cover,
+      //required this.cover,
       this.autoPlay = true,
       this.looping = true,
       this.aspectRatio = 16 / 9})
@@ -37,28 +37,30 @@ class _VideoViewState extends State<VideoView> {
     // 初始化播放器
     _videoPlayerController = VideoPlayerController.network(widget.url);
     _chewieController = ChewieController(
-        videoPlayerController: _videoPlayerController,
-        autoPlay: widget.autoPlay,
-        looping: widget.looping,
-        aspectRatio: widget.aspectRatio,
-        // 是否在 UI 构建的时候就加载视频
-        autoInitialize: true,
-        //拖动条样式颜色
-        materialProgressColors: ChewieProgressColors(
-          playedColor: Colors.lightGreen,
-          handleColor: Colors.green,
-          backgroundColor: const Color.fromARGB(103, 158, 158, 158),
-          bufferedColor: const Color.fromARGB(255, 158, 158, 158),
-        ),
-        //视频封面
-        placeholder: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(widget.cover),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ));
+      videoPlayerController: _videoPlayerController,
+      autoPlay: widget.autoPlay,
+      looping: widget.looping,
+      aspectRatio: widget.aspectRatio,
+      // 是否在 UI 构建的时候就加载视频
+      autoInitialize: true,
+      //systemOverlaysAfterFullScreen:
+      //拖动条样式颜色
+      materialProgressColors: ChewieProgressColors(
+        playedColor: Colors.lightGreen,
+        handleColor: Colors.green,
+        backgroundColor: const Color.fromARGB(103, 158, 158, 158),
+        bufferedColor: const Color.fromARGB(255, 158, 158, 158),
+      ),
+      //视频封面
+      // placeholder: Container(
+      //   decoration: BoxDecoration(
+      //     image: DecorationImage(
+      //       image: NetworkImage(widget.cover),
+      //       fit: BoxFit.cover,
+      //     ),
+      //   ),
+      // ),
+    );
   }
 
   @override

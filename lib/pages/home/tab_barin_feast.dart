@@ -84,8 +84,7 @@ class AppBardemoPage extends StatelessWidget {
             child: VideoView(
               // widget.product.videoUrl,
               'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-              cover:
-                  'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
+              //cover:'https://images8.alphacoders.com/498/thumb-1920-498307.jpg',
             ),
             // Image.asset('assets/images/fenmian.jpg', fit: BoxFit.fill)
           ),

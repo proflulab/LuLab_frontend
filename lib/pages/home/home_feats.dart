@@ -34,7 +34,7 @@ class _FeatsPageState extends State<FeatsPage> {
   _loadAllData() async {
     _postsData = await GqlHomeAPI.featInfo(
       context: context,
-      variables: FeatsRequest(limit: 1, skip: 2, category: '2'),
+      variables: FeatsRequest(limit: 0, skip: 0, category: '2'),
     );
 
     if (mounted) {

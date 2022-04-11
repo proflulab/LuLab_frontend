@@ -72,7 +72,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
             //测试视频
             //'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-            cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+            //cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
             key: UniqueKey(),
           ),
           // tab栏

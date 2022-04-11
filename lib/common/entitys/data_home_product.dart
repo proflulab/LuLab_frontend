@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final latestTraining = latestTrainingFromJson(jsonString);
-
 import 'dart:convert';
 
 LatestTraining latestTrainingFromJson(String str) =>
