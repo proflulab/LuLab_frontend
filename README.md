@@ -31,9 +31,13 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 [图标工场 - 移动应用图标/启动图生成工具，一键生成所有尺寸的应用图标/启动图 (wuruihong.com)](https://icon.wuruihong.com/)
 
+[Flutter Icons 内置图标库 - 简书 (jianshu.com)](<https://www.jianshu.com/p/1c19d8685>
+
 [CODELF (unbug.github.io)](https://unbug.github.io/codelf/)
 
 [Free Lottie Animation Files,(动画文件搜索平台)](https://lottiefiles.com/)
+
+[Flutter Icon 图标网](https://www.fluttericon.cn/)
 
 ## 产品文档
 
