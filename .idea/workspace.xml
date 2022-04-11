@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_voice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_voice.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_voice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_voice.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -33,7 +33,10 @@ class _VoiceViewState extends State<VoiceView> {
   String values = 'assets/images/语音动效2.gif';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
-  final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
+  final accessKey = "";
+  String strTitle = '';
+  String strTime = '';
+  String strDescription = '';
 
   @override
   void initState() {
@@ -190,6 +193,25 @@ class _VoiceViewState extends State<VoiceView> {
         context: context,
         variables: variables,
       );
+      String a = voiceText.speechGoogle.code;
+      if (a == "0") {
+        print('---------------------');
+        strTitle = voiceText.speechGoogle.detail
+            .substring(0, voiceText.speechGoogle.subBreak[1]);
+        strTime = voiceText.speechGoogle.detail.substring(
+            voiceText.speechGoogle.subBreak[1],
+            voiceText.speechGoogle.subBreak[2]);
+        strDescription = voiceText.speechGoogle.detail.substring(
+            voiceText.speechGoogle.subBreak[2],
+            voiceText.speechGoogle.subBreak[3]);
+        int intTime = int.parse(strTime);
+        Calendar.createEvent(
+          strTitle,
+          strDescription,
+          DateTime.fromMillisecondsSinceEpoch(intTime),
+          90,
+        );
+      }
       sstSpeak(text: voiceText.speechGoogle.msg);
       setState(() {
         isListening = true;
