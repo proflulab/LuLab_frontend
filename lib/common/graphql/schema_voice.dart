@@ -10,7 +10,11 @@ query vioce($userId: String!,$queryText:String!){
   speechGoogle(speechRequest:{userId:$userId,queryText:$queryText})
   {
     msg
-    status
+    code
+    category
+    detail
+    subBreak
+    fields
   }
 }
 

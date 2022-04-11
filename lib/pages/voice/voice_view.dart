@@ -86,50 +86,77 @@ class _VoiceViewState extends State<VoiceView> {
     return Container(
       height: 80.0,
       width: 80.0,
+      color: Colors.transparent,
       margin: const EdgeInsets.only(top: 30),
-      child: ElevatedButton(
-        //短按打开关闭操作
-        onPressed: () {
-          //第一版点击内容效果
-          if (a == 0) {
-            tts.stop();
-            SoundRecord.startListening();
-            setState(() {
-              isListening = false;
-              a = 1;
-              values = 'assets/images/语音动效 圆环.gif';
-            });
-          } else if (a == 1) {
-            SoundRecord.stopListening();
-            xfSst();
-            setState(() {
-              a = 2;
-              values = 'assets/images/语音动效 300.gif';
-            });
-          } else {
-            tts.stop();
-            setState(() {
-              a = 0;
-              values = 'assets/images/语音动效2.gif';
-            });
-          }
+      child: GestureDetector(
+        onTapDown: (tapDown) {
+          print("按下 ");
+          tts.stop();
+          SoundRecord.startListening();
+          setState(() {
+            isListening = false;
+            values = 'assets/images/语音动效 圆环.gif';
+          });
+        },
+        onTapUp: (tapUp) {
+          print("抬起 ");
+          SoundRecord.stopListening();
+          xfSst();
+          YYDialog.init(context);
+          setState(() {
+            values = 'assets/images/语音动效2.gif';
+          });
         },
         child: TestBWidget(
           visible: visible,
           show: show,
           values: values,
         ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(const Color(0xffffffff)),
-          shape: MaterialStateProperty.all(const CircleBorder(
-              side: BorderSide(
-            //设置 界面效果
-            color: Colors.green,
-            width: 280.0,
-            style: BorderStyle.none,
-          ))), //圆角弧度
-        ),
       ),
+      //原版点按语音交互
+      // ElevatedButton(
+      //   //短按打开关闭操作
+      //   onPressed: () {
+      //     //第一版点击内容效果
+      //     if (a == 0) {
+      //       tts.stop();
+      //       SoundRecord.startListening();
+      //       setState(() {
+      //         isListening = false;
+      //         a = 1;
+      //         values = 'assets/images/语音动效 圆环.gif';
+      //       });
+      //     } else if (a == 1) {
+      //       SoundRecord.stopListening();
+      //       xfSst();
+      //       setState(() {
+      //         a = 2;
+      //         values = 'assets/images/语音动效 300.gif';
+      //       });
+      //     } else {
+      //       tts.stop();
+      //       setState(() {
+      //         a = 0;
+      //         values = 'assets/images/语音动效2.gif';
+      //       });
+      //     }
+      //   },
+      //   child: TestBWidget(
+      //     visible: visible,
+      //     show: show,
+      //     values: values,
+      //   ),
+      //   style: ButtonStyle(
+      //     backgroundColor: MaterialStateProperty.all(const Color(0xffffffff)),
+      //     shape: MaterialStateProperty.all(const CircleBorder(
+      //         side: BorderSide(
+      //       //设置 界面效果
+      //       color: Colors.green,
+      //       width: 280.0,
+      //       style: BorderStyle.none,
+      //     ))), //圆角弧度
+      //   ),
+      // ),
     );
   }
 
@@ -163,7 +190,7 @@ class _VoiceViewState extends State<VoiceView> {
         context: context,
         variables: variables,
       );
-      sstSpeak(text: voiceText.data.speechGoogle.msg);
+      sstSpeak(text: voiceText.speechGoogle.msg);
       setState(() {
         isListening = true;
       });
@@ -248,7 +275,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
         context: context,
         variables: variables,
       );
-      sstSpeak(text: voiceText.data.speechGoogle.msg);
+      sstSpeak(text: voiceText.speechGoogle.msg);
     } catch (e) {
       if (kDebugMode) {
         print("===========获取语音响应内容报错===============");

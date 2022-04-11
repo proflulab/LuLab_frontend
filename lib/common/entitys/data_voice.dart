@@ -35,28 +35,12 @@ String voiceResponseToJson(VoiceResponse data) => json.encode(data.toJson());
 
 class VoiceResponse {
   VoiceResponse({
-    required this.data,
-  });
-
-  final VoiceData data;
-
-  factory VoiceResponse.fromJson(Map<String, dynamic> json) => VoiceResponse(
-        data: VoiceData.fromJson(json),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "data": data.toJson(),
-      };
-}
-
-class VoiceData {
-  VoiceData({
     required this.speechGoogle,
   });
 
-  final SpeechGoogle speechGoogle;
+  SpeechGoogle speechGoogle;
 
-  factory VoiceData.fromJson(Map<String, dynamic> json) => VoiceData(
+  factory VoiceResponse.fromJson(Map<String, dynamic> json) => VoiceResponse(
         speechGoogle: SpeechGoogle.fromJson(json["speechGoogle"]),
       );
 
@@ -68,19 +52,35 @@ class VoiceData {
 class SpeechGoogle {
   SpeechGoogle({
     required this.msg,
-    required this.status,
+    required this.code,
+    required this.category,
+    required this.detail,
+    required this.subBreak,
+    required this.fields,
   });
 
-  final String msg;
-  final String status;
+  String msg;
+  String code;
+  String category;
+  String detail;
+  List<dynamic> subBreak;
+  List<dynamic> fields;
 
   factory SpeechGoogle.fromJson(Map<String, dynamic> json) => SpeechGoogle(
         msg: json["msg"],
-        status: json["status"],
+        code: json["code"],
+        category: json["category"],
+        detail: json["detail"],
+        subBreak: List<dynamic>.from(json["subBreak"].map((x) => x)),
+        fields: List<dynamic>.from(json["fields"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
         "msg": msg,
-        "status": status,
+        "code": code,
+        "category": category,
+        "detail": detail,
+        "subBreak": List<dynamic>.from(subBreak.map((x) => x)),
+        "fields": List<dynamic>.from(fields.map((x) => x)),
       };
 }
