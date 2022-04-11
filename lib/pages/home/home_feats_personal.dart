@@ -290,7 +290,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
   }
 }
 
-class $ {}
+
 
 
 
