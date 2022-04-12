@@ -1,7 +1,7 @@
 //import 'package:flutter/material.dart';
 import '../../common/utils/utils.dart';
 
-//间距规格
+//间距规范
 class PFspace {
   //竖屏幕边缘距离
   static double screenMargin = 22.w;

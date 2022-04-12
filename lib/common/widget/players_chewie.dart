@@ -43,7 +43,6 @@ class _VideoViewState extends State<VideoView> {
       aspectRatio: widget.aspectRatio,
       // 是否在 UI 构建的时候就加载视频
       autoInitialize: true,
-      //systemOverlaysAfterFullScreen:
       //拖动条样式颜色
       materialProgressColors: ChewieProgressColors(
         playedColor: Colors.lightGreen,

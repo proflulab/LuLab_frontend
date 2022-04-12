@@ -16,13 +16,12 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   // fullName email password 的控制器
   final TextEditingController _fullnameController =
-      TextEditingController(text: "shiming");
+      TextEditingController(text: "");
   final TextEditingController _passController1 =
-      TextEditingController(text: "12345678");
-  final TextEditingController _passController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "");
+  final TextEditingController _passController = TextEditingController(text: "");
 
-  // // 返回上一页
+  // 返回上一页
   // _handleNavPop() {
   //   Navigator.pop(context);
   // }

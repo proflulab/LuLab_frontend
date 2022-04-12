@@ -14,7 +14,7 @@ class PFtext {
     bool softWrap = false,
     String font = 'MyFontStyle',
     Color? color = PFc.textPrimary,
-    double? fontSize = 18,
+    double? fontSize = 15,
     FontWeight? fontWeight = FontWeight.normal,
   }) {
     return Text(
@@ -63,7 +63,7 @@ class PFtext {
 
   //常规字体——
   static Widget text3({
-    required BuildContext context, 
+    required BuildContext context,
     required String text,
     int maxLines = 1,
     TextOverflow overflow = TextOverflow.ellipsis,

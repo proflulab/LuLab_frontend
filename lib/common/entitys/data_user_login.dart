@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-
-
 Loginresponse loginresponseFromJson(String str) =>
     Loginresponse.fromJson(json.decode(str));
 
@@ -77,14 +75,14 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
         name: json["name"],
-        birth: json["birth"],
-        sex: json["sex"],
-        industry: json["industry"],
-        phone: json["phone"],
-        email: json["email"],
-        wechat: json["wechat"],
-        description: json["description"],
-        iconUrl: json["iconUrl"],
+        birth: json["birth"] ?? "",
+        sex: json["sex"] ?? "",
+        industry: json["industry"] ?? "",
+        phone: json["phone"] ?? "",
+        email: json["email"] ?? "",
+        wechat: json["wechat"] ?? "",
+        description: json["description"] ?? "",
+        iconUrl: json["iconUrl"] ?? "",
         password: json["password"],
       );
 
@@ -102,8 +100,6 @@ class Data {
         "password": password,
       };
 }
-
-
 
 // 用户登录 - request
 Loginrequest loginrequestFromJson(String str) =>
