@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../common/utils/utils.dart';
 //import 'package:lulab/values/values.dart';
 
 Widget listGroup1({
@@ -6,8 +8,8 @@ Widget listGroup1({
   required String title,
   required TextEditingController textController,
 }) {
-  return Container(
-    margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+  return SizedBox(
+    height: 70.h,
     child: Row(
       children: [
         Expanded(
@@ -43,8 +45,8 @@ Widget listGroup2({
   required Widget child,
   required VoidCallback onTap,
 }) {
-  return Container(
-    margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
+  return SizedBox(
+    height: 70.h,
     child: InkWell(
       onTap: onTap,
       child: Row(

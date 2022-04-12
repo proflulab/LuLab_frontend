@@ -12,3 +12,4 @@ export 'xf_utils.dart';
 export 'time.dart';
 export 'alarm_calendar.dart';
 export 'share_plus.dart';
+export 'url_launcher.dart';

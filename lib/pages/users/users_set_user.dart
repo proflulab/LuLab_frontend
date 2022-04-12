@@ -104,84 +104,84 @@ class _SetUserState extends State<SetUser> {
         ),
         actions: [
           Center(
-              child: InkWell(
-            child: const Text(
-              "保存",
-              style: TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.green,
-                fontSize: 18,
+            child: InkWell(
+              child: const Text(
+                "保存",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.green,
+                  fontSize: 18,
+                ),
               ),
+              onTap: () {
+                _carryUp();
+                if (kDebugMode) {
+                  print("保存个人信息");
+                  print(_nameController.value.text);
+                }
+              },
             ),
-            onTap: () {
-              _carryUp();
-              if (kDebugMode) {
-                print("保存个人信息");
-                print(_nameController.value.text);
-              }
-            },
-          ))
+          ),
+          SizedBox(width: PFspace.screenMargin)
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Container(
-              height: 100.h,
-              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.white),
-              child: Column(
-                children: [
-                  listGroup2(
-                    context: context,
-                    title: '头像',
-                    child:
-                        ClipOval(child: Image.network(Global.profile.iconUrl)),
-                    icon: const Icon(MyIcon.userRight),
-                    onTap: () {
-                      if (kDebugMode) {
-                        print("该功能未开发，当前无法更改");
-                      }
-                      toastInfo(msg: '功能未开发，当前无法修改');
-                    },
-                  ),
-                ],
-              )),
-          Container(
-              height: 380.h,
-              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.white),
-              child: Column(
-                children: [
-                  listGroup1(
+          Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(PFspace.screenMargin),
+                padding: EdgeInsets.all(PFspace.screenMargin),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white),
+                child: listGroup2(
+                  context: context,
+                  title: '头像',
+                  child: ClipOval(child: Image.network(Global.profile.iconUrl)),
+                  icon: const Icon(MyIcon.userRight),
+                  onTap: () {
+                    if (kDebugMode) {
+                      print("该功能未开发，当前无法更改");
+                    }
+                    toastInfo(msg: '功能未开发，当前无法修改');
+                  },
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(PFspace.screenMargin),
+                padding: EdgeInsets.all(PFspace.screenMargin),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white),
+                child: Column(
+                  children: [
+                    listGroup1(
+                        context: context,
+                        title: '姓名',
+                        textController: _nameController),
+                    const Divider(),
+                    listGroup1(
+                        context: context,
+                        title: '号码',
+                        textController: _phoneController),
+                    const Divider(),
+                    listGroup1(
+                        context: context,
+                        title: '微信',
+                        textController: _wechatnameController),
+                    const Divider(),
+                    listGroup2(
                       context: context,
-                      title: '姓名',
-                      textController: _nameController),
-                  const Divider(),
-                  listGroup1(
-                      context: context,
-                      title: '号码',
-                      textController: _phoneController),
-                  const Divider(),
-                  listGroup1(
-                      context: context,
-                      title: '微信',
-                      textController: _wechatnameController),
-                  const Divider(),
-                  listGroup2(
-                    context: context,
-                    title: '性别',
-                    child: Text(_sexValue),
-                    icon: const Icon(MyIcon.userRight),
-                    onTap: () async {
-                      //触摸失去焦点
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      await showModalBottomSheet(
+                      title: '性别',
+                      child: Text(_sexValue),
+                      icon: const Icon(MyIcon.userRight),
+                      onTap: () async {
+                        //触摸失去焦点
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        await showModalBottomSheet(
                           backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
                           context: context,
                           builder: (BuildContext context) {
@@ -189,8 +189,8 @@ class _SetUserState extends State<SetUser> {
                               decoration: const BoxDecoration(
                                   shape: BoxShape.rectangle,
                                   borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
                                   ),
                                   color: Color(0xfff1f1f1)),
                               height: 200.0.h,
@@ -240,26 +240,27 @@ class _SetUserState extends State<SetUser> {
                                 ),
                               ),
                             );
-                          });
-                    },
-                  ),
-                ],
-              )),
-          Container(
-            height: 100.h,
-            margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.white),
-            child: Column(
-              children: [
-                listGroup1(
-                    context: context,
-                    title: '简介',
-                    textController: _introController),
-              ],
-            ),
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(PFspace.screenMargin),
+                padding: EdgeInsets.all(PFspace.screenMargin),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white),
+                child: listGroup1(
+                  context: context,
+                  title: '简介',
+                  textController: _introController,
+                ),
+              ),
+            ],
           ),
         ],
       ),

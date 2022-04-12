@@ -1,10 +1,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.proflu">
+
+    <queries>
+        <!-- If your app opens https URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- If your app makes calls -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        <!-- If your sends SMS messages -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
+        </intent>
+        <!-- If your app sends emails -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+    </queries>
     <!-- 视频播放权限-->
     <uses-permission android:name="android.permission.INTERNET"/>
-    //读日历数据
+    <!-- 读日历数据-->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
-    //写日历数据
+    <!-- 写日历数据-->
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <queries>
         <intent>
