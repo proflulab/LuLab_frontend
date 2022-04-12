@@ -284,8 +284,8 @@ class _GatherState extends State<Gather> {
                                   const SizedBox(width: 10),
                                   Flexible(child: Container(height: 10.h)),
                                   SizedBox(
-                                    width: 130.w,
-                                    height: 50.w,
+                                    width: 150.w,
+                                    height: 38.w,
                                     child: ElevatedButton(
                                       child: _focusData3[index].status == "0"
                                           ? const Text("预约")

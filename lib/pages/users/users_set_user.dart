@@ -150,7 +150,7 @@ class _SetUserState extends State<SetUser> {
                 ],
               )),
           Container(
-              height: 370.h,
+              height: 380.h,
               margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
               decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
@@ -193,12 +193,12 @@ class _SetUserState extends State<SetUser> {
                                     topRight: Radius.circular(15),
                                   ),
                                   color: Color(0xfff1f1f1)),
-                              height: 200.0,
+                              height: 200.0.h,
                               child: Center(
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: 60,
+                                      height: 60.h,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('男'),
@@ -211,7 +211,7 @@ class _SetUserState extends State<SetUser> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 60,
+                                      height: 60.h,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('女'),
@@ -224,7 +224,7 @@ class _SetUserState extends State<SetUser> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 60,
+                                      height: 60.h,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('保密'),

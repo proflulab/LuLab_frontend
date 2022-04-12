@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/widget/widgets.dart';
-
-import 'users_set_user.dart';
-import 'package/users_home_page_user.dart';
 import '../../pages/sign_in/sign_in.dart';
+import 'package/users_home_page_user.dart';
 import 'users_page.dart';
+import 'users_set_user.dart';
 
 //import 'users_set_account.dart';
 
@@ -49,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Column(
         children: [
           Container(
-            height: 230.h,
+            height: 240.h,
             margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
             decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
