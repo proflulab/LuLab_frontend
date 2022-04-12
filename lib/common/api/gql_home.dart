@@ -46,6 +46,20 @@ class GqlHomeAPI {
     return Feats.fromJson(response.data!);
   }
 
+  // 功勋员经历查询
+  static Future<FeatsExperienceReponse> featExperienceInfo({
+    required BuildContext context,
+    required FeatsExperienceRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      schema: SchemaHome.featsExperience,
+      context: context,
+      variables: variables.toJson(),
+    );
+
+    return FeatsExperienceReponse.fromJson(response.data!);
+  }
+
   //训练营内容查询
   static Future<LatestTraining> latestTainingInfo({
     required BuildContext context,

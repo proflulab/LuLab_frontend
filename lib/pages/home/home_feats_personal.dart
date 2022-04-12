@@ -1,5 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '/pages/home/home_feats_videos.dart';
+
+import '../../common/api/apis.dart';
 import '../../common/values/values.dart';
 import '../../common/utils/utils.dart';
 //import '../../common/api/apis.dart';
@@ -21,6 +25,30 @@ class _FeastPersonalState extends State<FeastPersonal> {
 
   //最大显示行数（默认 3 行）
   int mMaxLine = 3;
+
+  late FeatsExperienceReponse _postsData;
+  List<LatestUserGrowth> _focusData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAllData();
+  }
+
+  // 读取所有功勋员数据
+  _loadAllData() async {
+    _postsData = await GqlHomeAPI.featExperienceInfo(
+      context: context,
+      variables: FeatsExperienceRequest(
+          limit: 0, skip: 0, userId: '624e90a7b2cc58a87ff8432c'),
+    );
+
+    if (mounted) {
+      setState(() {
+        _focusData = _postsData.latestUserGrowth;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +100,20 @@ class _FeastPersonalState extends State<FeastPersonal> {
             right: 40.w,
             child: RawChip(
               label: const Text('视频介绍'),
+              onPressed: () {
+                if (kDebugMode) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FeatsVideo(
+                        product: widget.product.videoUrl,
+                      ),
+                    ),
+                  );
+                }
+              },
               onDeleted: () {},
+              backgroundColor: PFc.themeColor30,
               deleteIcon: const Icon(Icons.play_circle_filled_rounded),
               deleteIconColor: Colors.red,
               deleteButtonTooltipMessage: '播放',
@@ -116,29 +157,37 @@ class _FeastPersonalState extends State<FeastPersonal> {
             children: [
               Text(widget.product.name),
               SizedBox(width: 5.w),
-              Icon(widget.product.sex == "1" ? Icons.boy : Icons.girl),
+              Icon(
+                widget.product.sex == "1"
+                    ? Icons.male
+                    : widget.product.sex == "2"
+                        ? Icons.female
+                        : null,
+              ),
             ],
           ),
           SizedBox(height: 15.w),
           Row(
             children: [
               Container(
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: PFc.themeColor30,
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 ),
                 child: Row(
-                  children: const [Text("特斯拉"), Icon(Icons.done)],
+                  children: const [Text("特斯拉"), Icon(Icons.fitbit_sharp)],
                 ),
               ),
-              SizedBox(width: 5.w),
+              SizedBox(width: 15.w),
               Container(
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: PFc.themeColor30,
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 ),
                 child: Row(
-                  children: const [Text("高管"), Icon(Icons.done)],
+                  children: const [Text("高管"), Icon(Icons.fitbit_sharp)],
                 ),
               ),
             ],
@@ -183,19 +232,39 @@ class _FeastPersonalState extends State<FeastPersonal> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text("个人经历"),
-          Row(
-            children: [
-              const Icon(Icons.add_location_alt_rounded),
-              Column(
+          const Divider(),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: _focusData.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text("销售总监"),
-                  Text("陆向谦实验室"),
-                  Text("2018.12-至今（4年7个月）"),
-                  Text("经历经历经历经历经历经历经历经历经历经历经历"),
+                children: [
+                  SizedBox(
+                    width: 100.w,
+                    height: 100.w,
+                    child: CachedImage.typeLaod(_focusData[index].logoUrl),
+                  ),
+                  SizedBox(width: PFspace.ruleS),
+                  Flexible(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(_focusData[index].position),
+                        Text(_focusData[index].company),
+                        Text(TimeChange.client(
+                                int.parse(_focusData[index].beginTime), "ym") +
+                            "—" +
+                            TimeChange.client(
+                                int.parse(_focusData[index].endTime), "ym")),
+                        Text(_focusData[index].desc),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ],
+              );
+            },
           ),
         ],
       ),
@@ -290,7 +359,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
   }
 }
 
-class $ {}
+
 
 
 

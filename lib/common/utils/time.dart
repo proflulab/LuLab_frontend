@@ -11,7 +11,7 @@ class TimeChange {
       return formatDate(time, [dd]);
     } else if (value == "h") {
       return formatDate(time, [hh]);
-    } else if (value == "m") {
+    } else if (value == "n") {
       return formatDate(time, [nn]);
     } else if (value == "s") {
       return formatDate(time, [ss]);
@@ -19,6 +19,8 @@ class TimeChange {
       return formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
     } else if (value == "md") {
       return formatDate(time, [mm, '月', dd, '日']);
+    } else if (value == "ym") {
+      return formatDate(time, [yyyy, '年', mm, '月']);
     }
   }
 }
