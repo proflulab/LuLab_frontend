@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +53,8 @@
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>

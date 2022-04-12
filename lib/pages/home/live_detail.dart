@@ -9,8 +9,8 @@ import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
-import '../../common/widget/widgets.dart';
 import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
 
 class LiveDetail extends StatefulWidget {
   const LiveDetail({Key? key, required this.product}) : super(key: key);
