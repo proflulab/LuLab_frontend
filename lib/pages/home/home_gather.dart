@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
@@ -74,21 +76,33 @@ class _GatherState extends State<Gather> {
 
   // 获取直播课程预约数据
   _handleCourse() async {
-    _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
-      context: context,
-      variables: LatestDirectCourseRequest(
-        mode: "2",
-        authorId: Global.profile.id,
-        limit: 2,
-        skip: 0,
-      ),
-    );
+    var user = Storage.getJson(storageUserProfileKey);
+    user.then((guide) async {
+      var user1 = UserLogin.fromJson(json.decode(guide!));
 
-    if (mounted) {
-      setState(() {
-        _focusData3 = _latestDirectCourse.latestDirectCourse;
-      });
-    }
+      try {
+        _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
+          context: context,
+          variables: LatestDirectCourseRequest(
+            mode: "2",
+            authorId: user1.data.id,
+            limit: 2,
+            skip: 0,
+          ),
+        );
+
+        if (mounted) {
+          setState(() {
+            _focusData3 = _latestDirectCourse.latestDirectCourse;
+          });
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          print("===========登录报错内容===============");
+          print(e);
+        }
+      }
+    });
   }
 
   //获取大咖访谈课程

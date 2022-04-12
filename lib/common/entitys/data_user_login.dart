@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-
-
 Loginresponse loginresponseFromJson(String str) =>
     Loginresponse.fromJson(json.decode(str));
 
@@ -102,8 +100,6 @@ class Data {
         "password": password,
       };
 }
-
-
 
 // 用户登录 - request
 Loginrequest loginrequestFromJson(String str) =>
