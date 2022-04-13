@@ -205,154 +205,125 @@ class _CoursePageState extends State<CoursePage> {
 
   //右课程栏目
   Widget _courses() {
-    return Container(
-      //decoration: const BoxDecoration(color: PFc.backgroundSecondary),
-      padding: EdgeInsets.only(left: 12.w, right: PFspace.screenMargin),
-      child: EasyRefresh.custom(
-        enableControlFinishRefresh: false,
-        enableControlFinishLoad: true,
-        firstRefresh: true,
-        firstRefreshWidget: const Loading(),
-        controller: _controllerCourse,
-        header: EasyrefreshWidget.getHeader(),
-        footer: EasyrefreshWidget.getFooter(),
-        onRefresh: () async {
-          _handleCourse(0, _countFirst);
-          await Future.delayed(
-            const Duration(seconds: 1),
-            () {
-              if (mounted) {
-                setState(() {
-                  _count = _countFirst;
-                });
-                _controllerCourse.resetLoadState();
-              }
-            },
-          );
-        },
-        onLoad: () async {
-          _handleCourse(_count, _countDown);
-          await Future.delayed(
-            const Duration(seconds: 1),
-            () {
-              if (mounted) {
-                setState(() {
-                  _count += _countDown;
-                });
-                _controllerCourse.finishLoad(
-                    noMore: _count > _focusData3.length);
-              }
-            },
-          );
-        },
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                var _imageHeight =
-                    _coursesW * PFr.silver414 - PFspace.screenMargin * 2;
-                var _imageWidht = _imageHeight * PFr.ratio3_4;
-                var _textWidht = _coursesW -
-                    (PFspace.screenMargin + _imageWidht + PFspace.screenMargin);
-                if (_focusData3.isNotEmpty) {
-                  return InkWell(
-                    onTap: () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CourseIndexPage(
-                            product: _focusData3[index],
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: _coursesW * PFr.silver414,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
+    return EasyRefresh.custom(
+      enableControlFinishRefresh: false,
+      enableControlFinishLoad: true,
+      firstRefresh: true,
+      firstRefreshWidget: const Loading(),
+      controller: _controllerCourse,
+      header: EasyrefreshWidget.getHeader(),
+      footer: EasyrefreshWidget.getFooter(),
+      onRefresh: () async {
+        _handleCourse(0, _countFirst);
+        await Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            if (mounted) {
+              setState(() {
+                _count = _countFirst;
+              });
+              _controllerCourse.resetLoadState();
+            }
+          },
+        );
+      },
+      onLoad: () async {
+        _handleCourse(_count, _countDown);
+        await Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            if (mounted) {
+              setState(() {
+                _count += _countDown;
+              });
+              _controllerCourse.finishLoad(noMore: _count > _focusData3.length);
+            }
+          },
+        );
+      },
+      slivers: <Widget>[
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              var _imageHeight =
+                  _coursesW * PFr.silver414 - 2 * PFspace.screenMargin;
+              var _imageWidht = _imageHeight * PFr.ratio3_4;
+              if (_focusData3.isNotEmpty) {
+                return InkWell(
+                  onTap: () async {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CourseIndexPage(
+                          product: _focusData3[index],
                         ),
                       ),
-                      child: Stack(
-                        children: <Widget>[
-                          // 课程封面
-                          positionedImage(
-                            context: context,
-                            top: 15.h,
-                            left: PFspace.screenMargin,
-                            height: _imageHeight,
-                            width: _imageWidht,
-                            url: _focusData3[index].imgUrl,
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(PFspace.screenMargin),
+                    height: _coursesW * PFr.silver414,
+                    decoration: const BoxDecoration(
+                      //color: Color.fromARGB(255, 227, 39, 39),
+                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: _imageWidht,
+                          height: _imageHeight,
+                          child: ClipRRect(
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
+                            child:
+                                CachedImage.typeLaod(_focusData3[index].imgUrl),
                           ),
-                          // 课程标题
-                          positioningText(
-                            context: context,
-                            top: 15.h,
-                            left:
-                                (PFspace.screenMargin * 2 + _imageWidht) - 3.w,
-                            height: _focusData3[index].title.length > 11
-                                ? 60.h
-                                : 25.h,
-                            width: _textWidht,
-                            text: _focusData3[index].title,
-                            font: 'MyFontStyle',
-                            fontSize: 31.sp,
+                        ),
+                        SizedBox(width: PFspace.ruleS),
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              PFtext.text1(text: _focusData3[index].title),
+                              SizedBox(height: 8.h),
+                              Row(
+                                children: [
+                                  PFtext.text2(
+                                    text: _focusData3[index]
+                                        .author
+                                        .substring(0, 3),
+                                    color: PFc.textSecondary,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Flexible(
+                                    child: PFtext.text3(
+                                      text: _focusData3[index].authorTags,
+                                      color: PFc.textSecondary,
+                                      context: context,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Flexible(child: Container(width: 10.w)),
+                            ],
                           ),
-                          // 作者
-                          positioningText(
-                            context: context,
-                            top: _focusData3[index].title.length > 11
-                                ? 85.h
-                                : 50.h,
-                            left: PFspace.screenMargin +
-                                _imageWidht +
-                                PFspace.screenMargin,
-                            height: 30.h,
-                            width: 80.w,
-                            text: _focusData3[index].author,
-                            font: '',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.sp,
-                            maxLines: 1,
-                            overflow: TextOverflow.clip,
-                            color: PFc.textSecondary,
-                          ),
-                          // 作者标签
-                          positioningText(
-                            context: context,
-                            top: _focusData3[index].title.length > 11
-                                ? 85.h
-                                : 50.h,
-                            left: PFspace.screenMargin +
-                                _imageWidht +
-                                PFspace.screenMargin +
-                                95.w,
-                            height: 30.h,
-                            width: _textWidht - 95.w,
-                            text: _focusData3[index].authorTags,
-                            font: '',
-                            fontSize: 25.sp,
-                            maxLines: 1,
-                            color: PFc.textSecondary,
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  );
-                } else {
-                  return const Loading();
-                }
-              },
-              childCount:
-                  _count > _focusData3.length ? _focusData3.length : _count,
-            ),
+                  ),
+                );
+              } else {
+                return const Loading();
+              }
+            },
+            childCount:
+                _count > _focusData3.length ? _focusData3.length : _count,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

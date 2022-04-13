@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:proflu/pages/users/users_set_user.dart';
@@ -7,6 +6,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import 'notice_page.dart';
 import 'users_set.dart';
 
@@ -213,54 +213,28 @@ class _UsersPageState extends State<UsersPage> {
 
     Widget _contact() {
       return Container(
-        height: 250.h,
-        margin: const EdgeInsets.only(left: 10, right: 10),
+        margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+        padding: EdgeInsets.all(PFspace.screenMargin),
         decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            color: Colors.white),
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          color: Colors.white,
+        ),
         child: Column(
           children: [
-            const SizedBox(height: 10),
             listtilebotton(
-                bottomname: "邮箱咨询",
-                icon: const Icon(
-                  MyIcon.userPhone,
-                  size: 30,
-                  color: Colors.green,
-                ),
-                onPressed: () {
-                  showDialog<void>(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      // return AlertDialog(
-                      //   // title: const Text('标题'),
-                      //   content: buildContent(context),
-                      //   actions: <Widget>[
-                      //     ElevatedButton(
-                      //       child: const Text('确定'),
-                      //       onPressed: () {
-                      //         Navigator.of(context).pop();
-                      //       },
-                      //     ),
-                      //   ],
-                      // );
-                      return CupertinoAlertDialog(
-                        content: const Text('business@proflu.cn'),
-                        actions: <Widget>[
-                          CupertinoDialogAction(
-                            child: const Text("确定"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ).then((val) {});
-                },
-                context: context),
+              bottomname: "邮箱咨询",
+              icon: const Icon(
+                MyIcon.userPhone,
+                size: 30,
+                color: Colors.green,
+              ),
+              onPressed: () async {
+                UrlLaucher.email('business@proflu.cn', 'This is a test email',
+                    'This is a test email body');
+              },
+              context: context,
+            ),
             //在线咨询
             // const Divider(),
             // listtilebotton(
@@ -324,47 +298,26 @@ class _UsersPageState extends State<UsersPage> {
             //     context: context),
             const Divider(),
             listtilebotton(
-                bottomname: "商务合作",
-                icon: const Icon(
-                  MyIcon.userCooperation,
-                  size: 30,
-                  color: Colors.green,
-                ),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print("object");
-                  }
-                  showDialog<void>(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      // return AlertDialog(
-                      //   // title: const Text('标题'),
-                      //   content: buildContent(context),
-                      //   actions: <Widget>[
-                      //     ElevatedButton(
-                      //       child: const Text('确定'),
-                      //       onPressed: () {
-                      //         Navigator.of(context).pop();
-                      //       },
-                      //     ),
-                      //   ],
-                      // );
-                      return CupertinoAlertDialog(
-                        content: Image.asset('assets/images/语音动效 300.gif'),
-                        actions: <Widget>[
-                          CupertinoDialogAction(
-                            child: const Text("确定"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ).then((val) {});
-                },
-                context: context)
+              bottomname: "联系我们",
+              icon: const Icon(
+                MyIcon.userCooperation,
+                size: 30,
+                color: Colors.green,
+              ),
+              onPressed: () async {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Browser(
+                      url:
+                          "https://work.weixin.qq.com/kfid/kfcf1c4876b71dc6e7a",
+                      title: "联系我们",
+                    ),
+                  ),
+                );
+              },
+              context: context,
+            )
           ],
         ),
       );

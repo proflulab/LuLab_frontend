@@ -10,6 +10,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/home/live_detail.dart';
 import '../../pages/source/infor_details.dart';

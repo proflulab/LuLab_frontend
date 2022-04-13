@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
-import 'package:proflu/common/global/global.dart';
+
 import 'package:text_to_speech/text_to_speech.dart';
 
+import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/services/services.dart';
@@ -64,7 +65,7 @@ class _VoiceViewState extends State<VoiceView> {
   void wakeWordCallback(int keywordIndex) {
     if (keywordIndex >= 0) {
       YYDialog.init(context);
-      YYFixTextFieldDialog();
+      yYFixTextFieldDialog();
       // tts.stop();
       // sstSpeak(text: '我在，你有什么问题');
       // Future.delayed(const Duration(milliseconds: 2850), () {
@@ -93,7 +94,9 @@ class _VoiceViewState extends State<VoiceView> {
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
         onTapDown: (tapDown) {
-          print("按下 ");
+          if (kDebugMode) {
+            print("按下 ");
+          }
           tts.stop();
           SoundRecord.startListening();
           setState(() {
@@ -102,7 +105,9 @@ class _VoiceViewState extends State<VoiceView> {
           });
         },
         onTapUp: (tapUp) {
-          print("抬起 ");
+          if (kDebugMode) {
+            print("抬起 ");
+          }
           SoundRecord.stopListening();
           xfSst();
           YYDialog.init(context);
@@ -224,13 +229,13 @@ class _VoiceViewState extends State<VoiceView> {
     }
   }
 
-  YYDialog YYFixTextFieldDialog() {
+  YYDialog yYFixTextFieldDialog() {
     return YYDialog().build()
       ..width = 750.w
       ..height = 450.h
       ..backgroundColor = Colors.white
       ..borderRadius = 10.0
-      ..widget(VoiceDetail())
+      ..widget(const VoiceDetail())
       ..show(0.0, 350.0);
   }
 }
@@ -330,7 +335,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
   @override
   Widget build(BuildContext context) {
     return a == 0
-        ? Container(
+        ? SizedBox(
             height: 450.h,
             width: 750.w,
             child: Stack(children: [
@@ -350,7 +355,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
               Positioned(
                 top: 150.0.h,
                 left: 140.w,
-                child: Container(
+                child: SizedBox(
                   height: 100.0.h,
                   width: 480.w,
                   child: const Text(
@@ -366,7 +371,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
               Positioned(
                 top: 280.0.h,
                 left: 130.0.w,
-                child: Container(
+                child: SizedBox(
                   height: 50.h,
                   width: 500.w,
                   child: Image.asset(
@@ -376,7 +381,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
               ),
             ]),
           )
-        : VoiceSpeak();
+        : const VoiceSpeak();
   }
 }
 
@@ -390,7 +395,7 @@ class VoiceSpeak extends StatefulWidget {
 class _VoiceSpeakState extends State<VoiceSpeak> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 450.h,
       width: 750.w,
       child: //图片蒙层背景的实现
@@ -402,7 +407,7 @@ class _VoiceSpeakState extends State<VoiceSpeak> {
           Positioned(
             top: 50.0.h,
             left: 230.0.w,
-            child: Container(
+            child: SizedBox(
               height: 200.h,
               width: 300.w,
               child: Image.asset(
@@ -413,7 +418,7 @@ class _VoiceSpeakState extends State<VoiceSpeak> {
           Positioned(
             top: 280.0.h,
             left: 135.0.w,
-            child: Container(
+            child: SizedBox(
               height: 50.h,
               width: 500.w,
               child: Image.asset(

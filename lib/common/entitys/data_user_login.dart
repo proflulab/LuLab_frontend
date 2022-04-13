@@ -75,14 +75,14 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
         name: json["name"],
-        birth: json["birth"],
-        sex: json["sex"],
-        industry: json["industry"],
-        phone: json["phone"],
-        email: json["email"],
-        wechat: json["wechat"],
-        description: json["description"],
-        iconUrl: json["iconUrl"],
+        birth: json["birth"] ?? "",
+        sex: json["sex"] ?? "",
+        industry: json["industry"] ?? "",
+        phone: json["phone"] ?? "",
+        email: json["email"] ?? "",
+        wechat: json["wechat"] ?? "",
+        description: json["description"] ?? "",
+        iconUrl: json["iconUrl"] ?? "",
         password: json["password"],
       );
 

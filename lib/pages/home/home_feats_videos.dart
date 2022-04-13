@@ -32,11 +32,15 @@ class _FeatsVideoState extends State<FeatsVideo> {
         height: double.infinity,
         color: PFc.backgroundBlack,
         child: Center(
-          child: VideoView(
-            widget.product,
-            //cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-          ),
-        ),
+            child: VideoScreen(
+          cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+          url: widget.product,
+        )
+            // VideoView(
+            //   widget.product,
+            //   //cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
+            // ),
+            ),
       ),
     );
   }

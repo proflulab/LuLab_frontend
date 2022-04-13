@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/sign_in/sign_in.dart';
 import 'package/users_home_page_user.dart';
-import 'users_page.dart';
 import 'users_set_user.dart';
 
 //import 'users_set_account.dart';
@@ -39,8 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const UsersPage()));
+            Navigator.pop(context);
           },
         ),
         backgroundColor: Colors.white,
@@ -48,7 +47,8 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Column(
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+            margin: EdgeInsets.all(PFspace.screenMargin),
+            padding: EdgeInsets.all(PFspace.screenMargin),
             decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -59,8 +59,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     bottomname: "个人信息",
                     icon: const Icon(Icons.ac_unit),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SetUser()));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SetUser(),
+                        ),
+                      );
                     },
                     context: context),
                 const Divider(),

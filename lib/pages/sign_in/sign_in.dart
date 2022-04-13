@@ -8,6 +8,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../app.dart';
 import '../sign_up/register.dart';
 import '../users/package/users_copyrig_user.dart';
@@ -38,7 +39,7 @@ class _SignInPageState extends State<SignInPage> {
   _handleSignIn() async {
     if (_checked == true) {
       if (!duCheckStringLength(_passController.value.text, 6)) {
-        toastInfo(msg: '密码不能小于6位');
+        toastInfo(msg: '登录密码不能小于6位');
         return;
       }
 

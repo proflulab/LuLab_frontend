@@ -3,11 +3,16 @@ import 'package:flutter/foundation.dart';
 //字体规格,参考以下网站
 //https://www.shejidaren.com/examples/tools/golden-ratio/index.html
 class PFr {
+  //1.778
   static const double ratio16_9 = 16 / 9;
+  //1.6
   static const double ratio16_10 = 16 / 10;
   static const double ratio1_1 = 1;
+  //0.667
   static const double ratio2_3 = 2 / 3;
+  //0.75
   static const double ratio3_4 = 3 / 4;
+  //0.5625
   static const double ratio9_16 = 9 / 16;
   //白银比例（Silver Ratio）
   static const double silver = 0.707;
