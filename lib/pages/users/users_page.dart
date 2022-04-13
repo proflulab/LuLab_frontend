@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/users/users_set_user.dart';
 
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
@@ -69,8 +70,8 @@ class _UsersPageState extends State<UsersPage> {
             if (kDebugMode) {
               print("进入个人主页");
             }
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SettingsPage()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => const SetUser()));
           },
         ),
       );

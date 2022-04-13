@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../common/values/values.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 //import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'course_comment.dart';
 
 // 课程视频播放页面
@@ -73,7 +72,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
             //'https://media.w3.org/2010/05/sintel/trailer.mp4',
             //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
             //cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-            key: UniqueKey(),
+            // key: UniqueKey(),
           ),
           // tab栏
           _buildTabNavigation(),

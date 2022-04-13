@@ -48,21 +48,6 @@ class _SetUserState extends State<SetUser> {
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
     );
-    // UserLogin profiler = UserLogin(
-    //   msg: '',
-    //   status: '',
-    //   data: Data(
-    //     name: _nameController.value.text,
-    //     password: '12345678',
-    //     iconUrl:
-    //         "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-    //     wechat: _wechatnameController.value.text,
-    //     phone: _phoneController.value.text,
-    //     sex: _sexValue,
-    //     description: _introController.value.text,
-    //     id: '',
-    //   ),
-    // );
     try {
       await GqlUserAPI.userup(context: context, variables: variables);
       //Global.saveProfile(profiler);
@@ -100,6 +85,8 @@ class _SetUserState extends State<SetUser> {
           ),
           onPressed: () {
             Navigator.pop(context);
+            // Navigator.of(context).push(
+            //     MaterialPageRoute(builder: (context) => const UsersPage()));
           },
         ),
         actions: [
@@ -150,7 +137,6 @@ class _SetUserState extends State<SetUser> {
                 ],
               )),
           Container(
-              height: 380.h,
               margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
               decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,

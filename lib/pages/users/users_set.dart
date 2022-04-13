@@ -48,7 +48,6 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Column(
         children: [
           Container(
-            height: 240.h,
             margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
             decoration: const BoxDecoration(
                 shape: BoxShape.rectangle,
