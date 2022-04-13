@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(750, 1334), //配置设计稿的宽度高度
-      builder: () => MaterialApp(
+      builder: (BuildContext context) => MaterialApp(
         locale: const Locale('zh', 'CN'),
         // localizationsDelegates:  [
         //   GlobalMaterialLocalizations.delegate,
