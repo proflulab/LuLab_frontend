@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/utils/url_launcher.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/values/ratio.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/values/ratio.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/values/size_spacing.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/values/size_spacing.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/list_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/list_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/players_chewie.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/players_chewie.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/webview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/webview.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_feats_videos.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_feats_videos.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_up/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_up/register.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
