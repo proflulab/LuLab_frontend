@@ -24,13 +24,13 @@ class _InformationPageState extends State<InformationPage> {
   late EasyRefreshController _controllerCourse;
 
   //第一次请求获取课程个数
-  final int _countFirst = 10;
+  final int _countFirst = 16;
 
   //刷新请求获取课程个数
-  int _count = 10;
+  int _count = 1;
 
   //底部刷新请求个数
-  final int _countDown = 12;
+  final int _countDown = 1;
 
   @override
   void initState() {
@@ -92,9 +92,11 @@ class _InformationPageState extends State<InformationPage> {
             if (mounted) {
               setState(() {
                 _count += _countDown;
+                print(_count);
+                print(_focusData.length);
               });
             }
-            _controllerCourse.finishLoad(noMore: _count > _focusData.length);
+            _controllerCourse.finishLoad(noMore: _count < _focusData.length);
           });
         },
         slivers: <Widget>[
