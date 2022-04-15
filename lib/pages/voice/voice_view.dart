@@ -201,24 +201,24 @@ class _VoiceViewState extends State<VoiceView> {
       setState(() {
         isListening = true;
       });
-      if (a == "1") {
-        print('---------------------');
-        strTitle = voiceText.speechGoogle.detail
-            .substring(0, voiceText.speechGoogle.subBreak[1]);
-        strTime = voiceText.speechGoogle.detail.substring(
-            voiceText.speechGoogle.subBreak[1],
-            voiceText.speechGoogle.subBreak[2]);
-        strDescription = voiceText.speechGoogle.detail.substring(
-            voiceText.speechGoogle.subBreak[2],
-            voiceText.speechGoogle.subBreak[3]);
-        int intTime = int.parse(strTime);
-        Calendar.createEvent(
-          strTitle,
-          strDescription,
-          DateTime.fromMillisecondsSinceEpoch(intTime),
-          90,
-        );
-      }
+      // if (a == "1") {
+      //   print('---------------------');
+      //   strTitle = voiceText.speechGoogle.detail
+      //       .substring(0, voiceText.speechGoogle.subBreak[1]);
+      //   strTime = voiceText.speechGoogle.detail.substring(
+      //       voiceText.speechGoogle.subBreak[1],
+      //       voiceText.speechGoogle.subBreak[2]);
+      //   strDescription = voiceText.speechGoogle.detail.substring(
+      //       voiceText.speechGoogle.subBreak[2],
+      //       voiceText.speechGoogle.subBreak[3]);
+      //   int intTime = int.parse(strTime);
+      //   Calendar.createEvent(
+      //     strTitle,
+      //     strDescription,
+      //     DateTime.fromMillisecondsSinceEpoch(intTime),
+      //     90,
+      //   );
+      // }
     } catch (e) {
       if (kDebugMode) {
         print("===========获取语音响应内容报错===============");
