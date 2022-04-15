@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
-
 import 'package:text_to_speech/text_to_speech.dart';
 
-import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
 import '../../common/services/services.dart';
 import '../../common/utils/utils.dart';
 
@@ -110,7 +109,6 @@ class _VoiceViewState extends State<VoiceView> {
           }
           SoundRecord.stopListening();
           xfSst();
-          YYDialog.init(context);
           setState(() {
             values = 'assets/images/语音动效2.gif';
           });
@@ -199,7 +197,11 @@ class _VoiceViewState extends State<VoiceView> {
         variables: variables,
       );
       String a = voiceText.speechGoogle.code;
-      if (a == "0") {
+      sstSpeak(text: voiceText.speechGoogle.msg);
+      setState(() {
+        isListening = true;
+      });
+      if (a == "1") {
         print('---------------------');
         strTitle = voiceText.speechGoogle.detail
             .substring(0, voiceText.speechGoogle.subBreak[1]);
@@ -217,10 +219,6 @@ class _VoiceViewState extends State<VoiceView> {
           90,
         );
       }
-      sstSpeak(text: voiceText.speechGoogle.msg);
-      setState(() {
-        isListening = true;
-      });
     } catch (e) {
       if (kDebugMode) {
         print("===========获取语音响应内容报错===============");
