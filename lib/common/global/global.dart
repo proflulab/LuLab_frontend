@@ -1,8 +1,10 @@
-//import 'dart:io';
+import 'dart:io';
 
 //import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
 import 'dart:convert';
+
+//import 'package:device_info_plus/device_info_plus.dart';
 
 import '../../../../common/entitys/entitys.dart';
 //import '../../provider/provider.dart';
@@ -30,14 +32,14 @@ class Global {
   /// 发布渠道
   // static String channel = "xiaomi";
 
-  // /// 是否 ios
-  // static bool isIOS = Platform.isIOS;
+  /// 是否 ios
+  static bool isIOS = Platform.isIOS;
 
-  /// android 设备信息
-  //static AndroidDeviceInfo androidDeviceInfo;
+  // /// android 设备信息
+  // static AndroidDeviceInfo androidDeviceInfo;
 
-  /// ios 设备信息
-  //static IosDeviceInfo iosDeviceInfo;
+  // /// ios 设备信息
+  // static IosDeviceInfo iosDeviceInfo;
 
   /// 包信息
   //static PackageInfo packageInfo;
@@ -49,7 +51,7 @@ class Global {
   static int isFirstSign = 1;
 
   /// 是否离线登录
-  // static bool isOfflineLogin = false;
+  static bool isOfflineLogin = false;
 
   /// 应用状态,
   //static AppState appState = AppState();
@@ -62,7 +64,7 @@ class Global {
     // 运行初始
     // WidgetsFlutterBinding.ensureInitialized();
 
-    // 读取设备信息
+    //读取设备信息
     // DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
     // if (Global.isIOS) {
     //   Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
@@ -99,18 +101,18 @@ class Global {
   }
 
   // 持久化 用户信息
-  static Future<bool?> saveProfile(UserLogin userResponse) {
-    profile = userResponse.data;
+  static Future<bool?> saveProfile(Data userResponse) {
+    profile = userResponse;
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
 
-  // 获取 持久化 用户信息
-  static getProfile() {
-    Storage.getJson(storageUserProfileKey).then(
-      (guide) async {
-        UserLogin usere = UserLogin.fromJson(json.decode(guide!));
-        return usere;
-      },
-    );
-  }
+  // // 获取 持久化 用户信息
+  // static getProfile() {
+  //   Storage.getJson(storageUserProfileKey).then(
+  //     (guide) async {
+  //       UserLogin usere = UserLogin.fromJson(json.decode(guide!));
+  //       return usere;
+  //     },
+  //   );
+  // }
 }

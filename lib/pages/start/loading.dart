@@ -20,7 +20,6 @@ class _LoadingPageState extends State<LoadingPage> {
   Future<int> readData() async {
     var prefs = await SharedPreferences.getInstance();
     var result = prefs.getInt('isFirstOpen');
-
     return result ?? 0;
   }
 

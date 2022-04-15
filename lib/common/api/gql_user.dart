@@ -40,7 +40,7 @@ class GqlUserAPI {
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserUpdata,
+      schema: SchemaUser.gqlUserUpdata, 
       variables: variables.toJson(),
     );
 

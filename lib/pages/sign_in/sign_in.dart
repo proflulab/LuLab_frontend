@@ -55,7 +55,7 @@ class _SignInPageState extends State<SignInPage> {
           variables: variables,
         );
         Storage.setInt('isFirstSign', Global.isFirstSign);
-        Global.saveProfile(userProfile);
+        Global.saveProfile(userProfile.data);
       } catch (e) {
         if (kDebugMode) {
           print("===========登录报错内容===============");

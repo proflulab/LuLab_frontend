@@ -53,39 +53,35 @@ String userUpdaterequestToJson(UserUpdaterequest data) =>
 
 class UserUpdaterequest {
   UserUpdaterequest({
+    required this.id,
     required this.name,
-    required this.password,
     required this.sex,
-    required this.img,
     required this.description,
     required this.wechat,
     required this.phone,
   });
 
+  final String id;
   final String name;
-  final String password;
   final String sex;
-  final String img;
   final String description;
   final String wechat;
   final String phone;
 
   factory UserUpdaterequest.fromJson(Map<String, dynamic> json) =>
       UserUpdaterequest(
+        id: json["_id"],
         name: json["name"],
-        password: json["password"],
         sex: json["sex"],
-        img: json["img"],
         description: json["description"],
         wechat: json["wechat"],
         phone: json["phone"],
       );
 
   Map<String, dynamic> toJson() => {
+        "_id": id,
         "name": name,
-        "password": password,
         "sex": sex,
-        "img": img,
         "description": description,
         "wechat": wechat,
         "phone": phone,

@@ -39,24 +39,26 @@ query UserLogin($name: String!, $password: String!) {
 
 //用户数据修改
 //请求数据参考
-// {
-//   "name": "news",
-//   "password": "12345678",
-//   "sex":"1",
-//   "img": "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-//   "description": "hello",
-//   "wechat": "shiming",
-//   "phone": "234532632"
-// }
+//{"_id":"61d9604f5fcd295d1b6893cf","name": "shiming","sex":"1","description": "hello","wechat": "shiming4325","phone": "234532632"}
 
   static const String gqlUserUpdata = r'''
-mutation userUpdate($name: String!, $password: String!, $sex: String!, $img: String!, $description: String!, $wechat: String!, $phone: String!) {
-  userUpdate(userInput: {name: $name, password: $password, sex: $sex, img: $img, description: $description, wechat: $wechat, phone: $phone}) {
+mutation userUpdate($_id: String!, $name: String!, $sex: String!, $description: String!, $wechat: String!, $phone: String!) {
+  userUpdate(userInput: {_id: $_id, name: $name, sex: $sex, description: $description, wechat: $wechat, phone: $phone}) {
     msg
     status
   }
 }
 
 
+
 ''';
+
+// {"_id":"61d9604f5fcd295d1b6893cf","name": "shiming","sex":"1","description": "hello","wechat": "shiming4325","phone": "234532632"}
+// mutation userUpdate($_id: String!, $name: String!, $sex: String!, $description: String!, $wechat: String!, $phone: String!) {
+//   userUpdate(userInput: {_id: $_id, name: $name, sex: $sex, description: $description, wechat: $wechat, phone: $phone}) {
+//     msg
+//     status
+//   }
+// }
+
 }

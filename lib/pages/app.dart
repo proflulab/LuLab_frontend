@@ -45,28 +45,30 @@ class _AppState extends State<App> {
   // 执行登录操作
   _handleSignIn() async {
     var user = Storage.getJson(storageUserProfileKey);
-    user.then((guide) async {
-      var user1 = UserLogin.fromJson(json.decode(guide!));
-      if (kDebugMode) {
-        print(user1.data.name);
-      }
-
-      try {
-        UserLogin userProfile = await GqlUserAPI.login(
-          context: context,
-          variables: Loginrequest(
-            name: user1.data.name,
-            password: user1.data.password,
-          ),
-        );
-        Global.saveProfile(userProfile);
-      } catch (e) {
+    user.then(
+      (guide) async {
+        var user1 = UserLogin.fromJson(json.decode(guide!));
         if (kDebugMode) {
-          print("===========登录报错内容===============");
-          print(e);
+          print(user1.data.name);
         }
-      }
-    });
+
+        try {
+          UserLogin userProfile = await GqlUserAPI.login(
+            context: context,
+            variables: Loginrequest(
+              name: user1.data.name,
+              password: user1.data.password,
+            ),
+          );
+          Global.saveProfile(userProfile.data);
+        } catch (e) {
+          if (kDebugMode) {
+            print("===========登录报错内容===============");
+            print(e);
+          }
+        }
+      },
+    );
   }
 
   @override
