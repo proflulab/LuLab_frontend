@@ -47,17 +47,17 @@ class _AppState extends State<App> {
     var user = Storage.getJson(storageUserProfileKey);
     user.then(
       (guide) async {
-        var user1 = UserLogin.fromJson(json.decode(guide!));
+        var user1 = Data.fromJson(json.decode(guide!));
         if (kDebugMode) {
-          print(user1.data.name);
+          print(user1.name);
         }
 
         try {
           UserLogin userProfile = await GqlUserAPI.login(
             context: context,
             variables: Loginrequest(
-              name: user1.data.name,
-              password: user1.data.password,
+              name: user1.name,
+              password: user1.password,
             ),
           );
           Global.saveProfile(userProfile.data);
