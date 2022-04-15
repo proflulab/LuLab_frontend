@@ -79,14 +79,14 @@ class _GatherState extends State<Gather> {
   _handleCourse() async {
     var user = Storage.getJson(storageUserProfileKey);
     user.then((guide) async {
-      var user1 = UserLogin.fromJson(json.decode(guide!));
+      var user1 = Data.fromJson(json.decode(guide!));
 
       try {
         _latestDirectCourse = await GqlCourseAPI.sortCourseInfo(
           context: context,
           variables: LatestDirectCourseRequest(
             mode: "2",
-            authorId: user1.data.id,
+            authorId: user1.id,
             limit: 2,
             skip: 0,
           ),
