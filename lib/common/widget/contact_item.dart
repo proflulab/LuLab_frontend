@@ -17,9 +17,7 @@ class ContactItem extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(
-              bottom: 4.0,
-            ),
+            padding: const EdgeInsets.only(bottom: 4.0),
             child: Text(count, style: const TextStyle(fontSize: 18.0)),
           ),
           Text(title,

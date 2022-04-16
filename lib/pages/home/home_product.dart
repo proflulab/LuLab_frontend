@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:proflu/common/api/gql_home.dart';
-import 'package:proflu/common/values/ratio.dart';
-import 'package:proflu/common/values/size_spacing.dart';
-import 'package:proflu/common/widget/positioned_widget.dart';
-import 'package:proflu/pages/home/home_product_detail.dart';
 
+import '../../common/api/gql_home.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
 import '../../common/entitys/entitys.dart';
+
+import '../../pages/home/home_product_detail.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
@@ -58,8 +58,8 @@ class _ProductState extends State<Product> {
               height: _boxh,
               width: _boxw,
               child: Container(
-                margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 40.h),
-                alignment: const Alignment(0, 0),
+                margin: EdgeInsets.all(PFspace.screenMargin),
+                //alignment: const Alignment(0, 0),
                 height: 300.h,
                 width: 690.w,
                 decoration: BoxDecoration(
