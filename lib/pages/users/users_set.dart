@@ -1,11 +1,12 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/users/users_set_about.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/sign_in/sign_in.dart';
-import 'package/users_home_page_user.dart';
+
 import 'users_set_user.dart';
 
 //import 'users_set_account.dart';
@@ -72,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     icon: const Icon(Icons.ac_unit),
                     onPressed: () {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const Dty()));
+                          MaterialPageRoute(builder: (context) => const SetAbout()));
                     },
                     context: context),
               ],

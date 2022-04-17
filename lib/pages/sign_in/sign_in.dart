@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
+import '../../common/staticdata/staticdata.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../app.dart';
 import '../sign_up/register.dart';
-import '../users/package/users_copyrig_user.dart';
-import '../users/package/users_privay_user.dart';
-import '../users/package/users_serice_user.dart';
+import '../users/users_agreement.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -196,11 +196,13 @@ class _SignInPageState extends State<SignInPage> {
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async {
                                                 Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const Service(),
-                                                  ),
-                                                );
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const Agreement(
+                                                              data: Markdowndata
+                                                                  .agreementUser,
+                                                              title: '服务使用协议',
+                                                            )));
                                               },
                                           ),
                                           TextSpan(
@@ -210,13 +212,13 @@ class _SignInPageState extends State<SignInPage> {
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () async {
                                                   Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const Qrivacy(
-                                                        title: '',
-                                                      ),
-                                                    ),
-                                                  );
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const Agreement(
+                                                                data: Markdowndata
+                                                                    .agreementUser,
+                                                                title: '服务使用协议',
+                                                              )));
                                                 }),
                                           TextSpan(
                                             text: ',《陆向谦实验室版权声明》',
@@ -225,13 +227,13 @@ class _SignInPageState extends State<SignInPage> {
                                             recognizer: TapGestureRecognizer()
                                               ..onTap = () async {
                                                 Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const Copyright(
-                                                      title: '',
-                                                    ),
-                                                  ),
-                                                );
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const Agreement(
+                                                              data: Markdowndata
+                                                                  .agreementUser,
+                                                              title: '服务使用协议',
+                                                            )));
                                               },
                                           ),
                                         ],

@@ -140,7 +140,11 @@ class _InforDetailsState extends State<InforDetails> {
                                 ),
                               ),
                             ),
-                            PFMarkdown(data: infordata.mdtext),
+                            PFMarkdown(
+                              data: infordata.mdtext,
+                              p: const TextStyle(fontSize: 18, height: 1.8),
+                              pPadding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                            ),
                             Text(
                               '全部评价' + _commentData.length.toString(),
                               style: const TextStyle(
@@ -247,7 +251,7 @@ class _InforDetailsState extends State<InforDetails> {
                         } else {
                           return Column(
                             children: [
-                              SvgPicture.asset( 
+                              SvgPicture.asset(
                                 "assets/images/comment.svg",
                                 color: PFc.themeColor20,
                                 semanticsLabel: 'A red up arrow',

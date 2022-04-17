@@ -1,20 +1,114 @@
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/users/users_agreement.dart';
 
-class SetAbout extends StatefulWidget {
-  const SetAbout({Key? key}) : super(key: key);
-  @override
-  _SetAboutState createState() => _SetAboutState();
-}
+import '../../../common/values/values.dart';
+import '../../../common/widget/widgets.dart';
+//import '../../../common/utils/utils.dart';
 
-class _SetAboutState extends State<SetAbout> {
+import '../../common/staticdata/staticdata.dart';
+import 'users_set.dart';
+
+class SetAbout extends StatelessWidget {
+  const SetAbout({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            '关于实验室',
+      appBar: AppBar(
+        elevation: 0.5,
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        leading: TextButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const SettingsPage()),
+            );
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
           ),
         ),
-        body: Column());
+        title: const Text('关于实验室',
+            style: TextStyle(fontFamily: 'MyFontStyle', color: Colors.black)),
+      ),
+      body: const Ttt(),
+    );
+  }
+}
+
+class Ttt extends StatelessWidget {
+  const Ttt({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        Image.asset(
+          'assets/images/OIP-YYH.jpg',
+          fit: BoxFit.fill,
+          width: 359,
+          height: 210,
+        ),
+        Container(
+          margin: EdgeInsets.all(PFspace.screenMargin),
+          padding: EdgeInsets.all(PFspace.screenMargin),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          child: Column(
+            children: [
+              listtilebotton2(
+                  bottomname: "服务使用协议",
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Agreement(
+                              data: Markdowndata.agreementUser,
+                              title: '服务使用协议',
+                            )));
+                  },
+                  context: context),
+              const Divider(),
+              listtilebotton2(
+                  bottomname: "隐私政策",
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Agreement(
+                              data: Markdowndata.agreementUser,
+                              title: '隐私政策',
+                            )));
+                  },
+                  context: context),
+              const Divider(),
+              listtilebotton2(
+                  bottomname: "版权声明",
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Agreement(
+                              data: Markdowndata.agreementUser,
+                              title: '版权声明',
+                            )));
+                  },
+                  context: context),
+              const Divider(),
+              listtilebotton2(
+                  bottomname: "产品特色",
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Agreement(
+                              data: Markdowndata.agreementUser,
+                              title: '产品特色',
+                            )));
+                  },
+                  context: context),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }

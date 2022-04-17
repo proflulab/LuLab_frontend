@@ -96,7 +96,7 @@ class _InformationPageState extends State<InformationPage> {
                 print(_focusData.length);
               });
             }
-            _controllerCourse.finishLoad(noMore: _count < _focusData.length);
+            _controllerCourse.finishLoad(noMore: _count > _focusData.length);
           });
         },
         slivers: <Widget>[

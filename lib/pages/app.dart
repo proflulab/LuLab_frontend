@@ -51,7 +51,6 @@ class _AppState extends State<App> {
         if (kDebugMode) {
           print(user1.name);
         }
-
         try {
           UserLogin userProfile = await GqlUserAPI.login(
             context: context,

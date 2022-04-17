@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import '../../../common/utils/utils.dart';
-import '../../sign_in/sign_in.dart';
+import '../../common/utils/utils.dart';
+import '../sign_in/sign_in.dart';
 
 class Features extends StatelessWidget {
   const Features({Key? key}) : super(key: key);
