@@ -116,5 +116,5 @@ class Markdowndata {
   
   ''';
 
-  static const agreementUs = '''''';
+  static const privacy = '''隐私协议内容''';
 }

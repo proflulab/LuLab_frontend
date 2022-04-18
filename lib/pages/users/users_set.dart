@@ -35,10 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
         leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
-          ),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -72,8 +69,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     bottomname: "关于我们",
                     icon: const Icon(Icons.ac_unit),
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const SetAbout()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SetAbout()));
                     },
                     context: context),
               ],

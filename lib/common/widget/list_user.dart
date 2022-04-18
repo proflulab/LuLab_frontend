@@ -66,7 +66,7 @@ Widget listGroup2({
             flex: 1,
             child: child,
           ),
-          Expanded(flex: 1, child: icon)
+          Expanded(flex: 0, child: icon)
         ],
       ),
     ),

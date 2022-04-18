@@ -2,6 +2,7 @@ import 'dart:convert';
 
 //响应数据
 
+
 Inforponse inforponseFromJson(String str) =>
     Inforponse.fromJson(json.decode(str));
 

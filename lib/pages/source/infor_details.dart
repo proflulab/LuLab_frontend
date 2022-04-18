@@ -61,7 +61,7 @@ class _InforDetailsState extends State<InforDetails> {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
       authorId: Global.profile.id,
-      authorImg: Global.profile.iconUrl,
+      authorImg: Global.profile.profileImgUrl,
       authorName: Global.profile.name,
       category: '1',
       entityId: infordata.id,
@@ -108,26 +108,15 @@ class _InforDetailsState extends State<InforDetails> {
                               margin: EdgeInsets.fromLTRB(0, 30.h, 0, 0),
                               height: 100.h,
                               width: 1.sw,
-                              child: Text(
-                                infordata.title,
-                                textAlign: TextAlign.left,
-                                softWrap: false,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: const TextStyle(
-                                  color: PFc.textPrimary,
-                                  fontFamily: 'MyFontStyle',
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              child: PFtext.text1(
+                                  text: infordata.title, fontSize: 23),
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(0, 10.h, 0, 0),
                               height: 100.h,
                               width: 1.sw,
                               child: Text(
-                                infordata.releaseDate,
+                                TimeChange.client(infordata.releaseDate, "ymd"),
                                 textAlign: TextAlign.left,
                                 softWrap: false,
                                 overflow: TextOverflow.ellipsis,
@@ -135,7 +124,7 @@ class _InforDetailsState extends State<InforDetails> {
                                 style: const TextStyle(
                                   color: PFc.textPrimary,
                                   fontFamily: '',
-                                  fontSize: 23,
+                                  fontSize: 20,
                                   //fontWeight: FontWeight.bold,
                                 ),
                               ),

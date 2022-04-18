@@ -17,7 +17,7 @@ query UserLogin($name: String!, $password: String!) {
       email
       wechat
       description
-      iconUrl
+      profileImgUrl
       password
     }
   }

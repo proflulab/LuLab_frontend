@@ -19,14 +19,14 @@ class Global {
     birth: '',
     description: '',
     email: '',
-    iconUrl: '',
+    profileImgUrl: '',
     id: '',
     name: '',
-    password: '',
     phone: '',
     sex: '',
     wechat: '',
     industry: '',
+    password: '',
   );
 
   /// 发布渠道

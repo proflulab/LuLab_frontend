@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../common/utils/utils.dart';
 import '../sign_in/sign_in.dart';
 
@@ -41,12 +42,7 @@ class APP extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          'assets/images/OIP-YYH.jpg',
-          fit: BoxFit.fill,
-          width: 365,
-          height: 200,
-        ),
+        SvgPicture.asset("assets/images/logo.svg"),
         Center(
           child: Container(
               width: 400,

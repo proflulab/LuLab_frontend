@@ -32,15 +32,11 @@ class _UsersPageState extends State<UsersPage> {
         margin: const EdgeInsets.all(20),
         //color: Colors.white,
         child: ListTile(
-          leading: ClipOval(
-            child:
-                //CachedImage.typeLaod(Global.profile.iconUrl)
-                Image.network(Global.profile.iconUrl),
-          ),
-          // CircleAvatar(
-          //   radius: 25,
-          //   backgroundImage: AssetImage("assets/images/logo.png"),
-          // ),
+          leading: SizedBox(
+              width: 100.w,
+              height: 100.w,
+              child: ClipOval(
+                  child: CachedImage.typeLaod(Global.profile.profileImgUrl))),
           title: Text(
             Global.profile.name,
             style: const TextStyle(
@@ -305,8 +301,6 @@ class _UsersPageState extends State<UsersPage> {
                 color: Colors.green,
               ),
               onPressed: () async {
-
-                
                 Navigator.push(
                   context,
                   MaterialPageRoute(

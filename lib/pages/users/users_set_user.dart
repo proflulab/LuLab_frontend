@@ -42,15 +42,15 @@ class _SetUserState extends State<SetUser> {
       birth: '',
       description: _introController.value.text,
       email: '',
-      iconUrl:
+      profileImgUrl:
           'https://tse1-mm.cn.bing.net/th/id/OIP-C.8jK5VH-CESQrlEz2RawVwAAAAA?w=210&h=210&c=7&r=0&o=5&dpr=2&pid=1.7',
       id: Global.profile.id,
       name: _nameController.value.text,
-      password: '',
       phone: _phoneController.value.text,
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
       industry: '',
+      password: '',
     );
 
     try {
@@ -84,10 +84,7 @@ class _SetUserState extends State<SetUser> {
           ),
         ),
         leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
-          ),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
             // Navigator.of(context).push(
@@ -131,7 +128,10 @@ class _SetUserState extends State<SetUser> {
                 child: listGroup2(
                   context: context,
                   title: '头像',
-                  child: ClipOval(child: Image.network(Global.profile.iconUrl)),
+                  child: SizedBox(
+                      child: ClipOval(
+                          child: CachedImage.typeLaod(
+                              Global.profile.profileImgUrl))),
                   icon: const Icon(MyIcon.userRight),
                   onTap: () {
                     if (kDebugMode) {

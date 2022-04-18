@@ -40,6 +40,7 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
     _handleSignIn();
+    NetState.network();
   }
 
   // 执行登录操作
