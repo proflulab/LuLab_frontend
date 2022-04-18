@@ -30,7 +30,6 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UISupportedInterfaceOrientations</key>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>访问相册</string>
 
@@ -69,6 +68,8 @@
 
     <key>NSAppleMusicUsageDescription</key>
     <string>媒体资料库</string>
+	<key>UISupportedInterfaceOrientations</key>
+
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
