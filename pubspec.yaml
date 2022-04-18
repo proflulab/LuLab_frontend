@@ -68,6 +68,8 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  readmore: ^2.1.0
+  keyboard_dismisser: ^2.0.1
 
 dev_dependencies:
   flutter_test:

@@ -2,12 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '/pages/home/home_feats_videos.dart';
-
 import '../../common/api/apis.dart';
-import '../../common/values/values.dart';
-import '../../common/utils/utils.dart';
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
 // import 'tab_barin_feast.dart';
@@ -106,7 +105,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => FeatsVideo(
-                        product: widget.product.videoUrl,
+                        classificationUser: widget.product,
                       ),
                     ),
                   );
