@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:readmore/readmore.dart';
 
 import '/pages/home/home_feats_videos.dart';
 import '../../common/api/apis.dart';
@@ -28,6 +31,8 @@ class _FeastPersonalState extends State<FeastPersonal> {
   late FeatsExperienceReponse _postsData;
   List<LatestUserGrowth> _focusData = [];
 
+  LatestClassificationUser get product => widget.product;
+
   @override
   void initState() {
     super.initState();
@@ -52,171 +57,366 @@ class _FeastPersonalState extends State<FeastPersonal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
-        child: AppBar(),
-      ),
-      body: ListView(
-        children: <Widget>[
-          _img(),
-          _profileInfo(),
-          SizedBox(height: 15.w),
-          _experience(),
-        ],
-      ),
+      body: _buildBody(),
     );
   }
 
-  _img() {
-    return Container(
-      height: 250.h,
-      margin: EdgeInsets.only(
-        left: PFspace.screenMargin,
-        right: PFspace.screenMargin,
-        top: 10,
-      ),
-      decoration: BoxDecoration(
-        color: PFc.backgroundSecondary,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(25.w)),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            child: SizedBox(
-              height: 180.h,
-              //width: MediaQuery.of(context).size.width,
-              width: double.infinity,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(25.w),
-                ),
-                child: CachedImage.typeLaod(widget.product.profileImgUrl),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 170.h,
-            right: 40.w,
-            child: RawChip(
-              label: const Text('视频介绍'),
-              onPressed: () {
-                if (kDebugMode) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FeatsVideo(
-                        classificationUser: widget.product,
+  Widget _buildBody() {
+    return Stack(
+      children: [
+        Positioned.fill(
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 440.w,
+                margin:
+                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: CachedNetworkImageProvider(
+                    product.bigCoverUrl!,
+                  ),
+                  fit: BoxFit.cover,
+                )),
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    print("==");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FeatsVideo(
+                          classificationUser: widget.product,
+                        ),
                       ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(50),
                     ),
-                  );
-                }
-              },
-              onDeleted: () {},
-              backgroundColor: PFc.themeColor30,
-              deleteIcon: const Icon(Icons.play_circle_filled_rounded),
-              deleteIconColor: Colors.red,
-              deleteButtonTooltipMessage: '播放',
-            ),
-          ),
-          Positioned(
-            width: 140.w,
-            height: 140.w,
-            top: 140.h,
-            left: 20.w,
-            child: Container(
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                color: PFc.backgroundSecondary,
-                borderRadius: BorderRadius.all((Radius.circular(70.w))),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(75.w),
+                    width: 84.w,
+                    height: 84.w,
+                    child: Icon(
+                      Icons.play_arrow_rounded,
+                      color: Colors.white,
+                      size: 60.w,
+                    ),
+                  ),
                 ),
-                child: CachedImage.typeLaod(widget.product.profileImgUrl),
               ),
-            ),
+              Transform.translate(
+                offset: Offset(0, -10.w),
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(10)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Transform.translate(
+                        offset: Offset(-10.w, -35.w),
+                        child: Container(
+                          width: 124.w,
+                          height: 124.w,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(124.w)),
+                          alignment: Alignment.center,
+                          child: SizedBox(
+                            width: 116.w,
+                            height: 116.w,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(58.w),
+                              child:
+                                  CachedImage.typeLaod(product.profileImgUrl!),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          PFtext.text1(text: product.name!, fontSize: 16),
+                          SizedBox(width: 10.w),
+                          Container(
+                            height: 27.64.w,
+                            width: 130.w,
+                            padding: EdgeInsets.only(left: 27.5.w),
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/identity_bg.png"))),
+                            alignment: Alignment.center,
+                            child: PFtext.text1(
+                                text: product.identity ?? "",
+                                fontSize: 8,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12.w),
+                      Row(
+                        children: [
+                          PFtext.text1(
+                              text:
+                                  "${product.address ?? '地址'}   |${product.schoolRecord ?? '学历'}  |${product.sex == '0' ? '男' : '女'}   |${product.workCondition ?? '工作状态'} ",
+                              fontSize: 12),
+                        ],
+                      ),
+                      SizedBox(height: 12.w),
+                      PFtext.text1(
+                        text: "${product.duration ?? 0}年工作经验",
+                        fontSize: 12,
+                      ),
+                      const Divider(height: 40),
+                      ReadMoreText(
+                        product.detailMsg ?? "",
+                        trimLines: 2,
+                        trimMode: TrimMode.Line,
+                        trimExpandedText: "收起",
+                        trimCollapsedText: "展开",
+                        colorClickableText: PFc.thirdElementText,
+                        callback: (v) {
+                          print("==");
+                        },
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: "MyFontStyle",
+                        ),
+                      ),
+                      SizedBox(height: 20)
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(30.w),
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PFtext.text1(text: "个人经历", fontSize: 18),
+                    SizedBox(height: 15),
+                    ListView.separated(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (c, i) {
+                        LatestUserGrowth growth = _focusData[i];
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                                width: 90.w,
+                                height: 90.w,
+                                child: CachedImage.typeLaod(growth.logoUrl)),
+                            SizedBox(width: 20.w),
+                            Expanded(
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                PFtext.text1(
+                                    text: growth.position, fontSize: 16),
+                                SizedBox(height: 20.w),
+                                PFtext.text1(
+                                    text:
+                                        "${TimeChange.client(int.parse(growth.beginTime), "ym")}  - ${TimeChange.client(int.parse(growth.endTime), "ym")}",
+                                    fontSize: 14,
+                                    color: PFc.textSecondary),
+                                SizedBox(height: 20.w),
+                                PFtext.text1(
+                                    text: "${growth.company}，${growth.desc}",
+                                    fontSize: 16),
+                              ],
+                            ))
+                          ],
+                        );
+                      },
+                      separatorBuilder: (c, i) => Divider(height: 1),
+                      itemCount: _focusData.length,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
-        ],
-      ),
+        )),
+        Positioned(top: 0, left: 0, right: 0, child: _buildAppbar()),
+      ],
     );
   }
 
-  _profileInfo() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-      padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-      decoration: BoxDecoration(
-        color: PFc.backgroundSecondary,
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(25.w)),
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text(widget.product.name),
-              SizedBox(width: 5.w),
-              Icon(
-                widget.product.sex == "1"
-                    ? Icons.male
-                    : widget.product.sex == "2"
-                        ? Icons.female
-                        : null,
-              ),
-            ],
-          ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: PFc.themeColor30,
-                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
-                ),
-                child: Row(
-                  children: const [Text("特斯拉"), Icon(Icons.fitbit_sharp)],
-                ),
-              ),
-              SizedBox(width: 15.w),
-              Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: PFc.themeColor30,
-                  borderRadius: BorderRadius.all(Radius.circular(15.w)),
-                ),
-                child: Row(
-                  children: const [Text("高管"), Icon(Icons.fitbit_sharp)],
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              const Text("所在位置"),
-              SizedBox(width: 5.w),
-              Text(widget.product.location[0] +
-                  "·" +
-                  widget.product.location[1]),
-            ],
-          ),
-          SizedBox(height: 15.w),
-          Row(
-            children: [
-              const Text("家      乡"),
-              SizedBox(width: 5.w),
-              Text(widget.product.homeTown[0] +
-                  "·" +
-                  widget.product.homeTown[1]),
-            ],
-          ),
-          const Divider(),
-          richText(widget.product.detailMsg),
-        ],
-      ),
+  AppBar _buildAppbar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      iconTheme: IconThemeData(color: Colors.black87),
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      toolbarHeight: 44,
     );
   }
+
+  // _img() {
+  //   return Container(
+  //     height: 250.h,
+  //     margin: EdgeInsets.only(
+  //       left: PFspace.screenMargin,
+  //       right: PFspace.screenMargin,
+  //       top: 10,
+  //     ),
+  //     decoration: BoxDecoration(
+  //       color: PFc.backgroundSecondary,
+  //       borderRadius: BorderRadius.vertical(top: Radius.circular(25.w)),
+  //     ),
+  //     child: Stack(
+  //       children: [
+  //         Positioned(
+  //           child: SizedBox(
+  //             height: 180.h,
+  //             //width: MediaQuery.of(context).size.width,
+  //             width: double.infinity,
+  //             child: ClipRRect(
+  //               borderRadius: BorderRadius.all(
+  //                 Radius.circular(25.w),
+  //               ),
+  //               child: CachedImage.typeLaod(widget.product.profileImgUrl),
+  //             ),
+  //           ),
+  //         ),
+  //         Positioned(
+  //           top: 170.h,
+  //           right: 40.w,
+  //           child: RawChip(
+  //             label: const Text('视频介绍'),
+  //             onPressed: () {
+  //               if (kDebugMode) {
+  //                 Navigator.push(
+  //                   context,
+  //                   MaterialPageRoute(
+  //                     builder: (context) => FeatsVideo(
+  //                       classificationUser: widget.product,
+  //                     ),
+  //                   ),
+  //                 );
+  //               }
+  //             },
+  //             onDeleted: () {},
+  //             backgroundColor: PFc.themeColor30,
+  //             deleteIcon: const Icon(Icons.play_circle_filled_rounded),
+  //             deleteIconColor: Colors.red,
+  //             deleteButtonTooltipMessage: '播放',
+  //           ),
+  //         ),
+  //         Positioned(
+  //           width: 140.w,
+  //           height: 140.w,
+  //           top: 140.h,
+  //           left: 20.w,
+  //           child: Container(
+  //             padding: EdgeInsets.all(10.w),
+  //             decoration: BoxDecoration(
+  //               color: PFc.backgroundSecondary,
+  //               borderRadius: BorderRadius.all((Radius.circular(70.w))),
+  //             ),
+  //             child: ClipRRect(
+  //               borderRadius: BorderRadius.all(
+  //                 Radius.circular(75.w),
+  //               ),
+  //               child: CachedImage.typeLaod(widget.product.profileImgUrl),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  // _profileInfo() {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+  //     padding: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
+  //     decoration: BoxDecoration(
+  //       color: PFc.backgroundSecondary,
+  //       borderRadius: BorderRadius.vertical(bottom: Radius.circular(25.w)),
+  //     ),
+  //     child: Column(
+  //       children: [
+  //         Row(
+  //           children: [
+  //             Text(widget.product.name),
+  //             SizedBox(width: 5.w),
+  //             Icon(
+  //               widget.product.sex == "1"
+  //                   ? Icons.male
+  //                   : widget.product.sex == "2"
+  //                       ? Icons.female
+  //                       : null,
+  //             ),
+  //           ],
+  //         ),
+  //         SizedBox(height: 15.w),
+  //         Row(
+  //           children: [
+  //             Container(
+  //               padding: const EdgeInsets.all(5),
+  //               decoration: BoxDecoration(
+  //                 color: PFc.themeColor30,
+  //                 borderRadius: BorderRadius.all(Radius.circular(15.w)),
+  //               ),
+  //               child: Row(
+  //                 children: const [Text("特斯拉"), Icon(Icons.fitbit_sharp)],
+  //               ),
+  //             ),
+  //             SizedBox(width: 15.w),
+  //             Container(
+  //               padding: const EdgeInsets.all(5),
+  //               decoration: BoxDecoration(
+  //                 color: PFc.themeColor30,
+  //                 borderRadius: BorderRadius.all(Radius.circular(15.w)),
+  //               ),
+  //               child: Row(
+  //                 children: const [Text("高管"), Icon(Icons.fitbit_sharp)],
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //         SizedBox(height: 15.w),
+  //         Row(
+  //           children: [
+  //             const Text("所在位置"),
+  //             SizedBox(width: 5.w),
+  //             Text(widget.product.location[0] +
+  //                 "·" +
+  //                 widget.product.location[1]),
+  //           ],
+  //         ),
+  //         SizedBox(height: 15.w),
+  //         Row(
+  //           children: [
+  //             const Text("家      乡"),
+  //             SizedBox(width: 5.w),
+  //             Text(widget.product.homeTown[0] +
+  //                 "·" +
+  //                 widget.product.homeTown[1]),
+  //           ],
+  //         ),
+  //         const Divider(),
+  //         richText(widget.product.detailMsg),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   _experience() {
     return Container(
@@ -357,10 +557,6 @@ class _FeastPersonalState extends State<FeastPersonal> {
     }
   }
 }
-
-
-
-
 
 // class FeastPersonal extends StatefulWidget {
 //   const FeastPersonal({Key? key, required this.product}) : super(key: key);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 //import '../../common/staticdata/staticdata.dart';
 
 import '../../common/api/apis.dart';
@@ -6,7 +7,6 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'home_feats_personal.dart';
 
 class FeatsPage extends StatefulWidget {
@@ -87,13 +87,13 @@ class _FeatsPageState extends State<FeatsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               PFtext.text1(
-                                text: _focusData[index].name,
+                                text: _focusData[index].name!,
                                 color: PFc.textEmphasis,
                                 fontSize: 23,
                               ),
                               //Text(_focusData[index].birth),
                               PFtext.text2(
-                                text: _focusData[index].description,
+                                text: _focusData[index].description!,
                                 color: PFc.textEmphasis,
                                 fontSize: 15,
                                 maxLines: 3,
@@ -110,7 +110,7 @@ class _FeatsPageState extends State<FeatsPage> {
                             Radius.circular(10.r),
                           ),
                           child: CachedImage.typeLaod(
-                              _focusData[index].profileImgUrl),
+                              _focusData[index].profileImgUrl!),
                         ),
                       ),
                     ],

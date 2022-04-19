@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 Feats featsFromJson(String str) => Feats.fromJson(json.decode(str));
 
@@ -23,85 +24,179 @@ class Feats {
       };
 }
 
+class FFConvert {
+  FFConvert._();
+  // ignore: prefer_function_declarations_over_variables
+  static T? Function<T extends Object?>(dynamic value) convert =
+      <T>(dynamic value) {
+    if (value == null) {
+      return null;
+    }
+    return json.decode(value.toString()) as T?;
+  };
+}
+
+T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
+  if (value is T) {
+    return value;
+  }
+  try {
+    if (value != null) {
+      final String valueS = value.toString();
+      if ('' is T) {
+        return valueS as T;
+      } else if (0 is T) {
+        return int.parse(valueS) as T;
+      } else if (0.0 is T) {
+        return double.parse(valueS) as T;
+      } else if (false is T) {
+        if (valueS == '0' || valueS == '1') {
+          return (valueS == '1') as T;
+        }
+        return (valueS == 'true') as T;
+      } else {
+        return FFConvert.convert<T>(value);
+      }
+    }
+  } catch (e, stackTrace) {
+    log('asT<$T>', error: e, stackTrace: stackTrace);
+    return defaultValue;
+  }
+
+  return defaultValue;
+}
+
 class LatestClassificationUser {
   LatestClassificationUser({
-    required this.id,
-    required this.name,
-    required this.birth,
-    required this.sex,
-    required this.phone,
-    required this.email,
-    required this.wechat,
-    required this.homeTown,
-    required this.location,
-    required this.detailMsg,
-    required this.description,
-    required this.profileImgUrl,
-    required this.bigCoverUrl,
-    required this.videoUrl,
-    required this.tags,
-    required this.category,
-    required this.userType,
+    this.id,
+    this.name,
+    this.sex,
+    this.birth,
+    this.position,
+    this.company,
+    this.industry,
+    this.phone,
+    this.email,
+    this.wechat,
+    this.schoolRecord,
+    this.workCondition,
+    this.detailMsg,
+    this.description,
+    this.duration,
+    this.category,
+    this.userType,
+    this.identity,
+    this.imgUrl,
+    this.iconUrl,
+    this.bigCoverUrl,
+    this.profileImgUrl,
+    this.videoUrl,
+    this.password,
+    this.country,
+    this.address,
+    this.addTime,
+    this.timestamp,
   });
 
-  final String id;
-  final String name;
-  final String birth;
-  final String sex;
-  final String phone;
-  final String email;
-  final String wechat;
-  final List<String> homeTown;
-  final List<String> location;
-  final String detailMsg;
-  final String description;
-  final String profileImgUrl;
-  final String bigCoverUrl;
-  final String videoUrl;
-  final List<String> tags;
-  final String category;
-  final String userType;
-
-  factory LatestClassificationUser.fromJson(Map<String, dynamic> json) =>
+  factory LatestClassificationUser.fromJson(Map<String, dynamic> jsonRes) =>
       LatestClassificationUser(
-        id: json["_id"],
-        name: json["name"],
-        birth: json["birth"],
-        sex: json["sex"],
-        phone: json["phone"],
-        email: json["email"],
-        wechat: json["wechat"],
-        homeTown: List<String>.from(json["homeTown"].map((x) => x)),
-        location: List<String>.from(json["location"].map((x) => x)),
-        detailMsg: json["detailMsg"],
-        description: json["description"],
-        profileImgUrl: json["profileImgUrl"],
-        bigCoverUrl: json["bigCoverUrl"],
-        videoUrl: json["videoUrl"],
-        tags: List<String>.from(json["tags"].map((x) => x)),
-        category: json["category"],
-        userType: json["userType"],
+        id: asT<String?>(jsonRes['_id']),
+        name: asT<String?>(jsonRes['name']),
+        sex: asT<String?>(jsonRes['sex']),
+        birth: asT<String?>(jsonRes['birth']),
+        position: asT<String?>(jsonRes['position']),
+        company: asT<String?>(jsonRes['company']),
+        industry: asT<String?>(jsonRes['industry']),
+        phone: asT<String?>(jsonRes['phone']),
+        email: asT<String?>(jsonRes['email']),
+        wechat: asT<String?>(jsonRes['wechat']),
+        schoolRecord: asT<String?>(jsonRes['schoolRecord']),
+        workCondition: asT<String?>(jsonRes['workCondition']),
+        detailMsg: asT<String?>(jsonRes['detailMsg']),
+        description: asT<String?>(jsonRes['description']),
+        duration: asT<String?>(jsonRes['duration']),
+        category: asT<String?>(jsonRes['category']),
+        userType: asT<String?>(jsonRes['userType']),
+        identity: asT<String?>(jsonRes['identity']),
+        imgUrl: asT<String?>(jsonRes['imgUrl']),
+        iconUrl: asT<String?>(jsonRes['iconUrl']),
+        bigCoverUrl: asT<String?>(jsonRes['bigCoverUrl']),
+        profileImgUrl: asT<String?>(jsonRes['profileImgUrl']),
+        videoUrl: asT<String?>(jsonRes['videoUrl']),
+        password: asT<String?>(jsonRes['password']),
+        country: asT<String?>(jsonRes['country']),
+        address: asT<String?>(jsonRes['address']),
+        addTime: asT<String?>(jsonRes['addTime']),
+        timestamp: asT<String?>(jsonRes['timestamp']),
       );
 
-  Map<String, dynamic> toJson() => {
-        "_id": id,
-        "name": name,
-        "birth": birth,
-        "sex": sex,
-        "phone": phone,
-        "email": email,
-        "wechat": wechat,
-        "homeTown": List<dynamic>.from(homeTown.map((x) => x)),
-        "location": List<dynamic>.from(location.map((x) => x)),
-        "detailMsg": detailMsg,
-        "description": description,
-        "profileImgUrl": profileImgUrl,
-        "bigCoverUrl": bigCoverUrl,
-        "videoUrl": videoUrl,
-        "tags": List<dynamic>.from(tags.map((x) => x)),
-        "category": category,
-        "userType": userType,
+  String? id;
+  String? name;
+  String? sex;
+  String? birth;
+  String? position;
+  String? company;
+  String? industry;
+  String? phone;
+  String? email;
+  String? wechat;
+  String? schoolRecord;
+  String? workCondition;
+  String? detailMsg;
+  String? description;
+  String? duration;
+  String? category;
+  String? userType;
+  String? identity;
+  String? imgUrl;
+  String? iconUrl;
+  String? bigCoverUrl;
+  String? profileImgUrl;
+  String? videoUrl;
+  String? password;
+  String? country;
+  String? address;
+  String? addTime;
+  String? timestamp;
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        '_id': id,
+        'name': name,
+        'sex': sex,
+        'birth': birth,
+        'position': position,
+        'company': company,
+        'industry': industry,
+        'phone': phone,
+        'email': email,
+        'wechat': wechat,
+        'schoolRecord': schoolRecord,
+        'workCondition': workCondition,
+        'detailMsg': detailMsg,
+        'description': description,
+        'duration': duration,
+        'category': category,
+        'userType': userType,
+        'identity': identity,
+        'imgUrl': imgUrl,
+        'iconUrl': iconUrl,
+        'bigCoverUrl': bigCoverUrl,
+        'profileImgUrl': profileImgUrl,
+        'videoUrl': videoUrl,
+        'password': password,
+        'country': country,
+        'address': address,
+        'addTime': addTime,
+        'timestamp': timestamp,
       };
+
+  LatestClassificationUser clone() => LatestClassificationUser.fromJson(
+      asT<Map<String, dynamic>>(jsonDecode(jsonEncode(this)))!);
 }
 
 //request
