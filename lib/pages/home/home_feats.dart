@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 //import '../../common/staticdata/staticdata.dart';
 
 import '../../common/api/apis.dart';
@@ -6,7 +7,6 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'home_feats_personal.dart';
 
 class FeatsPage extends StatefulWidget {
@@ -17,7 +17,8 @@ class FeatsPage extends StatefulWidget {
 }
 
 //这个文件放置功勋园组件
-class _FeatsPageState extends State<FeatsPage> {
+class _FeatsPageState extends State<FeatsPage>
+    with AutomaticKeepAliveClientMixin {
   late Feats _postsData;
   List<LatestClassificationUser> _focusData = [];
 
@@ -44,7 +45,11 @@ class _FeatsPageState extends State<FeatsPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView.builder(
       itemCount: _focusData.length,
       itemBuilder: (contxt, index) {

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../common/api/gql_home.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-import '../../common/entitys/entitys.dart';
-
 import '../../pages/home/home_product_detail.dart';
 
 class Product extends StatefulWidget {
@@ -15,7 +14,7 @@ class Product extends StatefulWidget {
   State<Product> createState() => _ProductState();
 }
 
-class _ProductState extends State<Product> {
+class _ProductState extends State<Product> with AutomaticKeepAliveClientMixin {
   late LatestTraining _latestTraining;
   List<LatestTrainingElement> _focusData = [];
 
@@ -36,7 +35,11 @@ class _ProductState extends State<Product> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView.builder(
       itemCount: _focusData.length,
       itemBuilder: (BuildContext context, int index) {

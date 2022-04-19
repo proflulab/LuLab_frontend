@@ -1,15 +1,13 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
-import '../../common/global/global.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'course_index.dart';
 
 class CoursePage extends StatefulWidget {
@@ -19,7 +17,8 @@ class CoursePage extends StatefulWidget {
   _CoursePageState createState() => _CoursePageState();
 }
 
-class _CoursePageState extends State<CoursePage> {
+class _CoursePageState extends State<CoursePage>
+    with AutomaticKeepAliveClientMixin {
   late QueryCourseClassification _classification;
   List<QueryCourseClassificationElement> _focusData2 = [];
 
@@ -330,7 +329,11 @@ class _CoursePageState extends State<CoursePage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: appBarCommon(
         context: context,

@@ -12,6 +12,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/services/services.dart';
 import '../../common/utils/utils.dart';
+import 'voice_widget.dart';
 
 class VoiceView extends StatefulWidget {
   const VoiceView({Key? key}) : super(key: key);
@@ -20,7 +21,8 @@ class VoiceView extends StatefulWidget {
   _VoiceViewState createState() => _VoiceViewState();
 }
 
-class _VoiceViewState extends State<VoiceView> {
+class _VoiceViewState extends State<VoiceView>
+    with AutomaticKeepAliveClientMixin {
   String sstText = '未开始';
   String voiceResponseText = '';
   XfManage? _xf;
@@ -85,7 +87,11 @@ class _VoiceViewState extends State<VoiceView> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       height: 80.0,
       width: 80.0,
@@ -93,6 +99,8 @@ class _VoiceViewState extends State<VoiceView> {
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
         onTapDown: (tapDown) {
+          yYFixTextFieldDialog();
+
           if (kDebugMode) {
             print("按下 ");
           }
@@ -230,10 +238,12 @@ class _VoiceViewState extends State<VoiceView> {
   YYDialog yYFixTextFieldDialog() {
     return YYDialog().build()
       ..width = 750.w
-      ..height = 450.h
+      // ..height = 450.h
       ..backgroundColor = Colors.white
       ..borderRadius = 10.0
-      ..widget(const VoiceDetail())
+      ..widget(const VoiceWidget(
+        type: 4,
+      ))
       ..show(0.0, 350.0);
   }
 }

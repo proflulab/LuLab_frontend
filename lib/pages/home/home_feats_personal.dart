@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 import '/pages/home/home_feats_videos.dart';
 
@@ -9,9 +10,7 @@ import '../../common/utils/utils.dart';
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/widget/widgets.dart';
-import 'common_richtext.dart';
-
-// import 'tab_barin_feast.dart';
+//import 'common_richtext.dart';
 
 class FeastPersonal extends StatefulWidget {
   const FeastPersonal({Key? key, required this.product}) : super(key: key);
@@ -107,7 +106,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => FeatsVideo(
-                        product: widget.product.videoUrl,
+                        classificationUser: widget.product,
                       ),
                     ),
                   );
@@ -218,8 +217,21 @@ class _FeastPersonalState extends State<FeastPersonal> {
             ],
           ),
           const Divider(),
-          CommonRichText(text: widget.product.detailMsg),
-          SizedBox(height: 15.w),
+          //CommonRichText(text: widget.product.detailMsg),
+          ReadMoreText(
+            widget.product.detailMsg,
+            trimLines: 3,
+            trimMode: TrimMode.Line,
+            trimExpandedText: "收起",
+            trimCollapsedText: "展开",
+            colorClickableText: PFc.thirdElementText,
+            callback: (v) {},
+            style: const TextStyle(
+              fontSize: 14,
+              //fontFamily: "MyFontStyle",
+            ),
+          ),
+          SizedBox(height: 16.w),
         ],
       ),
     );
@@ -234,7 +246,6 @@ class _FeastPersonalState extends State<FeastPersonal> {
         borderRadius: BorderRadius.all(Radius.circular(25.w)),
       ),
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text("个人经历"),
@@ -258,12 +269,15 @@ class _FeastPersonalState extends State<FeastPersonal> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(_focusData[index].position),
+                        SizedBox(height: 10.w),
                         Text(_focusData[index].company),
-                        Text(TimeChange.client(
-                                int.parse(_focusData[index].beginTime), "ym") +
-                            "—" +
-                            TimeChange.client(
-                                int.parse(_focusData[index].endTime), "ym")),
+                        SizedBox(height: 10.w),
+                        PFtext.text1(
+                            text:
+                                "${TimeChange.client(int.parse(_focusData[index].beginTime), "ym")}  - ${TimeChange.client(int.parse(_focusData[index].endTime), "ym")}",
+                            fontSize: 14,
+                            color: PFc.textSecondary),
+                        SizedBox(height: 10.w),
                         Text(_focusData[index].desc),
                       ],
                     ),

@@ -10,7 +10,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/home/live_detail.dart';
 import '../../pages/source/infor_details.dart';
@@ -22,7 +21,7 @@ class Gather extends StatefulWidget {
   _GatherState createState() => _GatherState();
 }
 
-class _GatherState extends State<Gather> {
+class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   late Inforponse _postsIfoData;
   List<LatestInformation> _focusData2 = [];
   late LatestDirectCourse _latestDirectCourse;
@@ -126,6 +125,7 @@ class _GatherState extends State<Gather> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       children: <Widget>[
         _swiperWidget(),
@@ -556,6 +556,9 @@ class _GatherState extends State<Gather> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   // //直播预约——写法一
   // Container _buildLive() {

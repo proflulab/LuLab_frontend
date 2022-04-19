@@ -66,9 +66,13 @@ dependencies:
   url_launcher: ^6.0.20
   device_info_plus: ^3.2.3
   connectivity_plus: ^2.3.0
+  readmore: ^2.1.0
+  keyboard_dismisser: ^2.0.1
+  extended_text: ^9.0.0
 
   flutter_localizations:
     sdk: flutter
+
 
 dev_dependencies:
   flutter_test:

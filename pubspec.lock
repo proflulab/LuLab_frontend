@@ -281,6 +281,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
+  extended_text:
+    dependency: "direct main"
+    description:
+      name: extended_text
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "9.0.0"
+  extended_text_library:
+    dependency: transitive
+    description:
+      name: extended_text_library
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "9.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -630,6 +644,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.4.0"
+  keyboard_dismisser:
+    dependency: "direct main"
+    description:
+      name: keyboard_dismisser
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   lints:
     dependency: transitive
     description:
@@ -868,6 +889,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.2"
+  readmore:
+    dependency: "direct main"
+    description:
+      name: readmore
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.0"
   rxdart:
     dependency: transitive
     description:
