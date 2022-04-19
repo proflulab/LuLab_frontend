@@ -3,14 +3,13 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '/pages/voice/voice_view.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
-import '/pages/voice/voice_view.dart';
 import 'course/course_page.dart';
 import 'home/home_page.dart';
 import 'source/Infor_page.dart';
@@ -26,9 +25,11 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   int _currentIndex = 0;
 
+  final PageController _pageController = PageController();
+
   //late DateTime _lastPressedAt; //上次点击时间
 
-  final List _pageList = [
+  final List<Widget> _pageList = [
     const HomePage(),
     const CoursePage(),
     const VoiceView(),
@@ -77,7 +78,10 @@ class _AppState extends State<App> {
         // 语音识别按钮
         floatingActionButton: const VoiceView(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: _pageList[_currentIndex],
+        body: PageView(
+          controller: _pageController,
+          children: _pageList,
+        ),
         bottomNavigationBar: Theme(
           data: ThemeData(
             // 去掉水波纹效果
@@ -91,6 +95,7 @@ class _AppState extends State<App> {
               setState(() {
                 _currentIndex = index;
               });
+              _pageController.jumpToPage(index);
             },
             // 选中图标主题
             selectedIconTheme: const IconThemeData(

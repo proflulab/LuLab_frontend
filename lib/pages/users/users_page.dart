@@ -6,7 +6,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'notice_page.dart';
 import 'users_set.dart';
 
@@ -17,9 +16,13 @@ class UsersPage extends StatefulWidget {
   _UsersPageState createState() => _UsersPageState();
 }
 
-class _UsersPageState extends State<UsersPage> {
+class _UsersPageState extends State<UsersPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
 //print(profile.img);
     //获取屏幕宽度、高度
     //double screenwidth = MediaQuery.of(context).size.width;
@@ -305,8 +308,6 @@ class _UsersPageState extends State<UsersPage> {
                 color: Colors.green,
               ),
               onPressed: () async {
-
-                
                 Navigator.push(
                   context,
                   MaterialPageRoute(

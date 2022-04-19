@@ -5,9 +5,8 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
-import '../../common/widget/widgets.dart';
 import '../../common/values/values.dart';
-
+import '../../common/widget/widgets.dart';
 import 'infor_details.dart';
 
 class InformationPage extends StatefulWidget {
@@ -17,7 +16,8 @@ class InformationPage extends StatefulWidget {
   _InformationPageState createState() => _InformationPageState();
 }
 
-class _InformationPageState extends State<InformationPage> {
+class _InformationPageState extends State<InformationPage>
+    with AutomaticKeepAliveClientMixin {
   late Inforponse _postsIfoData;
   List<LatestInformation> _focusData = [];
 
@@ -61,7 +61,11 @@ class _InformationPageState extends State<InformationPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     double gap = PFspace.screenMargin / 2;
     return Scaffold(
       appBar: appBarCommon(context: context, title: '资讯'),
