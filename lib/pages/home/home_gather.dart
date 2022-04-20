@@ -65,7 +65,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
     await GqlHomeAPI.recordAddInfo(
       context: context,
       variables: RecordAddRequest(
-        authorId: Global.profile.id,
+        authorId: Global.profile.id!,
         status: status,
         courseId: _focusData3[index].id,
         onlineTime: now,
@@ -85,7 +85,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
           context: context,
           variables: LatestDirectCourseRequest(
             mode: "2",
-            authorId: user1.id,
+            authorId: user1.id!,
             limit: 2,
             skip: 0,
           ),
@@ -109,7 +109,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   _loadCourse() async {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: "1",
-      authorId: Global.profile.id,
+      authorId: Global.profile.id!,
       limit: 3,
       skip: 0,
     );
@@ -207,18 +207,15 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
           top: Radius.circular(10.r),
         ),
       ),
-      height: 40.h,
-      child: Row(
-        children: [
-          Text(
-            value,
-            textAlign: TextAlign.start,
-            style: const TextStyle(
-              //fontFamily: 'MyFontStyle',
-              fontSize: 18,
-            ),
-          ),
-        ],
+      height: 80.w,
+      alignment: Alignment.centerLeft,
+      child: Text(
+        value,
+        textAlign: TextAlign.start,
+        style: const TextStyle(
+          fontFamily: 'MyFontStyle',
+          fontSize: 18,
+        ),
       ),
     );
   }
@@ -511,8 +508,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
-                            child:
-                                CachedImage.typeLaod(_focusData4[index].imgUrl),
+                            child: CachedImage.typeLaod(
+                                _focusData4[index].coverUrl),
                           ),
                         ),
                         SizedBox(width: PFspace.ruleS),

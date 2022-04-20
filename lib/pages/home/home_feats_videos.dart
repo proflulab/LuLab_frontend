@@ -40,7 +40,7 @@ class _FeatsVideoState extends State<FeatsVideo> {
               child: Center(
                   child: VideoScreen(
                 cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-                url: classificationUser.videoUrl,
+                url: classificationUser.videoUrl ?? "",
               )
                   // VideoView(
                   //   widget.product,
@@ -52,7 +52,7 @@ class _FeatsVideoState extends State<FeatsVideo> {
           _buildBottomWidget(),
           Positioned(
             child: ReadMoreText(
-              classificationUser.detailMsg,
+              classificationUser.detailMsg ?? "",
               trimLines: 1,
               trimMode: TrimMode.Line,
               trimCollapsedText: "详情",
@@ -88,8 +88,8 @@ class _FeatsVideoState extends State<FeatsVideo> {
                 height: 72.w,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(36.w),
-                  child:
-                      CachedImage.typeLaod(classificationUser.profileImgUrl),
+                  child: CachedImage.typeLaod(
+                      classificationUser.profileImgUrl ?? ""),
                 )),
             SizedBox(width: 10.w),
             SizedBox(
@@ -98,9 +98,10 @@ class _FeatsVideoState extends State<FeatsVideo> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PFtext.text1(text: classificationUser.name, fontSize: 16),
                   PFtext.text1(
-                    text: classificationUser.description,
+                      text: classificationUser.name ?? "", fontSize: 16),
+                  PFtext.text1(
+                    text: classificationUser.description ?? "",
                     fontSize: 13,
                     color: PFc.thirdElementText,
                   ),

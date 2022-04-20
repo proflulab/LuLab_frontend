@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:proflu/common/utils/screen.dart';
 import 'package:proflu/pages/users/users_agreement.dart';
 
 import '../../../common/values/values.dart';
@@ -61,7 +62,7 @@ class Ttt extends StatelessWidget {
                             )));
                   },
                   context: context),
-              const Divider(),
+              const Divider(height: 1),
               listtilebotton2(
                   bottomname: "隐私政策",
                   onPressed: () {
@@ -72,20 +73,38 @@ class Ttt extends StatelessWidget {
                             )));
                   },
                   context: context),
-              const Divider(),
-              listtilebotton2(
-                  bottomname: "产品特色",
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
-                              title: '产品特色',
-                            )));
-                  },
-                  context: context),
+              // const Divider(),
+              // listtilebotton2(
+              //     bottomname: "产品特色",
+              //     onPressed: () {
+              //       Navigator.of(context).push(MaterialPageRoute(
+              //           builder: (context) => const Agreement(
+              //                 data: Markdowndata.agreementUser,
+              //                 title: '产品特色',
+              //               )));
+              //     },
+              //     context: context),
             ],
           ),
         ),
+        Container(
+          margin: EdgeInsets.all(PFspace.screenMargin),
+          padding: EdgeInsets.all(PFspace.screenMargin),
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                  height: 60.w,
+                  alignment: Alignment.centerLeft,
+                  child: PFtext.text1(text: "产品特色")),
+              Divider(),
+              PFtext.text1(text: Markdowndata.characteristic, maxLines: 99)
+            ],
+          ),
+        )
       ],
     );
   }

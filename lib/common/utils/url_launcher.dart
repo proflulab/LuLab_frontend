@@ -20,7 +20,11 @@ class UrlLaucher {
     // String email = 'business@proflu.cn';
     // String subject = 'This is a test email';
     // String body = 'This is a test email body';
-    String _url = "mailto:$email?subject=$subject&body=$body";
+    Uri uri = Uri(scheme: 'mailto', path: email, queryParameters: {
+      'subject': subject,
+      'body': body,
+    });
+    String _url = uri.toString();
     if (!await launch(_url)) throw 'Could not launch $_url';
   }
 

@@ -41,7 +41,7 @@ class GraphqlClientUtil {
       if (kDebugMode) {
         print(result.exception.toString());
       }
-      toastInfo(msg: result.exception.toString());
+      toastInfo(msg: '数据请求错误');
       //throw result.exception;
     }
 

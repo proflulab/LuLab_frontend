@@ -39,9 +39,9 @@ class _UsersPageState extends State<UsersPage>
               width: 100.w,
               height: 100.w,
               child: ClipOval(
-                  child: CachedImage.typeLaod(Global.profile.profileImgUrl))),
+                  child: CachedImage.typeLaod(Global.profile.profileImgUrl!))),
           title: Text(
-            Global.profile.name,
+            Global.profile.name!,
             style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
@@ -359,14 +359,14 @@ class _UsersPageState extends State<UsersPage>
             ),
           ),
         ],
-        leading: IconButton(
-          icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
-          onPressed: () {
-            if (kDebugMode) {
-              print("扫码");
-            }
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
+        //   onPressed: () {
+        //     if (kDebugMode) {
+        //       print("扫码");
+        //     }
+        //   },
+        // ),
       ),
       body: ListView(
         children: <Widget>[

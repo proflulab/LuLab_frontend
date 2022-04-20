@@ -95,7 +95,7 @@ class _LiveDetailState extends State<LiveDetail> {
   _handleCourseRecord() async {
     LatestUserCourseRecordRequest variables = LatestUserCourseRecordRequest(
       courseId: widget.product.id,
-      authorId: Global.profile.id,
+      authorId: Global.profile.id!,
     );
     _latestUserCourseRecord = await GqlCourseAPI.orderCourseInfo(
         variables: variables, context: context);
@@ -114,7 +114,7 @@ class _LiveDetailState extends State<LiveDetail> {
   //添加预约
   _handleRecordAdd() async {
     RecordAddRequest variables = RecordAddRequest(
-      authorId: Global.profile.id,
+      authorId: Global.profile.id!,
       status: "1",
       courseId: widget.product.id,
       onlineTime: now,
@@ -128,13 +128,14 @@ class _LiveDetailState extends State<LiveDetail> {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
 
-    String text = Global.profile.name +
-        "邀请您在" +
-        time1 +
-        "参加" +
-        widget.product.title +
-        "，主讲人：" +
-        widget.product.author;
+    String text = Global.profile.name ??
+        "" +
+            "邀请您在" +
+            time1 +
+            "参加" +
+            widget.product.title +
+            "，主讲人：" +
+            widget.product.author;
     return Scaffold(
       body: ListView(
         children: <Widget>[
@@ -332,6 +333,8 @@ class _LiveDetailState extends State<LiveDetail> {
                       fontSize: 14,
                     ),
                   ),
+                  if (widget.product.coverUrl.isNotEmpty)
+                    CachedImage.typeLaod(widget.product.coverUrl)
                 ],
               )),
         ],

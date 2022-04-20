@@ -35,7 +35,7 @@ class _VoiceViewState extends State<VoiceView>
   String values = 'assets/images/语音动效2.gif';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
-  final accessKey = "";
+  final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
   String strTitle = '';
   String strTime = '';
   String strDescription = '';
@@ -66,6 +66,7 @@ class _VoiceViewState extends State<VoiceView>
   void wakeWordCallback(int keywordIndex) {
     if (keywordIndex >= 0) {
       YYDialog.init(context);
+      sstSpeak(text: '我在，你有什么问题');
       yYFixTextFieldDialog();
       // tts.stop();
       // sstSpeak(text: '我在，你有什么问题');
@@ -196,7 +197,7 @@ class _VoiceViewState extends State<VoiceView>
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
-      userId: Global.profile.id,
+      userId: Global.profile.id!,
       queryText: sstText,
     );
     try {
@@ -204,7 +205,7 @@ class _VoiceViewState extends State<VoiceView>
         context: context,
         variables: variables,
       );
-      String a = voiceText.speechGoogle.code;
+      // String a = voiceText.speechGoogle.code;
       sstSpeak(text: voiceText.speechGoogle.msg);
       setState(() {
         isListening = true;
@@ -236,7 +237,7 @@ class _VoiceViewState extends State<VoiceView>
   }
 
   YYDialog yYFixTextFieldDialog() {
-    return YYDialog().build()
+    return YYDialog().build(context)
       ..width = 750.w
       // ..height = 450.h
       ..backgroundColor = Colors.white
@@ -302,7 +303,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
 
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
-      userId: Global.profile.id,
+      userId: Global.profile.id!,
       queryText: sstText,
     );
     try {

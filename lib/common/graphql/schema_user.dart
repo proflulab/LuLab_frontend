@@ -10,15 +10,34 @@ query UserLogin($name: String!, $password: String!) {
     data {
       _id
       name
-      birth
       sex
+      birth
+      position
+      company
       industry
       phone
       email
       wechat
+      schoolRecord
+      workCondition
+      detailMsg
       description
+      duration
+      category
+      userType
+      identity
+      imgUrl
+      iconUrl
+      bigCoverUrl
       profileImgUrl
+      videoUrl
       password
+      country
+      address
+      addTime
+      timestamp
+      imgs
+      tags
     }
   }
 }

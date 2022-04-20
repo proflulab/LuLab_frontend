@@ -39,7 +39,7 @@ class LatestDirectCourseElement {
     required this.videoUrl,
     required this.onlineTime,
     required this.imgUrl,
-    // required this.coverUrl,
+    required this.coverUrl,
     required this.firstCourseId,
     required this.duration,
     required this.status,
@@ -56,7 +56,7 @@ class LatestDirectCourseElement {
   final String videoUrl;
   final int onlineTime;
   final String imgUrl;
-  // final String coverUrl;
+  final String coverUrl;
   final String firstCourseId;
   final int duration;
   final dynamic status;
@@ -74,7 +74,7 @@ class LatestDirectCourseElement {
         videoUrl: json["videoUrl"],
         onlineTime: json["onlineTime"],
         imgUrl: json["imgUrl"],
-        // coverUrl: json["coverUrl"],
+        coverUrl: json["coverUrl"],
         firstCourseId: json["firstCourseId"],
         duration: json["duration"],
         status: json["status"],
@@ -92,7 +92,7 @@ class LatestDirectCourseElement {
         "videoUrl": videoUrl,
         "onlineTime": onlineTime,
         "imgUrl": imgUrl,
-        // "coverUrl": coverUrl,
+        "coverUrl": coverUrl,
         "firstCourseId": firstCourseId,
         "duration": duration,
         "status": status,

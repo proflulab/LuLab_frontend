@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+
+import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -59,9 +60,9 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
   _handleCommentAdd() async {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
-      authorId: Global.profile.id,
-      authorImg: Global.profile.profileImgUrl,
-      authorName: Global.profile.name,
+      authorId: Global.profile.id!,
+      authorImg: Global.profile.profileImgUrl!,
+      authorName: Global.profile.name!,
       category: '2',
       entityId: widget.courseData.firstCourseId,
     );

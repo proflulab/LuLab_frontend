@@ -27,8 +27,8 @@ class _NoticePageState extends State<NoticePage> {
   // 读取通知
   _handleNotice() async {
     _latestRecord = await GqlHomeAPI.ordersInfo(
-        variables:
-            LatestRecordRequest(authorId: Global.profile.id, limit: 0, skip: 0),
+        variables: LatestRecordRequest(
+            authorId: Global.profile.id!, limit: 0, skip: 0),
         context: context);
     setState(() {
       _focusData = _latestRecord.latestRecord;
