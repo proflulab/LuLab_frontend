@@ -63,7 +63,7 @@ class _InforDetailsState extends State<InforDetails> {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
       authorId: Global.profile.id,
-      authorImg: Global.profile.iconUrl,
+      authorImg: Global.profile.profileImgUrl,
       authorName: Global.profile.name,
       category: '1',
       entityId: infordata.id,
@@ -152,7 +152,7 @@ class _InforDetailsState extends State<InforDetails> {
                   itemBuilder: (c, index) {
                     LatestComment comment = _commentData[index];
                     return Container(
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
@@ -276,13 +276,13 @@ class _InforDetailsState extends State<InforDetails> {
                   child: Container(
                 height: 80.w,
                 decoration: BoxDecoration(
-                  color: Color(0xffebebeb),
+                  color: const Color(0xffebebeb),
                   borderRadius: BorderRadius.circular(30),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextField(
                   controller: _commentController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       hintText: "写评论", border: InputBorder.none),
                   // autofocus: true,
                   style: const TextStyle(fontSize: 14, color: PFc.textPrimary),

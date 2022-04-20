@@ -60,7 +60,7 @@ class _CourseCommentPageState extends State<CourseCommentPage> {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
       authorId: Global.profile.id,
-      authorImg: Global.profile.iconUrl,
+      authorImg: Global.profile.profileImgUrl,
       authorName: Global.profile.name,
       category: '2',
       entityId: widget.courseData.firstCourseId,

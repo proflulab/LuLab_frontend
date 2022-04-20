@@ -27,7 +27,9 @@ class Agreement extends StatelessWidget {
           ),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           )),
       body: Container(
         margin: const EdgeInsets.only(right: 15, left: 15),

@@ -27,10 +27,10 @@ class _InformationPageState extends State<InformationPage>
   final int _countFirst = 16;
 
   //刷新请求获取课程个数
-  int _count = 1;
+  int _count = 16;
 
   //底部刷新请求个数
-  final int _countDown = 1;
+  final int _countDown = 16;
 
   @override
   void initState() {

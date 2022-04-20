@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -90,11 +91,9 @@ class _SignInPageState extends State<SignInPage> {
             height: 50.h,
           ),
           SizedBox(
-            height: 200.h,
-            width: 300.w,
-            child: Image.asset(
-              'assets/images/logo.png',
-            ),
+            height: 200.w,
+            width: 200.w,
+            child: SvgPicture.asset("assets/images/logo.svg"),
           ),
           SizedBox(
             height: 70.h,
@@ -133,121 +132,18 @@ class _SignInPageState extends State<SignInPage> {
             height: 50.h,
           ),
           Center(
-            child: Text.rich(TextSpan(
-              children: [
-                TextSpan(
-                  text: "没有账号？点击注册",
-                  style: const TextStyle(fontSize: 18, color: Colors.grey),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SignUpPage()));
-                    },
-                ),
-              ],
-            )),
-          ),
-          Center(
-            child: SizedBox(
-              //alignment: const Alignment(-0, 0.5),
-              height: 250.h,
-              child: Row(
+            child: Text.rich(
+              TextSpan(
                 children: [
-                  SizedBox(
-                    width: 350,
-                    height: 80,
-                    child: Stack(
-                      children: <Widget>[
-                        Align(
-                          alignment: const Alignment(-0.7, -1.3),
-                          child: Checkbox(
-                              shape: const CircleBorder(),
-                              value: _checked,
-                              onChanged: (v) {
-                                setState(() {
-                                  _checked = v!;
-                                });
-                              }),
-                        ),
-                        Align(
-                          alignment: const Alignment(0.1, 1),
-                          child: SizedBox(
-                            width: 190,
-                            height: 100,
-                            child: Column(
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    const SizedBox(
-                                      height: 11.0,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                        text: '我已阅读,',
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 13.0),
-                                        children: <TextSpan>[
-                                          TextSpan(
-                                            text: '《陆向谦实验室服务使用协议》,',
-                                            style: const TextStyle(
-                                                color: Colors.blue),
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Agreement(
-                                                              data: Markdowndata
-                                                                  .agreementUser,
-                                                              title: '服务使用协议',
-                                                            )));
-                                              },
-                                          ),
-                                          TextSpan(
-                                              text: '《陆向谦实验室隐私政策》',
-                                              style: const TextStyle(
-                                                  color: Colors.blue),
-                                              recognizer: TapGestureRecognizer()
-                                                ..onTap = () async {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const Agreement(
-                                                                data: Markdowndata
-                                                                    .agreementUser,
-                                                                title: '服务使用协议',
-                                                              )));
-                                                }),
-                                          TextSpan(
-                                            text: ',《陆向谦实验室版权声明》',
-                                            style: const TextStyle(
-                                                color: Colors.blue),
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const Agreement(
-                                                              data: Markdowndata
-                                                                  .agreementUser,
-                                                              title: '服务使用协议',
-                                                            )));
-                                              },
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
+                  TextSpan(
+                    text: "没有账号？点击注册",
+                    style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const SignUpPage()));
+                      },
+                  ),
                 ],
               ),
             ),
@@ -257,15 +153,65 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  _text() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+          shape: const CircleBorder(),
+          value: _checked,
+          onChanged: (v) {
+            setState(() {
+              _checked = v!;
+            });
+          },
+        ),
+        RichText(
+          text: TextSpan(
+            text: '我已阅读并同意',
+            style: const TextStyle(color: Colors.black, fontSize: 13.0),
+            children: <TextSpan>[
+              TextSpan(
+                text: '《服务协议》',
+                style: const TextStyle(color: Colors.blue),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () async {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Agreement(
+                              data: Markdowndata.agreementUser,
+                              title: '《服务协议》',
+                            )));
+                  },
+              ),
+              const TextSpan(text: '和'),
+              TextSpan(
+                  text: '《隐私政策》',
+                  style: const TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Agreement(
+                                data: Markdowndata.agreementUser,
+                                title: '《隐私政策》',
+                              )));
+                    }),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             _buildInputForm(),
-            const Spacer(),
+            //const Spacer(),
+            _text(),
           ],
         ),
       ),

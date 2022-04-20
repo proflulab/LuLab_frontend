@@ -1,8 +1,15 @@
 import 'package:date_format/date_format.dart';
 
 class TimeChange {
-  static client(int stamp, String value) {
-    var time = DateTime.fromMillisecondsSinceEpoch(stamp);
+  static client(var stamp, String value) {
+    var time = DateTime.now();
+    if (stamp is int) {
+      time = DateTime.fromMillisecondsSinceEpoch(stamp);
+    } else if (stamp is String) {
+      var a = int.parse(stamp);
+      time = DateTime.fromMillisecondsSinceEpoch(a);
+    }
+
     if (value == "y") {
       return formatDate(time, [yyyy]);
     } else if (value == "m") {

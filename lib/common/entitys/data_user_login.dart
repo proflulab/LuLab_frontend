@@ -56,7 +56,7 @@ class Data {
     required this.email,
     required this.wechat,
     required this.description,
-    required this.iconUrl,
+    required this.profileImgUrl,
     required this.password,
   });
 
@@ -69,21 +69,21 @@ class Data {
   final String email;
   final String wechat;
   final String description;
-  final String iconUrl;
+  final String profileImgUrl;
   final String password;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
         name: json["name"],
-        birth: json["birth"] ?? "",
+        birth: json["birth"]??"",
         sex: json["sex"] ?? "",
         industry: json["industry"] ?? "",
         phone: json["phone"] ?? "",
         email: json["email"] ?? "",
         wechat: json["wechat"] ?? "",
         description: json["description"] ?? "",
-        iconUrl: json["iconUrl"] ?? "",
-        password: json["password"],
+        profileImgUrl: json["profileImgUrl"] ?? "",
+        password: json["password"] ,
       );
 
   Map<String, dynamic> toJson() => {
@@ -96,10 +96,11 @@ class Data {
         "email": email,
         "wechat": wechat,
         "description": description,
-        "iconUrl": iconUrl,
+        "profileImgUrl": profileImgUrl,
         "password": password,
       };
 }
+
 
 // 用户登录 - request
 Loginrequest loginrequestFromJson(String str) =>

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:proflu/pages/users/users_agreement.dart';
 
 import '../../../common/values/values.dart';
 import '../../../common/widget/widgets.dart';
 //import '../../../common/utils/utils.dart';
-
 import '../../common/staticdata/staticdata.dart';
-import 'users_set.dart';
 
 class SetAbout extends StatelessWidget {
   const SetAbout({
@@ -22,14 +21,9 @@ class SetAbout extends StatelessWidget {
         centerTitle: true,
         leading: TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const SettingsPage()),
-            );
+            Navigator.of(context).pop();
           },
-          child: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
+          child: const Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
         title: const Text('关于实验室',
             style: TextStyle(fontFamily: 'MyFontStyle', color: Colors.black)),
@@ -48,12 +42,7 @@ class Ttt extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Image.asset(
-          'assets/images/OIP-YYH.jpg',
-          fit: BoxFit.fill,
-          width: 359,
-          height: 210,
-        ),
+        SvgPicture.asset("assets/images/logo.svg"),
         Container(
           margin: EdgeInsets.all(PFspace.screenMargin),
           padding: EdgeInsets.all(PFspace.screenMargin),
@@ -63,12 +52,12 @@ class Ttt extends StatelessWidget {
           child: Column(
             children: [
               listtilebotton2(
-                  bottomname: "服务使用协议",
+                  bottomname: "服务协议",
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Agreement(
                               data: Markdowndata.agreementUser,
-                              title: '服务使用协议',
+                              title: '服务协议',
                             )));
                   },
                   context: context),
@@ -78,19 +67,8 @@ class Ttt extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
+                              data: Markdowndata.privacy,
                               title: '隐私政策',
-                            )));
-                  },
-                  context: context),
-              const Divider(),
-              listtilebotton2(
-                  bottomname: "版权声明",
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
-                              title: '版权声明',
                             )));
                   },
                   context: context),
