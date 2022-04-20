@@ -44,7 +44,7 @@ Widget listtilebotton2({
         style: const TextStyle(
           fontFamily: 'MyFontStyle',
           color: Colors.black,
-          fontSize: 20,
+          fontSize: 16,
         ),
       ),
       contentPadding: const EdgeInsets.all(0),

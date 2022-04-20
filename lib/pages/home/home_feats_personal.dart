@@ -56,12 +56,17 @@ class _FeastPersonalState extends State<FeastPersonal> {
 
   @override
   Widget build(BuildContext context) {
+    print(product.toString());
+
     return Scaffold(
       body: _buildBody(),
     );
   }
 
   Widget _buildBody() {
+    Duration duration = product.duration == null
+        ? Duration.zero
+        : Duration(milliseconds: int.parse(product.duration!));
     return Stack(
       children: [
         Positioned.fill(
@@ -174,7 +179,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                       ),
                       SizedBox(height: 12.w),
                       PFtext.text1(
-                        text: "${product.duration ?? 0}年工作经验",
+                        text: "${(duration.inDays / 365).ceil()}年工作经验",
                         fontSize: 12,
                       ),
                       const Divider(height: 40),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:text_to_speech/text_to_speech.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
@@ -62,9 +63,9 @@ class _InforDetailsState extends State<InforDetails> {
   _handleCommentAdd() async {
     CommentAddRequest variables = CommentAddRequest(
       content: _commentController.value.text,
-      authorId: Global.profile.id,
-      authorImg: Global.profile.profileImgUrl,
-      authorName: Global.profile.name,
+      authorId: Global.profile.id!,
+      authorImg: Global.profile.profileImgUrl!,
+      authorName: Global.profile.name!,
       category: '1',
       entityId: infordata.id,
     );
@@ -196,12 +197,18 @@ class _InforDetailsState extends State<InforDetails> {
   }
 
   Widget _buildAdWidget() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      width: 704.w,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: CachedImage.typeLaod(infordata.adv),
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        launch(infordata.href);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 15),
+        width: 704.w,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: CachedImage.typeLaod(infordata.adv),
+        ),
       ),
     );
   }

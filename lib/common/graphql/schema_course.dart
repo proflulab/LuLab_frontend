@@ -67,6 +67,7 @@ class SchemaCourse {
       videoUrl
       onlineTime
       imgUrl
+      coverUrl
       firstCourseId
       duration
       status

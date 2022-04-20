@@ -119,7 +119,7 @@ packages:
       name: chewie
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.3.1"
+    version: "1.2.2"
   clock:
     dependency: transitive
     description:
@@ -281,20 +281,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.0"
-  extended_text:
-    dependency: "direct main"
-    description:
-      name: extended_text
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "9.0.0"
-  extended_text_library:
-    dependency: transitive
-    description:
-      name: extended_text_library
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "9.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -881,7 +867,7 @@ packages:
       name: provider
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.2"
+    version: "5.0.0"
   quill_format:
     dependency: transitive
     description:
@@ -1195,20 +1181,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
-  very_good_analysis:
-    dependency: transitive
-    description:
-      name: very_good_analysis
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.4.0"
   video_player:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: video_player
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "2.2.19"
   video_player_android:
     dependency: transitive
     description:
@@ -1229,7 +1208,7 @@ packages:
       name: video_player_platform_interface
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.1.1"
+    version: "4.2.0"
   video_player_web:
     dependency: transitive
     description:
@@ -1243,7 +1222,7 @@ packages:
       name: wakelock
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.1+2"
+    version: "0.5.6"
   wakelock_macos:
     dependency: transitive
     description:

@@ -196,7 +196,7 @@ class _VoiceViewState extends State<VoiceView>
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
-      userId: Global.profile.id,
+      userId: Global.profile.id!,
       queryText: sstText,
     );
     try {
@@ -302,7 +302,7 @@ class _VoiceDetailState extends State<VoiceDetail> {
 
   voicegql() async {
     VoiceRequest variables = VoiceRequest(
-      userId: Global.profile.id,
+      userId: Global.profile.id!,
       queryText: sstText,
     );
     try {

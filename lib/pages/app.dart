@@ -57,8 +57,8 @@ class _AppState extends State<App> {
           UserLogin userProfile = await GqlUserAPI.login(
             context: context,
             variables: Loginrequest(
-              name: user1.name,
-              password: user1.password,
+              name: user1.name ?? "",
+              password: user1.password ?? "",
             ),
           );
           Global.saveProfile(userProfile.data);

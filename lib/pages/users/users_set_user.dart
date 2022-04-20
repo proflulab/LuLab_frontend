@@ -17,7 +17,7 @@ class SetUser extends StatefulWidget {
 }
 
 class _SetUserState extends State<SetUser> {
-  String _sexValue = Global.profile.sex;
+  String _sexValue = Global.profile.sex ?? "";
   final TextEditingController _nameController =
       TextEditingController(text: Global.profile.name);
   final TextEditingController _introController =
@@ -31,7 +31,7 @@ class _SetUserState extends State<SetUser> {
   _carryUp() async {
     //_getuser();
     UserUpdaterequest variables = UserUpdaterequest(
-      id: Global.profile.id,
+      id: Global.profile.id ?? "",
       name: _nameController.value.text,
       description: _introController.value.text,
       phone: _phoneController.value.text,
@@ -131,7 +131,7 @@ class _SetUserState extends State<SetUser> {
                   child: SizedBox(
                       child: ClipOval(
                           child: CachedImage.typeLaod(
-                              Global.profile.profileImgUrl))),
+                              Global.profile.profileImgUrl!))),
                   icon: const Icon(MyIcon.userRight),
                   onTap: () {
                     if (kDebugMode) {
