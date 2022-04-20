@@ -508,8 +508,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
-                            child:
-                                CachedImage.typeLaod(_focusData4[index].imgUrl),
+                            child: CachedImage.typeLaod(
+                                _focusData4[index].coverUrl),
                           ),
                         ),
                         SizedBox(width: PFspace.ruleS),

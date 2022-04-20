@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

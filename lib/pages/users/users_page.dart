@@ -359,14 +359,14 @@ class _UsersPageState extends State<UsersPage>
             ),
           ),
         ],
-        leading: IconButton(
-          icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
-          onPressed: () {
-            if (kDebugMode) {
-              print("扫码");
-            }
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.qr_code_scanner, color: Colors.green),
+        //   onPressed: () {
+        //     if (kDebugMode) {
+        //       print("扫码");
+        //     }
+        //   },
+        // ),
       ),
       body: ListView(
         children: <Widget>[
