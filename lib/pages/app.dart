@@ -100,11 +100,8 @@ class _AppState extends State<App> {
             },
             // 选中图标主题
             selectedIconTheme: const IconThemeData(
-              // 图标颜色
               color: PFc.themeColor,
-              // 图标大小
               size: 28,
-              // 图标透明度
               opacity: 1.0,
             ),
             //选中字体颜色

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/utils/utils.dart';
 //import '../../common/staticdata/staticdata.dart';
@@ -41,8 +42,7 @@ class Agreement extends StatelessWidget {
                 filter: ImageFilter.blur(sigmaX: 0.5), //图片模糊过滤，横向竖向都设置5.0
                 child: Opacity(
                   opacity: 0.05,
-                  child: Image.asset('assets/images/OIP-TY.jpg',
-                      fit: BoxFit.contain),
+                  child: SvgPicture.asset("assets/images/logo.svg"),
                 ),
               ),
             ),
