@@ -1,13 +1,14 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:proflu/common/utils/cache_util.dart';
+import 'package:proflu/common/utils/dialog_util.dart';
 import 'package:proflu/pages/users/users_set_about.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/sign_in/sign_in.dart';
+import 'user_reset_password.dart';
 import 'users_set_user.dart';
 
 //import 'users_set_account.dart';
@@ -82,11 +83,11 @@ class _SettingsPageState extends State<SettingsPage> {
                   _lineWidget(
                       title: "密码重置",
                       onTap: () {
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const SetUser(),
-                        //   ),
-                        // );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ResetPasswordPage(),
+                          ),
+                        );
                       }),
                 ],
               ),
@@ -135,7 +136,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            Spacer(),
+            SizedBox(height: 60.w),
             Container(
               height: 100.w,
               width: 700.w,
@@ -146,10 +147,17 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignInPage()),
-                    (route) => route == null,
+                  DialogUtil.showPopUp(
+                    context: context,
+                    onConfirm: () {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignInPage()),
+                        (route) => route == null,
+                      );
+                    },
+                    content: "是否退出陆向谦实验室",
                   );
                 },
                 child: const Text(
@@ -194,75 +202,11 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   _showClearCacheConfirm() {
-    YYDialog().build(context)
-      ..width = 502.w
-      ..height = 244.w
-      ..borderRadius = 10
-      ..widget(SizedBox(
-        height: 244.w,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            PFtext.text2(text: "提示", fontSize: 16),
-            SizedBox(height: 20.w),
-            PFtext.text2(text: "是否清除陆向谦实验室App缓存", fontSize: 14),
-            SizedBox(height: 30.w),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: 180.w,
-                    height: 52.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(26.w),
-                      color: const Color(0xffDFDFDF),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "取消",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 30.w),
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: () {
-                    Navigator.pop(context);
-
-                    _clearCache();
-                  },
-                  child: Container(
-                    width: 180.w,
-                    height: 52.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(26.w),
-                      color: const Color(0xff4DC460),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "确定",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ))
-      ..show();
+    DialogUtil.showPopUp(
+      context: context,
+      onConfirm: _clearCache,
+      content: "是否清除陆向谦实验室App缓存",
+    );
   }
 
   _clearCache() async {
