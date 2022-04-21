@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'common/routers/router.dart';
 import 'common/values/values.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(750, 1334), //配置设计稿的宽度高度
-      builder: (BuildContext context) => MaterialApp(
+      builder: (BuildContext context) => GetMaterialApp(
         locale: const Locale('zh', 'CN'),
         // localizationsDelegates:  [
         //   GlobalMaterialLocalizations.delegate,

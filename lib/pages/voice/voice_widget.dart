@@ -36,15 +36,9 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _userSpeakingWidget() {
-    return Container(
-      // height: 268.w,
-      width: 750.w,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/voice_bg.png"),
-              fit: BoxFit.cover)),
-      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 70.w),
+    return _container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             _text,
@@ -58,78 +52,103 @@ class _VoiceWidgetState extends State<VoiceWidget> {
           )
         ],
       ),
+      height: 350.w,
     );
   }
 
   Widget _swiperWidget() {
     return _withLogoWidget(
-        child: Swiper(
-          itemBuilder: (c, i) {
-            return Center(
-              child: Text(
-                hints[i],
-                style: const TextStyle(fontSize: 14),
-              ),
-            );
-          },
-          itemCount: hints.length,
-          autoplay: true,
-          scrollDirection: Axis.vertical,
-        ),
-        width: 506.w);
+      child: Swiper(
+        itemBuilder: (c, i) {
+          return Center(
+            child: Text(
+              hints[i],
+              style: const TextStyle(fontSize: 14),
+            ),
+          );
+        },
+        itemCount: hints.length,
+        autoplay: true,
+        scrollDirection: Axis.vertical,
+      ),
+      width: 506.w,
+      height: 350.w,
+    );
   }
 
   Widget _aiSpeakingWidget() {
     return _withLogoWidget(
-        child: Lottie.asset(
-          'assets/animation/ai_speaking.json',
-          width: 134.w,
-          height: 64.w,
-        ),
-        width: 350.w);
+      child: Lottie.asset(
+        'assets/animation/ai_speaking.json',
+        width: 134.w,
+        height: 64.w,
+      ),
+      width: 350.w,
+      height: 280.w,
+    );
   }
 
   Widget _errorWidget() {
     return _withLogoWidget(
-        child: Text(
-          "未能识别,请点击语音按钮重试",
-          style: TextStyle(
-            fontSize: 32.w,
-            color: PFc.textSecondary,
-          ),
+      child: Text(
+        "未能识别,请点击语音按钮重试",
+        style: TextStyle(
+          fontSize: 32.w,
+          color: PFc.textSecondary,
         ),
-        width: 506.w);
+      ),
+      width: 506.w,
+      height: 280.w,
+    );
   }
 
-  Widget _withLogoWidget({required Widget child, required double width}) {
-    return Container(
-      height: 268.w,
-      width: 750.w,
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: Row(
-        children: <Widget>[
-          Image.asset(
-            'assets/images/logo.png',
-            width: 144.w,
-            height: 144.w,
-          ),
-          SizedBox(width: 10.w),
-          Container(
-            width: width,
-            height: 100.w,
-            decoration: BoxDecoration(
-              color: const Color(0xffEEEEEE),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.w),
-                topRight: Radius.circular(30.w),
-                bottomRight: Radius.circular(30.w),
-              ),
+  Widget _withLogoWidget(
+      {required Widget child, required double width, double? height}) {
+    return _container(
+        child: Row(
+          children: <Widget>[
+            Image.asset(
+              'assets/images/logo.png',
+              width: 144.w,
+              height: 144.w,
             ),
-            alignment: Alignment.center,
-            child: child,
-          )
-        ],
+            SizedBox(width: 10.w),
+            Container(
+              width: width,
+              height: 100.w,
+              decoration: BoxDecoration(
+                color: const Color(0xffEEEEEE),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.w),
+                  topRight: Radius.circular(30.w),
+                  bottomRight: Radius.circular(30.w),
+                ),
+              ),
+              alignment: Alignment.center,
+              child: child,
+            )
+          ],
+        ),
+        height: height);
+  }
+
+  Widget _container(
+      {required Widget child, double? height, bool imageBg = true}) {
+    DecorationImage? decorationImage;
+    if (imageBg) {
+      decorationImage = const DecorationImage(
+          image: AssetImage("assets/images/voice_bg.png"), fit: BoxFit.cover);
+    }
+    return Container(
+      height: height ?? 350.w,
+      width: 750.w,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        image: decorationImage,
+        borderRadius: BorderRadius.circular(10),
       ),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
+      child: child,
     );
   }
 }

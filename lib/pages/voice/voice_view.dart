@@ -3,9 +3,11 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
+import 'package:proflu/controller/index_controller.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../common/api/apis.dart';
@@ -13,7 +15,6 @@ import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/services/services.dart';
 import '../../common/utils/utils.dart';
-import 'voice_widget.dart';
 
 class VoiceView extends StatefulWidget {
   const VoiceView({Key? key}) : super(key: key);
@@ -33,7 +34,6 @@ class _VoiceViewState extends State<VoiceView>
   TextToSpeech tts = TextToSpeech();
   int a = 0;
   int b = 0;
-  String values = 'assets/animation/ball.json';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
   final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
@@ -68,6 +68,7 @@ class _VoiceViewState extends State<VoiceView>
     if (keywordIndex >= 0) {
       YYDialog.init(context);
       sstSpeak(text: '我在，你有什么问题');
+
       yYFixTextFieldDialog();
       // tts.stop();
       // sstSpeak(text: '我在，你有什么问题');
@@ -101,7 +102,7 @@ class _VoiceViewState extends State<VoiceView>
           color: Colors.white, borderRadius: BorderRadius.circular(40)),
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
-        onTapDown: (tapDown) {
+        onLongPressStart: (tapDown) {
           yYFixTextFieldDialog();
 
           if (kDebugMode) {
@@ -111,23 +112,20 @@ class _VoiceViewState extends State<VoiceView>
           SoundRecord.startListening();
           setState(() {
             isListening = false;
-            values = 'assets/animation/speaking.json';
           });
         },
-        onTapUp: (tapUp) {
+        onLongPressEnd: (tapUp) {
           if (kDebugMode) {
             print("抬起 ");
           }
-          setState(() {
-            values = 'assets/animation/ball.json';
-          });
+          IndexController.to.stopSpeaking();
+          setState(() {});
           SoundRecord.stopListening();
           xfSst();
         },
         child: TestBWidget(
           visible: visible,
           show: show,
-          values: values,
         ),
       ),
       //原版点按语音交互
@@ -238,16 +236,17 @@ class _VoiceViewState extends State<VoiceView>
     }
   }
 
-  YYDialog yYFixTextFieldDialog() {
-    return YYDialog().build(context)
-      ..width = 750.w
-      // ..height = 450.h
-      ..backgroundColor = Colors.white
-      ..borderRadius = 10.0
-      ..widget(const VoiceWidget(
-        type: 4,
-      ))
-      ..show(0.0, 350.0);
+  void yYFixTextFieldDialog() {
+    IndexController.to.startSpeaking();
+    // return YYDialog().build(context)
+    //   ..width = 750.w
+    //   // ..height = 450.h
+    //   ..backgroundColor = Colors.white
+    //   ..borderRadius = 10.0
+    //   ..widget(const VoiceWidget(
+    //     type: 4,
+    //   ))
+    //   ..show(0.0, 350.0);
   }
 }
 
@@ -446,26 +445,27 @@ class _VoiceSpeakState extends State<VoiceSpeak> {
 class TestBWidget extends StatelessWidget {
   final bool visible;
   final bool show;
-  final String values;
 
-  const TestBWidget(
-      {Key? key,
-      required this.visible,
-      required this.show,
-      required this.values})
-      : super(key: key);
+  const TestBWidget({
+    Key? key,
+    required this.visible,
+    required this.show,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-        duration: const Duration(milliseconds: 300),
-        opacity: visible ? 1.0 : 0.0,
-        child: Container(
-          alignment: Alignment.center,
-          child: ClipOval(
-            child: Lottie.asset(values),
-          ),
-        ));
+    return GetBuilder<IndexController>(builder: (ic) {
+      return AnimatedOpacity(
+          duration: const Duration(milliseconds: 300),
+          opacity: visible ? 1.0 : 0.0,
+          child: Container(
+            alignment: Alignment.center,
+            child: ClipOval(
+              child: Lottie.asset(
+                  "assets/animation/${ic.speaking ? 'speaking' : 'ball'}.json"),
+            ),
+          ));
+    });
   }
 }
 
