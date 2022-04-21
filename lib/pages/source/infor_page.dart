@@ -157,12 +157,68 @@ class _InformationPageState extends State<InformationPage>
                           ),
                           SizedBox(width: PFspace.screenMargin),
                           Flexible(
-                            child: Column(
-                              children: [
-                                PFtext.text1(text: _focusData[index].title),
-                              ],
-                            ),
+                              child: Stack(
+                            children: <Widget>[
+                              Positioned(
+                                  //其他的组件加上去以这种形式
+                                  top: 5.0.h,
+                                  left: 10.0.w,
+                                  child: SizedBox(
+                                    height: 90.h,
+                                    width: 380.w,
+                                    child: PFtext.text1(
+                                        text: _focusData[index].title),
+                                  )),
+                              Positioned(
+                                  //其他的组件加上去以这种形式
+                                  top: 110.0.h,
+                                  left: 220.0.w,
+                                  child: SizedBox(
+                                    height: 30.h,
+                                    width: 180.w,
+                                    child: Text(
+                                      TimeChange.client(
+                                          int.parse(
+                                              _focusData[index].releaseDate),
+                                          "ymd"),
+                                      textAlign: TextAlign.left,
+                                      softWrap: false,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      style: const TextStyle(
+                                        color: PFc.textSecondary,
+                                        fontFamily: '',
+                                        fontSize: 11,
+                                        //fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  )),
+                            ],
                           )
+                              // Column(
+                              //   children: [
+                              //     PFtext.text1(text: _focusData[index].title),
+                              //     SizedBox(
+                              //       height: 50.h,
+                              //     ),
+                              //     Text(
+                              //       TimeChange.client(
+                              //           int.parse(_focusData[index].releaseDate),
+                              //           "ymd"),
+                              //       textAlign: TextAlign.left,
+                              //       softWrap: false,
+                              //       overflow: TextOverflow.ellipsis,
+                              //       maxLines: 1,
+                              //       style: const TextStyle(
+                              //         color: PFc.textSecondary,
+                              //         fontFamily: '',
+                              //         fontSize: 11,
+                              //         //fontWeight: FontWeight.bold,
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              )
                         ],
                       ),
                     ),

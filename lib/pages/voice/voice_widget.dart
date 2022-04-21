@@ -17,7 +17,7 @@ class VoiceWidget extends StatefulWidget {
 class _VoiceWidgetState extends State<VoiceWidget> {
   List<String> hints = ["“我要预订直播课”", "“听今日新闻”", "“陆向谦实验室”"];
 
-  String _text = "你好我想问一下陆向谦实验室是什么,还有我想问下陆向谦教授是哪位呢?";
+  final String _text = "你好我想问一下陆向谦实验室是什么,还有我想问下陆向谦教授是哪位呢?";
 
   @override
   Widget build(BuildContext context) {
