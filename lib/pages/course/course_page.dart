@@ -303,7 +303,6 @@ class _CoursePageState extends State<CoursePage>
                                     child: PFtext.text3(
                                       text: _focusData3[index].authorTags,
                                       color: PFc.textSecondary,
-                                      context: context,
                                     ),
                                   ),
                                 ],

@@ -18,10 +18,6 @@ class CachedImage {
         //width: 0.3.sw,
         fit: fit,
       ),
-      // Image.asset(
-      //   'assets/images/a.png',
-      //   fit: BoxFit.cover,
-      // ),
     );
   }
 
@@ -37,7 +33,6 @@ class CachedImage {
         //width: 0.3.sw,
         fit: BoxFit.cover,
       ),
-      //Image.asset('assets/images/a.png', fit: BoxFit.cover),
       errorWidget: (context, url, error) => SvgPicture.asset(
         "assets/images/load.svg",
         //color: PFc.themeColor20,
@@ -45,7 +40,6 @@ class CachedImage {
         //width: 0.3.sw,
         fit: BoxFit.cover,
       ),
-      //Image.asset('assets/images/a.png', fit: BoxFit.cover),
     );
   }
 }

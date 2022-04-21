@@ -96,8 +96,6 @@ class _InformationPageState extends State<InformationPage>
             if (mounted) {
               setState(() {
                 _count += _countDown;
-                print(_count);
-                print(_focusData.length);
               });
             }
             _controllerCourse.finishLoad(noMore: _count > _focusData.length);

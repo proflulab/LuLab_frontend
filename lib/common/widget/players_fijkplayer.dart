@@ -29,12 +29,12 @@ class _VideoScreenState extends State<VideoScreen> {
     return Container(
       // width: screenWidth,
       // height: playerHeight,
-      // color: Colors.black,
+      //color: Colors.black,
       height: 235,
       alignment: Alignment.center,
       child: FijkView(
         player: player,
-        panelBuilder: fijkPanel2Builder(fill: true),
+        //panelBuilder: fijkPanel2Builder(fill: true),
         cover: NetworkImage(widget.cover),
       ),
     );

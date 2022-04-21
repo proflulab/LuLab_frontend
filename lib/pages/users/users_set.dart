@@ -8,6 +8,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../pages/sign_in/sign_in.dart';
+
 import 'users_set_user.dart';
 
 //import 'users_set_account.dart';
@@ -135,7 +136,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               height: 100.w,
               width: 700.w,
@@ -237,7 +238,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Navigator.pop(context);
-
                     _clearCache();
                   },
                   child: Container(

@@ -7,9 +7,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      // appBar: AppBar(
-      //   title: Text("TextFieldDemo"),
-      // ),
       body: VerifyCodeLogin(),
     );
   }
@@ -182,7 +179,8 @@ class SubmitButtonWidget extends StatelessWidget {
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),
-              backgroundColor: MaterialStateProperty.all(const Color(0xff0079fe))),
+              backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff0079fe))),
           onPressed: () {},
           child: const Text(
             "确定",
