@@ -305,7 +305,7 @@ class _LiveDetailState extends State<LiveDetail> {
                   Text(
                     widget.product.title,
                     style: const TextStyle(
-                      fontFamily: 'MyFontStyle',
+                      // fontFamily: 'MyFontStyle',
                       color: Colors.black,
                       fontSize: 20,
                     ),
@@ -313,7 +313,7 @@ class _LiveDetailState extends State<LiveDetail> {
                   Text(
                     "主讲人：" + widget.product.author,
                     style: const TextStyle(
-                      fontFamily: 'MyFontStyle',
+                      // fontFamily: 'MyFontStyle',
                       color: Colors.black,
                       fontSize: 14,
                     ),
@@ -321,14 +321,14 @@ class _LiveDetailState extends State<LiveDetail> {
                   Text(
                     time1,
                     style: const TextStyle(
-                        fontFamily: 'MyFontStyle',
+                        // fontFamily: 'MyFontStyle',
                         color: Colors.black,
                         fontSize: 14),
                   ),
                   Text(
                     widget.product.description,
                     style: const TextStyle(
-                      fontFamily: 'MyFontStyle',
+                      // fontFamily: 'MyFontStyle',
                       color: Colors.black,
                       fontSize: 14,
                     ),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:proflu/pages/source/infor_item_widget.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -280,15 +281,17 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                               SizedBox(height: 8.h),
                               Row(
                                 children: [
-                                  PFtext.text1(
-                                    text: _focusData3[index].author,
-                                    color: PFc.textSecondary,
-                                  ),
+                                  PFtext.text2(
+                                      text: _focusData3[index].author,
+                                      color: PFc.textSecondary,
+                                      fontSize: 13),
                                   const SizedBox(width: 10),
-                                  PFtext.text1(
-                                    text: _focusData3[index].authorTags,
-                                    // color: PFc.textSecondary,
-                                  ),
+                                  PFtext.text2(
+                                      text: _focusData3[index].authorTags,
+                                      fontSize: 13
+
+                                      // color: PFc.textSecondary,
+                                      ),
                                 ],
                               ),
                               Flexible(child: Container(width: 10.w)),
@@ -409,6 +412,10 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: _focusData2.length,
             itemBuilder: (context, index) {
+              return InfoItemWidget(
+                information: _focusData2[index],
+                margin: false,
+              );
               if (_focusData2.isNotEmpty) {
                 return InkResponse(
                   onTap: () async {
