@@ -4,10 +4,8 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-import '../../common/utils/utils.dart';
-import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-import 'infor_details.dart';
+import 'infor_item_widget.dart';
 
 class InformationPage extends StatefulWidget {
   const InformationPage({Key? key}) : super(key: key);
@@ -66,7 +64,6 @@ class _InformationPageState extends State<InformationPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    double gap = PFspace.screenMargin / 2;
     return Scaffold(
       appBar: appBarCommon(context: context, title: '资讯'),
       body: EasyRefresh.custom(
@@ -102,79 +99,28 @@ class _InformationPageState extends State<InformationPage>
           });
         },
         slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                if (_focusData.isNotEmpty) {
-                  return InkWell(
-                    onTap: () async {
-                      if (kDebugMode) {
-                        print('到资讯详情');
-                      }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => InforDetails(
-                            product: _focusData[index],
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: PFspace.screenW * PFr.bronze - gap,
-                      padding: EdgeInsets.only(
-                        left: PFspace.screenMargin,
-                        right: PFspace.screenMargin,
-                        top: PFspace.screenMargin,
-                        bottom: PFspace.screenMargin,
-                      ),
-                      margin: EdgeInsets.only(
-                        bottom: gap,
-                        left: PFspace.screenMargin,
-                        right: PFspace.screenMargin,
-                      ),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            height: PFspace.screenW * PFr.bronze - 5 * gap,
-                            width: (PFspace.screenW * PFr.bronze - 5 * gap) /
-                                PFr.ratio3_4,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.r),
-                              ),
-                              child:
-                                  CachedImage.typeLaod(_focusData[index].img),
-                            ),
-                          ),
-                          SizedBox(width: PFspace.screenMargin),
-                          Flexible(
-                            child: Column(
-                              children: [
-                                PFtext.text1(text: _focusData[index].title),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                } else {
-                  return const Loading();
-                }
-              },
-              childCount:
-                  _count > _focusData.length ? _focusData.length : _count,
-            ),
-          ),
+          buildListWidget(),
         ],
       ),
     );
+  }
+
+  Widget buildListWidget() {
+    if (_focusData.isEmpty) {
+      return SliverToBoxAdapter(child: Container());
+    }
+
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return _inforWidget(_focusData[index]);
+        },
+        childCount: _count > _focusData.length ? _focusData.length : _count,
+      ),
+    );
+  }
+
+  Widget _inforWidget(LatestInformation focusData) {
+    return InfoItemWidget(information: focusData);
   }
 }

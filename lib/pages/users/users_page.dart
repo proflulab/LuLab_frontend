@@ -57,14 +57,14 @@ class _UsersPageState extends State<UsersPage>
             ),
           ),
           contentPadding: const EdgeInsets.all(10),
-          trailing: const Text(
-            "个人主页",
-            style: TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.black,
-              fontSize: 18,
-            ),
-          ),
+          // trailing: const Text(
+          //   "个人主页",
+          //   style: TextStyle(
+          //     fontFamily: 'MyFontStyle',
+          //     color: Colors.black,
+          //     fontSize: 18,
+          //   ),
+          // ),
           onTap: () {
             if (kDebugMode) {
               print("进入个人主页");
@@ -326,7 +326,7 @@ class _UsersPageState extends State<UsersPage>
       appBar: AppBar(
         backgroundColor: Colors.white,
         //backgroundColor: Colors.transparent,
-        //elevation: 0,
+        elevation: 0,
         actions: [
           IconButton(
             onPressed: () {

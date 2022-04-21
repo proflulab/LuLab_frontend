@@ -60,6 +60,7 @@ class _HomePageState extends State<HomePage>
                 bottom: 3,
               ),
             ),
+            elevation: 0,
           ),
         ),
       ),

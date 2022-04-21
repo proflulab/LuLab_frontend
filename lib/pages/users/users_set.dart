@@ -267,7 +267,10 @@ class _SettingsPageState extends State<SettingsPage> {
 
   _clearCache() async {
     await CacheUtil.clearCache();
-    await CacheUtil.loadCache();
     toastInfo(msg: "清除缓存成功");
+
+    setState(() {
+      _cacheSize = "0B";
+    });
   }
 }

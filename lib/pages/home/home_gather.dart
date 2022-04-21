@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:proflu/pages/source/infor_item_widget.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -281,23 +282,30 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                               Row(
                                 children: [
                                   PFtext.text2(
-                                    text: _focusData3[index].author,
-                                    color: PFc.textSecondary,
-                                  ),
+                                      text: _focusData3[index].author,
+                                      color: PFc.textSecondary,
+                                      fontSize: 13),
                                   const SizedBox(width: 10),
-                                  Text(_focusData3[index].authorTags),
+                                  PFtext.text2(
+                                      text: _focusData3[index].authorTags,
+                                      fontSize: 13
+
+                                      // color: PFc.textSecondary,
+                                      ),
                                 ],
                               ),
                               Flexible(child: Container(width: 10.w)),
                               Row(
                                 children: [
-                                  Text(TimeChange.client(
-                                      _focusData3[index].onlineTime, "md")),
+                                  PFtext.text1(
+                                      text: TimeChange.client(
+                                          _focusData3[index].onlineTime, "md"),
+                                      fontSize: 13),
                                   const SizedBox(width: 10),
                                   Flexible(child: Container(height: 10.h)),
                                   SizedBox(
-                                    width: 150.w,
-                                    height: 38.w,
+                                    width: 120.w,
+                                    height: 50.w,
                                     child: ElevatedButton(
                                       child: _focusData3[index].status == "0"
                                           ? const Text("预约")
@@ -309,6 +317,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                                               ? Colors.green
                                               : Colors.grey,
                                         ), //背景颜色
+                                        padding: MaterialStateProperty.all(
+                                            EdgeInsets.zero),
                                         foregroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.white), //字体颜色
@@ -402,6 +412,10 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: _focusData2.length,
             itemBuilder: (context, index) {
+              return InfoItemWidget(
+                information: _focusData2[index],
+                margin: false,
+              );
               if (_focusData2.isNotEmpty) {
                 return InkResponse(
                   onTap: () async {
