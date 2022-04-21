@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CachedImage {
@@ -9,8 +8,12 @@ class CachedImage {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       fit: fit,
-      progressIndicatorBuilder: (context, url, downloadProgress) =>
-          LinearProgressIndicator(value: downloadProgress.progress),
+      // progressIndicatorBuilder: (context, url, downloadProgress) =>
+      //     LinearProgressIndicator(
+      //   value: downloadProgress.progress,
+      //   color: Colors.grey.withOpacity(0.8),
+      //   backgroundColor: Colors.grey.withOpacity(0.3),
+      // ),
       errorWidget: (context, url, error) => SvgPicture.asset(
         "assets/images/load.svg",
         //color: PFc.themeColor20,

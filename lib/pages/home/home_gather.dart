@@ -280,24 +280,29 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                               SizedBox(height: 8.h),
                               Row(
                                 children: [
-                                  PFtext.text2(
+                                  PFtext.text1(
                                     text: _focusData3[index].author,
                                     color: PFc.textSecondary,
                                   ),
                                   const SizedBox(width: 10),
-                                  Text(_focusData3[index].authorTags),
+                                  PFtext.text1(
+                                    text: _focusData3[index].authorTags,
+                                    // color: PFc.textSecondary,
+                                  ),
                                 ],
                               ),
                               Flexible(child: Container(width: 10.w)),
                               Row(
                                 children: [
-                                  Text(TimeChange.client(
-                                      _focusData3[index].onlineTime, "md")),
+                                  PFtext.text1(
+                                      text: TimeChange.client(
+                                          _focusData3[index].onlineTime, "md"),
+                                      fontSize: 13),
                                   const SizedBox(width: 10),
                                   Flexible(child: Container(height: 10.h)),
                                   SizedBox(
-                                    width: 150.w,
-                                    height: 38.w,
+                                    width: 120.w,
+                                    height: 50.w,
                                     child: ElevatedButton(
                                       child: _focusData3[index].status == "0"
                                           ? const Text("预约")
@@ -309,6 +314,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                                               ? Colors.green
                                               : Colors.grey,
                                         ), //背景颜色
+                                        padding: MaterialStateProperty.all(
+                                            EdgeInsets.zero),
                                         foregroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.white), //字体颜色

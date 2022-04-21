@@ -326,7 +326,7 @@ class _UsersPageState extends State<UsersPage>
       appBar: AppBar(
         backgroundColor: Colors.white,
         //backgroundColor: Colors.transparent,
-        //elevation: 0,
+        elevation: 0,
         actions: [
           IconButton(
             onPressed: () {
