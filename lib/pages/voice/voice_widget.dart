@@ -39,6 +39,10 @@ class _VoiceWidgetState extends State<VoiceWidget> {
     return Container(
       // height: 268.w,
       width: 750.w,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/voice_bg.png"),
+              fit: BoxFit.cover)),
       padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 70.w),
       child: Column(
         children: [

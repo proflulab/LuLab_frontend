@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
+import 'package:lottie/lottie.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:text_to_speech/text_to_speech.dart';
@@ -32,7 +33,7 @@ class _VoiceViewState extends State<VoiceView>
   TextToSpeech tts = TextToSpeech();
   int a = 0;
   int b = 0;
-  String values = 'assets/images/语音动效2.gif';
+  String values = 'assets/animation/ball.json';
   PorcupineManager? _porcupineManager;
   //换上自己的appid
   final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
@@ -96,7 +97,8 @@ class _VoiceViewState extends State<VoiceView>
     return Container(
       height: 80.0,
       width: 80.0,
-      color: Colors.transparent,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(40)),
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
         onTapDown: (tapDown) {
@@ -109,18 +111,18 @@ class _VoiceViewState extends State<VoiceView>
           SoundRecord.startListening();
           setState(() {
             isListening = false;
-            values = 'assets/images/语音动效 圆环.gif';
+            values = 'assets/animation/speaking.json';
           });
         },
         onTapUp: (tapUp) {
           if (kDebugMode) {
             print("抬起 ");
           }
+          setState(() {
+            values = 'assets/animation/ball.json';
+          });
           SoundRecord.stopListening();
           xfSst();
-          setState(() {
-            values = 'assets/images/语音动效2.gif';
-          });
         },
         child: TestBWidget(
           visible: visible,
@@ -461,7 +463,7 @@ class TestBWidget extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           child: ClipOval(
-            child: Image.asset(values),
+            child: Lottie.asset(values),
           ),
         ));
   }

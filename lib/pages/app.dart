@@ -196,6 +196,7 @@ class _AppState extends State<App> {
             highlightColor: Colors.transparent,
           ),
           child: BottomNavigationBar(
+            backgroundColor: Colors.white,
             currentIndex: _currentIndex,
             onTap: (int index) {
               setState(() {
