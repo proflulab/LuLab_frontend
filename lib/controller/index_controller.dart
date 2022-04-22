@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
@@ -41,7 +43,11 @@ class IndexController extends GetxController {
   void createPorcupineManager() async {
     try {
       _porcupineManager = await PorcupineManager.fromKeywordPaths(
-          accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
+          accessKey,
+          [
+            "assets/ppn/${Platform.isAndroid ? 'three_android' : 'three_ios.ppn'}.ppn"
+          ],
+          wakeWordCallback);
     } on PorcupineException catch (err) {
       // handle porcupine init error
     }

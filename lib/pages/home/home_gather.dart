@@ -11,9 +11,9 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../../pages/course/course_index.dart';
 import '../../pages/home/live_detail.dart';
-import '../../pages/source/infor_details.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);
@@ -91,7 +91,6 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
             skip: 0,
           ),
         );
-
         if (mounted) {
           setState(() {
             _focusData3 = _latestDirectCourse.latestDirectCourse;
@@ -129,6 +128,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
     super.build(context);
     return ListView(
       children: <Widget>[
+        SizedBox(height: 10.h),
         _swiperWidget(),
         SizedBox(height: 20.h),
         _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
@@ -227,9 +227,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(10.r),
-        ),
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(10.r)),
       ),
       child: Column(
         children: [
@@ -277,30 +275,36 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              PFtext.text1(text: _focusData3[index].title),
+                              PFtext.text1(
+                                text: _focusData3[index].title,
+                                fontSize: PFfont.s32,
+                              ),
                               SizedBox(height: 8.h),
                               Row(
                                 children: [
                                   PFtext.text2(
                                       text: _focusData3[index].author,
                                       color: PFc.textSecondary,
-                                      fontSize: 13),
+                                      fontSize: PFfont.c24),
                                   const SizedBox(width: 10),
                                   PFtext.text2(
-                                      text: _focusData3[index].authorTags,
-                                      fontSize: 13
-
-                                      // color: PFc.textSecondary,
-                                      ),
+                                    text: _focusData3[index].authorTags,
+                                    fontSize: PFfont.c24,
+                                    fontWeight: FontWeight.normal,
+                                    color: PFc.textSecondary,
+                                  ),
                                 ],
                               ),
                               Flexible(child: Container(width: 10.w)),
                               Row(
                                 children: [
-                                  PFtext.text1(
-                                      text: TimeChange.client(
-                                          _focusData3[index].onlineTime, "md"),
-                                      fontSize: 13),
+                                  PFtext.text2(
+                                    text: TimeChange.client(
+                                        _focusData3[index].onlineTime, "md"),
+                                    fontSize: PFfont.c24,
+                                    fontWeight: FontWeight.normal,
+                                    color: PFc.textSecondary,
+                                  ),
                                   const SizedBox(width: 10),
                                   Flexible(child: Container(height: 10.h)),
                                   SizedBox(
@@ -395,7 +399,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  //最新资讯-写法二
+  //最新资讯
   _buildInfomation() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
@@ -416,57 +420,6 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                 information: _focusData2[index],
                 margin: false,
               );
-              if (_focusData2.isNotEmpty) {
-                return InkResponse(
-                  onTap: () async {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            InforDetails(product: _focusData2[index]),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(PFspace.screenMargin),
-                    height: PFspace.screenW * PFr.bronze,
-                    decoration: const BoxDecoration(
-                      //color: Color.fromARGB(255, 227, 39, 39),
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: (PFspace.screenW * PFr.bronze -
-                                  2 * PFspace.screenMargin) /
-                              PFr.silver,
-                          height: PFspace.screenW * PFr.bronze -
-                              2 * PFspace.screenMargin,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.r),
-                            ),
-                            child: CachedImage.typeLaod(_focusData2[index].img),
-                          ),
-                        ),
-                        SizedBox(width: PFspace.ruleS),
-                        Flexible(
-                            child: Column(
-                          children: [
-                            Container(
-                              child:
-                                  PFtext.text1(text: _focusData2[index].title),
-                            ),
-                          ],
-                        )),
-                      ],
-                    ),
-                  ),
-                );
-              } else {
-                return const Loading();
-              }
             },
           ),
         ],
@@ -474,7 +427,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
     );
   }
 
-  //精选课程-写法二
+  //精选课程
   _buildCourse() {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
@@ -532,7 +485,10 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              PFtext.text1(text: _focusData4[index].title),
+                              PFtext.text1(
+                                text: _focusData4[index].title,
+                                fontSize: PFfont.s32,
+                              ),
                               SizedBox(height: 8.h),
                               Row(
                                 children: [

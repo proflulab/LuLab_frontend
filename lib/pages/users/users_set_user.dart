@@ -128,8 +128,7 @@ class _SetUserState extends State<SetUser> {
                   title: '头像',
                   child: SizedBox(
                       child: ClipOval(
-                          child: CachedImage.typeLaod(
-                              Global.profile.profileImgUrl!))),
+                          child: CachedImage.typeLaod(Global.profile.imgUrl!))),
                   icon: const Icon(MyIcon.userRight),
                   onTap: () {
                     if (kDebugMode) {
