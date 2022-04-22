@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
@@ -50,8 +52,11 @@ class _VoiceViewState extends State<VoiceView>
 
   void createPorcupineManager() async {
     try {
+      final _firstAsset = Platform.isAndroid
+          ? 'assets/ppn/three_android.ppn'
+          : 'assets/ppn/three_ios.ppn';
       _porcupineManager = await PorcupineManager.fromKeywordPaths(
-          accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
+          accessKey, [_firstAsset], wakeWordCallback);
     } on PorcupineException catch (err) {
       // handle porcupine init error
     }
@@ -66,7 +71,6 @@ class _VoiceViewState extends State<VoiceView>
     if (keywordIndex >= 0) {
       YYDialog.init(context);
       sstSpeak(text: '我在，你有什么问题');
-
       yYFixTextFieldDialog();
       // tts.stop();
       // sstSpeak(text: '我在，你有什么问题');
