@@ -3,6 +3,7 @@ import 'dart:async';
 //import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../common/api/apis.dart';
@@ -126,7 +127,7 @@ class _LiveDetailState extends State<LiveDetail> {
   @override
   Widget build(BuildContext context) {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
-    String time1 = formatDate(time, [yyyy, '年', mm, '月', dd, '日']);
+    String time1 = formatDate(time, [mm, '-', dd, ' ', HH, ':', nn, '']);
 
     String text = Global.profile.name ??
         "" +
@@ -137,228 +138,276 @@ class _LiveDetailState extends State<LiveDetail> {
             "，主讲人：" +
             widget.product.author;
     return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          SizedBox(
-            width: 1.sw, //容器的相关参数
-            height: 1.sw / PFr.ratio16_9,
-            // alignment: Alignment.center, //在容器的位置
-            child: Image.network(
-              widget.product.imgUrl,
-              fit: BoxFit.fill,
-            ),
-          ),
-          Container(
-            //从这里开始
-            width: 1.sw,
-            height: 80.h,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-            child: const Center(
-              child: Text(
-                "详情",
-                style: TextStyle(
-                    color: Colors.green,
-                    fontFamily: 'MyFontStyle',
-                    fontSize: 20),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.all(PFspace.screenMargin),
-            padding: EdgeInsets.all(PFspace.screenMargin),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //SizedBox(height: 30.h),
-                Text(
-                  "距离" + time1 + "直播开始还有",
-                  style:
-                      const TextStyle(fontFamily: 'MyFontStyle', fontSize: 18),
-                ),
-                constructTime(seconds),
-                SizedBox(height: 60.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 270.0.w, //容器的相关参数
-                      height: 70.0.h,
-                      child: ElevatedButton(
-                        child: const Text("邀请好友一起看"),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Colors.lightGreen), //背景颜色
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.white), //字体颜色
-                          overlayColor: MaterialStateProperty.all(
-                              const Color(0xffFFF8E5)), // 高亮色
-                          shadowColor: MaterialStateProperty.all(
-                              const Color(0xffffffff)), //阴影颜色
-                          elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(
-                            const TextStyle(
-                              fontSize: 13,
-                              fontFamily: 'MyFontStyle',
-                            ),
-                          ), //字体
-                          shape: MaterialStateProperty.all(
-                            const StadiumBorder(
-                              side: BorderSide(
-                                //设置 界面效果
-                                style: BorderStyle.solid,
-                                color: Colors.lightGreen,
-                              ),
-                            ),
-                          ), //圆角弧度
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  width: 1.sw, //容器的相关参数
+                  height: 1.sw / PFr.ratio16_9,
+                  // alignment: Alignment.center, //在容器的位置
+                  child: widget.product.videoUrl.isNotEmpty
+                      ? VideoScreen(
+                          cover: widget.product.imgUrl,
+                          url: widget.product.videoUrl,
+                        )
+                      : Image.network(
+                          widget.product.imgUrl,
+                          fit: BoxFit.fill,
                         ),
-                        onPressed: () {
-                          _onShare(context, text);
-                        },
-                      ),
+                ),
+                Container(
+                  //从这里开始
+                  width: 1.sw,
+                  height: 80.h,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
                     ),
-                    SizedBox(width: 60.w),
-                    SizedBox(
-                      width: 270.0.w, //容器的相关参数
-                      height: 70.0.h,
-                      child: ElevatedButton(
-                        child:
-                            state == "1" ? const Text("预约") : const Text("已预约"),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              state == "-1"
-                                  ? Colors.green
-                                  : Colors.grey), //背景颜色
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.white), //字体颜色
-                          overlayColor: MaterialStateProperty.all(
-                              const Color(0xffFFF8E5)), // 高亮色
-                          shadowColor: MaterialStateProperty.all(
-                              const Color(0xffffffff)), //阴影颜色
-                          elevation: MaterialStateProperty.all(0), //阴影值
-                          textStyle: MaterialStateProperty.all(
-                            const TextStyle(
-                              fontSize: 13,
-                              fontFamily: 'MyFontStyle',
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "直播详情",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontFamily: 'MyFontStyle',
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(PFspace.screenMargin),
+                  padding: EdgeInsets.all(PFspace.screenMargin),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //SizedBox(height: 30.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PFtext.text1(
+                              text: "距离 ",
+                              fontSize: 18,
+                              color: PFc.textSecondary),
+                          PFtext.text1(
+                              text: time1, fontSize: 18, color: PFc.themeColor),
+                          PFtext.text1(
+                              text: "直播开始还有 ",
+                              fontSize: 18,
+                              color: PFc.textSecondary),
+                        ],
+                      ),
+                      SizedBox(height: 20.w),
+
+                      constructTime(seconds),
+                      SizedBox(height: 40.w),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 270.0.w, //容器的相关参数
+                            height: 70.0.h,
+                            child: ElevatedButton(
+                              child: const Text("邀请好友一起看"),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xffB2FFA6)), //背景颜色
+                                foregroundColor: MaterialStateProperty.all(
+                                    Color(0xff40A850)), //字体颜色
+                                overlayColor: MaterialStateProperty.all(
+                                    const Color(0xffFFF8E5)), // 高亮色
+                                shadowColor: MaterialStateProperty.all(
+                                    const Color(0xffffffff)), //阴影颜色
+                                elevation: MaterialStateProperty.all(0), //阴影值
+                                textStyle: MaterialStateProperty.all(
+                                  const TextStyle(
+                                    fontSize: 13,
+                                    fontFamily: 'MyFontStyle',
+                                    color: Color(0xff40A850),
+                                  ),
+                                ), //字体
+                                shape: MaterialStateProperty.all(
+                                  const StadiumBorder(
+                                    side: BorderSide(
+                                        //设置 界面效果
+                                        style: BorderStyle.solid,
+                                        color: Color(0xff40A850),
+                                        width: 0.5),
+                                  ),
+                                ), //圆角弧度
+                              ),
+                              onPressed: () {
+                                _onShare(context, text);
+                              },
                             ),
                           ),
-                          shape: MaterialStateProperty.all(
-                            StadiumBorder(
-                              side: BorderSide(
-                                //设置 界面效果
-                                style: BorderStyle.solid,
-                                color:
-                                    state == "-1" ? Colors.green : Colors.grey,
+                          SizedBox(width: 60.w),
+                          SizedBox(
+                            width: 270.0.w, //容器的相关参数
+                            height: 70.0.h,
+                            child: ElevatedButton(
+                              child: state == "1"
+                                  ? const Text("预约")
+                                  : const Text("已预约"),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    state == "-1"
+                                        ? Colors.green
+                                        : Colors.grey), //背景颜色
+                                foregroundColor: MaterialStateProperty.all(
+                                    Colors.white), //字体颜色
+                                overlayColor: MaterialStateProperty.all(
+                                    const Color(0xffFFF8E5)), // 高亮色
+                                shadowColor: MaterialStateProperty.all(
+                                    const Color(0xffffffff)), //阴影颜色
+                                elevation: MaterialStateProperty.all(0), //阴影值
+                                textStyle: MaterialStateProperty.all(
+                                  const TextStyle(
+                                    fontSize: 13,
+                                    fontFamily: 'MyFontStyle',
+                                  ),
+                                ),
+                                shape: MaterialStateProperty.all(
+                                  StadiumBorder(
+                                    side: BorderSide(
+                                      //设置 界面效果
+                                      style: BorderStyle.solid,
+                                      color: state == "-1"
+                                          ? Colors.green
+                                          : Colors.grey,
+                                    ),
+                                  ),
+                                ), //圆角弧度
                               ),
-                            ),
-                          ), //圆角弧度
-                        ),
-                        onPressed: () {
-                          if (state == "-1") {
-                            //执行日历预约方法
-                            Calendar.createEvent(
-                              widget.product.title,
-                              widget.product.description,
-                              DateTime.fromMillisecondsSinceEpoch(
-                                  widget.product.onlineTime),
-                              widget.product.duration,
-                            );
-                            //执行预约方法
-                            setState(
-                              () {
-                                _handleRecordAdd();
-                                state = "0";
+                              onPressed: () {
+                                if (state == "-1") {
+                                  //执行日历预约方法
+                                  Calendar.createEvent(
+                                    widget.product.title,
+                                    widget.product.description,
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        widget.product.onlineTime),
+                                    widget.product.duration,
+                                  );
+                                  //执行预约方法
+                                  setState(
+                                    () {
+                                      _handleRecordAdd();
+                                      state = "0";
+                                    },
+                                  );
+                                } else {
+                                  toastInfo(msg: "已预约过该直播");
+                                }
                               },
-                            );
-                          } else {
-                            toastInfo(msg: "已预约过该直播");
-                          }
-                        },
-                      ),
-                    )
-                  ],
-                )
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                    margin: EdgeInsets.fromLTRB(
+                        PFspace.screenMargin, 0.0, PFspace.screenMargin, 15.0),
+                    padding: EdgeInsets.all(PFspace.screenMargin),
+                    decoration: const BoxDecoration(
+                      //设置四周圆角 角度
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.product.title,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                        ),
+                        Text(
+                          "主讲人：" + widget.product.author,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text(
+                          time1,
+                          style: const TextStyle(
+                              // fontFamily: 'MyFontStyle',
+                              color: Colors.black,
+                              fontSize: 14),
+                        ),
+                        Text(
+                          widget.product.description,
+                          style: const TextStyle(
+                            // fontFamily: 'MyFontStyle',
+                            color: Colors.black,
+                            fontSize: 14,
+                          ),
+                        ),
+                        if (widget.product.coverUrl.isNotEmpty)
+                          CachedImage.typeLaod(widget.product.coverUrl)
+                      ],
+                    )),
               ],
             ),
           ),
-          Container(
-              margin: EdgeInsets.fromLTRB(
-                  PFspace.screenMargin, 0.0, PFspace.screenMargin, 15.0),
-              padding: EdgeInsets.all(PFspace.screenMargin),
-              decoration: const BoxDecoration(
-                //设置四周圆角 角度
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.product.title,
-                    style: const TextStyle(
-                      // fontFamily: 'MyFontStyle',
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
-                    "主讲人：" + widget.product.author,
-                    style: const TextStyle(
-                      // fontFamily: 'MyFontStyle',
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
-                  Text(
-                    time1,
-                    style: const TextStyle(
-                        // fontFamily: 'MyFontStyle',
-                        color: Colors.black,
-                        fontSize: 14),
-                  ),
-                  Text(
-                    widget.product.description,
-                    style: const TextStyle(
-                      // fontFamily: 'MyFontStyle',
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
-                  if (widget.product.coverUrl.isNotEmpty)
-                    CachedImage.typeLaod(widget.product.coverUrl)
-                ],
-              )),
+          Positioned(
+            child: _buildAppbar(),
+            top: 0,
+            left: 0,
+            right: 0,
+          )
         ],
       ),
     );
   }
 
+  AppBar _buildAppbar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      iconTheme: IconThemeData(color: Colors.black87),
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
+      toolbarHeight: 44,
+    );
+  }
+
   //时间格式化，根据总秒数转换为对应的 hh:mm:ss 格式
-  Text constructTime(int seconds) {
+  Widget constructTime(int seconds) {
     int day = seconds ~/ 86400;
     int hour = seconds % 86400 ~/ 3600;
     int minute = seconds % 3600 ~/ 60;
     int second = seconds % 60;
-    return Text(
-      formatTime(day) +
-          "天" +
-          formatTime(hour) +
-          "小时" +
-          formatTime(minute) +
-          "分钟" +
-          formatTime(second) +
-          "秒",
-      style: const TextStyle(
-          fontFamily: 'MyFontStyle', color: Colors.black, fontSize: 30),
+    return RichText(
+      text: TextSpan(
+          children: [
+            TextSpan(text: formatTime(day)),
+            const TextSpan(text: "天", style: TextStyle(fontSize: 14)),
+            TextSpan(text: formatTime(hour)),
+            const TextSpan(text: "小时", style: TextStyle(fontSize: 14)),
+            TextSpan(text: formatTime(minute)),
+            const TextSpan(text: "分钟", style: TextStyle(fontSize: 14)),
+            TextSpan(text: formatTime(second)),
+            const TextSpan(text: "秒", style: TextStyle(fontSize: 14)),
+          ],
+          style: const TextStyle(
+            fontFamily: 'MyFontStyle',
+            fontSize: 36,
+            color: Colors.black,
+          )),
     );
   }
 

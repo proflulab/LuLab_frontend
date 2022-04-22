@@ -1,3 +1,4 @@
+import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
@@ -33,6 +34,8 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   int _selectIndex = 0;
 
+  final FijkPlayer player = FijkPlayer();
+
   @override
   void initState() {
     super.initState();
@@ -46,12 +49,16 @@ class _CourseIndexPageState extends State<CourseIndexPage>
         variables: DetailCourseRequest(dirId: dirId), context: context);
     setState(() {
       _focusData = _detailCourse.detailCourse;
+      if (_focusData.isNotEmpty) {
+        player.setDataSource(_focusData[0].videoUrl, autoPlay: true);
+      }
     });
   }
 
   @override
   void dispose() {
     super.dispose();
+    player.dispose();
     _tabController.dispose();
   }
 
@@ -66,13 +73,9 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          VideoView(
-            vUrl,
-            //测试视频
-            //'https://media.w3.org/2010/05/sintel/trailer.mp4',
-            //'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-            //cover: 'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-            // key: UniqueKey(),
+          AspectRatio(
+            aspectRatio: 16 / 9,
+            child: FijkView(player: player),
           ),
           // tab栏
           _buildTabNavigation(),
@@ -184,6 +187,10 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                     _selectIndex = index;
                                     vUrl = _focusData[index].videoUrl;
                                   });
+                                  await player.reset();
+                                  player.setDataSource(
+                                      _focusData[index].videoUrl,
+                                      autoPlay: true);
                                 },
                                 child: Container(
                                   height: 114.h,

@@ -63,7 +63,7 @@ class PFtext {
 
   //常规字体——
   static Widget text3({
-    required BuildContext context,
+    //required BuildContext context,
     required String text,
     int maxLines = 1,
     TextOverflow overflow = TextOverflow.ellipsis,

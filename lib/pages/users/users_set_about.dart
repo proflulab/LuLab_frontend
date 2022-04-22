@@ -100,8 +100,8 @@ class Ttt extends StatelessWidget {
                   height: 60.w,
                   alignment: Alignment.centerLeft,
                   child: PFtext.text1(text: "产品特色")),
-              Divider(),
-              PFtext.text1(text: Markdowndata.characteristic, maxLines: 99)
+              const Divider(),
+              PFtext.text3(text: Markdowndata.characteristic, maxLines: 99)
             ],
           ),
         )

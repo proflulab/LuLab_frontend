@@ -15,7 +15,6 @@ class PFspace {
   static double ruleM = 30.w;
   //常规大间距
   static double ruleL = 54.w;
-
   // static double screenheight = MediaQuery.of(context).size.height;
   // static double screenwidth = MediaQuery.of(context).size.width;
 }

@@ -1,8 +1,5 @@
 //参数
-// {
-// "userId":"shiming",
-// "queryText":"你好"
-// }
+// {"userId":"shiming","queryText":"你好"}
 
 const String voice = r'''
 

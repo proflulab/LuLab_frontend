@@ -51,34 +51,21 @@ query feats($category: String!, $skip: Int!, $limit: Int!) {
   latestClassificationUser(category: $category, option: {skip: $skip, limit: $limit}) {
     _id
     name
-    sex
     birth
-    position
-    company
-    industry
+    sex
     phone
     email
     wechat
-    schoolRecord
-    workCondition
+    homeTown
+    location
     detailMsg
     description
-    duration
+    profileImgUrl
+    bigCoverUrl
+    videoUrl
+    tags
     category
     userType
-    identity
-    imgUrl
-    iconUrl
-    bigCoverUrl
-    profileImgUrl
-    videoUrl
-    password
-    country
-    address
-    imgs
-    tags
-    addTime
-    timestamp
   }
 }
 ''';

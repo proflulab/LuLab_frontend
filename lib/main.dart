@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
         //   //咨询分页本地化处理
         //   //GlobalEasyRefreshLocalizations.delegate,
         // ],
-        // supportedLocales: const [
-        //   Locale('en', 'US'), // English, no country code
-        //   Locale('zh', 'CN'), // 中文简体
-        // ],
+        supportedLocales: const [
+          Locale('en', 'US'), // English, no country code
+          //Locale('zh', 'CN'), // 中文简体
+        ],
         debugShowCheckedModeBanner: false,
         title: "陆向谦实验室",
         theme: mDefaultTheme,

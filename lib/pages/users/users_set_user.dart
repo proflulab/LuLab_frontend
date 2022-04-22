@@ -87,8 +87,6 @@ class _SetUserState extends State<SetUser> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
-            // Navigator.of(context).push(
-            //     MaterialPageRoute(builder: (context) => const UsersPage()));
           },
         ),
         actions: [

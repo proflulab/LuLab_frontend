@@ -109,7 +109,6 @@ class _SignUpPageState extends State<SignUpPage> {
             width: 622,
             height: 112,
           ),
-
           // 注册
           Container(
             margin: EdgeInsets.only(top: fitHeight(15)),

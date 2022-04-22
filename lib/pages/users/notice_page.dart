@@ -1,6 +1,7 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/common/widget/my_appbar.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -38,27 +39,8 @@ class _NoticePageState extends State<NoticePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          '通知',
-          style: TextStyle(
-            fontFamily: 'MyFontStyle',
-            color: Colors.green,
-            fontSize: 24,
-          ),
-        ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        backgroundColor: Colors.white,
-        //centerTitle: true,
+      appBar: const MyAppBar(
+        title: "通知",
       ),
       body: Container(
         height: 1.sh,
@@ -137,10 +119,10 @@ class _NoticePageState extends State<NoticePage> {
                           ),
                           //介绍
                           Positioned(
-                            top: 85.h,
+                            top: 80.h,
                             left: 180.w,
                             child: SizedBox(
-                              height: 80.h,
+                              height: 35,
                               width: 400.w,
                               child: Text(
                                 _focusData[index].description, //最多60字
@@ -148,6 +130,8 @@ class _NoticePageState extends State<NoticePage> {
                                     color: Colors.grey,
                                     fontFamily: 'MyFontStyle',
                                     fontSize: 14),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
