@@ -2,9 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:proflu/controller/index_controller.dart';
-import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -21,22 +19,6 @@ class VoiceView extends StatefulWidget {
 
 class _VoiceViewState extends State<VoiceView>
     with AutomaticKeepAliveClientMixin {
-  String sstText = '未开始';
-  String voiceResponseText = '';
-  XfManage? _xf;
-  bool isListening = true;
-  bool visible = true;
-  bool show = true;
-  TextToSpeech tts = TextToSpeech();
-  int a = 0;
-  int b = 0;
-  PorcupineManager? _porcupineManager;
-  //换上自己的appid
-  final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
-  String strTitle = '';
-  String strTime = '';
-  String strDescription = '';
-
   @override
   bool get wantKeepAlive => true;
 
@@ -50,34 +32,21 @@ class _VoiceViewState extends State<VoiceView>
           color: Colors.white, borderRadius: BorderRadius.circular(40)),
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
-        onTap: IndexController.to.pressSoundBtn,
-        child: TestBWidget(
-          visible: visible,
-          show: show,
-        ),
-      ),
-    );
-  }
-}
-
-class TestAWidget extends StatelessWidget {
-  final bool visible;
-
-  const TestAWidget({Key? key, required this.visible}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 300),
-      opacity: visible ? 1.0 : 0.0,
-      child: Container(
-        height: 50,
-        width: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(45),
-          color: Colors.blue,
-        ),
-        child: const Icon(Icons.graphic_eq),
+        onLongPressStart: (c) {
+          IndexController.to.startSpeaking();
+        },
+        onLongPressEnd: (c) {
+          IndexController.to.stopSpeaking();
+        },
+        child: GetBuilder<IndexController>(builder: (ic) {
+          return Container(
+            alignment: Alignment.center,
+            child: ClipOval(
+              child: Lottie.asset(
+                  "assets/animation/${ic.speaking ? 'speaking' : 'ball'}.json"),
+            ),
+          );
+        }),
       ),
     );
   }
@@ -247,90 +216,6 @@ class _VoiceSpeakState extends State<VoiceSpeak> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class TestBWidget extends StatelessWidget {
-  final bool visible;
-  final bool show;
-
-  const TestBWidget({
-    Key? key,
-    required this.visible,
-    required this.show,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<IndexController>(builder: (ic) {
-      return AnimatedOpacity(
-          duration: const Duration(milliseconds: 300),
-          opacity: visible ? 1.0 : 0.0,
-          child: Container(
-            alignment: Alignment.center,
-            child: ClipOval(
-              child: Lottie.asset(
-                  "assets/animation/${ic.speaking ? 'speaking' : 'ball'}.json"),
-            ),
-          ));
-    });
-  }
-}
-
-class TestEWidget extends StatelessWidget {
-  const TestEWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: ClipOval(
-        child: Image.asset("assets/images/20220116223044.gif"),
-      ),
-    );
-  }
-}
-
-class TestCWidget extends StatelessWidget {
-  final bool show;
-  final String text;
-
-  const TestCWidget({Key? key, required this.show, required this.text})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 300),
-      opacity: show ? 1.0 : 0.0,
-      child: Container(
-        height: 20.0,
-        color: Colors.blue,
-        child: Text(text),
-      ),
-    );
-  }
-}
-
-class TestDWidget extends StatelessWidget {
-  final bool show;
-  final String text;
-
-  const TestDWidget({Key? key, required this.show, required this.text})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 300),
-      opacity: show ? 1.0 : 0.0,
-      child: Container(
-        height: 50.0,
-        width: 300.0,
-        color: Colors.blue,
-        child: Text(text),
       ),
     );
   }

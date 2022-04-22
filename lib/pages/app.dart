@@ -183,31 +183,45 @@ class _AppState extends State<App> {
     return Positioned(
       child: GetBuilder<IndexController>(builder: (ic) {
         if (!ic.speaking) return const SizedBox(width: 0, height: 0);
-        return Material(
-          color: Colors.transparent,
-          child: Column(
-            children: [
-              VoiceWidget(type: 4),
-              GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: ic.pressSoundBtn,
-                child: Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    // color: Colors.black12,
+        return GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            ic.closeDialog();
+          },
+          child: Material(
+            color: Colors.black26,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                VoiceWidget(),
+                GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onLongPressStart: (c) {
+                    IndexController.to.startSpeaking();
+                  },
+                  onLongPressEnd: (c) {
+                    IndexController.to.stopSpeaking();
+                  },
+                  child: Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(40),
+                      // color: Colors.black12,
+                    ),
+                    margin: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).padding.bottom),
                   ),
-                  margin: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).padding.bottom),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       }),
       bottom: 0,
       left: 0,
+      right: 0,
+      top: 0,
     );
   }
 

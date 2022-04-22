@@ -8,16 +8,21 @@ import 'package:text_to_speech/text_to_speech.dart';
 
 import '../common/api/gql_voice.dart';
 import '../common/entitys/data_voice.dart';
+import '../common/entitys/speaking_status.dart';
 import '../common/utils/utils.dart';
 
 class IndexController extends GetxController {
   static IndexController get to => Get.find();
 
+  List<String> hints = ["“预约直播课”", "“听创业快讯”", "“了解陆向谦实验室”"];
+
+  /// 当前状态
+  SpeakingStatus status = SpeakingStatus.userSpeaking;
+
   bool speaking = false;
 
-  String sstText = '未开始';
+  String userWord = '';
   XfManage? _xf;
-  bool show = true;
   TextToSpeech tts = TextToSpeech();
   int a = 0;
   int b = 0;
@@ -58,6 +63,8 @@ class IndexController extends GetxController {
     debugPrint("按下 ");
 
     speaking = true;
+    status = SpeakingStatus.userSpeaking;
+    userWord = "";
     update();
     if (!wakeUp) {
       tts.stop();
@@ -66,19 +73,15 @@ class IndexController extends GetxController {
   }
 
   void stopSpeaking() {
-    speaking = false;
-    update();
+    // speaking = false;
+    // update();
     SoundRecord.stopListening();
     xfSst();
   }
 
-  void pressSoundBtn() {
-    print("====");
-    if (speaking) {
-      stopSpeaking();
-    } else {
-      startSpeaking();
-    }
+  void closeDialog() {
+    speaking = false;
+    update();
   }
 
   xfSst() async {
@@ -89,12 +92,13 @@ class IndexController extends GetxController {
       ViocePort.appId,
       await SoundRecord.currentSamples(),
       (msg) {
-        sstText = msg;
-        if (sstText == '') {
-          b = 1;
+        userWord = msg;
+        if (userWord == '') {
+          status = SpeakingStatus.parseFailed;
+          update();
+        } else {
+          voicegql();
         }
-        voicegql();
-        update();
       },
     );
   }
@@ -103,18 +107,22 @@ class IndexController extends GetxController {
     VoiceRequest variables = VoiceRequest(
       // queryText: sstText,
       userId: Global.profile.id!,
-      queryText: sstText,
+      queryText: userWord,
     );
     try {
       VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
         context: Get.context!,
         variables: variables,
       );
-      speaking = true;
+      // speaking = true;
       // String a = voiceText.speechGoogle.code;
+      status = SpeakingStatus.aiSpeaking;
       sstSpeak(text: voiceText.speechGoogle.msg);
       update();
     } catch (e) {
+      status = SpeakingStatus.parseFailed;
+      update();
+
       print("===========获取语音响应内容报错===============");
       print(e);
     }

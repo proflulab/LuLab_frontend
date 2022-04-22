@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:proflu/common/entitys/speaking_status.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
+import 'package:proflu/controller/index_controller.dart';
 
 class VoiceWidget extends StatefulWidget {
-  /// 1-Ai speaking 2-识别出错 3-提示 4-用户语音实时翻译
-  final int type;
-
-  const VoiceWidget({Key? key, required this.type}) : super(key: key);
+  const VoiceWidget({Key? key}) : super(key: key);
 
   @override
   State<VoiceWidget> createState() => _VoiceWidgetState();
 }
 
 class _VoiceWidgetState extends State<VoiceWidget> {
-  List<String> hints = ["“我要预订直播课”", "“听今日新闻”", "“陆向谦实验室”"];
-
   final String _text = "你好我想问一下陆向谦实验室是什么,还有我想问下陆向谦教授是哪位呢?";
 
   @override
   Widget build(BuildContext context) {
-    switch (widget.type) {
-      case 1:
-        return _aiSpeakingWidget();
-      case 2:
-        return _errorWidget();
-      case 3:
-        return _swiperWidget();
-      case 4:
-        return _userSpeakingWidget();
-      default:
-        return Container();
-    }
+    return GetBuilder<IndexController>(builder: (ic) {
+      switch (ic.status) {
+        case SpeakingStatus.userSpeaking:
+          return _userSpeakingWidget(ic);
+        case SpeakingStatus.aiSpeaking:
+          return _aiSpeakingWidget();
+        case SpeakingStatus.parseFailed:
+          return _errorWidget();
+        default:
+          return Container();
+      }
+    });
   }
 
-  Widget _userSpeakingWidget() {
+  Widget _userSpeakingWidget(IndexController ic) {
+    if (ic.userWord.isEmpty) {
+      return _swiperWidget();
+    }
     return _container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,21 +57,32 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _swiperWidget() {
-    return _withLogoWidget(
-      child: Swiper(
-        itemBuilder: (c, i) {
-          return Center(
-            child: Text(
-              hints[i],
-              style: const TextStyle(fontSize: 14),
-            ),
-          );
-        },
-        itemCount: hints.length,
-        autoplay: true,
-        scrollDirection: Axis.vertical,
+    List<Widget> children = [
+      const Text(
+        "试试这样和我说",
+        style: TextStyle(fontSize: 18, color: PFc.themeColor),
       ),
-      width: 506.w,
+    ];
+    for (var item in IndexController.to.hints) {
+      children.add(
+        Text(
+          item,
+          style: const TextStyle(fontSize: 18),
+        ),
+      );
+    }
+    return _container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ...children,
+          Lottie.asset(
+            'assets/animation/wave.json',
+            width: 420.w,
+            height: 74.w,
+          )
+        ],
+      ),
       height: 350.w,
     );
   }
