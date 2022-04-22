@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:proflu/controller/index_controller.dart';
 import 'package:text_to_speech/text_to_speech.dart';
@@ -40,54 +38,6 @@ class _VoiceViewState extends State<VoiceView>
   String strDescription = '';
 
   @override
-  void initState() {
-    super.initState();
-    SoundRecord.init();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {});
-    createPorcupineManager();
-    _porcupineManager?.start();
-  }
-
-  void createPorcupineManager() async {
-    try {
-      _porcupineManager = await PorcupineManager.fromKeywordPaths(
-          accessKey, ["assets/ppn/three_android.ppn"], wakeWordCallback);
-    } on PorcupineException catch (err) {
-      // handle porcupine init error
-    }
-    try {
-      await _porcupineManager?.start();
-    } on PorcupineException catch (ex) {
-      // deal with either audio exception
-    }
-  }
-
-  void wakeWordCallback(int keywordIndex) {
-    if (keywordIndex >= 0) {
-      YYDialog.init(context);
-      sstSpeak(text: '我在，你有什么问题');
-
-      yYFixTextFieldDialog();
-      // tts.stop();
-      // sstSpeak(text: '我在，你有什么问题');
-      // Future.delayed(const Duration(milliseconds: 2850), () {
-      //   SoundRecord.startListening();
-      //   Future.delayed(const Duration(seconds: 5), () {
-      //     SoundRecord.stopListening();
-      //     xfSst();
-      //   });
-      // });
-    }
-  }
-
-  @override
-  void dispose() {
-    _xf?.close();
-    SoundRecord.dispose();
-    super.dispose();
-  }
-
-  @override
   bool get wantKeepAlive => true;
 
   @override
@@ -100,151 +50,13 @@ class _VoiceViewState extends State<VoiceView>
           color: Colors.white, borderRadius: BorderRadius.circular(40)),
       margin: const EdgeInsets.only(top: 30),
       child: GestureDetector(
-        onLongPressStart: (tapDown) {
-          yYFixTextFieldDialog();
-
-          if (kDebugMode) {
-            print("按下 ");
-          }
-          tts.stop();
-          SoundRecord.startListening();
-          setState(() {
-            isListening = false;
-          });
-        },
-        onLongPressEnd: (tapUp) {
-          if (kDebugMode) {
-            print("抬起 ");
-          }
-          IndexController.to.stopSpeaking();
-          setState(() {});
-          SoundRecord.stopListening();
-          xfSst();
-        },
+        onTap: IndexController.to.pressSoundBtn,
         child: TestBWidget(
           visible: visible,
           show: show,
         ),
       ),
-      //原版点按语音交互
-      // ElevatedButton(
-      //   //短按打开关闭操作
-      //   onPressed: () {
-      //     //第一版点击内容效果
-      //     if (a == 0) {
-      //       tts.stop();
-      //       SoundRecord.startListening();
-      //       setState(() {
-      //         isListening = false;
-      //         a = 1;
-      //         values = 'assets/images/语音动效 圆环.gif';
-      //       });
-      //     } else if (a == 1) {
-      //       SoundRecord.stopListening();
-      //       xfSst();
-      //       setState(() {
-      //         a = 2;
-      //         values = 'assets/images/语音动效 300.gif';
-      //       });
-      //     } else {
-      //       tts.stop();
-      //       setState(() {
-      //         a = 0;
-      //         values = 'assets/images/语音动效2.gif';
-      //       });
-      //     }
-      //   },
-      //   child: TestBWidget(
-      //     visible: visible,
-      //     show: show,
-      //     values: values,
-      //   ),
-      //   style: ButtonStyle(
-      //     backgroundColor: MaterialStateProperty.all(const Color(0xffffffff)),
-      //     shape: MaterialStateProperty.all(const CircleBorder(
-      //         side: BorderSide(
-      //       //设置 界面效果
-      //       color: Colors.green,
-      //       width: 280.0,
-      //       style: BorderStyle.none,
-      //     ))), //圆角弧度
-      //   ),
-      // ),
     );
-  }
-
-  xfSst() async {
-    _xf = XfManage.connect(
-      ViocePort.host,
-      ViocePort.apiKey,
-      ViocePort.apiSecret,
-      ViocePort.appId,
-      await SoundRecord.currentSamples(),
-      (msg) {
-        setState(() {
-          sstText = msg;
-          if (sstText == '') {
-            b = 1;
-          }
-          voicegql();
-        });
-      },
-    );
-  }
-
-  voicegql() async {
-    VoiceRequest variables = VoiceRequest(
-      // queryText: sstText,
-      userId: Global.profile.id!,
-      queryText: sstText,
-    );
-    try {
-      VoiceResponse voiceText = await VoiceAPI.indexPageInfo(
-        context: context,
-        variables: variables,
-      );
-      // String a = voiceText.speechGoogle.code;
-      sstSpeak(text: voiceText.speechGoogle.msg);
-      setState(() {
-        isListening = true;
-      });
-      // if (a == "1") {
-      //   print('---------------------');
-      //   strTitle = voiceText.speechGoogle.detail
-      //       .substring(0, voiceText.speechGoogle.subBreak[1]);
-      //   strTime = voiceText.speechGoogle.detail.substring(
-      //       voiceText.speechGoogle.subBreak[1],
-      //       voiceText.speechGoogle.subBreak[2]);
-      //   strDescription = voiceText.speechGoogle.detail.substring(
-      //       voiceText.speechGoogle.subBreak[2],
-      //       voiceText.speechGoogle.subBreak[3]);
-      //   int intTime = int.parse(strTime);
-      //   Calendar.createEvent(
-      //     strTitle,
-      //     strDescription,
-      //     DateTime.fromMillisecondsSinceEpoch(intTime),
-      //     90,
-      //   );
-      // }
-    } catch (e) {
-      if (kDebugMode) {
-        print("===========获取语音响应内容报错===============");
-        print(e);
-      }
-    }
-  }
-
-  void yYFixTextFieldDialog() {
-    IndexController.to.startSpeaking();
-    // return YYDialog().build(context)
-    //   ..width = 750.w
-    //   // ..height = 450.h
-    //   ..backgroundColor = Colors.white
-    //   ..borderRadius = 10.0
-    //   ..widget(const VoiceWidget(
-    //     type: 4,
-    //   ))
-    //   ..show(0.0, 350.0);
   }
 }
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:get/get.dart';
 import 'package:proflu/controller/index_controller.dart';
 
@@ -48,8 +49,6 @@ class _AppState extends State<App> {
     NetState.network();
   }
 
-  LatestRecordElement? _recordElement;
-
   getNotice() {
     int now = DateTime.now().millisecondsSinceEpoch;
     GqlHomeAPI.ordersInfo(
@@ -60,9 +59,7 @@ class _AppState extends State<App> {
       for (var item in value.latestRecord) {
         int diff = item.onlineTime - now;
         if (diff >= 0 && diff <= 600000) {
-          setState(() {
-            _recordElement = item;
-          });
+          _showNoticeWidget(item);
 
           break;
         }
@@ -110,17 +107,10 @@ class _AppState extends State<App> {
               floatingActionButton: const VoiceView(),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
-              body: Stack(
-                children: [
-                  Positioned.fill(
-                    child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: _pageController,
-                      children: _pageList,
-                    ),
-                  ),
-                  if (_recordElement != null) _buildNoticeWidget(context),
-                ],
+              body: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                children: _pageList,
               ),
               bottomNavigationBar: Theme(
                 data: ThemeData(
@@ -189,103 +179,105 @@ class _AppState extends State<App> {
     );
   }
 
-  Positioned _buildNoticeWidget(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).padding.top,
-      left: 28.w,
-      right: 28.w,
-      child: Material(
-        elevation: 2,
-        borderRadius: BorderRadius.circular(10),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () {
-              /// TODO 跳转到直播详情页
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => LiveDetail(product: item),
-              //   ),
-              // );
-            },
-            child: Container(
-              padding: EdgeInsets.all(24.w),
-              width: 722.w,
-              height: 178.w,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      PFtext.text1(
-                          text: "直播预约提醒",
-                          fontSize: 28.w,
-                          color: PFc.textSecondary),
-                      Spacer(),
-                      GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () {
-                          setState(() {
-                            _recordElement = null;
-                          });
-                        },
-                        child: Container(
-                            width: 40.w,
-                            height: 40.w,
-                            decoration: BoxDecoration(
-                                color: const Color(0xffDDDDDD),
-                                borderRadius: BorderRadius.circular(20.w)),
-                            alignment: Alignment.center,
-                            child: Icon(
-                              Icons.close_rounded,
-                              color: Colors.white,
-                              size: 24.w,
-                            )),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 8.w),
-                  PFtext.text2(text: "陆向谦实验室     开播了", fontSize: 28.w),
-                  // Spacer(),
-                  PFtext.text2(
-                      text: _recordElement!.title,
-                      fontSize: 24.w,
-                      color: PFc.textSecondary),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   Positioned _buildVoiceWidget() {
     return Positioned(
       child: GetBuilder<IndexController>(builder: (ic) {
-        print(ic.speaking);
         if (!ic.speaking) return const SizedBox(width: 0, height: 0);
         return Material(
           color: Colors.transparent,
-          child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: Colors.black26,
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).padding.bottom +
-                      kBottomNavigationBarHeight +
-                      35),
-              alignment: Alignment.bottomCenter,
-              child: VoiceWidget(type: 4)),
+          child: Column(
+            children: [
+              VoiceWidget(type: 4),
+              GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: ic.pressSoundBtn,
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    // color: Colors.black12,
+                  ),
+                  margin: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).padding.bottom),
+                ),
+              ),
+            ],
+          ),
         );
       }),
       bottom: 0,
       left: 0,
     );
+  }
+
+  _showNoticeWidget(LatestRecordElement _recordElement) {
+    YYDialog().build(context)
+      ..borderRadius = 10
+      ..gravity = Gravity.top
+      ..barrierDismissible = false
+      ..widget(Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            /// TODO 跳转到直播详情页
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => LiveDetail(product: item),
+            //   ),
+            // );
+          },
+          child: Container(
+            padding: EdgeInsets.all(24.w),
+            width: 722.w,
+            height: 178.w,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    PFtext.text1(
+                        text: "直播预约提醒",
+                        fontSize: 28.w,
+                        color: PFc.textSecondary),
+                    Spacer(),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                          width: 40.w,
+                          height: 40.w,
+                          decoration: BoxDecoration(
+                              color: const Color(0xffDDDDDD),
+                              borderRadius: BorderRadius.circular(20.w)),
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Icons.close_rounded,
+                            color: Colors.white,
+                            size: 24.w,
+                          )),
+                    )
+                  ],
+                ),
+                SizedBox(height: 8.w),
+                PFtext.text2(text: "陆向谦实验室     开播了", fontSize: 28.w),
+                // Spacer(),
+                PFtext.text2(
+                    text: _recordElement.title,
+                    fontSize: 24.w,
+                    color: PFc.textSecondary),
+              ],
+            ),
+          ),
+        ),
+      ))
+      ..show(0.0, MediaQuery.of(context).padding.top);
   }
 }
