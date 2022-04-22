@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proflu/controller/index_controller.dart';
 
+import '/pages/voice/voice_view.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import 'course/course_page.dart';
-import '/pages/voice/voice_view.dart';
 import 'home/home_page.dart';
 import 'source/Infor_page.dart';
 import 'users/users_page.dart';
@@ -115,6 +114,7 @@ class _AppState extends State<App> {
                 children: [
                   Positioned.fill(
                     child: PageView(
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: _pageController,
                       children: _pageList,
                     ),
