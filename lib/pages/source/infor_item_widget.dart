@@ -3,6 +3,7 @@ import 'package:proflu/common/entitys/entitys.dart';
 import 'package:proflu/common/utils/utils.dart';
 
 import '../../common/values/colors.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/cached_network_image.dart';
 import '../../common/widget/text_widget.dart';
 import 'infor_details.dart';
@@ -59,11 +60,13 @@ class InfoItemWidget extends StatelessWidget {
                       Container(
                         // height: 68.w,
                         child: PFtext.text1(
-                            text: information.title,
-                            maxLines: 2,
-                            fontSize: 30.w),
+                          text: information.title,
+                          maxLines: 2,
+                          fontSize: PFfont.s32,
+                        ),
                         margin: EdgeInsets.only(bottom: 18.w),
                       ),
+                      const Flexible(fit: FlexFit.tight, child: SizedBox()),
                       PFtext.text1(
                           text: TimeChange.client(
                               int.parse(information.releaseDate),

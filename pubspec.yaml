@@ -72,7 +72,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -101,4 +100,4 @@ flutter:
 
     - family: MyFontStyle
       fonts:
-        - asset: assets/fonts/汉仪尚魏手书体（英文字体）.ttf
+        - asset: assets/fonts/汉仪行楷简.ttf

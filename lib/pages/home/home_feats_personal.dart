@@ -35,7 +35,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
     _loadAllData();
   }
 
-  // 读取所有功勋员数据
+  //
   _loadAllData() async {
     _postsData = await GqlHomeAPI.featExperienceInfo(
       context: context,
@@ -180,8 +180,8 @@ class _FeastPersonalState extends State<FeastPersonal> {
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 ),
                 child: Row(
-                  children: const [
-                    Text("特斯拉"),
+                  children: [
+                    Text(_focusData[0].company),
                     //Icon(Icons.star),
                   ],
                 ),
@@ -194,8 +194,8 @@ class _FeastPersonalState extends State<FeastPersonal> {
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                 ),
                 child: Row(
-                  children: const [
-                    Text("高管"),
+                  children: [
+                    Text(_focusData[0].position),
                     //Icon(Icons.star),
                   ],
                 ),

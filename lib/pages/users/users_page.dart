@@ -39,7 +39,7 @@ class _UsersPageState extends State<UsersPage>
               width: 100.w,
               height: 100.w,
               child: ClipOval(
-                  child: CachedImage.typeLaod(Global.profile.profileImgUrl!))),
+                  child: CachedImage.typeLaod(Global.profile.imgUrl!))),
           title: Text(
             Global.profile.name!,
             style: const TextStyle(
@@ -370,6 +370,7 @@ class _UsersPageState extends State<UsersPage>
       ),
       body: ListView(
         children: <Widget>[
+          
           _username(),
           // _dynamicdata(),
           // _adv(),

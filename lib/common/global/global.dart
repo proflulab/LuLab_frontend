@@ -3,12 +3,10 @@ import 'dart:io';
 //import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
 
-
-
-import '../../../../common/entitys/entitys.dart';
 //import '../../provider/provider.dart';
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
+import '../../../../common/entitys/entitys.dart';
 //import 'package:package_info/package_info.dart';
 
 /// 全局配置
@@ -19,6 +17,7 @@ class Global {
     description: '',
     email: '',
     profileImgUrl: '',
+    imgUrl: "",
     id: '',
     name: '',
     phone: '',

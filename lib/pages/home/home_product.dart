@@ -5,6 +5,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import '../../pages/home/home_product_detail.dart';
 
 class Product extends StatefulWidget {
@@ -61,8 +62,11 @@ class _ProductState extends State<Product> with AutomaticKeepAliveClientMixin {
               height: _boxh,
               width: _boxw,
               child: Container(
-                margin: EdgeInsets.all(PFspace.screenMargin),
-                //alignment: const Alignment(0, 0),
+                margin: EdgeInsets.only(
+                    top: 10.h,
+                    left: PFspace.screenMargin,
+                    bottom: 10,
+                    right: PFspace.screenMargin),
                 height: 300.h,
                 width: 690.w,
                 decoration: BoxDecoration(
@@ -147,7 +151,7 @@ class _ProductState extends State<Product> with AutomaticKeepAliveClientMixin {
                       top: 200.h,
                       child: Container(
                         height: 100.h,
-                        width: 690.w,
+                        width: 1.sw - 2 * PFspace.screenMargin,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(

@@ -30,13 +30,13 @@ class _CoursePageState extends State<CoursePage>
   late EasyRefreshController _controllerCourse;
 
   //第一次请求获取课程个数
-  final int _countFirst = 6;
+  final int _countFirst = 12;
 
   //刷新请求获取课程个数
-  int _count = 6;
+  int _count = 12;
 
   //底部刷新请求个数
-  final int _countDown = 6;
+  final int _countDown = 12;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
   final double _selectW = PFspace.screenW * (1 - PFr.silver) - 12.w;
@@ -288,7 +288,10 @@ class _CoursePageState extends State<CoursePage>
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              PFtext.text1(text: _focusData3[index].title),
+                              PFtext.text1(
+                                text: _focusData3[index].title,
+                                fontSize: PFfont.s32,
+                              ),
                               SizedBox(height: 8.h),
                               Row(
                                 children: [

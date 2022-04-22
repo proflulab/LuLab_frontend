@@ -379,7 +379,7 @@ class _LiveDetailState extends State<LiveDetail> {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.black87),
+      iconTheme: const IconThemeData(color: Colors.black87),
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       toolbarHeight: 44,
     );
