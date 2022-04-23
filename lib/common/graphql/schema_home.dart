@@ -40,6 +40,8 @@ query LatestUserCourseRecord($authorId:String!, $courseId:String!){
       title
       author
       description
+      backgroundUrl
+      coverUrl
     }
   }
 ''';
