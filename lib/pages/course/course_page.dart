@@ -103,10 +103,10 @@ class _CoursePageState extends State<CoursePage>
                       setState(() {
                         _selectIndex = index;
                         _mode = _focusData2[index].mode;
-                        _count = 6;
+                        _count = 12;
                         _controllerCourse.finishLoad(success: false);
                         _handleCourse(0, _countFirst);
-                      });
+                      }); 
                     },
                     child: Row(
                       children: [

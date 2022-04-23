@@ -1,41 +1,46 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:proflu/common/entitys/speaking_status.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
+import 'package:proflu/controller/index_controller.dart';
+
+import '../../common/widget/blur_rect_widget.dart';
 
 class VoiceWidget extends StatefulWidget {
-  /// 1-Ai speaking 2-识别出错 3-提示 4-用户语音实时翻译
-  final int type;
-
-  const VoiceWidget({Key? key, required this.type}) : super(key: key);
+  const VoiceWidget({Key? key}) : super(key: key);
 
   @override
   State<VoiceWidget> createState() => _VoiceWidgetState();
 }
 
 class _VoiceWidgetState extends State<VoiceWidget> {
-  List<String> hints = ["“我要预订直播课”", "“听今日新闻”", "“陆向谦实验室”"];
-
   final String _text = "你好我想问一下陆向谦实验室是什么,还有我想问下陆向谦教授是哪位呢?";
 
   @override
   Widget build(BuildContext context) {
-    switch (widget.type) {
-      case 1:
-        return _aiSpeakingWidget();
-      case 2:
-        return _errorWidget();
-      case 3:
-        return _swiperWidget();
-      case 4:
-        return _userSpeakingWidget();
-      default:
-        return Container();
-    }
+    return GetBuilder<IndexController>(builder: (ic) {
+      switch (ic.status) {
+        case SpeakingStatus.userSpeaking:
+          return _userSpeakingWidget(ic);
+        case SpeakingStatus.aiSpeaking:
+          return _aiSpeakingWidget();
+        case SpeakingStatus.parseFailed:
+          return _errorWidget();
+        default:
+          return Container();
+      }
+    });
   }
 
-  Widget _userSpeakingWidget() {
+  Widget _userSpeakingWidget(IndexController ic) {
+    if (ic.userWord.isEmpty) {
+      return _swiperWidget();
+    }
     return _container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,9 +49,48 @@ class _VoiceWidgetState extends State<VoiceWidget> {
             _text,
             style: const TextStyle(fontSize: 16),
           ),
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
+          // Lottie.asset(
+          //   'assets/animation/wave2.json',
+          //   width: 420.w,
+          //   height: 74.w,
+          // )
+        ],
+      ),
+      height: 350.w,
+    );
+  }
+
+  Widget _swiperWidget() {
+    return _container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "试试这样和我说",
+            style: TextStyle(
+              fontSize: 18,
+              color: PFc.themeColor,
+            ),
+          ),
+          SizedBox(
+            height: 80.w,
+            child: Swiper(
+              itemBuilder: (c, i) {
+                return Center(
+                  child: Text(
+                    IndexController.to.hints[i],
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                );
+              },
+              itemCount: IndexController.to.hints.length,
+              autoplay: true,
+              scrollDirection: Axis.vertical,
+            ),
+          ),
           Lottie.asset(
-            'assets/animation/wave.json',
+            'assets/animation/wave2.json',
             width: 420.w,
             height: 74.w,
           )
@@ -56,48 +100,38 @@ class _VoiceWidgetState extends State<VoiceWidget> {
     );
   }
 
-  Widget _swiperWidget() {
-    return _withLogoWidget(
-      child: Swiper(
-        itemBuilder: (c, i) {
-          return Center(
-            child: Text(
-              hints[i],
-              style: const TextStyle(fontSize: 14),
-            ),
-          );
-        },
-        itemCount: hints.length,
-        autoplay: true,
-        scrollDirection: Axis.vertical,
-      ),
-      width: 506.w,
-      height: 350.w,
-    );
-  }
-
   Widget _aiSpeakingWidget() {
-    return _withLogoWidget(
-      child: Lottie.asset(
-        'assets/animation/ai_speaking.json',
-        width: 134.w,
-        height: 64.w,
+    return _container(
+      child: Center(
+        child: Lottie.asset(
+          'assets/animation/wave2.json',
+          width: 420.w,
+          height: 74.w,
+        ),
       ),
-      width: 350.w,
       height: 280.w,
     );
   }
 
   Widget _errorWidget() {
-    return _withLogoWidget(
-      child: Text(
-        "未能识别,请点击语音按钮重试",
-        style: TextStyle(
-          fontSize: 32.w,
-          color: PFc.textSecondary,
-        ),
+    return _container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "抱歉我没听懂,请再说一遍",
+            style: TextStyle(
+              fontSize: 32.w,
+            ),
+          ),
+          SizedBox(height: 20.w),
+          Lottie.asset(
+            'assets/animation/wave2.json',
+            width: 420.w,
+            height: 74.w,
+          ),
+        ],
       ),
-      width: 506.w,
       height: 280.w,
     );
   }
@@ -132,23 +166,21 @@ class _VoiceWidgetState extends State<VoiceWidget> {
         height: height);
   }
 
-  Widget _container(
-      {required Widget child, double? height, bool imageBg = true}) {
-    DecorationImage? decorationImage;
-    if (imageBg) {
-      decorationImage = const DecorationImage(
-          image: AssetImage("assets/images/voice_bg.png"), fit: BoxFit.cover);
-    }
-    return Container(
-      height: height ?? 350.w,
-      width: 750.w,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        image: decorationImage,
-        borderRadius: BorderRadius.circular(10),
+  Widget _container({
+    required Widget child,
+    double? height,
+  }) {
+    return BlurRectWidget(
+      child: Container(
+        height: height ?? 350.w,
+        width: 750.w,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: child,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: child,
     );
   }
 }

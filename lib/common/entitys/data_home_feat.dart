@@ -79,6 +79,7 @@ class LatestClassificationUser {
     required this.location,
     required this.detailMsg,
     required this.description,
+    required this.imgUrl,
     required this.profileImgUrl,
     required this.bigCoverUrl,
     required this.videoUrl,
@@ -98,6 +99,7 @@ class LatestClassificationUser {
   final List<String> location;
   final String detailMsg;
   final String description;
+  final String imgUrl;
   final String profileImgUrl;
   final String bigCoverUrl;
   final String videoUrl;
@@ -118,6 +120,7 @@ class LatestClassificationUser {
         location: List<String>.from(json["location"].map((x) => x)),
         detailMsg: json["detailMsg"],
         description: json["description"],
+        imgUrl: json["imgUrl"],
         profileImgUrl: json["profileImgUrl"],
         bigCoverUrl: json["bigCoverUrl"],
         videoUrl: json["videoUrl"],
@@ -138,6 +141,7 @@ class LatestClassificationUser {
         "location": List<dynamic>.from(location.map((x) => x)),
         "detailMsg": detailMsg,
         "description": description,
+        "imgUrl": imgUrl,
         "profileImgUrl": profileImgUrl,
         "bigCoverUrl": bigCoverUrl,
         "videoUrl": videoUrl,

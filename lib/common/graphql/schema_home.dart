@@ -51,21 +51,36 @@ query feats($category: String!, $skip: Int!, $limit: Int!) {
   latestClassificationUser(category: $category, option: {skip: $skip, limit: $limit}) {
     _id
     name
-    birth
     sex
+    birth
+    position
+    homeTown
+    location
+    company
+    industry
     phone
     email
     wechat
-    homeTown
-    location
+    schoolRecord
+    workCondition
     detailMsg
     description
-    profileImgUrl
-    bigCoverUrl
-    videoUrl
-    tags
+    duration
     category
     userType
+    identity
+    imgUrl
+    iconUrl
+    bigCoverUrl
+    profileImgUrl
+    videoUrl
+    password
+    country
+    address
+    imgs
+    tags
+    addTime
+    timestamp
   }
 }
 ''';
@@ -90,15 +105,15 @@ query featsdetails($userId: String!,$limit:Int!,$skip:Int!){
   static const String gqlLatestTraining = r'''
 query {
   latestTraining(option:{skip:0,limit:5}) {
-   _id
-   name
-   description
-   detailUrl
-   imgUrl
-   applyUrl
-   trait
-   addTime 
-   timestamp 
+  _id
+  name
+  description
+  detailUrl
+  imgUrl
+  applyUrl
+  trait
+  addTime 
+  timestamp
   }
 }
   ''';

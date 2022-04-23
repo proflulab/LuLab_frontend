@@ -130,8 +130,7 @@ class _LiveDetailState extends State<LiveDetail> {
     String time1 = formatDate(time, [mm, '-', dd, ' ', HH, ':', nn, '']);
 
     String text = Global.profile.name ??
-        "" +
-            "邀请您在" +
+        "" "邀请您在" +
             time1 +
             "参加" +
             widget.product.title +
@@ -205,7 +204,6 @@ class _LiveDetailState extends State<LiveDetail> {
                         ],
                       ),
                       SizedBox(height: 20.w),
-
                       constructTime(seconds),
                       SizedBox(height: 40.w),
                       Row(
@@ -218,9 +216,9 @@ class _LiveDetailState extends State<LiveDetail> {
                               child: const Text("邀请好友一起看"),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Color(0xffB2FFA6)), //背景颜色
+                                    const Color(0xffB2FFA6)), //背景颜色
                                 foregroundColor: MaterialStateProperty.all(
-                                    Color(0xff40A850)), //字体颜色
+                                    const Color(0xff40A850)), //字体颜色
                                 overlayColor: MaterialStateProperty.all(
                                     const Color(0xffFFF8E5)), // 高亮色
                                 shadowColor: MaterialStateProperty.all(
