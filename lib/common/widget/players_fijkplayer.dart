@@ -24,17 +24,13 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width;
-    // double playerHeight = screenWidth / 1.5;
     return Container(
-      // width: screenWidth,
-      // height: playerHeight,
-      //color: Colors.black,
       height: 235,
       alignment: Alignment.center,
       child: FijkView(
         player: player,
-        //panelBuilder: fijkPanel2Builder(fill: true),
+        color: Colors.black,
+        fit: FijkFit.ar16_9,
         cover: NetworkImage(widget.cover),
       ),
     );

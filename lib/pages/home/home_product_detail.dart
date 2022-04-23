@@ -25,10 +25,16 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
           GestureDetector(
             child: Container(
-              color: PFc.themeColor10,
               height: PFspace.screenH * 0.15,
               child: const Center(
                 child: Text("点击申请"),
+              ),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(19)),
+                border: Border.all(
+                  width: 1,
+                  color: const Color.fromARGB(23, 71, 86, 76),
+                ),
               ),
             ),
             onTap: () {
