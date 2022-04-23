@@ -1,5 +1,6 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:proflu/common/utils/cache_util.dart';
 import 'package:proflu/common/utils/dialog_util.dart';
 import 'package:proflu/pages/users/users_set_about.dart';
@@ -82,12 +83,14 @@ class _SettingsPageState extends State<SettingsPage> {
                   const Divider(height: 1),
                   _lineWidget(
                       title: "密码重置",
+                      //todo 等待验证码校验修改密码
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const ResetPasswordPage(),
-                          ),
-                        );
+                        toastInfo(msg: '耐心等待该功能的开发吧！');
+                        // Navigator.of(context).push(
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const ResetPasswordPage(),
+                        //   ),
+                        // );
                       }),
                 ],
               ),

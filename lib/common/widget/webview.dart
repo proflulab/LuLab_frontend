@@ -26,6 +26,7 @@ class Browser extends StatelessWidget {
           if (!request.url.startsWith("http") ||
               !request.url.startsWith("https:")) {
             launch(request.url);
+            Navigator.of(context).pop();
             return NavigationDecision.prevent;
           }
           return NavigationDecision.navigate;
