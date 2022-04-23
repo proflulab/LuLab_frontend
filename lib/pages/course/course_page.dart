@@ -106,7 +106,7 @@ class _CoursePageState extends State<CoursePage>
                         _count = 12;
                         _controllerCourse.finishLoad(success: false);
                         _handleCourse(0, _countFirst);
-                      });
+                      }); 
                     },
                     child: Row(
                       children: [

@@ -130,8 +130,7 @@ class _LiveDetailState extends State<LiveDetail> {
     String time1 = formatDate(time, [mm, '-', dd, ' ', HH, ':', nn, '']);
 
     String text = Global.profile.name ??
-        "" +
-            "邀请您在" +
+        "" "邀请您在" +
             time1 +
             "参加" +
             widget.product.title +

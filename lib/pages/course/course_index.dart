@@ -58,7 +58,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   @override
   void dispose() {
     super.dispose();
-    player.dispose();
+    player.release();
     _tabController.dispose();
   }
 
@@ -75,7 +75,11 @@ class _CourseIndexPageState extends State<CourseIndexPage>
         children: [
           AspectRatio(
             aspectRatio: 16 / 9,
-            child: FijkView(player: player),
+            child: FijkView(
+              color: Colors.black,
+              player: player,
+              fit: FijkFit.ar16_9,
+            ),
           ),
           // tab栏
           _buildTabNavigation(),

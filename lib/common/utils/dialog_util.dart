@@ -54,7 +54,6 @@ class DialogUtil {
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Navigator.pop(context);
-
                     onConfirm();
                   },
                   child: Container(
