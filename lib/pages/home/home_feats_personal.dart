@@ -134,7 +134,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                 borderRadius: BorderRadius.all(
                   Radius.circular(75.w),
                 ),
-                child: CachedImage.typeLaod(widget.product.profileImgUrl),
+                child: CachedImage.typeLaod(widget.product.imgUrl),
               ),
             ),
           ),
@@ -167,6 +167,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                     : widget.product.sex == "2"
                         ? Icons.female
                         : null,
+                size: 20,
               ),
             ],
           ),
@@ -181,7 +182,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                 ),
                 child: Row(
                   children: [
-                    Text(_focusData[0].company),
+                    Text(_focusData.isNotEmpty ? _focusData[0].company : ""),
                     //Icon(Icons.star),
                   ],
                 ),
@@ -195,7 +196,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
                 ),
                 child: Row(
                   children: [
-                    Text(_focusData[0].position),
+                    Text(_focusData.isNotEmpty ? _focusData[0].position : ""),
                     //Icon(Icons.star),
                   ],
                 ),
@@ -234,6 +235,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
             callback: (v) {},
             style: const TextStyle(
               fontSize: 14,
+              //color: PFc.textSecondary,
               //fontFamily: "MyFontStyle",
             ),
           ),
@@ -254,7 +256,7 @@ class _FeastPersonalState extends State<FeastPersonal> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("个人经历"),
+          PFtext.text1(text: "个人经历", fontSize: 20),
           const Divider(),
           ListView.builder(
             shrinkWrap: true,
@@ -274,18 +276,20 @@ class _FeastPersonalState extends State<FeastPersonal> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(_focusData[index].position),
-                        SizedBox(height: 10.w),
-                        Text(_focusData[index].company),
-                        SizedBox(height: 10.w),
                         PFtext.text1(
-                          text:
-                              "${TimeChange.client(int.parse(_focusData[index].beginTime), "ym")}  - ${TimeChange.client(int.parse(_focusData[index].endTime), "ym")}",
-                          fontSize: 14,
-                          color: PFc.textSecondary,
+                            text: _focusData[index].position, fontSize: 22),
+                        SizedBox(height: 10.w),
+                        Text(" " + _focusData[index].company),
+                        SizedBox(height: 10.w),
+                        Text(
+                          " "
+                          "${PFTime.client(int.parse(_focusData[index].beginTime), "ym.")}-${PFTime.client(int.parse(_focusData[index].endTime), "ym.")} ${PFTime.diff(_focusData[index].beginTime, _focusData[index].endTime)}",
                         ),
                         SizedBox(height: 10.w),
-                        Text(_focusData[index].desc),
+                        Text(
+                          " " + _focusData[index].desc,
+                          style: const TextStyle(color: PFc.textSecondary),
+                        ),
                       ],
                     ),
                   ),

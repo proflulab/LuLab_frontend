@@ -43,7 +43,7 @@ class _VoiceViewState extends State<VoiceView>
             alignment: Alignment.center,
             child: ClipOval(
               child: Lottie.asset(
-                  "assets/animation/${ic.speaking ? 'speaking' : 'ball'}.json"),
+                  "assets/animation/${ic.speaking ? 'speaking2' : 'speaking'}.json"),
             ),
           );
         }),

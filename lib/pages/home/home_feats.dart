@@ -78,44 +78,49 @@ class _FeatsPageState extends State<FeatsPage>
                       top: Radius.circular(10.r),
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        fit: FlexFit.tight,
-                        child: Container(
-                          padding: EdgeInsets.only(
-                            top: PFspace.ruleS,
-                            left: PFspace.screenMargin,
-                            right: PFspace.ruleS,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              PFtext.text1(
-                                text: _focusData[index].name,
-                                color: PFc.textEmphasis,
-                                fontSize: 23,
-                              ),
-                              //Text(_focusData[index].birth),
-                              PFtext.text2(
-                                text: _focusData[index].description,
-                                color: PFc.textEmphasis,
-                                fontSize: 15,
-                                maxLines: 3,
-                              ),
-                            ],
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 20.0.h,
+                        left: 170.0.w,
+                        child: SizedBox(
+                          width: 690.0.w, //容器的相关参数
+                          height: 80.0.h,
+                          // color: Colors.green,
+                          child: PFtext.text1(
+                            text: _focusData[index].name,
+                            color: PFc.textEmphasis,
+                            fontSize: 32,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: _imagew,
-                        height: _imageh,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10.r),
+                      Positioned(
+                        top: 120.0.h,
+                        left: 60.0.w,
+                        child: SizedBox(
+                          width: 380.0.w, //容器的相关参数
+                          height: 80.0.h,
+                          child: PFtext.text2(
+                            text: _focusData[index].description,
+                            color: PFc.thirdElement,
+                            fontSize: 13,
+                            maxLines: 3,
                           ),
-                          child: CachedImage.typeLaod(
-                              _focusData[index].profileImgUrl),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0.0.h,
+                        right: 0.0.w,
+                        child: SizedBox(
+                          width: _imagew,
+                          height: _imageh,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10.r),
+                            ),
+                            child: CachedImage.typeLaod(
+                                _focusData[index].profileImgUrl),
+                          ),
                         ),
                       ),
                     ],

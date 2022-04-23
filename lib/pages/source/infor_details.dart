@@ -245,7 +245,7 @@ class _InforDetailsState extends State<InforDetails> {
             child: Row(
               children: [
                 Text(
-                  TimeChange.client(int.parse(infordata.releaseDate), "ymd"),
+                  PFTime.client(int.parse(infordata.releaseDate), "ymd"),
                   textAlign: TextAlign.left,
                   softWrap: false,
                   overflow: TextOverflow.ellipsis,
