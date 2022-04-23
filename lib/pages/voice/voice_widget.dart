@@ -51,7 +51,7 @@ class _VoiceWidgetState extends State<VoiceWidget> {
           ),
           // const SizedBox(height: 10),
           // Lottie.asset(
-          //   'assets/animation/wave.json',
+          //   'assets/animation/wave2.json',
           //   width: 420.w,
           //   height: 74.w,
           // )
@@ -90,7 +90,7 @@ class _VoiceWidgetState extends State<VoiceWidget> {
             ),
           ),
           Lottie.asset(
-            'assets/animation/wave.json',
+            'assets/animation/wave2.json',
             width: 420.w,
             height: 74.w,
           )
@@ -104,7 +104,7 @@ class _VoiceWidgetState extends State<VoiceWidget> {
     return _container(
       child: Center(
         child: Lottie.asset(
-          'assets/animation/wave.json',
+          'assets/animation/wave2.json',
           width: 420.w,
           height: 74.w,
         ),
@@ -126,7 +126,7 @@ class _VoiceWidgetState extends State<VoiceWidget> {
           ),
           SizedBox(height: 20.w),
           Lottie.asset(
-            'assets/animation/wave.json',
+            'assets/animation/wave2.json',
             width: 420.w,
             height: 74.w,
           ),
