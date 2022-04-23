@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -5,6 +7,8 @@ import 'package:proflu/common/entitys/speaking_status.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
 import 'package:proflu/controller/index_controller.dart';
+
+import '../../common/widget/blur_rect_widget.dart';
 
 class VoiceWidget extends StatefulWidget {
   const VoiceWidget({Key? key}) : super(key: key);
@@ -44,12 +48,12 @@ class _VoiceWidgetState extends State<VoiceWidget> {
             _text,
             style: const TextStyle(fontSize: 16),
           ),
-          const SizedBox(height: 10),
-          Lottie.asset(
-            'assets/animation/wave.json',
-            width: 420.w,
-            height: 74.w,
-          )
+          // const SizedBox(height: 10),
+          // Lottie.asset(
+          //   'assets/animation/wave.json',
+          //   width: 420.w,
+          //   height: 74.w,
+          // )
         ],
       ),
       height: 350.w,
@@ -88,27 +92,38 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _aiSpeakingWidget() {
-    return _withLogoWidget(
-      child: Lottie.asset(
-        'assets/animation/ai_speaking.json',
-        width: 134.w,
-        height: 64.w,
+    return _container(
+      child: Center(
+        child: Lottie.asset(
+          'assets/animation/wave.json',
+          width: 420.w,
+          height: 74.w,
+        ),
       ),
-      width: 350.w,
       height: 280.w,
     );
   }
 
   Widget _errorWidget() {
-    return _withLogoWidget(
-      child: Text(
-        "未能识别,请点击语音按钮重试",
-        style: TextStyle(
-          fontSize: 32.w,
-          color: PFc.textSecondary,
-        ),
+    return _container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "抱歉我没听懂,请再说一遍",
+            style: TextStyle(
+              fontSize: 32.w,
+              color: PFc.textSecondary,
+            ),
+          ),
+          SizedBox(height: 20.w),
+          Lottie.asset(
+            'assets/animation/wave.json',
+            width: 420.w,
+            height: 74.w,
+          ),
+        ],
       ),
-      width: 506.w,
       height: 280.w,
     );
   }
@@ -143,23 +158,23 @@ class _VoiceWidgetState extends State<VoiceWidget> {
         height: height);
   }
 
-  Widget _container(
-      {required Widget child, double? height, bool imageBg = true}) {
+  Widget _container({
+    required Widget child,
+    double? height,
+  }) {
     DecorationImage? decorationImage;
-    if (imageBg) {
-      decorationImage = const DecorationImage(
-          image: AssetImage("assets/images/voice_bg.png"), fit: BoxFit.cover);
-    }
-    return Container(
-      height: height ?? 350.w,
-      width: 750.w,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        image: decorationImage,
-        borderRadius: BorderRadius.circular(10),
+
+    return BlurRectWidget(
+      child: Container(
+        height: height ?? 350.w,
+        width: 750.w,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: child,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: child,
     );
   }
 }
