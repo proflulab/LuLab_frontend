@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:proflu/common/entitys/speaking_status.dart';
@@ -61,25 +62,33 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _swiperWidget() {
-    List<Widget> children = [
-      const Text(
-        "试试这样和我说",
-        style: TextStyle(fontSize: 18, color: PFc.themeColor),
-      ),
-    ];
-    for (var item in IndexController.to.hints) {
-      children.add(
-        Text(
-          item,
-          style: const TextStyle(fontSize: 18),
-        ),
-      );
-    }
     return _container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ...children,
+          const Text(
+            "试试这样和我说",
+            style: TextStyle(
+              fontSize: 18,
+              color: PFc.themeColor,
+            ),
+          ),
+          SizedBox(
+            height: 80.w,
+            child: Swiper(
+              itemBuilder: (c, i) {
+                return Center(
+                  child: Text(
+                    IndexController.to.hints[i],
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                );
+              },
+              itemCount: IndexController.to.hints.length,
+              autoplay: true,
+              scrollDirection: Axis.vertical,
+            ),
+          ),
           Lottie.asset(
             'assets/animation/wave.json',
             width: 420.w,
@@ -113,7 +122,6 @@ class _VoiceWidgetState extends State<VoiceWidget> {
             "抱歉我没听懂,请再说一遍",
             style: TextStyle(
               fontSize: 32.w,
-              color: PFc.textSecondary,
             ),
           ),
           SizedBox(height: 20.w),
@@ -162,14 +170,12 @@ class _VoiceWidgetState extends State<VoiceWidget> {
     required Widget child,
     double? height,
   }) {
-    DecorationImage? decorationImage;
-
     return BlurRectWidget(
       child: Container(
         height: height ?? 350.w,
         width: 750.w,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withOpacity(0.7),
           borderRadius: BorderRadius.circular(10),
         ),
         padding: EdgeInsets.symmetric(horizontal: 30.w),

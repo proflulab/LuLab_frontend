@@ -15,11 +15,11 @@ class BlurRectWidget extends StatelessWidget {
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 20,
-          sigmaY: 20,
+          sigmaX: 5,
+          sigmaY: 5,
         ),
         child: Container(
-          color: Colors.white10,
+          // color: Colors.white.withOpacity(0.6),
           padding: EdgeInsets.all(padding),
           child: child,
         ),
