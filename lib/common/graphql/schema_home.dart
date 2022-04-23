@@ -54,6 +54,8 @@ query feats($category: String!, $skip: Int!, $limit: Int!) {
     sex
     birth
     position
+    homeTown
+    location
     company
     industry
     phone
@@ -103,15 +105,15 @@ query featsdetails($userId: String!,$limit:Int!,$skip:Int!){
   static const String gqlLatestTraining = r'''
 query {
   latestTraining(option:{skip:0,limit:5}) {
-   _id
-   name
-   description
-   detailUrl
-   imgUrl
-   applyUrl
-   trait
-   addTime 
-   timestamp 
+  _id
+  name
+  description
+  detailUrl
+  imgUrl
+  applyUrl
+  trait
+  addTime 
+  timestamp
   }
 }
   ''';

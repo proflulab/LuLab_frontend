@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:proflu/common/entitys/entitys.dart';
 import 'package:proflu/common/utils/utils.dart';
 
-import '../../common/values/colors.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/cached_network_image.dart';
 import '../../common/widget/text_widget.dart';
@@ -68,7 +67,7 @@ class InfoItemWidget extends StatelessWidget {
                       ),
                       const Flexible(fit: FlexFit.tight, child: SizedBox()),
                       PFtext.text1(
-                          text: TimeChange.client(
+                          text: PFTime.client(
                               int.parse(information.releaseDate),
                               "ymd"), //information.introduction,
                           maxLines: 2,

@@ -79,7 +79,7 @@ class _NoticeDetailState extends State<NoticeDetail> {
                     height: 80.0.h,
                     // color: Colors.green,
                     child: Text(
-                      TimeChange.client(widget.product.onlineTime, "ymd"),
+                      PFTime.client(widget.product.onlineTime, "ymd"),
                       style: const TextStyle(
                         fontFamily: 'MyFontStyle',
                         color: Colors.black,

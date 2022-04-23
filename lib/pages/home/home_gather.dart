@@ -299,7 +299,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
                               Row(
                                 children: [
                                   PFtext.text2(
-                                    text: TimeChange.client(
+                                    text: PFTime.client(
                                         _focusData3[index].onlineTime, "md"),
                                     fontSize: PFfont.c24,
                                     fontWeight: FontWeight.normal,

@@ -193,7 +193,7 @@ class _AppState extends State<App> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                VoiceWidget(),
+                const VoiceWidget(),
                 GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onLongPressStart: (c) {
@@ -238,7 +238,7 @@ class _AppState extends State<App> {
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {
-            /// TODO 跳转到直播详情页
+            // TODO 跳转到直播详情页
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(
@@ -259,7 +259,7 @@ class _AppState extends State<App> {
                         text: "直播预约提醒",
                         fontSize: 28.w,
                         color: PFc.textSecondary),
-                    Spacer(),
+                    const Spacer(),
                     GestureDetector(
                       behavior: HitTestBehavior.translucent,
                       onTap: () {
