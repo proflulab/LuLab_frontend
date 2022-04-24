@@ -34,6 +34,8 @@ class LatestRecordElement {
     required this.title,
     required this.author,
     required this.description,
+    required this.backgroundUrl,
+    required this.coverUrl,
   });
 
   String courseId;
@@ -46,6 +48,8 @@ class LatestRecordElement {
   String title;
   String author;
   String description;
+  String backgroundUrl;
+  String coverUrl;
 
   factory LatestRecordElement.fromJson(Map<String, dynamic> json) =>
       LatestRecordElement(
@@ -59,6 +63,8 @@ class LatestRecordElement {
         title: json["title"],
         author: json["author"],
         description: json["description"],
+        backgroundUrl: json["backgroundUrl"],
+        coverUrl: json["coverUrl"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,6 +78,8 @@ class LatestRecordElement {
         "title": title,
         "author": author,
         "description": description,
+        "backgroundUrl": backgroundUrl,
+        "coverUrl": coverUrl,
       };
 }
 
