@@ -1,50 +1,55 @@
-//import 'dart:io';
+import 'dart:io';
 
 //import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
-import '../../../../common/entitys/entitys.dart';
+
 //import '../../provider/provider.dart';
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
+import '../../../../common/entitys/entitys.dart';
 //import 'package:package_info/package_info.dart';
 
 /// 全局配置
 class Global {
-  /// 用户配置
-  static UserLogin profile = UserLogin(
-      msg: '',
-      status: '',
-      data: Data(
-        name: 'name',
-        password: 'password',
-        img:
-            "http://img.wxcha.com/m00/f0/f5/5e3999ad5a8d62188ac5ba8ca32e058f.jpg",
-        wechat: "无",
-        phone: '无',
-        sex: '未知',
-        description: '无',
-      ));
+  // 用户配置
+  static Data profile = Data(
+    birth: '',
+    description: '',
+    email: '',
+    profileImgUrl: '',
+    imgUrl: "",
+    id: '',
+    name: '',
+    phone: '',
+    sex: '',
+    wechat: '',
+    industry: '',
+    password: '',
+  );
 
   /// 发布渠道
   // static String channel = "xiaomi";
 
-  // /// 是否 ios
-  // static bool isIOS = Platform.isIOS;
+  /// 是否 ios
+  static bool isIOS = Platform.isIOS;
 
-  /// android 设备信息
-  //static AndroidDeviceInfo androidDeviceInfo;
+  // /// android 设备信息
+  // static AndroidDeviceInfo androidDeviceInfo;
 
-  /// ios 设备信息
-  //static IosDeviceInfo iosDeviceInfo;
+  // /// ios 设备信息
+  // static IosDeviceInfo iosDeviceInfo;
 
   /// 包信息
   //static PackageInfo packageInfo;
 
   /// 是否第一次打开
-  // static bool isFirstOpen = false;
+  static int isFirstOpen = 1;
+
+  /// 是否第一次登录
+  static int isFirstSign = 1;
 
   /// 是否离线登录
-  // static bool isOfflineLogin = false;
+  static bool isOfflineLogin = false;
 
   /// 应用状态,
   //static AppState appState = AppState();
@@ -57,7 +62,7 @@ class Global {
     // 运行初始
     // WidgetsFlutterBinding.ensureInitialized();
 
-    // 读取设备信息
+    //读取设备信息
     // DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
     // if (Global.isIOS) {
     //   Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
@@ -94,8 +99,18 @@ class Global {
   }
 
   // 持久化 用户信息
-  static Future<bool?> saveProfile(UserLogin userResponse) {
+  static Future<bool?> saveProfile(Data userResponse) {
     profile = userResponse;
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
+
+  // // 获取 持久化 用户信息
+  // static getProfile() {
+  //   Storage.getJson(storageUserProfileKey).then(
+  //     (guide) async {
+  //       UserLogin usere = UserLogin.fromJson(json.decode(guide!));
+  //       return usere;
+  //     },
+  //   );
+  // }
 }

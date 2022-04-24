@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'login.dart';
-import '../agreement/agreement_use.dart';
+
 
 //二级见面手机一键登录
 class LoginPage extends StatefulWidget {
@@ -175,8 +176,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const UserAgreement()));
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (context) => const UserAgreement()));
                 },
               ),
               const Text('及',

@@ -23,47 +23,53 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
     0.5.sh  //屏幕高度的50%
 */
 
-/// 设置宽度
+//设置宽度
 double fitWidth(double width) {
   return ScreenUtil().setWidth(width);
 }
 
-/// 设置宽度
+//设置宽度
 double fitHeight(double height) {
   return ScreenUtil().setHeight(height);
 }
 
-/// 设置字体尺寸
+//设置字体尺寸
 double fitFontSize(double fontSize) {
   return ScreenUtil().setSp(fontSize);
 }
 
+//获取设备的物理宽度
 double fitScreenWidth(double fontSize) {
-  return ScreenUtil().screenWidth; //获取设备的物理宽度
+  return ScreenUtil().screenWidth;
 }
 
+//获取设备的物理高度
 double fitScreenHeight(double fontSize) {
-  return ScreenUtil().screenHeight; //获取设备的物理高度
+  return ScreenUtil().screenHeight;
 }
+
+//获取状态栏高度 刘海屏会更高
+double fitScreenBarHeight = ScreenUtil().statusBarHeight;
 
 extension SizeExtension on num {
+  //宽度适配
   ///[ScreenUtil.setWidth]
   double get w => ScreenUtil().setWidth(this);
-
+  //高度适配
   ///[ScreenUtil.setHeight]
   double get h => ScreenUtil().setHeight(this);
-
+  //圆角
   ///[ScreenUtil.radius]
   double get r => ScreenUtil().radius(this);
-
+  //适配字体
   ///[ScreenUtil.setSp]
   double get sp => ScreenUtil().setSp(this);
 
-  ///屏幕宽度的倍数
+  //屏幕宽度的倍数
   ///Multiple of screen width
   double get sw => ScreenUtil().screenWidth * this;
 
-  ///屏幕高度的倍数
+  //屏幕高度的倍数
   ///Multiple of screen height
   double get sh => ScreenUtil().screenHeight * this;
 }

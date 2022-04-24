@@ -1,9 +1,13 @@
 library values;
 
-export 'colors.dart';
-export 'myicon.dart';
-export 'storage.dart';
-export 'radii.dart';
 export 'borders.dart';
-export 'shadows.dart';
+export 'colors.dart';
 export 'default_theme.dart';
+export 'myicon.dart';
+export 'ratio.dart';
+export 'shadows.dart';
+export 'size_font.dart';
+export 'size_radii.dart';
+export 'size_spacing.dart';
+export 'size_text.dart';
+export 'storage.dart';

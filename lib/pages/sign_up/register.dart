@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import '../../common/api/apis.dart';
@@ -15,13 +16,12 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   // fullName email password 的控制器
   final TextEditingController _fullnameController =
-      TextEditingController(text: "shiming");
+      TextEditingController(text: "");
   final TextEditingController _passController1 =
-      TextEditingController(text: "12345678");
-  final TextEditingController _passController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "");
+  final TextEditingController _passController = TextEditingController(text: "");
 
-  // // 返回上一页
+  // 返回上一页
   // _handleNavPop() {
   //   Navigator.pop(context);
   // }
@@ -109,7 +109,6 @@ class _SignUpPageState extends State<SignUpPage> {
             width: 622,
             height: 112,
           ),
-
           // 注册
           Container(
             margin: EdgeInsets.only(top: fitHeight(15)),

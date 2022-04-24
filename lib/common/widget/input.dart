@@ -19,7 +19,7 @@ Widget inputTextEdit({
       margin: EdgeInsets.only(top: marginTop.h),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(243, 243, 240, 1),
-        borderRadius: Radii.k6pxRadius,
+        borderRadius: PFRadius.a6,
       ),
       child: Center(
         child: TextField(
@@ -32,7 +32,7 @@ Widget inputTextEdit({
             border: InputBorder.none,
           ),
           style: TextStyle(
-            color: AppColors.primaryText,
+            color: PFc.textPrimary,
             fontFamily: "Avenir",
             fontWeight: FontWeight.w400,
             fontSize: fitFontSize(35),
@@ -58,8 +58,8 @@ Widget inputEmailEdit({
     height: fitHeight(44),
     margin: EdgeInsets.only(top: fitHeight(marginTop)),
     decoration: BoxDecoration(
-      color: AppColors.primaryBackground,
-      borderRadius: Radii.k6pxRadius,
+      color: PFc.backgroundPrimary,
+      borderRadius: PFRadius.a6,
       boxShadow: const [
         BoxShadow(
           color: Color.fromARGB(41, 0, 0, 0),
@@ -77,11 +77,11 @@ Widget inputEmailEdit({
         contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
         border: InputBorder.none,
         hintStyle: const TextStyle(
-          color: AppColors.primaryText,
+          color: PFc.textPrimary,
         ),
       ),
       style: TextStyle(
-        color: AppColors.primaryText,
+        color: PFc.textPrimary,
         fontFamily: "Avenir",
         fontWeight: FontWeight.w400,
         fontSize: fitFontSize(18),

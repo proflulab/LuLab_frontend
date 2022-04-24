@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+
+//import '../../common/widget/widgets.dart';
+import '../../common/values/values.dart';
+
+//陆向谦实验室APP字体规范
+
+class PFtext {
+  static Widget text1({
+    //required BuildContext context,
+    required String text,
+    int maxLines = 2,
+    TextOverflow overflow = TextOverflow.ellipsis,
+    bool softWrap = false,
+    String font = 'MyFontStyle',
+    Color? color = PFc.textPrimary,
+    double? fontSize = 15,
+    FontWeight? fontWeight = FontWeight.normal,
+  }) {
+    return Text(
+      text,
+      textAlign: TextAlign.left,
+      //textDirection: TextDirection.rtl,
+      softWrap: softWrap,
+      overflow: overflow,
+      maxLines: maxLines,
+      style: TextStyle(
+        fontFamily: font,
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+
+  //常规加粗字体
+  static Widget text2({
+    //required BuildContext context,
+    required String text,
+    int maxLines = 1,
+    TextOverflow overflow = TextOverflow.ellipsis,
+    bool softWrap = false,
+    String font = '',
+    Color? color = PFc.textPrimary,
+    double? fontSize,
+    FontWeight? fontWeight = FontWeight.bold,
+  }) {
+    return Text(
+      text,
+      textAlign: TextAlign.left,
+      //textDirection: TextDirection.rtl,
+      softWrap: softWrap,
+      overflow: overflow,
+      maxLines: maxLines,
+      style: TextStyle(
+        fontFamily: font,
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+
+  //常规字体——
+  static Widget text3({
+    //required BuildContext context,
+    required String text,
+    int maxLines = 1,
+    TextOverflow overflow = TextOverflow.ellipsis,
+    bool softWrap = false,
+    String font = '',
+    Color? color = PFc.textPrimary,
+    double? fontSize,
+    FontWeight? fontWeight = FontWeight.normal,
+  }) {
+    return Text(
+      text,
+      textAlign: TextAlign.left,
+      //textDirection: TextDirection.rtl,
+      softWrap: softWrap,
+      overflow: overflow,
+      maxLines: maxLines,
+      style: TextStyle(
+        fontFamily: font,
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+}

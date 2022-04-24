@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+//import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import 'common/values/values.dart';
 import 'common/routers/router.dart';
-//BaiduNetdiskDownload 'package:get/get.dart';
+import 'common/values/values.dart';
+//import 'package:get/get.dart';
 
 //启动页面
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,23 +16,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(750, 1334), //配置设计稿的宽度高度
-        builder: () => MaterialApp(
-            locale: const Locale('zh', 'CN'),
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              //GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('en', 'US'), // English, no country code
-              Locale('zh', 'CN'), // 中文简体
-            ],
-            debugShowCheckedModeBanner: false,
-            title: "陆向谦实验室",
-            theme: mDefaultTheme,
-            initialRoute: '/',
-            //getPages: AppPages.routes,
-            onGenerateRoute: onGenerateRoute));
+      designSize: const Size(750, 1624), //配置设计稿的宽度高度
+      builder: (BuildContext context) => GetMaterialApp(
+        locale: const Locale('zh', 'CN'),
+        // localizationsDelegates:  [
+        //   GlobalMaterialLocalizations.delegate,
+        //   GlobalWidgetsLocalizations.delegate,
+        //   //GlobalCupertinoLocalizations.delegate,
+        //   //苹果弹窗本地化处理
+        //   GlobalCupertinoLocalizations.delegate,
+        //   //咨询分页本地化处理
+        //   //GlobalEasyRefreshLocalizations.delegate,
+        // ],
+        supportedLocales: const [
+          Locale('en', 'US'), // English, no country code
+          //Locale('zh', 'CN'), // 中文简体
+        ],
+        debugShowCheckedModeBanner: false,
+        title: "陆向谦实验室",
+        theme: mDefaultTheme,
+        initialRoute: '/',
+        //getPages: AppPages.routes,
+        onGenerateRoute: onGenerateRoute,
+      ),
+    );
   }
 }

@@ -1,6 +1,9 @@
 {
-    "editor.detectIndentation": false,
-    "editor.tabSize": 4,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.cursorSurroundingLines": 0
+  }
 }

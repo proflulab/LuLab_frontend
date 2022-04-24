@@ -1,135 +1,13 @@
-// //这个文件放置功勋园组件
-// import 'package:flutter/material.dart';
-// import'../home/FeastPersonal.dart';
-//
-//
-// class FeatsPage extends StatefulWidget {
-//   @override
-//   _FeatsPageState createState() => _FeatsPageState();
-// }
-//
-// class _FeatsPageState extends State<FeatsPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     //获取屏幕高度
-//     double screenheight = MediaQuery.of(context).size.height;
-//     double screenwidth = MediaQuery.of(context).size.width;
-//     var widgetwidth = screenwidth - 10 * 2;
-//     return Container(
-//       height: screenheight,
-//       padding: EdgeInsets.only(left: 10, right: 10),
-//       decoration: BoxDecoration(
-//         //背景颜色在主题处统一设定
-//         //color: Colors.black12,
-//       ),
-//       child: ListView.builder(
-//         itemBuilder: (contxt, index) {
-//           return Row(
-//             children: [
-//               //SizedBox(height: 150),
-//               Container(
-//                   height: 120,
-//                   width: widgetwidth,
-//                   decoration: BoxDecoration(
-//                     color: Colors.white,
-//                     borderRadius: BorderRadius.all(Radius.circular(12.0)),
-//                     //border: Border.all(color: Colors.black54),
-//                   ),
-//                   margin: EdgeInsets.only(top: 10),
-//
-//                   child:ElevatedButton(
-//                     child:Stack(
-//                       children: <Widget>[
-//                         Positioned(
-//                           top: 10,
-//                           left: 10,
-//                           child: Container(
-//                             height: 100,
-//                             width: 100,
-//                             child: ClipRRect(
-//                               borderRadius: BorderRadius.circular(12.0),
-//                               child: Image.network(
-//                                   'https://www.itying.com/images/flutter/hot${index + 1}.jpg'),
-//                             ),
-//                           ),
-//                         ),
-//                         Positioned(
-//                           top: 10,
-//                           left: 130,
-//                           child: Container(
-//                             height: 20,
-//                             child: Text(
-//                               '张三-三哥餐饮CEO',
-//                               style: TextStyle(
-//                                 fontSize: 14,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Positioned(
-//                           top: 35,
-//                           left: 130,
-//                           child: Container(
-//                             height: 40,
-//                             width: 200,
-//                             child: Text(
-//                               '新东方厨师学校毕业，冷链运输专家。',
-//                               style: TextStyle(
-//                                 fontSize: 13,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Positioned(
-//                           top: 80,
-//                           left: 130,
-//                           child: Container(
-//                             height: 20,
-//                             width: 60,
-//                             decoration: BoxDecoration(
-//                               color: Colors.grey,
-//                             ),
-//                             child: Text(
-//                               '213次观看',
-//                               style: TextStyle(
-//                                 fontSize: 12,
-//                                 color: Colors.white,
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                     // 点击登录
-//                     onPressed:(){
-//                       Navigator.push(context,new  MaterialPageRoute(
-//                           builder:(context) =>new FeastPersonal()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
-//                       );
-//                     },
-//                     style: ButtonStyle(
-//                         backgroundColor: MaterialStateProperty.all(Colors.grey,),
-//                         foregroundColor: MaterialStateProperty.all(Colors.white)//背景颜色
-//                     ),
-//                   )
-//
-//               ),
-//             ],
-//           );
-//         },
-//         itemCount: 10,
-//       ),
-//     );
-//   }
-// }
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/values/values.dart';
+//import '../../common/staticdata/staticdata.dart';
+
+import '../../common/api/apis.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
-//import '../../common/entitys/entitys.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-import 'feast_personal.dart';
+import 'home_feats_personal.dart';
 
 class FeatsPage extends StatefulWidget {
   const FeatsPage({Key? key}) : super(key: key);
@@ -139,86 +17,119 @@ class FeatsPage extends StatefulWidget {
 }
 
 //这个文件放置功勋园组件
-class _FeatsPageState extends State<FeatsPage> {
+class _FeatsPageState extends State<FeatsPage>
+    with AutomaticKeepAliveClientMixin {
+  late Feats _postsData;
+  List<LatestClassificationUser> _focusData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAllData();
+  }
+
+  // _postsDataProduct = Train.fromJson(Jsondata.personalInfo);
+
+  // 读取所有功勋员数据
+  _loadAllData() async {
+    _postsData = await GqlHomeAPI.featInfo(
+      context: context,
+      variables: FeatsRequest(limit: 0, skip: 0, category: '2'),
+    );
+
+    if (mounted) {
+      setState(() {
+        _focusData = _postsData.latestClassificationUser;
+      });
+    }
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
-    //获取屏幕高度
-    //double screenheight = MediaQuery.of(context).size.height;
-    //double screenwidth = MediaQuery.of(context).size.width;
-    //var widgetwidth = screenwidth - 10 * 2;
-    return Container(
-      height: 1.sh,
-      padding: EdgeInsets.only(left: 15.w, right: 15.w),
-      // decoration: BoxDecoration(
-      //     color: Colors.black12,
-      //     ),
-      child: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (contxt, index) {
-          return Column(
-            children: [
-              Container(
-                height: 200.h,
-                width: 1.sw,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.r),
-                    topRight: Radius.circular(15.r),
-                  ),
-                  //border: Border.all(color: Colors.black54),
-                ),
-                margin: EdgeInsets.only(top: 10.h),
-                child: Stack(
-                  children: <Widget>[
-                    positionedImage(
-                        context: context,
-                        top: 10,
-                        left: 500,
-                        height: 200,
-                        width: 200,
-                        url:
-                            'https://www.itying.com/images/flutter/hot${index + 1}.jpg'),
-                    positionedText(
-                        context: context,
-                        top: 30,
-                        left: 50,
-                        height: 40,
-                        width: 200,
-                        text: '张三-三哥餐饮CEO'),
-                    positionedText(
-                        context: context,
-                        top: 80,
-                        left: 50,
-                        height: 40,
-                        width: 200,
-                        text: '新东方厨师学校毕业，冷链运输专家。'),
-                    // Positioned(
-                    //   top: 80,
-                    //   left: 10,
-                    //   child: Container(
-                    //     height: 20,
-                    //     width: 60,
-                    //     decoration: BoxDecoration(
-                    //       color: Colors.grey,
-                    //     ),
-                    //     child: Text(
-                    //       '213次观看',
-                    //       style: TextStyle(
-                    //         fontSize: 12,
-                    //         color: Colors.white,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ),
-              Container(
-                  height: 80.h,
-                  width: 1.sw,
+    super.build(context);
+    return ListView.builder(
+      itemCount: _focusData.length,
+      itemBuilder: (contxt, index) {
+        if (_focusData.isNotEmpty) {
+          //功勋卡片长度
+          double _boxw = (1.sw - PFspace.screenMargin * 2);
+          //功勋卡片高度
+          double _boxh = _boxw * PFr.golden;
+          //图片高度
+          double _imageh = _boxh * 0.75;
+          //图片长度
+          double _imagew = _imageh * PFr.golden;
+          //底部按钮高度
+          double _bottomh = _boxh * (1 - 0.75);
+          return Container(
+            margin: EdgeInsets.only(
+                right: PFspace.screenMargin, left: PFspace.screenMargin),
+            child: Column(
+              children: [
+                SizedBox(height: 10.h),
+                Container(
+                  height: _imageh,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: PFc.backgroundSecondary,
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(10.r),
+                    ),
+                  ),
+                  child: Stack(
+                    children: <Widget>[
+                      Positioned(
+                        top: 20.0.h,
+                        left: 170.0.w,
+                        child: SizedBox(
+                          width: 690.0.w, //容器的相关参数
+                          height: 80.0.h,
+                          // color: Colors.green,
+                          child: PFtext.text1(
+                            text: _focusData[index].name,
+                            color: PFc.textEmphasis,
+                            fontSize: 32,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 120.0.h,
+                        left: 60.0.w,
+                        child: SizedBox(
+                          width: 380.0.w, //容器的相关参数
+                          height: 80.0.h,
+                          child: PFtext.text2(
+                            text: _focusData[index].description,
+                            color: PFc.thirdElement,
+                            fontSize: 13,
+                            maxLines: 3,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 0.0.h,
+                        right: 0.0.w,
+                        child: SizedBox(
+                          width: _imagew,
+                          height: _imageh,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10.r),
+                            ),
+                            child:
+                                CachedImage.typeLaod(_focusData[index].imgUrl),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: _bottomh,
+                  decoration: BoxDecoration(
+                    color: PFc.backgroundSecondary,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(15.r),
                       bottomRight: Radius.circular(15.r),
@@ -229,63 +140,106 @@ class _FeatsPageState extends State<FeatsPage> {
                       Expanded(
                         flex: 2,
                         child: Center(
-                            child: Container(
-                          width: 100,
-                          height: 40,
-                          color: Colors.white,
-                          child: Center(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
+                          child: Container(
+                            width: 100,
+                            color: PFc.backgroundSecondary,
+                            child: Center(
+                              child: InkWell(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             const FeastPersonal()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
+                                  //     );
+                                  Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const FeastPersonal()) //Navigator.push：是跳转到下一个页面，它要接受两个参数一个是上下文context，另一个是要跳转的函数。
-                                    );
-                                if (kDebugMode) {
-                                  print("进入主页");
-                                }
-                              },
-                              child: const Text("他的主页"),
+                                      builder: (context) => FeastPersonal(
+                                        product: _focusData[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  "他的主页",
+                                  style: TextStyle(
+                                    fontFamily: 'MyFontStyle',
+                                    color: PFc.textPrimary,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        )),
-                      ),
-                      Expanded(
-                        flex: 0,
-                        child: Container(
-                          height: 70.h,
-                          width: 10.w,
-                          decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: Radii.k6pxRadius),
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
-                        child: Center(
-                            child: Container(
-                          width: 100,
-                          height: 40,
-                          color: Colors.white,
-                          child: Center(
-                            child: InkWell(
-                              onTap: () {
-                                if (kDebugMode) {
-                                  print("关注他");
-                                }
-                              },
-                              child: const Text("关注他"),
-                            ),
-                          ),
-                        )),
-                      ),
+                      //分割条
+                      // Expanded(
+                      //   flex: 0,
+                      //   child: Container(
+                      //     height: 70.h,
+                      //     width: 10.w,
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.green,
+                      //         borderRadius: Radii.a6),
+                      //   ),
+                      // ),
+                      //关注按钮
+                      // Expanded(
+                      //   flex: 2,
+                      //   child: Center(
+                      //       child: Container(
+                      //     width: 100,
+                      //     height: 40,
+                      //     color: Colors.white,
+                      //     child: Center(
+                      //       child: InkWell(
+                      //         onTap: () {
+                      //           if (kDebugMode) {
+                      //             print("关注他");
+                      //           }
+                      //         },
+                      //         child: const Text(
+                      //           "关注他",
+                      //           style: TextStyle(
+                      //               fontFamily: 'MyFontStyle', fontSize: 20),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      // ),
                     ],
-                  ))
-            ],
+                  ),
+                ),
+                SizedBox(height: 10.h),
+              ],
+            ),
           );
-        },
-      ),
+        } else {
+          return Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(color: Colors.transparent),
+            alignment: Alignment.center,
+            child: Container(
+              height: 80,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: const Color(0x88000000),
+                  borderRadius: BorderRadius.circular(6)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const <Widget>[
+                  CircularProgressIndicator(),
+                  Text('正在加载......')
+                ],
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

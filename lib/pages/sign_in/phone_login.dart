@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import 'login.dart';
-import '../agreement/agreement_use.dart';
 
 //手机验证码登录
 class PhoneLogin1 extends StatelessWidget {
@@ -71,8 +71,8 @@ class BackLineWidget extends StatelessWidget {
             child: IconButton(
               icon: const Icon(Icons.arrow_back_ios),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => const Login1()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Login1()));
               },
             )),
         Container(
@@ -209,7 +209,8 @@ class SubmitButtonWidget extends StatelessWidget {
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8))),
-              backgroundColor: MaterialStateProperty.all(const Color(0xff0079fe))),
+              backgroundColor:
+                  MaterialStateProperty.all(const Color(0xff0079fe))),
           onPressed: () {},
           child: const Text(
             "提交",
@@ -256,8 +257,8 @@ class ProtocolButtonWidget extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const UserAgreement()));
+            // Navigator.of(context)
+            //     .push(MaterialPageRoute(builder: (context) => const UserAgreement()));
           },
         ),
         const Text(

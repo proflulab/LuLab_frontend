@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../common/utils/utils.dart';
 //import 'package:lulab/values/values.dart';
 
 Widget listGroup1({
@@ -6,13 +8,20 @@ Widget listGroup1({
   required String title,
   required TextEditingController textController,
 }) {
-  return Container(
-    margin: const EdgeInsets.only(left: 20, right: 20),
+  return SizedBox(
+    height: 70.h,
     child: Row(
       children: [
         Expanded(
           flex: 1,
-          child: Text(title),
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 16,
+            ),
+          ),
         ),
         Expanded(
           flex: 5,
@@ -36,22 +45,25 @@ Widget listGroup2({
   required Widget child,
   required VoidCallback onTap,
 }) {
-  return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20),
-      child: InkWell(
-        onTap: onTap,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 6,
-              child: Text(title),
+  return SizedBox(
+    height: 60.h,
+    child: InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 18,
             ),
-            Expanded(
-              flex: 1,
-              child: child,
-            ),
-            Expanded(flex: 1, child: icon)
-          ],
-        ),
-      ));
+          ),
+          const Spacer(),
+          child,
+          Expanded(flex: 0, child: icon)
+        ],
+      ),
+    ),
+  );
 }

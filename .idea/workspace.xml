@@ -4,25 +4,36 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/userdata_login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/voicedata.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/voicedata.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/routers/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" afterDir="false" />
+    <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/common/staticdata/makdowndata.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/staticdata/makdowndata.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/utils/dialog_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/dialog_util.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/players_fijkplayer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/players_fijkplayer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/webview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/webview.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_product_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home_product_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/live_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_5_API_31.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_XL_API_31.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="ProjectId" id="23dWkc9Y25ILCMqbbbWT7JWCoBl" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="27YskpZpnwmgfDDbt5FXhtuMtmV" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -40,23 +51,34 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a13b276-547c-4898-badc-60fb29afb9d4" name="Default Changelist" comment="" />
-      <created>1642064587513</created>
+      <changelist id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="" />
+      <created>1649508499915</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1642064587513</updated>
+      <updated>1649508499915</updated>
     </task>
     <servers />
   </component>
@@ -76,6 +98,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

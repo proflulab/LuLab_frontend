@@ -1,6 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+//import '../../common/global/global.dart';
+
+//import '../app.dart';
 
 //import '../utils/utils.dart';
 
@@ -14,18 +19,24 @@ class LoadingPage extends StatefulWidget {
 class _LoadingPageState extends State<LoadingPage> {
   Future<int> readData() async {
     var prefs = await SharedPreferences.getInstance();
-    var result = prefs.getInt('Key_Int');
-
+    var result = prefs.getInt('isFirstOpen');
     return result ?? 0;
+  }
+
+  Future<int> readData2() async {
+    var prefs = await SharedPreferences.getInstance();
+    var result2 = prefs.getInt('isFirstSign');
+
+    return result2 ?? 0;
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Image.network(
-        'https://gitee.com/shimingy/imagesbed/raw/master/img/启动页.jpg',
-        fit: BoxFit.cover,
+      child: Image.asset(
+        'assets/images/StartPage.png',
+        fit: BoxFit.contain,
       ),
     );
   }
@@ -40,28 +51,55 @@ class _LoadingPageState extends State<LoadingPage> {
     var _duration = const Duration(seconds: 3);
 
     if (kDebugMode) {
-      print("LuLab程序启动....");
+      print("陆向谦程序启动....");
     }
     //Storage.getInt("Key_Int");
     Future<int> result = readData();
-    result.then((guide) {
-      if (kDebugMode) {
-        print(guide);
-      }
-      //判断是否是第一次启动app
-      if (guide == 0) {
-        Future.delayed(_duration, _firstguide);
-      } else {
-        Future.delayed(_duration, _app);
-      }
-    });
+    Future<int> result2 = readData2();
+    result.then(
+      (guide) {
+        if (kDebugMode) {
+          print(guide);
+        }
+        //判断是否是第一次启动app
+        if (guide == 0) {
+          Future.delayed(_duration, _firstguide);
+        } else {
+          // Future.delayed(_duration, _app);
+          result2.then((guide) {
+            if (kDebugMode) {
+              print(guide);
+            }
+            //判断是否是第一次登录app
+            if (guide == 0) {
+              Future.delayed(_duration, _firstsign);
+            } else {
+              //Global.saveProfile(userProfile);
+              Future.delayed(_duration, _app);
+            }
+          });
+        }
+      },
+    );
   }
 
   void _firstguide() {
     Navigator.of(context).pushReplacementNamed('/firstguide');
   }
 
+  void _firstsign() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SignInPage(),
+      ),
+    );
+  }
+
   void _app() {
-    Navigator.of(context).pushReplacementNamed('/login');
+    // Navigator.of(context).pushAndRemoveUntil(
+    //     MaterialPageRoute(builder: (context) => const App()),
+    //     (route) => route == null);
+    Navigator.of(context).pushReplacementNamed('/app');
   }
 }

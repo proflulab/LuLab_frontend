@@ -12,7 +12,10 @@ class VoiceAPI {
     required VoiceRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
-        schema: voice, context: context, variables: variables.toJson());
+      schema: voice,
+      context: context,
+      variables: variables.toJson(),
+    );
 
     return VoiceResponse.fromJson(response.data!);
   }
