@@ -39,6 +39,8 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 [Flutter Icon 图标网](https://www.fluttericon.cn/)
 
+[Flutter应用打包发布 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/301032801)
+
 ## 产品文档
 
 实验室APP产品PRD需求文档
