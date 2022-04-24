@@ -35,13 +35,12 @@ class _FeastPersonalState extends State<FeastPersonal> {
     _loadAllData();
   }
 
-  //
+  //功勋员经历请求
   _loadAllData() async {
     _postsData = await GqlHomeAPI.featExperienceInfo(
-      context: context,
-      variables: FeatsExperienceRequest(
-          limit: 0, skip: 0, userId: '624e90a7b2cc58a87ff8432c'),
-    );
+        context: context,
+        variables: FeatsExperienceRequest(
+            limit: 0, skip: 0, userId: widget.product.id));
 
     if (mounted) {
       setState(() {

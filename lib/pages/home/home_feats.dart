@@ -118,8 +118,8 @@ class _FeatsPageState extends State<FeatsPage>
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
-                            child: CachedImage.typeLaod(
-                                _focusData[index].profileImgUrl),
+                            child:
+                                CachedImage.typeLaod(_focusData[index].imgUrl),
                           ),
                         ),
                       ),
