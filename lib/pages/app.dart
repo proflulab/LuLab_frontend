@@ -13,6 +13,7 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+
 import 'course/course_page.dart';
 import 'home/home_page.dart';
 import 'source/Infor_page.dart';
@@ -146,26 +147,26 @@ class _AppState extends State<App> {
                   type: BottomNavigationBarType.fixed,
                   items: const [
                     BottomNavigationBarItem(
-                        icon: Icon(MyIcon.navIconHomeDefault),
-                        activeIcon: Icon(MyIcon.navIconHomeSelected),
+                        icon: Icon(PFIcon.navIconHomeDefault),
+                        activeIcon: Icon(PFIcon.navIconHomeSelected),
                         label: ('首页'),
                         //去掉长按提示语
                         tooltip: ''),
                     BottomNavigationBarItem(
-                        icon: Icon(MyIcon.navIconCourseDefault),
-                        activeIcon: Icon(MyIcon.navIconCourseSelected),
+                        icon: Icon(PFIcon.navIconCourseDefault),
+                        activeIcon: Icon(PFIcon.navIconCourseSelected),
                         label: ('课程'),
                         tooltip: ''),
                     BottomNavigationBarItem(
                         icon: Icon(Icons.sms), label: (''), tooltip: ''),
                     BottomNavigationBarItem(
-                        icon: Icon(MyIcon.navIconFindDefault),
-                        activeIcon: Icon(MyIcon.navIconFindSelected),
+                        icon: Icon(PFIcon.navIconFindDefault),
+                        activeIcon: Icon(PFIcon.navIconFindSelected),
                         label: ('资讯'),
                         tooltip: ''),
                     BottomNavigationBarItem(
-                        icon: Icon(MyIcon.navIconUserDefault),
-                        activeIcon: Icon(MyIcon.navIconUserSelected),
+                        icon: Icon(PFIcon.navIconUserDefault),
+                        activeIcon: Icon(PFIcon.navIconUserSelected),
                         label: ('我的'),
                         tooltip: '')
                   ],

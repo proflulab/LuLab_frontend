@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         body: const HomePageList(),
         appBar: PreferredSize(
@@ -32,7 +32,8 @@ class _HomePageState extends State<HomePage>
               tabs: [
                 Tab(text: "推荐区"),
                 Tab(text: "功勋园"),
-                Tab(text: "训练营"),
+                //TODO 训练营产品取消，后续修改为会员申请入口
+                //Tab(text: "训练营"),
               ],
               //文字选中颜色
               labelColor: PFc.themeColor,
@@ -82,7 +83,7 @@ class _HomePageListState extends State<HomePageList> {
       children: [
         Center(child: Gather()),
         Center(child: FeatsPage()),
-        Center(child: Product())
+        //Center(child: Product())
       ],
     );
   }

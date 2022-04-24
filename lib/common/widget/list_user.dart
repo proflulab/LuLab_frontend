@@ -19,7 +19,7 @@ Widget listGroup1({
             style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
         ),
@@ -46,26 +46,21 @@ Widget listGroup2({
   required VoidCallback onTap,
 }) {
   return SizedBox(
-    height: 70.h,
+    height: 60.h,
     child: InkWell(
       onTap: onTap,
       child: Row(
         children: [
-          Expanded(
-            flex: 6,
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.black,
-                fontSize: 18,
-              ),
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 18,
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: child,
-          ),
+          const Spacer(),
+          child,
           Expanded(flex: 0, child: icon)
         ],
       ),

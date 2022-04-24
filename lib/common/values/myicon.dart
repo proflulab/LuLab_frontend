@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 //自定义图标
-class MyIcon {
+class PFIcon {
   static const String _family = 'MyIcons';
-  MyIcon._();
+ PFIcon._();
   static const IconData zan = IconData(0xe829, fontFamily: _family);
   static const IconData xiazai = IconData(0xe652, fontFamily: _family);
   static const IconData huiyuan = IconData(0xe61d, fontFamily: _family);

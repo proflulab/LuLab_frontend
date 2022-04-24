@@ -71,7 +71,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.white),
               child: Column(
                 children: [
-                  _lineWidget(
+                  lineWidget(
                       title: "个人资料",
                       onTap: () {
                         Navigator.of(context).push(
@@ -80,10 +80,10 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         );
                       }),
-                  const Divider(height: 1),
-                  _lineWidget(
+                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  lineWidget(
                       title: "密码重置",
-                      //todo 等待验证码校验修改密码
+                      //TODO 等待验证码校验修改密码
                       onTap: () {
                         toastInfo(msg: '耐心等待该功能的开发吧！');
                         // Navigator.of(context).push(
@@ -107,13 +107,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.white),
               child: Column(
                 children: [
-                  _lineWidget(
+                  lineWidget(
                       title: "当前版本",
                       right: PFtext.text1(
                           text: "v1.0", fontSize: 15, color: PFc.textSecondary),
                       onTap: () {}),
-                  const Divider(height: 1),
-                  _lineWidget(
+                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  lineWidget(
                     title: "清除缓存",
                     right: Row(
                       children: [
@@ -129,8 +129,8 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     onTap: _showClearCacheConfirm,
                   ),
-                  const Divider(height: 1),
-                  _lineWidget(
+                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  lineWidget(
                       title: "关于我们",
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -173,31 +173,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _lineWidget(
-      {required String title, Widget? right, required Function onTap}) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        onTap();
-      },
-      child: Container(
-        height: 96.w,
-        padding: EdgeInsets.symmetric(horizontal: 30.w),
-        child: Row(
-          children: [
-            PFtext.text1(text: title, fontSize: 15),
-            const Spacer(),
-            right ??
-                Icon(
-                  Icons.chevron_right,
-                  size: 32.w,
-                )
           ],
         ),
       ),

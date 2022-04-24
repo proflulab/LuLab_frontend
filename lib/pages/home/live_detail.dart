@@ -146,15 +146,18 @@ class _LiveDetailState extends State<LiveDetail> {
                   width: 1.sw, //容器的相关参数
                   height: 1.sw / PFr.ratio16_9,
                   // alignment: Alignment.center, //在容器的位置
-                  child: widget.product.videoUrl.isNotEmpty
-                      ? VideoScreen(
-                          cover: widget.product.imgUrl,
-                          url: widget.product.videoUrl,
-                        )
-                      : Image.network(
-                          widget.product.imgUrl,
-                          fit: BoxFit.fill,
-                        ),
+                  child:
+                      //TODO 经过大家讨论后再决定放视频
+                      // widget.product.videoUrl.isNotEmpty
+                      //     ? VideoScreen(
+                      //         cover: widget.product.imgUrl,
+                      //         url: widget.product.videoUrl,
+                      //       )
+                      //     :
+                      Image.network(
+                    widget.product.imgUrl,
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 Container(
                   //从这里开始

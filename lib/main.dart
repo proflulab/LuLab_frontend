@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(750, 1334), //配置设计稿的宽度高度
+      designSize: const Size(750, 1624), //配置设计稿的宽度高度
       builder: (BuildContext context) => GetMaterialApp(
         locale: const Locale('zh', 'CN'),
         // localizationsDelegates:  [

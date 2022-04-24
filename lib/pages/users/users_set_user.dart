@@ -129,12 +129,12 @@ class _SetUserState extends State<SetUser> {
                   child: SizedBox(
                       child: ClipOval(
                           child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-                  icon: const Icon(MyIcon.userRight),
+                  icon: const Icon(PFIcon.userRight),
                   onTap: () {
                     if (kDebugMode) {
                       print("该功能未开发，当前无法更改");
                     }
-                    toastInfo(msg: '功能未开发，当前无法修改');
+                    toastInfo(msg: '耐心等待该功能的开发吧！');
                   },
                 ),
               ),
@@ -166,7 +166,7 @@ class _SetUserState extends State<SetUser> {
                       context: context,
                       title: '性别',
                       child: Text(_sexValue),
-                      icon: const Icon(MyIcon.userRight),
+                      icon: const Icon(PFIcon.userRight),
                       onTap: () async {
                         //触摸失去焦点
                         FocusScope.of(context).requestFocus(FocusNode());
@@ -182,12 +182,12 @@ class _SetUserState extends State<SetUser> {
                                     topRight: Radius.circular(10),
                                   ),
                                   color: Color(0xfff1f1f1)),
-                              height: 200.0.h,
+                              height: 0.21.sh,
                               child: Center(
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: 60.h,
+                                      height: 0.07.sh,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('男'),
@@ -200,7 +200,7 @@ class _SetUserState extends State<SetUser> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 60.h,
+                                      height: 0.07.sh,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('女'),
@@ -213,7 +213,7 @@ class _SetUserState extends State<SetUser> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 60.h,
+                                      height: 0.07.sh,
                                       width: double.infinity,
                                       child: TextButton(
                                         child: const Text('保密'),

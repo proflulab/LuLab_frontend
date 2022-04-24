@@ -27,7 +27,6 @@ class _UsersPageState extends State<UsersPage>
     //获取屏幕宽度、高度
     //double screenwidth = MediaQuery.of(context).size.width;
     //double screenheight = MediaQuery.of(context).size.height;
-
 //个人头像，姓名，等级
     Widget _username() {
       return Container(
@@ -75,7 +74,6 @@ class _UsersPageState extends State<UsersPage>
         ),
       );
     }
-
     // Widget _dynamicdata() {
     //   return SizedBox(
     //     height: 60,
@@ -159,7 +157,7 @@ class _UsersPageState extends State<UsersPage>
     //         combotton(
     //             bottomname: " 购买记录",
     //             icon: const Icon(
-    //               MyIcon.userBuy,
+    //               PFIcon.userBuy,
     //               size: 40,
     //               color: Colors.red,
     //             ),
@@ -172,7 +170,7 @@ class _UsersPageState extends State<UsersPage>
     //         combotton(
     //             bottomname: "离线课程",
     //             icon: const Icon(
-    //               MyIcon.userDownload,
+    //               PFIcon.userDownload,
     //               size: 40,
     //               color: Colors.red,
     //             ),
@@ -181,7 +179,7 @@ class _UsersPageState extends State<UsersPage>
     //         combotton(
     //             bottomname: "我的收藏",
     //             icon: const Icon(
-    //               MyIcon.userCollect,
+    //               PFIcon.userCollect,
     //               size: 40,
     //               color: Colors.red,
     //             ),
@@ -190,7 +188,7 @@ class _UsersPageState extends State<UsersPage>
     //         combotton(
     //             bottomname: "观看历史",
     //             icon: const Icon(
-    //               MyIcon.userHistory,
+    //               PFIcon.userHistory,
     //               size: 40,
     //               color: Colors.red,
     //             ),
@@ -199,7 +197,7 @@ class _UsersPageState extends State<UsersPage>
     //         combotton(
     //             bottomname: "我的会员",
     //             icon: const Icon(
-    //               MyIcon.userVip,
+    //               PFIcon.userVip,
     //               size: 40,
     //               color: Colors.red,
     //             ),
@@ -213,7 +211,7 @@ class _UsersPageState extends State<UsersPage>
     Widget _contact() {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: PFspace.screenMargin),
-        padding: EdgeInsets.all(PFspace.screenMargin),
+        //padding: EdgeInsets.all(PFspace.screenMargin),
         decoration: const BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -221,25 +219,43 @@ class _UsersPageState extends State<UsersPage>
         ),
         child: Column(
           children: [
-            listtilebotton(
-              bottomname: "邮箱咨询",
-              icon: const Icon(
-                MyIcon.userPhone,
-                size: 30,
-                color: Colors.green,
-              ),
-              onPressed: () async {
-                UrlLaucher.email('business@proflu.cn', 'This is a test email',
-                    'This is a test email body');
-              },
-              context: context,
-            ),
+            lineWidget(
+                left: const Icon(
+                  PFIcon.userPhone,
+                  size: 26,
+                  color: Colors.green,
+                ),
+                title: "邮箱咨询",
+                onTap: () async {
+                  UrlLaucher.email('business@proflu.cn', 'This is a test email',
+                      'This is a test email body');
+                }),
+            Divider(height: 1, indent: 30.w, endIndent: 30.w),
+            lineWidget(
+                left: const Icon(
+                  PFIcon.userCooperation,
+                  size: 26,
+                  color: Colors.green,
+                ),
+                title: "联系我们",
+                onTap: () async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Browser(
+                        url:
+                            "https://work.weixin.qq.com/kfid/kfcf1c4876b71dc6e7a",
+                        title: "联系我们",
+                      ),
+                    ),
+                  );
+                }),
             //在线咨询
             // const Divider(),
             // listtilebotton(
             //     bottomname: "在线咨询",
             //     icon: const Icon(
-            //       MyIcon.userOnline,
+            //       PFIcon.userOnline,
             //       size: 30,
             //       color: Colors.red,
             //     ),
@@ -253,7 +269,7 @@ class _UsersPageState extends State<UsersPage>
             // listtilebotton(
             //     bottomname: "帮助中心",
             //     icon: const Icon(
-            //       MyIcon.userHelp,
+            //       PFIcon.userHelp,
             //       size: 30,
             //       color: Colors.green,
             //     ),
@@ -266,18 +282,18 @@ class _UsersPageState extends State<UsersPage>
             //         context: context,
             //         barrierDismissible: false,
             //         builder: (BuildContext context) {
-            //           // return AlertDialog(
-            //           //   // title: const Text('标题'),
-            //           //   content: buildContent(context),
-            //           //   actions: <Widget>[
-            //           //     ElevatedButton(
-            //           //       child: const Text('确定'),
-            //           //       onPressed: () {
-            //           //         Navigator.of(context).pop();
-            //           //       },
-            //           //     ),
-            //           //   ],
-            //           // );
+            // return AlertDialog(
+            //   // title: const Text('标题'),
+            //   content: buildContent(context),
+            //   actions: <Widget>[
+            //     ElevatedButton(
+            //       child: const Text('确定'),
+            //       onPressed: () {
+            //         Navigator.of(context).pop();
+            //       },
+            //     ),
+            //   ],
+            // );
             //           return CupertinoAlertDialog(
             //             content: const Text('具体咨询请致电：123456'),
             //             actions: <Widget>[
@@ -295,28 +311,6 @@ class _UsersPageState extends State<UsersPage>
             //       });
             //     },
             //     context: context),
-            const Divider(),
-            listtilebotton(
-              bottomname: "联系我们",
-              icon: const Icon(
-                MyIcon.userCooperation,
-                size: 30,
-                color: Colors.green,
-              ),
-              onPressed: () async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Browser(
-                      url:
-                          "https://work.weixin.qq.com/kfid/kfcf1c4876b71dc6e7a",
-                      title: "联系我们",
-                    ),
-                  ),
-                );
-              },
-              context: context,
-            )
           ],
         ),
       );
@@ -370,7 +364,6 @@ class _UsersPageState extends State<UsersPage>
       ),
       body: ListView(
         children: <Widget>[
-          
           _username(),
           // _dynamicdata(),
           // _adv(),
