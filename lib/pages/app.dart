@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:blur/blur.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
@@ -188,32 +189,36 @@ class _AppState extends State<App> {
           onTap: () {
             ic.closeDialog();
           },
-          child: Material(
-            color: Colors.black26,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const VoiceWidget(),
-                GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onLongPressStart: (c) {
-                    IndexController.to.startSpeaking();
-                  },
-                  onLongPressEnd: (c) {
-                    IndexController.to.stopSpeaking();
-                  },
-                  child: Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40),
-                      // color: Colors.black12,
+          child: Blur(
+            blur: 2.5,
+            child: Container(),
+            overlay: Material(
+              color: Colors.black26,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const VoiceWidget(),
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onLongPressStart: (c) {
+                      IndexController.to.startSpeaking();
+                    },
+                    onLongPressEnd: (c) {
+                      IndexController.to.stopSpeaking();
+                    },
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        // color: Colors.black12,
+                      ),
+                      margin: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).padding.bottom),
                     ),
-                    margin: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).padding.bottom),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
