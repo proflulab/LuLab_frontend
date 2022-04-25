@@ -16,7 +16,11 @@ import '../common/utils/utils.dart';
 class IndexController extends GetxController {
   static IndexController get to => Get.find();
 
-  List<String> hints = ["“预约直播课”", "“听创业快讯”", "“了解陆向谦实验室”"];
+  List<String> hints = [
+    "“预约直播课”",
+    "“了解陆向谦实验室”",
+    "“听创业快讯”",
+  ];
 
   /// 当前状态
   SpeakingStatus status = SpeakingStatus.userSpeaking;
