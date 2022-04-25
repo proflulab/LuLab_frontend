@@ -129,13 +129,13 @@ class _LiveDetailState extends State<LiveDetail> {
     var time = DateTime.fromMillisecondsSinceEpoch(widget.product.onlineTime);
     String time1 = formatDate(time, [mm, '-', dd, ' ', HH, ':', nn, '']);
 
-    String text = Global.profile.name ??
+    String text = (Global.profile.name ?? "") +
         "" "邀请您在" +
-            time1 +
-            "参加" +
-            widget.product.title +
-            "，主讲人：" +
-            widget.product.author;
+        time1 +
+        "参加" +
+        widget.product.title +
+        "，主讲人：" +
+        widget.product.author;
     return Scaffold(
       body: Stack(
         children: [
