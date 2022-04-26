@@ -16,26 +16,26 @@
 	<string>proflu</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>https</string>
-        <string>http</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-  </dict>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>媒体资料库</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
@@ -62,6 +62,8 @@
 	<string>访问相册</string>
 	<key>NSRemindersUsageDescription</key>
 	<string>提醒事项</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>使用语音识别功能</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

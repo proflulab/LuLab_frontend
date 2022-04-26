@@ -6,8 +6,6 @@ import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
 import 'package:proflu/controller/index_controller.dart';
 
-import '../../common/widget/blur_rect_widget.dart';
-
 class VoiceWidget extends StatefulWidget {
   const VoiceWidget({Key? key}) : super(key: key);
 
@@ -150,17 +148,15 @@ class _VoiceWidgetState extends State<VoiceWidget> {
     required Widget child,
     double? height,
   }) {
-    return BlurRectWidget(
-      child: Container(
-        height: height ?? 350.w,
-        width: 750.w,
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 30.w),
-        child: child,
+    return Container(
+      height: height ?? 350.w,
+      width: 750.w,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(10),
       ),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
+      child: child,
     );
   }
 }

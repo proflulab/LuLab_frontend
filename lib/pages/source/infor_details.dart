@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:text_to_speech/text_to_speech.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
@@ -200,7 +199,7 @@ class _InforDetailsState extends State<InforDetails> {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () {
-        launch(infordata.href);
+        // launch(infordata.href);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 15),
