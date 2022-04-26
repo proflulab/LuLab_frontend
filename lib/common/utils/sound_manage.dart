@@ -2,28 +2,38 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_plugin_record/flutter_plugin_record.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:sound_stream/sound_stream.dart';
 
 class SoundRecord {
   static bool _isRecording = false;
 
-  static final RecorderStream _recorder = RecorderStream();
+  static final FlutterPluginRecord _recordPlugin = FlutterPluginRecord();
   static StreamSubscription? _audioSubscription;
-  static final List<Uint8List> _currentSamples = [];
+  static Uint8List? bytes;
 
   ///初始化
-  static init() async {
-    _audioSubscription = _recorder.audioStream.listen((data) {
-      // print('_currentSamples: $data');
-      _currentSamples.add(data);
+  static init(Function onStop) async {
+    _audioSubscription = _recordPlugin.response.listen((data) {
+      if (data.msg == "onStop") {
+        ///结束录制时会返回录制文件的地址方便上传服务器
+        if (data.path != null) {
+          File file = File(data.path!);
+          bytes = file.readAsBytesSync();
+          onStop(bytes);
+        }
+      } else if (data.msg == "onStart") {
+        debugPrint("onStart --");
+      }
     });
-    await _recorder.initialize();
+    await _recordPlugin.init();
   }
 
   ///销毁
   static dispose() {
     _audioSubscription?.cancel();
+    _recordPlugin.dispose();
   }
 
   ///开始录音
@@ -34,26 +44,22 @@ class SoundRecord {
       return false;
     }
     //清空缓存
-    _currentSamples.clear();
+    bytes = null;
     if (_isRecording) return false;
     //开始录音
-    await _recorder.start();
+    _recordPlugin.start();
     _isRecording = true;
     return true;
   }
 
   static Future<bool> stopListening() async {
     if (!_isRecording) return false;
-    await _recorder.stop();
+    await _recordPlugin.stop();
     _isRecording = false;
     return true;
   }
 
-  static Future<List<int>> currentSamples() async {
-    List<int> list = [];
-    for (var element in _currentSamples) {
-      list.addAll(element);
-    }
-    return list;
-  }
+  // static Future<List<int>> currentSamples() async {
+  //   return bytes!;
+  // }
 }

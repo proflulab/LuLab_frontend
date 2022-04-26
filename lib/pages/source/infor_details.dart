@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import 'package:text_to_speech/text_to_speech.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
@@ -22,7 +21,6 @@ class InforDetails extends StatefulWidget {
 
 class _InforDetailsState extends State<InforDetails> {
   late final infordata = widget.product;
-  TextToSpeech tts = TextToSpeech();
 
   final TextEditingController _commentController = TextEditingController();
   bool click = false;

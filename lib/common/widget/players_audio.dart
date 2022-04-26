@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
 
 AudioPlayer audioPlayer = AudioPlayer();
 bool firstExecuting = true;
@@ -19,26 +19,20 @@ executar(
   // }
   // String url =
   //     "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3";
-  int result = await audioPlayer.play(url);
-  if (result == 1) {
-    // success
-  }
+  UrlSource source = UrlSource(url);
+  audioPlayer.play(source);
 }
+
+playAssetAudio(String asset) {}
 
 //暂停播放
 pausar() async {
-  int result = await audioPlayer.pause();
-  if (result == 1) {
-    // success
-  }
+  audioPlayer.pause();
 }
 
 //停止播放
 parar() async {
-  int result = await audioPlayer.stop();
-  if (result == 1) {
-    // success
-  }
+  audioPlayer.stop();
 }
 
 //调节音量

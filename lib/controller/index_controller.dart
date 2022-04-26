@@ -1,12 +1,12 @@
 import 'dart:io';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:proflu/common/global/global.dart';
 import 'package:proflu/common/services/voice_port_server.dart';
-import 'package:text_to_speech/text_to_speech.dart';
 
 import '../common/api/gql_voice.dart';
 import '../common/entitys/data_voice.dart';
@@ -15,6 +15,8 @@ import '../common/utils/utils.dart';
 
 class IndexController extends GetxController {
   static IndexController get to => Get.find();
+
+  TTsUtil ttsUtil = TTsUtil();
 
   List<String> hints = [
     "“预约直播课”",
@@ -29,19 +31,24 @@ class IndexController extends GetxController {
 
   String userWord = '';
   XfManage? _xf;
-  TextToSpeech tts = TextToSpeech();
   int a = 0;
   int b = 0;
   PorcupineManager? _porcupineManager;
   //换上自己的appid
   final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
 
+  AudioPlayer audioPlayer = AudioPlayer();
+
   @override
   void onInit() {
     super.onInit();
-    SoundRecord.init();
+    SoundRecord.init(xfSst);
     createPorcupineManager();
     _porcupineManager?.start();
+    ttsUtil.setCompletionHandler(() {
+      audioPlayer.stop();
+      closeDialog();
+    });
   }
 
   void createPorcupineManager() async {
@@ -64,7 +71,7 @@ class IndexController extends GetxController {
 
   void wakeWordCallback(int keywordIndex) {
     if (keywordIndex >= 0) {
-      sstSpeak(text: '我在，你有什么问题');
+      ttsUtil.sstSpeak(text: '我在，你有什么问题');
       IndexController.to.startSpeaking();
     }
   }
@@ -77,16 +84,18 @@ class IndexController extends GetxController {
     userWord = "";
     update();
     if (!wakeUp) {
-      tts.stop();
+      ttsUtil.stop();
     }
     SoundRecord.startListening();
   }
 
   void stopSpeaking() {
+    debugPrint("抬起 ");
+
     // speaking = false;
     // update();
     SoundRecord.stopListening();
-    xfSst();
+    // xfSst();
   }
 
   void closeDialog() {
@@ -94,15 +103,18 @@ class IndexController extends GetxController {
     update();
   }
 
-  xfSst() async {
+  xfSst(List<int> data) async {
+    print("aaa");
     _xf = XfManage.connect(
       ViocePort.host,
       ViocePort.apiKey,
       ViocePort.apiSecret,
       ViocePort.appId,
-      await SoundRecord.currentSamples(),
+      data,
       (msg) {
         userWord = msg;
+        print("=====");
+        print(msg);
         if (userWord == '') {
           status = SpeakingStatus.parseFailed;
           update();
@@ -127,7 +139,31 @@ class IndexController extends GetxController {
       // speaking = true;
       // String a = voiceText.speechGoogle.code;
       status = SpeakingStatus.aiSpeaking;
-      sstSpeak(text: voiceText.speechGoogle.msg);
+      if (voiceText.speechGoogle.code == "1") {
+        /// 需要先放背景，再说话
+        audioPlayer.setReleaseMode(ReleaseMode.stop);
+
+        ///
+        audioPlayer.play(
+          AssetSource("audios/code1.mp3"),
+          volume: 1.0,
+        );
+
+        Future.delayed(const Duration(milliseconds: 500)).then((value) {
+          ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
+        });
+      } else if (voiceText.speechGoogle.code == "2") {
+        /// 一边说一边播放可以么
+        audioPlayer.play(
+          AssetSource("audios/code2.mp3"),
+          volume: 0.3,
+        );
+        audioPlayer.setReleaseMode(ReleaseMode.loop);
+        ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
+      } else {
+        ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
+      }
+
       update();
     } catch (e) {
       status = SpeakingStatus.parseFailed;
@@ -142,6 +178,7 @@ class IndexController extends GetxController {
   void dispose() {
     super.dispose();
     _xf?.close();
+    audioPlayer.dispose();
     SoundRecord.dispose();
   }
 }

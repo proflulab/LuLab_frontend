@@ -3,7 +3,7 @@ PODS:
     - Flutter
   - alarm_calendar (0.0.5):
     - Flutter
-  - audioplayers (0.0.1):
+  - audioplayers_darwin (0.0.1):
     - Flutter
   - BIJKPlayer (0.7.16)
   - connectivity_plus (0.0.1):
@@ -17,6 +17,12 @@ PODS:
   - Flutter (1.0.0)
   - flutter_custom_dialog (0.0.1):
     - Flutter
+  - flutter_plugin_record (0.0.1):
+    - Flutter
+  - flutter_sound_core (8.5.0)
+  - flutter_sound_lite (8.5.0):
+    - Flutter
+    - flutter_sound_core (= 8.5.0)
   - flutter_tts (0.0.1):
     - Flutter
   - flutter_voice_processor (1.0.6):
@@ -44,16 +50,12 @@ PODS:
     - Flutter
   - shared_preferences_ios (0.0.1):
     - Flutter
-  - sound_stream (0.0.1):
-    - Flutter
   - speech_to_text (0.0.1):
     - Flutter
     - Try
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - text_to_speech (0.0.1):
-    - Flutter
   - Toast (4.0.0)
   - Try (2.1.1)
   - url_launcher_ios (0.0.1):
@@ -68,12 +70,14 @@ PODS:
 DEPENDENCIES:
   - add_2_calendar (from `.symlinks/plugins/add_2_calendar/ios`)
   - alarm_calendar (from `.symlinks/plugins/alarm_calendar/ios`)
-  - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
+  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - fijkplayer (from `.symlinks/plugins/fijkplayer/ios`)
   - Flutter (from `Flutter`)
   - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
+  - flutter_plugin_record (from `.symlinks/plugins/flutter_plugin_record/ios`)
+  - flutter_sound_lite (from `.symlinks/plugins/flutter_sound_lite/ios`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - flutter_voice_processor (from `.symlinks/plugins/flutter_voice_processor/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -83,10 +87,8 @@ DEPENDENCIES:
   - porcupine_flutter (from `.symlinks/plugins/porcupine_flutter/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
-  - sound_stream (from `.symlinks/plugins/sound_stream/ios`)
   - speech_to_text (from `.symlinks/plugins/speech_to_text/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - text_to_speech (from `.symlinks/plugins/text_to_speech/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
@@ -95,6 +97,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BIJKPlayer
+    - flutter_sound_core
     - FMDB
     - ios-voice-processor
     - Porcupine-iOS
@@ -107,8 +110,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/add_2_calendar/ios"
   alarm_calendar:
     :path: ".symlinks/plugins/alarm_calendar/ios"
-  audioplayers:
-    :path: ".symlinks/plugins/audioplayers/ios"
+  audioplayers_darwin:
+    :path: ".symlinks/plugins/audioplayers_darwin/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
@@ -119,6 +122,10 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_custom_dialog:
     :path: ".symlinks/plugins/flutter_custom_dialog/ios"
+  flutter_plugin_record:
+    :path: ".symlinks/plugins/flutter_plugin_record/ios"
+  flutter_sound_lite:
+    :path: ".symlinks/plugins/flutter_sound_lite/ios"
   flutter_tts:
     :path: ".symlinks/plugins/flutter_tts/ios"
   flutter_voice_processor:
@@ -137,14 +144,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_ios:
     :path: ".symlinks/plugins/shared_preferences_ios/ios"
-  sound_stream:
-    :path: ".symlinks/plugins/sound_stream/ios"
   speech_to_text:
     :path: ".symlinks/plugins/speech_to_text/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  text_to_speech:
-    :path: ".symlinks/plugins/text_to_speech/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
   video_player_avfoundation:
@@ -157,13 +160,16 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   add_2_calendar: e9d68636aed37fb18e12f5a3d74c2e0589487af0
   alarm_calendar: 3deb03b6373714e199db21e059a0d00a0d3b7f4c
-  audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
+  audioplayers_darwin: 387322cb364026a1782298c982693b1b6aa9fa1b
   BIJKPlayer: 4c5d66e5cb99ae5bade6f22a4fcc031722a81c64
   connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   fijkplayer: 5ecf78e80cb97eed64cc170b094a4f691d9b9691
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_custom_dialog: c0d222a3c35af5b57581e54ef8784c94037cd2ec
+  flutter_plugin_record: 562ded56f3a109d769e72c3ef52ef20d835493d4
+  flutter_sound_core: d9396f10752a0df9aa3197f4c431d62d934918cc
+  flutter_sound_lite: 175808b357d0b3eeee1345843545bb2fbde06e6c
   flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   flutter_voice_processor: afb59b604d99397a1ccf15c935ac8f2c2327f09f
   fluttertoast: 16fbe6039d06a763f3533670197d01fc73459037
@@ -177,10 +183,8 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
-  sound_stream: eba0f2a5994b91d9e5009a739df6e98515a7b44f
   speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  text_to_speech: 8669facdbd5b72d2939b810493defd991634f6f9
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Try: 5ef669ae832617b3cee58cb2c6f99fb767a4ff96
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
