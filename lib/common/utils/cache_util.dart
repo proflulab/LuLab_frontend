@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CacheUtil {
@@ -11,7 +12,9 @@ class CacheUtil {
           //打印每个缓存文件的路径
         print(file.path);
       });*/
-    print('临时目录大小: ' + value.toString());
+    if (kDebugMode) {
+      print('临时目录大小: ' + value.toString());
+    }
     return _renderSize(value);
   }
 

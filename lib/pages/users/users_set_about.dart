@@ -46,33 +46,31 @@ class Ttt extends StatelessWidget {
         SvgPicture.asset("assets/images/logo.svg"),
         Container(
           margin: EdgeInsets.all(PFspace.screenMargin),
-          padding: EdgeInsets.all(PFspace.screenMargin),
+          //padding: EdgeInsets.all(PFspace.screenMargin),
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           child: Column(
             children: [
-              listtilebotton2(
-                  bottomname: "服务协议",
-                  onPressed: () {
+              lineWidget(
+                  title: "服务协议",
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Agreement(
                               data: Markdowndata.agreementUser,
                               title: '服务协议',
                             )));
-                  },
-                  context: context),
-              const Divider(height: 1),
-              listtilebotton2(
-                  bottomname: "隐私政策",
-                  onPressed: () {
+                  }),
+              Divider(height: 1, indent: 30.w, endIndent: 30.w),
+              lineWidget(
+                  title: "隐私政策",
+                  onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Agreement(
                               data: Markdowndata.privacy,
                               title: '隐私政策',
                             )));
-                  },
-                  context: context),
+                  }),
               // const Divider(),
               // listtilebotton2(
               //     bottomname: "产品特色",

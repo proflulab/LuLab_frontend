@@ -56,7 +56,7 @@ Widget listGroup2({
             style: const TextStyle(
               fontFamily: 'MyFontStyle',
               color: Colors.black,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
           const Spacer(),
