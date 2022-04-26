@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:proflu/controller/quick_login_controller.dart';
 import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,6 +19,8 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  QuickLoginController qc = Get.put(QuickLoginController());
+
   Future<int> readData() async {
     var prefs = await SharedPreferences.getInstance();
     var result = prefs.getInt('isFirstOpen');
@@ -88,12 +92,16 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _firstsign() {
+    // if (qc.verifyEnable) {
+    //   qc.quickLogin();
+    // } else {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const SignInPage(),
       ),
     );
+    // }
   }
 
   void _app() {

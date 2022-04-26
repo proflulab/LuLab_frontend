@@ -152,9 +152,10 @@ class _VoiceWidgetState extends State<VoiceWidget> {
       height: height ?? 350.w,
       width: 750.w,
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(10),
-      ),
+          color: Colors.white.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(10),
+          image: const DecorationImage(
+              image: AssetImage("assets/images/voice_bg.png"))),
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: child,
     );

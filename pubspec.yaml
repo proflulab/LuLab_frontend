@@ -75,6 +75,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   blur: ^3.1.0
+  quickpass_yidun_flutter: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,7 @@ flutter:
     - assets/ppn/second_android.ppn
     - assets/ppn/three_android.ppn
     - assets/animation/
+    - assets/quick_login/
 
   uses-material-design: true
 

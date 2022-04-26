@@ -190,7 +190,7 @@ class _AppState extends State<App> {
             ic.closeDialog();
           },
           child: Blur(
-            blur: 2.5,
+            blur: 0,
             child: Container(),
             overlay: Material(
               color: Colors.black26,
