@@ -76,9 +76,16 @@ class IndexController extends GetxController {
     }
   }
 
+  int? pressTime;
+
   void startSpeaking({bool wakeUp = false}) {
     debugPrint("按下 ");
-
+    pressTime = DateTime.now().millisecondsSinceEpoch;
+    Future.delayed(const Duration(seconds: 60)).then((value) {
+      if (DateTime.now().millisecondsSinceEpoch - pressTime! < 61000) {
+        stopSpeaking();
+      }
+    });
     speaking = true;
     status = SpeakingStatus.userSpeaking;
     userWord = "";
@@ -100,11 +107,11 @@ class IndexController extends GetxController {
 
   void closeDialog() {
     speaking = false;
+    ttsUtil.stop();
     update();
   }
 
   xfSst(List<int> data) async {
-    print("aaa");
     _xf = XfManage.connect(
       ViocePort.host,
       ViocePort.apiKey,
@@ -113,8 +120,6 @@ class IndexController extends GetxController {
       data,
       (msg) {
         userWord = msg;
-        print("=====");
-        print(msg);
         if (userWord == '') {
           status = SpeakingStatus.parseFailed;
           update();

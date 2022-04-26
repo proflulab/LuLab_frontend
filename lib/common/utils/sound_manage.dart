@@ -21,6 +21,7 @@ class SoundRecord {
         if (data.path != null) {
           File file = File(data.path!);
           bytes = file.readAsBytesSync();
+          _isRecording = false;
           onStop(bytes);
         }
       } else if (data.msg == "onStart") {
