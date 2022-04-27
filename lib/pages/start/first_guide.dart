@@ -69,6 +69,7 @@ class _FirstGuideState extends State<FirstGuide> {
             child: const Text('立即体验'),
             onPressed: () {
               Storage.setInt('isFirstOpen', Global.isFirstOpen);
+
               Navigator.of(context).pushReplacementNamed('/signinpage');
             } // 去首页路由
             ,

@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:proflu/common/global/global.dart';
+import 'package:proflu/events/quick_login_event.dart';
 import 'package:quickpass_yidun_flutter/quickpass_flutter_plugin.dart';
 
 class QuickLoginController extends GetxController {
@@ -16,28 +18,37 @@ class QuickLoginController extends GetxController {
 
   bool get verifyEnable => _verifyEnable;
 
+  var eventChannel = const EventChannel("yd_quicklogin_flutter_event_channel");
+
   @override
   void onInit() {
     super.onInit();
+    _init();
+  }
+
+  _init() async {
+    Future.delayed(Duration(milliseconds: 800)).then((value) {
+      checkVerifyEnable();
+    });
+    eventChannel.receiveBroadcastStream().listen(_onData, onError: _onError);
     _initQuickLogin();
   }
 
-  _initQuickLogin() {
-    quickLoginPlugin.init("9afb4225b463415cb915f4660949c181").then((value) {
-      debugPrint("==一键登录初始化成功=");
-      quickLoginPlugin.checkVerifyEnable().then((map) {
-        bool result = map![f_result_key];
-        if (result) {
-          debugPrint("当前网络环境【支持认证】！");
-          _verifyEnable = true;
-          update();
-          preLogin();
-        } else {
-          debugPrint("当前网络环境【不支持认证】！");
-        }
-      });
-    }).catchError((e) {
-      print(e);
+  Future<void> _initQuickLogin() async {
+    await quickLoginPlugin.init("9afb4225b463415cb915f4660949c181", 4);
+  }
+
+  checkVerifyEnable() {
+    quickLoginPlugin.checkVerifyEnable().then((map) {
+      bool result = map![f_result_key];
+      if (result) {
+        debugPrint("当前网络环境【支持认证】！");
+        _verifyEnable = true;
+        update();
+        preLogin();
+      } else {
+        debugPrint("当前网络环境【不支持认证】！");
+      }
     });
   }
 
@@ -70,11 +81,26 @@ class QuickLoginController extends GetxController {
         var accessToken = map?["accessToken"];
         print("取号成功, 运营商授权码:" + accessToken);
         quickLoginPlugin.closeLoginAuthView();
+        Global.eventBus.fire(QuickLoginEvent(accessToken));
       } else {
         var errorMsg = map?["msg"];
         print("取号失败, 出错原因:" + errorMsg);
         quickLoginPlugin.closeLoginAuthView();
       }
     });
+  }
+
+  void _onData(response) {
+    if (response is Map) {
+      var action = (response)["action"];
+      if (action == "handleCustomEvent") {
+        quickLoginPlugin.closeLoginAuthView();
+      }
+    }
+  }
+
+  _onError(Object error) {
+    print("error");
+    print(error);
   }
 }

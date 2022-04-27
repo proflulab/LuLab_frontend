@@ -187,6 +187,7 @@ class _AppState extends State<App> {
         return GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {
+            ic.stopSpeaking();
             ic.closeDialog();
           },
           child: Blur(

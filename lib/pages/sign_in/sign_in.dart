@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/api/apis.dart';
@@ -10,7 +11,6 @@ import '../../common/staticdata/staticdata.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../app.dart';
 import '../sign_up/register.dart';
 import '../users/users_agreement.dart';
@@ -23,6 +23,34 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  // QuickLoginController qc = Get.find();
+
+  // StreamSubscription? _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    // if (qc.verifyEnable) {
+    //   _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
+    //     _quickLogin(event.token);
+    //   });
+
+    //   qc.quickLogin();
+    // }
+  }
+
+  @override
+  void dispose() {
+    // _subscription?.cancel();
+    super.dispose();
+  }
+
+  /// 在这里请求服务器
+  _quickLogin(String token) {
+    Clipboard.setData(ClipboardData(text: token));
+    toastInfo(msg: "授权码已复制");
+  }
+
   bool _checked = false;
   // 账号控制器
   final TextEditingController _emailController =

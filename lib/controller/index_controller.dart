@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:porcupine_flutter/porcupine.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
 import 'package:proflu/common/global/global.dart';
@@ -35,7 +34,7 @@ class IndexController extends GetxController {
   int b = 0;
   PorcupineManager? _porcupineManager;
   //换上自己的appid
-  final accessKey = "5g6pH3j4toOHCQzJvGl1rILxyGQ5YAljKT6O8bvbqUlCef46i//alg==";
+  final accessKey = "3XdU30LgU+easZayAO9asvgjaxHZDHnwryhb4+iZRKGg1HN+WEhjLA==";
 
   AudioPlayer audioPlayer = AudioPlayer();
 
@@ -53,12 +52,8 @@ class IndexController extends GetxController {
 
   void createPorcupineManager() async {
     try {
-      _porcupineManager = await PorcupineManager.fromKeywordPaths(
-          accessKey,
-          [
-            "assets/ppn/${Platform.isAndroid ? 'three_android' : 'three_ios.ppn'}.ppn"
-          ],
-          wakeWordCallback);
+      _porcupineManager = await PorcupineManager.fromBuiltInKeywords(
+          accessKey, [BuiltInKeyword.HEY_SIRI], wakeWordCallback);
     } on PorcupineException catch (err) {
       // handle porcupine init error
     }
@@ -72,7 +67,10 @@ class IndexController extends GetxController {
   void wakeWordCallback(int keywordIndex) {
     if (keywordIndex >= 0) {
       ttsUtil.sstSpeak(text: '我在，你有什么问题');
-      IndexController.to.startSpeaking();
+      startSpeaking();
+      Future.delayed(const Duration(seconds: 8), () {
+        stopSpeaking();
+      });
     }
   }
 
@@ -82,7 +80,8 @@ class IndexController extends GetxController {
     debugPrint("按下 ");
     pressTime = DateTime.now().millisecondsSinceEpoch;
     Future.delayed(const Duration(seconds: 60)).then((value) {
-      if (DateTime.now().millisecondsSinceEpoch - pressTime! < 61000) {
+      if (speaking &&
+          DateTime.now().millisecondsSinceEpoch - pressTime! < 61000) {
         stopSpeaking();
       }
     });

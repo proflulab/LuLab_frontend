@@ -1,12 +1,11 @@
 import 'dart:io';
 
-//import 'package:device_info/device_info.dart';
-// import 'package:flutter/material.dart';
-
 //import '../../provider/provider.dart';
+import 'package:event_bus/event_bus.dart';
+
+import '../../../../common/entitys/entitys.dart';
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
-import '../../../../common/entitys/entitys.dart';
 //import 'package:package_info/package_info.dart';
 
 /// 全局配置
@@ -32,6 +31,8 @@ class Global {
 
   /// 是否 ios
   static bool isIOS = Platform.isIOS;
+
+  static EventBus eventBus = EventBus();
 
   // /// android 设备信息
   // static AndroidDeviceInfo androidDeviceInfo;
