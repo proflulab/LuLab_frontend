@@ -89,9 +89,7 @@ flutter:
     - assets/audios/
     - assets/images/
     - assets/test_service_account.json
-    - assets/ppn/first_android.ppn
-    - assets/ppn/second_android.ppn
-    - assets/ppn/three_android.ppn
+    - assets/ppn/
     - assets/animation/
     - assets/quick_login/
 
@@ -102,10 +100,6 @@ flutter:
       fonts:
         - asset: assets/icons/iconfont.ttf
 
-    - family: MyFontStyle2
-      fonts:
-        - asset: assets/fonts/汉仪行楷简.ttf
-
     - family: MyFontStyle
       fonts:
-        - asset: assets/fonts/汉仪行楷简.ttf
+        - asset: assets/fonts/HGXK_CNKI.TTF

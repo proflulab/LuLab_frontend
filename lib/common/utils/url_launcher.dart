@@ -48,9 +48,6 @@ class UrlLaucher {
 // '打开外部浏览器', "https://cflutter.com"
 // '拨打电话', "tel:10086"
 // '发送短信', "sms:10086"
-// '打开微信', "weixin://"
-// '打开支付宝', 'alipays://'
-// '打开淘宝', 'taobao://'
 // QQ： mqq://
 // 微信： weixin://
 // 京东： openapp.jdmoble:// 测试了，好像不行
