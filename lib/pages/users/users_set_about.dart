@@ -47,9 +47,8 @@ class Ttt extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(PFspace.screenMargin),
           //padding: EdgeInsets.all(PFspace.screenMargin),
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          decoration:
+              BoxDecoration(color: Colors.white, borderRadius: PFRadius.a15),
           child: Column(
             children: [
               lineWidget(
@@ -88,9 +87,8 @@ class Ttt extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(PFspace.screenMargin),
           padding: EdgeInsets.all(PFspace.screenMargin),
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          decoration:
+              BoxDecoration(color: Colors.white, borderRadius: PFRadius.a15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
