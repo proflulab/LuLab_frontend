@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../common/utils/utils.dart';
 //import '../../common/staticdata/staticdata.dart';
@@ -8,21 +9,18 @@ import '../../common/widget/widgets.dart';
 import 'package:flutter/material.dart';
 
 class Agreement extends StatelessWidget {
-  final String data;
-  final String title;
   const Agreement({
     Key? key,
-    required this.data,
-    required this.title,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Map data = Get.arguments;
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           title: Text(
-            title,
+            data.values.toList()[1],
             style:
                 const TextStyle(fontFamily: 'MyFontStyle', color: Colors.black),
           ),
@@ -51,7 +49,7 @@ class Agreement extends StatelessWidget {
               height: 1.sh,
               child: ListView(
                 children: [
-                  PFMarkdown(data: data),
+                  PFMarkdown(data: data.values.toList()[0]),
                 ],
               ),
             ),

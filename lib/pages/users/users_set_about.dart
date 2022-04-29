@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:proflu/common/utils/screen.dart';
 import 'package:proflu/pages/users/users_agreement.dart';
 
@@ -54,21 +55,25 @@ class Ttt extends StatelessWidget {
               lineWidget(
                   title: "服务协议",
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
-                              title: '服务协议',
-                            )));
+                    Get.toNamed(
+                      "/agreement",
+                      arguments: {
+                        "content": Markdowndata.agreementUser,
+                        "title": "《服务协议》"
+                      },
+                    );
                   }),
               Divider(height: 1, indent: 30.w, endIndent: 30.w),
               lineWidget(
                   title: "隐私政策",
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.privacy,
-                              title: '隐私政策',
-                            )));
+                    Get.toNamed(
+                      "/agreement",
+                      arguments: {
+                        "content": Markdowndata.agreementUser,
+                        "title": "《服务协议》"
+                      },
+                    );
                   }),
               // const Divider(),
               // listtilebotton2(

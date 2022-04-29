@@ -1,37 +1,54 @@
-// import 'package:get/get.dart';
-// import 'package:lulab/pages/course/course_index.dart';
+import 'package:get/get.dart';
 
-// import '../app.dart';
+import '../../pages/app.dart';
+import '../../pages/notfound/index.dart';
+import '../../pages/sign_in/sign_in.dart';
+import '../../pages/sign_up/register.dart';
+import '../../pages/start/loading.dart';
+import '../../pages/users/users_agreement.dart';
 
-// part 'app_routes.dart';
+part 'app_routes.dart';
 
-// class AppPages {
-//   static const INITIAL = AppRoutes.Home;
+class AppPages {
+  static const iNITIAL = AppRoutes.load;
 
-//   static final List<GetPage> routes = [
-//     //   //
-//     //   GetPage(
-//     //     name: AppRoutes.Home,
-//     //     page: () => App(),
-//     //   ),
-//     // ];
+  static final List<GetPage> routes = [
+    // 启动页
+    GetPage(name: AppRoutes.load, page: () => const LoadingPage()),
 
-//     // 其它
-//     GetPage(
-//       name: AppRoutes.Home,
-//       page: () => App(),
-//       // // binding: HomeBinding(),
-//       // children: [
-//       //   GetPage(
-//       //     name: AppRoutes.Course,
-//       //     page: () => CourseIndexPage(),
-//       //   ),
-//       // ],
-//     ),
+    GetPage(name: AppRoutes.app, page: () => const App()),
 
-//     GetPage(
-//       name: AppRoutes.Course,
-//       page: () => CourseIndexPage(),
-//     ),
-//   ];
-// }
+    GetPage(name: AppRoutes.signinpage, page: () => const SignInPage()),
+
+    GetPage(name: AppRoutes.signUp, page: () => const SignUpPage()),
+
+    GetPage(name: AppRoutes.agreement, page: () => const Agreement()),
+
+    // 我的页面多级路由
+    // GetPage(
+    //   name: AppRoutes.Home,
+    //   page: () => const App(),
+    //   // binding: HomeBinding(),
+    //   children: [
+    //     GetPage(
+    //       name: AppRoutes.List,
+    //       page: () => const ListIndexView(),
+    //       children: [
+    //         GetPage(
+    //           name: AppRoutes.Detail,
+    //           page: () => const DetailView(),
+    //         ),
+    //         GetPage(
+    //           name: AppRoutes.Detail_ID,
+    //           page: () => const DetailView(),
+    //           transition: Transition.downToUp,
+    //         ),
+    //       ],
+    //     ),
+    //   ],
+    // ),
+  ];
+
+  static final unknownRoute =
+      GetPage(name: AppRoutes.notFound, page: () => const NotfoundView());
+}

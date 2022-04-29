@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -12,7 +13,7 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
 import '../app.dart';
-import '../sign_up/register.dart';
+//import '../sign_up/register.dart';
 import '../users/users_agreement.dart';
 
 class SignInPage extends StatefulWidget {
@@ -25,14 +26,15 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   bool _checked = false;
   // 账号控制器
-  final TextEditingController _emailController =
-      TextEditingController(text: "");
+  final _emailController = TextEditingController();
   // 密码控制器
-  final TextEditingController _passController = TextEditingController(text: "");
+  final _passController = TextEditingController();
 
-  // 跳转 注册界面
-  // _handleNavSignUp() {
-  //   ExtendedNavigator.rootNavigator.pushNamed(Routes.signUpPageRoute);
+  // @override
+  // void dispose() {
+  //   _emailController.dispose();
+  //   _emailController.dispose();
+  //   super.dispose();
   // }
 
   // 执行登录操作
@@ -48,7 +50,6 @@ class _SignInPageState extends State<SignInPage> {
         password: _passController.value.text,
         // password: duSHA256(_passController.value.text),
       );
-
       try {
         UserLogin userProfile = await GqlUserAPI.login(
           context: context,
@@ -63,17 +64,7 @@ class _SignInPageState extends State<SignInPage> {
         }
         return toastInfo(msg: '请正确输入账号、密码！');
       }
-
-      // ExtendedNavigator.rootNavigator
-      //     .pushReplacementNamed(Routes.applicationPageRoute);
-      // Navigator.of(context)
-      //     .push(MaterialPageRoute(builder: (context) => const App()));
-
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const App()),
-        (route) => route == null,
-      );
+      Get.offAll(const App());
     } else {
       return toastInfo(msg: '请勾选相关协议');
     }
@@ -82,9 +73,7 @@ class _SignInPageState extends State<SignInPage> {
   // 登录表单
   Widget _buildInputForm() {
     return Container(
-      //width: fitWidth(295),
-      // height: 204,
-      margin: EdgeInsets.only(top: fitHeight(49)),
+      margin: EdgeInsets.only(top: 49.h),
       child: Column(
         children: [
           SizedBox(
@@ -104,7 +93,7 @@ class _SignInPageState extends State<SignInPage> {
               keyboardType: TextInputType.emailAddress,
               hintText: "请输入账号",
               marginTop: 0,
-              autofocus: true,
+              //autofocus: true,
               width: 622,
               height: 112),
           // 输入密码
@@ -140,8 +129,7 @@ class _SignInPageState extends State<SignInPage> {
                     style: const TextStyle(fontSize: 18, color: Colors.grey),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SignUpPage()));
+                        Get.toNamed('/signUp');
                       },
                   ),
                 ],
@@ -176,11 +164,13 @@ class _SignInPageState extends State<SignInPage> {
                 style: const TextStyle(color: Colors.blue),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
-                              title: '《服务协议》',
-                            )));
+                    Get.toNamed(
+                      "/agreement",
+                      arguments: {
+                        "content": Markdowndata.agreementUser,
+                        "title": "《服务协议》"
+                      },
+                    );
                   },
               ),
               const TextSpan(text: '和'),
@@ -189,11 +179,13 @@ class _SignInPageState extends State<SignInPage> {
                   style: const TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Agreement(
-                                data: Markdowndata.agreementUser,
-                                title: '《隐私政策》',
-                              )));
+                      Get.toNamed(
+                        "/agreement",
+                        arguments: {
+                          "content": Markdowndata.agreementUser,
+                          "title": "《隐私政策》"
+                        },
+                      );
                     }),
             ],
           ),
@@ -205,7 +197,6 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Center(
         child: ListView(
           children: <Widget>[

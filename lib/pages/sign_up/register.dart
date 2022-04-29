@@ -15,16 +15,9 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   // fullName email password 的控制器
-  final TextEditingController _fullnameController =
-      TextEditingController(text: "");
-  final TextEditingController _passController1 =
-      TextEditingController(text: "");
-  final TextEditingController _passController = TextEditingController(text: "");
-
-  // 返回上一页
-  // _handleNavPop() {
-  //   Navigator.pop(context);
-  // }
+  final TextEditingController _fullnameController = TextEditingController();
+  final TextEditingController _passController1 = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
 
   // 执行注册操作
   _handleSignUp() async {
@@ -51,7 +44,6 @@ class _SignUpPageState extends State<SignUpPage> {
       // password: duSHA256(_passController.value.text),
     );
 
-    //print(variables.name);
     try {
       await GqlUserAPI.register(
         context: context,
@@ -75,8 +67,6 @@ class _SignUpPageState extends State<SignUpPage> {
   // 注册表单
   Widget _buildInputForm() {
     return Container(
-      //width: 622,
-      // height: 204,
       margin: EdgeInsets.only(top: fitHeight(100)),
       child: Column(
         children: [
@@ -129,7 +119,18 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
+        child:
+
+            //     Column(
+            //   children: [
+            //     TextField(
+            //       controller: _fullnameController,
+            //       obscureText: false,
+            //     ),
+            //   ],
+            // )
+
+            Column(
           children: <Widget>[
             Divider(height: 100.h),
             _buildInputForm(),

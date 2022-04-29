@@ -10,6 +10,8 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import 'package:get/get.dart';
+
 class SetUser extends StatefulWidget {
   const SetUser({Key? key}) : super(key: key);
   @override

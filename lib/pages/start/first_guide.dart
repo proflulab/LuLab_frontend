@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proflu/common/global/global.dart';
 
 import '../../common/utils/utils.dart';
+import '../sign_in/sign_in.dart';
 
-class FirstGuidePage extends StatelessWidget {
+class FirstGuidePage extends StatefulWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: FirstGuide(),
-    );
-  }
+  _FirstGuidePageState createState() => _FirstGuidePageState();
 }
 
-class FirstGuide extends StatefulWidget {
-  const FirstGuide({Key? key}) : super(key: key);
-
-  @override
-  _FirstGuideState createState() => _FirstGuideState();
-}
-
-class _FirstGuideState extends State<FirstGuide> {
+class _FirstGuidePageState extends State<FirstGuidePage> {
   int _currIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
     return Stack(
       children: [
         // 背景图
-        buildFirstGuideBackGround(width, height),
+        buildFirstGuideBackGround(1.sw, 1.sh),
         // 小圆点
         Positioned(
           left: 0.w,
@@ -69,7 +60,7 @@ class _FirstGuideState extends State<FirstGuide> {
             child: const Text('立即体验'),
             onPressed: () {
               Storage.setInt('isFirstOpen', Global.isFirstOpen);
-              Navigator.of(context).pushReplacementNamed('/signinpage');
+              Get.offAll(const SignInPage());
             } // 去首页路由
             ,
           ),

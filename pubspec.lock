@@ -203,7 +203,7 @@ packages:
       name: crypto
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   csslib:
     dependency: transitive
     description:
@@ -657,7 +657,7 @@ packages:
       name: json_annotation
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.4.0"
+    version: "4.5.0"
   keyboard_dismisser:
     dependency: "direct main"
     description:
@@ -790,7 +790,7 @@ packages:
       name: path_provider_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.12"
+    version: "2.0.13"
   path_provider_ios:
     dependency: transitive
     description:
@@ -861,6 +861,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.13.0"
+  pinput:
+    dependency: "direct main"
+    description:
+      name: pinput
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.2.7"
   platform:
     dependency: transitive
     description:
@@ -1020,6 +1027,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_auth:
+    dependency: transitive
+    description:
+      name: smart_auth
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.5"
   sound_stream:
     dependency: "direct main"
     description:
@@ -1159,7 +1173,7 @@ packages:
       name: url_launcher_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.15"
+    version: "6.0.16"
   url_launcher_ios:
     dependency: transitive
     description:
@@ -1243,7 +1257,7 @@ packages:
       name: video_player_avfoundation
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -1299,7 +1313,7 @@ packages:
       name: web_socket_channel
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.2.0"
   webview_flutter:
     dependency: "direct main"
     description:
@@ -1313,7 +1327,7 @@ packages:
       name: webview_flutter_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.8.5"
+    version: "2.8.6"
   webview_flutter_platform_interface:
     dependency: transitive
     description:

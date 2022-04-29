@@ -1,13 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proflu/pages/sign_in/sign_in.dart';
+import 'package:proflu/pages/start/first_guide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-//import '../../common/global/global.dart';
-
-//import '../app.dart';
-
-//import '../utils/utils.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -74,7 +70,6 @@ class _LoadingPageState extends State<LoadingPage> {
             if (guide == 0) {
               Future.delayed(_duration, _firstsign);
             } else {
-              //Global.saveProfile(userProfile);
               Future.delayed(_duration, _app);
             }
           });
@@ -84,22 +79,14 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _firstguide() {
-    Navigator.of(context).pushReplacementNamed('/firstguide');
+    Get.to(const FirstGuidePage());
   }
 
   void _firstsign() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const SignInPage(),
-      ),
-    );
+    Get.toNamed('/signinpage');
   }
 
   void _app() {
-    // Navigator.of(context).pushAndRemoveUntil(
-    //     MaterialPageRoute(builder: (context) => const App()),
-    //     (route) => route == null);
-    Navigator.of(context).pushReplacementNamed('/app');
+    Get.toNamed('/app');
   }
 }

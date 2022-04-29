@@ -1,5 +1,6 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:proflu/common/utils/cache_util.dart';
 import 'package:proflu/common/utils/dialog_util.dart';
@@ -129,6 +130,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     onTap: _showClearCacheConfirm,
                   ),
+                  // Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  // lineWidget(
+                  //     title: "切换语音",
+                  //     onTap: () {
+                  //       var locale = const Locale('en', 'US');
+                  //       Get.updateLocale(locale);
+                  //     }),
                   Divider(height: 1, indent: 30.w, endIndent: 30.w),
                   lineWidget(
                       title: "关于我们",
@@ -153,12 +161,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   DialogUtil.showPopUp(
                     context: context,
                     onConfirm: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignInPage()),
-                        (route) => route == null,
-                      );
+                      Get.offAll(const SignInPage());
                     },
                     content: "是否退出陆向谦实验室",
                   );
