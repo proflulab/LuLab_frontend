@@ -16,7 +16,6 @@ class VoiceAPI {
       context: context,
       variables: variables.toJson(),
     );
-
     return VoiceResponse.fromJson(response.data!);
   }
 }

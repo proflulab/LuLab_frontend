@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:proflu/common/entitys/speaking_status.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
 import 'package:proflu/controller/index_controller.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class VoiceWidget extends StatefulWidget {
   const VoiceWidget({Key? key}) : super(key: key);
@@ -55,48 +57,48 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _swiperWidget() {
-    List<Widget> children = [
-      const Text(
-        "试试这样和我说",
-        style: TextStyle(fontSize: 18, color: PFc.themeColor),
-      ),
-    ];
-    for (var item in IndexController.to.hints) {
-      children.add(
-        Text(
-          item,
-          style: const TextStyle(fontSize: 18),
-        ),
-      );
-    }
+    // List<Widget> children = [
+    //   const Text(
+    //     "试试这样和我说",
+    //     style: TextStyle(fontSize: 18, color: PFc.themeColor),
+    //   ),
+    // ];
+    // for (var item in IndexController.to.hints) {
+    //   children.add(
+    //     Text(
+    //       item,
+    //       style: const TextStyle(fontSize: 18),
+    //     ),
+    //   );
+    // }
     return _container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const Text(
-          //   "试试这样和我说",
-          //   style: TextStyle(
-          //     fontSize: 18,
-          //     color: PFc.themeColor,
-          //   ),
-          // ),
-          // SizedBox(
-          //   height: 80.w,
-          //   child: Swiper(
-          //     itemBuilder: (c, i) {
-          //       return Center(
-          //         child: Text(
-          //           IndexController.to.hints[i],
-          //           style: const TextStyle(fontSize: 16),
-          //         ),
-          //       );
-          //     },
-          //     itemCount: IndexController.to.hints.length,
-          //     autoplay: true,
-          //     scrollDirection: Axis.vertical,
-          //   ),
-          // ),
-          ...children,
+          const Text(
+            "试试这样和我说",
+            style: TextStyle(
+              fontSize: 18,
+              color: PFc.themeColor,
+            ),
+          ),
+          SizedBox(
+            height: 80.w,
+            child: Swiper(
+              itemBuilder: (c, i) {
+                return Center(
+                  child: Text(
+                    IndexController.to.hints[i],
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                );
+              },
+              itemCount: IndexController.to.hints.length,
+              autoplay: true,
+              scrollDirection: Axis.vertical,
+            ),
+          ),
+          // ...children,
           Lottie.asset(
             'assets/animation/wave2.json',
             width: 420.w,
@@ -126,11 +128,16 @@ class _VoiceWidgetState extends State<VoiceWidget> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          GradientText(
             "抱歉我有些糊涂,请您再说一遍",
             style: TextStyle(
               fontSize: 32.w,
             ),
+            colors: [
+              Colors.blue,
+              Colors.red,
+              Colors.teal,
+            ],
           ),
           SizedBox(height: 20.w),
           Lottie.asset(
@@ -152,10 +159,11 @@ class _VoiceWidgetState extends State<VoiceWidget> {
       height: height ?? 350.w,
       width: 750.w,
       decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(10),
-          image: const DecorationImage(
-              image: AssetImage("assets/images/voice_bg.png"))),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        // image: const DecorationImage(
+        //     image: AssetImage("assets/images/voice_bg.png")),
+      ),
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: child,
     );

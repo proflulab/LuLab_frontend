@@ -20,6 +20,8 @@ class QuickLoginController extends GetxController {
 
   var eventChannel = const EventChannel("yd_quicklogin_flutter_event_channel");
 
+  String? ydToken;
+
   @override
   void onInit() {
     super.onInit();
@@ -59,6 +61,7 @@ class QuickLoginController extends GetxController {
       var ydToken = map?['token'];
       debugPrint("===预取号成功===");
       debugPrint(ydToken);
+      this.ydToken = ydToken;
     } else {
       var errorMsg = map?['errorMsg'];
       debugPrint("===预取号失败===");

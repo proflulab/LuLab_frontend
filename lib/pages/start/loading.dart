@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../controller/quick_login_controller.dart';
 
 //import '../../common/global/global.dart';
 
@@ -17,7 +20,7 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  // QuickLoginController qc = Get.put(QuickLoginController());
+  QuickLoginController qc = Get.put(QuickLoginController());
 
   Future<int> readData() async {
     var prefs = await SharedPreferences.getInstance();

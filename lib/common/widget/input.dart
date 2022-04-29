@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../values/values.dart';
+
 import '../utils/utils.dart';
+import '../values/values.dart';
 
 /// 输入框
 Widget inputTextEdit({
@@ -18,8 +19,8 @@ Widget inputTextEdit({
       height: height.h,
       margin: EdgeInsets.only(top: marginTop.h),
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(243, 243, 240, 1),
-        borderRadius: PFRadius.a6,
+        color: const Color(0xfff1f1f1),
+        borderRadius: PFRadius.a15,
       ),
       child: Center(
         child: TextField(
@@ -33,7 +34,7 @@ Widget inputTextEdit({
           ),
           style: TextStyle(
             color: PFc.textPrimary,
-            fontFamily: "Avenir",
+            fontFamily: "MyFontStyle",
             fontWeight: FontWeight.w400,
             fontSize: fitFontSize(35),
           ),
@@ -82,7 +83,7 @@ Widget inputEmailEdit({
       ),
       style: TextStyle(
         color: PFc.textPrimary,
-        fontFamily: "Avenir",
+        fontFamily: "MyFontStyle",
         fontWeight: FontWeight.w400,
         fontSize: fitFontSize(18),
       ),

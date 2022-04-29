@@ -1,19 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:proflu/pages/sign_in/agreement_widget.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-import '../../common/staticdata/staticdata.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../controller/quick_login_controller.dart';
+import '../../events/quick_login_event.dart';
 import '../app.dart';
 import '../sign_up/register.dart';
-import '../users/users_agreement.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -23,31 +26,31 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  // QuickLoginController qc = Get.find();
+  QuickLoginController qc = Get.find();
 
-  // StreamSubscription? _subscription;
+  StreamSubscription? _subscription;
 
   @override
   void initState() {
     super.initState();
-    // if (qc.verifyEnable) {
-    //   _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
-    //     _quickLogin(event.token);
-    //   });
+    if (qc.verifyEnable) {
+      _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
+        _quickLogin(event.token);
+      });
 
-    //   qc.quickLogin();
-    // }
+      qc.quickLogin();
+    }
   }
 
   @override
   void dispose() {
-    // _subscription?.cancel();
+    _subscription?.cancel();
     super.dispose();
   }
 
   /// 在这里请求服务器
   _quickLogin(String token) {
-    Clipboard.setData(ClipboardData(text: token));
+    Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
     toastInfo(msg: "授权码已复制");
   }
 
@@ -118,10 +121,14 @@ class _SignInPageState extends State<SignInPage> {
           SizedBox(
             height: 50.h,
           ),
-          SizedBox(
-            height: 200.w,
-            width: 200.w,
-            child: SvgPicture.asset("assets/images/logo.svg"),
+          Row(
+            children: [
+              SizedBox(
+                height: 124.w,
+                width: 480.w,
+                child: Image.asset("assets/images/login_logo.png"),
+              ),
+            ],
           ),
           SizedBox(
             height: 70.h,
@@ -149,8 +156,8 @@ class _SignInPageState extends State<SignInPage> {
             //height: 100.h,
             margin: const EdgeInsets.only(top: 50),
             child: btnFlatButtonWidget(
-              width: 750.w,
-              height: 112.h,
+              width: 622,
+              height: 112,
               onPressed: () => _handleSignIn(),
               gbColor: PFc.primaryElement,
               title: "登录",
@@ -165,7 +172,10 @@ class _SignInPageState extends State<SignInPage> {
                 children: [
                   TextSpan(
                     text: "没有账号？点击注册",
-                    style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                        fontFamily: "MyFontStyle"),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -182,64 +192,27 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   _text() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Checkbox(
-          shape: const CircleBorder(),
-          value: _checked,
-          onChanged: (v) {
-            setState(() {
-              _checked = v!;
-            });
-          },
-        ),
-        RichText(
-          text: TextSpan(
-            text: '我已阅读并同意',
-            style: const TextStyle(color: Colors.black, fontSize: 13.0),
-            children: <TextSpan>[
-              TextSpan(
-                text: '《服务协议》',
-                style: const TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () async {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Agreement(
-                              data: Markdowndata.agreementUser,
-                              title: '《服务协议》',
-                            )));
-                  },
-              ),
-              const TextSpan(text: '和'),
-              TextSpan(
-                  text: '《隐私政策》',
-                  style: const TextStyle(color: Colors.blue),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () async {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Agreement(
-                                data: Markdowndata.agreementUser,
-                                title: '《隐私政策》',
-                              )));
-                    }),
-            ],
-          ),
-        ),
-      ],
-    );
+    return AgreementWidget(
+        agree: _checked,
+        onTap: () {
+          setState(() {
+            _checked = !_checked;
+          });
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Center(
-        child: ListView(
+      body: SafeArea(
+        bottom: true,
+        child: Column(
           children: <Widget>[
             _buildInputForm(),
-            //const Spacer(),
+            const Spacer(),
             _text(),
+            const SizedBox(height: 30)
           ],
         ),
       ),

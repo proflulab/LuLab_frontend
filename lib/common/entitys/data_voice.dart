@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'data_course_sortdetails.dart';
+
 // 语音 - request
 
 VoiceRequest voiceRequestFromJson(String str) =>
@@ -57,12 +59,14 @@ class SpeechGoogle {
     required this.detail,
     required this.subBreak,
     required this.fields,
+    this.details,
   });
 
   String msg;
   String code;
   String category;
   String detail;
+  LatestDirectCourseElement? details;
   List<dynamic> subBreak;
   List<dynamic> fields;
 
@@ -71,6 +75,9 @@ class SpeechGoogle {
         code: json["code"],
         category: json["category"],
         detail: json["detail"],
+        details: json["details"] == null
+            ? null
+            : LatestDirectCourseElement.fromJson(json["details"]),
         subBreak: List<dynamic>.from(json["subBreak"].map((x) => x)),
         fields: List<dynamic>.from(json["fields"].map((x) => x)),
       );
@@ -80,6 +87,7 @@ class SpeechGoogle {
         "code": code,
         "category": category,
         "detail": detail,
+        "details": details,
         "subBreak": List<dynamic>.from(subBreak.map((x) => x)),
         "fields": List<dynamic>.from(fields.map((x) => x)),
       };

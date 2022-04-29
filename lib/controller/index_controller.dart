@@ -143,6 +143,7 @@ class IndexController extends GetxController {
       // speaking = true;
       // String a = voiceText.speechGoogle.code;
       status = SpeakingStatus.aiSpeaking;
+      print(voiceText.speechGoogle.toJson());
       if (voiceText.speechGoogle.code == "1") {
         /// 需要先放背景，再说话
         audioPlayer.setReleaseMode(ReleaseMode.stop);
@@ -164,10 +165,11 @@ class IndexController extends GetxController {
         );
         audioPlayer.setReleaseMode(ReleaseMode.loop);
         ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
+      } else if (voiceText.speechGoogle.code == "4") {
+        closeDialog();
       } else {
         ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
       }
-
       update();
     } catch (e) {
       status = SpeakingStatus.parseFailed;

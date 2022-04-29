@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:proflu/pages/sign_in/agreement_widget.dart';
 
-import '../../common/widget/widgets.dart';
-import '../../common/utils/utils.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/widget/widgets.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passController1 =
       TextEditingController(text: "");
   final TextEditingController _passController = TextEditingController(text: "");
-
+  bool agree = false;
   // 返回上一页
   // _handleNavPop() {
   //   Navigator.pop(context);
@@ -28,6 +29,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
   // 执行注册操作
   _handleSignUp() async {
+    if (!agree) {
+      toastInfo(msg: '请阅读并同意用户协议');
+      return;
+    }
     if (!duCheckStringLength(_fullnameController.value.text, 3)) {
       toastInfo(msg: '用户名不能小于3位');
       return;
@@ -111,7 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           // 注册
           Container(
-            margin: EdgeInsets.only(top: fitHeight(15)),
+            margin: EdgeInsets.only(top: fitHeight(48)),
             child: btnFlatButtonWidget(
               onPressed: _handleSignUp,
               width: 622,
@@ -128,13 +133,50 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Divider(height: 100.h),
-            _buildInputForm(),
-            const Spacer(),
-          ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Container(
+            height: kToolbarHeight,
+            width: kToolbarHeight,
+            alignment: Alignment.center,
+            child: ClipOval(
+              child: Container(
+                width: 82.w,
+                height: 82.w,
+                decoration: const BoxDecoration(color: Color(0xffE6E6E6)),
+                alignment: Alignment.center,
+                child: Icon(
+                  Icons.chevron_left_outlined,
+                  size: 60.w,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        bottom: true,
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              _buildInputForm(),
+              const Spacer(),
+              AgreementWidget(
+                  agree: agree,
+                  onTap: () {
+                    setState(() {
+                      agree = !agree;
+                    });
+                  }),
+              const SizedBox(height: 30)
+            ],
+          ),
         ),
       ),
     );

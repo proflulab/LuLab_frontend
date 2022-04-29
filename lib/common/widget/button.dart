@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../values/values.dart';
+
 import '../utils/utils.dart';
+import '../values/values.dart';
 
 /// 扁平圆角按钮
 Widget btnFlatButtonWidget({
@@ -11,7 +12,7 @@ Widget btnFlatButtonWidget({
   String title = "button",
   Color fontColor = PFc.primaryElementText,
   double fontSize = 40,
-  String fontName = "Montserrat",
+  String fontName = "MyFontStyle",
   FontWeight fontWeight = FontWeight.w400,
 }) {
   return SizedBox(
