@@ -212,44 +212,44 @@ class _LiveDetailState extends State<LiveDetail> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 270.0.w, //容器的相关参数
-                            height: 70.0.h,
-                            child: ElevatedButton(
-                              child: const Text("邀请好友一起看"),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    const Color(0xffB2FFA6)), //背景颜色
-                                foregroundColor: MaterialStateProperty.all(
-                                    const Color(0xff40A850)), //字体颜色
-                                overlayColor: MaterialStateProperty.all(
-                                    const Color(0xffFFF8E5)), // 高亮色
-                                shadowColor: MaterialStateProperty.all(
-                                    const Color(0xffffffff)), //阴影颜色
-                                elevation: MaterialStateProperty.all(0), //阴影值
-                                textStyle: MaterialStateProperty.all(
-                                  const TextStyle(
-                                    fontSize: 13,
-                                    fontFamily: 'MyFontStyle',
-                                    color: Color(0xff40A850),
-                                  ),
-                                ), //字体
-                                shape: MaterialStateProperty.all(
-                                  const StadiumBorder(
-                                    side: BorderSide(
-                                        //设置 界面效果
-                                        style: BorderStyle.solid,
-                                        color: Color(0xff40A850),
-                                        width: 0.5),
-                                  ),
-                                ), //圆角弧度
-                              ),
-                              onPressed: () {
-                                _onShare(context, text);
-                              },
-                            ),
-                          ),
-                          SizedBox(width: 60.w),
+                          // SizedBox(
+                          //   width: 270.0.w, //容器的相关参数
+                          //   height: 70.0.h,
+                          //   child: ElevatedButton(
+                          //     child: const Text("邀请好友一起看"),
+                          //     style: ButtonStyle(
+                          //       backgroundColor: MaterialStateProperty.all(
+                          //           const Color(0xffB2FFA6)), //背景颜色
+                          //       foregroundColor: MaterialStateProperty.all(
+                          //           const Color(0xff40A850)), //字体颜色
+                          //       overlayColor: MaterialStateProperty.all(
+                          //           const Color(0xffFFF8E5)), // 高亮色
+                          //       shadowColor: MaterialStateProperty.all(
+                          //           const Color(0xffffffff)), //阴影颜色
+                          //       elevation: MaterialStateProperty.all(0), //阴影值
+                          //       textStyle: MaterialStateProperty.all(
+                          //         const TextStyle(
+                          //           fontSize: 13,
+                          //           fontFamily: 'MyFontStyle',
+                          //           color: Color(0xff40A850),
+                          //         ),
+                          //       ), //字体
+                          //       shape: MaterialStateProperty.all(
+                          //         const StadiumBorder(
+                          //           side: BorderSide(
+                          //               //设置 界面效果
+                          //               style: BorderStyle.solid,
+                          //               color: Color(0xff40A850),
+                          //               width: 0.5),
+                          //         ),
+                          //       ), //圆角弧度
+                          //     ),
+                          //     onPressed: () {
+                          //       _onShare(context, text);
+                          //     },
+                          //   ),
+                          // ),
+                          // SizedBox(width: 60.w),
                           SizedBox(
                             width: 270.0.w, //容器的相关参数
                             height: 70.0.h,

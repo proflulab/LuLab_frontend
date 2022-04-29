@@ -41,7 +41,7 @@ Widget listGroup1({
 Widget listGroup2({
   required BuildContext context,
   required String title,
-  required Widget icon,
+  Widget? icon,
   required Widget child,
   required VoidCallback onTap,
 }) {
@@ -61,7 +61,7 @@ Widget listGroup2({
           ),
           const Spacer(),
           child,
-          Expanded(flex: 0, child: icon)
+          Expanded(flex: 0, child: icon ?? Container())
         ],
       ),
     ),

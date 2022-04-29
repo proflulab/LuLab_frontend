@@ -52,6 +52,8 @@ PODS:
     - Flutter
     - NTESQuickPass (= 3.2.3)
   - ReachabilitySwift (5.0.0)
+  - record (0.0.1):
+    - Flutter
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
@@ -92,6 +94,7 @@ DEPENDENCIES:
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - porcupine_flutter (from `.symlinks/plugins/porcupine_flutter/ios`)
   - quickpass_yidun_flutter (from `.symlinks/plugins/quickpass_yidun_flutter/ios`)
+  - record (from `.symlinks/plugins/record/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - speech_to_text (from `.symlinks/plugins/speech_to_text/ios`)
@@ -151,6 +154,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/porcupine_flutter/ios"
   quickpass_yidun_flutter:
     :path: ".symlinks/plugins/quickpass_yidun_flutter/ios"
+  record:
+    :path: ".symlinks/plugins/record/ios"
   share_plus:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_ios:
@@ -195,6 +200,7 @@ SPEC CHECKSUMS:
   porcupine_flutter: d07702351800af8cd7918e1333bb87359771c347
   quickpass_yidun_flutter: 0f9825b95ff5ac87e7f700d420a400e33e7eec84
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  record: 7ee2393532f8553bbb09fa19e95478323b7c0a99
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe

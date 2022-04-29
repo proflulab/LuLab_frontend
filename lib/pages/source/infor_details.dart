@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+import 'package:proflu/pages/source/web_view_page.dart';
 
 //import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
@@ -198,6 +199,14 @@ class _InforDetailsState extends State<InforDetails> {
       behavior: HitTestBehavior.translucent,
       onTap: () {
         // launch(infordata.href);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebViewPage(
+              url: infordata.href,
+            ),
+          ),
+        );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 15),

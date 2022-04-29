@@ -214,7 +214,7 @@ class Decoder {
   }
 }
 
-bool isDebug = false;
+bool isDebug = true;
 
 ///日志
 log(dynamic msg) {

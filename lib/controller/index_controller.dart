@@ -170,6 +170,7 @@ class IndexController extends GetxController {
       } else {
         ttsUtil.sstSpeak(text: voiceText.speechGoogle.msg);
       }
+
       update();
     } catch (e) {
       status = SpeakingStatus.parseFailed;

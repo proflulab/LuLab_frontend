@@ -129,7 +129,6 @@ class _SetUserState extends State<SetUser> {
                   child: SizedBox(
                       child: ClipOval(
                           child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-                  icon: const Icon(PFIcon.userRight),
                   onTap: () {
                     if (kDebugMode) {
                       print("该功能未开发，当前无法更改");
