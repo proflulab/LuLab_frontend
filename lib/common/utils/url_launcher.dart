@@ -1,8 +1,8 @@
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLaucher {
-  static client(String url) async {
-    if (!await launch(url)) throw 'Could not launch $url';
+  static client(url) async {
+    if (!await launchUrl(url)) throw 'Could not launch $url';
   }
 
   //打开浏览器
@@ -24,8 +24,8 @@ class UrlLaucher {
       'subject': subject,
       'body': body,
     });
-    String _url = uri.toString();
-    if (!await launch(_url)) throw 'Could not launch $_url';
+    var _url = uri;
+    if (!await launchUrl(_url)) throw 'Could not launch $_url';
   }
 
   static google() async {

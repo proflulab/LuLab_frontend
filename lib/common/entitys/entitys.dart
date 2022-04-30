@@ -24,5 +24,4 @@ export 'json_field.dart';
 //export 'response_data_entity.dart';
 export 'response_data_entity_helper.dart';
 export 'data_home_feat_experience.dart';
-
-
+export 'data_userlogin_phone.dart';

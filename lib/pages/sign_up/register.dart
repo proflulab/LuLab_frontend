@@ -21,15 +21,15 @@ class _SignUpPageState extends State<SignUpPage> {
 
   // 执行注册操作
   _handleSignUp() async {
-    if (!duCheckStringLength(_fullnameController.value.text, 3)) {
+    if (!PFcheck.duCheckStringLength(_fullnameController.value.text, 3)) {
       toastInfo(msg: '用户名不能小于3位');
       return;
     }
-    if (!duCheckStringLength(_passController1.value.text, 6)) {
+    if (!PFcheck.duCheckStringLength(_passController1.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
     }
-    if (!duCheckStringLength(_passController.value.text, 6)) {
+    if (!PFcheck.duCheckStringLength(_passController.value.text, 6)) {
       toastInfo(msg: '密码不能小于6位');
       return;
     }

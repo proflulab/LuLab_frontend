@@ -15,3 +15,4 @@ export 'share_plus.dart';
 export 'url_launcher.dart';
 export 'connectivity.dart';
 export 'local_notifications.dart';
+export 'wakelock.dart';

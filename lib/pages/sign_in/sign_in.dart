@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:proflu/pages/sign_in/verification.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -13,8 +14,9 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
 import '../app.dart';
+import 'phone_country_code_page.dart';
 //import '../sign_up/register.dart';
-import '../users/users_agreement.dart';
+//import '../users/users_agreement.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -40,7 +42,7 @@ class _SignInPageState extends State<SignInPage> {
   // 执行登录操作
   _handleSignIn() async {
     if (_checked == true) {
-      if (!duCheckStringLength(_passController.value.text, 6)) {
+      if (!PFcheck.duCheckStringLength(_passController.value.text, 6)) {
         toastInfo(msg: '登录密码不能小于6位');
         return;
       }
@@ -117,9 +119,7 @@ class _SignInPageState extends State<SignInPage> {
               title: "登录",
             ),
           ),
-          SizedBox(
-            height: 50.h,
-          ),
+          SizedBox(height: 50.h),
           Center(
             child: Text.rich(
               TextSpan(
@@ -130,6 +130,23 @@ class _SignInPageState extends State<SignInPage> {
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Get.toNamed('/signUp');
+                      },
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 50.h),
+          Center(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: "验证码登录",
+                    style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Get.to(const PhoneCountryCodePage());
                       },
                   ),
                 ],

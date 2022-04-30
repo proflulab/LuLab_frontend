@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
+import 'package:wakelock/wakelock.dart';
+
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
@@ -106,7 +108,7 @@ class _CoursePageState extends State<CoursePage>
                         _count = 12;
                         _controllerCourse.finishLoad(success: false);
                         _handleCourse(0, _countFirst);
-                      }); 
+                      });
                     },
                     child: Row(
                       children: [

@@ -40,6 +40,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
+    PFwakelock.passState(1);
     _handleCourse();
   }
 
@@ -60,6 +61,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     super.dispose();
     player.release();
     _tabController.dispose();
+    PFwakelock.passState(0);
   }
 
   @override
