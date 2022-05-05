@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import 'common/lang/translation_service.dart';
 import 'common/routers/app_pages.dart';
-
 import 'common/values/values.dart';
 
 //启动页面
@@ -17,21 +16,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(750, 1624), //配置设计稿的宽度高度
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (BuildContext context) => GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        // supportedLocales: const [
-        //   Locale('en', 'US'), // English, no country code
-        // ],
-        title: "陆向谦实验室",
-        theme: mDefaultTheme,
-        initialRoute: AppPages.iNITIAL,
-        getPages: AppPages.routes,
-        locale: TranslationService.locale,
-        translations: TranslationService(),
-      ),
-    );
+        designSize: const Size(750, 1624), //配置设计稿的宽度高度
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            // supportedLocales: const [
+            //   Locale('en', 'US'), // English, no country code
+            // ],
+            title: "陆向谦实验室",
+            theme: mDefaultTheme,
+            initialRoute: AppPages.iNITIAL,
+            getPages: AppPages.routes,
+            locale: TranslationService.locale,
+            translations: TranslationService(),
+          );
+        });
   }
 }
