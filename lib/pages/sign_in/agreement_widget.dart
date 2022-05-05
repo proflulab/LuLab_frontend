@@ -49,7 +49,7 @@ class AgreementWidget extends StatelessWidget {
                     ..onTap = () async {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Agreement(
-                                data: Markdowndata.agreementUser,
+                                data: Markdowndata.privacy,
                                 title: '《隐私政策》',
                               )));
                     }),

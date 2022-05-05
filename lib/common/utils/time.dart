@@ -30,6 +30,8 @@ class PFTime {
       return formatDate(time, [yyyy, '年', mm, '月']);
     } else if (value == "ym.") {
       return formatDate(time, [yyyy, ".", mm]);
+    } else if (value == "ymdHM") {
+      return formatDate(time, [yyyy, '年', mm, '月', dd, '日', HH, ":", nn, ""]);
     }
   }
 

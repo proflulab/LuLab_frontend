@@ -1,4 +1,5 @@
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:wakelock/wakelock.dart';
 
 class TTsUtil {
   FlutterTts tts = FlutterTts();
@@ -16,6 +17,7 @@ class TTsUtil {
     tts.setLanguage(language);
     tts.setPitch(pitch);
     tts.speak(text);
+    Wakelock.enable();
   }
 
   void stop() {
@@ -25,6 +27,7 @@ class TTsUtil {
   void setCompletionHandler(Function handler) {
     tts.setCompletionHandler(() {
       handler();
+      Wakelock.disable();
     });
   }
 }

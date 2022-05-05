@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
+import 'package:get/get.dart';
 import 'package:proflu/pages/source/infor_item_widget.dart';
 
 import '../../common/api/apis.dart';
@@ -11,9 +12,9 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
 import '../../pages/course/course_index.dart';
 import '../../pages/home/live_detail.dart';
+import '../source/web_view_page.dart';
 
 class Gather extends StatefulWidget {
   const Gather({Key? key}) : super(key: key);
@@ -191,6 +192,9 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
             if (kDebugMode) {
               print(" 点击 " + index.toString());
             }
+            Get.to(WebViewPage(
+              url: "https://hao123.com",
+            ));
           },
         ),
       ),

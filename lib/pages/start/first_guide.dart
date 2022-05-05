@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proflu/common/global/global.dart';
+import 'package:proflu/common/values/values.dart';
+import 'package:proflu/common/widget/widgets.dart';
 
 import '../../common/utils/utils.dart';
 
@@ -40,9 +42,9 @@ class _FirstGuideState extends State<FirstGuide> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buidIndefot(_currIndex == 0),
-              buidIndefot(_currIndex == 1),
-              buidIndefot(_currIndex == 2),
+              buidIndefot(0),
+              buidIndefot(1),
+              buidIndefot(2),
             ],
           ),
         ),
@@ -57,16 +59,19 @@ class _FirstGuideState extends State<FirstGuide> {
     );
   }
 
-  Row buildGoHome() {
+  Widget buildGoHome() {
+    if (_currIndex != 2) return Container();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AnimatedContainer(
-          height: _currIndex == 2 ? 70.h : 0,
-          width: _currIndex == 2 ? 300.w : 0,
+          height: 130.w,
+          width: 622.w,
           duration: const Duration(milliseconds: 0),
           child: ElevatedButton(
-            child: const Text('立即体验'),
+            child: PFtext.text1(text: "立即开启", color: Colors.white),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(PFc.themeColor)),
             onPressed: () {
               Storage.setInt('isFirstOpen', Global.isFirstOpen);
 
@@ -118,14 +123,14 @@ class _FirstGuideState extends State<FirstGuide> {
   }
 
   // 小圆点
-  Widget buidIndefot(bool isSelected) {
+  Widget buidIndefot(int index) {
     return AnimatedContainer(
       margin: const EdgeInsets.all(15),
       height: 18,
-      width: isSelected ? 25 : 18,
+      width: _currIndex == index ? 25 : 18,
       duration: const Duration(milliseconds: 200),
-      decoration: const BoxDecoration(
-          color: Colors.blue,
+      decoration: BoxDecoration(
+          color: index <= _currIndex ? PFc.themeColor : Color(0xffC4C4C4),
           borderRadius: BorderRadius.all(Radius.circular(15))),
     );
   }

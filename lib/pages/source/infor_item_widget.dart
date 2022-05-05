@@ -69,7 +69,7 @@ class InfoItemWidget extends StatelessWidget {
                       PFtext.text1(
                           text: PFTime.client(
                               int.parse(information.releaseDate),
-                              "ymd"), //information.introduction,
+                              "ymdHM"), //information.introduction,
                           maxLines: 2,
                           fontSize: 24.w,
                           fontWeight: FontWeight.normal,

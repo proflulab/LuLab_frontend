@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:porcupine_flutter/porcupine.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
@@ -76,23 +77,25 @@ class IndexController extends GetxController {
 
   int? pressTime;
 
-  void startSpeaking({bool wakeUp = false}) {
+  void startSpeaking({bool wakeUp = false}) async {
     debugPrint("按下 ");
-    pressTime = DateTime.now().millisecondsSinceEpoch;
-    Future.delayed(const Duration(seconds: 60)).then((value) {
-      if (speaking &&
-          DateTime.now().millisecondsSinceEpoch - pressTime! < 61000) {
-        stopSpeaking();
+    if (await Permission.microphone.request().isGranted) {
+      pressTime = DateTime.now().millisecondsSinceEpoch;
+      Future.delayed(const Duration(seconds: 60)).then((value) {
+        if (speaking &&
+            DateTime.now().millisecondsSinceEpoch - pressTime! < 61000) {
+          stopSpeaking();
+        }
+      });
+      speaking = true;
+      status = SpeakingStatus.userSpeaking;
+      userWord = "";
+      update();
+      if (!wakeUp) {
+        ttsUtil.stop();
       }
-    });
-    speaking = true;
-    status = SpeakingStatus.userSpeaking;
-    userWord = "";
-    update();
-    if (!wakeUp) {
-      ttsUtil.stop();
+      SoundRecord.startListening();
     }
-    SoundRecord.startListening();
   }
 
   void stopSpeaking() {
