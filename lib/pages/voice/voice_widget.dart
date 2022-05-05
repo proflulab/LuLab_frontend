@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:proflu/common/entitys/speaking_status.dart';
@@ -55,48 +56,34 @@ class _VoiceWidgetState extends State<VoiceWidget> {
   }
 
   Widget _swiperWidget() {
-    List<Widget> children = [
-      const Text(
-        "试试这样和我说",
-        style: TextStyle(fontSize: 18, color: PFc.themeColor),
-      ),
-    ];
-    for (var item in IndexController.to.hints) {
-      children.add(
-        Text(
-          item,
-          style: const TextStyle(fontSize: 18),
-        ),
-      );
-    }
     return _container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const Text(
-          //   "试试这样和我说",
-          //   style: TextStyle(
-          //     fontSize: 18,
-          //     color: PFc.themeColor,
-          //   ),
-          // ),
-          // SizedBox(
-          //   height: 80.w,
-          //   child: Swiper(
-          //     itemBuilder: (c, i) {
-          //       return Center(
-          //         child: Text(
-          //           IndexController.to.hints[i],
-          //           style: const TextStyle(fontSize: 16),
-          //         ),
-          //       );
-          //     },
-          //     itemCount: IndexController.to.hints.length,
-          //     autoplay: true,
-          //     scrollDirection: Axis.vertical,
-          //   ),
-          // ),
-          ...children,
+          const Text(
+            "试试这样和我说",
+            style: TextStyle(
+              fontSize: 18,
+              color: PFc.themeColor,
+            ),
+          ),
+          SizedBox(
+            height: 80.w,
+            child: Swiper(
+              itemBuilder: (c, i) {
+                return Center(
+                  child: Text(
+                    IndexController.to.hints[i],
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                );
+              },
+              itemCount: IndexController.to.hints.length,
+              autoplay: true,
+              scrollDirection: Axis.vertical,
+            ),
+          ),
+          // ...children,
           Lottie.asset(
             'assets/animation/wave2.json',
             width: 420.w,
