@@ -80,4 +80,46 @@ mutation userUpdate($_id: String!, $name: String!, $sex: String!, $description: 
 //   }
 // }
 
+  /// 用户一键登录
+  static const String gqlUserQuickLogin = r'''
+query mobileLogin($token: String!, $accessToken: String!) {
+  mobileLogin(token: $token, accessToken: $accessToken) {
+    status
+    msg
+    data {
+      _id
+      name
+      sex
+      birth
+      position
+      company
+      industry
+      phone
+      email
+      password
+      wechat
+      schoolRecord
+      workCondition
+      detailMsg
+      description
+      duration
+      category
+      userType
+      identity
+      imgUrl
+      iconUrl
+      bigCoverUrl
+      profileImgUrl
+      videoUrl
+      password
+      country
+      address
+      addTime
+      timestamp
+      imgs
+      tags
+    }
+  }
+}
+''';
 }

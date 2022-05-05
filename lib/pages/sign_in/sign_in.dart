@@ -38,7 +38,8 @@ class _SignInPageState extends State<SignInPage> {
         _quickLogin(event.token);
       });
 
-      qc.quickLogin();
+      /// TODO 一键登录
+      // qc.quickLogin();
     }
   }
 
@@ -49,9 +50,40 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   /// 在这里请求服务器
-  _quickLogin(String token) {
+  _quickLogin(String token) async {
     Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
-    toastInfo(msg: "授权码已复制");
+
+    QuickLoginrequest variables = QuickLoginrequest(
+      token: qc.ydToken ?? "",
+      accessToken: token,
+      // password: duSHA256(_passController.value.text),
+    );
+
+    try {
+      UserLogin userProfile = await GqlUserAPI.quickLogin(
+        context: context,
+        variables: variables,
+      );
+      Storage.setInt('isFirstSign', Global.isFirstSign);
+      Global.saveProfile(userProfile.data);
+    } catch (e) {
+      if (kDebugMode) {
+        print("===========登录报错内容===============");
+        print(e);
+      }
+      return toastInfo(msg: '一键登录失败,请尝试其他登录方式');
+    }
+
+    // ExtendedNavigator.rootNavigator
+    //     .pushReplacementNamed(Routes.applicationPageRoute);
+    // Navigator.of(context)
+    //     .push(MaterialPageRoute(builder: (context) => const App()));
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const App()),
+      (route) => route == null,
+    );
   }
 
   bool _checked = false;

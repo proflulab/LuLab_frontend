@@ -17,12 +17,10 @@ PODS:
   - Flutter (1.0.0)
   - flutter_custom_dialog (0.0.1):
     - Flutter
+  - flutter_local_notifications (0.0.1):
+    - Flutter
   - flutter_plugin_record (0.0.1):
     - Flutter
-  - flutter_sound_core (8.5.0)
-  - flutter_sound_lite (8.5.0):
-    - Flutter
-    - flutter_sound_core (= 8.5.0)
   - flutter_tts (0.0.1):
     - Flutter
   - flutter_voice_processor (1.0.6):
@@ -52,8 +50,6 @@ PODS:
     - Flutter
     - NTESQuickPass (= 3.2.3)
   - ReachabilitySwift (5.0.0)
-  - record (0.0.1):
-    - Flutter
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
@@ -84,8 +80,8 @@ DEPENDENCIES:
   - fijkplayer (from `.symlinks/plugins/fijkplayer/ios`)
   - Flutter (from `Flutter`)
   - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_plugin_record (from `.symlinks/plugins/flutter_plugin_record/ios`)
-  - flutter_sound_lite (from `.symlinks/plugins/flutter_sound_lite/ios`)
   - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - flutter_voice_processor (from `.symlinks/plugins/flutter_voice_processor/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -94,7 +90,6 @@ DEPENDENCIES:
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - porcupine_flutter (from `.symlinks/plugins/porcupine_flutter/ios`)
   - quickpass_yidun_flutter (from `.symlinks/plugins/quickpass_yidun_flutter/ios`)
-  - record (from `.symlinks/plugins/record/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - speech_to_text (from `.symlinks/plugins/speech_to_text/ios`)
@@ -107,7 +102,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - BIJKPlayer
-    - flutter_sound_core
     - FMDB
     - ios-voice-processor
     - NTESBaseComponent
@@ -134,10 +128,10 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_custom_dialog:
     :path: ".symlinks/plugins/flutter_custom_dialog/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_plugin_record:
     :path: ".symlinks/plugins/flutter_plugin_record/ios"
-  flutter_sound_lite:
-    :path: ".symlinks/plugins/flutter_sound_lite/ios"
   flutter_tts:
     :path: ".symlinks/plugins/flutter_tts/ios"
   flutter_voice_processor:
@@ -154,8 +148,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/porcupine_flutter/ios"
   quickpass_yidun_flutter:
     :path: ".symlinks/plugins/quickpass_yidun_flutter/ios"
-  record:
-    :path: ".symlinks/plugins/record/ios"
   share_plus:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_ios:
@@ -183,9 +175,8 @@ SPEC CHECKSUMS:
   fijkplayer: 5ecf78e80cb97eed64cc170b094a4f691d9b9691
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_custom_dialog: c0d222a3c35af5b57581e54ef8784c94037cd2ec
+  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_plugin_record: 562ded56f3a109d769e72c3ef52ef20d835493d4
-  flutter_sound_core: d9396f10752a0df9aa3197f4c431d62d934918cc
-  flutter_sound_lite: 175808b357d0b3eeee1345843545bb2fbde06e6c
   flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   flutter_voice_processor: afb59b604d99397a1ccf15c935ac8f2c2327f09f
   fluttertoast: 16fbe6039d06a763f3533670197d01fc73459037
@@ -200,7 +191,6 @@ SPEC CHECKSUMS:
   porcupine_flutter: d07702351800af8cd7918e1333bb87359771c347
   quickpass_yidun_flutter: 0f9825b95ff5ac87e7f700d420a400e33e7eec84
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  record: 7ee2393532f8553bbb09fa19e95478323b7c0a99
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe

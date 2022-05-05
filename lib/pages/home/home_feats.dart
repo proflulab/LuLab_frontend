@@ -8,6 +8,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import 'home_feats_personal.dart';
+import 'home_feats_videos.dart';
 
 class FeatsPage extends StatefulWidget {
   const FeatsPage({Key? key}) : super(key: key);
@@ -111,16 +112,61 @@ class _FeatsPageState extends State<FeatsPage>
                       Positioned(
                         top: 0.0.h,
                         right: 0.0.w,
-                        child: SizedBox(
-                          width: _imagew,
-                          height: _imageh,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10.r),
+                        child: Stack(
+                          children: [
+                            SizedBox(
+                              width: _imagew,
+                              height: _imageh,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.r),
+                                ),
+                                child: CachedImage.typeLaod(
+                                    _focusData[index].imgUrl),
+                              ),
                             ),
-                            child:
-                                CachedImage.typeLaod(_focusData[index].imgUrl),
-                          ),
+                            Positioned(
+                              child: GestureDetector(
+                                behavior: HitTestBehavior.translucent,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => FeatsVideo(
+                                        classificationUser: _focusData[index],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 150.w,
+                                  height: 44.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(44.w),
+                                    color: PFc.themeColor,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.play_circle_outline_rounded,
+                                        color: Colors.white,
+                                        size: 36.w,
+                                      ),
+                                      SizedBox(width: 4.w),
+                                      PFtext.text1(
+                                        text: "视频介绍",
+                                        color: Colors.white,
+                                        fontSize: 22.w,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              bottom: 30.w,
+                              right: 22.w,
+                            ),
+                          ],
                         ),
                       ),
                     ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-import '../../common/utils/utils.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
+import '../../common/utils/utils.dart';
 
 class GqlUserAPI {
   // 登录
@@ -40,10 +40,24 @@ class GqlUserAPI {
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserUpdata, 
+      schema: SchemaUser.gqlUserUpdata,
       variables: variables.toJson(),
     );
 
     return UserUpdateresponse.fromJson(response.data!);
+  }
+
+  // 一键登录
+  static Future<UserLogin> quickLogin({
+    required BuildContext context,
+    required QuickLoginrequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.mutate(
+      context: context,
+      schema: SchemaUser.gqlUserQuickLogin,
+      variables: variables.toJson(),
+    );
+    print(response);
+    return UserLogin.fromJson(response.data!["mobileLogin"]);
   }
 }
