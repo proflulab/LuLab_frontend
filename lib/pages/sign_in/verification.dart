@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:async';
 
 import 'package:pinput/pinput.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
 
-class Verification extends StatefulWidget {
+class Verification extends StatefulWidget { 
   const Verification({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +15,7 @@ class Verification extends StatefulWidget {
 }
 
 class _VerificationState extends State<Verification> {
+  String data = Get.arguments;
   final controller = TextEditingController();
   final focusNode = FocusNode();
 
@@ -82,7 +84,11 @@ class _VerificationState extends State<Verification> {
             SizedBox(height: 90.h),
             Row(children: const [Text("输入验证码")]),
             SizedBox(height: 30.h),
-            Row(children: const [Text("已发送至1818****2522")]),
+            Row(children: [
+              Text(data.substring(0, 4) +
+                  "****" +
+                  data.substring(data.length - 4))
+            ]),
             SizedBox(height: 30.h),
             Center(
               child: Pinput(

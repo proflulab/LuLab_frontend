@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proflu/pages/app.dart';
 import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:proflu/pages/start/first_guide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -79,14 +80,14 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _firstguide() {
-    Get.to(const FirstGuidePage());
+    Get.offAll(const FirstGuidePage());
   }
 
   void _firstsign() {
-    Get.toNamed('/signinpage');
+    Get.offAll(const SignInPage());
   }
 
   void _app() {
-    Get.toNamed('/app');
+    Get.offAll(const App());
   }
 }

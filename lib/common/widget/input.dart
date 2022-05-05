@@ -14,34 +14,35 @@ Widget inputTextEdit({
   double height = 40,
 }) {
   return Container(
-      width: width.w,
-      height: height.h,
-      margin: EdgeInsets.only(top: marginTop.h),
-      decoration: BoxDecoration(
-        color: const Color.fromRGBO(243, 243, 240, 1),
-        borderRadius: PFRadius.a6,
-      ),
-      child: Center(
-        child: TextField(
-          autofocus: autofocus,
-          controller: controller,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            hintText: hintText,
-            contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
-            border: InputBorder.none,
-          ),
-          style: TextStyle(
-            color: PFc.textPrimary,
-            fontFamily: "Avenir",
-            fontWeight: FontWeight.w400,
-            fontSize: fitFontSize(35),
-          ),
-          maxLines: 1,
-          autocorrect: false, // 自动纠正
-          obscureText: isPassword, // 隐藏输入内容, 密码框
+    width: width.w,
+    height: height.h,
+    margin: EdgeInsets.only(top: marginTop.h),
+    decoration: BoxDecoration(
+      color: const Color.fromRGBO(243, 243, 240, 1),
+      borderRadius: PFRadius.a6,
+    ),
+    child: Center(
+      child: TextField(
+        autofocus: autofocus,
+        controller: controller,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          hintText: hintText,
+          contentPadding: const EdgeInsets.fromLTRB(20, 10, 0, 9),
+          border: InputBorder.none,
         ),
-      ));
+        style: TextStyle(
+          color: PFc.textPrimary,
+          fontFamily: "Avenir",
+          fontWeight: FontWeight.w400,
+          fontSize: fitFontSize(35),
+        ),
+        maxLines: 1,
+        autocorrect: false, // 自动纠正
+        obscureText: isPassword, // 隐藏输入内容, 密码框
+      ),
+    ),
+  );
 }
 
 /// email 输入框

@@ -119,18 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:
-
-            //     Column(
-            //   children: [
-            //     TextField(
-            //       controller: _fullnameController,
-            //       obscureText: false,
-            //     ),
-            //   ],
-            // )
-
-            Column(
+        child: Column(
           children: <Widget>[
             Divider(height: 100.h),
             _buildInputForm(),

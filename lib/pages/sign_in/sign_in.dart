@@ -3,7 +3,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:proflu/pages/sign_in/verification.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -14,7 +13,8 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
 import '../app.dart';
-import 'phone_country_code_page.dart';
+
+import 'phone_login.dart';
 //import '../sign_up/register.dart';
 //import '../users/users_agreement.dart';
 
@@ -146,7 +146,7 @@ class _SignInPageState extends State<SignInPage> {
                     style: const TextStyle(fontSize: 18, color: Colors.grey),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
-                        Get.to(const PhoneCountryCodePage());
+                        Get.to(const PhoneLogin());
                       },
                   ),
                 ],
@@ -199,7 +199,7 @@ class _SignInPageState extends State<SignInPage> {
                       Get.toNamed(
                         "/agreement",
                         arguments: {
-                          "content": Markdowndata.agreementUser,
+                          "content": Markdowndata.privacy,
                           "title": "《隐私政策》"
                         },
                       );

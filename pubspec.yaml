@@ -72,6 +72,7 @@ dependencies:
   pinput: ^2.2.7
   wakelock: ^0.6.1+2
   fzregex: ^2.0.0
+  textfield_search: ^0.10.0
 
   flutter_localizations:
     sdk: flutter

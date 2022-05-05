@@ -15,7 +15,7 @@ ThemeData mDefaultTheme = ThemeData(
     buttonColor: PFc.themeColor,
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: PFc.backgroundSecondary,
+    backgroundColor: PFc.backgroundPrimary,
   ),
 );
 

@@ -22,6 +22,9 @@ class PFc {
   // 次背景
   static const Color backgroundSecondary = Color.fromRGBO(255, 255, 255, 1);
 
+  // 灰背景
+  static const Color backgroundBlack10 = Color.fromRGBO(67, 67, 67, 0.1);
+
   // 灰黑背景
   static const Color backgroundBlack = Color.fromRGBO(67, 67, 67, 1);
 

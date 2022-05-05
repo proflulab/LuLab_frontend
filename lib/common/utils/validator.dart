@@ -34,7 +34,7 @@ class PFcheck {
   static bool duIsPhone(String input) {
     if (input.isEmpty) return false;
 
-    String regexPhone = "(13d|14[579]|15[^4D]|17[^49D]|18d)d{8}";
+    String regexPhone = "0?(13|14|15|18|17)[0-9]{9}";
     return RegExp(regexPhone).hasMatch(input);
   }
 
