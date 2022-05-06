@@ -105,6 +105,11 @@ class Global {
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
 
+  // 持久化 用户信息
+  static removeProfile() {
+    Storage.remove(storageUserProfileKey);
+  }
+
   // // 获取 持久化 用户信息
   // static getProfile() {
   //   Storage.getJson(storageUserProfileKey).then(

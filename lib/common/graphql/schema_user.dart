@@ -82,13 +82,15 @@ mutation userUpdate($_id: String!, $name: String!, $sex: String!, $description: 
 
   /// 用户一键登录
   static const String gqlUserQuickLogin = r'''
-query mobileLogin($token: String!, $accessToken: String!) {
-  mobileLogin(token: $token, accessToken: $accessToken) {
-    status
+query {
+  mobileLogin(userCheck:{token:"",accessToken:""}) {
     msg
+    token
+    status
     data {
       _id
       name
+      account
       sex
       birth
       position
@@ -96,7 +98,6 @@ query mobileLogin($token: String!, $accessToken: String!) {
       industry
       phone
       email
-      password
       wechat
       schoolRecord
       workCondition
@@ -111,13 +112,10 @@ query mobileLogin($token: String!, $accessToken: String!) {
       bigCoverUrl
       profileImgUrl
       videoUrl
-      password
       country
       address
       addTime
       timestamp
-      imgs
-      tags
     }
   }
 }

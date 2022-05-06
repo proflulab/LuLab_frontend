@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:proflu/controller/user_controller.dart';
 import 'package:proflu/pages/users/users_set_user.dart';
 
+import '../../common/entitys/data_user_login.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
@@ -30,50 +33,53 @@ class _UsersPageState extends State<UsersPage>
     //double screenheight = MediaQuery.of(context).size.height;
 //个人头像，姓名，等级
     Widget _username() {
-      return Container(
-        //height: 100,
-        margin: const EdgeInsets.all(20),
-        //color: Colors.white,
-        child: ListTile(
-          leading: SizedBox(
-              width: 100.w,
-              height: 100.w,
-              child: ClipOval(
-                  child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-          title: Text(
-            Global.profile.name!,
-            style: const TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.black,
-              fontSize: 28,
+      return GetBuilder<UserController>(builder: (uc) {
+        Data? user = uc.user;
+        return Container(
+          //height: 100,
+          margin: const EdgeInsets.all(20),
+          //color: Colors.white,
+          child: ListTile(
+            leading: SizedBox(
+                width: 100.w,
+                height: 100.w,
+                child: ClipOval(
+                    child: CachedImage.typeLaod(user?.profileImgUrl ?? ""))),
+            title: Text(
+              user?.name ?? "",
+              style: const TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 28,
+              ),
             ),
-          ),
-          subtitle: const Text(
-            "功勋学员",
-            style: TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.green,
-              fontSize: 14,
+            subtitle: const Text(
+              "功勋学员",
+              style: TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.green,
+                fontSize: 14,
+              ),
             ),
+            contentPadding: const EdgeInsets.all(10),
+            // trailing: const Text(
+            //   "个人主页",
+            //   style: TextStyle(
+            //     fontFamily: 'MyFontStyle',
+            //     color: Colors.black,
+            //     fontSize: 18,
+            //   ),
+            // ),
+            onTap: () {
+              if (kDebugMode) {
+                print("进入个人主页");
+              }
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const SetUser()));
+            },
           ),
-          contentPadding: const EdgeInsets.all(10),
-          // trailing: const Text(
-          //   "个人主页",
-          //   style: TextStyle(
-          //     fontFamily: 'MyFontStyle',
-          //     color: Colors.black,
-          //     fontSize: 18,
-          //   ),
-          // ),
-          onTap: () {
-            if (kDebugMode) {
-              print("进入个人主页");
-            }
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const SetUser()));
-          },
-        ),
-      );
+        );
+      });
     }
     // Widget _dynamicdata() {
     //   return SizedBox(

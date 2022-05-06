@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:proflu/controller/user_controller.dart';
 import 'package:proflu/pages/sign_in/agreement_widget.dart';
 
 import '../../common/api/apis.dart';
@@ -39,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
       });
 
       /// TODO 一键登录
-      // qc.quickLogin();
+      qc.quickLogin();
     }
   }
 
@@ -51,7 +52,8 @@ class _SignInPageState extends State<SignInPage> {
 
   /// 在这里请求服务器
   _quickLogin(String token) async {
-    Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
+    // Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
+    print("$token,${qc.ydToken}");
 
     QuickLoginrequest variables = QuickLoginrequest(
       token: qc.ydToken ?? "",
@@ -64,8 +66,7 @@ class _SignInPageState extends State<SignInPage> {
         context: context,
         variables: variables,
       );
-      Storage.setInt('isFirstSign', Global.isFirstSign);
-      Global.saveProfile(userProfile.data);
+      UserController.to.loginSuccess(userProfile.data);
     } catch (e) {
       if (kDebugMode) {
         print("===========登录报错内容===============");
@@ -117,8 +118,7 @@ class _SignInPageState extends State<SignInPage> {
           context: context,
           variables: variables,
         );
-        Storage.setInt('isFirstSign', Global.isFirstSign);
-        Global.saveProfile(userProfile.data);
+        UserController.to.loginSuccess(userProfile.data);
       } catch (e) {
         if (kDebugMode) {
           print("===========登录报错内容===============");
