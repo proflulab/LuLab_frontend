@@ -60,9 +60,12 @@ class _PhoneLoginState extends State<PhoneLogin> {
           GestureDetector(
               onTap: () {
                 var result = Get.to(const PhoneCountryCodePage());
-                // setState(() {
-                //   code = result as String;
-                // });
+
+                if (result != null) {
+                  setState(() {
+                    //code = result.;
+                  });
+                }
               },
               child: Row(
                 children: [
@@ -122,7 +125,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
               backgroundColor: MaterialStateProperty.all(
                   PFcheck.duIsPhone(controller.value.text)
                       ? PFc.themeColor
-                      : PFc.themeColor30)),
+                      : const Color.fromARGB(221, 196, 236, 201))),
           onPressed: () {
             if (PFcheck.duIsPhone(controller.value.text)) {
               Get.to(
@@ -145,10 +148,4 @@ class _PhoneLoginState extends State<PhoneLogin> {
       ),
     );
   }
-
-  // _codeset() {
-  //   setState(() {
-  //     code = result;
-  //   });
-  // }
 }

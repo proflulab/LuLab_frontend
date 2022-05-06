@@ -11,16 +11,15 @@ class GraphqlClientUtil {
       serverApiGraphqlUrl,
     );
 
-    // final AuthLink _authLink = AuthLink(
-    //   getToken: () =>
-    //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmMzNDdhYzgzOTVjMDAwY2ViYzE5NyIsImlhdCI6MTU5MzY1NDcwNiwiZXhwIjoxNTk2MjQ2NzA2fQ.RYDmNSDJxcZLLPHAf4u59IER7Bs5VoWfBo1_t-TR5yY',
-    // );
-
-    // final Link _link = _authLink.concat(_httpLink);
+    final AuthLink _authLink = AuthLink(
+      getToken: () =>
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmMzNDdhYzgzOTVjMDAwY2ViYzE5NyIsImlhdCI6MTU5MzY1NDcwNiwiZXhwIjoxNTk2MjQ2NzA2fQ.RYDmNSDJxcZLLPHAf4u59IER7Bs5VoWfBo1_t-TR5yY',
+    );
+    final Link _link = _authLink.concat(_httpLink);
 
     return GraphQLClient(
       cache: GraphQLCache(),
-      link: _httpLink,
+      link: _link,
     );
   }
 

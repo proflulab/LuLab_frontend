@@ -1,15 +1,16 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
-import 'package:textfield_search/textfield_search.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../common/entitys/entitys.dart';
-import '../search/search2.dart';
+
+import 'contrast.dart';
 
 //选择城市地区联动索引页
 //https://raw.githubusercontent.com/xiedong11/flutter_app/master/static/phoneCode.json
@@ -23,7 +24,11 @@ class PhoneCountryCodePage extends StatefulWidget {
 
 class PageState extends State<PhoneCountryCodePage> {
   List<String> letters = [];
-  List<String> cities = [];
+
+  List<ListDatum> datums = [];
+
+  List<ListDatum> result = [];
+
   late Phoneresponse fdata;
   late List<Datum> data = [];
 
@@ -34,6 +39,8 @@ class PageState extends State<PhoneCountryCodePage> {
   final ScrollController _scrollController = ScrollController();
 
   TextEditingController myController = TextEditingController();
+
+  TextEditingController searchcontroller = TextEditingController();
 
   @override
   void initState() {
@@ -61,7 +68,7 @@ class PageState extends State<PhoneCountryCodePage> {
 
         for (int i = 0; i < data.length; i++) {
           for (int j = 0; j < data[i].listData.length; j++) {
-            cities.add(data[i].listData[j].name);
+            datums.add(data[i].listData[j]);
           }
         }
       });
@@ -72,77 +79,141 @@ class PageState extends State<PhoneCountryCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // title: Padding(
-          //   padding: const EdgeInsets.only(top: 2, bottom: 2, left: 16),
-          //   child: Container(
-          //     height: 35,
-          //     width: MediaQuery.of(context).size.width - 64,
-          //     decoration: BoxDecoration(
-          //         color: const Color.fromRGBO(230, 230, 230, 1.0),
-          //         borderRadius: BorderRadius.circular(20)),
-          //     child: TextFieldSearch(
-          //       initialList: cities,
-          //       label: '搜索',
-          //       controller: myController,
-          //     ),
-          //   ),
-          // ),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 0, bottom: 0),
+          child: Container(
+            height: 35,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                color: const Color.fromRGBO(230, 230, 230, 1.0),
+                borderRadius: BorderRadius.circular(20)),
+            child: TextField(
+              autofocus: false,
+              controller: searchcontroller,
+              keyboardType: TextInputType.text,
+              decoration: const InputDecoration(
+                hintText: "搜索",
+                contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+                border: InputBorder.none,
+              ),
+              maxLines: 1,
+              autocorrect: false,
+              onChanged: (value) {
+                setState(() {
+                  value;
+                  result.clear();
+                  for (int i = 0; i < datums.length; i++) {
+                    if (PFcontrast.client(value, datums[i].name) &&
+                        value != "") {
+                      result.add(datums[i]);
+                    }
+                  }
+                  if (result.isEmpty) {}
+                });
+                if (kDebugMode) {
+                  print("你输入的内容为$value");
+                }
+              },
+            ),
           ),
+        ),
+      ),
       body: Stack(
         children: <Widget>[
-          ListView.builder(
-            controller: _scrollController,
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  PhoneCodeIndexName(data[index].name.toUpperCase()),
-                  ListView.separated(
-                    itemCount: data[index].listData.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (BuildContext context, int index2) {
-                      return GestureDetector(
-                        child: SizedBox(
-                          height: 46,
-                          width: double.infinity,
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: PFspace.screenMargin),
-                            child: Row(
-                              children: <Widget>[
-                                Text(data[index].listData[index2].name,
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Color(0xff434343))),
-                                Text(
-                                  "+${data[index].listData[index2].code}",
+          result.isEmpty
+              ? ListView.builder(
+                  controller: _scrollController,
+                  itemCount: data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        PhoneCodeIndexName(data[index].name.toUpperCase()),
+                        ListView.separated(
+                          itemCount: data[index].listData.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (BuildContext context, int index2) {
+                            return GestureDetector(
+                              child: SizedBox(
+                                height: 46,
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: PFspace.screenMargin),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(data[index].listData[index2].name,
+                                          style: const TextStyle(
+                                              fontSize: 16,
+                                              color: Color(0xff434343))),
+                                      Text(
+                                        "   +${data[index].listData[index2].code}",
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff434343)),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                Get.back(
+                                    result: data[index].listData[index2].code);
+                              },
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return Divider(
+                              height: 0,
+                              color: Colors.grey,
+                              indent: PFspace.screenMargin,
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                )
+              : ListView.separated(
+                  itemCount: result.length,
+                  //shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index3) {
+                    return GestureDetector(
+                      child: SizedBox(
+                        height: 46,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: PFspace.screenMargin),
+                          child: Row(
+                            children: <Widget>[
+                              Text(result[index3].name,
                                   style: const TextStyle(
-                                      fontSize: 16, color: Color(0xff434343)),
-                                )
-                              ],
-                            ),
+                                      fontSize: 16, color: Color(0xff434343))),
+                              Text(
+                                "   +${result[index3].code}",
+                                style: const TextStyle(
+                                    fontSize: 16, color: Color(0xff434343)),
+                              )
+                            ],
                           ),
                         ),
-                        onTap: () {
-                          Get.back(result: data[index].listData[index2].code);
-                          Get.snackbar(
-                              "国家区号", data[index].listData[index2].code);
-                          // Navigator.of(context)
-                          //     .pop(data[index].listData[index2].code);
-                        },
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Divider(
-                          color: Colors.grey, indent: PFspace.screenMargin);
-                    },
-                  ),
-                ],
-              );
-            },
-          ),
+                      ),
+                      onTap: () {
+                        Get.back(result: result[index3].code);
+                      },
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Divider(
+                      height: 0,
+                      color: Colors.grey,
+                      indent: PFspace.screenMargin,
+                    );
+                  },
+                ),
           Align(
             alignment: const FractionalOffset(1.0, 0.5),
             child: GestureDetector(
@@ -151,16 +222,7 @@ class PageState extends State<PhoneCountryCodePage> {
                   print("onVerticalDragStart---${details.localPosition.dy}");
                 }
                 setState(() {
-                  if (details.localPosition.dy > 100 &&
-                      details.localPosition.dy < 100 + letters.length * 16) {
-                    _top = details.localPosition.dy;
-                    var a = (_top - 100) ~/ 16;
-                    var height = a * 45.0;
-                    for (int i = 0; i < a; i++) {
-                      height += data[i].listData.length * 46.0;
-                    }
-                    _scrollController.jumpTo(height);
-                  }
+                  _high(details.localPosition.dy);
                   _float = true;
                 });
               },
@@ -174,16 +236,7 @@ class PageState extends State<PhoneCountryCodePage> {
                   print("onVerticalDragDown---${details.localPosition.dy}");
                 }
                 setState(() {
-                  if (details.localPosition.dy > 100 &&
-                      details.localPosition.dy < 100 + letters.length * 16) {
-                    _top = details.localPosition.dy;
-                    var a = (_top - 100) ~/ 16;
-                    var height = a * 45.0;
-                    for (int i = 0; i < a; i++) {
-                      height += data[i].listData.length * 46.0;
-                    }
-                    _scrollController.jumpTo(height);
-                  }
+                  _high(details.localPosition.dy);
                   _float = false;
                 });
               },
@@ -201,16 +254,7 @@ class PageState extends State<PhoneCountryCodePage> {
                   print("onVerticalDragUpdate----${details.localPosition.dy}");
                 }
                 setState(() {
-                  if (details.localPosition.dy > 100 &&
-                      details.localPosition.dy < 100 + letters.length * 16) {
-                    _top = details.localPosition.dy;
-                    var a = (_top - 100) ~/ 16;
-                    var height = a * 45.0;
-                    for (int i = 0; i < a; i++) {
-                      height += data[i].listData.length * 46.0;
-                    }
-                    _scrollController.jumpTo(height);
-                  }
+                  _high(details.localPosition.dy);
                 });
               },
               child: SizedBox(
@@ -223,13 +267,14 @@ class PageState extends State<PhoneCountryCodePage> {
                     itemBuilder: (BuildContext context, int index) {
                       return Center(
                         child: SizedBox(
-                          height: 16,
+                          height: 20,
                           child: Text(
                             letters[index],
-                            style: index == ((_top - 100) ~/ 16)
-                                ? const TextStyle(
-                                    color: PFc.themeColor, fontSize: 20)
-                                : const TextStyle(color: Colors.black),
+                            style:
+                                index == ((_top - 100) ~/ 20) && _float == true
+                                    ? const TextStyle(
+                                        color: PFc.themeColor, fontSize: 20)
+                                    : const TextStyle(color: Colors.black),
                           ),
                         ),
                       );
@@ -253,13 +298,25 @@ class PageState extends State<PhoneCountryCodePage> {
                       child: Center(
                         child: Text(letters.isEmpty
                             ? ""
-                            : letters[((_top - 100) ~/ 16)]),
+                            : letters[((_top - 100) ~/ 20)]),
                       ),
                     )
                   : const Text("")),
         ],
       ),
     );
+  }
+
+  _high(e) {
+    if (e > 100 && e < 100 + letters.length * 20) {
+      _top = e;
+      var a = (_top - 100) ~/ 20;
+      var height = a * 45.0;
+      for (int i = 0; i < a; i++) {
+        height += data[i].listData.length * 46.0;
+      }
+      _scrollController.jumpTo(height);
+    }
   }
 }
 
