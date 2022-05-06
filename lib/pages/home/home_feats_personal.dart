@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 import '/pages/home/home_feats_videos.dart';
-
 import '../../common/api/apis.dart';
-import '../../common/values/values.dart';
-import '../../common/utils/utils.dart';
 //import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 //import 'common_richtext.dart';
 
@@ -100,16 +99,14 @@ class _FeastPersonalState extends State<FeastPersonal> {
             child: RawChip(
               label: const Text('视频介绍'),
               onPressed: () {
-                if (kDebugMode) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FeatsVideo(
-                        classificationUser: widget.product,
-                      ),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FeatsVideo(
+                      classificationUser: widget.product,
                     ),
-                  );
-                }
+                  ),
+                );
               },
               onDeleted: () {},
               backgroundColor: PFc.themeColor30,

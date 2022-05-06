@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:get/get.dart';
 import 'package:proflu/controller/index_controller.dart';
+import 'package:proflu/controller/user_controller.dart';
 
 import '/pages/voice/voice_view.dart';
 import '../../common/api/apis.dart';
@@ -86,6 +87,7 @@ class _AppState extends State<App> {
             ),
           );
           Global.saveProfile(userProfile.data);
+          UserController.to.loginSuccess(userProfile.data);
           getNotice();
         } catch (e) {
           if (kDebugMode) {

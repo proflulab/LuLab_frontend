@@ -112,32 +112,32 @@ class _FeatsPageState extends State<FeatsPage>
                       Positioned(
                         top: 0.0.h,
                         right: 0.0.w,
-                        child: Stack(
-                          children: [
-                            SizedBox(
-                              width: _imagew,
-                              height: _imageh,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10.r),
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FeatsVideo(
+                                  classificationUser: _focusData[index],
                                 ),
-                                child: CachedImage.typeLaod(
-                                    _focusData[index].imgUrl),
                               ),
-                            ),
-                            Positioned(
-                              child: GestureDetector(
-                                behavior: HitTestBehavior.translucent,
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => FeatsVideo(
-                                        classificationUser: _focusData[index],
-                                      ),
-                                    ),
-                                  );
-                                },
+                            );
+                          },
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                width: _imagew,
+                                height: _imageh,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(10.r),
+                                  ),
+                                  child: CachedImage.typeLaod(
+                                      _focusData[index].imgUrl),
+                                ),
+                              ),
+                              Positioned(
                                 child: Container(
                                   width: 150.w,
                                   height: 44.w,
@@ -162,11 +162,11 @@ class _FeatsPageState extends State<FeatsPage>
                                     ],
                                   ),
                                 ),
+                                bottom: 30.w,
+                                right: 22.w,
                               ),
-                              bottom: 30.w,
-                              right: 22.w,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
