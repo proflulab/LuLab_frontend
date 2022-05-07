@@ -43,7 +43,7 @@ class _LoadingPageState extends State<LoadingPage> {
     return Container(
       color: Colors.white,
       child: Image.asset(
-        'assets/images/StartPage.png',
+        'assets/images/StartPage.jpg',
         fit: BoxFit.contain,
       ),
     );
