@@ -27,10 +27,10 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   bool _checked = false;
-  // 账号控制器
-  final _emailController = TextEditingController();
-  // 密码控制器
-  final _passController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passController = TextEditingController();
 
   // @override
   // void dispose() {

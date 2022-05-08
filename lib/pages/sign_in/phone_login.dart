@@ -6,6 +6,7 @@ import 'package:proflu/common/utils/utils.dart';
 
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../controller/signin_controller.dart';
 import 'phone_country_code_page.dart';
 import 'verification.dart';
 
@@ -17,8 +18,10 @@ class PhoneLogin extends StatefulWidget {
 }
 
 class _PhoneLoginState extends State<PhoneLogin> {
+  final SigninController c = Get.put(SigninController());
+
   TextEditingController controller = TextEditingController();
-  String code = "86";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,17 +62,11 @@ class _PhoneLoginState extends State<PhoneLogin> {
         children: [
           GestureDetector(
               onTap: () {
-                var result = Get.to(const PhoneCountryCodePage());
-
-                if (result != null) {
-                  setState(() {
-                    //code = result.;
-                  });
-                }
+                Get.to(const PhoneCountryCodePage());
               },
               child: Row(
                 children: [
-                  Text("+$code"),
+                  Obx(() => Text("+${c.code}")),
                   const Icon(Icons.keyboard_arrow_down, color: Colors.black),
                 ],
               )),

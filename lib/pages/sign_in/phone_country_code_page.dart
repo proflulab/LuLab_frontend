@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 
 import '../../common/entitys/entitys.dart';
 
+import '../../controller/signin_controller.dart';
 import 'contrast.dart';
 
 //选择城市地区联动索引页
@@ -23,6 +24,8 @@ class PhoneCountryCodePage extends StatefulWidget {
 }
 
 class PageState extends State<PhoneCountryCodePage> {
+  final SigninController c = Get.find();
+
   List<String> letters = [];
 
   List<ListDatum> datums = [];
@@ -35,6 +38,8 @@ class PageState extends State<PhoneCountryCodePage> {
   double _top = 100;
 
   bool _float = false;
+
+  bool _search = true;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -80,7 +85,7 @@ class PageState extends State<PhoneCountryCodePage> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 0),
+          padding: const EdgeInsets.only(top: 0, bottom: 0, right: 40),
           child: Container(
             height: 35,
             width: MediaQuery.of(context).size.width,
@@ -93,7 +98,7 @@ class PageState extends State<PhoneCountryCodePage> {
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                 hintText: "搜索",
-                contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+                contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 10),
                 border: InputBorder.none,
               ),
               maxLines: 1,
@@ -102,13 +107,15 @@ class PageState extends State<PhoneCountryCodePage> {
                 setState(() {
                   value;
                   result.clear();
+                  _search = true;
                   for (int i = 0; i < datums.length; i++) {
-                    if (PFcontrast.client(value, datums[i].name) &&
-                        value != "") {
+                    if (PFcontrast.client(value, datums[i].name)) {
                       result.add(datums[i]);
                     }
                   }
-                  if (result.isEmpty) {}
+                  if (result.isEmpty && value.isNotEmpty) {
+                    _search = false;
+                  }
                 });
                 if (kDebugMode) {
                   print("你输入的内容为$value");
@@ -121,64 +128,72 @@ class PageState extends State<PhoneCountryCodePage> {
       body: Stack(
         children: <Widget>[
           result.isEmpty
-              ? ListView.builder(
-                  controller: _scrollController,
-                  itemCount: data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        PhoneCodeIndexName(data[index].name.toUpperCase()),
-                        ListView.separated(
-                          itemCount: data[index].listData.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index2) {
-                            return GestureDetector(
-                              child: SizedBox(
-                                height: 46,
-                                width: double.infinity,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 10,
-                                      horizontal: PFspace.screenMargin),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Text(data[index].listData[index2].name,
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              color: Color(0xff434343))),
-                                      Text(
-                                        "   +${data[index].listData[index2].code}",
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Color(0xff434343)),
-                                      )
-                                    ],
+              ? _search == true
+                  ? ListView.builder(
+                      controller: _scrollController,
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            PhoneCodeIndexName(data[index].name.toUpperCase()),
+                            ListView.separated(
+                              itemCount: data[index].listData.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemBuilder: (BuildContext context, int index2) {
+                                return GestureDetector(
+                                  child: SizedBox(
+                                    height: 46,
+                                    width: double.infinity,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 10,
+                                          horizontal: PFspace.screenMargin),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Text(
+                                              data[index].listData[index2].name,
+                                              style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: Color(0xff434343))),
+                                          Text(
+                                            "   +${data[index].listData[index2].code}",
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                color: Color(0xff434343)),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              onTap: () {
-                                Get.back(
-                                    result: data[index].listData[index2].code);
+                                  onTap: () {
+                                    c.increment(int.parse(
+                                        data[index].listData[index2].code));
+                                    Get.back();
+                                  },
+                                );
                               },
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return Divider(
-                              height: 0,
-                              color: Colors.grey,
-                              indent: PFspace.screenMargin,
-                            );
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                )
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return Divider(
+                                  height: 0,
+                                  color: Colors.grey,
+                                  indent: PFspace.screenMargin,
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    )
+                  : const SizedBox(
+                      child: Center(
+                        child: Text("没有找到这个国家哦！"),
+                      ),
+                    )
               : ListView.separated(
                   itemCount: result.length,
-                  //shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index3) {
                     return GestureDetector(
                       child: SizedBox(
@@ -202,7 +217,8 @@ class PageState extends State<PhoneCountryCodePage> {
                         ),
                       ),
                       onTap: () {
-                        Get.back(result: result[index3].code);
+                        c.increment(int.parse(result[index3].code));
+                        Get.back();
                       },
                     );
                   },
@@ -214,76 +230,81 @@ class PageState extends State<PhoneCountryCodePage> {
                     );
                   },
                 ),
-          Align(
-            alignment: const FractionalOffset(1.0, 0.5),
-            child: GestureDetector(
-              onVerticalDragStart: (details) {
-                if (kDebugMode) {
-                  print("onVerticalDragStart---${details.localPosition.dy}");
-                }
-                setState(() {
-                  _high(details.localPosition.dy);
-                  _float = true;
-                });
-              },
-              onVerticalDragCancel: () {
-                if (kDebugMode) {
-                  print("onVerticalDragCancel");
-                }
-              },
-              onVerticalDragDown: (details) {
-                if (kDebugMode) {
-                  print("onVerticalDragDown---${details.localPosition.dy}");
-                }
-                setState(() {
-                  _high(details.localPosition.dy);
-                  _float = false;
-                });
-              },
-              onVerticalDragEnd: (details) {
-                if (kDebugMode) {
-                  print(
-                      "onVerticalDragEnd---${details.velocity}---${details.primaryVelocity}");
-                }
-                setState(() {
-                  _float = false;
-                });
-              },
-              onVerticalDragUpdate: (details) {
-                if (kDebugMode) {
-                  print("onVerticalDragUpdate----${details.localPosition.dy}");
-                }
-                setState(() {
-                  _high(details.localPosition.dy);
-                });
-              },
-              child: SizedBox(
-                width: 30,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 100),
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: letters.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Center(
-                        child: SizedBox(
-                          height: 20,
-                          child: Text(
-                            letters[index],
-                            style:
-                                index == ((_top - 100) ~/ 20) && _float == true
-                                    ? const TextStyle(
-                                        color: PFc.themeColor, fontSize: 20)
-                                    : const TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      );
+          result.isEmpty && _search == true
+              ? Align(
+                  alignment: const FractionalOffset(1.0, 0.5),
+                  child: GestureDetector(
+                    onVerticalDragStart: (details) {
+                      if (kDebugMode) {
+                        print(
+                            "onVerticalDragStart---${details.localPosition.dy}");
+                      }
+                      setState(() {
+                        _high(details.localPosition.dy);
+                        _float = true;
+                      });
                     },
+                    onVerticalDragCancel: () {
+                      if (kDebugMode) {
+                        print("onVerticalDragCancel");
+                      }
+                    },
+                    onVerticalDragDown: (details) {
+                      if (kDebugMode) {
+                        print(
+                            "onVerticalDragDown---${details.localPosition.dy}");
+                      }
+                      setState(() {
+                        _high(details.localPosition.dy);
+                        _float = false;
+                      });
+                    },
+                    onVerticalDragEnd: (details) {
+                      if (kDebugMode) {
+                        print(
+                            "onVerticalDragEnd---${details.velocity}---${details.primaryVelocity}");
+                      }
+                      setState(() {
+                        _float = false;
+                      });
+                    },
+                    onVerticalDragUpdate: (details) {
+                      if (kDebugMode) {
+                        print(
+                            "onVerticalDragUpdate----${details.localPosition.dy}");
+                      }
+                      setState(() {
+                        _high(details.localPosition.dy);
+                      });
+                    },
+                    child: SizedBox(
+                      width: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: letters.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Center(
+                              child: SizedBox(
+                                height: 20,
+                                child: Text(
+                                  letters[index],
+                                  style: index == ((_top - 100) ~/ 20) &&
+                                          _float == true
+                                      ? const TextStyle(
+                                          color: PFc.themeColor, fontSize: 20)
+                                      : const TextStyle(color: Colors.black),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ),
+                )
+              : const SizedBox(),
           Positioned(
               right: 50,
               top: _top,
