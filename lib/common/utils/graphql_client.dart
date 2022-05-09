@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
+import '../global/global.dart';
 import '../services/services.dart';
 import '../widget/widgets.dart';
 
@@ -11,16 +12,21 @@ class GraphqlClientUtil {
       serverApiGraphqlUrl,
     );
 
-    final AuthLink _authLink = AuthLink(
-      getToken: () =>
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZmMzNDdhYzgzOTVjMDAwY2ViYzE5NyIsImlhdCI6MTU5MzY1NDcwNiwiZXhwIjoxNTk2MjQ2NzA2fQ.RYDmNSDJxcZLLPHAf4u59IER7Bs5VoWfBo1_t-TR5yY',
-    );
-    final Link _link = _authLink.concat(_httpLink);
-
-    return GraphQLClient(
-      cache: GraphQLCache(),
-      link: _link,
-    );
+    if (Global.token.isNotEmpty) {
+      final AuthLink _authLink = AuthLink(
+        getToken: () => 'Bearer ${Global.token}',
+      );
+      final Link _link = _authLink.concat(_httpLink);
+      return GraphQLClient(
+        cache: GraphQLCache(),
+        link: _link,
+      );
+    } else {
+      return GraphQLClient(
+        cache: GraphQLCache(),
+        link: _httpLink,
+      );
+    }
   }
 
   // 查询

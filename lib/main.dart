@@ -1,11 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'common/global/global.dart';
 import 'common/lang/translation_service.dart';
 import 'common/routers/app_pages.dart';
 import 'common/values/values.dart';
@@ -13,13 +11,7 @@ import 'common/values/values.dart';
 //启动页面
 void main() {
   runApp(const MyApp());
-  if (Platform.isAndroid) {
-    SystemUiOverlayStyle _style = const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      //statusBarIconBrightness: Brightness.light,
-    );
-    SystemChrome.setSystemUIOverlayStyle(_style);
-  }
+  Global.init();
 }
 
 class MyApp extends StatelessWidget {

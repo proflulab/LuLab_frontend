@@ -27,22 +27,26 @@ class UserLogin {
   UserLogin({
     required this.status,
     required this.msg,
+    required this.token,
     required this.data,
   });
 
   final String status;
   final String msg;
+  final String token;
   final Data data;
 
   factory UserLogin.fromJson(Map<String, dynamic> json) => UserLogin(
         status: json["status"],
         msg: json["msg"],
+        token: json["token"],
         data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "msg": msg,
+        "token": token,
         "data": data.toJson(),
       };
 }

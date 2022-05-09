@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:proflu/pages/users/users_set_user.dart';
 
 import '../../common/global/global.dart';
@@ -227,8 +228,11 @@ class _UsersPageState extends State<UsersPage>
                 ),
                 title: "邮箱咨询",
                 onTap: () async {
-                  UrlLaucher.email('business@proflu.cn', 'This is a test email',
-                      'This is a test email body');
+                  // UrlLaucher.email('business@proflu.cn', 'This is a test email',
+                  //     'This is a test email body');
+                  Clipboard.setData(
+                      const ClipboardData(text: "business@proflu.cn"));
+                  toastInfo(msg: "已复制邮箱到剪切板");
                 }),
             Divider(height: 1, indent: 30.w, endIndent: 30.w),
             lineWidget(

@@ -11,6 +11,7 @@ import 'package:device_info_plus_web/device_info_plus_web.dart';
 import 'package:flutter_tts/flutter_tts_web.dart';
 import 'package:fluttertoast/fluttertoast_web.dart';
 import 'package:image_picker_for_web/image_picker_for_web.dart';
+import 'package:package_info_plus_web/package_info_plus_web.dart';
 import 'package:share_plus_web/share_plus_web.dart';
 import 'package:shared_preferences_web/shared_preferences_web.dart';
 import 'package:smart_auth/smart_auth_web.dart';
@@ -30,6 +31,7 @@ void registerPlugins(Registrar registrar) {
   FlutterTtsPlugin.registerWith(registrar);
   FluttertoastWebPlugin.registerWith(registrar);
   ImagePickerPlugin.registerWith(registrar);
+  PackageInfoPlugin.registerWith(registrar);
   SharePlusPlugin.registerWith(registrar);
   SharedPreferencesPlugin.registerWith(registrar);
   SmartAuthWeb.registerWith(registrar);

@@ -6,6 +6,7 @@ class SchemaUser {
 query UserLogin($name: String!, $password: String!) {
   userLogin(userInput: {name: $name, password: $password}) {
     status
+    token
     msg
     data {
       _id

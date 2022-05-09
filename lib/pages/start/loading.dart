@@ -6,6 +6,9 @@ import 'package:proflu/pages/sign_in/sign_in.dart';
 import 'package:proflu/pages/start/first_guide.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
@@ -14,12 +17,6 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  Future<int> readData() async {
-    var prefs = await SharedPreferences.getInstance();
-    var result = prefs.getInt('isFirstOpen');
-    return result ?? 0;
-  }
-
   Future<int> readData2() async {
     var prefs = await SharedPreferences.getInstance();
     var result2 = prefs.getInt('isFirstSign');
@@ -48,21 +45,16 @@ class _LoadingPageState extends State<LoadingPage> {
     var _duration = const Duration(seconds: 3);
 
     if (kDebugMode) {
-      print("陆向谦程序启动....");
+      print("陆向谦实验室启动....");
     }
-    //Storage.getInt("Key_Int");
-    Future<int> result = readData();
+
     Future<int> result2 = readData2();
-    result.then(
-      (guide) {
-        if (kDebugMode) {
-          print(guide);
-        }
+    Storage.getBool(storageDeviceAlreadyOpenKey).then(
+      (guide) async {
         //判断是否是第一次启动app
-        if (guide == 0) {
+        if (guide == true) {
           Future.delayed(_duration, _firstguide);
         } else {
-          // Future.delayed(_duration, _app);
           result2.then((guide) {
             if (kDebugMode) {
               print(guide);

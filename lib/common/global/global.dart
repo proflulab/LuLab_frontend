@@ -1,31 +1,25 @@
+import 'dart:convert';
 import 'dart:io';
 
 //import 'package:device_info/device_info.dart';
 // import 'package:flutter/material.dart';
 
 //import '../../provider/provider.dart';
+import 'package:event_bus/event_bus.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
 import '../../../../common/entitys/entitys.dart';
-//import 'package:package_info/package_info.dart';
 
 /// 全局配置
 class Global {
   // 用户配置
-  static Data profile = Data(
-    birth: '',
-    description: '',
-    email: '',
-    profileImgUrl: '',
-    imgUrl: "",
-    id: '',
-    name: '',
-    phone: '',
-    sex: '',
-    wechat: '',
-    industry: '',
-    password: '',
-  );
+  static Data profile = Data();
+
+  static String token = '';
 
   /// 发布渠道
   // static String channel = "xiaomi";
@@ -33,17 +27,21 @@ class Global {
   /// 是否 ios
   static bool isIOS = Platform.isIOS;
 
-  // /// android 设备信息
+  static late PackageInfo packageInfo;
+
+  /// android 设备信息
   // static AndroidDeviceInfo androidDeviceInfo;
 
-  // /// ios 设备信息
+  /// ios 设备信息
   // static IosDeviceInfo iosDeviceInfo;
+
+  static EventBus eventBus = EventBus();
 
   /// 包信息
   //static PackageInfo packageInfo;
 
   /// 是否第一次打开
-  static int isFirstOpen = 1;
+  static bool isFirstOpen = true;
 
   /// 是否第一次登录
   static int isFirstSign = 1;
@@ -60,7 +58,11 @@ class Global {
   /// init
   static Future init() async {
     // 运行初始
-    // WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+
+    //获取包名、APP名称、版本号、build构建版本号
+    PackageInfo info = await PackageInfo.fromPlatform();
+    packageInfo = info;
 
     //读取设备信息
     // DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
@@ -78,24 +80,33 @@ class Global {
     // HttpUtil();
 
     // 读取设备第一次打开
-    // isFirstOpen = !StorageUtil().getBool(STORAGE_DEVICE_ALREADY_OPEN_KEY);
-    // if (isFirstOpen) {
-    //   StorageUtil().setBool(STORAGE_DEVICE_ALREADY_OPEN_KEY, true);
-    // }
+    Storage.getBool(storageDeviceAlreadyOpenKey).then(
+      (value) async {
+        isFirstOpen = value ?? true;
+        print(value);
+        print(isFirstOpen);
+        if (isFirstOpen) {
+          Storage.setBool(storageDeviceAlreadyOpenKey, false);
+        }
+      },
+    );
 
-    // 读取离线用户信息
-    // var _profileJSON = StorageUtil().getJSON(STORAGE_USER_PROFILE_KEY);
-    // if (_profileJSON != null) {
-    //   profile = GqlUserLoginResponseEntity.fromJson(_profileJSON);
-    //   isOfflineLogin = true;
-    // }
+    //读取离线用户信息
+    Storage.getJson(storageUserProfileKey).then(
+      (guide) async {
+        profile = Data.fromJson(json.decode(guide!));
+        isOfflineLogin = true;
+      },
+    );
 
-    // android 状态栏为透明的沉浸
-    // if (Platform.isAndroid) {
-    //   SystemUiOverlayStyle systemUiOverlayStyle =
-    //       SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    //   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-    // }
+    //android 状态栏为透明的沉浸
+    if (Platform.isAndroid) {
+      SystemUiOverlayStyle _style = const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        //statusBarIconBrightness: Brightness.light,
+      );
+      SystemChrome.setSystemUIOverlayStyle(_style);
+    }
   }
 
   // 持久化 用户信息
@@ -104,13 +115,9 @@ class Global {
     return Storage.setJson(storageUserProfileKey, userResponse.toJson());
   }
 
-  // // 获取 持久化 用户信息
-  // static getProfile() {
-  //   Storage.getJson(storageUserProfileKey).then(
-  //     (guide) async {
-  //       UserLogin usere = UserLogin.fromJson(json.decode(guide!));
-  //       return usere;
-  //     },
-  //   );
-  // }
+  // 持久化 token
+  static saveToken(UserLogin e) {
+    token = e.token;
+    return Storage.setString(storaTokenKey, e.token);
+  }
 }

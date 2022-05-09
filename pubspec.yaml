@@ -73,10 +73,13 @@ dependencies:
   wakelock: ^0.6.1+2
   fzregex: ^2.0.0
   textfield_search: ^0.10.0
+  quickpass_yidun_flutter: ^1.1.6
+  blur: ^3.1.0
+  event_bus: ^2.0.0
+  package_info_plus: ^1.4.2
 
   flutter_localizations:
     sdk: flutter
-  blur: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +94,7 @@ flutter:
     - assets/ppn/
     - assets/animation/
     - assets/static/
+    - assets/quick_login/
 
   uses-material-design: true
 
