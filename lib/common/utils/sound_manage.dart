@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_record/flutter_plugin_record.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:proflu/controller/index_controller.dart';
 
 class SoundRecord {
   static bool _isRecording = false;
@@ -12,6 +13,7 @@ class SoundRecord {
   static final FlutterPluginRecord _recordPlugin = FlutterPluginRecord();
   static StreamSubscription? _audioSubscription;
   static Uint8List? bytes;
+  static int? startTime;
 
   ///初始化
   static init(Function onStop) async {
@@ -26,6 +28,8 @@ class SoundRecord {
         }
       } else if (data.msg == "onStart") {
         debugPrint("onStart --");
+        startTime = DateTime.now().millisecondsSinceEpoch;
+        _isRecording = true;
       }
     });
     await _recordPlugin.init();
@@ -46,17 +50,23 @@ class SoundRecord {
     }
     //清空缓存
     bytes = null;
+
     if (_isRecording) return false;
     //开始录音
-    _recordPlugin.start();
-    _isRecording = true;
+    await _recordPlugin.start();
     return true;
   }
 
   static Future<bool> stopListening() async {
     if (!_isRecording) return false;
-    await _recordPlugin.stop();
     _isRecording = false;
+
+    int now = DateTime.now().millisecondsSinceEpoch;
+    if (now - (startTime ?? 0) <= 1000) {
+      IndexController.to.closeDialog();
+    }
+    await _recordPlugin.stop();
+
     return true;
   }
 

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:wakelock/wakelock.dart';
 
@@ -8,12 +10,12 @@ class TTsUtil {
   void sstSpeak({
     required String text,
     double volume = 1.0,
-    double rate = 1.0,
+    double? rate,
     double pitch = 1.0,
     String language = 'zh-CN',
   }) {
     tts.setVolume(volume);
-    tts.setSpeechRate(rate);
+    tts.setSpeechRate(rate ?? (Platform.isIOS ? 0.5 : 1));
     tts.setLanguage(language);
     tts.setPitch(pitch);
     tts.speak(text);

@@ -47,6 +47,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+    _indexController.init();
     _handleSignIn();
     NetState.network();
   }
@@ -185,7 +186,7 @@ class _AppState extends State<App> {
   Positioned _buildVoiceWidget() {
     return Positioned(
       child: GetBuilder<IndexController>(builder: (ic) {
-        if (!ic.speaking) return const SizedBox(width: 0, height: 0);
+        if (!ic.showDialog) return const SizedBox(width: 0, height: 0);
         return GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {

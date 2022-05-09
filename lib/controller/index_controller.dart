@@ -28,6 +28,7 @@ class IndexController extends GetxController {
   SpeakingStatus status = SpeakingStatus.userSpeaking;
 
   bool speaking = false;
+  bool showDialog = false;
 
   String userWord = '';
   XfManage? _xf;
@@ -35,13 +36,11 @@ class IndexController extends GetxController {
   int b = 0;
   PorcupineManager? _porcupineManager;
   //换上自己的appid
-  final accessKey = "3XdU30LgU+easZayAO9asvgjaxHZDHnwryhb4+iZRKGg1HN+WEhjLA==";
+  final accessKey = "au2DozOgKRV2Brx4AxG6ZN+VCRPhjzxb1EdNuwQ+fA/ViDvgU3I2AA==";
 
   AudioPlayer audioPlayer = AudioPlayer();
 
-  @override
-  void onInit() {
-    super.onInit();
+  void init() {
     SoundRecord.init(xfSst);
     createPorcupineManager();
     _porcupineManager?.start();
@@ -57,6 +56,9 @@ class IndexController extends GetxController {
           accessKey, [BuiltInKeyword.HEY_SIRI], wakeWordCallback);
     } on PorcupineException catch (err) {
       // handle porcupine init error
+      print("PorcupineException");
+      print(err);
+      print(err.message);
     }
     try {
       await _porcupineManager?.start();
@@ -87,6 +89,7 @@ class IndexController extends GetxController {
           stopSpeaking();
         }
       });
+      showDialog = true;
       speaking = true;
       status = SpeakingStatus.userSpeaking;
       userWord = "";
@@ -101,7 +104,7 @@ class IndexController extends GetxController {
   void stopSpeaking() {
     debugPrint("抬起 ");
 
-    // speaking = false;
+    speaking = false;
     // update();
     SoundRecord.stopListening();
     // xfSst();
@@ -109,6 +112,7 @@ class IndexController extends GetxController {
 
   void closeDialog() {
     speaking = false;
+    showDialog = false;
     ttsUtil.stop();
     update();
   }
@@ -146,7 +150,6 @@ class IndexController extends GetxController {
       // speaking = true;
       // String a = voiceText.speechGoogle.code;
       status = SpeakingStatus.aiSpeaking;
-      print(voiceText.speechGoogle.toJson());
       if (voiceText.speechGoogle.code == "1") {
         /// 需要先放背景，再说话
         audioPlayer.setReleaseMode(ReleaseMode.stop);
@@ -179,7 +182,7 @@ class IndexController extends GetxController {
       status = SpeakingStatus.parseFailed;
       update();
 
-      print("===========获取语音响应内容报错===============");
+      debugPrint("===========获取语音响应内容报错===============");
       print(e);
     }
   }
