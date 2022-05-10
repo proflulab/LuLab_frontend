@@ -250,3 +250,24 @@ class Loginrequest {
         "password": password,
       };
 }
+
+class QuickLoginrequest {
+  QuickLoginrequest({
+    required this.token,
+    required this.accessToken,
+  });
+
+  final String token;
+  final String accessToken;
+
+  factory QuickLoginrequest.fromJson(Map<String, dynamic> json) =>
+      QuickLoginrequest(
+        token: json["token"],
+        accessToken: json["accessToken"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "token": token,
+        "accessToken": accessToken,
+      };
+}

@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abfc7759-45e4-4d7e-a8ea-23dc50cf576a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/voice/voice_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_user_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/sign_in.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/start/loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start/loading.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_about.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_about.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_XL_API_31.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
@@ -51,7 +58,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LuLab_frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />

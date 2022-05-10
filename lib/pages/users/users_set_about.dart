@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:proflu/common/utils/screen.dart';
-import 'package:proflu/pages/users/users_agreement.dart';
 
-import '../../../common/values/values.dart';
-import '../../../common/widget/widgets.dart';
-//import '../../../common/utils/utils.dart';
+
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
 import '../../common/staticdata/staticdata.dart';
 
 class SetAbout extends StatelessWidget {

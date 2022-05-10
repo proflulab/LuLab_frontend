@@ -1,5 +1,3 @@
-// import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +7,6 @@ import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
-import 'package:get/get.dart';
 
 class SetUser extends StatefulWidget {
   const SetUser({Key? key}) : super(key: key);

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,8 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import '../../controller/quick_login_controller.dart';
+import '../../events/quick_login_event.dart';
 import '../app.dart';
 
 import 'phone_login.dart';
@@ -26,6 +30,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  QuickLoginController qc = Get.find();
   bool _checked = false;
 
   final TextEditingController _emailController = TextEditingController();
@@ -38,6 +43,55 @@ class _SignInPageState extends State<SignInPage> {
   //   _emailController.dispose();
   //   super.dispose();
   // }
+
+  StreamSubscription? _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    if (qc.verifyEnable) {
+      _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
+        _quickLogin(event.token);
+      });
+
+      /// TODO 一键登录
+      qc.quickLogin();
+    }
+  }
+
+  @override
+  void dispose() {
+    _subscription?.cancel();
+    super.dispose();
+  }
+
+  /// 在这里请求服务器
+  _quickLogin(String token) async {
+    // Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
+    print("$token,${qc.ydToken}");
+
+    QuickLoginrequest variables = QuickLoginrequest(
+      token: qc.ydToken ?? "",
+      accessToken: token,
+      // password: duSHA256(_passController.value.text),
+    );
+
+    try {
+      UserLogin userProfile = await GqlUserAPI.quickLogin(
+        context: context,
+        variables: variables,
+      );
+      //UserController.to.loginSuccess(userProfile.data);
+    } catch (e) {
+      if (kDebugMode) {
+        print("===========登录报错内容===============");
+        print(e);
+      }
+      return toastInfo(msg: '一键登录失败,请尝试其他登录方式');
+    }
+
+    Get.offAll(const App());
+  }
 
   // 执行登录操作
   _handleSignIn() async {

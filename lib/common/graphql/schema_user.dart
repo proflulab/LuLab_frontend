@@ -6,7 +6,6 @@ class SchemaUser {
 query UserLogin($name: String!, $password: String!) {
   userLogin(userInput: {name: $name, password: $password}) {
     status
-    token
     msg
     data {
       _id
@@ -81,4 +80,45 @@ mutation userUpdate($_id: String!, $name: String!, $sex: String!, $description: 
 //   }
 // }
 
+  /// 用户一键登录
+  /// {"token": "shiming","accessToken": "1234567"}
+  static const String gqlUserQuickLogin = r'''
+query ($token: String!, $accessToken: String!){
+  mobileLogin(userCheck:{token:$token,accessToken:$accessToken}) {
+    msg
+    token
+    status
+    data {
+      _id
+      name
+      account
+      sex
+      birth
+      position
+      company
+      industry
+      phone
+      email
+      wechat
+      schoolRecord
+      workCondition
+      detailMsg
+      description
+      duration
+      category
+      userType
+      identity
+      imgUrl
+      iconUrl
+      bigCoverUrl
+      profileImgUrl
+      videoUrl
+      country
+      address
+      addTime
+      timestamp
+    }
+  }
+}
+''';
 }

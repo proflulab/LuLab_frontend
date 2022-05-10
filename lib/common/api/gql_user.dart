@@ -40,10 +40,24 @@ class GqlUserAPI {
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserUpdata, 
+      schema: SchemaUser.gqlUserUpdata,
       variables: variables.toJson(),
     );
 
     return UserUpdateresponse.fromJson(response.data!);
+  }
+
+  // 一键登录
+  static Future<UserLogin> quickLogin({
+    required BuildContext context,
+    required QuickLoginrequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.mutate(
+      context: context,
+      schema: SchemaUser.gqlUserQuickLogin,
+      variables: variables.toJson(),
+    );
+
+    return UserLogin.fromJson(response.data!["mobileLogin"]);
   }
 }
