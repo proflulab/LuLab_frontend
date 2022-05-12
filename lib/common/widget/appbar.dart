@@ -30,7 +30,7 @@ PreferredSizeWidget appBarCommon({
     child: AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
+      //backgroundColor: Colors.transparent,
       elevation: 0,
       title: Text(
         title,

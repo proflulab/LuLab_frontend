@@ -7,23 +7,21 @@ query UserLogin($name: String!, $password: String!) {
   userLogin(userInput: {name: $name, password: $password}) {
     status
     msg
+    token
     data {
       _id
       name
       sex
+      password
       birth
       position
-      company
       industry
       phone
       email
       wechat
-      schoolRecord
-      workCondition
       detailMsg
       description
       duration
-      category
       userType
       identity
       imgUrl
@@ -31,13 +29,6 @@ query UserLogin($name: String!, $password: String!) {
       bigCoverUrl
       profileImgUrl
       videoUrl
-      password
-      country
-      address
-      addTime
-      timestamp
-      imgs
-      tags
     }
   }
 }

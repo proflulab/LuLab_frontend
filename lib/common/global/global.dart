@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-//import 'package:device_info/device_info.dart';
-// import 'package:flutter/material.dart';
-
-//import '../../provider/provider.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 import '../../../../common/utils/utils.dart';
 import '../../../../common/values/values.dart';
@@ -19,7 +16,7 @@ class Global {
   // 用户配置
   static Data profile = Data();
 
-  static String token = '';
+  static String token = '无';
 
   /// 发布渠道
   // static String channel = "xiaomi";
@@ -27,17 +24,17 @@ class Global {
   /// 是否 ios
   static bool isIOS = Platform.isIOS;
 
+  /// 包信息
   static late PackageInfo packageInfo;
 
   /// android 设备信息
-  // static AndroidDeviceInfo androidDeviceInfo;
+  static late AndroidDeviceInfo androidDeviceInfo;
 
   /// ios 设备信息
-  // static IosDeviceInfo iosDeviceInfo;
+  static late IosDeviceInfo iosDeviceInfo;
 
   static EventBus eventBus = EventBus();
 
-  /// 包信息
   //static PackageInfo packageInfo;
 
   /// 是否第一次打开
@@ -53,7 +50,7 @@ class Global {
   //static AppState appState = AppState();
 
   /// 是否 release
-  // static bool get isRelease => bool.fromEnvironment("dart.vm.product");
+  static bool get isRelease => const bool.fromEnvironment("dart.vm.product");
 
   /// init
   static Future init() async {
@@ -62,18 +59,15 @@ class Global {
 
     //获取包名、APP名称、版本号、build构建版本号
     PackageInfo info = await PackageInfo.fromPlatform();
-    packageInfo = info;
+    Global.packageInfo = info;
 
     //读取设备信息
-    // DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-    // if (Global.isIOS) {
-    //   Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
-    // } else {
-    //   Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
-    // }
-
-    // 包信息
-    //Global.packageInfo = await PackageInfo.fromPlatform();
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+    if (Global.isIOS) {
+      Global.iosDeviceInfo = await deviceInfoPlugin.iosInfo;
+    } else {
+      Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
+    }
 
     // 工具初始
     // await StorageUtil.init();
@@ -116,8 +110,8 @@ class Global {
   }
 
   // 持久化 token
-  static saveToken(UserLogin e) {
-    token = e.token;
-    return Storage.setString(storaTokenKey, e.token);
+  static saveToken(String e) {
+    token = e;
+    return Storage.setString(storaTokenKey, e);
   }
 }

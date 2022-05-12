@@ -298,9 +298,8 @@ class _CoursePageState extends State<CoursePage>
                               Row(
                                 children: [
                                   PFtext.text2(
-                                    text: _focusData3[index]
-                                        .author
-                                        .substring(0, 3),
+                                    text: _focusData3[index].author,
+                                    //.substring(0, 7),
                                     color: PFc.textSecondary,
                                   ),
                                   const SizedBox(width: 10),

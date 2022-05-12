@@ -54,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
         _quickLogin(event.token);
       });
 
-      /// TODO 一键登录
+      // TODO 一键登录
       qc.quickLogin();
     }
   }
@@ -106,13 +106,15 @@ class _SignInPageState extends State<SignInPage> {
         password: _passController.value.text,
         // password: duSHA256(_passController.value.text),
       );
+
       try {
         UserLogin userProfile = await GqlUserAPI.login(
           context: context,
           variables: variables,
         );
         Storage.setInt('isFirstSign', Global.isFirstSign);
-        Global.saveProfile(userProfile.data);
+        Global.saveProfile(userProfile.data!);
+        Global.saveToken(userProfile.token!);
       } catch (e) {
         if (kDebugMode) {
           print("===========登录报错内容===============");

@@ -12,7 +12,12 @@ class GraphqlClientUtil {
       serverApiGraphqlUrl,
     );
 
-    if (Global.token.isNotEmpty) {
+    if (Global.token == '无') {
+      return GraphQLClient(
+        cache: GraphQLCache(),
+        link: _httpLink,
+      );
+    } else {
       final AuthLink _authLink = AuthLink(
         getToken: () => 'Bearer ${Global.token}',
       );
@@ -20,11 +25,6 @@ class GraphqlClientUtil {
       return GraphQLClient(
         cache: GraphQLCache(),
         link: _link,
-      );
-    } else {
-      return GraphQLClient(
-        cache: GraphQLCache(),
-        link: _httpLink,
       );
     }
   }

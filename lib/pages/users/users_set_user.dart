@@ -48,7 +48,7 @@ class _SetUserState extends State<SetUser> {
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
       industry: '',
-      password: '',
+      //password: '',
     );
 
     try {

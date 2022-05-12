@@ -86,7 +86,7 @@ class _AppState extends State<App> {
               password: user1.password ?? "",
             ),
           );
-          Global.saveProfile(userProfile.data);
+          Global.saveProfile(userProfile.data!);
           getNotice();
         } catch (e) {
           if (kDebugMode) {
@@ -163,7 +163,7 @@ class _AppState extends State<App> {
                     BottomNavigationBarItem(
                         icon: Icon(PFIcon.navIconFindDefault),
                         activeIcon: Icon(PFIcon.navIconFindSelected),
-                        label: ('资讯'),
+                        label: ('发现'),
                         tooltip: ''),
                     BottomNavigationBarItem(
                         icon: Icon(PFIcon.navIconUserDefault),
@@ -301,5 +301,3 @@ class _AppState extends State<App> {
       ..show(0.0, MediaQuery.of(context).padding.top);
   }
 }
-
-

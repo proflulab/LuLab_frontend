@@ -9,6 +9,7 @@ import 'package:proflu/pages/users/users_set_user.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../controller/quick_login_controller.dart';
 import '../../pages/sign_in/sign_in.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -157,6 +158,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   DialogUtil.showPopUp(
                     context: context,
                     onConfirm: () {
+                      QuickLoginController qc = Get.put(QuickLoginController());
+                      Storage.remove(storageUserProfileKey);
                       Get.offAll(const SignInPage());
                     },
                     content: "是否退出陆向谦实验室",

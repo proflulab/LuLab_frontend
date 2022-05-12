@@ -64,7 +64,7 @@ class _InformationPageState extends State<InformationPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: appBarCommon(context: context, title: '资讯'),
+      appBar: appBarCommon(context: context, title: '发现'),
       body: EasyRefresh.custom(
         firstRefresh: true,
         firstRefreshWidget: const Loading(),

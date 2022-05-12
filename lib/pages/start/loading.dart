@@ -57,17 +57,7 @@ class _LoadingPageState extends State<LoadingPage> {
         if (guide == true) {
           Future.delayed(_duration, _firstguide);
         } else {
-          result2.then((guide) {
-            if (kDebugMode) {
-              print(guide);
-            }
-            //判断是否是第一次登录app
-            if (guide == 0) {
-              Future.delayed(_duration, _firstsign);
-            } else {
-              Future.delayed(_duration, _app);
-            }
-          });
+          Future.delayed(_duration, _firstsign);
         }
       },
     );
