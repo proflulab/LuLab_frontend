@@ -9,6 +9,7 @@ import '../../common/widget/widgets.dart';
 import '../../controller/signin_controller.dart';
 import 'phone_country_code_page.dart';
 import 'verification.dart';
+import '../sign_in/sign_in.dart';
 
 class PhoneLogin extends StatefulWidget {
   const PhoneLogin({Key? key}) : super(key: key);
@@ -29,7 +30,10 @@ class _PhoneLoginState extends State<PhoneLogin> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.keyboard_arrow_left, color: Colors.black),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SignInPage()));
+          },
         ),
       ),
       body: SingleChildScrollView(
