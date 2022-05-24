@@ -169,7 +169,7 @@ class _SignInPageState extends State<SignInPage> {
             margin: const EdgeInsets.only(top: 50),
             child: btnFlatButtonWidget(
               width: 750.w,
-              height: 112.h,
+              height: 170.h,
               onPressed: () => _handleSignIn(),
               gbColor: PFc.primaryElement,
               title: "登录",

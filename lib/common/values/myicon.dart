@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 //自定义图标
 class PFIcon {
   static const String _family = 'MyIcons';
- PFIcon._();
+  PFIcon._();
   static const IconData zan = IconData(0xe829, fontFamily: _family);
   static const IconData xiazai = IconData(0xe652, fontFamily: _family);
   static const IconData huiyuan = IconData(0xe61d, fontFamily: _family);
@@ -47,5 +47,6 @@ class PFIcon {
   static const IconData userPhone = IconData(0xe62a, fontFamily: _family);
   static const IconData userOnline = IconData(0xe622, fontFamily: _family);
   static const IconData userHelp = IconData(0xe629, fontFamily: _family);
-  static const IconData userCooperation = IconData(0xe61f, fontFamily: _family);
+  static const IconData userCooperation = IconData(0xe628, fontFamily: _family);
+  static const IconData userwee = IconData(0xe621, fontFamily: _family);
 }
