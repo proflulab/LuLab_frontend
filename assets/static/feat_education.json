@@ -1,0 +1,30 @@
+{
+    "education": [
+        {
+            "university": "清华大学",
+            "tag": [
+                "执行力",
+                "团队精神"
+            ],
+            "logo": "https://ts1.cn.mm.bing.net/th?id=OIP-C.MgbJRwVDqezgd4r7KAt_sAHaHc&w=102&h=102&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2",
+            "degree": "学士",
+            "Profession": "计算机科学与技术",
+            "starttime": 123454325894,
+            "endtime": 123454325894,
+            "description": "描述测试数据"
+        },
+        {
+            "university": "清华大学",
+            "tag": [
+                "执行力",
+                "团队精神"
+            ],
+            "logo": "https://ts1.cn.mm.bing.net/th?id=OIP-C.MgbJRwVDqezgd4r7KAt_sAHaHc&w=102&h=102&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2",
+            "degree": "学士",
+            "Profession": "计算机科学与技术",
+            "starttime": 123454325894,
+            "endtime": 123454325894,
+            "description": "描述测试数据"
+        }
+    ]
+}
