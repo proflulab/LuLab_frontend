@@ -2,10 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:proflu/common/utils/utils.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
 import '../../controller/signin_controller.dart';
 import 'phone_country_code_page.dart';
 import 'verification.dart';
@@ -39,11 +40,22 @@ class _PhoneLoginState extends State<PhoneLogin> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "assets/images/logo.svg",
+                  height: 70.h,
+                ),
+                SizedBox(width: PFspace.ruleS),
+                SvgPicture.asset("assets/images/proflu_text.svg"),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: _phoneField(),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 150),
             const SizedBox(height: 50),
             _submitButton()
           ],
