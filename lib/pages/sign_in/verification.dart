@@ -7,7 +7,13 @@ import 'package:pinput/pinput.dart';
 import 'package:proflu/common/utils/utils.dart';
 import 'package:proflu/common/values/values.dart';
 
-class Verification extends StatefulWidget { 
+import '../../common/api/apis.dart';
+import '../../common/entitys/data_user_login.dart';
+import '../../common/global/global.dart';
+
+import '../app.dart';
+
+class Verification extends StatefulWidget {
   const Verification({Key? key}) : super(key: key);
 
   @override
@@ -15,11 +21,12 @@ class Verification extends StatefulWidget {
 }
 
 class _VerificationState extends State<Verification> {
-  String data = Get.arguments;
-  final controller = TextEditingController();
+  List data = Get.arguments;
+  final TextEditingController controller = TextEditingController();
   final focusNode = FocusNode();
 
   late Timer _timer;
+  late String _numbers;
 
   //倒计时数值
   var _enable = true;
@@ -28,6 +35,10 @@ class _VerificationState extends State<Verification> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      _numbers = "+${data[1]}-${data[0]}";
+    });
+    codeGet();
     _enable ? startCountdown(60) : null;
   }
 
@@ -37,6 +48,27 @@ class _VerificationState extends State<Verification> {
     focusNode.dispose();
     _timer.cancel();
     super.dispose();
+  }
+
+  //获取验证码
+  void codeGet() async {
+    VerificationCodeRes status =
+        await DioUserAPI.codeSend(context: context, number: _numbers);
+    if (status.status == '0') {
+    } else {
+      print("发送失败");
+    }
+  }
+
+  //校验验证码、登录
+  void codeCheck(String code, String mobile) async {
+    CodeCheckRes data = await DioUserAPI.codeCheck(
+        context: context, data: CodeCheckReq(code: code, mobile: mobile));
+    if (data.status == '0') {
+      print("校验无误");
+      Global.saveToken(data.token);
+      Get.offAll(const App());
+    }
   }
 
   //倒计时方法
@@ -85,9 +117,9 @@ class _VerificationState extends State<Verification> {
             Row(children: const [Text("输入验证码")]),
             SizedBox(height: 30.h),
             Row(children: [
-              Text(data.substring(0, 4) +
+              Text(data[0].substring(0, 4) +
                   "****" +
-                  data.substring(data.length - 4))
+                  data[0].substring(data[0].length - 4))
             ]),
             SizedBox(height: 30.h),
             Center(
@@ -103,13 +135,19 @@ class _VerificationState extends State<Verification> {
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: const [
                       BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.05999999865889549),
+                        color: Color.fromRGBO(0, 0, 0, 0.0618),
                         offset: Offset(0, 3),
                         blurRadius: 16,
                       )
                     ],
                   ),
                 ),
+                onChanged: (value) {
+                  print("onChanged的监听方法：$value");
+                  if (value.length >= 6) {
+                    codeCheck(value, data[0]);
+                  }
+                },
                 showCursor: true,
                 cursor: cursor,
               ),
@@ -120,7 +158,7 @@ class _VerificationState extends State<Verification> {
                 _enable ? startCountdown(60) : null;
               },
               child: Text(
-                _time == 0 ? "重新获取" : "重新获取（${_time}s）",
+                _time == 0 ? "重新获取" : "${_time}s后可重新获取验证码",
                 style: const TextStyle(fontSize: 25, color: Colors.blueAccent),
               ),
             ),
@@ -135,7 +173,8 @@ class _VerificationState extends State<Verification> {
     height: 0.14.sw,
     decoration: BoxDecoration(
       color: const Color.fromRGBO(232, 235, 241, 0.37),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(6),
+      border: Border.all(color: PFc.themeColor),
     ),
   );
 
@@ -146,7 +185,7 @@ class _VerificationState extends State<Verification> {
       height: 1,
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(137, 146, 160, 1),
+        color: PFc.themeColor,
         borderRadius: BorderRadius.circular(8),
       ),
     ),

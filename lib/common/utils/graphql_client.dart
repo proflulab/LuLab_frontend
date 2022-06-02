@@ -8,11 +8,9 @@ import '../widget/widgets.dart';
 
 class GraphqlClientUtil {
   static client() {
-    final _httpLink = HttpLink(
-      serverApiGraphqlUrl,
-    );
+    final _httpLink = HttpLink("${Api.tencentUrl} /graphql");
 
-    if (Global.token == '无') {
+    if (Global.token.isEmpty) {
       return GraphQLClient(
         cache: GraphQLCache(),
         link: _httpLink,

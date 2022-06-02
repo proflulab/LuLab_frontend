@@ -139,11 +139,11 @@ class _PhoneLoginState extends State<PhoneLogin> {
                   PFcheck.duIsPhone(controller.value.text)
                       ? PFc.themeColor
                       : const Color.fromARGB(221, 196, 236, 201))),
-          onPressed: () {
+          onPressed: () async {
             if (PFcheck.duIsPhone(controller.value.text)) {
               Get.to(
                 const Verification(),
-                arguments: controller.value.text,
+                arguments: [controller.value.text, c.code],
               );
             } else {
               toastInfo(msg: '号码格式不正确');

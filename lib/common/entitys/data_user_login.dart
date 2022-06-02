@@ -188,3 +188,87 @@ class QuickLoginrequest {
         "accessToken": accessToken,
       };
 }
+
+//验证码响应
+VerificationCodeRes verificationCodeResFromJson(String str) =>
+    VerificationCodeRes.fromJson(json.decode(str));
+
+String verificationCodeResToJson(VerificationCodeRes data) =>
+    json.encode(data.toJson());
+
+class VerificationCodeRes {
+  VerificationCodeRes({
+    required this.status,
+    required this.msg,
+  });
+
+  final String status;
+  final String msg;
+
+  factory VerificationCodeRes.fromJson(Map<String, dynamic> json) =>
+      VerificationCodeRes(
+        status: json["status"],
+        msg: json["msg"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "msg": msg,
+      };
+}
+
+//验证码校验响应
+CodeCheckRes codeCheckResFromJson(String str) =>
+    CodeCheckRes.fromJson(json.decode(str));
+
+String codeCheckResToJson(CodeCheckRes data) => json.encode(data.toJson());
+
+class CodeCheckRes {
+  CodeCheckRes({
+    required this.msg,
+    required this.status,
+    required this.token,
+  });
+
+  final String msg;
+  final String status;
+  final String token;
+
+  factory CodeCheckRes.fromJson(Map<String, dynamic> json) => CodeCheckRes(
+        msg: json["msg"],
+        status: json["status"],
+        token: json["token"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "msg": msg,
+        "status": status,
+        "token": token,
+      };
+}
+
+//验证码校验请求
+CodeCheckReq codeCheckReqFromJson(String str) =>
+    CodeCheckReq.fromJson(json.decode(str));
+
+String codeCheckReqToJson(CodeCheckReq data) => json.encode(data.toJson());
+
+class CodeCheckReq {
+  CodeCheckReq({
+    required this.mobile,
+    required this.code,
+  });
+
+  final String mobile;
+  final String code;
+
+  factory CodeCheckReq.fromJson(Map<String, dynamic> json) => CodeCheckReq(
+        mobile: json["mobile"],
+        code: json["code"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "mobile": mobile,
+        "code": code,
+      };
+}
