@@ -32,59 +32,59 @@ class _PhoneLoginState extends State<PhoneLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // const SizedBox(height: 150),
-            // const SizedBox(height: 50),
-            Container(
-              height: 640,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/OJJ12.png"),
-                  fit: BoxFit.fill,
+        child: Container(
+          height: 1.sh,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/OJJ12.png"),
+              fit: BoxFit.fill,
+            ),
+          ),
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
+              Center(
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerRight,
+                      height: 150,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // IconButton(
+                          //   icon: const Icon(Icons.keyboard_arrow_left,
+                          //       color: Colors.black),
+                          //   onPressed: () {
+                          //     Navigator.of(context).push(MaterialPageRoute(
+                          //         builder: (context) => const SignInPage()));
+                          //   },
+                          // ),
+                          SvgPicture.asset(
+                            "assets/images/logo.svg",
+                            height: 100.h,
+                          ),
+                          // Image.asset(
+                          //   "assets/images/OJJ12.png",
+                          //   height: 700.h,
+                          // ),
+                          SvgPicture.asset("assets/images/proflu_text.svg"),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
+                      child: _phoneField(),
+                    ),
+                    Container(
+                      child: _submitButton(),
+                    ),
+                    const Ing(),
+                  ],
                 ),
               ),
-              child: Center(
-                  child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.centerRight,
-                    height: 150,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // IconButton(
-                        //   icon: const Icon(Icons.keyboard_arrow_left,
-                        //       color: Colors.black),
-                        //   onPressed: () {
-                        //     Navigator.of(context).push(MaterialPageRoute(
-                        //         builder: (context) => const SignInPage()));
-                        //   },
-                        // ),
-                        SvgPicture.asset(
-                          "assets/images/logo.svg",
-                          height: 100.h,
-                        ),
-                        // Image.asset(
-                        //   "assets/images/OJJ12.png",
-                        //   height: 700.h,
-                        // ),
-                        SvgPicture.asset("assets/images/proflu_text.svg"),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: _phoneField(),
-                  ),
-                  Container(
-                    child: _submitButton(),
-                  ),
-                  const Ing(),
-                ],
-              )),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
