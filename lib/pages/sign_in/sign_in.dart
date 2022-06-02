@@ -54,7 +54,6 @@ class _SignInPageState extends State<SignInPage> {
         _quickLogin(event.token);
       });
 
-      // TODO 一键登录
       qc.quickLogin();
     }
   }
