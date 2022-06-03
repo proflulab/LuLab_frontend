@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:proflu/pages/sign_in/agreement.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -18,7 +19,7 @@ import '../../controller/quick_login_controller.dart';
 import '../../events/quick_login_event.dart';
 import '../app.dart';
 
-import 'phone_login.dart';
+import 'login_phone.dart';
 //import '../sign_up/register.dart';
 //import '../users/users_agreement.dart';
 
@@ -213,59 +214,6 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  _text() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Checkbox(
-          shape: const CircleBorder(),
-          value: _checked,
-          onChanged: (v) {
-            setState(() {
-              _checked = v!;
-            });
-          },
-        ),
-        RichText(
-          text: TextSpan(
-            text: '我已阅读并同意',
-            style: const TextStyle(color: Colors.black, fontSize: 13.0),
-            children: <TextSpan>[
-              TextSpan(
-                text: '《服务协议》',
-                style: const TextStyle(color: Colors.blue),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () async {
-                    Get.toNamed(
-                      "/agreement",
-                      arguments: {
-                        "content": Markdowndata.agreementUser,
-                        "title": "《服务协议》"
-                      },
-                    );
-                  },
-              ),
-              const TextSpan(text: '和'),
-              TextSpan(
-                  text: '《隐私政策》',
-                  style: const TextStyle(color: Colors.blue),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () async {
-                      Get.toNamed(
-                        "/agreement",
-                        arguments: {
-                          "content": Markdowndata.privacy,
-                          "title": "《隐私政策》"
-                        },
-                      );
-                    }),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -274,7 +222,14 @@ class _SignInPageState extends State<SignInPage> {
           children: <Widget>[
             _buildInputForm(),
             //const Spacer(),
-            _text(),
+            AgreementWidget(
+              checked: _checked,
+              onChanged: (v) {
+                setState(() {
+                  _checked = v!;
+                });
+              },
+            ),
           ],
         ),
       ),
