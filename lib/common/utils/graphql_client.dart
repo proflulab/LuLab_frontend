@@ -10,7 +10,7 @@ class GraphqlClientUtil {
   static client() {
     final _httpLink = HttpLink("${Api.tencentUrl} /graphql");
 
-    if (Global.token.isEmpty) {
+    if (Global.token == '无') {
       return GraphQLClient(
         cache: GraphQLCache(),
         link: _httpLink,
