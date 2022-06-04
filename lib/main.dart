@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(750, 1624), //配置设计稿的宽度高度
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (child) {
+      builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           // supportedLocales: const [
