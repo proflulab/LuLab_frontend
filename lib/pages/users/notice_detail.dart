@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/time.dart';
+import 'package:lab/common/utils/time.dart';
 
 import '../../common/entitys/entitys.dart';
 //import '../../common/utils/utils.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:proflu/controller/index_controller.dart';
+import 'package:lab/controller/index_controller.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';

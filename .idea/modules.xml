@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/proflu.iml" filepath="$PROJECT_DIR$/proflu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/proflu_android.iml" filepath="$PROJECT_DIR$/android/proflu_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab.iml" filepath="$PROJECT_DIR$/lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/lab_android.iml" filepath="$PROJECT_DIR$/android/lab_android.iml" />
     </modules>
   </component>
 </project>

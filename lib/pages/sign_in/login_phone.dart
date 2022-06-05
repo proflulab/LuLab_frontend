@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:proflu/pages/sign_in/agreement.dart';
+import 'package:lab/pages/sign_in/agreement.dart';
 
+import '../../common/global/global.dart';
 import '../../common/staticdata/staticdata.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -186,6 +187,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
                     ? PFc.themeColor
                     : const Color.fromARGB(221, 196, 236, 201))),
         onPressed: () {
+          print("Global.packageInfo.buildNumber");
+          print(Global.packageInfo.packageName);
           if (!PFcheck.duIsPhone(controller.value.text)) {
             toastInfo(msg: '号码格式不正确');
           } else if (PFcheck.duIsPhone(controller.value.text) && !_checked) {

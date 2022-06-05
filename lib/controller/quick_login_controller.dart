@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:proflu/common/global/global.dart';
-import 'package:proflu/events/quick_login_event.dart';
+import '/common/global/global.dart';
+import '/events/quick_login_event.dart';
 import 'package:quickpass_yidun_flutter/quickpass_flutter_plugin.dart';
 
 class QuickLoginController extends GetxController {
@@ -64,7 +64,7 @@ class QuickLoginController extends GetxController {
       this.ydToken = ydToken;
     } else {
       var errorMsg = map?['errorMsg'];
-      debugPrint("===预取号失败===");
+      debugPrint("===预取号失败===" + errorMsg);
       debugPrint(errorMsg);
     }
   }

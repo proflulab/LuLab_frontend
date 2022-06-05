@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:proflu/common/entitys/speaking_status.dart';
-import 'package:proflu/common/utils/utils.dart';
-import 'package:proflu/common/values/values.dart';
-import 'package:proflu/controller/index_controller.dart';
+import 'package:lab/common/entitys/speaking_status.dart';
+import 'package:lab/common/utils/utils.dart';
+import 'package:lab/common/values/values.dart';
+import 'package:lab/controller/index_controller.dart';
 
 class VoiceWidget extends StatefulWidget {
   const VoiceWidget({Key? key}) : super(key: key);

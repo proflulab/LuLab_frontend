@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/utils.dart';
-import 'package:proflu/common/widget/widgets.dart';
+import '/common/utils/utils.dart';
+import '/common/widget/widgets.dart';
 
 import '../values/myicon.dart';
 

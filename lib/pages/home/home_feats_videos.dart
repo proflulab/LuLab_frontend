@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/utils/screen.dart';
-import 'package:proflu/common/values/values.dart';
+import 'package:lab/common/utils/screen.dart';
+import 'package:lab/common/values/values.dart';
 import 'package:readmore/readmore.dart';
 
 // import '../../common/values/values.dart';

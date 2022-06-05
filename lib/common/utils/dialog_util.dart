@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
-import 'package:proflu/common/utils/utils.dart';
+import '/common/utils/utils.dart';
 
 import '../widget/text_widget.dart';
 

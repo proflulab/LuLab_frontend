@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:proflu/common/utils/utils.dart';
-import 'package:proflu/common/values/values.dart';
+import 'package:lab/common/utils/utils.dart';
+import 'package:lab/common/values/values.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

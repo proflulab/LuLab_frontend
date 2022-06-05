@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:proflu/common/utils/cache_util.dart';
-import 'package:proflu/common/utils/dialog_util.dart';
-import 'package:proflu/pages/users/users_set_about.dart';
-import 'package:proflu/pages/users/users_set_user.dart';
+import 'package:lab/common/utils/cache_util.dart';
+import 'package:lab/common/utils/dialog_util.dart';
+import 'package:lab/pages/users/users_set_about.dart';
+import 'package:lab/pages/users/users_set_user.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';

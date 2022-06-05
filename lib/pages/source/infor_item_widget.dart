@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proflu/common/entitys/entitys.dart';
-import 'package:proflu/common/utils/utils.dart';
+import 'package:lab/common/entitys/entitys.dart';
+import 'package:lab/common/utils/utils.dart';
 
 import '../../common/values/values.dart';
 import '../../common/widget/cached_network_image.dart';

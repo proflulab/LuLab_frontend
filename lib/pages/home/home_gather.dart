@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:proflu/pages/source/infor_item_widget.dart';
+import 'package:lab/pages/source/infor_item_widget.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';

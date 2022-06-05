@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:get/get.dart';
-import 'package:proflu/controller/index_controller.dart';
+import 'package:lab/controller/index_controller.dart';
 
 import '/pages/voice/voice_view.dart';
 import '../../common/api/apis.dart';
