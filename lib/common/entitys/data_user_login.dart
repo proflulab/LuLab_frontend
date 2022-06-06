@@ -142,7 +142,7 @@ class Data {
   }
 }
 
-// 用户登录 - request
+// 用户账号密码登录request
 Loginrequest loginrequestFromJson(String str) =>
     Loginrequest.fromJson(json.decode(str));
 
@@ -165,27 +165,6 @@ class Loginrequest {
   Map<String, dynamic> toJson() => {
         "name": name,
         "password": password,
-      };
-}
-
-class QuickLoginrequest {
-  QuickLoginrequest({
-    required this.token,
-    required this.accessToken,
-  });
-
-  final String token;
-  final String accessToken;
-
-  factory QuickLoginrequest.fromJson(Map<String, dynamic> json) =>
-      QuickLoginrequest(
-        token: json["token"],
-        accessToken: json["accessToken"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "token": token,
-        "accessToken": accessToken,
       };
 }
 
@@ -271,4 +250,118 @@ class CodeCheckReq {
         "mobile": mobile,
         "code": code,
       };
+}
+
+//一键登录请求
+class QuickLoginReq {
+  QuickLoginReq({
+    required this.token,
+    required this.accessToken,
+  });
+
+  final String token;
+  final String accessToken;
+
+  factory QuickLoginReq.fromJson(Map<String, dynamic> json) => QuickLoginReq(
+        token: json["token"],
+        accessToken: json["accessToken"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "token": token,
+        "accessToken": accessToken,
+      };
+}
+
+//一键登录响应
+class QuickLoginRes {
+  String? msg;
+  String? status;
+  String? token;
+  UserData? data;
+
+  QuickLoginRes({this.msg, this.status, this.token, this.data});
+
+  QuickLoginRes.fromJson(Map<String, dynamic> json) {
+    msg = json['msg'];
+    status = json['status'];
+    token = json['token'];
+    data = json['data'] != null ? UserData.fromJson(json['data']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['msg'] = msg;
+    data['status'] = status;
+    data['token'] = token;
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    return data;
+  }
+}
+
+class UserData {
+  String? sId;
+  List<String>? location;
+  List<String>? homeTown;
+  List<String>? imgs;
+  List<String>? tags;
+  String? password;
+  String? name;
+  String? account;
+  String? imgUrl;
+  String? userType;
+  String? addTime;
+  String? timestamp;
+  int? iV;
+
+  UserData(
+      {this.sId,
+      this.location,
+      this.homeTown,
+      this.imgs,
+      this.tags,
+      this.password,
+      this.name,
+      this.account,
+      this.imgUrl,
+      this.userType,
+      this.addTime,
+      this.timestamp,
+      this.iV});
+
+  UserData.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    location = json['location'].cast<String>();
+    homeTown = json['homeTown'].cast<String>();
+    imgs = json['imgs'].cast<String>();
+    tags = json['tags'].cast<String>();
+    password = json['password'];
+    name = json['name'];
+    account = json['account'];
+    imgUrl = json['imgUrl'];
+    userType = json['userType'];
+    addTime = json['addTime'];
+    timestamp = json['timestamp'];
+    iV = json['__v'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['location'] = location;
+    data['homeTown'] = homeTown;
+    data['imgs'] = imgs;
+    data['tags'] = tags;
+    data['password'] = password;
+    data['name'] = name;
+    data['account'] = account;
+    data['imgUrl'] = imgUrl;
+    data['userType'] = userType;
+    data['addTime'] = addTime;
+    data['timestamp'] = timestamp;
+    data['__v'] = iV;
+    return data;
+  }
 }

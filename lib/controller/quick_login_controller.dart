@@ -107,9 +107,7 @@ class QuickLoginController extends GetxController {
   }
 
   _onError(Object error) {
-    if (kDebugMode) {
-      print("error");
-    }
+    debugPrint("error");
     if (kDebugMode) {
       print(error);
     }
