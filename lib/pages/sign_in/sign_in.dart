@@ -134,13 +134,14 @@ class _SignInPageState extends State<SignInPage> {
       child: Column(
         children: [
           SizedBox(
-            height: 50.h,
+            height: 250.h,
           ),
-          SizedBox(
-            height: 200.w,
-            width: 200.w,
-            child: SvgPicture.asset("assets/images/logo.svg"),
-          ),
+          // SizedBox(
+          //   height: 200.w,
+          //   width: 200.w,
+          //   child: SvgPicture.asset("assets/images/logo.svg"),
+          // ),
+
           SizedBox(
             height: 70.h,
           ),
@@ -164,6 +165,7 @@ class _SignInPageState extends State<SignInPage> {
               height: 112),
           // 登录
           Container(
+            width: 300,
             //height: 100.h,
             margin: const EdgeInsets.only(top: 50),
             child: btnFlatButtonWidget(
@@ -174,23 +176,23 @@ class _SignInPageState extends State<SignInPage> {
               title: "登录",
             ),
           ),
-          SizedBox(height: 50.h),
-          Center(
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "没有账号？点击注册",
-                    style: const TextStyle(fontSize: 18, color: Colors.grey),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Get.toNamed('/signUp');
-                      },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // SizedBox(height: 50.h),
+          // Center(
+          //   child: Text.rich(
+          //     TextSpan(
+          //       children: [
+          //         TextSpan(
+          //           text: "没有账号？点击注册",
+          //           style: const TextStyle(fontSize: 18, color: Colors.grey),
+          //           recognizer: TapGestureRecognizer()
+          //             ..onTap = () {
+          //               Get.toNamed('/signUp');
+          //             },
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           SizedBox(height: 50.h),
           Center(
             child: Text.rich(
@@ -216,7 +218,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
         child: ListView(
           children: <Widget>[
             _buildInputForm(),
@@ -230,6 +232,12 @@ class _SignInPageState extends State<SignInPage> {
               },
             ),
           ],
+        ),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/OJJ12.png"),
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     );
