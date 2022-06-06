@@ -50,7 +50,7 @@ class GqlUserAPI {
   // 一键登录
   static Future<UserLogin> quickLogin({
     required BuildContext context,
-    required QuickLoginrequest variables,
+    required QuickLoginReq variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,

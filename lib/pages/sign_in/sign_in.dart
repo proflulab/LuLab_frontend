@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lab/pages/sign_in/agreement.dart';
@@ -66,24 +67,28 @@ class _SignInPageState extends State<SignInPage> {
 
   /// 在这里请求服务器
   _quickLogin(String token) async {
-    // Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
+    Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
     print("$token,${qc.ydToken}");
 
-    QuickLoginrequest variables = QuickLoginrequest(
+    QuickLoginReq variables = QuickLoginReq(
       token: qc.ydToken ?? "",
       accessToken: token,
       // password: duSHA256(_passController.value.text),
     );
 
     try {
-      UserLogin userProfile = await GqlUserAPI.quickLogin(
-        context: context,
-        variables: variables,
-      );
+      // grahql接口
+      // UserLogin userProfile = await GqlUserAPI.quickLogin(
+      //   context: context,
+      //   variables: variables,
+      // );
+      QuickLoginRes status =
+          await DioUserAPI.quickLogin(context: context, data: variables);
       //UserController.to.loginSuccess(userProfile.data);
+      Global.saveToken(status.token ?? "无");
     } catch (e) {
+      debugPrint("===========登录报错内容===============");
       if (kDebugMode) {
-        print("===========登录报错内容===============");
         print(e);
       }
       return toastInfo(msg: '一键登录失败,请尝试其他登录方式');

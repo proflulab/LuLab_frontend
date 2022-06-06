@@ -77,6 +77,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                     AgreementWidget(
                       checked: _checked,
                       onChanged: (v) {
+                        PFVibrate.feedback(Type.medium);
                         setState(() {
                           _checked = v!;
                         });
@@ -96,12 +97,12 @@ class _PhoneLoginState extends State<PhoneLogin> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 80.w),
       child: Container(
-        alignment: const Alignment(0.1, 0.8),
+        //alignment: const Alignment(0.1, 0.8),
         //width: 530.w,
         height: 96.h,
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          borderRadius: BorderRadius.all(Radius.circular(10.0)),
           color: Color.fromRGBO(233, 234, 237, 1),
         ),
         child: Row(
@@ -176,8 +177,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
       // alignment: const Alignment(0.1, 0.1),
       width: 1.sw - 2 * 80.w,
       height: 96.h,
-      //margin: EdgeInsets.symmetric(horizontal: 10.w),
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      margin: EdgeInsets.symmetric(horizontal: 10.w),
+      //padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: ElevatedButton(
         style: ButtonStyle(
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -187,7 +188,6 @@ class _PhoneLoginState extends State<PhoneLogin> {
                     ? PFc.themeColor
                     : const Color.fromARGB(221, 196, 236, 201))),
         onPressed: () {
-          print("Global.packageInfo.buildNumber");
           print(Global.packageInfo.packageName);
           if (!PFcheck.duIsPhone(controller.value.text)) {
             toastInfo(msg: '号码格式不正确');

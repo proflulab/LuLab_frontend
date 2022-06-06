@@ -56,7 +56,7 @@ class _VerificationState extends State<Verification> {
         await DioUserAPI.codeSend(context: context, number: _numbers);
     if (status.status == '0') {
     } else {
-      print("发送失败");
+      debugPrint("发送失败");
     }
   }
 
@@ -65,7 +65,7 @@ class _VerificationState extends State<Verification> {
     CodeCheckRes data = await DioUserAPI.codeCheck(
         context: context, data: CodeCheckReq(code: code, mobile: mobile));
     if (data.status == '0') {
-      print("校验无误");
+      debugPrint("校验无误");
       Global.saveToken(data.token);
       Get.offAll(const App());
     }

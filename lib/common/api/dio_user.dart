@@ -40,5 +40,14 @@ class DioUserAPI {
   // 修改个人信息
 
   // 一键登录
-
+  static Future<QuickLoginRes> quickLogin({
+    required BuildContext context,
+    required QuickLoginReq data,
+  }) async {
+    Response<dynamic> response = await DioClient().doPost(
+      "${Api.tencentUrl}/loginByMobilePhone",
+      data: data.toJson(),
+    );
+    return QuickLoginRes.fromJson(response.data);
+  }
 }
