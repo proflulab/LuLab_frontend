@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:lab/pages/sign_in/agreement.dart';
+import 'package:lab/pages/sign_in/widget_agreement.dart';
+import 'package:lab/pages/sign_in/widget_phone_field.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -149,15 +150,16 @@ class _SignInPageState extends State<SignInPage> {
           SizedBox(
             height: 70.h,
           ),
+          PhoneField(controller: _emailController),
           //输入账号
-          inputTextEdit(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              hintText: "请输入账号",
-              marginTop: 0,
-              //autofocus: true,
-              width: 622,
-              height: 112),
+          // inputTextEdit(
+          //     controller: _emailController,
+          //     keyboardType: TextInputType.emailAddress,
+          //     hintText: "请输入账号",
+          //     marginTop: 0,
+          //     //autofocus: true,
+          //     width: 622,
+          //     height: 112),
           // 输入密码
           inputTextEdit(
               controller: _passController,

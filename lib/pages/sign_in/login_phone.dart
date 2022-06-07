@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lab/pages/sign_in/agreement.dart';
+import 'package:lab/pages/sign_in/widget_agreement.dart';
+import 'package:lab/pages/sign_in/widget_phone_field.dart';
 
 import '../../common/global/global.dart';
 import '../../common/staticdata/staticdata.dart';
@@ -13,7 +14,6 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import '../../controller/signin_controller.dart';
-import 'phone_country_code.dart';
 import 'verification.dart';
 
 class PhoneLogin extends StatefulWidget {
@@ -71,7 +71,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                       ),
                     ),
                     const SizedBox(height: 150),
-                    _phoneField(),
+                    PhoneField(controller: controller),
                     const SizedBox(height: 50),
                     _submitButton(),
                     AgreementWidget(
@@ -88,85 +88,6 @@ class _PhoneLoginState extends State<PhoneLogin> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  _phoneField() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 80.w),
-      child: Container(
-        //alignment: const Alignment(0.1, 0.8),
-        //width: 530.w,
-        height: 96.h,
-        padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          color: Color.fromRGBO(233, 234, 237, 1),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          verticalDirection: VerticalDirection.up,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  Get.to(const PhoneCountryCodePage());
-                },
-                child: Row(
-                  children: [
-                    Obx(() => Text("+${c.code}")),
-                    const Icon(Icons.keyboard_arrow_down_rounded,
-                        color: Colors.black),
-                  ],
-                )),
-            const VerticalDivider(
-              color: Colors.grey,
-              width: 1,
-              indent: 5,
-              endIndent: 5,
-            ),
-            Expanded(
-              child: TextField(
-                autofocus: false,
-                controller: controller,
-                keyboardType: TextInputType.phone,
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                  LengthLimitingTextInputFormatter(11)
-                ],
-                decoration: const InputDecoration(
-                  hintText: "请输入手机号",
-                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
-                  border: InputBorder.none,
-                ),
-                maxLines: 1,
-                autocorrect: false,
-                onChanged: (value) {
-                  setState(() {
-                    value;
-                  });
-                  if (kDebugMode) {
-                    print("你输入的内容为$value");
-                  }
-                },
-              ),
-            ),
-            controller.text.isNotEmpty
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        controller.clear();
-                      });
-                    },
-                    icon: const Icon(Icons.close_rounded),
-                    padding: const EdgeInsets.all(0.0),
-                    // splashColor: Colors.red,
-                    // highlightColor: Colors.green,
-                  )
-                : const Text("")
-          ],
         ),
       ),
     );
