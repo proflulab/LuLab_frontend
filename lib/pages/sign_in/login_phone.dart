@@ -1,10 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lab/pages/sign_in/sign_in.dart';
 import 'package:lab/pages/sign_in/widget_agreement.dart';
 import 'package:lab/pages/sign_in/widget_phone_field.dart';
 
@@ -13,6 +12,7 @@ import '../../common/staticdata/staticdata.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
+import '../../controller/quick_login_controller.dart';
 import '../../controller/signin_controller.dart';
 import 'verification.dart';
 
@@ -34,6 +34,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Container(
           height: 1.sh,
           decoration: const BoxDecoration(
@@ -62,18 +63,36 @@ class _PhoneLoginState extends State<PhoneLogin> {
                           //         builder: (context) => const SignInPage()));
                           //   },
                           // ),
-                          SvgPicture.asset(
-                            "assets/images/logo.svg",
-                            height: 100.h,
-                          ),
+                          SvgPicture.asset("assets/images/logo.svg",
+                              height: 100.h),
                           SvgPicture.asset("assets/images/proflu_text.svg"),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 150),
+                    SizedBox(height: 150.h),
                     PhoneField(controller: controller),
-                    const SizedBox(height: 50),
+                    SizedBox(height: 50.h),
                     _submitButton(),
+                    SizedBox(height: 50.h),
+                    Center(
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "密码登录",
+                              style: const TextStyle(
+                                  fontSize: 18, color: Colors.grey),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  QuickLoginController qc =
+                                      Get.put(QuickLoginController());
+                                  Get.to(const SignInPage());
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     AgreementWidget(
                       checked: _checked,
                       onChanged: (v) {

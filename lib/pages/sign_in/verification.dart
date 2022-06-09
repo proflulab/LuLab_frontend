@@ -143,7 +143,9 @@ class _VerificationState extends State<Verification> {
                   ),
                 ),
                 onChanged: (value) {
-                  print("onChanged的监听方法：$value");
+                  if (kDebugMode) {
+                    print("onChanged的监听方法：$value");
+                  }
                   if (value.length >= 6) {
                     codeCheck(value, data[0]);
                   }

@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../controller/quick_login_controller.dart';
+import '../sign_in/login_phone.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -68,7 +69,7 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void _firstsign() {
-    Get.offAll(const SignInPage());
+    Get.offAll(const PhoneLogin());
   }
 
   void _app() {

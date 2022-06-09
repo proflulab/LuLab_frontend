@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -129,6 +131,8 @@ class _SetUserState extends State<SetUser> {
                           child: CachedImage.typeLaod(Global.profile.imgUrl!))),
                   icon: const Icon(PFIcon.userRight),
                   onTap: () {
+                    //TODO 等待后端图片鉴权接口
+                    _showBottomMenu(context);
                     if (kDebugMode) {
                       print("该功能未开发，当前无法更改");
                     }
@@ -252,5 +256,120 @@ class _SetUserState extends State<SetUser> {
         ],
       ),
     );
+  }
+
+  //弹出底部菜单
+  void _showBottomMenu(BuildContext context) {
+    showModalBottomSheet(
+        backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
+        context: context,
+        //isScrollControlled: true,//设为true，此时为全屏展示
+        builder: (BuildContext context) {
+          return Container(
+            decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                color: Color(0xfff1f1f1)),
+            height: 380.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                ListTile(
+                  title: const Text('拍照',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.blue)),
+                  onTap: () {
+                    _takePhoto();
+                    Navigator.pop(context);
+                  },
+                ),
+                const Divider(
+                  height: 1,
+                ),
+                ListTile(
+                  title: const Text('相册',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.blue)),
+                  onTap: () {
+                    PFImageCropper.cropImage(PFImagePicker.openPhotoAlbum());
+                    //_openPhotoAlbum();
+                    Navigator.pop(context);
+                  },
+                ),
+                Container(
+                  color: const Color.fromARGB(255, 212, 212, 212),
+                  height: 10,
+                ),
+                ListTile(
+                  title: const Text('取消',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.blue)),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  late CroppedFile _image;
+
+  ///拍照
+  Future _takePhoto() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _cropImage(image!);
+    });
+  }
+
+  ///打开相册
+  Future _openPhotoAlbum() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _cropImage(image!);
+    });
+  }
+
+  //剪裁
+  _cropImage(XFile imageFile) async {
+    CroppedFile? croppedFile = await ImageCropper().cropImage(
+      sourcePath: imageFile.path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: '裁剪',
+          toolbarColor: Colors.black87,
+          toolbarWidgetColor: Colors.white,
+          initAspectRatio: CropAspectRatioPreset.square,
+          //lockAspectRatio: false,
+          cropFrameStrokeWidth: 10,
+          cropFrameColor: PFc.themeColor,
+          cropGridColor: PFc.themeColor,
+          statusBarColor: PFc.themeColor,
+          activeControlsWidgetColor: PFc.themeColor,
+          //backgroundColor: PFc.themeColor,
+          //dimmedLayerColor: PFc.themeColor,
+        ),
+        IOSUiSettings(
+          title: '裁剪',
+        ),
+      ],
+    );
+
+    if (croppedFile != null) {
+      setState(() {
+        _image = croppedFile;
+      });
+    }
   }
 }

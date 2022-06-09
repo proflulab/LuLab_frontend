@@ -11,6 +11,7 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../controller/quick_login_controller.dart';
 import '../../pages/sign_in/sign_in.dart';
+import '../sign_in/login_phone.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     onConfirm: () {
                       QuickLoginController qc = Get.put(QuickLoginController());
                       Storage.remove(storageUserProfileKey);
-                      Get.offAll(const SignInPage());
+                      Get.offAll(const PhoneLogin());
                     },
                     content: "是否退出陆向谦实验室",
                   );

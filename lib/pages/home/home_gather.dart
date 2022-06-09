@@ -146,8 +146,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   //轮播图
   Widget _swiperWidget() {
     List imgList = [
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图2.png",
-      "https://gitee.com/shimingy/imagesbed/raw/master/img/轮播图1.png",
+      "https://img.mianfeiwendang.com/pic/e86cff06d2c147efb342b08c/1-810-jpg_6-1080-0-0-1080.jpg",
+      "https://img.mianfeiwendang.com/pic/e86cff06d2c147efb342b08c/1-810-jpg_6-1080-0-0-1080.jpg",
     ];
 
     return Container(

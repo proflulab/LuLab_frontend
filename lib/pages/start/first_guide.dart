@@ -5,6 +5,7 @@ import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 
+import '../sign_in/login_phone.dart';
 import '../sign_in/sign_in.dart';
 
 class FirstGuidePage extends StatefulWidget {
@@ -65,7 +66,7 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
                 backgroundColor: MaterialStateProperty.all(PFc.themeColor)),
             onPressed: () {
               //Storage.setInt('isFirstOpen', Global.isFirstOpen);
-              Get.offAll(const SignInPage());
+              Get.offAll(const PhoneLogin());
             } // 去首页路由
             ,
           ),

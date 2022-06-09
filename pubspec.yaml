@@ -44,7 +44,7 @@ dependencies:
   charts_flutter: ^0.12.0
   zefyrka: ^1.1.1
   dio_cookie_manager: ^2.0.0
-  image_picker: ^0.8.4+11
+  image_picker: ^0.8.5+3
   fijkplayer: ^0.10.1
   add_2_calendar: ^2.1.2
   #xfspeech: ^1.0.0
@@ -78,6 +78,7 @@ dependencies:
   event_bus: ^2.0.0
   package_info_plus: ^1.4.2
   flutter_vibrate: ^1.3.0
+  image_cropper: ^2.0.3
 
   flutter_localizations:
     sdk: flutter

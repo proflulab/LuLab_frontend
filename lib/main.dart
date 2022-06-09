@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -26,9 +26,15 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          // supportedLocales: const [
-          //   Locale('en', 'US'), // English, no country code
-          // ],
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations
+                .delegate, //一定要配置,否则iphone手机长按编辑框有白屏卡着的bug出现
+          ],
+          supportedLocales: const [
+            Locale('zh', 'CN'), //设置语言为中文
+          ],
           title: "陆向谦实验室",
           theme: mDefaultTheme,
           initialRoute: AppPages.iNITIAL,
