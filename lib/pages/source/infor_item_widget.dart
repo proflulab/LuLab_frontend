@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lab/common/entitys/entitys.dart';
-import 'package:lab/common/utils/utils.dart';
 
 import '../../common/values/values.dart';
-import '../../common/widget/cached_network_image.dart';
-import '../../common/widget/text_widget.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+
 import 'infor_details.dart';
 
 class InfoItemWidget extends StatelessWidget {

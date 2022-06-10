@@ -6,7 +6,6 @@ import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 
 import '../sign_in/login_phone.dart';
-import '../sign_in/sign_in.dart';
 
 class FirstGuidePage extends StatefulWidget {
   const FirstGuidePage({Key? key}) : super(key: key);

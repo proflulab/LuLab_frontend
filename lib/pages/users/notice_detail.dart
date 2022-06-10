@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lab/common/utils/time.dart';
 
 import '../../common/entitys/entitys.dart';
-//import '../../common/utils/utils.dart';
-import '../../common/values/size_spacing.dart';
+import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
 
 class NoticeDetail extends StatefulWidget {
   const NoticeDetail({Key? key, required this.product}) : super(key: key);

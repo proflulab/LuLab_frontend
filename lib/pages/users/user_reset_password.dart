@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 
-import 'package:lab/common/utils/utils.dart';
-import 'package:lab/common/values/values.dart';
-import 'package:lab/common/widget/my_appbar.dart';
-import 'package:lab/common/widget/widgets.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);

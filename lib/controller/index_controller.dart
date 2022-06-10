@@ -1,17 +1,17 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:porcupine_flutter/porcupine_error.dart';
 import 'package:porcupine_flutter/porcupine_manager.dart';
-import '/common/global/global.dart';
-import '/common/services/voice_port_server.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 import '../common/api/gql_voice.dart';
 import '../common/entitys/data_voice.dart';
 import '../common/entitys/speaking_status.dart';
 import '../common/utils/utils.dart';
+import '../common/global/global.dart';
+import '../common/services/voice_port_server.dart';
 
 class IndexController extends GetxController {
   static IndexController get to => Get.find();

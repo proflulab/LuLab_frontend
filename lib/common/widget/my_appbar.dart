@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/common/widget/text_widget.dart';
+
+import '/common/widget/widgets.dart';
 
 class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -61,5 +62,3 @@ class _MyAppBarState extends State<MyAppBar> {
     );
   }
 }
-
-

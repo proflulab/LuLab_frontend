@@ -105,7 +105,7 @@
         {
             "type": "UIButton",
             "UIButtonType": 0,
-            "title": "账号密码登录",
+            "title": "其他方式登录",
             "titleColor": "#333333",
             "titleFont": 15,
             "cornerRadius": 20,

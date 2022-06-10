@@ -4,6 +4,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/widget/widgets.dart';
+
 import 'infor_item_widget.dart';
 
 class InformationPage extends StatefulWidget {

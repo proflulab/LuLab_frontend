@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:event_bus/event_bus.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:event_bus/event_bus.dart';
 
-import '../../../../common/utils/utils.dart';
-import '../../../../common/values/values.dart';
-import '../../../../common/entitys/entitys.dart';
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/entitys/entitys.dart';
 
 /// 全局配置
 class Global {

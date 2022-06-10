@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import '../../common/utils/utils.dart';
-import '../entitys/data_user_login.dart';
+import '../../common/entitys/entitys.dart';
 import '../services/services.dart';
 
 class DioUserAPI {

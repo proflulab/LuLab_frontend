@@ -1,16 +1,24 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
 
-import 'package:lab/common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/utils/utils.dart';
 
 import '../../controller/signin_controller.dart';
 import 'phone_country_code.dart';
 
 class PhoneField extends StatefulWidget {
   final TextEditingController controller;
-  const PhoneField({Key? key, required this.controller}) : super(key: key);
+  final ValueChanged<String>? onChanged;
+  final FocusNode focusNode;
+  const PhoneField({
+    Key? key,
+    required this.controller,
+    required this.onChanged,
+    required this.focusNode,
+  }) : super(key: key);
 
   @override
   State<PhoneField> createState() => _PhoneFieldState();
@@ -18,6 +26,25 @@ class PhoneField extends StatefulWidget {
 
 class _PhoneFieldState extends State<PhoneField> {
   final SigninController c = Get.put(SigninController());
+
+  @override
+  void initState() {
+    super.initState();
+    // widget.focusNode.addListener(() {
+    //   if (widget.focusNode.hasFocus) {
+    //     setState(() {
+    //       print("有焦点1111");
+    //       //有焦点
+    //     });
+    //   } else {
+    //     setState(() {
+    //       print("失去焦点");
+    //       //失去焦点
+    //     });
+    //   }
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,9 +54,12 @@ class _PhoneFieldState extends State<PhoneField> {
         //width: 530.w,
         height: 96.h,
         padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          color: Color.fromRGBO(233, 234, 237, 1),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          color: const Color.fromRGBO(233, 234, 237, 1),
+          border: widget.focusNode.hasFocus
+              ? Border.all(color: PFc.themeColor)
+              : Border.all(color: const Color.fromARGB(0, 0, 0, 0)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,6 +86,7 @@ class _PhoneFieldState extends State<PhoneField> {
             Expanded(
               child: TextField(
                 autofocus: false,
+                focusNode: widget.focusNode,
                 controller: widget.controller,
                 keyboardType: TextInputType.phone,
                 inputFormatters: [
@@ -69,14 +100,7 @@ class _PhoneFieldState extends State<PhoneField> {
                 ),
                 maxLines: 1,
                 autocorrect: false,
-                onChanged: (value) {
-                  setState(() {
-                    value;
-                  });
-                  if (kDebugMode) {
-                    print("你输入的内容为$value");
-                  }
-                },
+                onChanged: widget.onChanged,
               ),
             ),
             widget.controller.text.isNotEmpty

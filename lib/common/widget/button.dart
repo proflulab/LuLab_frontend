@@ -15,8 +15,8 @@ Widget btnFlatButtonWidget({
   FontWeight fontWeight = FontWeight.w400,
 }) {
   return SizedBox(
-    width: width.w,
-    height: height.h,
+    width: width,
+    height: height,
     child: TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(

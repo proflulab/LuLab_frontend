@@ -21,7 +21,7 @@ export 'data_user_update.dart';
 export 'data_voice.dart';
 export 'json_convert_content.dart';
 export 'json_field.dart';
-//export 'response_data_entity.dart';
+export 'speaking_status.dart';
 export 'response_data_entity_helper.dart';
 export 'data_home_feat_experience.dart';
 export 'data_userlogin_phone.dart';

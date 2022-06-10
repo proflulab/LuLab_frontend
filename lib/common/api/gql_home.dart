@@ -3,7 +3,7 @@ import 'package:graphql/client.dart';
 
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
-import '../graphql/schema_home.dart';
+import '../../common/graphql/graphql.dart';
 
 class GqlHomeAPI {
   // 添加预约

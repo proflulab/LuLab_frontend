@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../../pages/app.dart';
 import '../../pages/notfound/index.dart';
-import '../../pages/sign_in/sign_in.dart';
+import '../../pages/sign_in/login_password.dart';
 import '../../pages/sign_up/register.dart';
 import '../../pages/start/loading.dart';
 import '../../pages/users/users_agreement.dart';

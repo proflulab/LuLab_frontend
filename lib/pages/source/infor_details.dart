@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
-//import '../../common/api/apis.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
-//import '../../common/staticdata/makdowndata.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';

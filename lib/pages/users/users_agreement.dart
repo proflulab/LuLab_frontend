@@ -1,12 +1,11 @@
-import 'dart:ui';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:ui';
+
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/utils/utils.dart';
-//import '../../common/staticdata/staticdata.dart';
 import '../../common/widget/widgets.dart';
-
-import 'package:flutter/material.dart';
 
 class Agreement extends StatelessWidget {
   const Agreement({

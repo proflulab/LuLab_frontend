@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:lab/common/utils/cache_util.dart';
-import 'package:lab/common/utils/dialog_util.dart';
-import 'package:lab/pages/users/users_set_about.dart';
-import 'package:lab/pages/users/users_set_user.dart';
-
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../../common/utils/cache_util.dart';
+import '../../common/utils/dialog_util.dart';
 import '../../controller/quick_login_controller.dart';
-import '../../pages/sign_in/sign_in.dart';
+
 import '../sign_in/login_phone.dart';
+import '/pages/users/users_set_about.dart';
+import '/pages/users/users_set_user.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -156,7 +155,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               child: TextButton(
                 onPressed: () {
-                  DialogUtil.showPopUp(
+                  PFDialog.showPopUp(
                     context: context,
                     onConfirm: () {
                       QuickLoginController qc = Get.put(QuickLoginController());
@@ -183,7 +182,7 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   _showClearCacheConfirm() {
-    DialogUtil.showPopUp(
+    PFDialog.showPopUp(
       context: context,
       onConfirm: _clearCache,
       content: "是否清除陆向谦实验室App缓存",

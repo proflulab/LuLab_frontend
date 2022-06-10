@@ -1,12 +1,13 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lab/common/widget/my_appbar.dart';
 
+import '../../common/widget/widgets.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
+
 import 'notice_detail.dart';
 
 class NoticePage extends StatefulWidget {

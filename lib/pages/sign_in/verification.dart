@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'dart:async';
 
 import 'package:pinput/pinput.dart';
-import 'package:lab/common/utils/utils.dart';
-import 'package:lab/common/values/values.dart';
 
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
-import '../../common/entitys/data_user_login.dart';
+import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 
 import '../app.dart';
