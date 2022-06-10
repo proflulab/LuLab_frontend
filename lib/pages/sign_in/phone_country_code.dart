@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:lab/common/widget/text_widget.dart';
 
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
@@ -83,43 +84,55 @@ class PageState extends State<PhoneCountryCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(top: 0, bottom: 0, right: 40),
-          child: Container(
-            height: 35,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                color: const Color.fromRGBO(230, 230, 230, 1.0),
-                borderRadius: BorderRadius.circular(20)),
-            child: TextField(
-              autofocus: false,
-              controller: searchcontroller,
-              keyboardType: TextInputType.text,
-              decoration: const InputDecoration(
-                hintText: "搜索",
-                contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 10),
-                border: InputBorder.none,
-              ),
-              maxLines: 1,
-              autocorrect: false,
-              onChanged: (value) {
-                setState(() {
-                  value;
-                  result.clear();
-                  _search = true;
-                  for (int i = 0; i < datums.length; i++) {
-                    if (PFcontrast.client(value, datums[i].name)) {
-                      result.add(datums[i]);
+        leading: IconButton(
+          icon: const Icon(Icons.close_rounded, color: Colors.black),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        centerTitle: true, // 标题居中
+        title: PFtext.text3(text: "选择国家和地区"),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(40),
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 0, bottom: 10, right: 20, left: 20),
+            child: Container(
+              height: 38,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(230, 230, 230, 1.0),
+                  borderRadius: BorderRadius.circular(8)),
+              child: TextField(
+                autofocus: false,
+                controller: searchcontroller,
+                keyboardType: TextInputType.text,
+                decoration: const InputDecoration(
+                  hintText: "搜索",
+                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 10),
+                  border: InputBorder.none,
+                ),
+                maxLines: 1,
+                autocorrect: false,
+                onChanged: (value) {
+                  setState(() {
+                    value;
+                    result.clear();
+                    _search = true;
+                    for (int i = 0; i < datums.length; i++) {
+                      if (PFcontrast.client(value, datums[i].name)) {
+                        result.add(datums[i]);
+                      }
                     }
+                    if (result.isEmpty && value.isNotEmpty) {
+                      _search = false;
+                    }
+                  });
+                  if (kDebugMode) {
+                    print("你输入的内容为$value");
                   }
-                  if (result.isEmpty && value.isNotEmpty) {
-                    _search = false;
-                  }
-                });
-                if (kDebugMode) {
-                  print("你输入的内容为$value");
-                }
-              },
+                },
+              ),
             ),
           ),
         ),
@@ -142,7 +155,8 @@ class PageState extends State<PhoneCountryCodePage> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (BuildContext context, int index2) {
                                 return GestureDetector(
-                                  child: SizedBox(
+                                  child: Container(
+                                    color: Colors.white,
                                     height: 46,
                                     width: double.infinity,
                                     child: Padding(
