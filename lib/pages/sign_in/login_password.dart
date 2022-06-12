@@ -12,6 +12,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 
+import '../../controller/signin_controller.dart';
 import '../app.dart';
 import '/pages/sign_in/widget_phone_field.dart';
 
@@ -23,9 +24,11 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _accountController = TextEditingController();
 
   final TextEditingController _passController = TextEditingController();
+
+  final SigninController c = Get.put(SigninController());
 
   bool v = true;
 
@@ -35,7 +38,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void initState() {
     super.initState();
-
+    //_accountController.text = c.number;
     _accountFocusNode.addListener(() {
       if (_accountFocusNode.hasFocus) {
         setState(() {
@@ -65,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void dispose() {
     super.dispose();
-    //释放
+    _accountController.dispose();
     _accountFocusNode.dispose();
   }
 
@@ -77,7 +80,7 @@ class _SignInPageState extends State<SignInPage> {
     }
 
     Loginrequest variables = Loginrequest(
-      name: _emailController.value.text,
+      name: _accountController.value.text,
       password: _passController.value.text,
       // password: duSHA256(_passController.value.text),
     );
@@ -138,8 +141,9 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                   SizedBox(height: 150.h),
                   PhoneField(
-                    controller: _emailController,
+                    controller: _accountController,
                     onChanged: (value) {
+                      //c.innumber(value);
                       setState(() {
                         value;
                       });
@@ -174,30 +178,6 @@ class _SignInPageState extends State<SignInPage> {
                       },
                     ),
                   ),
-                  // inputTextEdit(
-                  //   controller: _passController,
-                  //   keyboardType: TextInputType.visiblePassword,
-                  //   hintText: "请输入密码",
-                  //   isPassword: v,
-                  //   width: 1.sw - 2 * 80.w,
-                  //   height: 96.h,
-                  //   color: const Color.fromRGBO(233, 234, 237, 1),
-                  //   suffixIcon: IconButton(
-                  //     icon: Center(
-                  //       child: v
-                  //           ? const Icon(Icons.remove_red_eye_outlined)
-                  //           : const Icon(Icons.remove_red_eye_rounded),
-                  //     ),
-                  //     color: PFc.themeColor,
-                  //     //padding: const EdgeInsets.all(11.0),
-                  //     alignment: Alignment.bottomCenter,
-                  //     onPressed: () {
-                  //       setState(() {
-                  //         v = !v;
-                  //       });
-                  //     },
-                  //   ),
-                  // ),
                   SizedBox(height: 50.h),
                   // 登录
                   btnFlatButtonWidget(

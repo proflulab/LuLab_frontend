@@ -43,9 +43,7 @@ class PageState extends State<PhoneCountryCodePage> {
 
   final ScrollController _scrollController = ScrollController();
 
-  TextEditingController myController = TextEditingController();
-
-  TextEditingController searchcontroller = TextEditingController();
+  final TextEditingController _searchcontroller = TextEditingController();
 
   @override
   void initState() {
@@ -56,6 +54,8 @@ class PageState extends State<PhoneCountryCodePage> {
   @override
   void dispose() {
     super.dispose();
+    _searchcontroller.dispose();
+    _scrollController.dispose();
   }
 
   getPhoneCodeDataList() async {
@@ -105,11 +105,16 @@ class PageState extends State<PhoneCountryCodePage> {
                   borderRadius: BorderRadius.circular(8)),
               child: TextField(
                 autofocus: false,
-                controller: searchcontroller,
+                controller: _searchcontroller,
                 keyboardType: TextInputType.text,
+                //textAlign: TextAlign.left,
                 decoration: const InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search_rounded,
+                    color: PFc.themeColor,
+                  ),
                   hintText: "搜索",
-                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 10),
+                  contentPadding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                   border: InputBorder.none,
                 ),
                 maxLines: 1,
@@ -202,14 +207,15 @@ class PageState extends State<PhoneCountryCodePage> {
                     )
                   : const SizedBox(
                       child: Center(
-                        child: Text("没有找到这个国家哦！"),
+                        child: Text("没有找到这个国家或地区哦！"),
                       ),
                     )
               : ListView.separated(
                   itemCount: result.length,
                   itemBuilder: (BuildContext context, int index3) {
                     return GestureDetector(
-                      child: SizedBox(
+                      child: Container(
+                        color: Colors.white,
                         height: 46,
                         width: double.infinity,
                         child: Padding(

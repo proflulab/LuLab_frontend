@@ -5,4 +5,9 @@ class SigninController extends GetxController {
   increment(int e) {
     code.value = e;
   }
+
+  // late String number;
+  // innumber(String e) {
+  //   number = e;
+  // }
 }

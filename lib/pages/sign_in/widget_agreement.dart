@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/values/values.dart';
 import '../../common/staticdata/staticdata.dart';
 
 class AgreementWidget extends StatefulWidget {
@@ -24,6 +25,8 @@ class _AgreementWidgetState extends State<AgreementWidget> {
           shape: const CircleBorder(),
           value: widget.checked,
           onChanged: widget.onChanged,
+          focusColor: PFc.themeColor,
+          activeColor: PFc.themeColor,
         ),
         RichText(
           text: TextSpan(
@@ -32,7 +35,7 @@ class _AgreementWidgetState extends State<AgreementWidget> {
             children: <TextSpan>[
               TextSpan(
                 text: '《服务协议》',
-                style: const TextStyle(color: Colors.blue),
+                style: const TextStyle(color: PFc.themeColor),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     Get.toNamed(
@@ -47,7 +50,7 @@ class _AgreementWidgetState extends State<AgreementWidget> {
               const TextSpan(text: '和'),
               TextSpan(
                 text: '《隐私政策》',
-                style: const TextStyle(color: Colors.blue),
+                style: const TextStyle(color: PFc.themeColor),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     Get.toNamed(

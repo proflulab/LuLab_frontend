@@ -9,6 +9,7 @@ Future<bool?> toastInfo({
   Color backgroundColor = PFc.backgroundBlack,
   Color textColor = Colors.white,
 }) async {
+  PFVibrate.feedback(Type.light);
   return await Fluttertoast.showToast(
     msg: msg,
     toastLength: Toast.LENGTH_SHORT,

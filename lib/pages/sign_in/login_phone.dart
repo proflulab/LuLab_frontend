@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lab/common/values/colors.dart';
 
 import '../../events/quick_login_event.dart';
 import '../app.dart';
@@ -23,7 +24,7 @@ import '../../common/utils/utils.dart';
 
 import '../../controller/quick_login_controller.dart';
 import '../../controller/signin_controller.dart';
-import 'verification.dart';
+import 'login_verification.dart';
 
 class PhoneLogin extends StatefulWidget {
   const PhoneLogin({Key? key}) : super(key: key);
@@ -33,12 +34,12 @@ class PhoneLogin extends StatefulWidget {
 }
 
 class _PhoneLoginState extends State<PhoneLogin> {
-  QuickLoginController qc = Get.find();
+  final QuickLoginController qc = Get.find();
   final SigninController c = Get.put(SigninController());
 
   bool _checked = false;
 
-  TextEditingController controller = TextEditingController();
+  final TextEditingController _accountController = TextEditingController();
 
   StreamSubscription? _subscription;
 
@@ -70,7 +71,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
   @override
   void dispose() {
     _subscription?.cancel();
-    controller.dispose();
+    _accountController.dispose();
     _accountFocusNode.dispose();
     super.dispose();
   }
@@ -144,8 +145,9 @@ class _PhoneLoginState extends State<PhoneLogin> {
                   SizedBox(height: 150.h),
                   PhoneField(
                     focusNode: _accountFocusNode,
-                    controller: controller,
+                    controller: _accountController,
                     onChanged: (value) {
+                      //c.innumber(value);
                       setState(() {
                         value;
                       });
@@ -170,10 +172,15 @@ class _PhoneLoginState extends State<PhoneLogin> {
                                 if (!_checked) {
                                   _dialog(
                                     () {
+                                      setState(() {
+                                        _checked = !_checked;
+                                      });
+                                      _accountFocusNode.unfocus();
                                       Get.to(const SignInPage());
                                     },
                                   );
                                 } else {
+                                  _accountFocusNode.unfocus();
                                   Get.to(const SignInPage());
                                 }
                               },
@@ -215,25 +222,27 @@ class _PhoneLoginState extends State<PhoneLogin> {
             overlayColor: MaterialStateProperty.all(
                 const Color.fromARGB(31, 245, 138, 138)), //字体颜色
             backgroundColor: MaterialStateProperty.all(
-                PFcheck.duIsPhone(controller.value.text)
+                PFcheck.duIsPhone(_accountController.value.text)
                     ? PFc.themeColor
                     : const Color.fromARGB(221, 196, 236, 201))),
         onPressed: () {
-          if (!PFcheck.duIsPhone(controller.value.text)) {
+          if (!PFcheck.duIsPhone(_accountController.value.text)) {
             toastInfo(msg: '号码格式不正确');
-          } else if (PFcheck.duIsPhone(controller.value.text) && !_checked) {
+          } else if (PFcheck.duIsPhone(_accountController.value.text) &&
+              !_checked) {
             _dialog(
               () {
                 Get.to(
                   const Verification(),
-                  arguments: [controller.value.text, c.code],
+                  arguments: [_accountController.value.text, c.code.value],
                 );
               },
             );
-          } else if (PFcheck.duIsPhone(controller.value.text) && _checked) {
+          } else if (PFcheck.duIsPhone(_accountController.value.text) &&
+              _checked) {
             Get.to(
               const Verification(),
-              arguments: [controller.value.text, c.code],
+              arguments: [_accountController.value.text, c.code.value],
             );
           } else {}
         },
@@ -251,50 +260,51 @@ class _PhoneLoginState extends State<PhoneLogin> {
 
   _dialog(onConfirm) {
     return PFDialog.showPopUp(
-        onConfirm: onConfirm,
-        context: context,
-        textConfirm: "同意",
-        widget: SizedBox(
-          height: 80.h,
-          child: Center(
-            child: RichText(
-              text: TextSpan(
-                text: '请先同意',
-                style: const TextStyle(color: Colors.black, fontSize: 13.0),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: '《服务协议》',
-                    style: const TextStyle(color: Colors.blue),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        Get.toNamed(
-                          "/agreement",
-                          arguments: {
-                            "content": Markdowndata.agreementUser,
-                            "title": "《服务协议》"
-                          },
-                        );
-                      },
-                  ),
-                  const TextSpan(text: '和'),
-                  TextSpan(
-                    text: '《隐私政策》',
-                    style: const TextStyle(color: Colors.blue),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        Get.toNamed(
-                          "/agreement",
-                          arguments: {
-                            "content": Markdowndata.privacy,
-                            "title": "《隐私政策》"
-                          },
-                        );
-                      },
-                  ),
-                ],
-              ),
+      onConfirm: onConfirm,
+      context: context,
+      textConfirm: "同意",
+      widget: SizedBox(
+        height: 80.h,
+        child: Center(
+          child: RichText(
+            text: TextSpan(
+              text: '请先同意',
+              style: const TextStyle(color: Colors.black, fontSize: 13.0),
+              children: <TextSpan>[
+                TextSpan(
+                  text: '《服务协议》',
+                  style: const TextStyle(color: PFc.themeColor),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      Get.toNamed(
+                        "/agreement",
+                        arguments: {
+                          "content": Markdowndata.agreementUser,
+                          "title": "《服务协议》"
+                        },
+                      );
+                    },
+                ),
+                const TextSpan(text: '和'),
+                TextSpan(
+                  text: '《隐私政策》',
+                  style: const TextStyle(color: PFc.themeColor),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      Get.toNamed(
+                        "/agreement",
+                        arguments: {
+                          "content": Markdowndata.privacy,
+                          "title": "《隐私政策》"
+                        },
+                      );
+                    },
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

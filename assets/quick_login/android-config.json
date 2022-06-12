@@ -31,6 +31,7 @@
     "checkedImageName": "checkbox_checked",
     "unCheckedImageName": "checkbox_unchecked",
     "privacyTextStart": "我已阅读并同意",
+    "privacyState":false,
     "protocolText": "《服务协议》",
     "protocolLink": "https://www.baidu.com",
     "protocol2Text": "《隐私政策》",

@@ -9,7 +9,7 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 无线调试app
 
 1. adb tcpip 5555
-2. adb connect 192.168.101.108
+2. adb connect 192.168.0.100
 
 [无线调试文档参考](https://developer.android.google.cn/studio/command-line/adb?hl=zh-cn)
 
@@ -36,7 +36,7 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 [Free Lottie Animation Files,(动画文件搜索平台)](https://lottiefiles.com/)
 
-[Flutter Icons 内置图标库 - 简书 (jianshu.com)](<https://www.jianshu.com/p/1c19d8685>)
+[Flutter Icons 内置图标库 - 简书 (jianshu.com)](https://www.jianshu.com/p/1c19d8685)
 
 [Flutter Icon 图标网](https://www.fluttericon.cn/)
 
@@ -52,7 +52,7 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 
 说明：<简单描述项目的背景、意义、目的、目标等，描述领域知识>
 
-项目参考文档：<https://drive.weixin.qq.com/s?k=AFAAtgeQAA43EkjB1u>
+项目参考文档：[https://drive.weixin.qq.com/s?k=AFAAtgeQAA43EkjB1u](https://drive.weixin.qq.com/s?k=AFAAtgeQAA43EkjB1u)
 
 ### 1.文档历史记录
 
@@ -61,8 +61,8 @@ tree /f /a > dirTree.txt    # > dirTree.txt 表示把生成的目录树保存到
 | **编号** | **日期** | **版本** | **描述**           | **作者** | **审阅者** |
 | -------------- | -------------- | -------------- | ------------------------ | -------------- | ---------------- |
 | 1              | 2021.2.9       | 1.0            | 描述APP语音部分需求      | 叶俊           |                  |
-| 2              | 2021.5.3       | 2.0            | 增加智能推送部分需求      | 叶俊           |                  |
-| 3              | 2021.5.4       | 3.0            | 构架整理；补全，细化文档  | 杨仕明         |                  |
+| 2              | 2021.5.3       | 2.0            | 增加智能推送部分需求     | 叶俊           |                  |
+| 3              | 2021.5.4       | 3.0            | 构架整理；补全，细化文档 | 杨仕明         |                  |
 | 4              | 2021.0815      | 4.0            |                          | 杨仕明         |                  |
 
 ### 2.产品介绍

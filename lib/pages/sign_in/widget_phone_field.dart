@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:lab/common/widget/text_widget.dart';
 
 import '../../common/values/values.dart';
 import '../../common/utils/utils.dart';
@@ -30,19 +31,6 @@ class _PhoneFieldState extends State<PhoneField> {
   @override
   void initState() {
     super.initState();
-    // widget.focusNode.addListener(() {
-    //   if (widget.focusNode.hasFocus) {
-    //     setState(() {
-    //       print("有焦点1111");
-    //       //有焦点
-    //     });
-    //   } else {
-    //     setState(() {
-    //       print("失去焦点");
-    //       //失去焦点
-    //     });
-    //   }
-    // });
   }
 
   @override
@@ -62,26 +50,28 @@ class _PhoneFieldState extends State<PhoneField> {
               : Border.all(color: const Color.fromARGB(0, 0, 0, 0)),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          verticalDirection: VerticalDirection.up,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          //verticalDirection: VerticalDirection.up,
           children: [
             GestureDetector(
-                onTap: () {
-                  Get.to(const PhoneCountryCodePage());
-                },
-                child: Row(
-                  children: [
-                    Obx(() => Text("+${c.code}")),
-                    const Icon(Icons.keyboard_arrow_down_rounded,
-                        color: Colors.black),
-                  ],
-                )),
+              onTap: () {
+                Get.to(const PhoneCountryCodePage());
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Obx(() => PFtext.text3(text: "+${c.code}", fontSize: 18)),
+                  const Icon(Icons.keyboard_arrow_down_rounded,
+                      color: Colors.black),
+                ],
+              ),
+            ),
             const VerticalDivider(
               color: Colors.grey,
-              width: 1,
-              indent: 5,
-              endIndent: 5,
+              width: 2,
+              indent: 4,
+              endIndent: 4,
             ),
             Expanded(
               child: TextField(
@@ -95,7 +85,7 @@ class _PhoneFieldState extends State<PhoneField> {
                 ],
                 decoration: const InputDecoration(
                   hintText: "请输入手机号",
-                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 9),
+                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 7),
                   border: InputBorder.none,
                 ),
                 maxLines: 1,
