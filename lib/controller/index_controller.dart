@@ -26,6 +26,7 @@ class IndexController extends GetxController {
   SpeakingStatus status = SpeakingStatus.userSpeaking;
 
   bool speaking = false;
+  
 
   String userWord = '';
   XfManage? _xf;
