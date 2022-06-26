@@ -137,7 +137,7 @@ class _SetUserState extends State<SetUser> {
                     if (kDebugMode) {
                       print("该功能未开发，当前无法更改");
                     }
-                    toastInfo(msg: '耐心等待该功能的开发吧！');
+                    // toastInfo(msg: '耐心等待该功能的开发吧！');
                   },
                 ),
               ),
@@ -274,7 +274,7 @@ class _SetUserState extends State<SetUser> {
                   topRight: Radius.circular(10),
                 ),
                 color: Color(0xfff1f1f1)),
-            height: 380.h,
+            height: 438.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -303,7 +303,7 @@ class _SetUserState extends State<SetUser> {
                 ),
                 Container(
                   color: const Color.fromARGB(255, 212, 212, 212),
-                  height: 10,
+                  height: 15,
                 ),
                 ListTile(
                   title: const Text('取消',
