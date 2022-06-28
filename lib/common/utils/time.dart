@@ -1,6 +1,7 @@
 import 'package:date_format/date_format.dart';
 
 class PFTime {
+  //时间戳格式化
   static client(var stamp, String value) {
     var time = DateTime.now();
     if (stamp is int) {
@@ -33,6 +34,7 @@ class PFTime {
     }
   }
 
+  //计算时间差
   static diff(var start, var end) {
     timed(var v) {
       if (v is int) {
@@ -54,4 +56,12 @@ class PFTime {
       return "($y年$m个月)";
     }
   }
+}
+
+enum TimeType {
+  yyyy,
+  mm,
+  dd,
+  hh,
+  nn,
 }

@@ -57,6 +57,7 @@ class PFVibrate {
           Vibrate.feedback(FeedbackType.light);
           break;
         default:
+          Vibrate.feedback(FeedbackType.success);
       }
     }
   }
