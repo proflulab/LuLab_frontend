@@ -70,7 +70,7 @@ packages:
       name: battery_plus_linux
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   battery_plus_macos:
     dependency: transitive
     description:
@@ -418,7 +418,7 @@ packages:
       name: flutter_easyrefresh
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   flutter_echart:
     dependency: "direct main"
     description:
@@ -479,14 +479,14 @@ packages:
       name: flutter_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.6"
+    version: "2.0.7"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -657,7 +657,7 @@ packages:
       name: hive
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.2"
+    version: "2.2.3"
   html:
     dependency: transitive
     description:
@@ -727,7 +727,7 @@ packages:
       name: image_picker_ios
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.5+5"
+    version: "0.8.5+6"
   image_picker_platform_interface:
     dependency: transitive
     description:
@@ -762,7 +762,7 @@ packages:
       name: json_annotation
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.5.0"
+    version: "4.6.0"
   keyboard_dismisser:
     dependency: "direct main"
     description:
@@ -1042,7 +1042,7 @@ packages:
       name: porcupine_flutter
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.3"
   process:
     dependency: transitive
     description:
@@ -1063,7 +1063,7 @@ packages:
       name: quickpass_yidun_flutter
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   quill_format:
     dependency: transitive
     description:
@@ -1091,7 +1091,7 @@ packages:
       name: rxdart
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.27.4"
+    version: "0.27.5"
   share_plus:
     dependency: "direct main"
     description:
@@ -1349,13 +1349,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.3.0"
+  upower:
+    dependency: transitive
+    description:
+      name: upower
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.0"
   url_launcher:
     dependency: "direct main"
     description:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.1.4"
+    version: "6.1.5"
   url_launcher_android:
     dependency: transitive
     description:
@@ -1432,7 +1439,7 @@ packages:
       name: video_player_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.6"
+    version: "2.3.7"
   video_player_avfoundation:
     dependency: transitive
     description:
@@ -1460,7 +1467,7 @@ packages:
       name: wakelock
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.1+2"
+    version: "0.6.2"
   wakelock_macos:
     dependency: transitive
     description:

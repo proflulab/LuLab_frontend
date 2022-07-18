@@ -35,6 +35,8 @@ class _SignInPageState extends State<SignInPage> {
   final FocusNode _accountFocusNode = FocusNode();
   final FocusNode _passFocusNode = FocusNode();
 
+  get leading => null;
+
   @override
   void initState() {
     super.initState();
@@ -126,10 +128,31 @@ class _SignInPageState extends State<SignInPage> {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 100.h),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    height: 90,
+                    width: 400,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child:
+                          const Icon(Icons.arrow_back_ios, color: Colors.black),
+                    ),
+                  ),
+                  // Container(
+
+                  //   color: Colors.cyan,
+                  //   width: 100,
+                  //   height: 100,
+                  //   child: const Icon(
+                  //     Icons.chevron_left,
+                  //   ),
+                  // ),
+                  // SizedBox(height: 50.h),
                   Container(
                     alignment: Alignment.centerRight,
-                    height: 150,
+                    height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -196,3 +219,5 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
+
+class Test {}
