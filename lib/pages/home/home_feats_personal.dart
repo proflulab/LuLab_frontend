@@ -52,9 +52,13 @@ class _FeastPersonalState extends State<FeastPersonal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
-        child: AppBar(),
+      appBar: AppBar(
+        leading: TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.arrow_back_ios, color: Colors.black),
+        ),
       ),
       body: ListView(
         children: <Widget>[
