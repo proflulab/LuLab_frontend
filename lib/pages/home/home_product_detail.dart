@@ -12,11 +12,25 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+  get leading => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
+          Container(
+            // color: Colors.blue,
+            alignment: Alignment.bottomLeft,
+            height: 50,
+            width: 400,
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Icon(Icons.arrow_back_ios, color: Colors.black),
+            ),
+          ),
           Flexible(
             child: Browser(
               url: widget.product.detailUrl,

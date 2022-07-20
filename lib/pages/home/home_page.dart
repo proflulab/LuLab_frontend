@@ -4,6 +4,7 @@ import '../../common/values/values.dart';
 import 'home_feats.dart';
 import 'home_gather.dart';
 import 'home_product.dart';
+import 'home_tabbar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,6 +36,10 @@ class _HomePageState extends State<HomePage>
                 //TODO 训练营产品取消，后续修改为会员申请入口
                 Tab(text: "训练营"),
               ],
+              indicator: CustomUnderlineTabIndicator(
+                insets: EdgeInsets.only(top: 10, bottom: 2),
+                borderSide: BorderSide(width: 5, color: PFc.themeColor),
+              ),
               //文字选中颜色
               labelColor: PFc.themeColor,
               //文字未选中颜色
