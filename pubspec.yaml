@@ -85,6 +85,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  easy_refresh: ^3.0.2+2
 
 dev_dependencies:
   flutter_test:
