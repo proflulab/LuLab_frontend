@@ -18,12 +18,12 @@ class EasyrefreshWidget {
 
   static Footer? getFooter() {
     return ClassicalFooter(
-      //key: _footerKey,
+      // key: _footerKey,
       loadText: '上拉加载',
       loadReadyText: '准备加载',
       loadingText: '加载中...',
       loadedText: '加载完成',
-      noMoreText: '没有更多',
+      noMoreText: '划到底了',
       infoText: '更新于 %T',
       bgColor: Colors.transparent,
       textColor: Colors.black87,

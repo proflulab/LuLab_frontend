@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:lab/pages/source/infor_item_widget.dart';
 
@@ -29,7 +30,8 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   List<LatestDirectCourseElement> _focusData3 = [];
   late LatestDirectCourse _course;
   List<LatestDirectCourseElement> _focusData4 = [];
-
+  late EasyRefreshController _controller;
+  int _count = 1;
   //final double _coursesW = PFspace.screenW * PFr.silver - PFspace.screenMargin;
 
   DateTime now = DateTime.now();
@@ -47,6 +49,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
     _handleCourse();
     _loadIfoData();
     _loadCourse();
+    _controller = EasyRefreshController();
   }
 
   // 获取资讯数据
@@ -126,19 +129,64 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return ListView(
-      children: <Widget>[
-        SizedBox(height: 10.h),
-        _swiperWidget(),
-        SizedBox(height: 20.h),
-        _focusData3.isEmpty ? const SizedBox(height: 0) : _titleWidget("直播预约"),
-        _focusData3.isEmpty ? const SizedBox(height: 0) : _buildLive(),
-        SizedBox(height: 20.h),
-        _titleWidget("最新资讯"),
-        _buildInfomation(),
-        SizedBox(height: 20.h),
-        _titleWidget("精选课程"),
-        _buildCourse(),
+    return EasyRefresh.custom(
+      firstRefresh: true,
+      firstRefreshWidget: const Loading(),
+      enableControlFinishRefresh: false,
+      enableControlFinishLoad: true,
+      header: EasyrefreshWidget.getHeader(),
+      footer: EasyrefreshWidget.getFooter(),
+      controller: _controller,
+      onRefresh: () async {
+        await Future.delayed(Duration(seconds: 2), () {
+          print('onRefresh');
+          _handleCourse();
+          _loadIfoData();
+          _loadCourse();
+          // setState(() {
+          //   _count = 1;
+          // });
+          _controller.resetLoadState();
+        });
+      },
+      onLoad: () async {
+        await Future.delayed(Duration(seconds: 2), () {
+          print('onLoad');
+          // setState(() {
+          //   _count += 0;
+          // });
+          // footer:
+          // EasyrefreshWidget.getFooter();
+          _controller.finishLoad(noMore: _count >= 0);
+        });
+      },
+      slivers: <Widget>[
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Column(
+                children: [
+                  SizedBox(height: 10.h),
+                  _swiperWidget(),
+                  SizedBox(height: 20.h),
+                  _focusData3.isEmpty
+                      ? const SizedBox(height: 0)
+                      : _titleWidget("直播预约"),
+                  _focusData3.isEmpty
+                      ? const SizedBox(height: 0)
+                      : _buildLive(),
+                  SizedBox(height: 20.h),
+                  _titleWidget("最新资讯"),
+                  _buildInfomation(),
+                  SizedBox(height: 20.h),
+                  _titleWidget("精选课程"),
+                  _buildCourse(),
+                ],
+              );
+            },
+            childCount: _count,
+          ),
+        ),
       ],
     );
   }

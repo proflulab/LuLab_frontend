@@ -3,5 +3,8 @@
     "editor.tabSize": 4,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "eggHelper.serverPort": 62937
+    "eggHelper.serverPort": 62937,
+    "cSpell.words": [
+        "Easyrefresh"
+    ]
 }
