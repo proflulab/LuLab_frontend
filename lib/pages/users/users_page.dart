@@ -78,12 +78,45 @@ class _UsersPageState extends State<UsersPage>
     }
 
     Widget _login() {
-      return Container(
-        child: const Center(
-          child: Text("登陆/注册"),
-        ),
+      return Column(
+        children: [
+          Container(
+            height: 20,
+          ),
+          Center(
+            child: Container(
+              //margin: EdgeInsets.all(PFspace.screenMargin),
+              // color: Colors.blue,
+              width: 190,
+              height: 30,
+              child: MaterialButton(
+                child: const Text(
+                  '登录/注册',
+                ),
+                onPressed: () {},
+              ),
+              decoration: const BoxDecoration(
+//背景
+                color: Colors.orange,
+                //设置四周圆角 角度
+                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                //设置四周边框
+              ),
+            ),
+          ),
+          Container(
+            height: 8,
+          ),
+          const Center(
+            child: Text(
+              "登录/注册可解锁完整功能",
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            ),
+          )
+        ],
       );
     }
+
     // Widget _dynamicdata() {
     //   return SizedBox(
     //     height: 60,
