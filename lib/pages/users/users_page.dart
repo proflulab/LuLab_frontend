@@ -76,6 +76,14 @@ class _UsersPageState extends State<UsersPage>
         ),
       );
     }
+
+    Widget _login() {
+      return Container(
+        child: const Center(
+          child: Text("登陆/注册"),
+        ),
+      );
+    }
     // Widget _dynamicdata() {
     //   return SizedBox(
     //     height: 60,
@@ -369,13 +377,7 @@ class _UsersPageState extends State<UsersPage>
       ),
       body: ListView(
         children: <Widget>[
-          Global.state == UserState.member
-              ? _username()
-              : Container(
-                  child: const Center(
-                    child: Text("登陆/注册"),
-                  ),
-                ),
+          Global.state == UserState.member ? _username() : _login(),
           // _dynamicdata(),
           // _adv(),
           // _jumpbutton(),
