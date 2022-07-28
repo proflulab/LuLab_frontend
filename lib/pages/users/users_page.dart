@@ -10,6 +10,8 @@ import '../../common/widget/widgets.dart';
 import '/pages/users/users_set_user.dart';
 import 'notice_page.dart';
 import 'users_set.dart';
+import '../sign_in/login_phone.dart';
+import 'package:get/get.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -90,11 +92,14 @@ class _UsersPageState extends State<UsersPage>
               width: 190,
               height: 30,
               child: MaterialButton(
-                child: const Text(
-                  '登录/注册',
-                ),
-                onPressed: () {},
-              ),
+                  child: const Text(
+                    '登录/注册',
+                  ),
+                  onPressed: () {
+                    Get.to(PhoneLogin());
+                  }
+                  //
+                  ),
               decoration: const BoxDecoration(
 //背景
                 color: Colors.orange,
