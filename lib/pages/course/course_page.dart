@@ -67,7 +67,7 @@ class _CoursePageState extends State<CoursePage>
   _handleCourse(int skip, int limit) async {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: _mode,
-      authorId: Global.profile.id!,
+      authorId: Global.profile.id ?? "",
       skip: skip,
       limit: limit,
     );

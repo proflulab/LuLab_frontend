@@ -7,6 +7,9 @@ import '../../pages/sign_up/register.dart';
 import '../../pages/start/loading.dart';
 import '../../pages/users/users_agreement.dart';
 
+import '../middlewares/router_auth.dart';
+import '../middlewares/user_start.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -23,6 +26,12 @@ class AppPages {
     GetPage(name: AppRoutes.signUp, page: () => const SignUpPage()),
 
     GetPage(name: AppRoutes.agreement, page: () => const Agreement()),
+
+    GetPage(name: AppRoutes.start, page: () => const App(), middlewares: [
+      UserStartMiddleware(priority: 2),
+    ]),
+
+    /// 中间件
 
     // 我的页面多级路由
     // GetPage(

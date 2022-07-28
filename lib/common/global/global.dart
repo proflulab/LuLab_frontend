@@ -16,7 +16,7 @@ class Global {
   // 用户配置
   static Data profile = Data();
 
-  static String token = '无';
+  static String token = '0';
 
   /// 发布渠道
   // static String channel = "xiaomi";
@@ -26,6 +26,8 @@ class Global {
 
   /// 包信息
   static late PackageInfo packageInfo;
+
+  static UserState state = UserState.visitor;
 
   /// android 设备信息
   static late AndroidDeviceInfo androidDeviceInfo;
@@ -74,24 +76,24 @@ class Global {
     // HttpUtil();
 
     // 读取设备第一次打开
-    Storage.getBool(storageDeviceAlreadyOpenKey).then(
-      (value) async {
-        isFirstOpen = value ?? true;
-        print(value);
-        print(isFirstOpen);
-        if (isFirstOpen) {
-          Storage.setBool(storageDeviceAlreadyOpenKey, false);
-        }
-      },
-    );
+    // Storage.getBool(storageDeviceAlreadyOpenKey).then(
+    //   (value) async {
+    //     isFirstOpen = value ?? true;
+    //     // print(value);
+    //     // print(isFirstOpen);
+    //     if (isFirstOpen) {
+    //       Storage.setBool(storageDeviceAlreadyOpenKey, false);
+    //     }
+    //   },
+    // );
 
     //读取离线用户信息
-    Storage.getJson(storageUserProfileKey).then(
-      (guide) async {
-        profile = Data.fromJson(json.decode(guide!));
-        isOfflineLogin = true;
-      },
-    );
+    // Storage.getJson(storageUserProfileKey).then(
+    //   (guide) async {
+    //     profile = Data.fromJson(json.decode(guide!));
+    //     isOfflineLogin = true;
+    //   },
+    // );
 
     //android 状态栏为透明的沉浸
     if (Platform.isAndroid) {
@@ -114,4 +116,10 @@ class Global {
     token = e;
     return Storage.setString(storaTokenKey, e);
   }
+}
+
+enum UserState {
+  visitor,
+  user,
+  member,
 }

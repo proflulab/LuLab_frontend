@@ -58,14 +58,14 @@ class _UsersPageState extends State<UsersPage>
             ),
           ),
           contentPadding: const EdgeInsets.all(10),
-          // trailing: const Text(
-          //   "个人主页",
-          //   style: TextStyle(
-          //     fontFamily: 'MyFontStyle',
-          //     color: Colors.black,
-          //     fontSize: 18,
-          //   ),
-          // ),
+          trailing: const Text(
+            "个人主页",
+            style: TextStyle(
+              fontFamily: 'MyFontStyle',
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
           onTap: () {
             if (kDebugMode) {
               print("进入个人主页");
@@ -369,7 +369,13 @@ class _UsersPageState extends State<UsersPage>
       ),
       body: ListView(
         children: <Widget>[
-          _username(),
+          Global.state == UserState.member
+              ? _username()
+              : Container(
+                  child: const Center(
+                    child: Text("登陆/注册"),
+                  ),
+                ),
           // _dynamicdata(),
           // _adv(),
           // _jumpbutton(),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/entitys/data_user_login.dart';
+import '../../common/global/global.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 
-import '../sign_in/login_phone.dart';
+import '../app.dart';
 
 class FirstGuidePage extends StatefulWidget {
   const FirstGuidePage({Key? key}) : super(key: key);
@@ -56,16 +58,30 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AnimatedContainer(
-          height: 130.w,
-          width: 622.w,
+          width: 0.7.sw,
+          height: cycle(0.7.sw, PFr.golden, 3),
           duration: const Duration(milliseconds: 0),
           child: ElevatedButton(
             child: PFtext.text1(text: "立即开启", color: Colors.white),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(PFc.themeColor)),
             onPressed: () {
-              //Storage.setInt('isFirstOpen', Global.isFirstOpen);
-              Get.offAll(const PhoneLogin());
+              Storage.setBool(storageDeviceAlreadyOpenKey, false);
+              Storage.getString(storaTokenKey).then(
+                (value) async {
+                  // 判断是否是第一次启动app
+                  if (value == "0" || value == null) {
+                    debugPrint("游客登陆");
+                    Global.state = UserState.visitor;
+                    Global.profile = Data(name: "游客", id: "0");
+                    Get.offAll(const App());
+                  } else {
+                    debugPrint("10");
+                    Global.state = UserState.user;
+                    Get.offAll(const App());
+                  }
+                },
+              );
             } // 去首页路由
             ,
           ),
@@ -102,11 +118,6 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
             height: height,
             fit: BoxFit.fill,
           ),
-          // Image.network(
-          //   'https://images.leotian.cn/blog/2019-04-29-102020.jpg',
-          //   width: width,
-          //   height: height,
-          //   fit: BoxFit.fill,
         ],
       ),
     );
@@ -116,7 +127,7 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
   Widget buidIndefot(int index) {
     return AnimatedContainer(
       margin: const EdgeInsets.all(15),
-      height: 18,
+      height: 18.h,
       width: _currIndex == index ? 25 : 18,
       duration: const Duration(milliseconds: 200),
       decoration: BoxDecoration(

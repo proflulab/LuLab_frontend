@@ -5,7 +5,6 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/cache_util.dart';
-import '../../common/utils/dialog_util.dart';
 import '../../controller/quick_login_controller.dart';
 
 import '../sign_in/login_phone.dart';

@@ -1,15 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lab/common/entitys/data_user_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 
 import '/pages/app.dart';
 import '/pages/start/first_guide.dart';
-import '/pages/sign_in/login_phone.dart';
 
 import '../../controller/quick_login_controller.dart';
 
@@ -25,7 +25,6 @@ class _LoadingPageState extends State<LoadingPage> {
   Future<int> readData2() async {
     var prefs = await SharedPreferences.getInstance();
     var result2 = prefs.getInt('isFirstSign');
-
     return result2 ?? 0;
   }
 
@@ -35,7 +34,7 @@ class _LoadingPageState extends State<LoadingPage> {
       color: Colors.white,
       child: Image.asset(
         'assets/images/StartPage.png',
-        fit: BoxFit.contain,
+        fit: BoxFit.fill,
       ),
     );
   }
@@ -47,20 +46,15 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void countDown() {
+    debugPrint("陆向谦实验室启动....");
     var _duration = const Duration(seconds: 3);
-
-    if (kDebugMode) {
-      print("陆向谦实验室启动....");
-    }
-
-    Future<int> result2 = readData2();
     Storage.getBool(storageDeviceAlreadyOpenKey).then(
-      (guide) async {
-        //判断是否是第一次启动app
-        if (guide == true) {
+      (value) async {
+        // 判断是否是第一次启动app
+        if (value == true || value == null) {
           Future.delayed(_duration, _firstguide);
         } else {
-          Future.delayed(_duration, _firstsign);
+          Future.delayed(_duration, _app);
         }
       },
     );
@@ -70,11 +64,25 @@ class _LoadingPageState extends State<LoadingPage> {
     Get.offAll(const FirstGuidePage());
   }
 
-  void _firstsign() {
-    Get.offAll(const PhoneLogin());
-  }
-
   void _app() {
-    Get.offAll(const App());
+    Storage.getString(storaTokenKey).then(
+      (value) async {
+        // 判断是否是第一次启动app
+        if (value == "0" || value == null) {
+          debugPrint("游客登陆");
+          Global.state = UserState.visitor;
+          Global.profile = Data(
+              name: "游客",
+              id: "0",
+              imgUrl:
+                  'https://tse1-mm.cn.bing.net/th/id/OIP-C.gg1NSgs5KwP71Nh0qlvflQHaFL?w=230&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7');
+          Get.offAll(const App());
+        } else {
+          debugPrint("10");
+          Global.state = UserState.user;
+          Get.offAll(const App());
+        }
+      },
+    );
   }
 }

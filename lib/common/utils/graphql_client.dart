@@ -10,7 +10,7 @@ class GraphqlClientUtil {
   static client() {
     final _httpLink = HttpLink("${Api.tencentUrl} /graphql");
 
-    if (Global.token == '无') {
+    if (Global.token == '0') {
       return GraphQLClient(
         cache: GraphQLCache(),
         link: _httpLink,
@@ -41,10 +41,8 @@ class GraphqlClientUtil {
     QueryResult result = await client().query(options);
 
     if (result.hasException) {
-      if (kDebugMode) {
-        print(result.exception.toString());
-      }
       toastInfo(msg: '数据请求错误');
+      debugPrint(result.exception.toString());
       //throw result.exception;
     }
 

@@ -33,9 +33,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations
                 .delegate, //一定要配置,否则iphone手机长按编辑框有白屏卡着的bug出现
           ],
-          supportedLocales: const [
-            Locale('zh', 'CN'), //设置语言为中文
-          ],
+          supportedLocales: const [Locale('zh', 'CN')], //设置语言为中文
           title: "陆向谦实验室",
           theme: mDefaultTheme,
           initialRoute: AppPages.iNITIAL,

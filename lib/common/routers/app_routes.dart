@@ -14,4 +14,6 @@ abstract class AppRoutes {
   static const course = '/course';
 
   static const agreement = '/agreement';
+
+  static const start = '/start';
 }

@@ -31,7 +31,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   late LatestDirectCourse _course;
   List<LatestDirectCourseElement> _focusData4 = [];
   late EasyRefreshController _controller;
-  int _count = 1;
+  final int _count = 1;
   //final double _coursesW = PFspace.screenW * PFr.silver - PFspace.screenMargin;
 
   DateTime now = DateTime.now();
@@ -112,7 +112,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
   _loadCourse() async {
     LatestDirectCourseRequest variables = LatestDirectCourseRequest(
       mode: "1",
-      authorId: Global.profile.id!,
+      authorId: Global.profile.id ?? "0",
       limit: 3,
       skip: 0,
     );
@@ -138,7 +138,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
       footer: EasyrefreshWidget.getFooter(),
       controller: _controller,
       onRefresh: () async {
-        await Future.delayed(Duration(seconds: 2), () {
+        await Future.delayed(const Duration(seconds: 2), () {
           print('onRefresh');
           _handleCourse();
           _loadIfoData();
@@ -150,7 +150,7 @@ class _GatherState extends State<Gather> with AutomaticKeepAliveClientMixin {
         });
       },
       onLoad: () async {
-        await Future.delayed(Duration(seconds: 2), () {
+        await Future.delayed(const Duration(seconds: 2), () {
           print('onLoad');
           // setState(() {
           //   _count += 0;
