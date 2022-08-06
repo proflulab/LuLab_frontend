@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
+import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 //import '../../common/values/values.dart';
@@ -65,6 +66,23 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   }
 
   @override
+  Widget _button() {
+    return ElevatedButton(
+      onPressed: () {},
+      child: const Text('立即开通会员开通，观看全部课程'),
+    );
+  }
+
+  Widget _Vedio() {
+    return Container(
+        height: 300.h,
+        width: 1.sw,
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Text('立即开通会员开通，观看全部课程'),
+        ));
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -75,14 +93,17 @@ class _CourseIndexPageState extends State<CourseIndexPage>
       ),
       body: Column(
         children: [
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: FijkView(
-              color: Colors.black,
-              player: player,
-              fit: FijkFit.ar16_9,
-            ),
-          ),
+          Global.state == UserState.member
+              ? _Vedio()
+              : AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: FijkView(
+                    color: Colors.black,
+                    player: player,
+                    fit: FijkFit.ar16_9,
+                  ),
+                ),
+
           // tab栏
           _buildTabNavigation(),
           Flexible(
