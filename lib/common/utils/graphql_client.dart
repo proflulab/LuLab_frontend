@@ -39,7 +39,14 @@ class GraphqlClientUtil {
     );
 
     QueryResult result = await client().query(options);
-
+    if (result.isLoading) {
+      debugPrint("正在加载");
+      //return const Center(child: CircularProgressIndicator());
+    }
+    if (result.data == null) {
+      debugPrint("没有数据");
+      //return const Center(child: Text('Countries not found. /n找不到国家列表'));
+    }
     if (result.hasException) {
       toastInfo(msg: '数据请求错误');
       debugPrint(result.exception.toString());

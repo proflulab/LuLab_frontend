@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:blur/blur.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_dialog/flutter_custom_dialog.dart';
 import 'package:get/get.dart';
@@ -47,7 +44,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _handleSignIn();
+
     NetState.network();
   }
 
@@ -67,35 +64,6 @@ class _AppState extends State<App> {
         }
       }
     }).catchError(print);
-  }
-
-  // 执行登录操作
-  _handleSignIn() async {
-    var user = Storage.getJson(storageUserProfileKey);
-    user.then(
-      (guide) async {
-        var user1 = Data.fromJson(json.decode(guide!));
-        if (kDebugMode) {
-          print(user1.name);
-        }
-        try {
-          UserLogin userProfile = await GqlUserAPI.login(
-            context: context,
-            variables: Loginrequest(
-              name: user1.name ?? "",
-              password: user1.password ?? "",
-            ),
-          );
-          Global.saveProfile(userProfile.data!);
-          getNotice();
-        } catch (e) {
-          if (kDebugMode) {
-            print("===========登录报错内容===============");
-            print(e);
-          }
-        }
-      },
-    );
   }
 
   @override
