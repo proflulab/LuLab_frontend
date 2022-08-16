@@ -1,17 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
+import '/pages/users/users_set_user.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-
-import '/pages/users/users_set_user.dart';
+import '../sign_in/login_phone.dart';
 import 'notice_page.dart';
 import 'users_set.dart';
-import '../sign_in/login_phone.dart';
-import 'package:get/get.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -33,50 +32,89 @@ class _UsersPageState extends State<UsersPage>
     //double screenheight = MediaQuery.of(context).size.height;
 //个人头像，姓名，等级
     Widget _username() {
-      return Container(
-        //height: 100,
-        margin: const EdgeInsets.all(20),
-        //color: Colors.white,
-        child: ListTile(
-          leading: SizedBox(
-              width: 100.w,
-              height: 100.w,
-              child: ClipOval(
-                  child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-          title: Text(
-            Global.profile.name!,
-            style: const TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.black,
-              fontSize: 28,
+      return Column(children: [
+        Container(
+          //height: 100,
+          margin: const EdgeInsets.all(20),
+          //color: Colors.white,
+          child: ListTile(
+            leading: SizedBox(
+                width: 100.w,
+                height: 100.w,
+                child: ClipOval(
+                    child: CachedImage.typeLaod(Global.profile.imgUrl!))),
+            title: Text(
+              Global.profile.name!,
+              style: const TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 28,
+              ),
             ),
-          ),
-          subtitle: const Text(
-            "功勋学员",
-            style: TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.green,
-              fontSize: 14,
+            subtitle: const Text(
+              "功勋学员",
+              style: TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.green,
+                fontSize: 14,
+              ),
             ),
-          ),
-          contentPadding: const EdgeInsets.all(10),
-          trailing: const Text(
-            "个人主页",
-            style: TextStyle(
-              fontFamily: 'MyFontStyle',
-              color: Colors.black,
-              fontSize: 18,
+            contentPadding: const EdgeInsets.all(10),
+            trailing: const Text(
+              "个人主页",
+              style: TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.black,
+                fontSize: 18,
+              ),
             ),
+            onTap: () {
+              if (kDebugMode) {
+                print("进入个人主页");
+              }
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const SetUser()));
+            },
           ),
-          onTap: () {
-            if (kDebugMode) {
-              print("进入个人主页");
-            }
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => const SetUser()));
-          },
         ),
-      );
+        Container(
+          height: 90,
+          padding: const EdgeInsets.only(left: 15, right: 5),
+          margin: const EdgeInsets.only(left: 30, right: 30),
+          decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+                bottomRight: Radius.circular(15),
+                bottomLeft: Radius.circular(15),
+              ),
+              color: Colors.green),
+          child: Center(
+            child: ListTile(
+              title: const Text(
+                "开通鹿向前实验室会员",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+              // subtitle: const Text("优享&大特权"),
+              // contentPadding: const EdgeInsets.all(10),
+              trailing: const Chip(
+                avatar: null,
+                label: Text("开通"),
+              ),
+              onTap: () {
+                if (kDebugMode) {
+                  print("进入会员详情");
+                }
+              },
+            ),
+          ),
+        ),
+      ]);
     }
 
     Widget _login() {
@@ -154,36 +192,45 @@ class _UsersPageState extends State<UsersPage>
     //   );
     // }
 
-    // Widget _adv() {
-    //   return Container(
-    //     height: 90,
-    //     padding: const EdgeInsets.only(left: 15, right: 5),
-    //     margin: const EdgeInsets.only(left: 30, right: 30),
-    //     decoration: const BoxDecoration(
-    //         shape: BoxShape.rectangle,
-    //         borderRadius: BorderRadius.only(
-    //           topLeft: Radius.circular(15),
-    //           topRight: Radius.circular(15),
-    //         ),
-    //         color: Colors.green),
-    //     child: Center(
-    //       child: ListTile(
-    //         title: const Text("VIP"),
-    //         subtitle: const Text("优享&大特权"),
-    //         contentPadding: const EdgeInsets.all(10),
-    //         trailing: const Chip(
-    //           avatar: null,
-    //           label: Text("立即加入"),
-    //         ),
-    //         onTap: () {
-    //           if (kDebugMode) {
-    //             print("进入会员详情");
-    //           }
-    //         },
-    //       ),
-    //     ),
-    //   );
-    // }
+    Widget _adv() {
+      return Container(
+        height: 90,
+        padding: const EdgeInsets.only(left: 15, right: 5),
+        margin: const EdgeInsets.only(left: 30, right: 30),
+        decoration: const BoxDecoration(
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+              bottomRight: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+            ),
+            color: Colors.green),
+        child: Center(
+          child: ListTile(
+            title: const Text(
+              "开通鹿向前实验室会员",
+              style: TextStyle(
+                fontFamily: 'MyFontStyle',
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+            // subtitle: const Text("优享&大特权"),
+            // contentPadding: const EdgeInsets.all(10),
+            trailing: const Chip(
+              avatar: null,
+              label: Text("开通"),
+            ),
+            onTap: () {
+              if (kDebugMode) {
+                print("进入会员详情");
+              }
+            },
+          ),
+        ),
+      );
+    }
 
     // Widget _jumpbutton() {
     //   return Container(
