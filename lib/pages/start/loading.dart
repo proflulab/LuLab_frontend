@@ -11,8 +11,6 @@ import '../../common/values/values.dart';
 import '/pages/app.dart';
 import '/pages/start/first_guide.dart';
 
-import '../../controller/quick_login_controller.dart';
-
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
 
@@ -21,7 +19,6 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  QuickLoginController qc = Get.put(QuickLoginController());
   Future<int> readData2() async {
     var prefs = await SharedPreferences.getInstance();
     var result2 = prefs.getInt('isFirstSign');
