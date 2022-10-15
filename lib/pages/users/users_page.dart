@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../controller/quick_login_controller.dart';
 import '/pages/users/users_set_user.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
@@ -120,77 +121,73 @@ class _UsersPageState extends State<UsersPage>
     Widget _login() {
       return Column(
         children: [
-          Container(
-            height: 20,
-          ),
+          const SizedBox(height: 40),
           Center(
             child: Container(
               //margin: EdgeInsets.all(PFspace.screenMargin),
               // color: Colors.blue,
-              width: 190,
-              height: 30,
+              width: 0.5.sw,
+              height: 60.h,
               child: MaterialButton(
                   child: const Text(
-                    '登录/注册',
+                    '登陆/注册',
                   ),
                   onPressed: () {
-                    Get.to(PhoneLogin());
+                    //QuickLoginController qc = Get.put(QuickLoginController());
+                    //Get.to(const PhoneLogin());
+                    Get.toNamed("/start");
                   }
                   //
                   ),
               decoration: const BoxDecoration(
-//背景
                 color: Colors.orange,
-                //设置四周圆角 角度
                 borderRadius: BorderRadius.all(Radius.circular(18.0)),
-                //设置四周边框
               ),
             ),
           ),
-          Container(
-            height: 8,
-          ),
+          const SizedBox(height: 15),
           const Center(
             child: Text(
-              "登录/注册可解锁完整功能",
+              "登陆/注册可解锁完整功能",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
-          )
+          ),
+          const SizedBox(height: 20),
         ],
       );
     }
 
-    // Widget _dynamicdata() {
-    //   return SizedBox(
-    //     height: 60,
-    //     width: screenwidth,
-    //     child: Row(
-    //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //       children: [
-    //         ContactItem(
-    //           count: '56',
-    //           title: '动态',
-    //           onPressed: () {},
-    //         ),
-    //         ContactItem(
-    //           count: '78',
-    //           title: '关注',
-    //           onPressed: () {},
-    //         ),
-    //         ContactItem(
-    //           count: '90',
-    //           title: '粉丝',
-    //           onPressed: () {},
-    //         ),
-    //         ContactItem(
-    //           count: '12min',
-    //           title: '累计学习',
-    //           onPressed: () {},
-    //         ),
-    //       ],
-    //     ),
-    //   );
-    // }
+    Widget _dynamicdata() {
+      return SizedBox(
+        height: 60,
+        width: 1.sw,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ContactItem(
+              count: '56',
+              title: '动态',
+              onPressed: () {},
+            ),
+            ContactItem(
+              count: '78',
+              title: '关注',
+              onPressed: () {},
+            ),
+            ContactItem(
+              count: '90',
+              title: '粉丝',
+              onPressed: () {},
+            ),
+            ContactItem(
+              count: '12min',
+              title: '累计学习',
+              onPressed: () {},
+            ),
+          ],
+        ),
+      );
+    }
 
     Widget _adv() {
       return Container(
@@ -463,8 +460,8 @@ class _UsersPageState extends State<UsersPage>
       body: ListView(
         children: <Widget>[
           Global.state == UserState.member ? _username() : _login(),
-          // _dynamicdata(),
-          // _adv(),
+          //_dynamicdata(),
+          _adv(),
           // _jumpbutton(),
           const Divider(),
           _contact(),

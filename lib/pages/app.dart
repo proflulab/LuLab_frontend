@@ -1,11 +1,5 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/api/apis.dart';
-import '../../common/entitys/entitys.dart';
-import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -34,36 +28,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _handleSignIn();
     NetState.network();
-  }
-
-  // 执行登录操作
-  _handleSignIn() async {
-    var user = Storage.getJson(storageUserProfileKey);
-    user.then(
-      (guide) async {
-        var user1 = Data.fromJson(json.decode(guide!));
-        if (kDebugMode) {
-          print(user1.name);
-        }
-        try {
-          UserLogin userProfile = await GqlUserAPI.login(
-            context: context,
-            variables: Loginrequest(
-              name: user1.name ?? "",
-              password: user1.password ?? "",
-            ),
-          );
-          Global.saveProfile(userProfile.data!);
-        } catch (e) {
-          if (kDebugMode) {
-            print("===========登录报错内容===============");
-            print(e);
-          }
-        }
-      },
-    );
   }
 
   @override

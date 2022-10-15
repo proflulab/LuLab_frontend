@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1b25fdc-30ee-448f-8bf2-a77ea9d8e0b2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/common/middlewares/click_login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/pay_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/pay_util.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/index_controller.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/global/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/global/global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/routers/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/app_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_comment.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home_gather.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/search/search2.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_details.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_item_widget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/infor_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/source/sourcepage.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_cartoon.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_view.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/voice/voice_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/start/loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start/loading.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

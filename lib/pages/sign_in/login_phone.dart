@@ -48,9 +48,11 @@ class _PhoneLoginState extends State<PhoneLogin> {
   @override
   void initState() {
     super.initState();
+
     if (qc.verifyEnable) {
       _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
         _quickLogin(event.token);
+        debugPrint(event.token);
       });
       qc.quickLogin();
     }

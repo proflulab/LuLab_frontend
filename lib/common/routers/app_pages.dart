@@ -7,8 +7,8 @@ import '../../pages/sign_up/register.dart';
 import '../../pages/start/loading.dart';
 import '../../pages/users/users_agreement.dart';
 
-import '../middlewares/router_auth.dart';
-import '../middlewares/user_start.dart';
+// import '../middlewares/router_auth.dart';
+import '../middlewares/click_login.dart';
 
 part 'app_routes.dart';
 
@@ -28,7 +28,7 @@ class AppPages {
     GetPage(name: AppRoutes.agreement, page: () => const Agreement()),
 
     GetPage(name: AppRoutes.start, page: () => const App(), middlewares: [
-      UserStartMiddleware(priority: 2),
+      ClickLoginMiddleware(priority: 2),
     ]),
 
     /// 中间件
