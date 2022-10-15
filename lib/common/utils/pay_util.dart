@@ -1,6 +1,6 @@
+import 'package:fluwx/fluwx.dart';
 import 'package:get/get.dart';
 import 'package:tobias/tobias.dart' as tobias;
-import 'package:fluwx/fluwx.dart';
 
 import '../widget/toast.dart';
 
@@ -58,7 +58,6 @@ class PayUtil {
 //接口参数
 //https://opendocs.alipay.com/open/02e7gq?scene=20
 
-
 // app_id=2014072300007148&charset=UTF-8&version=1.0&timestamp=2016-07-01 08:08:08&method=alipay.trade.app.pay&notify_url=https://api.**.com/pay_receive_notify.html&sign_type=RSA2&sign=ERITJKEIJKJHKKKKKKKHJEREEEEEEEEEEE&version=1.0&biz_content=
 // {
 //   "body":"对一笔交易的具体描述信息。如果是多种商品，请将商品描述字符串累加传给body。",
@@ -70,32 +69,27 @@ class PayUtil {
 //   "tips":"测试一笔支付"
 //   }
 
-
-
-
 //iOS/Runner/Info.plist内配置
 //放在最高级的dict内
 
-
-	// <key>LSApplicationQueriesSchemes</key>
-	// <array>
-	// 	<string>https</string>
-	// 	<string>http</string>
-	// 	<string>weixin</string>
-	// 	<string>weixinULAPI</string>
-  //       <string>alipays</string>
-	// </array>
-	// <key>CFBundleURLTypes</key>
-	// <array>
-  //       <dict>
-  //           <key>CFBundleTypeRole</key>
-  //           <string>Editor</string>
-  //           <key>CFBundleURLName</key>
-  //           <string>alipay</string>
-  //           <key>CFBundleURLSchemes</key>
-  //           <array>
-  //               <string>tobiasexample</string>
-  //           </array>
-  //       </dict>
-  //   </array>
-
+// <key>LSApplicationQueriesSchemes</key>
+// <array>
+// 	<string>https</string>
+// 	<string>http</string>
+// 	<string>weixin</string>
+// 	<string>weixinULAPI</string>
+//       <string>alipays</string>
+// </array>
+// <key>CFBundleURLTypes</key>
+// <array>
+//       <dict>
+//           <key>CFBundleTypeRole</key>
+//           <string>Editor</string>
+//           <key>CFBundleURLName</key>
+//           <string>alipay</string>
+//           <key>CFBundleURLSchemes</key>
+//           <array>
+//               <string>tobiasexample</string>
+//           </array>
+//       </dict>
+//   </array>
