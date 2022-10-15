@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
-import '../../common/utils/utils.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
+import '../../common/utils/utils.dart';
 
 /// 课程
 class GqlCourseAPI {
@@ -81,19 +81,6 @@ class GqlCourseAPI {
       variables: variables.toJson(),
     );
     return DetailMainCourse.fromJson(response.data!);
-  }
-
-  // 课程预约查询
-  static Future<LatestUserCourseRecord> orderCourseInfo({
-    required BuildContext context,
-    required LatestUserCourseRecordRequest variables,
-  }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
-      context: context,
-      schema: SchemaHome.gqlLatestUserCourseRecordList,
-      variables: variables.toJson(),
-    );
-    return LatestUserCourseRecord.fromJson(response.data!);
   }
 
   // 课程详情（目录，播放链接等）

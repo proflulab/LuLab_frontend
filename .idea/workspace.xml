@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1b25fdc-30ee-448f-8bf2-a77ea9d8e0b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/middlewares/click_login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/global/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/global/global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/routers/app_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/app_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/start/loading.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/start/loading.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/apis.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/apis.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_comment.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_course.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_home.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_sourse.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_voice.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/speech_to_text.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_allrecord_data.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_comment_add.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_comment_request.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_record_add.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_sourse_infor.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_voice.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/graphql.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_voice.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/notice_page.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

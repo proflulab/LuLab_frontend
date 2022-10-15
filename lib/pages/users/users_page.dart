@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../controller/quick_login_controller.dart';
 import '/pages/users/users_set_user.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
-import '../sign_in/login_phone.dart';
-import 'notice_page.dart';
 import 'users_set.dart';
 
 class UsersPage extends StatefulWidget {
@@ -154,38 +151,6 @@ class _UsersPageState extends State<UsersPage>
           ),
           const SizedBox(height: 20),
         ],
-      );
-    }
-
-    Widget _dynamicdata() {
-      return SizedBox(
-        height: 60,
-        width: 1.sw,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ContactItem(
-              count: '56',
-              title: '动态',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '78',
-              title: '关注',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '90',
-              title: '粉丝',
-              onPressed: () {},
-            ),
-            ContactItem(
-              count: '12min',
-              title: '累计学习',
-              onPressed: () {},
-            ),
-          ],
-        ),
       );
     }
 
@@ -417,23 +382,6 @@ class _UsersPageState extends State<UsersPage>
         //backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(
-            onPressed: () {
-              if (kDebugMode) {
-                print("跳转到通知");
-                print(Global.profile.id);
-              }
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const NoticePage(),
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.notifications_active_outlined,
-              color: Colors.green,
-            ),
-          ),
           IconButton(
             onPressed: () {
               if (kDebugMode) {
