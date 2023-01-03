@@ -8,4 +8,7 @@ class Api {
 
   //腾讯云服务器api
   static const String tencentUrl = 'http://43.154.186.113:7001';
+
+  //oracle服务器api
+  static const String oracleUrl = 'http://144.24.84.85:7009';
 }
