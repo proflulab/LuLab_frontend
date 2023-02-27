@@ -1,0 +1,263 @@
+PODS:
+  - add_2_calendar (0.0.1):
+    - Flutter
+  - alarm_calendar (0.0.5):
+    - Flutter
+  - audioplayers (0.0.1):
+    - Flutter
+  - battery_plus (1.0.0):
+    - Flutter
+  - BIJKPlayer (0.7.16)
+  - connectivity_plus (0.0.1):
+    - Flutter
+    - ReachabilitySwift
+  - device_info_plus (0.0.1):
+    - Flutter
+  - fijkplayer (0.10.1):
+    - BIJKPlayer (~> 0.7.16)
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_custom_dialog (0.0.1):
+    - Flutter
+  - flutter_local_notifications (0.0.1):
+    - Flutter
+  - flutter_tts (0.0.1):
+    - Flutter
+  - flutter_vibrate (0.0.1):
+    - Flutter
+  - flutter_voice_processor (1.0.6):
+    - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - fluwx (0.0.1):
+    - Flutter
+    - OpenWeChatSDK (~> 1.9.9)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.6.1)
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - ios-voice-processor (1.0.3)
+  - NTESBaseComponent (1.7)
+  - NTESQuickPass (3.3.7):
+    - NTESBaseComponent
+  - "OpenWeChatSDK (1.9.9+1)"
+  - package_info_plus (0.4.5):
+    - Flutter
+  - path_provider_ios (0.0.1):
+    - Flutter
+  - "permission_handler (5.1.0+2)":
+    - Flutter
+  - Porcupine-iOS (2.1.2):
+    - ios-voice-processor (~> 1.0.2)
+  - porcupine_flutter (2.1.6):
+    - Flutter
+    - Porcupine-iOS (~> 2.1.2)
+  - quickpass_yidun_flutter (0.0.1):
+    - Flutter
+    - NTESQuickPass (= 3.3.7)
+  - r_get_ip (0.0.1):
+    - Flutter
+  - ReachabilitySwift (5.0.0)
+  - share_plus (0.0.1):
+    - Flutter
+  - shared_preferences_ios (0.0.1):
+    - Flutter
+  - smart_auth (0.0.1):
+    - Flutter
+  - speech_to_text (0.0.1):
+    - Flutter
+    - Try
+  - sqflite (0.0.2):
+    - Flutter
+    - FMDB (>= 2.7.5)
+  - text_to_speech (0.0.1):
+    - Flutter
+  - Toast (4.0.0)
+  - tobias (0.0.1):
+    - Flutter
+  - TOCropViewController (2.6.1)
+  - Try (2.1.1)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - video_player_avfoundation (0.0.1):
+    - Flutter
+  - wakelock (0.0.1):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - add_2_calendar (from `.symlinks/plugins/add_2_calendar/ios`)
+  - alarm_calendar (from `.symlinks/plugins/alarm_calendar/ios`)
+  - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
+  - battery_plus (from `.symlinks/plugins/battery_plus/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - fijkplayer (from `.symlinks/plugins/fijkplayer/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_custom_dialog (from `.symlinks/plugins/flutter_custom_dialog/ios`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
+  - flutter_vibrate (from `.symlinks/plugins/flutter_vibrate/ios`)
+  - flutter_voice_processor (from `.symlinks/plugins/flutter_voice_processor/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - fluwx (from `.symlinks/plugins/fluwx/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
+  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+  - porcupine_flutter (from `.symlinks/plugins/porcupine_flutter/ios`)
+  - quickpass_yidun_flutter (from `.symlinks/plugins/quickpass_yidun_flutter/ios`)
+  - r_get_ip (from `.symlinks/plugins/r_get_ip/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
+  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
+  - smart_auth (from `.symlinks/plugins/smart_auth/ios`)
+  - speech_to_text (from `.symlinks/plugins/speech_to_text/ios`)
+  - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - text_to_speech (from `.symlinks/plugins/text_to_speech/ios`)
+  - tobias (from `.symlinks/plugins/tobias/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - BIJKPlayer
+    - FMDB
+    - ios-voice-processor
+    - NTESBaseComponent
+    - NTESQuickPass
+    - OpenWeChatSDK
+    - Porcupine-iOS
+    - ReachabilitySwift
+    - Toast
+    - TOCropViewController
+    - Try
+
+EXTERNAL SOURCES:
+  add_2_calendar:
+    :path: ".symlinks/plugins/add_2_calendar/ios"
+  alarm_calendar:
+    :path: ".symlinks/plugins/alarm_calendar/ios"
+  audioplayers:
+    :path: ".symlinks/plugins/audioplayers/ios"
+  battery_plus:
+    :path: ".symlinks/plugins/battery_plus/ios"
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  fijkplayer:
+    :path: ".symlinks/plugins/fijkplayer/ios"
+  Flutter:
+    :path: Flutter
+  flutter_custom_dialog:
+    :path: ".symlinks/plugins/flutter_custom_dialog/ios"
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_tts:
+    :path: ".symlinks/plugins/flutter_tts/ios"
+  flutter_vibrate:
+    :path: ".symlinks/plugins/flutter_vibrate/ios"
+  flutter_voice_processor:
+    :path: ".symlinks/plugins/flutter_voice_processor/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  fluwx:
+    :path: ".symlinks/plugins/fluwx/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
+  path_provider_ios:
+    :path: ".symlinks/plugins/path_provider_ios/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+  porcupine_flutter:
+    :path: ".symlinks/plugins/porcupine_flutter/ios"
+  quickpass_yidun_flutter:
+    :path: ".symlinks/plugins/quickpass_yidun_flutter/ios"
+  r_get_ip:
+    :path: ".symlinks/plugins/r_get_ip/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
+  shared_preferences_ios:
+    :path: ".symlinks/plugins/shared_preferences_ios/ios"
+  smart_auth:
+    :path: ".symlinks/plugins/smart_auth/ios"
+  speech_to_text:
+    :path: ".symlinks/plugins/speech_to_text/ios"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/ios"
+  text_to_speech:
+    :path: ".symlinks/plugins/text_to_speech/ios"
+  tobias:
+    :path: ".symlinks/plugins/tobias/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  video_player_avfoundation:
+    :path: ".symlinks/plugins/video_player_avfoundation/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  add_2_calendar: e9d68636aed37fb18e12f5a3d74c2e0589487af0
+  alarm_calendar: 3deb03b6373714e199db21e059a0d00a0d3b7f4c
+  audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
+  battery_plus: 7851ab482c336dd101ae735dc9363f01e1223c7c
+  BIJKPlayer: 4c5d66e5cb99ae5bade6f22a4fcc031722a81c64
+  connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
+  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  fijkplayer: 5ecf78e80cb97eed64cc170b094a4f691d9b9691
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_custom_dialog: c0d222a3c35af5b57581e54ef8784c94037cd2ec
+  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
+  flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
+  flutter_vibrate: 9f4c2ab57008965f78969472367c329dd77eb801
+  flutter_voice_processor: afb59b604d99397a1ccf15c935ac8f2c2327f09f
+  fluttertoast: eb263d302cc92e04176c053d2385237e9f43fad0
+  fluwx: f14acb5301bc227adc092f6052cefac56b2100f2
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  image_cropper: 60c2789d1f1a78c873235d4319ca0c34a69f2d98
+  image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
+  ios-voice-processor: 65b25a8db69ea25ffba0eeef37bae71a982f34cc
+  NTESBaseComponent: b1cdf3ac1e0b303dbba9d7099ddaff7960acdb03
+  NTESQuickPass: f990fa3b2a53aea789de10a5d1b7706f25d19eb8
+  OpenWeChatSDK: ea48e9db20645f78128db9091893910280b8e4b1
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
+  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
+  Porcupine-iOS: 884f40edadf4b72fac6fae768d3247bdb48841f7
+  porcupine_flutter: b1f28f08b9da19bcba7adb38e6231b55ebdd0558
+  quickpass_yidun_flutter: cfa170c5f6d88fdecd04cc4353f6c736cf5476ee
+  r_get_ip: 5b7a232114eacec8935eef83b7400d8d63baba48
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
+  shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
+  smart_auth: 4bedbc118723912d0e45a07e8ab34039c19e04f2
+  speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  text_to_speech: 8669facdbd5b72d2939b810493defd991634f6f9
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  tobias: 2aded9b83e3663b907360a800d8e3c13284f25c5
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  Try: 5ef669ae832617b3cee58cb2c6f99fb767a4ff96
+  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
+  video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
+  wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
+  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
+
+PODFILE CHECKSUM: aa7478eb1b7e889af4b325531b624821999b822d
+
+COCOAPODS: 1.11.3

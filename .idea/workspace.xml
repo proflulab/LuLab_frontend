@@ -5,27 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b98054-f2e8-4920-8e97-1acc33a78ff3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/services/api_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/services/api_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/sound_manage.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/shayuxuan/.android/avd/Pixel_XL_API_31.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ios/Podfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pubspec.lock" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pubspec.yaml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2J83qjlYzYSr3vbhoN8GWYetIOQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -38,16 +47,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="dart.analysis.tool.window.force.activate" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="show.migrate.to.gradle.popup" value="false" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
@@ -85,6 +98,8 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
