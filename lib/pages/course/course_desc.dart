@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 
-// import 'course_detail.dart';
+// import 'data_course_detail.dart';
 
 // // class CourseDescPage extends StatelessWidget {
 // //   final title;

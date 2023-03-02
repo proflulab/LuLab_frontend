@@ -4,6 +4,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import 'course/course_page.dart';
+import 'course/test.dart';
 import 'users/users_page.dart';
 
 class App extends StatefulWidget {

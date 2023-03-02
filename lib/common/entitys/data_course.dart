@@ -1,74 +1,87 @@
+// To parse this JSON data, do
+//
+//     final queryCourse = queryCourseFromJson(jsonString);
+
 import 'dart:convert';
 
-PostsData postsDataFromJson(String str) => PostsData.fromJson(json.decode(str));
+QueryCourse queryCourseFromJson(String str) => QueryCourse.fromJson(json.decode(str));
 
-String postsDataToJson(PostsData data) => json.encode(data.toJson());
+String queryCourseToJson(QueryCourse data) => json.encode(data.toJson());
 
-class PostsData {
-  PostsData({
-    required this.latestCourse,
+class QueryCourse {
+  QueryCourse({
+    required this.course,
   });
 
-  final List<LatestCourse> latestCourse;
+  List<Course> course;
 
-  factory PostsData.fromJson(Map<String, dynamic> json) => PostsData(
-        latestCourse: List<LatestCourse>.from(
-            json["latestCourse"].map((x) => LatestCourse.fromJson(x))),
-      );
+  factory QueryCourse.fromJson(Map<String, dynamic> json) => QueryCourse(
+    course: List<Course>.from(json["course"].map((x) => Course.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "latestCourse": List<dynamic>.from(latestCourse.map((x) => x.toJson())),
-      };
+    "course": List<dynamic>.from(course.map((x) => x.toJson())),
+  };
 }
 
-class LatestCourse {
-  LatestCourse({
+class Course {
+  Course({
     required this.id,
     required this.title,
-    required this.classTags,
-    required this.description,
+    required this.imageUrl,
     required this.author,
-    required this.authorTags,
-    required this.category,
-    required this.mode,
-    required this.videoUrl,
-    required this.duration,
+    required this.description,
   });
 
-  final String id;
-  final String title;
-  final String classTags;
-  final String description;
-  final String author;
-  final String authorTags;
-  final String category;
-  final String mode;
-  final String videoUrl;
-  final int duration;
+  String id;
+  String title;
+  String imageUrl;
+  String author;
+  String description;
 
-  factory LatestCourse.fromJson(Map<String, dynamic> json) => LatestCourse(
-        id: json["_id"],
-        title: json["title"],
-        classTags: json["classTags"],
-        description: json["description"],
-        author: json["author"],
-        authorTags: json["authorTags"],
-        category: json["category"],
-        mode: json["mode"],
-        videoUrl: json["videoUrl"],
-        duration: json["duration"],
-      );
+  factory Course.fromJson(Map<String, dynamic> json) => Course(
+    id: json["_id"],
+    title: json["title"],
+    imageUrl: json["imageUrl"],
+    author: json["author"],
+    description: json["description"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
-        "title": title,
-        "classTags": classTags,
-        "description": description,
-        "author": author,
-        "authorTags": authorTags,
-        "category": category,
-        "mode": mode,
-        "videoUrl": videoUrl,
-        "duration": duration,
-      };
+    "_id": id,
+    "title": title,
+    "imageUrl": imageUrl,
+    "author": author,
+    "description": description,
+  };
+}
+
+
+
+CourseRequest courseRequestFromJson(String str) => CourseRequest.fromJson(json.decode(str));
+
+String courseRequestToJson(CourseRequest data) => json.encode(data.toJson());
+
+class CourseRequest {
+  CourseRequest({
+    required this.categoryId,
+    required this.page,
+    required this.limit,
+  });
+
+  String categoryId;
+  int page;
+  int limit;
+
+  factory CourseRequest.fromJson(Map<String, dynamic> json) => CourseRequest(
+    categoryId: json["category_id"],
+    page: json["page"],
+    limit: json["limit"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "category_id": categoryId,
+    "page": page,
+    "limit": limit,
+  };
 }

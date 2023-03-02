@@ -1,48 +1,28 @@
 // import 'dart:convert';
 //
-// MainCourseRequest mainCourseRequestFromJson(String str) =>
-//     MainCourseRequest.fromJson(json.decode(str));
+// PostsData postsDataFromJson(String str) => PostsData.fromJson(json.decode(str));
 //
-// String mainCourseRequestToJson(MainCourseRequest data) =>
-//     json.encode(data.toJson());
+// String postsDataToJson(PostsData data) => json.encode(data.toJson());
 //
-// class MainCourseRequest {
-//   MainCourseRequest({
-//     required this.data,
+// class PostsData {
+//   PostsData({
+//     required this.latestCourse,
 //   });
 //
-//   final MainData data;
+//   final List<LatestCourse> latestCourse;
 //
-//   factory MainCourseRequest.fromJson(Map<String, dynamic> json) =>
-//       MainCourseRequest(
-//         data: MainData.fromJson(json),
+//   factory PostsData.fromJson(Map<String, dynamic> json) => PostsData(
+//         latestCourse: List<LatestCourse>.from(
+//             json["latestCourse"].map((x) => LatestCourse.fromJson(x))),
 //       );
 //
 //   Map<String, dynamic> toJson() => {
-//         "data": data.toJson(),
+//         "latestCourse": List<dynamic>.from(latestCourse.map((x) => x.toJson())),
 //       };
 // }
 //
-// class MainData {
-//   MainData({
-//     required this.latestMainCourse,
-//   });
-//
-//   final List<LatestMainCourse> latestMainCourse;
-//
-//   factory MainData.fromJson(Map<String, dynamic> json) => MainData(
-//         latestMainCourse: List<LatestMainCourse>.from(
-//             json["latestMainCourse"].map((x) => LatestMainCourse.fromJson(x))),
-//       );
-//
-//   Map<String, dynamic> toJson() => {
-//         "latestMainCourse":
-//             List<dynamic>.from(latestMainCourse.map((x) => x.toJson())),
-//       };
-// }
-//
-// class LatestMainCourse {
-//   LatestMainCourse({
+// class LatestCourse {
+//   LatestCourse({
 //     required this.id,
 //     required this.title,
 //     required this.classTags,
@@ -52,8 +32,6 @@
 //     required this.category,
 //     required this.mode,
 //     required this.videoUrl,
-//     required this.imgUrl,
-//     required this.firstCourseId,
 //     required this.duration,
 //   });
 //
@@ -66,12 +44,9 @@
 //   final String category;
 //   final String mode;
 //   final String videoUrl;
-//   final String imgUrl;
-//   final String firstCourseId;
 //   final int duration;
 //
-//   factory LatestMainCourse.fromJson(Map<String, dynamic> json) =>
-//       LatestMainCourse(
+//   factory LatestCourse.fromJson(Map<String, dynamic> json) => LatestCourse(
 //         id: json["_id"],
 //         title: json["title"],
 //         classTags: json["classTags"],
@@ -81,8 +56,6 @@
 //         category: json["category"],
 //         mode: json["mode"],
 //         videoUrl: json["videoUrl"],
-//         imgUrl: json["imgUrl"],
-//         firstCourseId: json["firstCourseId"],
 //         duration: json["duration"],
 //       );
 //
@@ -96,8 +69,6 @@
 //         "category": category,
 //         "mode": mode,
 //         "videoUrl": videoUrl,
-//         "imgUrl": imgUrl,
-//         "firstCourseId": firstCourseId,
 //         "duration": duration,
 //       };
 // }

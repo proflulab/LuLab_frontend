@@ -1,5 +1,6 @@
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:lab/common/entitys/data_course_link.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -13,7 +14,7 @@ import '../../common/widget/widgets.dart';
 
 class CourseIndexPage extends StatefulWidget {
   const CourseIndexPage({Key? key, required this.product}) : super(key: key);
-  final LatestDirectCourseElement product;
+  final Course product;
 
   @override
   _CourseIndexPageState createState() => _CourseIndexPageState();
@@ -21,16 +22,23 @@ class CourseIndexPage extends StatefulWidget {
 
 class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
-  late var dirId = widget.product.id;
-  late var vUrl = widget.product.videoUrl;
+  late var courseId = widget.product.id;
+  late var detailId = "63c4dc110e2c7e3a6c0c4c9b";
+  // late var vUrl = _focusData2.link;
 
   // 声明tabcontroller和tab标题
   late TabController _tabController;
 
   List tabs = ["简介", "评价"];
 
-  late DetailCourseResponse _detailCourse;
-  List<DetailCoursel> _focusData = [];
+  late QueryCourseDetail _queryCourseDetail;
+  List<CourseDetail> _focusData = [];
+
+  late QueryCourseLink _queryCourseLink;
+  late CourseLink _focusData2;
+
+  late QueryCourseCatalogue _queryCourseCatalogue;
+  List<CourseCatalogue> _focusData3 = [];
 
   int _selectIndex = 0;
 
@@ -41,18 +49,34 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
     PFwakelock.passState(1);
-    _handleCourse();
+    _loadCourseDetail();
+    _loadCourseCatalogue();
+    _loadCourseLink();
   }
 
-  // 读取所有课程数据
-  _handleCourse() async {
-    _detailCourse = await GqlCourseAPI.detailsCourseInfo(
-        variables: DetailCourseRequest(dirId: dirId), context: context);
+  // 读取课程数据
+  _loadCourseDetail() async {
+    _queryCourseDetail = await GqlCourseAPI.courseDetail(
+        variables: CourseDetailRequest(courseId: courseId), context: context);
     setState(() {
-      _focusData = _detailCourse.detailCourse;
-      if (_focusData.isNotEmpty) {
-        player.setDataSource(_focusData[0].videoUrl, autoPlay: true);
-      }
+      _focusData = _queryCourseDetail.courseDetail;
+    });
+  }
+  //课程目录请求
+  _loadCourseCatalogue() async {
+    _queryCourseCatalogue = await GqlCourseAPI.courseCatalogue(
+        variables: CourseCatalogueRequest(courseId: courseId), context: context);
+    setState(() {
+      _focusData3 = _queryCourseCatalogue.courseCatalogue;
+    });
+  }
+  //课程链接请求
+  _loadCourseLink() async {
+    _queryCourseLink = await GqlCourseAPI.courseLink(
+        variables: CourseLinkRequest(detailId: detailId), context: context);
+    setState(() {
+      _focusData2 = _queryCourseLink.courseLink;
+      player.setDataSource(_focusData2.link, autoPlay: true);
     });
   }
 
@@ -133,7 +157,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         contentPadding: EdgeInsets.only(left: 0.w, right: 0.w),
                         leading: CircleAvatar(
                             backgroundImage:
-                                NetworkImage(widget.product.imgUrl)),
+                                NetworkImage(_focusData2.link)),
                         title: Text(
                           widget.product.author,
                           style: const TextStyle(
@@ -142,7 +166,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                               fontWeight: FontWeight.w600),
                         ),
                         subtitle: Text(
-                          widget.product.authorTags,
+                          widget.product.description,
                           style:
                               const TextStyle(fontSize: 16, color: Colors.grey),
                         ),
@@ -201,21 +225,22 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         ),
                       ),
                       SizedBox(
-                        height: (114.h + 15) * _focusData.length,
+                        height: (114.h + 15) * _focusData3.length,
                         child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _focusData.length,
+                          itemCount: _focusData3.length,
                           itemBuilder: (context, index) {
-                            if (_focusData.isNotEmpty) {
+                            if (_focusData3.isNotEmpty) {
                               return InkWell(
                                 onTap: () async {
                                   setState(() {
                                     _selectIndex = index;
-                                    vUrl = _focusData[index].videoUrl;
+                                    detailId = _focusData3[index].id;
+                                    _loadCourseLink();
                                   });
                                   await player.reset();
                                   player.setDataSource(
-                                      _focusData[index].videoUrl,
+                                      _focusData2.link,
                                       autoPlay: true);
                                 },
                                 child: Container(
