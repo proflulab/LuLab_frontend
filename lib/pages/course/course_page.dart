@@ -1,6 +1,6 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh_strong/easy_refresh.dart';
 
 import 'package:wakelock/wakelock.dart';
 
@@ -21,29 +21,25 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage>
     with AutomaticKeepAliveClientMixin {
-
   late QueryCourseCategory _queryCourseCategory;
-  List<CourseCategory> _focusData = [];
+  List<CourseCategory> _categoryData = [];
 
   late QueryCourse _queryCourse;
-  List<Course> _focusData2 = [];
+  List<Course> _courseData = [];
 
   //第一次课程list请求的id
-  String _categoryId = "63c4d7e691dc5226f0a9fe83";
+  String _categoryId = "640183320bc99db3f462e59a";
 
   //监控选择的分类
   int _selectIndex = 0;
 
   late EasyRefreshController _controllerCourse;
 
-  //第一次请求获取课程个数
-  final int _limit = 5;
+  //每页课程个数
+  final int _limit = 3;
 
   //刷新请求获取的页数
   int _page = 1;
-
-  // //底部刷新请求个数
-  // final int _countDown = 12;
 
   //课程类别框宽：课程详情框宽=0.293：0.707，Sliver Ratio
   final double _selectW = PFspace.screenW * (1 - PFr.silver) - 12.w;
@@ -53,37 +49,40 @@ class _CoursePageState extends State<CoursePage>
   void initState() {
     super.initState();
     _controllerCourse = EasyRefreshController();
-    _loadCourse(_page,_limit);
     _loadCourseCategory();
+    _loadCourse(_categoryId, _limit, _page);
   }
 
-  //获取课程分类
+  //获取课程分类列表
   _loadCourseCategory() async {
     _queryCourseCategory = await GqlCourseAPI.courseCategory(context: context);
 
     if (mounted) {
       setState(() {
-        _focusData = _queryCourseCategory.courseCategory;
-        print(_focusData);
+        _categoryData = _queryCourseCategory.courseCategory;
       });
     }
   }
 
-  //获取主课程信息
-  _loadCourse(int limit, int page) async {
+  ///获取主课列表信息
+  /// [_id]为课程id
+  /// [page] 为请求的页面，如[page]为2，则说明请求第二页的数据
+  /// [limit]限制每次请求页数的数量
+  _loadCourse(String _id, int limit, int page) async {
     CourseRequest variables = CourseRequest(
-      categoryId: _categoryId,
+      categoryId: _id,
       limit: limit,
       page: page,
     );
-    _queryCourse = await GqlCourseAPI.course(
-        variables: variables, context: context);
+    _queryCourse =
+        await GqlCourseAPI.course(variables: variables, context: context);
 
     if (mounted) {
       setState(
         () {
-          _focusData2 = _queryCourse.course;
-          print(_focusData2);
+          page == 1
+              ? _courseData = _queryCourse.course
+              : _courseData.addAll(_queryCourse.course);
         },
       );
     }
@@ -96,20 +95,21 @@ class _CoursePageState extends State<CoursePage>
       child: Column(
         children: [
           SizedBox(
-            height: _focusData.length * _selectW * PFr.golden,
+            height: _categoryData.length * _selectW * PFr.golden,
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: _focusData.length,
+              itemCount: _categoryData.length,
               itemBuilder: (context, index) {
-                if (_focusData.isNotEmpty) {
+                if (_categoryData.isNotEmpty) {
                   return InkWell(
                     onTap: () {
                       setState(() {
                         _selectIndex = index;
-                        _categoryId = _focusData[index].id;
+                        _categoryId = _categoryData[index].id;
                         _page = 1;
+                        _courseData = [];
                         _controllerCourse.finishLoad(success: false);
-                        _loadCourse(_page,_limit);
+                        _loadCourse(_categoryId, _limit, _page);
                       });
                     },
                     child: Row(
@@ -152,7 +152,7 @@ class _CoursePageState extends State<CoursePage>
                           ),
                           child: Center(
                             child: Text(
-                              _focusData[index].title,
+                              _categoryData[index].title,
                               style: _selectIndex == index
                                   ? TextStyle(
                                       fontFamily: 'MyFontStyle',
@@ -187,7 +187,7 @@ class _CoursePageState extends State<CoursePage>
                   height: _selectW * PFr.golden,
                   decoration: BoxDecoration(
                     color: PFc.backgroundPrimary,
-                    borderRadius: _selectIndex == _focusData.length - 1
+                    borderRadius: _selectIndex == _categoryData.length - 1
                         ? const BorderRadius.only(
                             topRight: Radius.circular(10),
                           )
@@ -219,13 +219,15 @@ class _CoursePageState extends State<CoursePage>
       header: EasyrefreshWidget.getHeader(),
       footer: EasyrefreshWidget.getFooter(),
       onRefresh: () async {
-        _loadCourse(_page,_limit);
+        _courseData = [];
+        _page = 1;
+        _loadCourse(_categoryId, _limit, _page);
         await Future.delayed(
           const Duration(seconds: 1),
           () {
             if (mounted) {
               // setState(() {
-              //   _count = _countFirst;
+              //   _count = _count;
               // });
               _controllerCourse.resetLoadState();
             }
@@ -233,16 +235,17 @@ class _CoursePageState extends State<CoursePage>
         );
       },
       onLoad: () async {
-        _loadCourse(_page,_limit);
+        _loadCourse(_categoryId, _limit, _page + 1);
         await Future.delayed(
           const Duration(seconds: 1),
           () {
             if (mounted) {
               setState(() {
-                _page = _page + 1;
+                _page += 1;
               });
-             int _allCount = _page * _limit;
-              _controllerCourse.finishLoad(noMore: _allCount > _focusData2.length);
+              int _allCount = _page * _limit;
+              _controllerCourse.finishLoad(
+                  noMore: _allCount > _courseData.length);
             }
           },
         );
@@ -254,14 +257,14 @@ class _CoursePageState extends State<CoursePage>
               var _imageHeight =
                   _coursesW * PFr.silver414 - 2 * PFspace.screenMargin;
               var _imageWidht = _imageHeight * PFr.ratio3_4;
-              if (_focusData2.isNotEmpty) {
+              if (_courseData.isNotEmpty) {
                 return InkWell(
                   onTap: () async {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => CourseIndexPage(
-                          product: _focusData2[index],
+                          product: _courseData[index],
                         ),
                       ),
                     );
@@ -283,8 +286,8 @@ class _CoursePageState extends State<CoursePage>
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
-                            child:
-                                CachedImage.typeLaod(_focusData2[index].imageUrl),
+                            child: CachedImage.typeLaod(
+                                _courseData[index].imageUrl),
                           ),
                         ),
                         SizedBox(width: PFspace.ruleS),
@@ -294,25 +297,25 @@ class _CoursePageState extends State<CoursePage>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               PFtext.text1(
-                                text: _focusData2[index].title,
+                                text: _courseData[index].title,
                                 fontSize: PFfont.s32,
                               ),
                               SizedBox(height: 8.h),
                               PFtext.text2(
-                                text: _focusData2[index].description,
+                                text: _courseData[index].description,
                                 fontSize: PFfont.s32,
                               ),
                               // Row(
                               //   children: [
                               //     PFtext.text2(
-                              //       text: _focusData2[index].author,
+                              //       text: _courseData[index].author,
                               //       //.substring(0, 7),
                               //       color: PFc.textSecondary,
                               //     ),
                               //     const SizedBox(width: 10),
                               //     Flexible(
                               //       child: PFtext.text3(
-                              //         text: _focusData2[index].authorTags,
+                              //         text: _courseData[index].authorTags,
                               //         color: PFc.textSecondary,
                               //       ),
                               //     ),
@@ -330,8 +333,7 @@ class _CoursePageState extends State<CoursePage>
                 return const Loading();
               }
             },
-            childCount:
-                _page > _focusData2.length ? _focusData2.length : _page,
+            childCount: _courseData.length,
           ),
         ),
       ],

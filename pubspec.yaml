@@ -34,7 +34,7 @@ dependencies:
   speech_to_text: ^5.4.2
   flutter_tts: ^3.3.2
   path_provider: ^2.0.9
-  flutter_easyrefresh: ^2.2.1
+  flutter_easyrefresh_strong: ^2.2.1
   avatar_glow: ^2.0.2 #用于按钮周围的发光效果
   permission_handler: ^8.3.0
   flutter_echart: ^1.0.0
@@ -66,7 +66,7 @@ dependencies:
   readmore: ^2.1.0
   keyboard_dismisser: ^2.0.1
   flutter_local_notifications: ^9.4.1
-  pinput: ^2.2.7
+  pinput: ^2.2.31
   wakelock: ^0.6.1+2
   fzregex: ^2.0.0
   textfield_search: ^0.10.0
