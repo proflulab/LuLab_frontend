@@ -8,6 +8,7 @@ query courseCategory{
   }
 }
 ''';
+
   //课程列表查询course
   //请求参考：
   // {"category_id": "63c4d7e691dc5226f0a9fe83","page": 1,"limit": 10}

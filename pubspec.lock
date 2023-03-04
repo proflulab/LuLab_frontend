@@ -438,14 +438,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.3.0"
-  flutter_easyrefresh:
+  flutter_easyrefresh_strong:
     dependency: "direct main"
     description:
-      name: flutter_easyrefresh
-      sha256: "5d161ee5dcac34da9065116568147d742dd25fb9bff3b10024d9054b195087ad"
+      name: flutter_easyrefresh_strong
+      sha256: fc826b76d5b93e364352580c40a413fc52d1b6eb23bcccf835d3442af99f3889
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.2"
+    version: "2.2.1"
   flutter_echart:
     dependency: "direct main"
     description:
