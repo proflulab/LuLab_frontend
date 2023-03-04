@@ -25,7 +25,7 @@ class GqlCourseAPI {
     required BuildContext context,
     required CourseRequest variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
+    QueryResult response = await GraphqlClientUtil.query(
       context: context,
       schema: SchemaCourse.gqlCourse,
       variables: variables.toJson(),

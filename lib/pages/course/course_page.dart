@@ -21,7 +21,6 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage>
     with AutomaticKeepAliveClientMixin {
-
   late QueryCourseCategory _queryCourseCategory;
   List<CourseCategory> _focusData = [];
 
@@ -35,11 +34,15 @@ class _CoursePageState extends State<CoursePage>
   int _selectIndex = 0;
 
   late EasyRefreshController _controllerCourse;
+  // 滚动控制器
+  final ScrollController _scrollController = ScrollController();
+  // 是否还有
+  bool _hasMore = true;
 
   //第一次请求获取课程个数
   final int _limit = 5;
 
-  //刷新请求获取的页数
+  //刷新请求获取第几页
   int _page = 1;
 
   // //底部刷新请求个数
@@ -53,7 +56,7 @@ class _CoursePageState extends State<CoursePage>
   void initState() {
     super.initState();
     _controllerCourse = EasyRefreshController();
-    _loadCourse(_page,_limit);
+    _loadCourse(_limit, _page);
     _loadCourseCategory();
   }
 
@@ -76,18 +79,41 @@ class _CoursePageState extends State<CoursePage>
       limit: limit,
       page: page,
     );
-    _queryCourse = await GqlCourseAPI.course(
-        variables: variables, context: context);
+    _queryCourse =
+        await GqlCourseAPI.course(variables: variables, context: context);
 
     if (mounted) {
       setState(
         () {
-          _focusData2 = _queryCourse.course;
-          print(_focusData2);
+          if (_page > 0) {
+            _focusData2.addAll(_queryCourse.course);
+          } else {
+            _focusData2 = _queryCourse.course;
+          }
+          // _focusData2 = _queryCourse.course;
+          // print(_focusData2);
         },
       );
     }
   }
+  //
+  // // 获取数据列表
+  // void _getData() async{
+  //   if(_hasMore){
+  //     setState(() {
+  //       // 页数累加
+  //       _page = _page + 1;
+  //       _loadCourse(_limit, _page);
+  //     });
+  //     int _allCount = _page * _limit;
+  //     if(_allCount > _focusData2.length){
+  //       setState(() {
+  //         // 关闭加载
+  //         _hasMore = false;
+  //       });
+  //     }
+  //   }
+  // }
 
   //左课程栏目
   Widget _select() {
@@ -109,7 +135,7 @@ class _CoursePageState extends State<CoursePage>
                         _categoryId = _focusData[index].id;
                         _page = 1;
                         _controllerCourse.finishLoad(success: false);
-                        _loadCourse(_page,_limit);
+                        _loadCourse(_limit,_page);
                       });
                     },
                     child: Row(
@@ -219,7 +245,7 @@ class _CoursePageState extends State<CoursePage>
       header: EasyrefreshWidget.getHeader(),
       footer: EasyrefreshWidget.getFooter(),
       onRefresh: () async {
-        _loadCourse(_page,_limit);
+        _loadCourse(_limit,_page);
         await Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -233,7 +259,7 @@ class _CoursePageState extends State<CoursePage>
         );
       },
       onLoad: () async {
-        _loadCourse(_page,_limit);
+        _loadCourse(_limit,_page);
         await Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -241,8 +267,9 @@ class _CoursePageState extends State<CoursePage>
               setState(() {
                 _page = _page + 1;
               });
-             int _allCount = _page * _limit;
-              _controllerCourse.finishLoad(noMore: _allCount > _focusData2.length);
+              int _allCount = _page * _limit;
+              _controllerCourse.finishLoad(
+                  noMore: _allCount > _focusData2.length);
             }
           },
         );
@@ -283,24 +310,24 @@ class _CoursePageState extends State<CoursePage>
                             borderRadius: BorderRadius.all(
                               Radius.circular(10.r),
                             ),
-                            child:
-                                CachedImage.typeLaod(_focusData2[index].imageUrl),
+                            child: CachedImage.typeLaod(
+                                _focusData2[index].imageUrl),
                           ),
                         ),
                         SizedBox(width: PFspace.ruleS),
                         Flexible(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               PFtext.text1(
                                 text: _focusData2[index].title,
                                 fontSize: PFfont.s32,
                               ),
                               SizedBox(height: 8.h),
-                              PFtext.text2(
+                              PFtext.text3(
                                 text: _focusData2[index].description,
-                                fontSize: PFfont.s32,
+                                fontSize: PFfont.s36,
                               ),
                               // Row(
                               //   children: [
@@ -330,8 +357,7 @@ class _CoursePageState extends State<CoursePage>
                 return const Loading();
               }
             },
-            childCount:
-                _page > _focusData2.length ? _focusData2.length : _page,
+            childCount: _page > _focusData2.length ? _focusData2.length : _page,
           ),
         ),
       ],

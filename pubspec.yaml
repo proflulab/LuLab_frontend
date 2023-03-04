@@ -66,7 +66,7 @@ dependencies:
   readmore: ^2.1.0
   keyboard_dismisser: ^2.0.1
   flutter_local_notifications: ^9.4.1
-  pinput: ^2.2.7
+  pinput: ^2.2.31
   wakelock: ^0.6.1+2
   fzregex: ^2.0.0
   textfield_search: ^0.10.0

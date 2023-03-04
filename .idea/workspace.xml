@@ -5,31 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b98054-f2e8-4920-8e97-1acc33a78ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course1.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_catalogue.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_category.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_detail.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_link.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/course/test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/api/gql_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course_allmain.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_allmain.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course_details.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/dcourse_details.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course_sort.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course_sortdetails.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_courseorder.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_courseorder.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_mincourse_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_mincourse_detail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_mincourse_detail2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_mincourse_detail2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/entitys.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/services/api_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/services/api_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/utils/graphql_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_catalogue.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_catalogue.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_desc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_desc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/course/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +62,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
