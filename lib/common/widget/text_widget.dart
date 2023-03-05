@@ -61,7 +61,7 @@ class PFtext {
     );
   }
 
-  //常规字体——
+  //常规字体一，主要用在正文
   static Widget text3({
     //required BuildContext context,
     required String text,
@@ -70,6 +70,33 @@ class PFtext {
     bool softWrap = false,
     String font = '',
     Color? color = PFc.textPrimary,
+    double? fontSize,
+    FontWeight? fontWeight = FontWeight.normal,
+  }) {
+    return Text(
+      text,
+      textAlign: TextAlign.left,
+      //textDirection: TextDirection.rtl,
+      softWrap: softWrap,
+      overflow: overflow,
+      maxLines: maxLines,
+      style: TextStyle(
+        fontFamily: font,
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
+  //常规字体二，主要用在副文章
+  static Widget text4({
+    //required BuildContext context,
+    required String text,
+    int maxLines = 2,
+    TextOverflow overflow = TextOverflow.ellipsis,
+    bool softWrap = false,
+    String font = '',
+    Color? color = PFc.textSecondary,
     double? fontSize,
     FontWeight? fontWeight = FontWeight.normal,
   }) {

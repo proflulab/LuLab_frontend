@@ -47,8 +47,8 @@ query courseDetail($course_id:String!){
   //请求参考：
   // {"courseId":"ni12a2hbc332hai3da3ia1213"}
   static const String gqlCourseCatalogue = r'''
-  query courseCatalogue($courseId:String!){
-  courseCatalogue(courseId:$courseId){
+ query courseCatalogue($course_id:String!){
+  courseCatalogue(course_id:$course_id){
     _id
     title
     duration
@@ -63,7 +63,6 @@ query courseDetail($course_id:String!){
 query courseLink($detail_id:String!){
   courseLink(detail_id:$detail_id){
     link
-    state
   }
 }
 ''';

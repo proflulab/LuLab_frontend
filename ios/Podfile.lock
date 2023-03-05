@@ -5,9 +5,13 @@ PODS:
     - Flutter
   - audioplayers (0.0.1):
     - Flutter
+  - auto_orientation (0.0.1):
+    - Flutter
   - battery_plus (1.0.0):
     - Flutter
   - BIJKPlayer (0.7.16)
+  - brightness_volume (0.0.1):
+    - Flutter
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
@@ -95,7 +99,9 @@ DEPENDENCIES:
   - add_2_calendar (from `.symlinks/plugins/add_2_calendar/ios`)
   - alarm_calendar (from `.symlinks/plugins/alarm_calendar/ios`)
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
+  - auto_orientation (from `.symlinks/plugins/auto_orientation/ios`)
   - battery_plus (from `.symlinks/plugins/battery_plus/ios`)
+  - brightness_volume (from `.symlinks/plugins/brightness_volume/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - fijkplayer (from `.symlinks/plugins/fijkplayer/ios`)
@@ -148,8 +154,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/alarm_calendar/ios"
   audioplayers:
     :path: ".symlinks/plugins/audioplayers/ios"
+  auto_orientation:
+    :path: ".symlinks/plugins/auto_orientation/ios"
   battery_plus:
     :path: ".symlinks/plugins/battery_plus/ios"
+  brightness_volume:
+    :path: ".symlinks/plugins/brightness_volume/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
@@ -215,8 +225,10 @@ SPEC CHECKSUMS:
   add_2_calendar: e9d68636aed37fb18e12f5a3d74c2e0589487af0
   alarm_calendar: 3deb03b6373714e199db21e059a0d00a0d3b7f4c
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
+  auto_orientation: 2941c44ebe5c3d41016001597ab03e81a92a26ce
   battery_plus: 7851ab482c336dd101ae735dc9363f01e1223c7c
   BIJKPlayer: 4c5d66e5cb99ae5bade6f22a4fcc031722a81c64
+  brightness_volume: e63139ebe38e642937d5cd286b58c9a9890f1725
   connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   fijkplayer: 5ecf78e80cb97eed64cc170b094a4f691d9b9691

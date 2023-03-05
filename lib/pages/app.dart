@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
+import '../common/widget/video_player_page.dart';
 import 'course/course_page.dart';
 import 'course/test.dart';
 import 'users/users_page.dart';

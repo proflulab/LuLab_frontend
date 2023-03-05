@@ -27,20 +27,16 @@ class QueryCourseLink {
 class CourseLink {
   CourseLink({
     required this.link,
-    required this.state,
   });
 
   String link;
-  String state;
 
   factory CourseLink.fromJson(Map<String, dynamic> json) => CourseLink(
     link: json["link"],
-    state: json["state"],
   );
 
   Map<String, dynamic> toJson() => {
     "link": link,
-    "state": state,
   };
 }
 CourseLinkRequest courseLinkRequestFromJson(String str) => CourseLinkRequest.fromJson(json.decode(str));

@@ -48,9 +48,8 @@ class _CoursePageState extends State<CoursePage>
   @override
   void initState() {
     super.initState();
-    _controllerCourse = EasyRefreshController();
     _loadCourseCategory();
-    _loadCourse(_categoryId, _limit, _page);
+    _controllerCourse = EasyRefreshController();
   }
 
   //获取课程分类列表
@@ -60,6 +59,9 @@ class _CoursePageState extends State<CoursePage>
     if (mounted) {
       setState(() {
         _categoryData = _queryCourseCategory.courseCategory;
+        _categoryId = _categoryData[0].id;
+        print(_categoryId);
+        _loadCourse(_categoryId, _limit, _page);
       });
     }
   }
@@ -313,29 +315,13 @@ class _CoursePageState extends State<CoursePage>
                             children: [
                               PFtext.text1(
                                 text: _courseData[index].title,
-                                fontSize: PFfont.s32,
+                                fontSize: PFfont.s36,
                               ),
-                              SizedBox(height: 8.h),
-                              PFtext.text2(
+                              SizedBox(height: 20.h),
+                              PFtext.text4(
                                 text: _courseData[index].description,
-                                fontSize: PFfont.s32,
+                                fontSize: PFfont.c24,
                               ),
-                              // Row(
-                              //   children: [
-                              //     PFtext.text2(
-                              //       text: _courseData[index].author,
-                              //       //.substring(0, 7),
-                              //       color: PFc.textSecondary,
-                              //     ),
-                              //     const SizedBox(width: 10),
-                              //     Flexible(
-                              //       child: PFtext.text3(
-                              //         text: _courseData[index].authorTags,
-                              //         color: PFc.textSecondary,
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
                               Flexible(child: Container(width: 10.w)),
                             ],
                           ),

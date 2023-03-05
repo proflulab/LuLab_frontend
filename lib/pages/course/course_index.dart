@@ -1,10 +1,12 @@
 import 'package:fijkplayer/fijkplayer.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lab/common/entitys/data_course_link.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
+import '../../common/utils/expandText.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 //import '../../common/values/values.dart';
@@ -23,22 +25,24 @@ class CourseIndexPage extends StatefulWidget {
 class _CourseIndexPageState extends State<CourseIndexPage>
     with TickerProviderStateMixin {
   late var courseId = widget.product.id;
-  late var detailId = "63c4dc110e2c7e3a6c0c4c9b";
-  // late var vUrl = _focusData2.link;
+  late var description = widget.product.description;
+  late var detailId = '';
+  late var addtime =  PFTime.client(
+      1678001746, "ymd");
 
   // 声明tabcontroller和tab标题
   late TabController _tabController;
 
-  List tabs = ["简介", "评价"];
+  List tabs = ["简介"];
 
   late QueryCourseDetail _queryCourseDetail;
-  List<CourseDetail> _focusData = [];
+  List<CourseDetail> _detailData = [];
 
   late QueryCourseLink _queryCourseLink;
-  late CourseLink _focusData2;
+  late CourseLink _linkData;
 
   late QueryCourseCatalogue _queryCourseCatalogue;
-  List<CourseCatalogue> _focusData3 = [];
+  List<CourseCatalogue> _catalogueData = [];
 
   int _selectIndex = 0;
 
@@ -51,7 +55,6 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     PFwakelock.passState(1);
     _loadCourseDetail();
     _loadCourseCatalogue();
-    _loadCourseLink();
   }
 
   // 读取课程数据
@@ -59,7 +62,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     _queryCourseDetail = await GqlCourseAPI.courseDetail(
         variables: CourseDetailRequest(courseId: courseId), context: context);
     setState(() {
-      _focusData = _queryCourseDetail.courseDetail;
+      _detailData = _queryCourseDetail.courseDetail;
     });
   }
   //课程目录请求
@@ -67,16 +70,18 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     _queryCourseCatalogue = await GqlCourseAPI.courseCatalogue(
         variables: CourseCatalogueRequest(courseId: courseId), context: context);
     setState(() {
-      _focusData3 = _queryCourseCatalogue.courseCatalogue;
+      _catalogueData = _queryCourseCatalogue.courseCatalogue;
+      detailId = _catalogueData[_selectIndex].id;
+      _loadCourseLink(detailId);
     });
   }
   //课程链接请求
-  _loadCourseLink() async {
+  _loadCourseLink(String _id) async {
     _queryCourseLink = await GqlCourseAPI.courseLink(
-        variables: CourseLinkRequest(detailId: detailId), context: context);
+        variables: CourseLinkRequest(detailId: _id), context: context);
     setState(() {
-      _focusData2 = _queryCourseLink.courseLink;
-      player.setDataSource(_focusData2.link, autoPlay: true);
+      _linkData = _queryCourseLink.courseLink;
+      player.setDataSource(_linkData.link, autoPlay: true);
     });
   }
 
@@ -139,7 +144,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                   child: ListView(
                     children: [
                       SizedBox(
-                        height: 10.h,
+                        height: 40.h,
                       ),
                       Text(
                         widget.product.title,
@@ -147,70 +152,45 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         style: const TextStyle(
                           fontFamily: 'MyFontStyle',
                           fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(
-                        height: 10.h,
+                        height: 20.h,
                       ),
-                      ListTile(
-                        contentPadding: EdgeInsets.only(left: 0.w, right: 0.w),
-                        leading: CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(_focusData2.link)),
-                        title: Text(
-                          widget.product.author,
-                          style: const TextStyle(
-                              fontFamily: 'MyFontStyle',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
+                      Row(
+                        children: [
+                          Text(
+                            '作者:${widget.product.author}',
+                            style: const TextStyle(
+                                fontFamily: 'MyFontStyle',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Expanded(
+                            child: SizedBox(), // 中间用Expanded控件
+                          ),
+                          Text(
+                            '$addtime上线',
+                            style: const TextStyle(
+                                fontSize: 12,
+                            color: Colors.grey),
+                          ),
+                          const Expanded(
+                            child: SizedBox(), // 中间用Expanded控件
+                          ),
+                        ],
+                      ),
+                     SizedBox(height: 20.h,),
+                     ExpandText(
+                              text: widget.product.description,
+                              minLines: 1, // 收起状态下最大展示行数
+                              maxLines: 2, // 展开后最大展示行数限制
+                              textStyle: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                              ),
                         ),
-                        subtitle: Text(
-                          widget.product.description,
-                          style:
-                              const TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
-                      ),
-                      // ListTile(
-                      //   leading: Text(
-                      //     _focusData.classTags,
-                      //     style: const TextStyle(
-                      //       color: Colors.grey,
-                      //     ),
-                      //   ),
-                      //   title: Row(
-                      //     children: [
-                      //       Container(
-                      //         margin: const EdgeInsets.symmetric(horizontal: 5),
-                      //         child: const Text(
-                      //           '颠覆式创新',
-                      //           style: TextStyle(color: Colors.grey),
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         margin: const EdgeInsets.symmetric(horizontal: 5),
-                      //         child: const Text(
-                      //           '公司',
-                      //           style: TextStyle(color: Colors.grey),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // Container(
-                      //   margin: const EdgeInsets.symmetric(horizontal: 20),
-                      //   child: Row(
-                      //     children: const [
-                      //       Text(
-                      //         '课程介绍',
-                      //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      Wrap(
-                        children: [Text(widget.product.description)],
-                      ),
                       const Divider(
                         color: Color(0xffe4e4e4),
                       ),
@@ -225,22 +205,22 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                         ),
                       ),
                       SizedBox(
-                        height: (114.h + 15) * _focusData3.length,
+                        height: (114.h + 15) * _catalogueData.length,
                         child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _focusData3.length,
+                          itemCount: _catalogueData.length,
                           itemBuilder: (context, index) {
-                            if (_focusData3.isNotEmpty) {
+                            if (_catalogueData.isNotEmpty) {
                               return InkWell(
                                 onTap: () async {
                                   setState(() {
                                     _selectIndex = index;
-                                    detailId = _focusData3[index].id;
-                                    _loadCourseLink();
+                                    detailId = _catalogueData[index].id;
+                                    _loadCourseLink(_catalogueData[index].id);
                                   });
                                   await player.reset();
                                   player.setDataSource(
-                                      _focusData2.link,
+                                      _linkData.link,
                                       autoPlay: true);
                                 },
                                 child: Container(
@@ -267,7 +247,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                         left: PFspace.screenMargin,
                                         height: 80.h,
                                         width: 1.sw - PFspace.screenMargin * 4,
-                                        text: _focusData[index].title,
+                                        text: _catalogueData[index].title,
                                         color: _selectIndex == index
                                             ? PFc.themeColor
                                             : PFc.textPrimary,
@@ -275,6 +255,37 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                             ? 'MyFontStyle'
                                             : '',
                                       ),
+                                      _catalogueData[index].free ?
+                                      Positioned(
+                                          top: 25.h,
+                                          right: PFspace.screenMargin,
+                                          child:
+                                          Container(
+//设置 child 居中
+                                            alignment: Alignment(0, 0),
+                                            height: 40.h,
+                                            width: 90.w,
+//边框设置
+                                            decoration: const BoxDecoration(
+//背景
+                                              color: Colors.green,
+                                              //设置四周圆角 角度 这里的角度应该为 父Container height 的一半
+                                              borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                                            ),
+                                            child:const Text(
+                                              '试看',
+                                              style: TextStyle(
+                                                fontFamily: 'MyFontStyle',
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),) :
+                                      Positioned(
+                                        top: 25.h,
+                                        right: PFspace.screenMargin,
+                                        child:
+                                        Container(),)
                                     ],
                                   ),
                                 ),
@@ -300,15 +311,15 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   _buildTabNavigation() {
     //使用Material实现阴影效果
     return Material(
-      elevation: 10,
-      shadowColor: Colors.grey[100],
+      // elevation: 10,
+      // shadowColor: Colors.grey[100],
       child: Container(
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 20.w),
-        height: 50.h,
+        height: 90.h,
         color: Colors.white,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _tabBar(),
           ],

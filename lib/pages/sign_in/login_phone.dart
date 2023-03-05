@@ -131,10 +131,21 @@ class _PhoneLoginState extends State<PhoneLogin> {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 100.h),
                   Container(
                     alignment: Alignment.centerRight,
-                    height: 150,
+                    height: 120,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child:
+                      Text('游客登录'),
+                    ),
+                  ),
+                  // SizedBox(height: 100.h),
+                  Container(
+                    alignment: Alignment.centerRight,
+                    height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

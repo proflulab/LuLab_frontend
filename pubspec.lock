@@ -57,6 +57,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.20.1"
+  auto_orientation:
+    dependency: "direct main"
+    description:
+      name: auto_orientation
+      sha256: "838f55e20ec2c717d5f7a8228cd8d21b89a24ca151f7bcdbe4fcbda828b27614"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.2.1"
   avatar_glow:
     dependency: "direct main"
     description:
@@ -129,6 +137,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
+  brightness_volume:
+    dependency: "direct main"
+    description:
+      name: brightness_volume
+      sha256: "543b2ef64130b25a48fb2e49a6c91d60a41cc99c516b9a2021a64e14b0443124"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   cached_network_image:
     dependency: transitive
     description:
@@ -1571,7 +1587,7 @@ packages:
     source: hosted
     version: "2.1.4"
   video_player:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player
       sha256: "86b4fb9e30613ef4ff7e47367bfec4b080ab17205b7d969cd12bbebde49476b1"

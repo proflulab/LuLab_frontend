@@ -37,7 +37,7 @@ class GqlCourseAPI {
     required BuildContext context,
     required CourseDetailRequest variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
+    QueryResult response = await GraphqlClientUtil.query(
       context: context,
       schema: SchemaCourse.gqlCourseDetail,
       variables: variables.toJson(),
@@ -49,7 +49,7 @@ class GqlCourseAPI {
     required BuildContext context,
     required CourseCatalogueRequest variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
+    QueryResult response = await GraphqlClientUtil.query(
       context: context,
       schema: SchemaCourse.gqlCourseCatalogue,
       variables: variables.toJson(),
@@ -61,7 +61,7 @@ class GqlCourseAPI {
     required BuildContext context,
     required CourseLinkRequest variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
+    QueryResult response = await GraphqlClientUtil.query(
       context: context,
       schema: SchemaCourse.gqlCourseLink,
       variables: variables.toJson(),
