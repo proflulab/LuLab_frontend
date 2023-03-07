@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../sign_in/login_phone.dart';
 import '/pages/users/users_set_user.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
@@ -131,8 +132,8 @@ class _UsersPageState extends State<UsersPage>
                   ),
                   onPressed: () {
                     //QuickLoginController qc = Get.put(QuickLoginController());
-                    //Get.to(const PhoneLogin());
-                    Get.toNamed("/start");
+                    Get.to(const PhoneLogin());
+                    // Get.toNamed("/start");
                   }
                   //
                   ),

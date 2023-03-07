@@ -2,10 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:lab/common/entitys/data_login_captcha.dart';
 import 'dart:async';
 
 import 'package:pinput/pinput.dart';
 
+import '../../common/entitys/data_login_verifysend.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
@@ -26,6 +28,12 @@ class _VerificationState extends State<Verification> {
   List data = Get.arguments;
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
+  late  QueryVerifySend _queryVerifySend;
+  late VerifySend _verifyData;
+  late QueryLoginCaptcha _queryLoginCaptcha;
+  late LoginCaptcha _loginCaptcha;
+  var phoneNumber = '1';
+  final verifyCode = '1';
 
   late Timer _timer;
   late String _numbers;
@@ -40,7 +48,8 @@ class _VerificationState extends State<Verification> {
     setState(() {
       _numbers = "+${data[1]}-${data[0]}";
     });
-    codeGet();
+    _loadVerifySend(data[0] , data[1]);
+    // codeGet();
     _enable ? startCountdown(60) : null;
   }
 
@@ -52,16 +61,64 @@ class _VerificationState extends State<Verification> {
     super.dispose();
   }
 
-  //获取验证码
-  void codeGet() async {
-    VerificationCodeRes status =
-        await DioUserAPI.codeSend(context: context, number: _numbers);
-    if (status.status == '0') {
+  ///获取验证码
+  /// [_mobile]为用户输入手机号码
+  /// [_area] 为用户所选国家区号
+  _loadVerifySend(String _mobile , int _area) async {
+    _queryVerifySend =
+    await GqlUserAPI.verifySend(context: context, variables: VerifySendRequest(
+      mobile: _mobile,
+      area: _area,
+    ));
+    setState(
+          () {
+        _verifyData = _queryVerifySend.verifySend;
+        if(kDebugMode){
+          print('发送验证码');
+        }
+      },
+    );
+    if (_verifyData.status == '0') {
+    } else {
+      debugPrint("发送失败");
+      toastInfo(msg: '获取验证码失败，请用其他方式登录！');
+    }
+
+  }
+  ///验证码验证
+  /// [_mobile]为用户输入手机号码
+  /// [_area] 为用户所选国家区号
+  _loadLoginCaptcha(String _mobile , int _area , String _code) async {
+    _queryLoginCaptcha =
+    await GqlUserAPI.loginCaptcha(context: context, variables: LoginCaptchaRequest(
+      mobile: _mobile,
+      area: _area,
+      code: _code,
+    ));
+    setState(
+          () {
+        _loginCaptcha = _queryLoginCaptcha.loginCaptcha;
+        if(kDebugMode){
+          print('验证码验证');
+        }
+      },
+    );
+    if (_loginCaptcha.status == '0') {
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
     }
   }
+  // //获取验证码
+  // void codeGet() async {
+  //   VerificationCodeRes status =
+  //       await DioUserAPI.codeSend(context: context, number: _numbers);
+  //   if (status.status == '0') {
+  //   } else {
+  //     debugPrint("发送失败");
+  //     toastInfo(msg: '获取验证码失败，请用其他方式登录！');
+  //   }
+  // }
 
   //校验验证码、登录
   void codeCheck(String code, String mobile) async {
@@ -182,7 +239,9 @@ class _VerificationState extends State<Verification> {
                     if (kDebugMode) {
                       print("onCompleted的监听：$value");
                     }
-                    codeCheck(value, data[0]);
+                    String a = value.toString();
+                    // codeCheck(value, data[0]);
+                    _loadLoginCaptcha(data[1] , data[0] , a);
                   },
                 ),
               ),
@@ -190,6 +249,7 @@ class _VerificationState extends State<Verification> {
               GestureDetector(
                 onTap: () {
                   _enable ? startCountdown(60) : null;
+                  _loadVerifySend(data[0] , data[1]);
                 },
                 child: Text(
                   _time == 0 ? "重新获取验证码" : "${_time}s后可重新获取验证码",

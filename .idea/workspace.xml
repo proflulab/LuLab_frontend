@@ -5,32 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b98054-f2e8-4920-8e97-1acc33a78ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/3.0x/progress_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/progress_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/other/temp_value.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/utils/expandText.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/utils/video_player_utils.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_bottom.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_center.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_gestures.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_silder.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/widget/video_player_top.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_login_captcha.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_login_verifysend.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course_link.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_course_link.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/hi_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/hi_tab.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/course_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/course/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_password.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_password.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

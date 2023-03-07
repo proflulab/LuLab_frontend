@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
+import 'package:lab/common/entitys/data_login_captcha.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
+import '../entitys/data_login_verifysend.dart';
 
 class GqlUserAPI {
+  //验证码发送
+  static Future<QueryVerifySend> verifySend({
+    required BuildContext context,
+    required VerifySendRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlVerifySend,
+      variables: variables.toJson(),
+    );
+    return QueryVerifySend.fromJson(response.data!);
+  }
+  //验证码发送
+  static Future<QueryLoginCaptcha> loginCaptcha({
+    required BuildContext context,
+    required LoginCaptchaRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlLoginCaptcha,
+      variables: variables.toJson(),
+    );
+    return QueryLoginCaptcha.fromJson(response.data!);
+  }
   // 登录
   static Future<UserLogin> login({
     required BuildContext context,

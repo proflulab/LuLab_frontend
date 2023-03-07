@@ -1,4 +1,38 @@
 class SchemaUser {
+//验证码发送
+//请求数据参考
+//{"mobile":"15110880530","area":86}
+  static const String gqlVerifySend = r'''
+query verifySend($mobile:String!,$area:Int!){
+  verifySend(mobile: $mobile,area: $area){
+    status
+    msg
+  }
+}
+''';
+//验证码验证
+//请求数据参考
+//{"mobile":"15110880530","area":86,"code":"312113"}
+  static const String gqlLoginCaptcha = r'''
+query loginCaptcha($mobile:String!,$area:Int!,$code:String!){
+  loginCaptcha(mobile:$mobile,area:$area,code:$code){
+    status
+    msg
+    token
+    reToken
+    data{
+     name
+     imageUrl
+     sex
+     mobile
+     email
+     wechat
+     description
+    }
+  }
+}
+''';
+
 //用户登录
 //请求数据参考
 //{"name": "shiming","password": "12345678"}

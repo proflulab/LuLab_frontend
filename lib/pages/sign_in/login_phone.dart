@@ -6,6 +6,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lab/common/entitys/data_login_verifysend.dart';
 import 'package:lab/common/values/colors.dart';
 
 import '../../events/quick_login_event.dart';
@@ -33,22 +34,32 @@ class PhoneLogin extends StatefulWidget {
   State<PhoneLogin> createState() => _PhoneLoginState();
 }
 
-class _PhoneLoginState extends State<PhoneLogin> {
+class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
   final QuickLoginController qc = Get.find();
   final SigninController c = Get.put(SigninController());
 
   bool _checked = false;
+  bool v = true;
 
   final TextEditingController _accountController = TextEditingController();
+  final TextEditingController _accountPasswordController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
 
   StreamSubscription? _subscription;
 
   final FocusNode _accountFocusNode = FocusNode();
+  final FocusNode _accountPasswordFocusNode = FocusNode();
+  final FocusNode _passFocusNode = FocusNode();
+
+  // 声明tabcontroller和tab标题
+  late TabController _tabController;
+
+  List tabs = ["验证码登陆","密码登录"];
 
   @override
   void initState() {
     super.initState();
-
+    _tabController = TabController(length: tabs.length, vsync: this);
     if (qc.verifyEnable) {
       _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
         _quickLogin(event.token);
@@ -68,6 +79,29 @@ class _PhoneLoginState extends State<PhoneLogin> {
         });
       }
     });
+    _accountPasswordFocusNode.addListener(() {
+      if (_accountPasswordFocusNode.hasFocus) {
+        setState(() {
+          debugPrint("有账号输入框焦点");
+        });
+      } else {
+        setState(() {
+          debugPrint("失去账号输入框焦点");
+        });
+      }
+    });
+
+    _passFocusNode.addListener(() {
+      if (_passFocusNode.hasFocus) {
+        setState(() {
+          debugPrint("有密码输入框焦点");
+        });
+      } else {
+        setState(() {
+          debugPrint("失去密码输入框焦点");
+        });
+      }
+    });
   }
 
   @override
@@ -75,6 +109,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
     _subscription?.cancel();
     _accountController.dispose();
     _accountFocusNode.dispose();
+    _accountPasswordController.dispose();
+    _accountPasswordFocusNode.dispose();
     super.dispose();
   }
 
@@ -107,6 +143,36 @@ class _PhoneLoginState extends State<PhoneLogin> {
     }
     Get.offAll(const App());
   }
+  // 执行登录操作
+  _handleSignIn() async {
+    if (!PFcheck.duCheckStringLength(_passController.value.text, 6)) {
+      toastInfo(msg: '登录密码不能小于6位');
+      return;
+    }
+
+    Loginrequest variables = Loginrequest(
+      name: _accountPasswordController.value.text,
+      password: _passController.value.text,
+      // password: duSHA256(_passController.value.text),
+    );
+
+    try {
+      UserLogin userProfile = await GqlUserAPI.login(
+        context: context,
+        variables: variables,
+      );
+      Storage.setInt('isFirstSign', Global.isFirstSign);
+      Global.saveProfile(userProfile.data!);
+      Global.saveToken(userProfile.token!);
+    } catch (e) {
+      if (kDebugMode) {
+        print("===========登录报错内容===============");
+        print(e);
+      }
+      return toastInfo(msg: '请正确输入账号、密码！');
+    }
+    Get.offAll(const App());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +183,8 @@ class _PhoneLoginState extends State<PhoneLogin> {
           SystemChannels.textInput.invokeMethod('TextInput.hide');
           //FocusScope.of(context).requestFocus(FocusNode());
           _accountFocusNode.unfocus();
+          _accountPasswordFocusNode.unfocus();
+          _passFocusNode.unfocus();
         },
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
@@ -132,11 +200,12 @@ class _PhoneLoginState extends State<PhoneLogin> {
               child: Column(
                 children: [
                   Container(
-                    alignment: Alignment.centerRight,
-                    height: 120,
+                    alignment: Alignment.centerLeft,
+                    height: 280.h,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Global.state = UserState.user;
+                        Get.offAll(const App());
                       },
                       child:
                       Text('游客登录'),
@@ -145,7 +214,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                   // SizedBox(height: 100.h),
                   Container(
                     alignment: Alignment.centerRight,
-                    height: 100,
+                    height: 100.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -156,52 +225,63 @@ class _PhoneLoginState extends State<PhoneLogin> {
                     ),
                   ),
                   SizedBox(height: 150.h),
-                  PhoneField(
-                    focusNode: _accountFocusNode,
-                    controller: _accountController,
-                    onChanged: (value) {
-                      //c.innumber(value);
-                      setState(() {
-                        value;
-                      });
-                      if (kDebugMode) {
-                        print("你输入的内容为$value");
-                      }
-                    },
-                  ),
+                  _buildTabNavigation(),
                   SizedBox(height: 50.h),
-                  _submitButton(),
-                  SizedBox(height: 50.h),
-                  Center(
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "密码登录",
-                            style: const TextStyle(
-                                fontSize: 18, color: Colors.grey),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                if (!_checked) {
-                                  _dialog(
-                                    () {
-                                      setState(() {
-                                        _checked = !_checked;
-                                      });
-                                      _accountFocusNode.unfocus();
-                                      Get.to(const SignInPage());
-                                    },
-                                  );
-                                } else {
-                                  _accountFocusNode.unfocus();
-                                  Get.to(const SignInPage());
-                                }
-                              },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  SizedBox(height: 400.h,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      _VerifyWay(),
+                      _PasswordWay(),
+                    ],
+                  ),),
+                  SizedBox(height: 30.h),
+                  // PhoneField(
+                  //   focusNode: _accountFocusNode,
+                  //   controller: _accountController,
+                  //   onChanged: (value) {
+                  //     //c.innumber(value);
+                  //     setState(() {
+                  //       value;
+                  //     });
+                  //     if (kDebugMode) {
+                  //       print("你输入的内容为$value");
+                  //     }
+                  //   },
+                  // ),
+                  // SizedBox(height: 50.h),
+                  // _submitButton(),
+                  // SizedBox(height: 50.h),
+                  // Center(
+                  //   child: Text.rich(
+                  //     TextSpan(
+                  //       children: [
+                  //         TextSpan(
+                  //           text: "密码登录",
+                  //           style: const TextStyle(
+                  //               fontSize: 18, color: Colors.grey),
+                  //           recognizer: TapGestureRecognizer()
+                  //             ..onTap = () {
+                  //               if (!_checked) {
+                  //                 _dialog(
+                  //                   () {
+                  //                     setState(() {
+                  //                       _checked = !_checked;
+                  //                     });
+                  //                     _accountFocusNode.unfocus();
+                  //                     Get.to(const SignInPage());
+                  //                   },
+                  //                 );
+                  //               } else {
+                  //                 _accountFocusNode.unfocus();
+                  //                 Get.to(const SignInPage());
+                  //               }
+                  //             },
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   AgreementWidget(
                     checked: _checked,
                     onChanged: (v) {
@@ -276,6 +356,46 @@ class _PhoneLoginState extends State<PhoneLogin> {
     );
   }
 
+  _submitPasswordButton() {
+    return Container(
+      width: 1.sw - 2 * 80.w,
+      height: 96.h,
+      margin: EdgeInsets.symmetric(horizontal: 10.w),
+      child: ElevatedButton(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+            shadowColor: MaterialStateProperty.all(Colors.red),
+            elevation: MaterialStateProperty.all(0),
+            overlayColor: MaterialStateProperty.all(
+                const Color.fromARGB(31, 245, 138, 138)), //字体颜色
+            backgroundColor: MaterialStateProperty.all(
+                _accountPasswordController.value.text.isNotEmpty
+                    ? PFc.themeColor
+                    : const Color.fromARGB(221, 196, 236, 201))),
+        onPressed: () {
+         if (!_checked) {
+            _dialog(
+                  () {
+                    _handleSignIn();
+              },
+            );
+          } else if (_checked) {
+           _handleSignIn();
+          }
+        },
+        child: const Text(
+          "登陆",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 16,
+            textBaseline: TextBaseline.alphabetic,
+          ),
+        ),
+      ),
+    );
+  }
+
   _dialog(onConfirm) {
     return PFDialog.showPopUp(
       onConfirm: onConfirm,
@@ -323,6 +443,94 @@ class _PhoneLoginState extends State<PhoneLogin> {
           ),
         ),
       ),
+    );
+  }
+  _VerifyWay(){
+    return Column(
+      children: [
+        PhoneField(
+          focusNode: _accountFocusNode,
+          controller: _accountController,
+          onChanged: (value) {
+            //c.innumber(value);
+            setState(() {
+              value;
+            });
+            if (kDebugMode) {
+              print("你输入的内容为$value");
+            }
+          },
+        ),
+        SizedBox(height: 50.h),
+        _submitButton(),
+      ],
+    );
+  }
+  _PasswordWay(){
+    return Column(
+      children: [
+        PhoneField(
+          controller: _accountPasswordController,
+          onChanged: (value) {
+            //c.innumber(value);
+            setState(() {
+              value;
+            });
+            if (kDebugMode) {
+              print("你输入的内容为$value");
+            }
+          },
+          focusNode: _accountPasswordFocusNode,
+        ),
+        SizedBox(height: 50.h),
+        PFTextField(
+          focusNode: _passFocusNode,
+          controller: _passController,
+          hintText: "请输入密码",
+          obscureText: v,
+          width: 1.sw - 2 * 80.w,
+          height: 96.h,
+          color: const Color.fromRGBO(233, 234, 237, 1),
+          suffixIcon: IconButton(
+            icon: Center(
+              child: v
+                  ? const Icon(Icons.remove_red_eye_outlined)
+                  : const Icon(Icons.remove_red_eye_rounded),
+            ),
+            color: PFc.themeColor,
+            //padding: const EdgeInsets.all(11.0),
+            alignment: Alignment.bottomCenter,
+            onPressed: () {
+              setState(() {
+                v = !v;
+              });
+            },
+          ),
+        ),
+        SizedBox(height: 50.h),
+        // 登录
+        _submitPasswordButton(),
+      ],
+    );
+  }
+  // tab栏具体实现
+  _buildTabNavigation() {
+    return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _tabBar(),
+          ],
+        );
+  }
+
+  _tabBar() {
+    return HiTab(
+      tabs.map<Tab>((name) {
+        return Tab(
+          text: name,
+        );
+      }).toList(),
+      controller: _tabController,
     );
   }
 }
