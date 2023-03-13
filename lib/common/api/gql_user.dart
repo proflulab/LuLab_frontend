@@ -6,6 +6,7 @@ import '../../common/utils/utils.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
 import '../entitys/data_login_verifysend.dart';
+import '../entitys/data_userlogin_password.dart';
 
 class GqlUserAPI {
   //验证码发送
@@ -20,7 +21,7 @@ class GqlUserAPI {
     );
     return QueryVerifySend.fromJson(response.data!);
   }
-  //验证码发送
+  //验证码验证
   static Future<QueryLoginCaptcha> loginCaptcha({
     required BuildContext context,
     required LoginCaptchaRequest variables,
@@ -31,6 +32,18 @@ class GqlUserAPI {
       variables: variables.toJson(),
     );
     return QueryLoginCaptcha.fromJson(response.data!);
+  }
+  //密码登录
+  static Future<QueryLoginPassword> loginPassword({
+    required BuildContext context,
+    required LoginPasswordRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlLoginPassword,
+      variables: variables.toJson(),
+    );
+    return QueryLoginPassword.fromJson(response.data!);
   }
   // 登录
   static Future<UserLogin> login({

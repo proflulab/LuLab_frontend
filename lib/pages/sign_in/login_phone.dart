@@ -145,8 +145,8 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
   }
   // 执行登录操作
   _handleSignIn() async {
-    if (!PFcheck.duCheckStringLength(_passController.value.text, 6)) {
-      toastInfo(msg: '登录密码不能小于6位');
+    if (!PFcheck.duCheckStringLength(_passController.value.text, 0)) {
+      toastInfo(msg: '登录密码不能为空');
       return;
     }
 
@@ -204,7 +204,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
                     height: 280.h,
                     child: TextButton(
                       onPressed: () {
-                        Global.state = UserState.user;
+                        Global.state = UserState.visitor;
                         Get.offAll(const App());
                       },
                       child:

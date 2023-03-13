@@ -1,359 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lab/pages/users/users_set_account.dart';
 
+import '../../common/utils/utils.dart';
+import '../../common/values/values.dart';
+import '../../common/widget/widgets.dart';
+import '../../common/utils/cache_util.dart';
+import '../../controller/quick_login_controller.dart';
 
-class AccountSetPage extends StatefulWidget {
-  const AccountSetPage({Key? key}) : super(key: key);
+import '../sign_in/login_phone.dart';
+import '../sign_in/login_verification.dart';
+import '/pages/users/users_set_about.dart';
+import '/pages/users/users_set_user.dart';
+
+class AccountSetting extends StatefulWidget {
+  const AccountSetting({Key? key}) : super(key: key);
 
   @override
-  _AccountSetPageState createState() => _AccountSetPageState();
+  _AccountSettingState createState() => _AccountSettingState();
 }
 
-class _AccountSetPageState extends State<AccountSetPage> {
+class _AccountSettingState extends State<AccountSetting> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     //获取屏幕宽度
-    double screenwidth = MediaQuery.of(context).size.width;
+    //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           '账号设置',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 24,
+          ),
         ),
         leading: IconButton(
-          icon: const Icon(
-            Icons.keyboard_arrow_left,
-            color: Colors.black,
-          ),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         backgroundColor: Colors.white,
-        centerTitle: true,
       ),
-      body: Stack(
-        children: [
-          Positioned(
-            top: 0,
-            left: 20,
-            child: Container(
-              height: 30,
-              width: 80,
-              padding: const EdgeInsets.fromLTRB(3, 7, 0, 0),
-              child: const Text(
-                '密码设置',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 35,
-            left: 0,
-            child: Container(
-              height: 50,
-              width: screenwidth,
+      body: SafeArea(
+        bottom: true,
+        child: Column(
+          children: [
+            SizedBox(height: 40.w),
+            Container(
+              margin: EdgeInsets.all(PFspace.screenMargin),
+              // padding: EdgeInsets.all(PFspace.screenMargin),
               decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  bottom: BorderSide(
-                    width: 1,
-                    color: Colors.black26,
-                  ),
-                  top: BorderSide(
-                    width: 1,
-                    color: Colors.black26,
-                  ),
-                ),
-              ),
-              child: TextButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => PasswordChangePage(),
-                  //     ));
-                },
-                child: Stack(
-                  children: const <Widget>[
-                    Positioned(
-                      left: 14,
-                      top: 5,
-                      child: SizedBox(
-                        height: 35,
-                        width: 240,
-                        child: Text(
-                          '修改密码',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      right: 3,
-                      top: 7,
-                      child: Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 85,
-            left: 20,
-            child: Container(
-              height: 30,
-              width: 80,
-              padding: const EdgeInsets.fromLTRB(3, 7, 0, 0),
-              child: const Text(
-                '账户绑定',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 120,
-            left: 0,
-            child: Container(
-              height: 200,
-              width: screenwidth,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-              ),
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.white),
               child: Column(
                 children: [
-                  Container(
-                    height: 50,
-                    width: screenwidth,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                        top: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Stack(
-                        children: const [
-                          Positioned(
-                            left: 14,
-                            top: 5,
-                            child: SizedBox(
-                              height: 35,
-                              width: 240,
-                              child: Text(
-                                '手机号',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 33,
-                            top: 7,
-                            child: Text(
-                              '未绑定',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 3,
-                            top: 7,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.black,
-                            ),
-                          ),
+                  lineWidget(
+                      title: "修改密码",
+                      onTap: () {
+                        Get.to(
+                          const Verification(),
+                          arguments: ["15110880530", 86],
+                        );
+                      }),
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
+                  lineWidget(
+                      title: "手机号",
+                      right: Row(
+                        children: [
+                          PFtext.text1(
+                              text: "15110880530", fontSize: 15, color: PFc.textSecondary),
+                          Icon(
+                            Icons.chevron_right,
+                            size: 32.w,
+                          )
                         ],
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: screenwidth,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Stack(
-                        children: const [
-                          Positioned(
-                            left: 14,
-                            top: 5,
-                            child: SizedBox(
-                              height: 35,
-                              width: 240,
-                              child: Text(
-                                'QQ',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
+                      onTap: () {
+                        toastInfo(msg: '当前版本为v1.0');
+                      }),
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
+                  lineWidget(
+                      title: "注销账号",
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const SetUser(),
                           ),
-                          Positioned(
-                            right: 33,
-                            top: 7,
-                            child: Text(
-                              '未绑定',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 3,
-                            top: 7,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: screenwidth,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Stack(
-                        children: const [
-                          Positioned(
-                            left: 14,
-                            top: 5,
-                            child: SizedBox(
-                              height: 35,
-                              width: 240,
-                              child: Text(
-                                '新浪微博',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 33,
-                            top: 7,
-                            child: Text(
-                              '未绑定',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 3,
-                            top: 7,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: screenwidth,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 1,
-                          color: Colors.black26,
-                        ),
-                      ),
-                    ),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Stack(
-                        children: const [
-                          Positioned(
-                            left: 14,
-                            top: 5,
-                            child: SizedBox(
-                              height: 35,
-                              width: 240,
-                              child: Text(
-                                '微信',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 33,
-                            top: 7,
-                            child: Text(
-                              '未绑定',
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 3,
-                            top: 7,
-                            child: Icon(
-                              Icons.keyboard_arrow_right,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                        );
+                      }),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

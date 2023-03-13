@@ -86,3 +86,28 @@ Widget lineWidget({
     ),
   );
 }
+
+Widget lineWidget2({
+  Widget? left,
+  required String title,
+  required String dsc,
+  Widget? right,
+}) {
+  return GestureDetector(
+    behavior: HitTestBehavior.translucent,
+    child: Container(
+      height: 104.h,
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
+      child: Row(
+        children: [
+          left ?? const SizedBox(),
+          SizedBox(width: left != null ? 25.w : 0),
+          PFtext.text1(text: title, fontSize: 16),
+          const Spacer(),
+          right ??
+              PFtext.text1(text: dsc, fontSize: 16),
+        ],
+      ),
+    ),
+  );
+}

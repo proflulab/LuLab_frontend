@@ -1,31 +1,31 @@
 // To parse this JSON data, do
 //
-//     final queryLoginCaptcha = queryLoginCaptchaFromJson(jsonString);
+//     final queryLoginPassword = queryLoginPasswordFromJson(jsonString);
 
 import 'dart:convert';
 
-QueryLoginCaptcha queryLoginCaptchaFromJson(String str) => QueryLoginCaptcha.fromJson(json.decode(str));
+QueryLoginPassword queryLoginPasswordFromJson(String str) => QueryLoginPassword.fromJson(json.decode(str));
 
-String queryLoginCaptchaToJson(QueryLoginCaptcha data) => json.encode(data.toJson());
+String queryLoginPasswordToJson(QueryLoginPassword data) => json.encode(data.toJson());
 
-class QueryLoginCaptcha {
-  QueryLoginCaptcha({
-    required this.loginCaptcha,
+class QueryLoginPassword {
+  QueryLoginPassword({
+    required this.loginPassword,
   });
 
-  LoginCaptcha loginCaptcha;
+  LoginPassword loginPassword;
 
-  factory QueryLoginCaptcha.fromJson(Map<String, dynamic> json) => QueryLoginCaptcha(
-    loginCaptcha: LoginCaptcha.fromJson(json["loginCaptcha"]),
+  factory QueryLoginPassword.fromJson(Map<String, dynamic> json) => QueryLoginPassword(
+    loginPassword: LoginPassword.fromJson(json["loginPassword"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "loginCaptcha": loginCaptcha.toJson(),
+    "loginPassword": loginPassword.toJson(),
   };
 }
 
-class LoginCaptcha {
-  LoginCaptcha({
+class LoginPassword {
+  LoginPassword({
     required this.msg,
     required this.status,
     required this.refreshToken,
@@ -39,7 +39,7 @@ class LoginCaptcha {
   String token;
   Data data;
 
-  factory LoginCaptcha.fromJson(Map<String, dynamic> json) => LoginCaptcha(
+  factory LoginPassword.fromJson(Map<String, dynamic> json) => LoginPassword(
     msg: json["msg"],
     status: json["status"],
     refreshToken: json["refresh_token"],
@@ -95,32 +95,26 @@ class Data {
     "mobile": mobile,
   };
 }
+LoginPasswordRequest loginPasswordRequestFromJson(String str) => LoginPasswordRequest.fromJson(json.decode(str));
 
+String loginPasswordRequestToJson(LoginPasswordRequest data) => json.encode(data.toJson());
 
-LoginCaptchaRequest loginCaptchaRequestFromJson(String str) => LoginCaptchaRequest.fromJson(json.decode(str));
-
-String loginCaptchaRequestToJson(LoginCaptchaRequest data) => json.encode(data.toJson());
-
-class LoginCaptchaRequest {
-  LoginCaptchaRequest({
+class LoginPasswordRequest {
+  LoginPasswordRequest({
     required this.mobile,
-    required this.area,
-    required this.code,
+    required this.password,
   });
 
   String mobile;
-  int area;
-  String code;
+  String password;
 
-  factory LoginCaptchaRequest.fromJson(Map<String, dynamic> json) => LoginCaptchaRequest(
+  factory LoginPasswordRequest.fromJson(Map<String, dynamic> json) => LoginPasswordRequest(
     mobile: json["mobile"],
-    area: json["area"],
-    code: json["code"],
+    password: json["password"],
   );
 
   Map<String, dynamic> toJson() => {
     "mobile": mobile,
-    "area": area,
-    "code": code,
+    "password": password,
   };
 }

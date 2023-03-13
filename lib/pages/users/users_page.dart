@@ -172,7 +172,7 @@ class _UsersPageState extends State<UsersPage>
         child: Center(
           child: ListTile(
             title: const Text(
-              "开通鹿向前实验室会员",
+              "开通陆向谦实验室会员",
               style: TextStyle(
                 fontFamily: 'MyFontStyle',
                 color: Colors.white,
@@ -408,7 +408,7 @@ class _UsersPageState extends State<UsersPage>
       ),
       body: ListView(
         children: <Widget>[
-          Global.state == UserState.member ? _username() : _login(),
+          Global.state == UserState.visitor ? _login() : _username(),
           //_dynamicdata(),
           _adv(),
           // _jumpbutton(),

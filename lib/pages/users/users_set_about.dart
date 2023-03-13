@@ -44,7 +44,11 @@ class Ttt extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        SizedBox(height: 80.h,),
         SvgPicture.asset("assets/images/logo.svg"),
+        SizedBox(height: 30.h,),
+        SvgPicture.asset("assets/images/proflu_text.svg"),
+        SizedBox(height: 50.h,),
         Container(
           margin: EdgeInsets.all(PFspace.screenMargin),
           //padding: EdgeInsets.all(PFspace.screenMargin),
@@ -52,6 +56,16 @@ class Ttt extends StatelessWidget {
               BoxDecoration(color: Colors.white, borderRadius: PFRadius.a15),
           child: Column(
             children: [
+              lineWidget2(
+                  title: "官方微信",
+                  dsc:"wechat",
+              ),
+              Divider(height: 1, indent: 30.w, endIndent: 30.w),
+              lineWidget2(
+                title: "官方邮箱",
+                dsc:"XXXX@proflu.com",
+              ),
+              Divider(height: 1, indent: 30.w, endIndent: 30.w),
               lineWidget(
                   title: "服务协议",
                   onTap: () {
@@ -66,6 +80,18 @@ class Ttt extends StatelessWidget {
               Divider(height: 1, indent: 30.w, endIndent: 30.w),
               lineWidget(
                   title: "隐私政策",
+                  onTap: () {
+                    Get.toNamed(
+                      "/agreement",
+                      arguments: {
+                        "content": Markdowndata.privacy,
+                        "title": "《隐私政策》"
+                      },
+                    );
+                  }),
+              Divider(height: 1, indent: 30.w, endIndent: 30.w),
+              lineWidget(
+                  title: "版权声明",
                   onTap: () {
                     Get.toNamed(
                       "/agreement",
@@ -89,23 +115,25 @@ class Ttt extends StatelessWidget {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.all(PFspace.screenMargin),
-          padding: EdgeInsets.all(PFspace.screenMargin),
-          decoration:
-              BoxDecoration(color: Colors.white, borderRadius: PFRadius.a15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  height: 60.w,
-                  alignment: Alignment.centerLeft,
-                  child: PFtext.text1(text: "产品特色")),
-              const Divider(),
-              PFtext.text3(text: Markdowndata.characteristic, maxLines: 99)
-            ],
-          ),
-        )
+        // Container(
+        //   margin: EdgeInsets.all(PFspace.screenMargin),
+        //   padding: EdgeInsets.all(PFspace.screenMargin),
+        //   decoration:
+        //       BoxDecoration(color: Colors.white, borderRadius: PFRadius.a15),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Container(
+        //           height: 60.w,
+        //           alignment: Alignment.center,
+        //           child: PFtext.text1(text: "产品特色")),
+        //       Container(
+        //           height: 60.w,
+        //           alignment: Alignment.center,
+        //           child: PFtext.text1(text: "产品特色")),
+        //     ],
+        //   ),
+        // )
       ],
     );
   }

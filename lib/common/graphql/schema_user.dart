@@ -19,15 +19,37 @@ query loginCaptcha($mobile:String!,$area:Int!,$code:String!){
     status
     msg
     token
-    reToken
+    refresh_token
     data{
-     name
-     imageUrl
+     username
+     profile_picture
      sex
      mobile
      email
      wechat
-     description
+     dsc
+    }
+  }
+}
+''';
+  //验证码验证
+//请求数据参考
+//{"mobile":"15110880530","password":"1334213313"}
+  static const String gqlLoginPassword = r'''
+query loginPassword($mobile:String!,$password:String!){
+  loginPassword(mobile:$mobile,password:$password){
+    status
+    msg
+    token
+    refresh_token
+    data{
+     username
+     profile_picture
+     sex
+     mobile
+     email
+     wechat
+     dsc
     }
   }
 }

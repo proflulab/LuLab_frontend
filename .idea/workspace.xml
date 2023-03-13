@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b98054-f2e8-4920-8e97-1acc33a78ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_login_captcha.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_login_verifysend.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/entitys/data_userlogin_password.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/widget/FijkPlayer.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/users/users_set_account2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/api/gql_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_login_captcha.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_login_captcha.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/listtilebotton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_phone.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_about.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_about.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_account.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_account.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_set_user.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lab/pages/users/users_set_account.dart';
+import 'package:lab/pages/users/users_set_account2.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
@@ -77,39 +79,37 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                         );
                       }),
-                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
                   lineWidget(
-                      title: "密码重置",
+                      title: "账号设置",
                       //TODO 等待验证码校验修改密码
                       onTap: () {
-                        toastInfo(msg: '耐心等待该功能的开发吧！');
+                        Get.to(
+                          const AccountSetting(),
+                        );
                         // Navigator.of(context).push(
                         //   MaterialPageRoute(
                         //     builder: (context) => const ResetPasswordPage(),
                         //   ),
                         // );
                       }),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              margin: EdgeInsets.all(PFspace.screenMargin),
-              // padding: EdgeInsets.all(PFspace.screenMargin),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.white),
-              child: Column(
-                children: [
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w,),
                   lineWidget(
                       title: "当前版本",
-                      right: PFtext.text1(
-                          text: "v1.0", fontSize: 15, color: PFc.textSecondary),
-                      onTap: () {}),
-                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                      right: Row(
+                        children: [
+                          PFtext.text1(
+                              text: "v1.0", fontSize: 15, color: PFc.textSecondary),
+                          Icon(
+                            Icons.chevron_right,
+                            size: 32.w,
+                          )
+                        ],
+                      ),
+                      onTap: () {
+                        toastInfo(msg: '当前版本为v1.0');
+                      }),
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
                   lineWidget(
                     title: "清除缓存",
                     right: Row(
@@ -126,14 +126,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     onTap: _showClearCacheConfirm,
                   ),
-                  // Divider(height: 1, indent: 30.w, endIndent: 30.w),
-                  // lineWidget(
-                  //     title: "切换语音",
-                  //     onTap: () {
-                  //       var locale = const Locale('en', 'US');
-                  //       Get.updateLocale(locale);
-                  //     }),
-                  Divider(height: 1, indent: 30.w, endIndent: 30.w),
+                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
                   lineWidget(
                       title: "关于我们",
                       onTap: () {

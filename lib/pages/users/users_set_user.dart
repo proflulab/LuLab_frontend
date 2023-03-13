@@ -117,30 +117,30 @@ class _SetUserState extends State<SetUser> {
         children: [
           Column(
             children: [
-              Container(
-                margin: EdgeInsets.all(PFspace.screenMargin),
-                padding: EdgeInsets.all(PFspace.screenMargin),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.white),
-                child: listGroup2(
-                  context: context,
-                  title: '头像',
-                  child: SizedBox(
-                      child: ClipOval(
-                          child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-                  icon: const Icon(PFIcon.userRight),
-                  onTap: () {
-                    //TODO 等待后端图片鉴权接口
-                    _showBottomMenu(context);
-                    if (kDebugMode) {
-                      print("该功能未开发，当前无法更改");
-                    }
-                    // toastInfo(msg: '耐心等待该功能的开发吧！');
-                  },
-                ),
-              ),
+              // Container(
+              //   margin: EdgeInsets.all(PFspace.screenMargin),
+              //   padding: EdgeInsets.all(PFspace.screenMargin),
+              //   decoration: const BoxDecoration(
+              //       shape: BoxShape.rectangle,
+              //       borderRadius: BorderRadius.all(Radius.circular(10)),
+              //       color: Colors.white),
+              //   child: listGroup2(
+              //     context: context,
+              //     title: '头像',
+              //     child: SizedBox(
+              //         child: ClipOval(
+              //             child: CachedImage.typeLaod(Global.profile.imgUrl!))),
+              //     icon: const Icon(PFIcon.userRight),
+              //     onTap: () {
+              //       //TODO 等待后端图片鉴权接口
+              //       _showBottomMenu(context);
+              //       if (kDebugMode) {
+              //         print("该功能未开发，当前无法更改");
+              //       }
+              //       // toastInfo(msg: '耐心等待该功能的开发吧！');
+              //     },
+              //   ),
+              // ),
               Container(
                 margin: EdgeInsets.all(PFspace.screenMargin),
                 padding: EdgeInsets.all(PFspace.screenMargin),
