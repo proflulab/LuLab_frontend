@@ -41,9 +41,9 @@ class _UsersPageState extends State<UsersPage>
                 width: 100.w,
                 height: 100.w,
                 child: ClipOval(
-                    child: CachedImage.typeLaod(Global.profile.imgUrl!))),
+                    child: CachedImage.typeLaod(Global.profile.profilePicture!))),
             title: Text(
-              Global.profile.name!,
+              Global.profile.username!,
               style: const TextStyle(
                 fontFamily: 'MyFontStyle',
                 color: Colors.black,

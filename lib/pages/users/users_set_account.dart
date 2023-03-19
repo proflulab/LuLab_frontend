@@ -69,7 +69,7 @@ class _AccountSettingState extends State<AccountSetting> {
                       title: "修改密码",
                       onTap: () {
                         Get.to(
-                          const Verification(),
+                          const Verification(a: '2',),
                           arguments: ["15110880530", 86],
                         );
                       }),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../common/entitys/data_user_login.dart';
+import '../../common/entitys/data_login_captcha.dart';
 import '../../common/global/global.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -73,7 +72,7 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
                   if (value == "0" || value == null) {
                     debugPrint("游客登陆");
                     Global.state = UserState.visitor;
-                    Global.profile = Data(name: "游客", id: "0");
+                    Global.profile = Data(username: "游客");
                     Get.offAll(const App());
                   } else {
                     debugPrint("10");

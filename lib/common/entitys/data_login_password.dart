@@ -26,32 +26,32 @@ class QueryLoginPassword {
 
 class LoginPassword {
   LoginPassword({
-    required this.msg,
     required this.status,
-    required this.refreshToken,
+    required this.msg,
     required this.token,
+    required this.refreshToken,
     required this.data,
   });
 
-  String msg;
   String status;
-  String refreshToken;
+  String msg;
   String token;
+  String refreshToken;
   Data data;
 
   factory LoginPassword.fromJson(Map<String, dynamic> json) => LoginPassword(
-    msg: json["msg"],
     status: json["status"],
-    refreshToken: json["refresh_token"],
+    msg: json["msg"],
     token: json["token"],
+    refreshToken: json["refresh_token"],
     data: Data.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "msg": msg,
     "status": status,
-    "refresh_token": refreshToken,
+    "msg": msg,
     "token": token,
+    "refresh_token": refreshToken,
     "data": data.toJson(),
   };
 }
@@ -59,42 +59,39 @@ class LoginPassword {
 class Data {
   Data({
     required this.username,
+    required this.profilePicture,
     required this.sex,
-    required this.email,
+    required this.mobile,
     required this.wechat,
     required this.dsc,
-    required this.profilePicture,
-    required this.mobile,
   });
 
   String username;
-  String sex;
-  String email;
+  String profilePicture;
+  int sex;
+  String mobile;
   String wechat;
   String dsc;
-  String profilePicture;
-  String mobile;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     username: json["username"],
+    profilePicture: json["profile_picture"],
     sex: json["sex"],
-    email: json["email"],
+    mobile: json["mobile"],
     wechat: json["wechat"],
     dsc: json["dsc"],
-    profilePicture: json["profile_picture"],
-    mobile: json["mobile"],
   );
 
   Map<String, dynamic> toJson() => {
     "username": username,
+    "profile_picture": profilePicture,
     "sex": sex,
-    "email": email,
+    "mobile": mobile,
     "wechat": wechat,
     "dsc": dsc,
-    "profile_picture": profilePicture,
-    "mobile": mobile,
   };
 }
+
 LoginPasswordRequest loginPasswordRequestFromJson(String str) => LoginPasswordRequest.fromJson(json.decode(str));
 
 String loginPasswordRequestToJson(LoginPasswordRequest data) => json.encode(data.toJson());
@@ -102,19 +99,24 @@ String loginPasswordRequestToJson(LoginPasswordRequest data) => json.encode(data
 class LoginPasswordRequest {
   LoginPasswordRequest({
     required this.mobile,
+    required this.area,
     required this.password,
   });
 
   String mobile;
+  int area;
   String password;
 
   factory LoginPasswordRequest.fromJson(Map<String, dynamic> json) => LoginPasswordRequest(
     mobile: json["mobile"],
+    area: json["area"],
     password: json["password"],
   );
 
   Map<String, dynamic> toJson() => {
     "mobile": mobile,
+    "area": area,
     "password": password,
   };
 }
+

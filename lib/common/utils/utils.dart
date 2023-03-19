@@ -21,5 +21,3 @@ export 'url_launcher.dart';
 export 'validator.dart';
 export 'vibration.dart';
 export 'wakelock.dart';
-export 'xf_manage.dart';
-export 'xf_utils.dart';

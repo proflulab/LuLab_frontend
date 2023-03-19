@@ -56,21 +56,21 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: _isFullScreen ? null : AppBar(title: const Text("视频示例"),),
+        // appBar: _isFullScreen ? null : AppBar(title: const Text("视频示例"),),
         body: _isFullScreen ? safeAreaPlayerUI() : Column(
           children: [
             safeAreaPlayerUI(),
-            const SizedBox(height: 100,),
-            InkWell(
-              // 切换视频
-              onTap: () => _changeVideo(),
-              child: Container(
-                alignment: Alignment.center,
-                width: 120, height: 60,
-                color: Colors.orangeAccent,
-                child: const Text("切换视频",style: TextStyle(fontSize: 18),),
-              ),
-            )
+            // const SizedBox(height: 100,),
+            // InkWell(
+            //   // 切换视频
+            //   onTap: () => _changeVideo(),
+            //   child: Container(
+            //     alignment: Alignment.center,
+            //     width: 120, height: 60,
+            //     color: Colors.orangeAccent,
+            //     child: const Text("切换视频",style: TextStyle(fontSize: 18),),
+            //   ),
+            // )
           ],
         )
     );

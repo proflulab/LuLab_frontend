@@ -18,8 +18,8 @@ import '../../common/widget/widgets.dart';
 import '../app.dart';
 
 class Verification extends StatefulWidget {
-  const Verification({Key? key}) : super(key: key);
-
+  const Verification({Key? key,required this.a}) : super(key: key);
+ final String a;
   @override
   State<Verification> createState() => _VerificationState();
 }
@@ -85,9 +85,10 @@ class _VerificationState extends State<Verification> {
     }
 
   }
-  ///验证码验证
+  ///验证码登陆
   /// [_mobile]为用户输入手机号码
   /// [_area] 为用户所选国家区号
+  /// [_code]为验证码
   _loadLoginCaptcha(String _mobile , int _area , String _code) async {
     _queryLoginCaptcha =
     await GqlUserAPI.loginCaptcha(context: context, variables: LoginCaptchaRequest(
@@ -107,33 +108,6 @@ class _VerificationState extends State<Verification> {
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
-    }
-  }
-  // //获取验证码
-  // void codeGet() async {
-  //   VerificationCodeRes status =
-  //       await DioUserAPI.codeSend(context: context, number: _numbers);
-  //   if (status.status == '0') {
-  //   } else {
-  //     debugPrint("发送失败");
-  //     toastInfo(msg: '获取验证码失败，请用其他方式登录！');
-  //   }
-  // }
-
-  //校验验证码、登录
-  void codeCheck(String code, String mobile) async {
-    CodeCheckRes data = await DioUserAPI.codeCheck(
-        context: context, data: CodeCheckReq(code: code, mobile: mobile));
-    if (data.status == '0') {
-      debugPrint("校验无误");
-      Global.saveToken(data.token);
-      Get.offAll(const App());
-    } else {
-      debugPrint("校验失败");
-      setState(() {
-        controller.text = "";
-      });
-      toastInfo(msg: '验证码错误');
     }
   }
 

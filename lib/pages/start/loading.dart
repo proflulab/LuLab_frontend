@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lab/common/entitys/data_user_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../common/entitys/data_login_captcha.dart';
 import '../../common/global/global.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
@@ -69,9 +69,8 @@ class _LoadingPageState extends State<LoadingPage> {
           debugPrint("游客登陆");
           Global.state = UserState.visitor;
           Global.profile = Data(
-              name: "游客",
-              id: "0",
-              imgUrl:
+              username: "游客",
+              profilePicture:
                   'https://tse1-mm.cn.bing.net/th/id/OIP-C.gg1NSgs5KwP71Nh0qlvflQHaFL?w=230&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7');
           Get.offAll(const App());
         } else {

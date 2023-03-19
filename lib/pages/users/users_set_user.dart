@@ -18,44 +18,34 @@ class SetUser extends StatefulWidget {
 }
 
 class _SetUserState extends State<SetUser> {
-  String _sexValue = Global.profile.sex ?? "";
+  int _sexValue = Global.profile.sex ?? 0;
   final TextEditingController _nameController =
-      TextEditingController(text: Global.profile.name);
+      TextEditingController(text: Global.profile.username);
   final TextEditingController _introController =
-      TextEditingController(text: Global.profile.description);
-  final TextEditingController _phoneController =
-      TextEditingController(text: Global.profile.phone);
+      TextEditingController(text: Global.profile.dsc);
+  // final TextEditingController _phoneController =
+  //     TextEditingController(text: Global.profile.mobile);
   final TextEditingController _wechatnameController =
       TextEditingController(text: Global.profile.wechat);
 
   // 执行修改个人信息操作
   _carryUp() async {
     //_getuser();
-    UserUpdaterequest variables = UserUpdaterequest(
-      id: Global.profile.id ?? "",
+    ChangeUserInfoRequest variables = ChangeUserInfoRequest(
       name: _nameController.value.text,
-      description: _introController.value.text,
-      phone: _phoneController.value.text,
+      dsc: _introController.value.text,
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
     );
     Data profile = Data(
-      birth: '',
-      description: _introController.value.text,
-      email: '',
-      profileImgUrl:
-          'https://tse1-mm.cn.bing.net/th/id/OIP-C.8jK5VH-CESQrlEz2RawVwAAAAA?w=210&h=210&c=7&r=0&o=5&dpr=2&pid=1.7',
-      id: Global.profile.id,
-      name: _nameController.value.text,
-      phone: _phoneController.value.text,
+      username: _nameController.value.text,
+      dsc: _introController.value.text,
       sex: _sexValue,
       wechat: _wechatnameController.value.text,
-      industry: '',
-      //password: '',
     );
 
     try {
-      await GqlUserAPI.userup(context: context, variables: variables);
+      await GqlUserAPI.changeUserInfo(context: context, variables: variables);
       Global.saveProfile(profile);
       toastInfo(msg: '修改成功');
     } catch (e) {
@@ -157,18 +147,13 @@ class _SetUserState extends State<SetUser> {
                     const Divider(),
                     listGroup1(
                         context: context,
-                        title: '号码',
-                        textController: _phoneController),
-                    const Divider(),
-                    listGroup1(
-                        context: context,
                         title: '微信',
                         textController: _wechatnameController),
                     const Divider(),
                     listGroup2(
                       context: context,
                       title: '性别',
-                      child: Text(_sexValue),
+                      child: Text("$_sexValue"),
                       icon: const Icon(PFIcon.userRight),
                       onTap: () async {
                         //触摸失去焦点
@@ -196,7 +181,7 @@ class _SetUserState extends State<SetUser> {
                                         child: const Text('男'),
                                         onPressed: () {
                                           setState(() {
-                                            _sexValue = "男";
+                                            _sexValue = 1;
                                             Navigator.pop(context);
                                           });
                                         },
@@ -209,7 +194,7 @@ class _SetUserState extends State<SetUser> {
                                         child: const Text('女'),
                                         onPressed: () {
                                           setState(() {
-                                            _sexValue = "女";
+                                            _sexValue = 2;
                                             Navigator.pop(context);
                                           });
                                         },
@@ -222,7 +207,7 @@ class _SetUserState extends State<SetUser> {
                                         child: const Text('保密'),
                                         onPressed: () {
                                           setState(() {
-                                            _sexValue = "保密";
+                                            _sexValue = 0;
                                             Navigator.pop(context);
                                           });
                                         },

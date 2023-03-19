@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:lab/common/entitys/data_login_captcha.dart';
-
+import 'package:lab/common/entitys/data_login_verifycheck.dart';
 import '../../common/utils/utils.dart';
-import '../../common/entitys/entitys.dart';
 import '../../common/graphql/graphql.dart';
+import '../entitys/data_login_out.dart';
+import '../entitys/data_login_password.dart';
 import '../entitys/data_login_verifysend.dart';
-import '../entitys/data_userlogin_password.dart';
+import '../entitys/data_user_Info.dart';
+import '../entitys/data_user_changepassword.dart';
+import '../entitys/data_user_changeuserinfo.dart';
+import '../entitys/data_user_mobilechange.dart';
 
 class GqlUserAPI {
-  //验证码发送
+  ///验证码发送
   static Future<QueryVerifySend> verifySend({
     required BuildContext context,
     required VerifySendRequest variables,
@@ -21,7 +25,19 @@ class GqlUserAPI {
     );
     return QueryVerifySend.fromJson(response.data!);
   }
-  //验证码验证
+  ///验证码验证
+  static Future<QueryVerifyCheck> verifyCheck({
+    required BuildContext context,
+    required VerifyCheckRequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlVerifyCheck,
+      variables: variables.toJson(),
+    );
+    return QueryVerifyCheck.fromJson(response.data!);
+  }
+  ///验证码登陆
   static Future<QueryLoginCaptcha> loginCaptcha({
     required BuildContext context,
     required LoginCaptchaRequest variables,
@@ -33,8 +49,8 @@ class GqlUserAPI {
     );
     return QueryLoginCaptcha.fromJson(response.data!);
   }
-  //密码登录
-  static Future<QueryLoginPassword> loginPassword({
+  ///密码登录
+  static Future<LoginPassword> loginPassword({
     required BuildContext context,
     required LoginPasswordRequest variables,
   }) async {
@@ -43,60 +59,64 @@ class GqlUserAPI {
       schema: SchemaUser.gqlLoginPassword,
       variables: variables.toJson(),
     );
-    return QueryLoginPassword.fromJson(response.data!);
+    return LoginPassword.fromJson(response.data!);
   }
-  // 登录
-  static Future<UserLogin> login({
+  ///退出登陆
+  static Future<QueryLoginOut> loginOut({
     required BuildContext context,
-    required Loginrequest variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlLoginOut,
+      variables: {},
+    );
+    return QueryLoginOut.fromJson(response.data!);
+  }
+  ///用户信息查询
+  static Future<QueryUserInfo> userInfo({
+    required BuildContext context,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlUserInfo,
+      variables: {},
+    );
+    return QueryUserInfo.fromJson(response.data!);
+  }
+  ///修改密码
+  static Future<QueryChangePassword> passwordChange({
+    required BuildContext context,
+    required ChangePasswordRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserLogin,
+      schema: SchemaUser.gqlPasswordChange,
       variables: variables.toJson(),
     );
-    return UserLogin.fromJson(response.data!["userLogin"]);
+    return QueryChangePassword.fromJson(response.data!);
   }
-
-  // 注册
-  static Future<UserRigister> register({
+  ///修改手机号
+  static Future<QueryMobileChange> mobileChange({
     required BuildContext context,
-    required Registeredrequest variables,
+    required MobileChangeRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserRegister,
+      schema: SchemaUser.gqlMobileChange,
       variables: variables.toJson(),
     );
-
-    return UserRigister.fromJson(response.data!["userRigister"]);
+    return QueryMobileChange.fromJson(response.data!);
   }
-
-  // 修改个人信息
-  static Future<UserUpdateresponse> userup({
+  ///修改用户信息
+  static Future<QueryChangeUserInfo> changeUserInfo({
     required BuildContext context,
-    required UserUpdaterequest variables,
+    required ChangeUserInfoRequest variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
-      schema: SchemaUser.gqlUserUpdata,
+      schema: SchemaUser.gqlChangeUserInfo,
       variables: variables.toJson(),
     );
-
-    return UserUpdateresponse.fromJson(response.data!);
-  }
-
-  // 一键登录
-  static Future<UserLogin> quickLogin({
-    required BuildContext context,
-    required QuickLoginReq variables,
-  }) async {
-    QueryResult response = await GraphqlClientUtil.mutate(
-      context: context,
-      schema: SchemaUser.gqlUserQuickLogin,
-      variables: variables.toJson(),
-    );
-
-    return UserLogin.fromJson(response.data!["mobileLogin"]);
+    return QueryChangeUserInfo.fromJson(response.data!);
   }
 }

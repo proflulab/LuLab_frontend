@@ -197,10 +197,10 @@ packages:
     dependency: "direct main"
     description:
       name: chewie
-      sha256: "7737b1b8b1f9df3b3751abfb0dea5efbebb7060c28eccdc3b0fa4a0d638eaf9f"
+      sha256: da986fc618e01f22fa39da99da42152d8e0b572c767f8a6db9beaa3f6853d386
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.3.6"
+    version: "1.2.2"
   clock:
     dependency: transitive
     description:
@@ -409,6 +409,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.10.1"
+  fijkplayer_skin:
+    dependency: "direct main"
+    description:
+      name: fijkplayer_skin
+      sha256: ae8854eb34b24a224517d1619d7e608f7869b229739db888a3f725a72ee44663
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.2.8"
   file:
     dependency: transitive
     description:
@@ -523,6 +531,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.13"
+  flutter_paypal:
+    dependency: "direct main"
+    description:
+      name: flutter_paypal
+      sha256: ac5eb284a507751db27e134d08b149e79f646ce3abcd8115977f2d94f0c4e93b
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.8"
   flutter_picker:
     dependency: "direct main"
     description:
@@ -749,6 +765,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.13.5"
+  http_auth:
+    dependency: transitive
+    description:
+      name: http_auth
+      sha256: b5abf5a63e43a3352cb88de85c8260e2bf15a71a7270f05b40a7cc0b695bbb1b
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.1"
   http_parser:
     dependency: transitive
     description:
@@ -1193,10 +1217,10 @@ packages:
     dependency: transitive
     description:
       name: provider
-      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      sha256: "59471e0a4595e264625d3496af567ac85bdae1148ec985aff1e0555786f53ecf"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.5"
+    version: "5.0.0"
   quickpass_yidun_flutter:
     dependency: "direct main"
     description:
@@ -1630,10 +1654,10 @@ packages:
     dependency: "direct main"
     description:
       name: wakelock
-      sha256: "769ecf42eb2d07128407b50cb93d7c10bd2ee48f0276ef0119db1d25cc2f87db"
+      sha256: da22c0789e1f849bec43688a52f2290f4e66268056f7cd77cb71245aef4917a0
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.6.2"
+    version: "0.5.6"
   wakelock_macos:
     dependency: transitive
     description:
@@ -1678,10 +1702,10 @@ packages:
     dependency: "direct main"
     description:
       name: webview_flutter
-      sha256: "392c1d83b70fe2495de3ea2c84531268d5b8de2de3f01086a53334d8b6030a88"
+      sha256: "6886b3ceef1541109df5001054aade5ee3c36b5780302e41701c78357233721c"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.4"
+    version: "2.8.0"
   webview_flutter_android:
     dependency: transitive
     description:

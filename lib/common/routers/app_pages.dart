@@ -3,12 +3,8 @@ import 'package:get/get.dart';
 import '../../pages/app.dart';
 import '../../pages/notfound/index.dart';
 import '../../pages/sign_in/login_password.dart';
-import '../../pages/sign_up/register.dart';
 import '../../pages/start/loading.dart';
 import '../../pages/users/users_agreement.dart';
-
-// import '../middlewares/router_auth.dart';
-import '../middlewares/click_login.dart';
 
 part 'app_routes.dart';
 
@@ -23,13 +19,11 @@ class AppPages {
 
     GetPage(name: AppRoutes.signinpage, page: () => const SignInPage()),
 
-    GetPage(name: AppRoutes.signUp, page: () => const SignUpPage()),
+    // GetPage(name: AppRoutes.signUp, page: () => const SignUpPage()),
 
     GetPage(name: AppRoutes.agreement, page: () => const Agreement()),
 
-    GetPage(name: AppRoutes.start, page: () => const App(), middlewares: [
-      ClickLoginMiddleware(priority: 2),
-    ]),
+    GetPage(name: AppRoutes.start, page: () => const App()),
 
     /// 中间件
 

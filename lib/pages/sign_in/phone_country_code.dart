@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lab/common/widget/text_widget.dart';
 
+import '../../common/entitys/data_userlogin_phone.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';

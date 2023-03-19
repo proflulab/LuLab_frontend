@@ -6,11 +6,18 @@ import 'package:lab/common/entitys/data_course_link.dart';
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
+import '../../common/other/temp_value.dart';
 import '../../common/utils/expandText.dart';
 import '../../common/utils/utils.dart';
+import '../../common/utils/video_player_utils.dart';
 import '../../common/values/values.dart';
 //import '../../common/values/values.dart';
+import '../../common/widget/video_player_bottom.dart';
+import '../../common/widget/video_player_center.dart';
+import '../../common/widget/video_player_gestures.dart';
+import '../../common/widget/video_player_top.dart';
 import '../../common/widget/widgets.dart';
+import 'dart:ui';
 
 // 课程视频播放页面
 
@@ -126,9 +133,15 @@ class _CourseIndexPageState extends State<CourseIndexPage>
               : AspectRatio(
                   aspectRatio: 16 / 9,
                   child: FijkView(
-                    color: Colors.black,
+                    // color: Colors.black,
                     player: player,
                     fit: FijkFit.ar16_9,
+                    panelBuilder: fijkPanel2Builder(
+                        // doubleTap:true,
+                  onBack: () {
+                  Navigator.pop(context);
+                  },
+                    ),
                   ),
                 ),
 
@@ -222,6 +235,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
                                   player.setDataSource(
                                       _linkData.link,
                                       autoPlay: true);
+                                  // VideoPlayerUtils.playerHandle(_linkData.link,autoPlay: true);
                                 },
                                 child: Container(
                                   height: 114.h,

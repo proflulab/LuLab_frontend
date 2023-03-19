@@ -3,27 +3,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
-
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lab/common/entitys/data_login_verifysend.dart';
 import 'package:lab/common/values/colors.dart';
-
-import '../../events/quick_login_event.dart';
 import '../app.dart';
-import 'login_password.dart';
 import '/pages/sign_in/widget_agreement.dart';
 import '/pages/sign_in/widget_phone_field.dart';
-
-import '../../common/api/apis.dart';
-import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/staticdata/staticdata.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
-
-import '../../controller/quick_login_controller.dart';
 import '../../controller/signin_controller.dart';
 import 'login_verification.dart';
 
@@ -35,7 +25,6 @@ class PhoneLogin extends StatefulWidget {
 }
 
 class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
-  final QuickLoginController qc = Get.find();
   final SigninController c = Get.put(SigninController());
 
   bool _checked = false;
@@ -60,13 +49,6 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
   void initState() {
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
-    if (qc.verifyEnable) {
-      _subscription = Global.eventBus.on<QuickLoginEvent>().listen((event) {
-        _quickLogin(event.token);
-        debugPrint(event.token);
-      });
-      qc.quickLogin();
-    }
 
     _accountFocusNode.addListener(() {
       if (_accountFocusNode.hasFocus) {
@@ -114,65 +96,65 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
     super.dispose();
   }
 
-  /// 在这里请求服务器
-  _quickLogin(String token) async {
-    Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
-    print("$token,${qc.ydToken}");
-
-    QuickLoginReq variables = QuickLoginReq(
-      token: qc.ydToken ?? "",
-      accessToken: token,
-      // password: duSHA256(_passController.value.text),
-    );
-    try {
-      // grahql接口
-      // UserLogin userProfile = await GqlUserAPI.quickLogin(
-      //   context: context,
-      //   variables: variables,
-      // );
-      QuickLoginRes status =
-          await DioUserAPI.quickLogin(context: context, data: variables);
-      //UserController.to.loginSuccess(userProfile.data);
-      Global.saveToken(status.token ?? "无");
-    } catch (e) {
-      debugPrint("===========登录报错内容===============");
-      if (kDebugMode) {
-        print(e);
-      }
-      return toastInfo(msg: '一键登录失败,请尝试其他登录方式');
-    }
-    Get.offAll(const App());
-  }
-  // 执行登录操作
-  _handleSignIn() async {
-    if (!PFcheck.duCheckStringLength(_passController.value.text, 0)) {
-      toastInfo(msg: '登录密码不能为空');
-      return;
-    }
-
-    Loginrequest variables = Loginrequest(
-      name: _accountPasswordController.value.text,
-      password: _passController.value.text,
-      // password: duSHA256(_passController.value.text),
-    );
-
-    try {
-      UserLogin userProfile = await GqlUserAPI.login(
-        context: context,
-        variables: variables,
-      );
-      Storage.setInt('isFirstSign', Global.isFirstSign);
-      Global.saveProfile(userProfile.data!);
-      Global.saveToken(userProfile.token!);
-    } catch (e) {
-      if (kDebugMode) {
-        print("===========登录报错内容===============");
-        print(e);
-      }
-      return toastInfo(msg: '请正确输入账号、密码！');
-    }
-    Get.offAll(const App());
-  }
+  // /// 在这里请求服务器
+  // _quickLogin(String token) async {
+  //   Clipboard.setData(ClipboardData(text: "$token,${qc.ydToken}"));
+  //   print("$token,${qc.ydToken}");
+  //
+  //   QuickLoginReq variables = QuickLoginReq(
+  //     token: qc.ydToken ?? "",
+  //     accessToken: token,
+  //     // password: duSHA256(_passController.value.text),
+  //   );
+  //   try {
+  //     // grahql接口
+  //     // UserLogin userProfile = await GqlUserAPI.quickLogin(
+  //     //   context: context,
+  //     //   variables: variables,
+  //     // );
+  //     QuickLoginRes status =
+  //         await DioUserAPI.quickLogin(context: context, data: variables);
+  //     //UserController.to.loginSuccess(userProfile.data);
+  //     Global.saveToken(status.token ?? "无");
+  //   } catch (e) {
+  //     debugPrint("===========登录报错内容===============");
+  //     if (kDebugMode) {
+  //       print(e);
+  //     }
+  //     return toastInfo(msg: '一键登录失败,请尝试其他登录方式');
+  //   }
+  //   Get.offAll(const App());
+  // }
+  // // 执行登录操作
+  // _handleSignIn() async {
+  //   if (!PFcheck.duCheckStringLength(_passController.value.text, 0)) {
+  //     toastInfo(msg: '登录密码不能为空');
+  //     return;
+  //   }
+  //
+  //   Loginrequest variables = Loginrequest(
+  //     name: _accountPasswordController.value.text,
+  //     password: _passController.value.text,
+  //     // password: duSHA256(_passController.value.text),
+  //   );
+  //
+  //   try {
+  //     UserLogin userProfile = await GqlUserAPI.login(
+  //       context: context,
+  //       variables: variables,
+  //     );
+  //     Storage.setInt('isFirstSign', Global.isFirstSign);
+  //     Global.saveProfile(userProfile.data!);
+  //     Global.saveToken(userProfile.token!);
+  //   } catch (e) {
+  //     if (kDebugMode) {
+  //       print("===========登录报错内容===============");
+  //       print(e);
+  //     }
+  //     return toastInfo(msg: '请正确输入账号、密码！');
+  //   }
+  //   Get.offAll(const App());
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -331,7 +313,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
             _dialog(
               () {
                 Get.to(
-                  const Verification(),
+                  const Verification(a: '1',),
                   arguments: [_accountController.value.text, c.code.value],
                 );
               },
@@ -339,7 +321,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
           } else if (PFcheck.duIsPhone(_accountController.value.text) &&
               _checked) {
             Get.to(
-              const Verification(),
+              const Verification(a: '1',),
               arguments: [_accountController.value.text, c.code.value],
             );
           } else {}
@@ -377,11 +359,11 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin{
          if (!_checked) {
             _dialog(
                   () {
-                    _handleSignIn();
+                    // _handleSignIn();
               },
             );
           } else if (_checked) {
-           _handleSignIn();
+           // _handleSignIn();
           }
         },
         child: const Text(

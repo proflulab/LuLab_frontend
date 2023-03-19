@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lab/common/entitys/data_login_password.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -34,6 +35,8 @@ class _SignInPageState extends State<SignInPage> {
 
   final FocusNode _accountFocusNode = FocusNode();
   final FocusNode _passFocusNode = FocusNode();
+
+  late LoginPassword _loginPassword;
 
   get leading => null;
 
@@ -81,20 +84,17 @@ class _SignInPageState extends State<SignInPage> {
       return;
     }
 
-    Loginrequest variables = Loginrequest(
-      name: _accountController.value.text,
+    LoginPasswordRequest variables = LoginPasswordRequest(
+      mobile: _accountController.value.text,
+      area: 86,
       password: _passController.value.text,
       // password: duSHA256(_passController.value.text),
     );
 
     try {
-      UserLogin userProfile = await GqlUserAPI.login(
-        context: context,
-        variables: variables,
-      );
+     LoginPassword loginPassword = await GqlUserAPI.loginPassword(context: context, variables: variables);
       Storage.setInt('isFirstSign', Global.isFirstSign);
-      Global.saveProfile(userProfile.data!);
-      Global.saveToken(userProfile.token!);
+      Global.saveToken(loginPassword.token);
     } catch (e) {
       if (kDebugMode) {
         print("===========登录报错内容===============");

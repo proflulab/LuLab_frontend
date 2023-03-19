@@ -9,6 +9,7 @@ import 'package:event_bus/event_bus.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/entitys/entitys.dart';
+import '../entitys/data_login_captcha.dart';
 
 /// 全局配置
 class Global {
