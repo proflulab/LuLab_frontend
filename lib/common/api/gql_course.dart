@@ -56,16 +56,16 @@ class GqlCourseAPI {
     );
     return QueryCourseLink.fromJson(response.data!);
   }
-  /// （废除）课程详情查询courseDetail
-  static Future<QueryCourseDetail> courseDetail({
-    required BuildContext context,
-    required CourseDetailRequest variables,
-  }) async {
-    QueryResult response = await GraphqlClientUtil.query(
-      context: context,
-      schema: SchemaCourse.gqlCourseDetail,
-      variables: variables.toJson(),
-    );
-    return QueryCourseDetail.fromJson(response.data!);
-  }
+  // /// （废除）课程详情查询courseDetail
+  // static Future<QueryCourseDetail> courseDetail({
+  //   required BuildContext context,
+  //   required CourseDetailRequest variables,
+  // }) async {
+  //   QueryResult response = await GraphqlClientUtil.query(
+  //     context: context,
+  //     schema: SchemaCourse.gqlCourseDetail,
+  //     variables: variables.toJson(),
+  //   );
+  //   return QueryCourseDetail.fromJson(response.data!);
+  // }
 }

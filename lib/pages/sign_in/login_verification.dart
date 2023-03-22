@@ -2,12 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:lab/common/entitys/data_login_captcha.dart';
 import 'dart:async';
-
 import 'package:pinput/pinput.dart';
-
-import '../../common/entitys/data_login_verifysend.dart';
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/api/apis.dart';
@@ -78,7 +74,7 @@ class _VerificationState extends State<Verification> {
         }
       },
     );
-    if (_verifyData.status == '0') {
+    if (_verifyData.status == '100') {
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -104,7 +100,8 @@ class _VerificationState extends State<Verification> {
         }
       },
     );
-    if (_loginCaptcha.status == '0') {
+    if (_loginCaptcha.status == '100') {
+      Get.offAll(const App());
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -212,10 +209,12 @@ class _VerificationState extends State<Verification> {
                   onCompleted: (value) {
                     if (kDebugMode) {
                       print("onCompleted的监听：$value");
+                      print(data[0].runtimeType);
+                      print(data[1].runtimeType);
                     }
-                    String a = value.toString();
+                    String code = value.toString();
                     // codeCheck(value, data[0]);
-                    _loadLoginCaptcha(data[1] , data[0] , a);
+                    _loadLoginCaptcha(data[0] , data[1] , code);
                   },
                 ),
               ),

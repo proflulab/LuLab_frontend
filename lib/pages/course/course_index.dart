@@ -1,23 +1,12 @@
 import 'package:fijkplayer/fijkplayer.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:lab/common/entitys/data_course_link.dart';
-
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
-import '../../common/other/temp_value.dart';
 import '../../common/utils/expandText.dart';
 import '../../common/utils/utils.dart';
-import '../../common/utils/video_player_utils.dart';
 import '../../common/values/values.dart';
-//import '../../common/values/values.dart';
-import '../../common/widget/video_player_bottom.dart';
-import '../../common/widget/video_player_center.dart';
-import '../../common/widget/video_player_gestures.dart';
-import '../../common/widget/video_player_top.dart';
 import '../../common/widget/widgets.dart';
-import 'dart:ui';
 
 // 课程视频播放页面
 
@@ -42,9 +31,6 @@ class _CourseIndexPageState extends State<CourseIndexPage>
 
   List tabs = ["简介"];
 
-  late QueryCourseDetail _queryCourseDetail;
-  List<CourseDetail> _detailData = [];
-
   late QueryCourseLink _queryCourseLink;
   late CourseLink _linkData;
 
@@ -60,18 +46,17 @@ class _CourseIndexPageState extends State<CourseIndexPage>
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
     PFwakelock.passState(1);
-    _loadCourseDetail();
     _loadCourseCatalogue();
   }
 
-  // 读取课程数据
-  _loadCourseDetail() async {
-    _queryCourseDetail = await GqlCourseAPI.courseDetail(
-        variables: CourseDetailRequest(courseId: courseId), context: context);
-    setState(() {
-      _detailData = _queryCourseDetail.courseDetail;
-    });
-  }
+  // // 读取课程数据
+  // _loadCourseDetail() async {
+  //   _queryCourseDetail = await GqlCourseAPI.courseDetail(
+  //       variables: CourseDetailRequest(courseId: courseId), context: context);
+  //   setState(() {
+  //     _detailData = _queryCourseDetail.courseDetail;
+  //   });
+  // }
   //课程目录请求
   _loadCourseCatalogue() async {
     _queryCourseCatalogue = await GqlCourseAPI.courseCatalogue(

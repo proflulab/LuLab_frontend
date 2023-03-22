@@ -31,6 +31,11 @@ class Course {
     required this.imageUrl,
     required this.author,
     required this.description,
+    required this.classTags,
+    required this.authorTags,
+    required this.onlineTime,
+    required this.addTime,
+    required this.updateTime,
   });
 
   String id;
@@ -38,6 +43,11 @@ class Course {
   String imageUrl;
   String author;
   String description;
+  String classTags;
+  String authorTags;
+  String onlineTime;
+  String addTime;
+  String updateTime;
 
   factory Course.fromJson(Map<String, dynamic> json) => Course(
     id: json["_id"],
@@ -45,6 +55,11 @@ class Course {
     imageUrl: json["imageUrl"],
     author: json["author"],
     description: json["description"],
+    classTags: json["classTags"],
+    authorTags: json["authorTags"],
+    onlineTime: json["onlineTime"],
+    addTime: json["addTime"],
+    updateTime: json["updateTime"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -53,6 +68,11 @@ class Course {
     "imageUrl": imageUrl,
     "author": author,
     "description": description,
+    "classTags": classTags,
+    "authorTags": authorTags,
+    "onlineTime": onlineTime,
+    "addTime": addTime,
+    "updateTime": updateTime,
   };
 }
 

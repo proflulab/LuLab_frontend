@@ -25,22 +25,20 @@ query verifyCheck ($mobile: String!, $code: String!, $area: Int!) {
 ///请求数据参考
 ///{"mobile":"15110880530","area":86,"code":"312113"}
   static const String gqlLoginCaptcha = r'''
-query loginCaptcha($mobile:String!,$area:Int!,$code:String!){
-  loginCaptcha(mobile:$mobile,area:$area,code:$code){
-    status
-    msg
-    token
-    refresh_token
-    data{
-     username
-     profile_picture
-     sex
-     mobile
-     email
-     wechat
-     dsc
+query loginCaptcha ($mobile: String!, $area: Int!, $code: String!) {
+    loginCaptcha (mobile: $mobile, area: $area, code: $code) {
+        status
+        msg
+        token
+        refresh_token
+        data{
+            username
+            imageUrl
+            sex
+            wechat
+            dsc
+        }
     }
-  }
 }
 ''';
   ///密码登录
