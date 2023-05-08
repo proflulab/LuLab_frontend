@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import '../sign_in/login_phone.dart';
 import '/pages/users/users_set_user.dart';
 import '../../common/global/global.dart';
@@ -390,6 +389,8 @@ class _UsersPageState extends State<UsersPage>
               }
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const SettingsPage()));
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => const HomeScreen()));
             },
             icon: const Icon(
               Icons.settings,

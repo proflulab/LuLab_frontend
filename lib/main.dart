@@ -10,7 +10,7 @@ import 'common/routers/app_pages.dart';
 import 'common/values/values.dart';
 
 //启动页面
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
   Global.init();
 }

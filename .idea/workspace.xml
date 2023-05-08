@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b98054-f2e8-4920-8e97-1acc33a78ff3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/pages/payment/key.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/payment/server_stub.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/payment/stripe_checkout.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/api/gql_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/api/gql_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/entitys/data_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/entitys/data_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_comment.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_course.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_home.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_sourse.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/graphql/schema_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/widget/players_chewie.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/widget/players_chewie.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/course/course_index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/course/course_index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/sign_in/login_verification.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/payment/demo.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/payment/paypal.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/users/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/users/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +44,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/README.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ios/Podfile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/common/widget/players_chewie.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/lib/main.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/pages/course/test.dart" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/lib/pages/users/users_page.dart" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pubspec.lock" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pubspec.yaml" root0="FORCE_HIGHLIGHTING" />
   </component>

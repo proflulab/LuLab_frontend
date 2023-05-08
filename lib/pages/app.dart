@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lab/pages/payment/paypal.dart';
 
 import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';

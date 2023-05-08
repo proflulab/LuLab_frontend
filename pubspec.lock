@@ -193,14 +193,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.12.0"
-  chewie:
-    dependency: "direct main"
-    description:
-      name: chewie
-      sha256: da986fc618e01f22fa39da99da42152d8e0b572c767f8a6db9beaa3f6853d386
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.2.2"
   clock:
     dependency: transitive
     description:
@@ -531,14 +523,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.13"
-  flutter_paypal:
-    dependency: "direct main"
-    description:
-      name: flutter_paypal
-      sha256: ac5eb284a507751db27e134d08b149e79f646ce3abcd8115977f2d94f0c4e93b
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.8"
   flutter_picker:
     dependency: "direct main"
     description:
@@ -765,14 +749,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.13.5"
-  http_auth:
-    dependency: transitive
-    description:
-      name: http_auth
-      sha256: b5abf5a63e43a3352cb88de85c8260e2bf15a71a7270f05b40a7cc0b695bbb1b
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.1"
   http_parser:
     dependency: transitive
     description:
@@ -862,7 +838,7 @@ packages:
     source: hosted
     version: "0.17.0"
   js:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: js
       sha256: "5528c2f391ededb7775ec1daa69e65a2d61276f7552de2b5f7b8d34ee9fd4ab7"
@@ -957,14 +933,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.3"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.0"
   nm:
     dependency: transitive
     description:
@@ -1213,14 +1181,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.2.4"
-  provider:
-    dependency: transitive
-    description:
-      name: provider
-      sha256: "59471e0a4595e264625d3496af567ac85bdae1148ec985aff1e0555786f53ecf"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "5.0.0"
   quickpass_yidun_flutter:
     dependency: "direct main"
     description:

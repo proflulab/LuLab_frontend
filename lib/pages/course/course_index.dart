@@ -24,7 +24,7 @@ class _CourseIndexPageState extends State<CourseIndexPage>
   late var description = widget.product.description;
   late var detailId = '';
   late var addtime =  PFTime.client(
-      1678001746, "ymd");
+      widget.product.addTime, "ymd");
 
   // 声明tabcontroller和tab标题
   late TabController _tabController;
