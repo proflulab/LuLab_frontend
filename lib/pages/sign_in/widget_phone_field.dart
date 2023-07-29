@@ -36,18 +36,18 @@ class _PhoneFieldState extends State<PhoneField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 80.w),
+      padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Container(
         //alignment: const Alignment(0.1, 0.8),
         //width: 530.w,
         height: 96.h,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-          color: const Color.fromRGBO(233, 234, 237, 1),
+          borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+          color: Colors.white,
           border: widget.focusNode.hasFocus
               ? Border.all(color: PFc.themeColor)
-              : Border.all(color: const Color.fromARGB(0, 0, 0, 0)),
+              : Border.all(color: Colors.grey),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -84,9 +84,14 @@ class _PhoneFieldState extends State<PhoneField> {
                   LengthLimitingTextInputFormatter(11)
                 ],
                 decoration: const InputDecoration(
-                  hintText: "请输入手机号",
+                  hintText: "请输入您的手机号",
                   contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 7),
                   border: InputBorder.none,
+                ),
+                style: TextStyle(
+                  fontFamily: "MyFontStyle",
+                  fontSize: 20,
+                  color: Colors.black,
                 ),
                 maxLines: 1,
                 autocorrect: false,

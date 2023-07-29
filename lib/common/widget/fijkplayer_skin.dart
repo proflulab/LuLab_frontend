@@ -221,7 +221,7 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
   AnimatedOpacity _buildBottomBar(BuildContext context) {
     double duration = _duration.inMilliseconds.toDouble();
     double currentValue =
-    _seekPos > 0 ? _seekPos : _currentPos.inMilliseconds.toDouble();
+        _seekPos > 0 ? _seekPos : _currentPos.inMilliseconds.toDouble();
     currentValue = min(currentValue, duration);
     currentValue = max(currentValue, 0);
 
@@ -258,49 +258,49 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
             _duration.inMilliseconds == 0
                 ? Expanded(child: Center())
                 : Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(right: 5, left: 5),
-                child: FijkSlider(
-                  colors: FijkSliderColors(
-                    cursorColor: Theme.of(context).accentColor,
-                    playedColor: Theme.of(context).accentColor,
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 5, left: 5),
+                      child: FijkSlider(
+                        colors: FijkSliderColors(
+                          cursorColor: Theme.of(context).colorScheme.secondary,
+                          playedColor: Theme.of(context).colorScheme.secondary,
+                        ),
+                        value: currentValue,
+                        cacheValue: _bufferPos.inMilliseconds.toDouble(),
+                        min: 0.0,
+                        max: duration,
+                        onChanged: (v) {
+                          _startHideTimer();
+                          setState(() {
+                            _seekPos = v;
+                          });
+                        },
+                        onChangeEnd: (v) {
+                          setState(() {
+                            player.seekTo(v.toInt());
+                            print("seek to $v");
+                            _currentPos =
+                                Duration(milliseconds: _seekPos.toInt());
+                            _seekPos = -1;
+                          });
+                        },
+                      ),
+                    ),
                   ),
-                  value: currentValue,
-                  cacheValue: _bufferPos.inMilliseconds.toDouble(),
-                  min: 0.0,
-                  max: duration,
-                  onChanged: (v) {
-                    _startHideTimer();
-                    setState(() {
-                      _seekPos = v;
-                    });
-                  },
-                  onChangeEnd: (v) {
-                    setState(() {
-                      player.seekTo(v.toInt());
-                      print("seek to $v");
-                      _currentPos =
-                          Duration(milliseconds: _seekPos.toInt());
-                      _seekPos = -1;
-                    });
-                  },
-                ),
-              ),
-            ),
 
             // 总播放时间
             _duration.inMilliseconds == 0
                 ? Container(child: const Text("LIVE"))
                 : Padding(
-              padding: EdgeInsets.only(right: 5.0, left: 5),
-              child: Text(
-                '${_duration2String(_duration)}',
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+                    padding: EdgeInsets.only(right: 5.0, left: 5),
+                    child: Text(
+                      '${_duration2String(_duration)}',
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
             // 按钮 - 全屏/退出全屏
             IconButton(
               icon: Icon(widget.player.value.fullScreen
@@ -365,14 +365,14 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
               child: Container(
                 child: widget.playerTitle != null
                     ? Text(
-                  widget.playerTitle,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )
+                        widget.playerTitle,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )
                     : null,
               ),
             )
@@ -391,30 +391,30 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
       child: Center(
         child: _exception != null
             ? Text(
-          _exception,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 25,
-          ),
-        )
+                _exception,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                ),
+              )
             : (_prepared || player.state == FijkState.initialized)
-            ? AnimatedOpacity(
-          opacity: _hideStuff ? 0.0 : 0.7,
-          duration: Duration(milliseconds: 400),
-          child: IconButton(
-              iconSize: barHeight * 1.2,
-              icon: Icon(_playing ? Icons.pause : Icons.play_arrow,
-                  color: Colors.white),
-              padding: EdgeInsets.only(left: 10.0, right: 10.0),
-              onPressed: _playOrPause),
-        )
-            : SizedBox(
-          width: barHeight,
-          height: barHeight,
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.white),
-          ),
-        ),
+                ? AnimatedOpacity(
+                    opacity: _hideStuff ? 0.0 : 0.7,
+                    duration: Duration(milliseconds: 400),
+                    child: IconButton(
+                        iconSize: barHeight * 1.2,
+                        icon: Icon(_playing ? Icons.pause : Icons.play_arrow,
+                            color: Colors.white),
+                        padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                        onPressed: _playOrPause),
+                  )
+                : SizedBox(
+                    width: barHeight,
+                    height: barHeight,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                    ),
+                  ),
       ),
     );
   }
@@ -423,17 +423,17 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
   Widget build(BuildContext context) {
     Rect rect = player.value.fullScreen
         ? Rect.fromLTWH(
-      0,
-      0,
-      widget.viewSize.width,
-      widget.viewSize.height,
-    )
+            0,
+            0,
+            widget.viewSize.width,
+            widget.viewSize.height,
+          )
         : Rect.fromLTRB(
-      max(0.0, widget.texturePos.left),
-      max(0.0, widget.texturePos.top),
-      min(widget.viewSize.width, widget.texturePos.right),
-      min(widget.viewSize.height, widget.texturePos.bottom),
-    );
+            max(0.0, widget.texturePos.left),
+            max(0.0, widget.texturePos.top),
+            min(widget.viewSize.width, widget.texturePos.right),
+            min(widget.viewSize.height, widget.texturePos.bottom),
+          );
     return WillPopScope(
       child: Positioned.fromRect(
         rect: rect,
@@ -466,26 +466,26 @@ class _CustomFijkPanelState extends State<CustomFijkPanel> {
                                 // 显示快进时间的块
                                 _isTouch
                                     ? Container(
-                                  height: 40,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(5),
-                                    ),
-                                    color: Color.fromRGBO(0, 0, 0, 0.8),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: Text(
-                                      '${_duration2String(_dargPos)}/${_duration2String(_duration)}',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                )
+                                        height: 40,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(5),
+                                          ),
+                                          color: Color.fromRGBO(0, 0, 0, 0.8),
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          child: Text(
+                                            '${_duration2String(_dargPos)}/${_duration2String(_duration)}',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      )
                                     : Container()
                               ],
                             ),

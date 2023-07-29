@@ -92,7 +92,9 @@ class PageState extends State<PhoneCountryCodePage> {
           },
         ),
         centerTitle: true, // 标题居中
-        title: PFtext.text3(text: "选择国家和地区"),
+        title: PFtext.text3(
+          text: "选择国家和地区",
+        ),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: Padding(
@@ -115,7 +117,11 @@ class PageState extends State<PhoneCountryCodePage> {
                     color: PFc.themeColor,
                   ),
                   hintText: "搜索",
-                  contentPadding: EdgeInsets.fromLTRB(10, 10, 0, 10),
+                  hintStyle: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xff434343),
+                      fontFamily: "MyFontStyle"),
+                  contentPadding: EdgeInsets.fromLTRB(5, 5, 0, 0),
                   border: InputBorder.none,
                 ),
                 maxLines: 1,
@@ -174,13 +180,15 @@ class PageState extends State<PhoneCountryCodePage> {
                                           Text(
                                               data[index].listData[index2].name,
                                               style: const TextStyle(
-                                                  fontSize: 16,
-                                                  color: Color(0xff434343))),
+                                                  fontSize: 18,
+                                                  color: Color(0xff434343),
+                                                  fontFamily: "MyFontStyle")),
                                           Text(
                                             "   +${data[index].listData[index2].code}",
                                             style: const TextStyle(
-                                                fontSize: 16,
-                                                color: Color(0xff434343)),
+                                                fontSize: 18,
+                                                color: Color(0xff434343),
+                                                fontFamily: "MyFontStyle"),
                                           )
                                         ],
                                       ),
@@ -226,11 +234,15 @@ class PageState extends State<PhoneCountryCodePage> {
                             children: <Widget>[
                               Text(result[index3].name,
                                   style: const TextStyle(
-                                      fontSize: 16, color: Color(0xff434343))),
+                                      fontSize: 18,
+                                      color: Color(0xff434343),
+                                      fontFamily: "MyFontStyle")),
                               Text(
                                 "   +${result[index3].code}",
                                 style: const TextStyle(
-                                    fontSize: 16, color: Color(0xff434343)),
+                                    fontSize: 18,
+                                    color: Color(0xff434343),
+                                    fontFamily: "MyFontStyle"),
                               )
                             ],
                           ),
@@ -313,8 +325,12 @@ class PageState extends State<PhoneCountryCodePage> {
                                   style: index == ((_top - 100) ~/ 20) &&
                                           _float == true
                                       ? const TextStyle(
-                                          color: PFc.themeColor, fontSize: 20)
-                                      : const TextStyle(color: Colors.black),
+                                          color: PFc.themeColor,
+                                          fontSize: 20,
+                                          fontFamily: "MyFontStyle")
+                                      : const TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: "MyFontStyle"),
                                 ),
                               ),
                             );
@@ -373,7 +389,10 @@ class PhoneCodeIndexName extends StatelessWidget {
       color: PFc.backgroundBlack10,
       child: Padding(
         child: Text(indexName,
-            style: const TextStyle(fontSize: 20, color: Color(0xff434343))),
+            style: const TextStyle(
+                fontSize: 20,
+                color: Color(0xff434343),
+                fontFamily: "MyFontStyle")),
         padding: EdgeInsets.symmetric(
             vertical: 10, horizontal: PFspace.screenMargin),
       ),

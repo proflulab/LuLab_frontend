@@ -12,7 +12,7 @@ class PFtext {
     int maxLines = 2,
     TextOverflow overflow = TextOverflow.ellipsis,
     bool softWrap = false,
-    String font = 'MyFontStyle',
+    String fontFamily = "MyFontStyle",
     Color? color = PFc.textPrimary,
     double? fontSize = 15,
     FontWeight? fontWeight = FontWeight.normal,
@@ -25,7 +25,7 @@ class PFtext {
       overflow: overflow,
       maxLines: maxLines,
       style: TextStyle(
-        fontFamily: font,
+        fontFamily: "MyFontStyle",
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -53,7 +53,7 @@ class PFtext {
       overflow: overflow,
       maxLines: maxLines,
       style: TextStyle(
-        fontFamily: font,
+        fontFamily: "MyFontStyle",
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
@@ -81,13 +81,14 @@ class PFtext {
       overflow: overflow,
       maxLines: maxLines,
       style: TextStyle(
-        fontFamily: font,
+        fontFamily: "MyFontStyle",
         color: color,
-        fontSize: fontSize,
+        fontSize: 20,
         fontWeight: fontWeight,
       ),
     );
   }
+
   //常规字体二，主要用在副文章
   static Widget text4({
     //required BuildContext context,
@@ -108,7 +109,7 @@ class PFtext {
       overflow: overflow,
       maxLines: maxLines,
       style: TextStyle(
-        fontFamily: font,
+        fontFamily: "MyFontStyle",
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,

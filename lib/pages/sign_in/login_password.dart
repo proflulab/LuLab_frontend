@@ -92,7 +92,8 @@ class _SignInPageState extends State<SignInPage> {
     );
 
     try {
-     LoginPassword loginPassword = await GqlUserAPI.loginPassword(context: context, variables: variables);
+      LoginPassword loginPassword = await GqlUserAPI.loginPassword(
+          context: context, variables: variables);
       Storage.setInt('isFirstSign', Global.isFirstSign);
       Global.saveToken(loginPassword.token);
     } catch (e) {
@@ -121,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
             height: 1.sh,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/OJJ12.png"),
+                image: AssetImage("assets/images/DLLC.png"),
                 fit: BoxFit.fill,
               ),
             ),
@@ -219,5 +220,3 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
-
-class Test {}

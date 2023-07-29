@@ -19,45 +19,48 @@ class _AgreementWidgetState extends State<AgreementWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Checkbox(
           shape: const CircleBorder(),
           value: widget.checked,
           onChanged: widget.onChanged,
-          focusColor: PFc.themeColor,
-          activeColor: PFc.themeColor,
+          focusColor: Colors.green,
+          activeColor: Colors.green,
         ),
         RichText(
           text: TextSpan(
             text: '我已阅读并同意',
-            style: const TextStyle(color: Colors.black, fontSize: 13.0),
+            style: const TextStyle(
+                fontFamily: "MyFontStyle", color: Colors.black, fontSize: 18.0),
             children: <TextSpan>[
               TextSpan(
-                text: '《服务协议》',
-                style: const TextStyle(color: PFc.themeColor),
+                text: ' 服务协议 ',
+                style: const TextStyle(
+                    fontFamily: "MyFontStyle", color: Colors.green),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     Get.toNamed(
                       "/agreement",
                       arguments: {
                         "content": Markdowndata.agreementUser,
-                        "title": "《服务协议》"
+                        "title": " 服务协议"
                       },
                     );
                   },
               ),
               const TextSpan(text: '和'),
               TextSpan(
-                text: '《隐私政策》',
-                style: const TextStyle(color: PFc.themeColor),
+                text: ' 隐私政策',
+                style: const TextStyle(
+                    fontFamily: "MyFontStyle", color: Colors.green),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () async {
                     Get.toNamed(
                       "/agreement",
                       arguments: {
                         "content": Markdowndata.privacy,
-                        "title": "《隐私政策》"
+                        "title": " 隐私政策"
                       },
                     );
                   },

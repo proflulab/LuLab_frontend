@@ -12,18 +12,18 @@ class HiTab extends StatelessWidget {
   final double indicatorWeight;
   final EdgeInsetsGeometry indicatorPadding;
 
-  const HiTab(this.tabs,
-      {Key? key,
-      required this.controller,
-      this.fontSize = 16,
-      this.borderWidth = 2,
-      this.insets = 15,
-      this.unselectedLabelColor = Colors.grey,
-      this.indicatorColor = Colors.green,
-      this.indicatorWeight = 3,
-      this.indicatorPadding = EdgeInsets.zero,
-      })
-      : super(key: key);
+  const HiTab(
+    this.tabs, {
+    Key? key,
+    required this.controller,
+    this.fontSize = 20,
+    this.borderWidth = 2,
+    this.insets = 15,
+    this.unselectedLabelColor = Colors.grey,
+    this.indicatorColor = Colors.green,
+    this.indicatorWeight = 3,
+    this.indicatorPadding = EdgeInsets.zero,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,11 @@ class HiTab extends StatelessWidget {
       unselectedLabelColor: unselectedLabelColor,
       indicatorColor: indicatorColor,
       indicatorWeight: indicatorWeight,
-      indicatorPadding:const EdgeInsets.only(right: 4, left: 4, bottom: 3),
-      labelStyle: TextStyle(fontSize: fontSize),
+      indicatorPadding: const EdgeInsets.only(right: 4, left: 10, bottom: 3),
+      labelStyle: TextStyle(
+        fontFamily: "MyFontStyle",
+        fontSize: fontSize,
+      ),
       tabs: tabs,
     );
   }
