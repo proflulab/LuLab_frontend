@@ -17,6 +17,7 @@ import '../../common/widget/widgets.dart';
 import '../../common/utils/utils.dart';
 import '../../controller/signin_controller.dart';
 import 'login_verification.dart';
+import 'login_verification_email.dart';
 
 class PhoneLogin extends StatefulWidget {
   const PhoneLogin({Key? key}) : super(key: key);
@@ -31,8 +32,8 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
   bool _checked = true;
   bool v = true;
   bool _isValidEmail(String email) {
-    // 简单的邮箱格式检查，可以根据实际需求进一步优化
-    return email.isNotEmpty && email.contains('@') && email.contains('.com');
+    // 邮箱格式检查
+    return email.isNotEmpty && email.contains('@') && email.contains('.');
   }
 
   final TextEditingController _accountController = TextEditingController();
@@ -310,6 +311,13 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
     );
   }
 
+  _navigateToVerificationPage1(String phoneNumber) {
+    Get.to(
+      const Verification1(a: '2'),
+      arguments: [phoneNumber, c.code.value],
+    );
+  }
+
   _submitButton() {
     return Container(
       width: 1.sw - 2 * 30.w,
@@ -338,12 +346,12 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
             _dialog(
               () {
                 // Call the new navigation method with the email value
-                _navigateToVerificationPage(_accountController.value.text);
+                _navigateToVerificationPage1(_accountController.value.text);
               },
             );
           } else {
             // Call the new navigation method with the email value
-            _navigateToVerificationPage(_accountController.value.text);
+            _navigateToVerificationPage1(_accountController.value.text);
           }
         },
         child: const Text(

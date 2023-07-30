@@ -13,15 +13,15 @@ import '../../common/widget/widgets.dart';
 
 import '../app.dart';
 
-class Verification extends StatefulWidget {
-  const Verification({Key? key, required this.a}) : super(key: key);
+class Verification1 extends StatefulWidget {
+  const Verification1({Key? key, required this.a}) : super(key: key);
   final String a;
 
   @override
-  State<Verification> createState() => _VerificationState();
+  State<Verification1> createState() => _Verification1State();
 }
 
-class _VerificationState extends State<Verification> {
+class _Verification1State extends State<Verification1> {
   List data = Get.arguments;
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
@@ -45,8 +45,8 @@ class _VerificationState extends State<Verification> {
     setState(() {
       _numbers = "+${data[1]}-${data[0]}";
     });
-    _loadVerifySend(data[0], data[1]);
-    _enable ? startCountdown(60) : null;
+    _loadVerifySend1(data[0], data[1]);
+    _enable ? startCountdown1(60) : null;
   }
 
   @override
@@ -60,7 +60,7 @@ class _VerificationState extends State<Verification> {
   ///获取验证码
   /// [_mobile]为用户输入手机号码
   /// [_area] 为用户所选国家区号
-  _loadVerifySend(String _mobile, int _area) async {
+  _loadVerifySend1(String _mobile, int _area) async {
     _queryVerifySend = await GqlUserAPI.verifySend(
         context: context,
         variables: VerifySendRequest(
@@ -86,7 +86,7 @@ class _VerificationState extends State<Verification> {
   /// [_mobile]为用户输入手机号码
   /// [_area] 为用户所选国家区号
   /// [_code]为验证码
-  _loadLoginCaptcha(String _mobile, int _area, String _code) async {
+  _loadLoginCaptcha1(String _mobile, int _area, String _code) async {
     _queryLoginCaptcha = await GqlUserAPI.loginCaptcha(
         context: context,
         variables: LoginCaptchaRequest(
@@ -111,7 +111,7 @@ class _VerificationState extends State<Verification> {
   }
 
   //倒计时方法
-  void startCountdown(int count) {
+  void startCountdown1(int count) {
     if (!_enable) return;
     setState(() {
       _enable = false;
@@ -175,7 +175,7 @@ class _VerificationState extends State<Verification> {
                   Transform.translate(
                     offset: const Offset(20, -10), // 文字向上移动10逻辑像素
                     child: const Text(
-                      "输入手机号验证码",
+                      "输入邮箱验证码",
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
                         fontFamily: "MyFontStyle", //所用的字体、这里用的是自定义的字体
@@ -189,8 +189,8 @@ class _VerificationState extends State<Verification> {
                 Transform.translate(
                   offset: const Offset(22, -5),
                   child: Text(
-                    "请输入发送至+" +
-                        data[1].toString() +
+                    "请输入发送至" +
+                        // data[1].toString() +
                         data[0].substring(0, 4) +
                         "****" +
                         data[0].substring(data[0].length - 4) +
@@ -210,7 +210,7 @@ class _VerificationState extends State<Verification> {
                     focusNode: _pinputfocusNode,
                     autofocus: true,
                     showCursor: true,
-                    cursor: cursor,
+                    cursor: cursor1,
                     separator: Container(
                       height: 2.5,
                       width: 12,
@@ -219,9 +219,9 @@ class _VerificationState extends State<Verification> {
                     ),
                     separatorPositions: const [3],
                     pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                    defaultPinTheme: defaultPinTheme,
-                    submittedPinTheme: submittedPinTheme,
-                    focusedPinTheme: defaultPinTheme.copyWith(
+                    defaultPinTheme: defaultPinTheme1,
+                    submittedPinTheme: submittedPinTheme1,
+                    focusedPinTheme: defaultPinTheme1.copyWith(
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -237,15 +237,15 @@ class _VerificationState extends State<Verification> {
                     ),
                     onCompleted: (value) {
                       String code = value.toString();
-                      _loadLoginCaptcha(data[0], data[1], code);
+                      _loadLoginCaptcha1(data[0], data[1], code);
                     },
                   ),
                 ),
                 SizedBox(height: 50.h),
                 GestureDetector(
                   onTap: () {
-                    _enable ? startCountdown(60) : null;
-                    _loadVerifySend(data[0], data[1]);
+                    _enable ? startCountdown1(60) : null;
+                    _loadVerifySend1(data[0], data[1]);
                   },
                   child: Transform.translate(
                     offset: const Offset(22, -5),
@@ -268,7 +268,7 @@ class _VerificationState extends State<Verification> {
     );
   }
 
-  final defaultPinTheme = PinTheme(
+  final defaultPinTheme1 = PinTheme(
     width: 0.12.sw, // Change the width to make the squares smaller
     height: 0.12.sw,
     textStyle: const TextStyle(
@@ -283,7 +283,7 @@ class _VerificationState extends State<Verification> {
     ),
   );
 
-  final submittedPinTheme = PinTheme(
+  final submittedPinTheme1 = PinTheme(
     width: 0.12.sw, // Change the width to make the squares smaller
     height: 0.12.sw, // Change the height to make the squares smaller
     textStyle: const TextStyle(
@@ -297,7 +297,7 @@ class _VerificationState extends State<Verification> {
   );
 
   //光标
-  final cursor = Align(
+  final cursor1 = Align(
     alignment: Alignment.bottomCenter,
     child: Container(
       width: 21,

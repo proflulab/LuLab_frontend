@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
 import 'package:lab/common/widget/text_widget.dart';
-
 import '../../common/values/values.dart';
 import '../../common/utils/utils.dart';
-
 import '../../controller/signin_controller.dart';
 import 'phone_country_code.dart';
 
@@ -14,6 +11,7 @@ class PhoneField extends StatefulWidget {
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
   final FocusNode focusNode;
+
   const PhoneField({
     Key? key,
     required this.controller,
@@ -27,10 +25,30 @@ class PhoneField extends StatefulWidget {
 
 class _PhoneFieldState extends State<PhoneField> {
   final SigninController c = Get.put(SigninController());
+  bool isPhoneNumberValid = false;
 
   @override
   void initState() {
     super.initState();
+    widget.controller.addListener(validatePhoneNumber);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(validatePhoneNumber);
+    super.dispose();
+  }
+
+  void validatePhoneNumber() {
+    final phoneNumber = widget.controller.text.trim();
+    // Check if the phone number (excluding country code) is exactly 11 digits long
+    if (c.code == "+86") {
+      isPhoneNumberValid = phoneNumber.length == 11;
+    } else {
+      // For other country codes, we don't enforce length restrictions
+      isPhoneNumberValid = true;
+    }
+    setState(() {});
   }
 
   @override
@@ -38,8 +56,6 @@ class _PhoneFieldState extends State<PhoneField> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Container(
-        //alignment: const Alignment(0.1, 0.8),
-        //width: 530.w,
         height: 96.h,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -51,8 +67,6 @@ class _PhoneFieldState extends State<PhoneField> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          //verticalDirection: VerticalDirection.up,
           children: [
             GestureDetector(
               onTap: () {
@@ -81,14 +95,14 @@ class _PhoneFieldState extends State<PhoneField> {
                 keyboardType: TextInputType.phone,
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                  LengthLimitingTextInputFormatter(11)
+                  LengthLimitingTextInputFormatter(11),
                 ],
                 decoration: const InputDecoration(
                   hintText: "请输入您的手机号",
                   contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 7),
                   border: InputBorder.none,
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: "MyFontStyle",
                   fontSize: 20,
                   color: Colors.black,
@@ -107,10 +121,8 @@ class _PhoneFieldState extends State<PhoneField> {
                     },
                     icon: const Icon(Icons.close_rounded),
                     padding: const EdgeInsets.all(0.0),
-                    // splashColor: Colors.red,
-                    // highlightColor: Colors.green,
                   )
-                : const Text("")
+                : const Text(""),
           ],
         ),
       ),
