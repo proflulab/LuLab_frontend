@@ -536,7 +536,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
               ],
               decoration: const InputDecoration(
                 hintText: "请输入您的邮箱",
-                contentPadding: EdgeInsets.fromLTRB(10, 10, 0, 7),
+                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 7),
                 border: InputBorder.none,
               ),
               style: TextStyle(

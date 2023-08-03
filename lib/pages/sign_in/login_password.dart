@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lab/common/entitys/data_login_password.dart';
+import 'package:lab/pages/sign_in/login_verification.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../common/api/apis.dart';
 import '../../common/entitys/entitys.dart';
@@ -26,19 +28,15 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   final TextEditingController _accountController = TextEditingController();
-
   final TextEditingController _passController = TextEditingController();
 
   final SigninController c = Get.put(SigninController());
-
   bool v = true;
 
   final FocusNode _accountFocusNode = FocusNode();
   final FocusNode _passFocusNode = FocusNode();
 
   late LoginPassword _loginPassword;
-
-  get leading => null;
 
   @override
   void initState() {
@@ -69,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
     });
   }
 
-//页面销毁
+  //页面销毁
   @override
   void dispose() {
     super.dispose();
@@ -108,15 +106,14 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GestureDetector(
-        onTap: () {
-          //隐藏键盘
-          SystemChannels.textInput.invokeMethod('TextInput.hide');
-          _accountFocusNode.unfocus();
-          _passFocusNode.unfocus();
-        },
-        child: SingleChildScrollView(
+    return GestureDetector(
+      onTap: () {
+        SystemChannels.textInput.invokeMethod('TextInput.hide');
+        _accountFocusNode.unfocus();
+        _passFocusNode.unfocus();
+      },
+      child: Scaffold(
+        body: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Container(
             height: 1.sh,
@@ -126,93 +123,147 @@ class _SignInPageState extends State<SignInPage> {
                 fit: BoxFit.fill,
               ),
             ),
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    height: 120,
-                    width: 400,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child:
-                          const Icon(Icons.arrow_back_ios, color: Colors.black),
-                    ),
-                  ),
-                  // Container(
-
-                  //   color: Colors.cyan,
-                  //   width: 100,
-                  //   height: 100,
-                  //   child: const Icon(
-                  //     Icons.chevron_left,
-                  //   ),
-                  // ),
-                  // SizedBox(height: 50.h),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset("assets/images/logo.svg",
-                            height: 100.h),
-                        SvgPicture.asset("assets/images/proflu_text.svg"),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 150.h),
-                  PhoneField(
-                    controller: _accountController,
-                    onChanged: (value) {
-                      //c.innumber(value);
-                      setState(() {
-                        value;
-                      });
-                      if (kDebugMode) {
-                        print("你输入的内容为$value");
-                      }
-                    },
-                    focusNode: _accountFocusNode,
-                  ),
-                  SizedBox(height: 50.h),
-                  PFTextField(
-                    focusNode: _passFocusNode,
-                    controller: _passController,
-                    hintText: "请输入密码",
-                    obscureText: v,
-                    width: 1.sw - 2 * 80.w,
-                    height: 96.h,
-                    color: const Color.fromRGBO(233, 234, 237, 1),
-                    suffixIcon: IconButton(
-                      icon: Center(
-                        child: v
-                            ? const Icon(Icons.remove_red_eye_outlined)
-                            : const Icon(Icons.remove_red_eye_rounded),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 10.h),
+                Column(children: [
+                  Transform.translate(
+                    offset: const Offset(-20, 30),
+                    child: IconButton(
+                      icon: Transform.scale(
+                        scale: 1.0,
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.black,
+                        ),
                       ),
-                      color: PFc.themeColor,
-                      //padding: const EdgeInsets.all(11.0),
-                      alignment: Alignment.bottomCenter,
                       onPressed: () {
-                        setState(() {
-                          v = !v;
-                        });
+                        Navigator.pop(context);
                       },
                     ),
                   ),
-                  SizedBox(height: 50.h),
-                  // 登录
-                  btnFlatButtonWidget(
-                    width: 1.sw - 2 * 80.w,
-                    height: 96.h,
-                    onPressed: () => _handleSignIn(),
-                    gbColor: PFc.primaryElement,
-                    title: "登录",
+                  Transform.translate(
+                    offset: const Offset(20, 50),
+                    child: const Text(
+                      "输入密码",
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        fontFamily: "MyFontStyle",
+                        color: Colors.black,
+                        fontSize: 28,
+                      ),
+                    ),
                   ),
-                ],
-              ),
+                ]),
+                SizedBox(height: 10.h),
+                Transform.translate(
+                  offset: const Offset(22, -5),
+                ),
+                SizedBox(height: 150.h),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 45.w),
+                    child: Container(
+                      height: 96.h,
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5.0)),
+                        color: Colors.white,
+                        border: Border.all(
+                          color: _accountFocusNode.hasFocus
+                              ? Colors.green
+                              : Colors.grey,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              autofocus: false,
+                              focusNode: _accountFocusNode,
+                              controller: _accountController,
+                              keyboardType: TextInputType.emailAddress,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.deny(
+                                    RegExp('[\u4e00-\u9fa5]')),
+                                LengthLimitingTextInputFormatter(16),
+                              ],
+                              decoration: const InputDecoration(
+                                hintText: "请输入您的密码",
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(0, 10, 0, 7),
+                                border: InputBorder.none,
+                              ),
+                              style: TextStyle(
+                                fontFamily: _accountController.text.isEmpty
+                                    ? "MyFontStyle"
+                                    : Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .fontFamily,
+                                fontSize: 20,
+                                color: _accountController.text.isEmpty
+                                    ? Colors.grey
+                                    : Colors.black,
+                              ),
+                              maxLines: 1,
+                              autocorrect: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  value;
+                                });
+                                if (kDebugMode) {
+                                  print("你输入的内容为$value");
+                                }
+                              },
+                              obscureText: v,
+                            ),
+                          ),
+                          Transform.translate(
+                            offset: Offset(0, -8),
+                            child: IconButton(
+                              icon: Center(
+                                child: v
+                                    ? const Icon(Icons.remove_red_eye_outlined)
+                                    : const Icon(Icons.remove_red_eye_rounded),
+                              ),
+                              color: PFc.themeColor,
+                              onPressed: () {
+                                setState(() {
+                                  v = !v;
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to the password login screen here
+                    Get.to(() => Verification(
+                          a: '2',
+                        ));
+                  },
+                  child: Transform.translate(
+                    offset: const Offset(22, 10),
+                    child: const Text(
+                      "验证码登录",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontFamily: "MyFontStyle",
+                        color: PFc.themeColor,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

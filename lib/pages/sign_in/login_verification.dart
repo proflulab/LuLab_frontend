@@ -12,6 +12,7 @@ import '../../common/global/global.dart';
 import '../../common/widget/widgets.dart';
 
 import '../app.dart';
+import 'login_password.dart';
 
 class Verification extends StatefulWidget {
   const Verification({Key? key, required this.a}) : super(key: key);
@@ -144,19 +145,24 @@ class _VerificationState extends State<Verification> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: IconButton(
-            icon: Transform.scale(
-              scale: 1.5,
-              child: const Icon(
-                Icons.keyboard_arrow_left,
-                color: Colors.black,
+          leading: Padding(
+            padding: const EdgeInsets.only(
+                left: 16.0), // Adjust the left padding as needed
+            child: IconButton(
+              icon: Transform.scale(
+                scale: 1.0,
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                ),
               ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
         ),
+
         body: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Container(
@@ -256,6 +262,25 @@ class _VerificationState extends State<Verification> {
                         fontSize: 19,
                         fontFamily: "MyFontStyle",
                         color: _time == 0 ? PFc.themeColor : PFc.textSecondary,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to the password login screen here
+                    Get.to(() => const SignInPage());
+                  },
+                  child: Transform.translate(
+                    offset: const Offset(22, -5),
+                    child: const Text(
+                      "密码登录",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontFamily: "MyFontStyle",
+                        color: PFc.themeColor,
                       ),
                     ),
                   ),
