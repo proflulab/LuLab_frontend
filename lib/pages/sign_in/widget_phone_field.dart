@@ -99,7 +99,7 @@ class _PhoneFieldState extends State<PhoneField> {
                 ],
                 decoration: const InputDecoration(
                   hintText: "请输入您的手机号",
-                  contentPadding: EdgeInsets.fromLTRB(20, 10, 0, 7),
+                  contentPadding: EdgeInsets.fromLTRB(10, 10, 0, 7),
                   border: InputBorder.none,
                 ),
                 style: const TextStyle(

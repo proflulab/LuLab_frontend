@@ -30,116 +30,122 @@ class _UsersPageState extends State<UsersPage>
     //double screenheight = MediaQuery.of(context).size.height;
 //个人头像，姓名，等级
     Widget _username() {
-      return Column(children: [
-        Container(
-          //height: 100,
-          margin: const EdgeInsets.all(20),
-          //color: Colors.white,
-          child: ListTile(
-            leading: SizedBox(
-                width: 100.w,
-                height: 100.w,
-                child: ClipOval(
-                    child: CachedImage.typeLaod(Global.profile.profilePicture!))),
-            title: Text(
-              Global.profile.username!,
-              style: const TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.black,
-                fontSize: 28,
-              ),
-            ),
-            subtitle: const Text(
-              "功勋学员",
-              style: TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.green,
-                fontSize: 14,
-              ),
-            ),
-            contentPadding: const EdgeInsets.all(10),
-            trailing: const Text(
-              "个人主页",
-              style: TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.black,
-                fontSize: 18,
-              ),
-            ),
-            onTap: () {
-              if (kDebugMode) {
-                print("进入个人主页");
-              }
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const SetUser()));
-            },
-          ),
-        ),
-        Container(
-          height: 90,
-          padding: const EdgeInsets.only(left: 15, right: 5),
-          margin: const EdgeInsets.only(left: 30, right: 30),
-          decoration: const BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
-                bottomRight: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-              ),
-              color: Colors.green),
-          child: Center(
+      return Column(
+        children: [
+          Container(
+            //height: 100,
+            margin: const EdgeInsets.all(20),
+            //color: Colors.white,
             child: ListTile(
-              title: const Text(
-                "开通鹿向前实验室会员",
-                style: TextStyle(
+              leading: SizedBox(
+                  width: 100.w,
+                  height: 100.w,
+                  child: ClipOval(
+                      child: CachedImage.typeLaod(
+                          Global.profile.profilePicture!))),
+              title: Text(
+                Global.profile.username!,
+                style: const TextStyle(
                   fontFamily: 'MyFontStyle',
-                  color: Colors.white,
-                  fontSize: 16,
+                  color: Colors.black,
+                  fontSize: 28,
                 ),
               ),
-              // subtitle: const Text("优享&大特权"),
-              // contentPadding: const EdgeInsets.all(10),
-              trailing: const Chip(
-                avatar: null,
-                label: Text("开通"),
+              subtitle: const Text(
+                "功勋学员",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.green,
+                  fontSize: 14,
+                ),
+              ),
+              contentPadding: const EdgeInsets.all(10),
+              trailing: const Text(
+                "个人主页",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
               ),
               onTap: () {
                 if (kDebugMode) {
-                  print("进入会员详情");
+                  print("进入个人主页");
                 }
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const SetUser()));
               },
             ),
           ),
-        ),
-      ]);
+          Container(
+            height: 90,
+            padding: const EdgeInsets.only(left: 15, right: 5),
+            margin: const EdgeInsets.only(left: 30, right: 30),
+            decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                ),
+                color: Colors.green),
+            child: Center(
+              child: ListTile(
+                title: const Text(
+                  "开通鹿向前实验室会员",
+                  style: TextStyle(
+                    fontFamily: 'MyFontStyle',
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                // subtitle: const Text("优享&大特权"),
+                // contentPadding: const EdgeInsets.all(10),
+                trailing: const Chip(
+                  avatar: null,
+                  label: Text("开通"),
+                ),
+                onTap: () {
+                  if (kDebugMode) {
+                    print("进入会员详情");
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
+      );
     }
 
     Widget _login() {
       return Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           Center(
-            child: Container(
-              //margin: EdgeInsets.all(PFspace.screenMargin),
-              // color: Colors.blue,
-              width: 0.5.sw,
-              height: 60.h,
-              child: MaterialButton(
-                  child: const Text(
-                    '登陆/注册',
-                  ),
-                  onPressed: () {
-                    //QuickLoginController qc = Get.put(QuickLoginController());
-                    Get.to(const PhoneLogin());
-                    // Get.toNamed("/start");
-                  }
-                  //
-                  ),
-              decoration: const BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+            child: MaterialButton(
+              child: Container(
+                width: 400,
+                height: 70,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                      image: AssetImage('assets/images/user.png'),
+                      fit: BoxFit.contain),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 500,
+                  height: 100,
+                  color: Colors.black38,
+                  child: Text('登录/注册'),
+                ),
               ),
+              onPressed: () {
+                Get.to(
+                  const PhoneLogin(),
+                );
+              },
             ),
           ),
           const SizedBox(height: 15),

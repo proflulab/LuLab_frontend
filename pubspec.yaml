@@ -105,6 +105,11 @@ flutter:
     - assets/static/
     - assets/quick_login/
     - assets/images/DLLC.png
+    - assets/images/StartPage.png
+    - assets/images/GuidePage1.png
+    - assets/images/GuidePage2.png
+    - assets/images/GuidePage3.png
+    - assets\images\user.png
   uses-material-design: true
 
   fonts:
