@@ -184,8 +184,8 @@ class _VerificationState extends State<Verification> {
                       "输入手机号验证码",
                       textDirection: TextDirection.ltr,
                       style: TextStyle(
-                        fontFamily: "MyFontStyle", //所用的字体、这里用的是自定义的字体
-                        color: Colors.black, // 字体颜色
+                        fontFamily: "MyFontStyle",
+                        color: Colors.black,
                         fontSize: 28,
                       ),
                     ),
@@ -208,7 +208,7 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50.h),
+                SizedBox(height: 30.h),
                 Center(
                   child: Pinput(
                     length: 6,
@@ -218,8 +218,8 @@ class _VerificationState extends State<Verification> {
                     showCursor: true,
                     cursor: cursor,
                     separator: Container(
-                      height: 2.5,
-                      width: 12,
+                      height: 2.5.h,
+                      width: 1.sw - 2 * 360.w,
                       decoration:
                           const BoxDecoration(color: PFc.backgroundBlack),
                     ),

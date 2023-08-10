@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lab/common/entitys/data_login_password.dart';
 import 'package:lab/pages/sign_in/login_verification.dart';
+import 'package:lab/pages/sign_in/login_verification_email.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../common/api/apis.dart';
@@ -222,7 +223,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                           Transform.translate(
-                            offset: Offset(0, -8),
+                            offset: const Offset(0, -8),
                             child: IconButton(
                               icon: Center(
                                 child: v
@@ -242,14 +243,15 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h),
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to the password login screen here
-                    Get.to(() => Verification(
-                          a: '2',
-                        ));
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
                   },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.transparent,
+                    elevation: 0,
+                    padding: EdgeInsets.zero,
+                  ),
                   child: Transform.translate(
                     offset: const Offset(22, 10),
                     child: const Text(
@@ -262,7 +264,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),

@@ -14,8 +14,8 @@ import '../../common/widget/widgets.dart';
 import '../app.dart';
 
 class Verification1 extends StatefulWidget {
-  const Verification1({Key? key, required this.a}) : super(key: key);
-  final String a;
+  const Verification1({Key? key, required this.a1}) : super(key: key);
+  final String a1;
 
   @override
   State<Verification1> createState() => _Verification1State();
@@ -207,7 +207,7 @@ class _Verification1State extends State<Verification1> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50.h),
+                SizedBox(height: 30.h),
                 Center(
                   child: Pinput(
                     length: 6,
@@ -217,8 +217,8 @@ class _Verification1State extends State<Verification1> {
                     showCursor: true,
                     cursor: cursor1,
                     separator: Container(
-                      height: 2.5,
-                      width: 12,
+                      height: 2.5.h,
+                      width: 1.sw - 2 * 360.w,
                       decoration:
                           const BoxDecoration(color: PFc.backgroundBlack),
                     ),
