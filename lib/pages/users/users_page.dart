@@ -138,7 +138,7 @@ class _UsersPageState extends State<UsersPage>
                   width: 500,
                   height: 100,
                   color: Colors.black38,
-                  child: Text('登录/注册'),
+                  child: const Text('登录/注册'),
                 ),
               ),
               onPressed: () {
