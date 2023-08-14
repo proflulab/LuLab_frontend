@@ -125,7 +125,7 @@ class _UsersPageState extends State<UsersPage>
           Center(
             child: MaterialButton(
               child: Container(
-                width: 100,
+                width: 300,
                 height: 70,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
