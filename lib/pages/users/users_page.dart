@@ -93,7 +93,7 @@ class _UsersPageState extends State<UsersPage>
             child: Center(
               child: ListTile(
                 title: const Text(
-                  "开通鹿向前实验室会员",
+                  "开通陆向谦实验室会员",
                   style: TextStyle(
                     fontFamily: 'MyFontStyle',
                     color: Colors.white,
@@ -119,37 +119,50 @@ class _UsersPageState extends State<UsersPage>
     }
 
     Widget _login() {
-      return Column(
+      return Stack(
         children: [
-          const SizedBox(height: 30),
-          Center(
-            child: MaterialButton(
-              child: Container(
-                width: 300,
-                height: 70,
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: AssetImage('assets/images/user.png'),
-                      fit: BoxFit.contain),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 500,
-                  height: 100,
-                  color: Colors.black38,
-                  child: const Text('登录/注册'),
-                ),
+          MaterialButton(
+            disabledColor: Colors.white,
+            highlightColor: Colors.white10,
+            child: Container(
+              margin: EdgeInsets.all(20),
+              width: 340,
+              height: 70,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                    alignment: Alignment.centerLeft,
+                    image: AssetImage('assets/images/user.png'),
+                    fit: BoxFit.contain),
+                borderRadius: BorderRadius.circular(50),
               ),
-              onPressed: () {
-                Get.to(
-                  const PhoneLogin(),
-                );
-              },
+            ),
+            onPressed: () {
+              Get.to(
+                const PhoneLogin(),
+              );
+            },
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(340, 43, 30, 10),
+            child: Icon(
+              Icons.arrow_forward_ios_rounded,
             ),
           ),
-          const SizedBox(height: 15),
-          const Center(
+          Container(
+            margin: EdgeInsets.fromLTRB(125, 30, 155, 10),
+            alignment: Alignment.center,
+            width: 100,
+            height: 50,
+            child: const Text(
+              '登录/注册',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(137, 100, 137, 20),
             child: Text(
               "登陆/注册可解锁完整功能",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
