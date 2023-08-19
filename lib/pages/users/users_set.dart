@@ -40,6 +40,7 @@ class _SettingsPageState extends State<SettingsPage> {
     //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         title: const Text(
           '设置',
@@ -93,13 +94,19 @@ class _SettingsPageState extends State<SettingsPage> {
                         //   ),
                         // );
                       }),
-                  Divider(height: 3.h, indent: 30.w, endIndent: 30.w,),
+                  Divider(
+                    height: 3.h,
+                    indent: 30.w,
+                    endIndent: 30.w,
+                  ),
                   lineWidget(
                       title: "当前版本",
                       right: Row(
                         children: [
                           PFtext.text1(
-                              text: "v1.0", fontSize: 15, color: PFc.textSecondary),
+                              text: "v1.0",
+                              fontSize: 15,
+                              color: PFc.textSecondary),
                           Icon(
                             Icons.chevron_right,
                             size: 32.w,

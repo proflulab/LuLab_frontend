@@ -64,6 +64,7 @@ class _SetUserState extends State<SetUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
@@ -107,37 +108,15 @@ class _SetUserState extends State<SetUser> {
         children: [
           Column(
             children: [
-              // Container(
-              //   margin: EdgeInsets.all(PFspace.screenMargin),
-              //   padding: EdgeInsets.all(PFspace.screenMargin),
-              //   decoration: const BoxDecoration(
-              //       shape: BoxShape.rectangle,
-              //       borderRadius: BorderRadius.all(Radius.circular(10)),
-              //       color: Colors.white),
-              //   child: listGroup2(
-              //     context: context,
-              //     title: '头像',
-              //     child: SizedBox(
-              //         child: ClipOval(
-              //             child: CachedImage.typeLaod(Global.profile.imgUrl!))),
-              //     icon: const Icon(PFIcon.userRight),
-              //     onTap: () {
-              //       //TODO 等待后端图片鉴权接口
-              //       _showBottomMenu(context);
-              //       if (kDebugMode) {
-              //         print("该功能未开发，当前无法更改");
-              //       }
-              //       // toastInfo(msg: '耐心等待该功能的开发吧！');
-              //     },
-              //   ),
-              // ),
               Container(
-                margin: EdgeInsets.all(PFspace.screenMargin),
                 padding: EdgeInsets.all(PFspace.screenMargin),
                 decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.white),
+                    shape: BoxShape.rectangle, color: Colors.white),
+              ),
+              Container(
+                padding: EdgeInsets.all(PFspace.screenMargin),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle, color: Colors.white),
                 child: Column(
                   children: [
                     listGroup1(
@@ -221,15 +200,19 @@ class _SetUserState extends State<SetUser> {
                         );
                       },
                     ),
+                    const Divider(),
                   ],
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(PFspace.screenMargin),
+                height: 50,
                 padding: EdgeInsets.all(PFspace.screenMargin),
                 decoration: const BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
                     color: Colors.white),
                 child: listGroup1(
                   context: context,

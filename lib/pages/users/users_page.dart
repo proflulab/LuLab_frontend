@@ -175,7 +175,7 @@ class _UsersPageState extends State<UsersPage>
 
     Widget _adv() {
       return Container(
-        height: 90,
+        height: 80,
         padding: const EdgeInsets.only(left: 15, right: 5),
         margin: const EdgeInsets.only(left: 30, right: 30),
         decoration: const BoxDecoration(
@@ -183,8 +183,6 @@ class _UsersPageState extends State<UsersPage>
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
-              bottomRight: Radius.circular(15),
-              bottomLeft: Radius.circular(15),
             ),
             color: Colors.green),
         child: Center(

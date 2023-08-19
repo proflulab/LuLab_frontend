@@ -34,6 +34,7 @@ class _AccountSettingState extends State<AccountSetting> {
     //double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         title: const Text(
           '账号设置',
