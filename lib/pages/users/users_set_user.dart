@@ -27,6 +27,8 @@ class _SetUserState extends State<SetUser> {
   //     TextEditingController(text: Global.profile.mobile);
   final TextEditingController _wechatnameController =
       TextEditingController(text: Global.profile.wechat);
+  final TextEditingController _mobilenameController =
+      TextEditingController(text: Global.profile.mobile);
 
   // 执行修改个人信息操作
   _carryUp() async {
@@ -108,10 +110,31 @@ class _SetUserState extends State<SetUser> {
         children: [
           Column(
             children: [
-              Container(
-                padding: EdgeInsets.all(PFspace.screenMargin),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle, color: Colors.white),
+              Stack(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    color: Colors.white,
+                    width: 1000,
+                    height: 55,
+                    child: Text(
+                      '头像',
+                      style: TextStyle(fontFamily: 'MyFontStyle'),
+                    ),
+                    padding: EdgeInsets.all(PFspace.screenMargin),
+                  ),
+                  Container(
+                    width: 50,
+                    height: 50,
+                    margin: EdgeInsets.fromLTRB(350, 0, 0, 6),
+                    decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          image: AssetImage('assets/images/user.png'),
+                          fit: BoxFit.contain),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  )
+                ],
               ),
               Container(
                 padding: EdgeInsets.all(PFspace.screenMargin),
@@ -128,6 +151,11 @@ class _SetUserState extends State<SetUser> {
                         context: context,
                         title: '微信',
                         textController: _wechatnameController),
+                    const Divider(),
+                    listGroup1(
+                        context: context,
+                        title: '电话',
+                        textController: _mobilenameController),
                     const Divider(),
                     listGroup2(
                       context: context,
@@ -185,10 +213,12 @@ class _SetUserState extends State<SetUser> {
                                       child: TextButton(
                                         child: const Text('保密'),
                                         onPressed: () {
-                                          setState(() {
-                                            _sexValue = 0;
-                                            Navigator.pop(context);
-                                          });
+                                          setState(
+                                            () {
+                                              _sexValue = 0;
+                                              Navigator.pop(context);
+                                            },
+                                          );
                                         },
                                       ),
                                     )
@@ -230,61 +260,62 @@ class _SetUserState extends State<SetUser> {
   //弹出底部菜单
   void _showBottomMenu(BuildContext context) {
     showModalBottomSheet(
-        backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
-        context: context,
-        //isScrollControlled: true,//设为true，此时为全屏展示
-        builder: (BuildContext context) {
-          return Container(
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                ),
-                color: Color(0xfff1f1f1)),
-            height: 438.h,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                ListTile(
-                  title: const Text('拍照',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.blue)),
-                  onTap: () {
-                    _takePhoto();
-                    Navigator.pop(context);
-                  },
-                ),
-                const Divider(
-                  height: 1,
-                ),
-                ListTile(
-                  title: const Text('相册',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.blue)),
-                  onTap: () {
-                    PFImageCropper.cropImage(PFImagePicker.openPhotoAlbum());
-                    //_openPhotoAlbum();
-                    Navigator.pop(context);
-                  },
-                ),
-                Container(
-                  color: const Color.fromARGB(255, 212, 212, 212),
-                  height: 15,
-                ),
-                ListTile(
-                  title: const Text('取消',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.blue)),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-          );
-        });
+      backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
+      context: context,
+      //isScrollControlled: true,//设为true，此时为全屏展示
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              color: Color(0xfff1f1f1)),
+          height: 438.h,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              ListTile(
+                title: const Text('拍照',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                onTap: () {
+                  _takePhoto();
+                  Navigator.pop(context);
+                },
+              ),
+              const Divider(
+                height: 1,
+              ),
+              ListTile(
+                title: const Text('相册',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                onTap: () {
+                  PFImageCropper.cropImage(PFImagePicker.openPhotoAlbum());
+                  //_openPhotoAlbum();
+                  Navigator.pop(context);
+                },
+              ),
+              Container(
+                color: const Color.fromARGB(255, 212, 212, 212),
+                height: 15,
+              ),
+              ListTile(
+                title: const Text('取消',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   late CroppedFile _image;

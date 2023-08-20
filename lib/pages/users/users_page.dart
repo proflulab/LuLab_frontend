@@ -288,7 +288,9 @@ class _UsersPageState extends State<UsersPage>
         //padding: EdgeInsets.all(PFspace.screenMargin),
         decoration: const BoxDecoration(
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
           color: Colors.white,
         ),
         child: Column(
@@ -304,7 +306,8 @@ class _UsersPageState extends State<UsersPage>
                   // UrlLaucher.email('business@proflu.cn', 'This is a test email',
                   //     'This is a test email body');
                   Clipboard.setData(
-                      const ClipboardData(text: "business@proflu.cn"));
+                    const ClipboardData(text: "business@proflu.cn"),
+                  );
                   toastInfo(msg: "已复制邮箱到剪切板");
                 }),
             Divider(height: 1, indent: 30.w, endIndent: 30.w),
@@ -395,6 +398,16 @@ class _UsersPageState extends State<UsersPage>
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          '我的',
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 24,
+          ),
+        ),
+
         backgroundColor: Colors.white,
         //backgroundColor: Colors.transparent,
         elevation: 0,
