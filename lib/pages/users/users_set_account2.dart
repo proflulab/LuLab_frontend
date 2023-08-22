@@ -15,6 +15,7 @@ class _AccountSetPageState extends State<AccountSetPage> {
     double screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text(
           '账号设置',
           style: TextStyle(color: Colors.black),

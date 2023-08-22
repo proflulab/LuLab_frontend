@@ -30,121 +30,139 @@ class _UsersPageState extends State<UsersPage>
     //double screenheight = MediaQuery.of(context).size.height;
 //个人头像，姓名，等级
     Widget _username() {
-      return Column(children: [
-        Container(
-          //height: 100,
-          margin: const EdgeInsets.all(20),
-          //color: Colors.white,
-          child: ListTile(
-            leading: SizedBox(
-                width: 100.w,
-                height: 100.w,
-                child: ClipOval(
-                    child:
-                        CachedImage.typeLaod(Global.profile.profilePicture!))),
-            title: Text(
-              Global.profile.username!,
-              style: const TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.black,
-                fontSize: 28,
-              ),
-            ),
-            subtitle: const Text(
-              "功勋学员",
-              style: TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.green,
-                fontSize: 14,
-              ),
-            ),
-            contentPadding: const EdgeInsets.all(10),
-            trailing: const Text(
-              "个人主页",
-              style: TextStyle(
-                fontFamily: 'MyFontStyle',
-                color: Colors.black,
-                fontSize: 18,
-              ),
-            ),
-            onTap: () {
-              if (kDebugMode) {
-                print("进入个人主页");
-              }
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const SetUser()));
-            },
-          ),
-        ),
-        Container(
-          height: 90,
-          padding: const EdgeInsets.only(left: 15, right: 5),
-          margin: const EdgeInsets.only(left: 30, right: 30),
-          decoration: const BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
-                bottomRight: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
-              ),
-              color: Colors.green),
-          child: Center(
+      return Column(
+        children: [
+          Container(
+            //height: 100,
+            margin: const EdgeInsets.all(20),
+            //color: Colors.white,
             child: ListTile(
-              title: const Text(
-                "开通鹿向前实验室会员",
-                style: TextStyle(
+              leading: SizedBox(
+                  width: 100.w,
+                  height: 100.w,
+                  child: ClipOval(
+                      child: CachedImage.typeLaod(
+                          Global.profile.profilePicture!))),
+              title: Text(
+                Global.profile.username!,
+                style: const TextStyle(
                   fontFamily: 'MyFontStyle',
-                  color: Colors.white,
-                  fontSize: 16,
+                  color: Colors.black,
+                  fontSize: 28,
                 ),
               ),
-              // subtitle: const Text("优享&大特权"),
-              // contentPadding: const EdgeInsets.all(10),
-              trailing: const Chip(
-                avatar: null,
-                label: Text("开通"),
+              subtitle: const Text(
+                "功勋学员",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.green,
+                  fontSize: 14,
+                ),
+              ),
+              contentPadding: const EdgeInsets.all(10),
+              trailing: const Text(
+                "个人主页",
+                style: TextStyle(
+                  fontFamily: 'MyFontStyle',
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
               ),
               onTap: () {
                 if (kDebugMode) {
-                  print("进入会员详情");
+                  print("进入个人主页");
                 }
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const SetUser()));
               },
             ),
           ),
-        ),
-      ]);
-    }
-
-    Widget _login() {
-      return Column(
-        children: [
-          const SizedBox(height: 40),
-          Center(
-            child: Container(
-              //margin: EdgeInsets.all(PFspace.screenMargin),
-              // color: Colors.blue,
-              width: 0.5.sw,
-              height: 60.h,
-              child: MaterialButton(
-                  child: const Text(
-                    '登陆/注册',
+          Container(
+            height: 90,
+            padding: const EdgeInsets.only(left: 15, right: 5),
+            margin: const EdgeInsets.only(left: 30, right: 30),
+            decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                ),
+                color: Colors.green),
+            child: Center(
+              child: ListTile(
+                title: const Text(
+                  "开通陆向谦实验室会员",
+                  style: TextStyle(
+                    fontFamily: 'MyFontStyle',
+                    color: Colors.white,
+                    fontSize: 16,
                   ),
-                  onPressed: () {
-                    //QuickLoginController qc = Get.put(QuickLoginController());
-                    Get.to(const PhoneLogin());
-                    // Get.toNamed("/start");
+                ),
+                // subtitle: const Text("优享&大特权"),
+                // contentPadding: const EdgeInsets.all(10),
+                trailing: const Chip(
+                  avatar: null,
+                  label: Text("开通"),
+                ),
+                onTap: () {
+                  if (kDebugMode) {
+                    print("进入会员详情");
                   }
-                  //
-                  ),
-              decoration: const BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                },
               ),
             ),
           ),
-          const SizedBox(height: 15),
-          const Center(
+        ],
+      );
+    }
+
+    Widget _login() {
+      return Stack(
+        children: [
+          MaterialButton(
+            disabledColor: Colors.white,
+            highlightColor: Colors.white10,
+            child: Container(
+              margin: EdgeInsets.all(20),
+              width: 340,
+              height: 70,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                    alignment: Alignment.centerLeft,
+                    image: AssetImage('assets/images/user.png'),
+                    fit: BoxFit.contain),
+                borderRadius: BorderRadius.circular(50),
+              ),
+            ),
+            onPressed: () {
+              Get.to(
+                const PhoneLogin(),
+              );
+            },
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(340, 43, 30, 10),
+            child: Icon(
+              Icons.arrow_forward_ios_rounded,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(125, 30, 155, 10),
+            alignment: Alignment.center,
+            width: 100,
+            height: 50,
+            child: const Text(
+              '登录/注册',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(137, 100, 137, 20),
             child: Text(
               "登陆/注册可解锁完整功能",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
@@ -157,7 +175,7 @@ class _UsersPageState extends State<UsersPage>
 
     Widget _adv() {
       return Container(
-        height: 90,
+        height: 80,
         padding: const EdgeInsets.only(left: 15, right: 5),
         margin: const EdgeInsets.only(left: 30, right: 30),
         decoration: const BoxDecoration(
@@ -165,8 +183,6 @@ class _UsersPageState extends State<UsersPage>
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15),
               topRight: Radius.circular(15),
-              bottomRight: Radius.circular(15),
-              bottomLeft: Radius.circular(15),
             ),
             color: Colors.green),
         child: Center(
@@ -272,7 +288,9 @@ class _UsersPageState extends State<UsersPage>
         //padding: EdgeInsets.all(PFspace.screenMargin),
         decoration: const BoxDecoration(
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
           color: Colors.white,
         ),
         child: Column(
@@ -288,7 +306,8 @@ class _UsersPageState extends State<UsersPage>
                   // UrlLaucher.email('business@proflu.cn', 'This is a test email',
                   //     'This is a test email body');
                   Clipboard.setData(
-                      const ClipboardData(text: "business@proflu.cn"));
+                    const ClipboardData(text: "business@proflu.cn"),
+                  );
                   toastInfo(msg: "已复制邮箱到剪切板");
                 }),
             Divider(height: 1, indent: 30.w, endIndent: 30.w),
@@ -379,6 +398,16 @@ class _UsersPageState extends State<UsersPage>
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          '我的',
+          style: TextStyle(
+            fontFamily: 'MyFontStyle',
+            color: Colors.green,
+            fontSize: 24,
+          ),
+        ),
+
         backgroundColor: Colors.white,
         //backgroundColor: Colors.transparent,
         elevation: 0,

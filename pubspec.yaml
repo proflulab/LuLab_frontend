@@ -109,6 +109,7 @@ flutter:
     - assets/images/GuidePage1.png
     - assets/images/GuidePage2.png
     - assets/images/GuidePage3.png
+    - assets/images/user.png
   uses-material-design: true
 
   fonts:
