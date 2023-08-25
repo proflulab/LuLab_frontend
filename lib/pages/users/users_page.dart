@@ -9,6 +9,7 @@ import '../../common/utils/utils.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
 import 'users_set.dart';
+import '../users/user_vip.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -108,7 +109,10 @@ class _UsersPageState extends State<UsersPage>
                 ),
                 onTap: () {
                   if (kDebugMode) {
-                    print("进入会员详情");
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return const Tabs();
+                    }));
                   }
                 },
               ),
@@ -203,7 +207,10 @@ class _UsersPageState extends State<UsersPage>
             ),
             onTap: () {
               if (kDebugMode) {
-                print("进入会员详情");
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return const Tabs();
+                }));
               }
             },
           ),
