@@ -164,7 +164,9 @@ class _SetUserState extends State<SetUser> {
                       icon: const Icon(PFIcon.userRight),
                       onTap: () async {
                         //触摸失去焦点
-                        FocusScope.of(context).requestFocus(FocusNode());
+                        FocusScope.of(context).requestFocus(
+                          FocusNode(),
+                        );
                         await showModalBottomSheet(
                           backgroundColor: const Color.fromRGBO(1, 1, 1, 0),
                           context: context,
@@ -200,10 +202,12 @@ class _SetUserState extends State<SetUser> {
                                       child: TextButton(
                                         child: const Text('女'),
                                         onPressed: () {
-                                          setState(() {
-                                            _sexValue = 2;
-                                            Navigator.pop(context);
-                                          });
+                                          setState(
+                                            () {
+                                              _sexValue = 2;
+                                              Navigator.pop(context);
+                                            },
+                                          );
                                         },
                                       ),
                                     ),
@@ -266,21 +270,24 @@ class _SetUserState extends State<SetUser> {
       builder: (BuildContext context) {
         return Container(
           decoration: const BoxDecoration(
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              ),
-              color: Color(0xfff1f1f1)),
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            color: Color(0xfff1f1f1),
+          ),
           height: 438.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ListTile(
-                title: const Text('拍照',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                title: const Text(
+                  '拍照',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                ),
                 onTap: () {
                   _takePhoto();
                   Navigator.pop(context);
@@ -290,11 +297,15 @@ class _SetUserState extends State<SetUser> {
                 height: 1,
               ),
               ListTile(
-                title: const Text('相册',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                title: const Text(
+                  '相册',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                ),
                 onTap: () {
-                  PFImageCropper.cropImage(PFImagePicker.openPhotoAlbum());
+                  PFImageCropper.cropImage(
+                    PFImagePicker.openPhotoAlbum(),
+                  );
                   //_openPhotoAlbum();
                   Navigator.pop(context);
                 },
@@ -304,9 +315,11 @@ class _SetUserState extends State<SetUser> {
                 height: 15,
               ),
               ListTile(
-                title: const Text('取消',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.blue)),
+                title: const Text(
+                  '取消',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -335,7 +348,7 @@ class _SetUserState extends State<SetUser> {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     setState(() {
       _cropImage(image!);
-    });
+    },);
   }
 
   //剪裁
