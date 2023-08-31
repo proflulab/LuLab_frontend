@@ -29,7 +29,7 @@ class PhoneLogin extends StatefulWidget {
 class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
   final SigninController c = Get.put(SigninController());
 
-  bool _checked = true;
+  bool _checked = false;
   bool v = true;
   bool _isValidEmail(String email) {
     // 邮箱格式检查
@@ -422,7 +422,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
             style: TextStyle(fontFamily: "MyFontStyle", fontSize: 20.0),
           ),
           content: SizedBox(
-            width: 400.w, // Adjust the width here
+            width: 400.w,
             child: Center(
               child: RichText(
                 text: TextSpan(

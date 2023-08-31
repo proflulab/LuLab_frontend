@@ -266,25 +266,25 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h),
-                GestureDetector(
-                  onTap: () {
-                    // Navigate to the password login screen here
-                    Get.to(() => const SignInPage());
-                  },
-                  child: Transform.translate(
-                    offset: const Offset(22, -5),
-                    child: const Text(
-                      "密码登录",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontFamily: "MyFontStyle",
-                        color: PFc.themeColor,
-                      ),
-                    ),
-                  ),
-                ),
+                // SizedBox(height: 20.h),
+                // GestureDetector(
+                //   onTap: () {
+                //     // Navigate to the password login screen here
+                //     Get.to(() => const SignInPage());
+                //   },
+                // child: Transform.translate(
+                //   offset: const Offset(22, -5),
+                //   child: const Text(
+                //     "密码登录",
+                //     textAlign: TextAlign.start,
+                //     style: TextStyle(
+                //       fontSize: 19,
+                //       fontFamily: "MyFontStyle",
+                //       color: PFc.themeColor,
+                //     ),
+                //   ),
+                // ),
+                //   ),
               ],
             ),
           ),
