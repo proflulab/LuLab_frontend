@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../common/entitys/data_login_captcha.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lab/pages/sign_in/login_phone.dart';
+
 import '../../common/global/global.dart';
 import '../../common/values/values.dart';
 import '../../common/widget/widgets.dart';
@@ -20,77 +23,27 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
 
   @override
   Widget build(BuildContext context) {
-    // double width = MediaQuery.of(context).size.width;
-    // double height = MediaQuery.of(context).size.height;
     return Stack(
       children: [
-        // 背景图
-        buildFirstGuideBackGround(1.sw, 1.sh),
-        // 小圆点
+        buildFirstGuideBackGround(MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height), // 背景图
         Positioned(
-          left: 0.w,
-          right: 0.w,
-          bottom: 0.1.sh,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buidIndefot(0),
-              buidIndefot(1),
-              buidIndefot(2),
-            ],
-          ),
+          left: 0,
+          right: 0,
+          bottom: 100, // 调整按钮位置，可以根据实际需求调整
+          child: buildGoHome(), // 去首页按钮
         ),
-        // 去首页
         Positioned(
-          left: 0.w,
-          right: 0.w,
-          bottom: 0.2.sh,
-          child: buildGoHome(),
+          left: 0,
+          right: 0,
+          bottom: 40,
+          child: buildIndicators(), // 小圆点指示器
         ),
       ],
     );
   }
 
-  Widget buildGoHome() {
-    if (_currIndex != 2) return Container();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AnimatedContainer(
-          width: 0.7.sw,
-          height: cycle(0.7.sw, PFr.golden, 3),
-          duration: const Duration(milliseconds: 0),
-          child: ElevatedButton(
-            child: PFtext.text1(text: "立即开启", color: Colors.white),
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(PFc.themeColor)),
-            onPressed: () {
-              Storage.setBool(storageDeviceAlreadyOpenKey, false);
-              Storage.getString(storaTokenKey).then(
-                (value) async {
-                  // 判断是否是第一次启动app
-                  if (value == "0" || value == null) {
-                    debugPrint("游客登陆");
-                    Global.state = UserState.visitor;
-                    Global.profile = Data(username: "游客");
-                    Get.offAll(const App());
-                  } else {
-                    debugPrint("10");
-                    Global.state = UserState.user;
-                    Get.offAll(const App());
-                  }
-                },
-              );
-            } // 去首页路由
-            ,
-          ),
-        )
-      ],
-    );
-  }
-
-  // 引导页背景图
-  Positioned buildFirstGuideBackGround(double width, double height) {
+  Widget buildFirstGuideBackGround(double width, double height) {
     return Positioned.fill(
       child: PageView(
         onPageChanged: (value) {
@@ -122,16 +75,89 @@ class _FirstGuidePageState extends State<FirstGuidePage> {
     );
   }
 
-  // 小圆点
-  Widget buidIndefot(int index) {
-    return AnimatedContainer(
-      margin: const EdgeInsets.all(15),
-      height: 18.h,
-      width: _currIndex == index ? 25 : 18,
-      duration: const Duration(milliseconds: 200),
-      decoration: BoxDecoration(
-          color: index <= _currIndex ? PFc.themeColor : const Color(0xffC4C4C4),
-          borderRadius: const BorderRadius.all(Radius.circular(15))),
+  Widget buildGoHome() {
+    if (_currIndex != 2) return Container();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedContainer(
+          width: 0.7.sw,
+          height: cycle(0.5.sw, PFr.golden, 3),
+          duration: const Duration(milliseconds: 0),
+          child: ElevatedButton(
+            child: PFtext.text1(text: "立即开启", color: Colors.white),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(PFc.themeColor)),
+            onPressed: () {
+              Storage.setBool(storageDeviceAlreadyOpenKey, false);
+              Storage.getString(storaTokenKey).then(
+                (value) async {
+                  // 判断是否是第一次启动app
+                  if (value == "0" || value == null) {
+                    debugPrint("游客登陆");
+                    Global.state = UserState.visitor;
+
+                    Get.offAll(const PhoneLogin());
+                  } else {
+                    debugPrint("10");
+                    Global.state = UserState.user;
+                    Get.offAll(const App());
+                  }
+                },
+              );
+            } // 去首页路由
+            ,
+          ),
+        )
+      ],
     );
   }
+
+  Widget buildIndicators() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        buildIndicator(0),
+        SizedBox(width: 8),
+        buildIndicator(1),
+        SizedBox(width: 8),
+        buildIndicator(2),
+      ],
+    );
+  }
+
+  Widget buildIndicator(int index) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 200),
+      width: _currIndex == index ? 16 : 8, // 小圆点宽度
+      height: 8, // 小圆点高度
+      decoration: BoxDecoration(
+        color: _currIndex == index ? Colors.green : Colors.grey, // 小圆点颜色
+        borderRadius: BorderRadius.circular(4),
+      ),
+    );
+  }
+}
+
+// 示例：HomePage页面
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Page"),
+      ),
+      body: Center(
+        child: Text("Welcome to Home Page!"),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(GetMaterialApp(
+    home: FirstGuidePage(),
+  ));
 }

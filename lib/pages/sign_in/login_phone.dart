@@ -29,7 +29,7 @@ class PhoneLogin extends StatefulWidget {
 class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
   final SigninController c = Get.put(SigninController());
 
-  bool _checked = true;
+  bool _checked = false;
   bool v = true;
   bool _isValidEmail(String email) {
     // 邮箱格式检查
@@ -185,118 +185,116 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
                 fit: BoxFit.fill,
               ),
             ),
-            child: Center(
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    height: 280.h,
-                    // child: TextButton(
-                    //   onPressed: () {
-                    //     Global.state = UserState.visitor;
-                    //     Get.offAll(const App());
-                    //   },
-                    //   child: Text('游客登录'),
-                    // ),
-                  ),
-                  // SizedBox(height: 100.h),
-                  Container(
-                    child: Transform.translate(
-                      offset: const Offset(-150, -50), // 图片向上移动20逻辑像素
-                      child: Transform.scale(
-                        scale: 1.3,
-                        child: SvgPicture.asset(
-                          "assets/images/logo.svg",
-                          height: 100.h,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Transform.translate(
-                    offset: const Offset(-40, -20),
-                    child: const Text(
-                      "欢迎来到陆向谦实验室",
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        fontFamily: "MyFontStyle",
-                        color: Colors.black,
-                        fontSize: 28,
-                      ),
-                    ),
-                  ),
-
-                  // SizedBox(height: 50.h),
-                  _buildTabNavigation(),
-                  SizedBox(height: 50.h),
-                  SizedBox(
-                    height: 260.h,
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        _VerifyWay(),
-                        _PasswordWay(),
-                      ],
-                    ),
-                  ),
-                  // SizedBox(height: 30.h),
-                  // PhoneField(
-                  //   focusNode: _accountFocusNode,
-                  //   controller: _accountController,
-                  //   onChanged: (value) {
-                  //     //c.innumber(value);
-                  //     setState(() {
-                  //       value;
-                  //     });
-                  //     if (kDebugMode) {
-                  //       print("你输入的内容为$value");
-                  //     }
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  height: 200.h,
+                  // child: TextButton(
+                  //   onPressed: () {
+                  //     Global.state = UserState.visitor;
+                  //     Get.offAll(const App());
                   //   },
+                  //   child: Text('游客登录'),
                   // ),
-                  // SizedBox(height: 50.h),
-                  // _submitButton(),
-                  // SizedBox(height: 50.h),
-                  // Center(
-                  //   child: Text.rich(
-                  //     TextSpan(
-                  //       children: [
-                  //         TextSpan(
-                  //           text: "密码登录",
-                  //           style: const TextStyle(
-                  //               fontSize: 18, color: Colors.grey),
-                  //           recognizer: TapGestureRecognizer()
-                  //             ..onTap = () {
-                  //               if (!_checked) {
-                  //                 _dialog(
-                  //                   () {
-                  //                     setState(() {
-                  //                       _checked = !_checked;
-                  //                     });
-                  //                     _accountFocusNode.unfocus();
-                  //                     Get.to(const SignInPage());
-                  //                   },
-                  //                 );
-                  //               } else {
-                  //                 _accountFocusNode.unfocus();
-                  //                 Get.to(const SignInPage());
-                  //               }
-                  //             },
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  AgreementWidget(
-                    checked: _checked,
-                    onChanged: (v) {
-                      PFVibrate.feedback(Type.medium);
-                      setState(() {
-                        _checked = v!;
-                      });
-                    },
+                ),
+                // SizedBox(height: 100.h),
+                Container(
+                  // 使用 Alignment 进行自适应偏移
+                  child: Transform.scale(
+                    scale: 1.3,
+                    child: SvgPicture.asset(
+                      "assets/images/logo.svg",
+                      height: 100.h,
+                    ),
                   ),
-                ],
-              ),
+                  alignment: Alignment(-0.9, 0.0), // 将图标稍微向右偏移
+                ),
+
+                SizedBox(height: 50.h),
+                Container(
+                  width: 1.sw - 2 * 30.w,
+                  child: Text(
+                    "欢迎来到陆向谦实验室",
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(
+                      fontFamily: "MyFontStyle",
+                      color: Colors.black,
+                      fontSize: 60.sp,
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 30.h),
+                _buildTabNavigation(),
+                SizedBox(height: 40.h),
+                SizedBox(
+                  height: 260.h,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      _VerifyWay(),
+                      _PasswordWay(),
+                    ],
+                  ),
+                ),
+                // SizedBox(height: 30.h),
+                // PhoneField(
+                //   focusNode: _accountFocusNode,
+                //   controller: _accountController,
+                //   onChanged: (value) {
+                //     //c.innumber(value);
+                //     setState(() {
+                //       value;
+                //     });
+                //     if (kDebugMode) {
+                //       print("你输入的内容为$value");
+                //     }
+                //   },
+                // ),
+                // SizedBox(height: 50.h),
+                // _submitButton(),
+                // SizedBox(height: 50.h),
+                // Center(
+                //   child: Text.rich(
+                //     TextSpan(
+                //       children: [
+                //         TextSpan(
+                //           text: "密码登录",
+                //           style: const TextStyle(
+                //               fontSize: 18, color: Colors.grey),
+                //           recognizer: TapGestureRecognizer()
+                //             ..onTap = () {
+                //               if (!_checked) {
+                //                 _dialog(
+                //                   () {
+                //                     setState(() {
+                //                       _checked = !_checked;
+                //                     });
+                //                     _accountFocusNode.unfocus();
+                //                     Get.to(const SignInPage());
+                //                   },
+                //                 );
+                //               } else {
+                //                 _accountFocusNode.unfocus();
+                //                 Get.to(const SignInPage());
+                //               }
+                //             },
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                AgreementWidget(
+                  checked: _checked,
+                  onChanged: (v) {
+                    PFVibrate.feedback(Type.medium);
+                    setState(() {
+                      _checked = v!;
+                    });
+                  },
+                ),
+              ],
             ),
           ),
         ),
@@ -313,7 +311,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
 
   _navigateToVerificationPage1(String phoneNumber) {
     Get.to(
-      const Verification1(a: '2'),
+      const Verification1(a1: '2'),
       arguments: [phoneNumber, c.code.value],
     );
   }
@@ -424,7 +422,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
             style: TextStyle(fontFamily: "MyFontStyle", fontSize: 20.0),
           ),
           content: SizedBox(
-            width: 400.w, // Adjust the width here
+            width: 400.w,
             child: Center(
               child: RichText(
                 text: TextSpan(
@@ -536,7 +534,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
               ],
               decoration: const InputDecoration(
                 hintText: "请输入您的邮箱",
-                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 7),
+                contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                 border: InputBorder.none,
               ),
               style: TextStyle(
