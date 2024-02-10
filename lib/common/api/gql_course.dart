@@ -20,6 +20,7 @@ class GqlCourseAPI {
 
     return QueryCourseCategory.fromJson(response.data!);
   }
+
   /// 课程列表查询course
   static Future<QueryCourse> course({
     required BuildContext context,
@@ -32,6 +33,7 @@ class GqlCourseAPI {
     );
     return QueryCourse.fromJson(response.data!);
   }
+
   /// 课程目录查询courseCatalogue
   static Future<QueryCourseCatalogue> courseCatalogue({
     required BuildContext context,
@@ -44,6 +46,7 @@ class GqlCourseAPI {
     );
     return QueryCourseCatalogue.fromJson(response.data!);
   }
+
   /// 课程链接courseLink
   static Future<QueryCourseLink> courseLink({
     required BuildContext context,

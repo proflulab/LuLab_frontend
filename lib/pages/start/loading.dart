@@ -48,11 +48,11 @@ class _LoadingPageState extends State<LoadingPage> {
     Storage.getBool(storageDeviceAlreadyOpenKey).then(
       (value) async {
         // 判断是否是第一次启动app
-        if (value == true || value == null) {
-          Future.delayed(_duration, _firstguide);
-        } else {
-          Future.delayed(_duration, _app);
-        }
+        // if (value == true || value == null) {
+        //   Future.delayed(_duration, _firstguide);
+        // } else {
+        Future.delayed(_duration, _app);
+        // }
       },
     );
   }

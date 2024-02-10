@@ -1,31 +1,69 @@
 class SchemaUser {
-///验证码发送
-///请求数据参考
-///{"mobile":"15110880530","area":86}
+  ///邮箱验证码发送
+  ///请求数据参考
+  ///{"email": "2464854077@qq.com"}
+  static const String gqlVerifySend_email = r'''
+mutation sendEmail ($email: String!) {
+  sendEmail(email: $email) {
+    success
+    message
+  }
+}
+''';
+
+  ///邮箱验证码验证
+  ///请求数据参考
+  ///{"email": "2464854077@qq.com","code": "010062"}
+  static const String gqlVerifyCheck_email = r'''
+mutation checkEmail($email: String!, $code: String!) {
+  checkEmail(email: $email, code: $code) {
+    success
+    message
+    token
+    reToken
+    data {
+      name   
+      imageUrl
+      sex
+      mobile
+      email
+      description
+    }
+  }
+}
+''';
+
+  ///手机验证码发送
+  ///请求数据参考
+  ///{"mobile":"15110880530","area":86}
+  ///int=>string
   static const String gqlVerifySend = r'''
-query verifySend($mobile:String!,$area:Int!){
+query verifySend($mobile:String!,$area:String!){
   verifySend(mobile: $mobile,area: $area){
     status
     msg
   }
 }
 ''';
-  ///验证码验证
+
+  ///手机验证码验证
   ///请求数据参考
   ///{"mobile":"15110880530","area":86,"code":"312113"}
+  ///int=>string
   static const String gqlVerifyCheck = r'''
-query verifyCheck ($mobile: String!, $code: String!, $area: Int!) {
+query verifyCheck ($mobile: String!, $code: String!, $area: String!) {
     verifyCheck (mobile: $mobile, code: $code, area: $area) {
         status
         msg
     }
 }
 ''';
-///验证码登陆
-///请求数据参考
-///{"mobile":"15110880530","area":86,"code":"312113"}
+
+  ///手机验证码登陆
+  ///请求数据参考
+  ///{"mobile":"15110880530","area":86,"code":"312113"}
   static const String gqlLoginCaptcha = r'''
-query loginCaptcha ($mobile: String!, $area: Int!, $code: String!) {
+query loginCaptcha ($mobile: String!, $area: String!, $code: String!) {
     loginCaptcha (mobile: $mobile, area: $area, code: $code) {
         status
         msg
@@ -41,9 +79,10 @@ query loginCaptcha ($mobile: String!, $area: Int!, $code: String!) {
     }
 }
 ''';
+
   ///密码登录
-///请求数据参考
-///{"mobile":"15110880530","password":"1334213313"}
+  ///请求数据参考
+  ///{"mobile":"15110880530","password":"1334213313"}
   static const String gqlLoginPassword = r'''
 query loginPassword($mobile:String!,$password:String!){
   loginPassword(mobile:$mobile,password:$password){
@@ -63,6 +102,7 @@ query loginPassword($mobile:String!,$password:String!){
   }
 }
 ''';
+
   ///退出登陆
   static const String gqlLoginOut = r'''
 query logOut {
@@ -72,6 +112,7 @@ query logOut {
     }
 }
 ''';
+
   ///用户信息查询
   static const String gqlUserInfo = r'''
 query {
@@ -84,22 +125,24 @@ query {
     }
 }
 ''';
+
   ///修改密码
   ///请求详情
   ///{"mobile": "","area": 0,"password": "","code": ""}
   static const String gqlPasswordChange = r'''
-mutation passwordChange ($mobile: String!, $area: Int!, $password: String!, $code: String!) {
+mutation passwordChange ($mobile: String!, $area: String!, $password: String!, $code: String!) {
     passwordChange (mobile: $mobile, area: $area, password: $password, code: $code) {
         status
         msg
     }
 }
 ''';
+
   ///修改手机号
   ///请求详情
   ///{"mobile": "","area": 0,"code": ""}
   static const String gqlMobileChange = r'''
-mutation mobileChange ($mobile: String!, $area: Int!, $code: String!) {
+mutation mobileChange ($mobile: String!, $area: String!, $code: String!) {
     mobileChange (mobile: $mobile, area: $area, code: $code) {
         status
         msg
@@ -107,6 +150,7 @@ mutation mobileChange ($mobile: String!, $area: Int!, $code: String!) {
     }
 }
 ''';
+
   ///修改用户个人信息
   ///请求详情
   ///{"name": "","sex": 0,"wechat": "",dsc": ""}

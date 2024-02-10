@@ -25,8 +25,8 @@ class _Verification1State extends State<Verification1> {
   List data = Get.arguments;
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
-  late QueryVerifySend _queryVerifySend;
-  late VerifySend _verifyData;
+  late QueryVerifySend_email _queryVerifySend;
+  late VerifySend_email _verifyData;
   late QueryLoginCaptcha _queryLoginCaptcha;
   late LoginCaptcha _loginCaptcha;
   var phoneNumber = '1';
@@ -45,7 +45,7 @@ class _Verification1State extends State<Verification1> {
     setState(() {
       _numbers = "+${data[1]}-${data[0]}";
     });
-    _loadVerifySend1(data[0], data[1]);
+    _loadVerifySend1(data[0]);
     _enable ? startCountdown1(60) : null;
   }
 
@@ -60,22 +60,21 @@ class _Verification1State extends State<Verification1> {
   ///获取验证码
   /// [_mobile]为用户输入手机号码
   /// [_area] 为用户所选国家区号
-  _loadVerifySend1(String _mobile, int _area) async {
-    _queryVerifySend = await GqlUserAPI.verifySend(
+  _loadVerifySend1(String _email) async {
+    _queryVerifySend = await GqlUserAPI.verifySend_email(
         context: context,
-        variables: VerifySendRequest(
-          mobile: _mobile,
-          area: _area,
+        variables: VerifySendRequest_email(
+          email: _email,
         ));
     setState(
       () {
-        _verifyData = _queryVerifySend.verifySend;
+        _verifyData = _queryVerifySend.verifySend_email;
         if (kDebugMode) {
           print('发送验证码');
         }
       },
     );
-    if (_verifyData.status == '100') {
+    if (_verifyData.success) {
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -250,7 +249,7 @@ class _Verification1State extends State<Verification1> {
                 GestureDetector(
                   onTap: () {
                     _enable ? startCountdown1(60) : null;
-                    _loadVerifySend1(data[0], data[1]);
+                    _loadVerifySend1(data[0]);
                   },
                   child: Transform.translate(
                     offset: const Offset(22, -5),
