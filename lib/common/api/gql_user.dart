@@ -17,29 +17,29 @@ import '../entitys/data_user_mobilechange.dart';
 
 class GqlUserAPI {
   ///邮箱验证码发送
-  static Future<QueryVerifySend_email> verifySend_email({
+  static Future<QueryVerifySendEmail> verifySendEmail({
     required BuildContext context,
-    required VerifySendRequest_email variables,
+    required VerifySendRequestEmail variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
       context: context,
-      schema: SchemaUser.gqlVerifySend_email,
+      schema: SchemaUser.gqlVerifySendEmail,
       variables: variables.toJson(),
     );
-    return QueryVerifySend_email.fromJson(response.data!);
+    return QueryVerifySendEmail.fromJson(response.data!);
   }
 
   ///邮箱验证码验证
-  static Future<QueryVerifyCheck> verifyCheck_email({
+  static Future<QueryVerifyCheckEmail> verifyCheckEmail({
     required BuildContext context,
-    required VerifyCheckRequest_email variables,
+    required VerifyCheckRequestEmail variables,
   }) async {
     QueryResult response = await GraphqlClientUtil.query(
       context: context,
-      schema: SchemaUser.gqlVerifyCheck_email,
+      schema: SchemaUser.gqlVerifyCheckEmail,
       variables: variables.toJson(),
     );
-    return QueryVerifyCheck.fromJson(response.data!);
+    return QueryVerifyCheckEmail.fromJson(response.data!);
   }
 
   ///手机验证码发送

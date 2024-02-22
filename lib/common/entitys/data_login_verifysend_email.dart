@@ -4,31 +4,31 @@
 
 import 'dart:convert';
 
-QueryVerifySend_email queryVerifySend_emailFromJson(String str) =>
-    QueryVerifySend_email.fromJson(json.decode(str));
+QueryVerifySendEmail queryVerifySendEmailFromJson(String str) =>
+    QueryVerifySendEmail.fromJson(json.decode(str));
 
-String queryVerifySend_emailToJson(QueryVerifySend_email data) =>
+String queryVerifySendEmailToJson(QueryVerifySendEmail data) =>
     json.encode(data.toJson());
 
-class QueryVerifySend_email {
-  QueryVerifySend_email({
-    required this.verifySend_email,
+class QueryVerifySendEmail {
+  QueryVerifySendEmail({
+    required this.verifySendEmail,
   });
 
-  VerifySend_email verifySend_email;
+  VerifySendEmail verifySendEmail;
 
-  factory QueryVerifySend_email.fromJson(Map<String, dynamic> json) =>
-      QueryVerifySend_email(
-        verifySend_email: VerifySend_email.fromJson(json["verifySend"]),
+  factory QueryVerifySendEmail.fromJson(Map<String, dynamic> json) =>
+      QueryVerifySendEmail(
+        verifySendEmail: VerifySendEmail.fromJson(json["verifySend"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "verifySend": verifySend_email.toJson(),
+        "verifySend": verifySendEmail.toJson(),
       };
 }
 
-class VerifySend_email {
-  VerifySend_email({
+class VerifySendEmail {
+  VerifySendEmail({
     required this.success,
     required this.message,
   });
@@ -36,8 +36,8 @@ class VerifySend_email {
   bool success;
   String message;
 
-  factory VerifySend_email.fromJson(Map<String, dynamic> json) =>
-      VerifySend_email(
+  factory VerifySendEmail.fromJson(Map<String, dynamic> json) =>
+      VerifySendEmail(
         success: json["success"],
         message: json["message"],
       );
@@ -48,21 +48,21 @@ class VerifySend_email {
       };
 }
 
-VerifySendRequest_email verifySendRequest_emailFromJson(String str) =>
-    VerifySendRequest_email.fromJson(json.decode(str));
+VerifySendRequestEmail verifySendRequestEmailFromJson(String str) =>
+    VerifySendRequestEmail.fromJson(json.decode(str));
 
-String verifySendRequest_emailToJson(VerifySendRequest_email data) =>
+String verifySendRequestEmailToJson(VerifySendRequestEmail data) =>
     json.encode(data.toJson());
 
-class VerifySendRequest_email {
-  VerifySendRequest_email({
+class VerifySendRequestEmail {
+  VerifySendRequestEmail({
     required this.email,
   });
 
   String email;
 
-  factory VerifySendRequest_email.fromJson(Map<String, dynamic> json) =>
-      VerifySendRequest_email(
+  factory VerifySendRequestEmail.fromJson(Map<String, dynamic> json) =>
+      VerifySendRequestEmail(
         email: json["email"],
       );
 

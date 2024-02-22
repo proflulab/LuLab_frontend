@@ -1,76 +1,134 @@
 import 'dart:convert';
 
-QueryVerifyCheck_email queryVerifyCheckFromJson(String str) =>
-    QueryVerifyCheck_email.fromJson(json.decode(str));
+QueryVerifyCheckEmail queryVerifyCheckEmailFromJson(String str) =>
+    QueryVerifyCheckEmail.fromJson(json.decode(str));
 
-String queryVerifyCheckToJson(QueryVerifyCheck_email data) =>
+String queryVerifyCheckEmailToJson(QueryVerifyCheckEmail data) =>
     json.encode(data.toJson());
 
-class QueryVerifyCheck_email {
-  QueryVerifyCheck_email({
-    required this.verifyCheck,
+class QueryVerifyCheckEmail {
+  QueryVerifyCheckEmail({
+    required this.verifyCheckEmail,
   });
 
-  VerifyCheck_email verifyCheck;
+  VerifyCheckEmail verifyCheckEmail;
 
-  factory QueryVerifyCheck_email.fromJson(Map<String, dynamic> json) =>
-      QueryVerifyCheck_email(
-        verifyCheck: VerifyCheck_email.fromJson(json["verifyCheck"]),
-      );
-
+  factory QueryVerifyCheckEmail.fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      // 处理json为空的情况
+      throw FormatException("JSON数据为空");
+    }
+    return QueryVerifyCheckEmail(
+      verifyCheckEmail: VerifyCheckEmail.fromJson(json["verifyCheck"] ?? {}),
+    );
+  }
   Map<String, dynamic> toJson() => {
-        "verifyCheck": verifyCheck.toJson(),
+        "verifyCheck": verifyCheckEmail.toJson(),
       };
 }
 
-class VerifyCheck_email {
-  VerifyCheck_email({
-    required this.status,
-    required this.msg,
+class VerifyCheckEmail {
+  VerifyCheckEmail({
+    required this.success,
+    required this.message,
+    required this.token,
+    required this.reToken,
+    required this.data,
   });
 
-  String status;
-  String msg;
+  bool success;
+  String message;
+  String token;
+  String reToken;
+  DataEmail data;
 
-  factory VerifyCheck_email.fromJson(Map<String, dynamic> json) =>
-      VerifyCheck_email(
-        status: json["status"],
-        msg: json["msg"],
-      );
-
+  factory VerifyCheckEmail.fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      // 处理json为空的情况
+      throw FormatException("JSON数据为空");
+    }
+    return VerifyCheckEmail(
+      success: json["success"] ?? false,
+      message: json["message"] ?? "",
+      token: json["token"] ?? "",
+      reToken: json["retoken"] ?? "",
+      data: DataEmail.fromJson(json["data"] ?? {}),
+    );
+  }
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "msg": msg,
+        "success": success,
+        "message": message,
+        "token": token,
+        "retoken": reToken,
+        "data": data.toJson(),
       };
 }
 
-VerifyCheckRequest_email verifyCheckRequestFromJson(String str) =>
-    VerifyCheckRequest_email.fromJson(json.decode(str));
+class DataEmail {
+  DataEmail({
+    this.name,
+    this.imageUrl,
+    this.sex,
+    this.mobile,
+    this.email,
+    this.description,
+  });
 
-String verifyCheckRequestToJson(VerifyCheckRequest_email data) =>
+  String? name;
+  String? imageUrl;
+  int? sex;
+  String? mobile;
+  String? email;
+  String? description;
+
+  factory DataEmail.fromJson(Map<String, dynamic>? json) {
+    if (json == null) {
+      // 处理json为空的情况
+      throw FormatException("JSON数据为空");
+    }
+    return DataEmail(
+      name: json["name"] ?? "",
+      imageUrl: json["imageUrl"] ?? "",
+      sex: json["sex"] ?? 0,
+      mobile: json["mobile"] ?? "",
+      email: json["email"] ?? "",
+      description: json["description"] ?? "",
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "imageUrl": imageUrl,
+        "sex": sex,
+        "mobile": mobile,
+        "email": email,
+        "description": description,
+      };
+}
+
+VerifyCheckRequestEmail verifyCheckRequestEmailFromJson(String str) =>
+    VerifyCheckRequestEmail.fromJson(json.decode(str));
+
+String verifyCheckRequestEmailToJson(VerifyCheckRequestEmail data) =>
     json.encode(data.toJson());
 
-class VerifyCheckRequest_email {
-  VerifyCheckRequest_email({
-    required this.mobile,
-    required this.area,
+class VerifyCheckRequestEmail {
+  VerifyCheckRequestEmail({
+    required this.email,
     required this.code,
   });
 
-  String mobile;
-  int area;
+  String email;
   String code;
 
-  factory VerifyCheckRequest_email.fromJson(Map<String, dynamic> json) =>
-      VerifyCheckRequest_email(
-        mobile: json["mobile"],
-        area: json["area"],
+  factory VerifyCheckRequestEmail.fromJson(Map<String, dynamic> json) =>
+      VerifyCheckRequestEmail(
+        email: json["email"],
         code: json["code"],
       );
 
   Map<String, dynamic> toJson() => {
-        "mobile": mobile,
-        "area": area,
+        "email": email,
         "code": code,
       };
 }

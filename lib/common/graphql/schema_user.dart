@@ -2,7 +2,7 @@ class SchemaUser {
   ///邮箱验证码发送
   ///请求数据参考
   ///{"email": "2464854077@qq.com"}
-  static const String gqlVerifySend_email = r'''
+  static const String gqlVerifySendEmail = r'''
 mutation sendEmail ($email: String!) {
   sendEmail(email: $email) {
     success
@@ -14,7 +14,7 @@ mutation sendEmail ($email: String!) {
   ///邮箱验证码验证
   ///请求数据参考
   ///{"email": "2464854077@qq.com","code": "010062"}
-  static const String gqlVerifyCheck_email = r'''
+  static const String gqlVerifyCheckEmail = r'''
 mutation checkEmail($email: String!, $code: String!) {
   checkEmail(email: $email, code: $code) {
     success

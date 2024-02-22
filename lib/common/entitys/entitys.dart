@@ -14,4 +14,4 @@ export 'data_user_changeuserinfo.dart';
 export 'data_user_Info.dart';
 export 'data_user_mobilechange.dart';
 export 'data_login_verifysend_email.dart';
-// export 'data_login_verifycheck_email.dart';
+export 'data_login_verifycheck_email.dart';
