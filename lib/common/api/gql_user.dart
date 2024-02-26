@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:lab/common/entitys/data_login_captcha.dart';
 import 'package:lab/common/entitys/data_login_verifycheck.dart';
+import 'package:lab/common/entitys/data_login_verifycheck_email.dart';
+import 'package:lab/common/entitys/data_login_verifysend_email.dart';
 import '../../common/utils/utils.dart';
 import '../../common/graphql/graphql.dart';
+// import '../../common/entitys/entitys.dart';
 import '../entitys/data_login_out.dart';
 import '../entitys/data_login_password.dart';
 import '../entitys/data_login_verifysend.dart';
@@ -13,7 +16,33 @@ import '../entitys/data_user_changeuserinfo.dart';
 import '../entitys/data_user_mobilechange.dart';
 
 class GqlUserAPI {
-  ///验证码发送
+  ///邮箱验证码发送
+  static Future<QueryVerifySendEmail> verifySendEmail({
+    required BuildContext context,
+    required VerifySendRequestEmail variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlVerifySendEmail,
+      variables: variables.toJson(),
+    );
+    return QueryVerifySendEmail.fromJson(response.data!);
+  }
+
+  ///邮箱验证码验证
+  static Future<QueryVerifyCheckEmail> verifyCheckEmail({
+    required BuildContext context,
+    required VerifyCheckRequestEmail variables,
+  }) async {
+    QueryResult response = await GraphqlClientUtil.query(
+      context: context,
+      schema: SchemaUser.gqlVerifyCheckEmail,
+      variables: variables.toJson(),
+    );
+    return QueryVerifyCheckEmail.fromJson(response.data!);
+  }
+
+  ///手机验证码发送
   static Future<QueryVerifySend> verifySend({
     required BuildContext context,
     required VerifySendRequest variables,
@@ -25,7 +54,8 @@ class GqlUserAPI {
     );
     return QueryVerifySend.fromJson(response.data!);
   }
-  ///验证码验证
+
+  ///手机验证码验证
   static Future<QueryVerifyCheck> verifyCheck({
     required BuildContext context,
     required VerifyCheckRequest variables,
@@ -37,7 +67,8 @@ class GqlUserAPI {
     );
     return QueryVerifyCheck.fromJson(response.data!);
   }
-  ///验证码登陆
+
+  ///手机验证码登陆
   static Future<QueryLoginCaptcha> loginCaptcha({
     required BuildContext context,
     required LoginCaptchaRequest variables,
@@ -49,6 +80,7 @@ class GqlUserAPI {
     );
     return QueryLoginCaptcha.fromJson(response.data!);
   }
+
   ///密码登录
   static Future<LoginPassword> loginPassword({
     required BuildContext context,
@@ -61,6 +93,7 @@ class GqlUserAPI {
     );
     return LoginPassword.fromJson(response.data!);
   }
+
   ///退出登陆
   static Future<QueryLoginOut> loginOut({
     required BuildContext context,
@@ -72,6 +105,7 @@ class GqlUserAPI {
     );
     return QueryLoginOut.fromJson(response.data!);
   }
+
   ///用户信息查询
   static Future<QueryUserInfo> userInfo({
     required BuildContext context,
@@ -83,6 +117,7 @@ class GqlUserAPI {
     );
     return QueryUserInfo.fromJson(response.data!);
   }
+
   ///修改密码
   static Future<QueryChangePassword> passwordChange({
     required BuildContext context,
@@ -95,6 +130,7 @@ class GqlUserAPI {
     );
     return QueryChangePassword.fromJson(response.data!);
   }
+
   ///修改手机号
   static Future<QueryMobileChange> mobileChange({
     required BuildContext context,
@@ -107,6 +143,7 @@ class GqlUserAPI {
     );
     return QueryMobileChange.fromJson(response.data!);
   }
+
   ///修改用户信息
   static Future<QueryChangeUserInfo> changeUserInfo({
     required BuildContext context,

@@ -28,7 +28,7 @@ class _CoursePageState extends State<CoursePage>
   List<Course> _courseData = [];
 
   //第一次课程list请求的id
-  String _categoryId = "640183320bc99db3f462e59a";
+  String _categoryId = "6402f65fff361fe1b9006d87";
 
   //监控选择的分类
   int _selectIndex = 0;

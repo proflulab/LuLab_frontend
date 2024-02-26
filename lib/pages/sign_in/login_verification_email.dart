@@ -25,10 +25,10 @@ class _Verification1State extends State<Verification1> {
   List data = Get.arguments;
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
-  late QueryVerifySend _queryVerifySend;
-  late VerifySend _verifyData;
-  late QueryLoginCaptcha _queryLoginCaptcha;
-  late LoginCaptcha _loginCaptcha;
+  late QueryVerifySendEmail _queryVerifySend;
+  late VerifySendEmail _verifyData;
+  late QueryVerifyCheckEmail _queryVerifyCheckEmail;
+  late VerifyCheckEmail _verifyCheckEmail;
   var phoneNumber = '1';
   final verifyCode = '1';
 
@@ -43,9 +43,9 @@ class _Verification1State extends State<Verification1> {
   void initState() {
     super.initState();
     setState(() {
-      _numbers = "+${data[1]}-${data[0]}";
+      // _numbers = "+${data[1]}-${data[0]}";
     });
-    _loadVerifySend1(data[0], data[1]);
+    _loadVerifySendEmail(data[0]);
     _enable ? startCountdown1(60) : null;
   }
 
@@ -57,25 +57,23 @@ class _Verification1State extends State<Verification1> {
     super.dispose();
   }
 
-  ///获取验证码
-  /// [_mobile]为用户输入手机号码
-  /// [_area] 为用户所选国家区号
-  _loadVerifySend1(String _mobile, int _area) async {
-    _queryVerifySend = await GqlUserAPI.verifySend(
+  ///获取邮箱验证码
+  /// [_email]为用户输入手机号码
+  _loadVerifySendEmail(String _email) async {
+    _queryVerifySend = await GqlUserAPI.verifySendEmail(
         context: context,
-        variables: VerifySendRequest(
-          mobile: _mobile,
-          area: _area,
+        variables: VerifySendRequestEmail(
+          email: _email,
         ));
     setState(
       () {
-        _verifyData = _queryVerifySend.verifySend;
+        _verifyData = _queryVerifySend.verifySendEmail;
         if (kDebugMode) {
           print('发送验证码');
         }
       },
     );
-    if (_verifyData.status == '100') {
+    if (_verifyData.success) {
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -83,26 +81,24 @@ class _Verification1State extends State<Verification1> {
   }
 
   ///验证码登陆
-  /// [_mobile]为用户输入手机号码
-  /// [_area] 为用户所选国家区号
+  /// [_email]为用户输入邮箱
   /// [_code]为验证码
-  _loadLoginCaptcha1(String _mobile, int _area, String _code) async {
-    _queryLoginCaptcha = await GqlUserAPI.loginCaptcha(
+  _loadVerifyCheckEmail(String _email, String _code) async {
+    _queryVerifyCheckEmail = await GqlUserAPI.verifyCheckEmail(
         context: context,
-        variables: LoginCaptchaRequest(
-          mobile: _mobile,
-          area: _area,
+        variables: VerifyCheckRequestEmail(
+          email: _email,
           code: _code,
         ));
     setState(
       () {
-        _loginCaptcha = _queryLoginCaptcha.loginCaptcha;
+        _verifyCheckEmail = _queryVerifyCheckEmail.verifyCheckEmail;
         if (kDebugMode) {
           print('验证码验证');
         }
       },
     );
-    if (_loginCaptcha.status == '100') {
+    if (!_verifyCheckEmail.success) {
       Get.offAll(const App());
     } else {
       debugPrint("发送失败");
@@ -242,7 +238,7 @@ class _Verification1State extends State<Verification1> {
                     ),
                     onCompleted: (value) {
                       String code = value.toString();
-                      _loadLoginCaptcha1(data[0], data[1], code);
+                      _loadVerifyCheckEmail(data[0], code);
                     },
                   ),
                 ),
@@ -250,7 +246,7 @@ class _Verification1State extends State<Verification1> {
                 GestureDetector(
                   onTap: () {
                     _enable ? startCountdown1(60) : null;
-                    _loadVerifySend1(data[0], data[1]);
+                    _loadVerifySendEmail(data[0]);
                   },
                   child: Transform.translate(
                     offset: const Offset(22, -5),
