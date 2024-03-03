@@ -99,6 +99,7 @@ class _Verification1State extends State<Verification1> {
       },
     );
     if (!_verifyCheckEmail.success) {
+      Global.state = UserState.user;
       Get.offAll(const App());
     } else {
       debugPrint("发送失败");
