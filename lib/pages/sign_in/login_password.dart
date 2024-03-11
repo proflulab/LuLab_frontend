@@ -85,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
 
     LoginPasswordRequest variables = LoginPasswordRequest(
       mobile: _accountController.value.text,
-      area: 86,
+      area: "+86",
       password: _passController.value.text,
       // password: duSHA256(_passController.value.text),
     );
@@ -248,14 +248,14 @@ class _SignInPageState extends State<SignInPage> {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                     padding: EdgeInsets.zero,
                   ),
                   child: Transform.translate(
                     offset: const Offset(22, 10),
                     child: const Text(
-                      "验证码登录",
+                      "切换到验证码登录",
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 19,

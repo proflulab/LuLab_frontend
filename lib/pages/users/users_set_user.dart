@@ -20,13 +20,13 @@ class SetUser extends StatefulWidget {
 class _SetUserState extends State<SetUser> {
   int _sexValue = Global.profile.sex ?? 0;
   final TextEditingController _nameController =
-      TextEditingController(text: Global.profile.username);
+      TextEditingController(text: Global.profile.name);
   final TextEditingController _introController =
-      TextEditingController(text: Global.profile.dsc);
+      TextEditingController(text: Global.profile.description);
   // final TextEditingController _phoneController =
   //     TextEditingController(text: Global.profile.mobile);
-  final TextEditingController _wechatnameController =
-      TextEditingController(text: Global.profile.wechat);
+  final TextEditingController _emailnameController =
+      TextEditingController(text: Global.profile.email);
   final TextEditingController _mobilenameController =
       TextEditingController(text: Global.profile.mobile);
 
@@ -37,13 +37,13 @@ class _SetUserState extends State<SetUser> {
       name: _nameController.value.text,
       dsc: _introController.value.text,
       sex: _sexValue,
-      wechat: _wechatnameController.value.text,
+      email: _emailnameController.value.text,
     );
     Data profile = Data(
-      username: _nameController.value.text,
-      dsc: _introController.value.text,
+      name: _nameController.value.text,
+      description: _introController.value.text,
       sex: _sexValue,
-      wechat: _wechatnameController.value.text,
+      email: _emailnameController.value.text,
     );
 
     try {
@@ -150,7 +150,7 @@ class _SetUserState extends State<SetUser> {
                     listGroup1(
                         context: context,
                         title: '微信',
-                        textController: _wechatnameController),
+                        textController: _emailnameController),
                     const Divider(),
                     listGroup1(
                         context: context,
@@ -346,9 +346,11 @@ class _SetUserState extends State<SetUser> {
   Future _openPhotoAlbum() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _cropImage(image!);
-    },);
+    setState(
+      () {
+        _cropImage(image!);
+      },
+    );
   }
 
   //剪裁

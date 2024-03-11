@@ -21,12 +21,10 @@ class AccountSetting extends StatefulWidget {
 }
 
 class _AccountSettingState extends State<AccountSetting> {
-
   @override
   void initState() {
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +68,10 @@ class _AccountSettingState extends State<AccountSetting> {
                       title: "修改密码",
                       onTap: () {
                         Get.to(
-                          const Verification(a: '2',),
-                          arguments: ["15110880530", 86],
+                          () => const Verification(
+                            a: '2',
+                          ),
+                          arguments: ["15110880530", "+86"],
                         );
                       }),
                   Divider(height: 3.h, indent: 30.w, endIndent: 30.w),
@@ -80,7 +80,9 @@ class _AccountSettingState extends State<AccountSetting> {
                       right: Row(
                         children: [
                           PFtext.text1(
-                              text: "15110880530", fontSize: 15, color: PFc.textSecondary),
+                              text: "15110880530",
+                              fontSize: 15,
+                              color: PFc.textSecondary),
                           Icon(
                             Icons.chevron_right,
                             size: 32.w,

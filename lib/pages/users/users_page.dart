@@ -42,10 +42,9 @@ class _UsersPageState extends State<UsersPage>
                   width: 100.w,
                   height: 100.w,
                   child: ClipOval(
-                      child: CachedImage.typeLaod(
-                          Global.profile.profilePicture!))),
+                      child: CachedImage.typeLaod(Global.profile.avatar!))),
               title: Text(
-                Global.profile.username!,
+                Global.profile.name!,
                 style: const TextStyle(
                   fontFamily: 'MyFontStyle',
                   color: Colors.black,
@@ -142,7 +141,7 @@ class _UsersPageState extends State<UsersPage>
             ),
             onPressed: () {
               Get.to(
-                const PhoneLogin(),
+                () => const PhoneLogin(),
               );
             },
           ),

@@ -86,7 +86,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       //TODO 等待验证码校验修改密码
                       onTap: () {
                         Get.to(
-                          const AccountSetting(),
+                          () => const AccountSetting(),
                         );
                         // Navigator.of(context).push(
                         //   MaterialPageRoute(

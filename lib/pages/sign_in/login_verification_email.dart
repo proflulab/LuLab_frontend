@@ -13,15 +13,15 @@ import '../../common/widget/widgets.dart';
 
 import '../app.dart';
 
-class Verification1 extends StatefulWidget {
-  const Verification1({Key? key, required this.a1}) : super(key: key);
+class EmailVerification extends StatefulWidget {
+  const EmailVerification({Key? key, required this.a1}) : super(key: key);
   final String a1;
 
   @override
-  State<Verification1> createState() => _Verification1State();
+  State<EmailVerification> createState() => _EmailVerificationState();
 }
 
-class _Verification1State extends State<Verification1> {
+class _EmailVerificationState extends State<EmailVerification> {
   List data = Get.arguments;
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
@@ -74,7 +74,6 @@ class _Verification1State extends State<Verification1> {
       },
     );
     if (_verifyData.status == "200") {
-      debugPrint("发送成功");
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');

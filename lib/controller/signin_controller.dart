@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
 class SigninController extends GetxController {
-  var code = 86.obs;
-  increment(int e) {
+  var code = "+86".obs;
+  increment(String e) {
     code.value = e;
   }
 

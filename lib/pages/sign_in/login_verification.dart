@@ -11,6 +11,7 @@ import '../../common/entitys/entitys.dart';
 import '../../common/global/global.dart';
 import '../../common/widget/widgets.dart';
 
+import '../../controller/signin_controller.dart';
 import '../app.dart';
 import 'login_password.dart';
 
@@ -24,12 +25,13 @@ class Verification extends StatefulWidget {
 
 class _VerificationState extends State<Verification> {
   List data = Get.arguments;
+  final SigninController c = Get.put(SigninController());
   final TextEditingController controller = TextEditingController();
   final FocusNode _pinputfocusNode = FocusNode();
   late QueryVerifySend _queryVerifySend;
   late VerifySend _verifyData;
-  late QueryLoginCaptcha _queryLoginCaptcha;
-  late LoginCaptcha _loginCaptcha;
+  late QueryVerifyCheck _queryVerifyCheck;
+  late VerifyCheck _verifyCheck;
   var phoneNumber = '1';
   final verifyCode = '1';
 
@@ -60,13 +62,13 @@ class _VerificationState extends State<Verification> {
 
   ///获取验证码
   /// [_mobile]为用户输入手机号码
-  /// [_area] 为用户所选国家区号
-  _loadVerifySend(String _mobile, int _area) async {
+  /// [_ctry_code] 为用户所选国家区号
+  _loadVerifySend(String _mobile, String _ctry_code) async {
     _queryVerifySend = await GqlUserAPI.verifySend(
         context: context,
         variables: VerifySendRequest(
           mobile: _mobile,
-          area: _area,
+          ctry_code: _ctry_code,
         ));
     setState(
       () {
@@ -76,35 +78,39 @@ class _VerificationState extends State<Verification> {
         }
       },
     );
-    if (_verifyData.status == '100') {
+    if (_verifyData.status == '200') {
+      print("发送成功");
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
     }
   }
 
-  ///验证码登陆
+  ///验证码登陆 a
   /// [_mobile]为用户输入手机号码
-  /// [_area] 为用户所选国家区号
+  /// [_ctry_code] 为用户所选国家区号
   /// [_code]为验证码
-  _loadLoginCaptcha(String _mobile, int _area, String _code) async {
-    _queryLoginCaptcha = await GqlUserAPI.loginCaptcha(
+  // ignore: non_constant_identifier_names
+  _loadVerifyCheck(String _mobile, String _code, String _ctry_code) async {
+    _queryVerifyCheck = await GqlUserAPI.verifyCheck(
         context: context,
-        variables: LoginCaptchaRequest(
+        variables: VerifyCheckRequest(
           mobile: _mobile,
-          area: _area,
           code: _code,
+          ctry_code: _ctry_code,
         ));
     setState(
       () {
-        _loginCaptcha = _queryLoginCaptcha.loginCaptcha;
+        _verifyCheck = _queryVerifyCheck.verifyCheck;
         if (kDebugMode) {
           print('验证码验证');
         }
       },
     );
-    if (_loginCaptcha.status == '100') {
-      Get.offAll(const App());
+    // ignore: unnecessary_null_comparison
+    if (_verifyCheck.token != null) {
+      Global.state = UserState.user;
+      Get.offAll(() => const App());
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -243,7 +249,8 @@ class _VerificationState extends State<Verification> {
                     ),
                     onCompleted: (value) {
                       String code = value.toString();
-                      _loadLoginCaptcha(data[0], data[1], code);
+                      String ctrycode = toString();
+                      _loadVerifyCheck(data[0], code, ctrycode);
                     },
                   ),
                 ),
@@ -266,25 +273,25 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                // SizedBox(height: 20.h),
-                // GestureDetector(
-                //   onTap: () {
-                //     // Navigate to the password login screen here
-                //     Get.to(() => const SignInPage());
-                //   },
-                // child: Transform.translate(
-                //   offset: const Offset(22, -5),
-                //   child: const Text(
-                //     "密码登录",
-                //     textAlign: TextAlign.start,
-                //     style: TextStyle(
-                //       fontSize: 19,
-                //       fontFamily: "MyFontStyle",
-                //       color: PFc.themeColor,
-                //     ),
-                //   ),
-                // ),
-                //   ),
+                SizedBox(height: 20.h),
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to the password login screen here
+                    Get.to(() => const SignInPage());
+                  },
+                  child: Transform.translate(
+                    offset: const Offset(22, -5),
+                    child: const Text(
+                      "切换到密码登录",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontFamily: "MyFontStyle",
+                        color: PFc.themeColor,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

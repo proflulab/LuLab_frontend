@@ -70,12 +70,12 @@ class _PhoneFieldState extends State<PhoneField> {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(const PhoneCountryCodePage());
+                Get.to(() => const PhoneCountryCodePage());
               },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Obx(() => PFtext.text3(text: "+${c.code}", fontSize: 18)),
+                  Obx(() => PFtext.text3(text: "${c.code}", fontSize: 18)),
                   const Icon(Icons.keyboard_arrow_down_rounded,
                       color: Colors.black),
                 ],

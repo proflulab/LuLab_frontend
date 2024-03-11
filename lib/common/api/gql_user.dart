@@ -34,7 +34,7 @@ class GqlUserAPI {
     required BuildContext context,
     required VerifyCheckRequestEmail variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.query(
+    QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
       schema: SchemaUser.gqlVerifyCheckEmail,
       variables: variables.toJson(),
@@ -60,7 +60,7 @@ class GqlUserAPI {
     required BuildContext context,
     required VerifyCheckRequest variables,
   }) async {
-    QueryResult response = await GraphqlClientUtil.query(
+    QueryResult response = await GraphqlClientUtil.mutate(
       context: context,
       schema: SchemaUser.gqlVerifyCheck,
       variables: variables.toJson(),
@@ -69,17 +69,17 @@ class GqlUserAPI {
   }
 
   ///手机验证码登陆
-  static Future<QueryLoginCaptcha> loginCaptcha({
-    required BuildContext context,
-    required LoginCaptchaRequest variables,
-  }) async {
-    QueryResult response = await GraphqlClientUtil.query(
-      context: context,
-      schema: SchemaUser.gqlLoginCaptcha,
-      variables: variables.toJson(),
-    );
-    return QueryLoginCaptcha.fromJson(response.data!);
-  }
+  // static Future<QueryLoginCaptcha> loginCaptcha({
+  //   required BuildContext context,
+  //   required LoginCaptchaRequest variables,
+  // }) async {
+  //   QueryResult response = await GraphqlClientUtil.query(
+  //     context: context,
+  //     schema: SchemaUser.gqlLoginCaptcha,
+  //     variables: variables.toJson(),
+  //   );
+  //   return QueryLoginCaptcha.fromJson(response.data!);
+  // }
 
   ///密码登录
   static Future<LoginPassword> loginPassword({

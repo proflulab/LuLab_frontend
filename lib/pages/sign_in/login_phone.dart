@@ -233,8 +233,8 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      _VerifyWay(),
-                      _PasswordWay(),
+                      _emailVerifyWay(),
+                      _phoneVerifyWay(),
                     ],
                   ),
                 ),
@@ -304,19 +304,19 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
 
   _navigateToVerificationPage(String phoneNumber) {
     Get.to(
-      const Verification(a: '1'),
+      () => const Verification(a: '1'),
       arguments: [phoneNumber, c.code.value],
     );
   }
 
-  _navigateToVerificationPage1(String phoneNumber) {
+  _navigateToVerificationPageEmail(String email) {
     Get.to(
-      const Verification1(a1: '2'),
-      arguments: [phoneNumber, c.code.value],
+      () => const EmailVerification(a1: '2'),
+      arguments: [email, c.code.value],
     );
   }
 
-  _submitButton() {
+  _submitEmailButton() {
     return Container(
       width: 1.sw - 2 * 30.w,
       height: 96.h,
@@ -344,12 +344,12 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
             _dialog(
               () {
                 // Call the new navigation method with the email value
-                _navigateToVerificationPage1(_accountController.value.text);
+                _navigateToVerificationPageEmail(_accountController.value.text);
               },
             );
           } else {
             // Call the new navigation method with the email value
-            _navigateToVerificationPage1(_accountController.value.text);
+            _navigateToVerificationPageEmail(_accountController.value.text);
           }
         },
         child: const Text(
@@ -365,7 +365,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
     );
   }
 
-  _submitPasswordButton() {
+  _submitPhoneButton() {
     return Container(
       width: 1.sw - 2 * 30.w,
       height: 96.h,
@@ -410,6 +410,53 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  _submitPasswordButton() {
+    // return Container(
+    //   width: 1.sw - 2 * 30.w,
+    //   height: 96.h,
+    //   margin: EdgeInsets.symmetric(horizontal: 10.w),
+    //   child: ElevatedButton(
+    //     style: ButtonStyle(
+    //       shape: MaterialStateProperty.all(
+    //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    //       ),
+    //       shadowColor: MaterialStateProperty.all(Colors.red),
+    //       elevation: MaterialStateProperty.all(0),
+    //       overlayColor: MaterialStateProperty.all(
+    //           const Color.fromARGB(31, 245, 138, 138)), //字体颜色
+    //       backgroundColor: MaterialStateProperty.all(
+    //         _accountPasswordController.value.text.isNotEmpty
+    //             ? PFc.themeColor
+    //             : const Color.fromARGB(221, 196, 236, 201),
+    //       ),
+    //     ),
+    //     onPressed: () {
+    //       if (!_checked) {
+    //         _dialog(
+    //           () {
+    //             // Call the new navigation method with the phone number value
+    //             _navigateToVerificationPage(
+    //                 _accountPasswordController.value.text);
+    //           },
+    //         );
+    //       } else if (_checked) {
+    //         // Call the new navigation method with the phone number value
+    //         _navigateToVerificationPage(_accountPasswordController.value.text);
+    //       }
+    //     },
+    //     child: const Text(
+    //       "下一步",
+    //       textAlign: TextAlign.center,
+    //       style: TextStyle(
+    //         fontSize: 20,
+    //         textBaseline: TextBaseline.alphabetic,
+    //         fontFamily: "MyFontStyle",
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   _dialog(onConfirm) {
@@ -506,7 +553,7 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
     );
   }
 
-  _VerifyWay() {
+  _emailVerifyWay() {
     return Column(
       children: [
         Padding(
@@ -563,57 +610,78 @@ class _PhoneLoginState extends State<PhoneLogin> with TickerProviderStateMixin {
           ),
         ),
         SizedBox(height: 50.h),
-        _submitButton(),
+        _submitEmailButton(),
       ],
     );
   }
 
-  _PasswordWay() {
-    return Column(
-      children: [
-        PhoneField(
-          controller: _accountPasswordController,
-          onChanged: (value) {
-            //c.innumber(value);
-            setState(() {
-              value;
-            });
-            if (kDebugMode) {
-              print("你输入的内容为$value");
-            }
-          },
-          focusNode: _accountPasswordFocusNode,
-        ),
-        // SizedBox(height: 50.h),
-        // PFTextField(
-        //   focusNode: _passFocusNode,
-        //   controller: _passController,
-        //   hintText: "请输入密码",
-        //   obscureText: v,
-        //   width: 1.sw - 2 * 30.w,
-        //   height: 96.h,
-        //   color: const Color.fromRGBO(233, 234, 237, 1),
-        //   suffixIcon: IconButton(
-        //     icon: Center(
-        //       child: v
-        //           ? const Icon(Icons.remove_red_eye_outlined)
-        //           : const Icon(Icons.remove_red_eye_rounded),
-        //     ),
-        //     color: PFc.themeColor,
-        //     //padding: const EdgeInsets.all(11.0),
-        //     alignment: Alignment.bottomCenter,
-        //     onPressed: () {
-        //       setState(() {
-        //         v = !v;
-        //       });
-        //     },
-        //   ),
-        // ),
-        SizedBox(height: 50.h),
-        // 登录
-        _submitPasswordButton(),
-      ],
-    );
+  _phoneVerifyWay() {
+    return Column(children: [
+      PhoneField(
+        controller: _accountPasswordController,
+        onChanged: (value) {
+          //c.innumber(value);
+          setState(() {
+            value;
+          });
+          if (kDebugMode) {
+            print("你输入的内容为$value");
+          }
+        },
+        focusNode: _accountPasswordFocusNode,
+      ),
+      SizedBox(height: 50.h),
+      // 登录
+      _submitPhoneButton(),
+    ]);
+  }
+
+  _passwordWay() {
+    // return Column(
+    //   children: [
+    //     PhoneField(
+    //       controller: _accountPasswordController,
+    //       onChanged: (value) {
+    //         //c.innumber(value);
+    //         setState(() {
+    //           value;
+    //         });
+    //         if (kDebugMode) {
+    //           print("你输入的内容为$value");
+    //         }
+    //       },
+    //       focusNode: _accountPasswordFocusNode,
+    //     ),
+    // SizedBox(height: 50.h),
+    // PFTextField(
+    //   focusNode: _passFocusNode,
+    //   controller: _passController,
+    //   hintText: "请输入密码",
+    //   obscureText: v,
+    //   width: 1.sw - 2 * 30.w,
+    //   height: 96.h,
+    //   color: const Color.fromRGBO(233, 234, 237, 1),
+    //   suffixIcon: IconButton(
+    //     icon: Center(
+    //       child: v
+    //           ? const Icon(Icons.remove_red_eye_outlined)
+    //           : const Icon(Icons.remove_red_eye_rounded),
+    //     ),
+    //     color: PFc.themeColor,
+    //     //padding: const EdgeInsets.all(11.0),
+    //     alignment: Alignment.bottomCenter,
+    //     onPressed: () {
+    //       setState(() {
+    //         v = !v;
+    //       });
+    //     },
+    //   ),
+    // ),
+    // SizedBox(height: 50.h),
+    // // 登录
+    // _submitPasswordButton(),
+    // ],
+    // );
   }
 
   // tab栏具体实现

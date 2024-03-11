@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-QueryLoginPassword queryLoginPasswordFromJson(String str) => QueryLoginPassword.fromJson(json.decode(str));
+QueryLoginPassword queryLoginPasswordFromJson(String str) =>
+    QueryLoginPassword.fromJson(json.decode(str));
 
-String queryLoginPasswordToJson(QueryLoginPassword data) => json.encode(data.toJson());
+String queryLoginPasswordToJson(QueryLoginPassword data) =>
+    json.encode(data.toJson());
 
 class QueryLoginPassword {
   QueryLoginPassword({
@@ -15,13 +17,14 @@ class QueryLoginPassword {
 
   LoginPassword loginPassword;
 
-  factory QueryLoginPassword.fromJson(Map<String, dynamic> json) => QueryLoginPassword(
-    loginPassword: LoginPassword.fromJson(json["loginPassword"]),
-  );
+  factory QueryLoginPassword.fromJson(Map<String, dynamic> json) =>
+      QueryLoginPassword(
+        loginPassword: LoginPassword.fromJson(json["loginPassword"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "loginPassword": loginPassword.toJson(),
-  };
+        "loginPassword": loginPassword.toJson(),
+      };
 }
 
 class LoginPassword {
@@ -40,20 +43,20 @@ class LoginPassword {
   Data data;
 
   factory LoginPassword.fromJson(Map<String, dynamic> json) => LoginPassword(
-    status: json["status"],
-    msg: json["msg"],
-    token: json["token"],
-    refreshToken: json["refresh_token"],
-    data: Data.fromJson(json["data"]),
-  );
+        status: json["status"],
+        msg: json["msg"],
+        token: json["token"],
+        refreshToken: json["refresh_token"],
+        data: Data.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "msg": msg,
-    "token": token,
-    "refresh_token": refreshToken,
-    "data": data.toJson(),
-  };
+        "status": status,
+        "msg": msg,
+        "token": token,
+        "refresh_token": refreshToken,
+        "data": data.toJson(),
+      };
 }
 
 class Data {
@@ -74,27 +77,29 @@ class Data {
   String dsc;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    username: json["username"],
-    profilePicture: json["profile_picture"],
-    sex: json["sex"],
-    mobile: json["mobile"],
-    wechat: json["wechat"],
-    dsc: json["dsc"],
-  );
+        username: json["username"],
+        profilePicture: json["profile_picture"],
+        sex: json["sex"],
+        mobile: json["mobile"],
+        wechat: json["wechat"],
+        dsc: json["dsc"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "username": username,
-    "profile_picture": profilePicture,
-    "sex": sex,
-    "mobile": mobile,
-    "wechat": wechat,
-    "dsc": dsc,
-  };
+        "username": username,
+        "profile_picture": profilePicture,
+        "sex": sex,
+        "mobile": mobile,
+        "wechat": wechat,
+        "dsc": dsc,
+      };
 }
 
-LoginPasswordRequest loginPasswordRequestFromJson(String str) => LoginPasswordRequest.fromJson(json.decode(str));
+LoginPasswordRequest loginPasswordRequestFromJson(String str) =>
+    LoginPasswordRequest.fromJson(json.decode(str));
 
-String loginPasswordRequestToJson(LoginPasswordRequest data) => json.encode(data.toJson());
+String loginPasswordRequestToJson(LoginPasswordRequest data) =>
+    json.encode(data.toJson());
 
 class LoginPasswordRequest {
   LoginPasswordRequest({
@@ -104,19 +109,19 @@ class LoginPasswordRequest {
   });
 
   String mobile;
-  int area;
+  String area;
   String password;
 
-  factory LoginPasswordRequest.fromJson(Map<String, dynamic> json) => LoginPasswordRequest(
-    mobile: json["mobile"],
-    area: json["area"],
-    password: json["password"],
-  );
+  factory LoginPasswordRequest.fromJson(Map<String, dynamic> json) =>
+      LoginPasswordRequest(
+        mobile: json["mobile"],
+        area: json["area"],
+        password: json["password"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "mobile": mobile,
-    "area": area,
-    "password": password,
-  };
+        "mobile": mobile,
+        "area": area,
+        "password": password,
+      };
 }
-

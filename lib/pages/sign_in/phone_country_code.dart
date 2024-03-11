@@ -195,8 +195,8 @@ class PageState extends State<PhoneCountryCodePage> {
                                     ),
                                   ),
                                   onTap: () {
-                                    c.increment(int.parse(
-                                        data[index].listData[index2].code));
+                                    c.increment(
+                                        data[index].listData[index2].code);
                                     Get.back();
                                   },
                                 );
@@ -249,7 +249,7 @@ class PageState extends State<PhoneCountryCodePage> {
                         ),
                       ),
                       onTap: () {
-                        c.increment(int.parse(result[index3].code));
+                        c.increment(result[index3].code);
                         Get.back();
                       },
                     );

@@ -56,20 +56,20 @@ String verifySendRequestToJson(VerifySendRequest data) =>
 class VerifySendRequest {
   VerifySendRequest({
     required this.mobile,
-    required this.area,
+    required this.ctry_code,
   });
 
   String mobile;
-  int area;
+  String ctry_code;
 
   factory VerifySendRequest.fromJson(Map<String, dynamic> json) =>
       VerifySendRequest(
         mobile: json["mobile"],
-        area: json["area"],
+        ctry_code: json["ctry_code"],
       );
 
   Map<String, dynamic> toJson() => {
         "mobile": mobile,
-        "area": area,
+        "ctry_code": ctry_code,
       };
 }

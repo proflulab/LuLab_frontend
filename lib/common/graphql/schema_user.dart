@@ -34,33 +34,41 @@ mutation emailCodeLogin($email: String!, $code: String!) {
 
   ///手机验证码发送
   ///请求数据参考
-  ///{"mobile":"15110880530","area":86}
-  ///int=>string
+  ///{"mobile":"15110880530","area":"+86"}
   static const String gqlVerifySend = r'''
-query verifySend($mobile:String!,$area:String!){
-  verifySend(mobile: $mobile,area: $area){
+query sendSmsCode($mobile: String!, $ctry_code: String!) {
+  sendSmsCode(mobile: $mobile, ctry_code: $ctry_code) {
     status
     msg
   }
 }
+
 ''';
 
   ///手机验证码验证
   ///请求数据参考
-  ///{"mobile":"15110880530","area":86,"code":"312113"}
+  ///{"mobile":"15110880530","area":"+86","code":"312113"}
   ///int=>string
   static const String gqlVerifyCheck = r'''
-query verifyCheck ($mobile: String!, $code: String!, $area: String!) {
-    verifyCheck (mobile: $mobile, code: $code, area: $area) {
-        status
-        msg
+mutation refactored87($mobile: String!, $code: String!, $ctry_code: String!) {
+  mobileCodeLogin(mobile: $mobile, code: $code, ctry_code: $ctry_code) {
+    token
+    refresh_token
+    user {
+      name
+      avatar
+      sex
+      mobile
+      email
+      description
     }
+  }
 }
 ''';
 
   ///手机验证码登陆
   ///请求数据参考
-  ///{"mobile":"15110880530","area":86,"code":"312113"}
+  ///{"mobile":"15110880530","area":"+86","code":"312113"}
   static const String gqlLoginCaptcha = r'''
 query loginCaptcha ($mobile: String!, $area: String!, $code: String!) {
     loginCaptcha (mobile: $mobile, area: $area, code: $code) {
