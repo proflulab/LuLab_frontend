@@ -29,22 +29,22 @@ class QueryVerifySendEmail {
 
 class VerifySendEmail {
   VerifySendEmail({
-    required this.success,
-    required this.message,
+    required this.status,
+    required this.msg,
   });
 
-  bool success;
-  String message;
+  String status;
+  String msg;
 
   factory VerifySendEmail.fromJson(Map<String, dynamic> json) =>
       VerifySendEmail(
-        success: json["success"],
-        message: json["message"],
+        status: json["status"],
+        msg: json["msg"],
       );
 
   Map<String, dynamic> toJson() => {
-        "success": success,
-        "message": message,
+        "status": status,
+        "msg": msg,
       };
 }
 

@@ -73,7 +73,8 @@ class _Verification1State extends State<Verification1> {
         }
       },
     );
-    if (_verifyData.success) {
+    if (_verifyData.status == "200") {
+      debugPrint("发送成功");
     } else {
       debugPrint("发送失败");
       toastInfo(msg: '获取验证码失败，请用其他方式登录！');
@@ -98,7 +99,9 @@ class _Verification1State extends State<Verification1> {
         }
       },
     );
-    if (!_verifyCheckEmail.success) {
+    // ignore: unnecessary_null_comparison
+    if (_verifyCheckEmail.token != null) {
+      Global.state = UserState.user;
       Get.offAll(const App());
     } else {
       debugPrint("发送失败");

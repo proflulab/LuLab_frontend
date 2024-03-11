@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 QueryVerifyCheckEmail queryVerifyCheckEmailFromJson(String str) =>
     QueryVerifyCheckEmail.fromJson(json.decode(str));
 
@@ -29,17 +31,13 @@ class QueryVerifyCheckEmail {
 
 class VerifyCheckEmail {
   VerifyCheckEmail({
-    required this.success,
-    required this.message,
     required this.token,
-    required this.reToken,
+    required this.refresh_Token,
     required this.data,
   });
 
-  bool success;
-  String message;
   String token;
-  String reToken;
+  String refresh_Token;
   DataEmail data;
 
   factory VerifyCheckEmail.fromJson(Map<String, dynamic>? json) {
@@ -48,18 +46,14 @@ class VerifyCheckEmail {
       throw FormatException("JSON数据为空");
     }
     return VerifyCheckEmail(
-      success: json["success"] ?? false,
-      message: json["message"] ?? "",
       token: json["token"] ?? "",
-      reToken: json["retoken"] ?? "",
+      refresh_Token: json["retoken"] ?? "",
       data: DataEmail.fromJson(json["data"] ?? {}),
     );
   }
   Map<String, dynamic> toJson() => {
-        "success": success,
-        "message": message,
         "token": token,
-        "retoken": reToken,
+        "retoken": refresh_Token,
         "data": data.toJson(),
       };
 }
@@ -67,16 +61,18 @@ class VerifyCheckEmail {
 class DataEmail {
   DataEmail({
     this.name,
-    this.imageUrl,
+    this.avatar,
     this.sex,
+    this.ctry_code,
     this.mobile,
     this.email,
     this.description,
   });
 
   String? name;
-  String? imageUrl;
+  String? avatar;
   int? sex;
+  String? ctry_code;
   String? mobile;
   String? email;
   String? description;
@@ -88,8 +84,9 @@ class DataEmail {
     }
     return DataEmail(
       name: json["name"] ?? "",
-      imageUrl: json["imageUrl"] ?? "",
+      avatar: json["imageUrl"] ?? "",
       sex: json["sex"] ?? 0,
+      ctry_code: json["ctry_code"] ?? "",
       mobile: json["mobile"] ?? "",
       email: json["email"] ?? "",
       description: json["description"] ?? "",
@@ -98,8 +95,9 @@ class DataEmail {
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "imageUrl": imageUrl,
+        "imageUrl": avatar,
         "sex": sex,
+        "ctry_code": ctry_code,
         "mobile": mobile,
         "email": email,
         "description": description,

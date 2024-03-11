@@ -3,10 +3,10 @@ class SchemaUser {
   ///请求数据参考
   ///{"email": "2464854077@qq.com"}
   static const String gqlVerifySendEmail = r'''
-mutation sendEmail ($email: String!) {
-  sendEmail(email: $email) {
-    success
-    message
+query sendEmailCode($email: String!) {
+  sendEmailCode(email: $email) {
+    status
+    msg
   }
 }
 ''';
@@ -15,21 +15,20 @@ mutation sendEmail ($email: String!) {
   ///请求数据参考
   ///{"email": "2464854077@qq.com","code": "010062"}
   static const String gqlVerifyCheckEmail = r'''
-mutation checkEmail($email: String!, $code: String!) {
-  checkEmail(email: $email, code: $code) {
-    success
-    message
-    token
-    reToken
-    data {
-      name   
-      imageUrl
-      sex
-      mobile
-      email
-      description
+mutation emailCodeLogin($email: String!, $code: String!) {
+    emailCodeLogin(email: $email, code: $code) {
+        token
+        refresh_token
+        user {
+            name
+            avatar
+            sex
+            ctry_code
+            mobile
+            email
+            description
+        }
     }
-  }
 }
 ''';
 

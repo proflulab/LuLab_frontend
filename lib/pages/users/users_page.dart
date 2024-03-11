@@ -78,46 +78,46 @@ class _UsersPageState extends State<UsersPage>
               },
             ),
           ),
-          Container(
-            height: 90,
-            padding: const EdgeInsets.only(left: 15, right: 5),
-            margin: const EdgeInsets.only(left: 30, right: 30),
-            decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                ),
-                color: Colors.green),
-            child: Center(
-              child: ListTile(
-                title: const Text(
-                  "开通陆向谦实验室会员",
-                  style: TextStyle(
-                    fontFamily: 'MyFontStyle',
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-                // subtitle: const Text("优享&大特权"),
-                // contentPadding: const EdgeInsets.all(10),
-                trailing: const Chip(
-                  avatar: null,
-                  label: Text("开通"),
-                ),
-                onTap: () {
-                  if (kDebugMode) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return const Tabs();
-                    }));
-                  }
-                },
-              ),
-            ),
-          ),
+          // Container(
+          //   height: 90,
+          //   padding: const EdgeInsets.only(left: 15, right: 5),
+          //   margin: const EdgeInsets.only(left: 30, right: 30),
+          //   decoration: const BoxDecoration(
+          //       shape: BoxShape.rectangle,
+          //       borderRadius: BorderRadius.only(
+          //         topLeft: Radius.circular(15),
+          //         topRight: Radius.circular(15),
+          //         bottomRight: Radius.circular(15),
+          //         bottomLeft: Radius.circular(15),
+          //       ),
+          //       color: Colors.green),
+          //   child: Center(
+          //     child: ListTile(
+          //       title: const Text(
+          //         "开通陆向谦实验室会员",
+          //         style: TextStyle(
+          //           fontFamily: 'MyFontStyle',
+          //           color: Colors.white,
+          //           fontSize: 16,
+          //         ),
+          //       ),
+          //       // subtitle: const Text("优享&大特权"),
+          //       // contentPadding: const EdgeInsets.all(10),
+          //       trailing: const Chip(
+          //         avatar: null,
+          //         label: Text("开通"),
+          //       ),
+          //       onTap: () {
+          //         if (kDebugMode) {
+          //           Navigator.of(context).push(
+          //               MaterialPageRoute(builder: (BuildContext context) {
+          //             return const Tabs();
+          //           }));
+          //         }
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       );
     }
