@@ -112,8 +112,8 @@ class _VerificationState extends State<Verification> {
       Global.state = UserState.user;
       Get.offAll(() => const App());
     } else {
-      debugPrint("发送失败");
-      toastInfo(msg: '获取验证码失败，请用其他方式登录！');
+      debugPrint("验证失败");
+      toastInfo(msg: '验证码错误，请重试！');
     }
   }
 
@@ -249,8 +249,7 @@ class _VerificationState extends State<Verification> {
                     ),
                     onCompleted: (value) {
                       String code = value.toString();
-                      String ctrycode = toString();
-                      _loadVerifyCheck(data[0], code, ctrycode);
+                      _loadVerifyCheck(data[0], code, data[1]);
                     },
                   ),
                 ),

@@ -103,8 +103,8 @@ class _EmailVerificationState extends State<EmailVerification> {
       Global.state = UserState.user;
       Get.offAll(const App());
     } else {
-      debugPrint("发送失败");
-      toastInfo(msg: '获取验证码失败，请用其他方式登录！');
+      debugPrint("验证失败");
+      toastInfo(msg: '验证码错误，请重试！');
     }
   }
 
